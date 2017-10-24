@@ -5,6 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
 <title>Building LSDTopoTools documentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -424,31 +425,49 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
-<body class="article">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>Building LSDTopoTools documentation</h1>
+<div class="details">
+<span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
+<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a>
+<ul class="sectlevel2">
+<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</a></li>
+</ul>
+</li>
+<li><a href="#_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</a></li>
+<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Most users will just look at our website. But some users may wish to build the documents themselves.
-The documents are built using Asciidoctor.</p>
+The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">Some notes on installing Ruby for LSDTopoTools.</h2>
+<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>After a number of painful windows installations, we have decided that life in linux is much easier.
-If you don&#8217;t have linux you can make a little linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>.</p>
+If you don&#8217;t have linux you can make a little linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We will assume you are using Ubuntu in a vagrant box. We will use <a href="https://rvm.io/">rvm</a> to get everything working.</p>
+<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. We will use <a href="https://rvm.io/">rvm</a> to get everything working.</p>
 </li>
 <li>
 <p>We need to install some software first:</p>
@@ -563,7 +582,7 @@ gem 'epubcheck'</code></pre>
 </ol>
 </div>
 <div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">If you want to make pdf files using asciidoctor with equation in them</h3>
+<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</h3>
 <div class="paragraph">
 <p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
 </div>
@@ -618,7 +637,7 @@ gem 'epubcheck'</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_a_developer_and_want_to_get_the_documentation_working">If you are a developer and want to get the documentation working</h2>
+<h2 id="_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -716,7 +735,7 @@ $ bundle exec rake book:build_html</code></pre>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Warning</div>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 If you are on Windows and using <strong>git bash</strong>, it will not recognise Ruby commands, so you will need to open a separate powershell window to run the <strong>bundle</strong> command. This should not be a problem on Linux and MacOS.
@@ -746,7 +765,7 @@ $ git push origin gh-pages</code></pre>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Important</div>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 You <strong>MUST</strong> push to the <strong>gh-pages</strong> branch!! When you work in the <strong>master</strong> directory you <code>push</code> and <code>pull</code> to the <strong>master</strong> branch, and when you work in the <strong>gh-pages</strong> folder you <code>push</code> and <code>pull</code> from the <strong>gh-pages</strong> branch! If you mess this up you might have some painful cleaning up to do.
@@ -763,13 +782,13 @@ You <strong>MUST</strong> push to the <strong>gh-pages</strong> branch!! When yo
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_making_changes_to_the_documentation">If you are making changes to the documentation</h2>
+<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
@@ -852,8 +871,24 @@ $ git push -u origin gh-pages</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 09:45:10 UTC
+Last updated 2017-10-24 15:21:13 UTC
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

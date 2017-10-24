@@ -37,20 +37,22 @@ def compile_LSDTT_Docs():
         for htmlname in glob(dirname+os.sep+"*.html"):
             split_line = htmlname.split(os.sep)
             new_html = doc_directory+'html_build'+os.sep+split_line[-1]
-            print("The old location of the file is:")
-            print(htmlname)
+            #print("The old location of the file is:")
+            #print(htmlname)
             
-            print("The new location of the file is:")
-            print(new_html)
+            #print("The new location of the file is:")
+            #print(new_html)
             subprocess.call(['cp',htmlname,new_html])
             
         # Search for an image directory
         if os.access(dirname+os.sep+"images",os.F_OK):
-            print("I found an images directory")
-            for imagename in glob(dirname+os.sep+"images"):
-                print("The image name is: ")
-                print(imagename)
-            
+            #print("I found an images directory")
+            for imagename in glob(dirname+os.sep+"images"+os.sep+"*"):
+                #print("The image name is: ")
+                #print(imagename)
+                split_line = imagename.split(os.sep)
+                new_image = doc_directory+'html_build'+os.sep+"images"+os.sep+split_line[-1]
+                subprocess.call(['cp',imagename,new_image])
         
         
         os.chdir(doc_directory)
