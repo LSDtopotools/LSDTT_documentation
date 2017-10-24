@@ -437,34 +437,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_getting_the_software">2. Getting the software</a>
+<li><a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">2. Installing LSDTopoTools using VirtualBox and Vagrant</a>
 <ul class="sectlevel2">
-<li><a href="#_starting_up_on_your_own_linux_machine">2.1. Starting up on your own Linux machine</a></li>
-<li><a href="#_starting_up_on_a_non_linux_operating_system_windows_macos">2.2. Starting up on a non-Linux operating system (Windows, MacOS)</a></li>
-<li><a href="#_troubleshooting_a_vagrant_server">2.3. Troubleshooting a vagrant server</a></li>
-<li><a href="#_installing_the_code_and_setting_up_directories">2.4. Installing the code and setting up directories</a></li>
+<li><a href="#_quick_instructions">2.1. Quick instructions</a></li>
+<li><a href="#_full_instructions_on_setting_up_our_vagrant_servers">2.2. Full instructions on setting up our Vagrant servers</a>
+<ul class="sectlevel3">
+<li><a href="#_first_steps_starting_a_vagrant_box">2.2.1. First steps: Starting a Vagrant box</a></li>
+<li><a href="#_logging_on_to_your_vagrant_box">2.2.2. Logging on to your Vagrant box</a></li>
+<li><a href="#_your_vagrant_box_and_file_syncing">2.2.3. Your Vagrant box and file syncing</a></li>
+<li><a href="#_updating_to_the_latest_versions_of_the_software">2.2.4. Updating to the latest versions of the software</a></li>
+<li><a href="#_shutting_things_down">2.2.5. Shutting things down</a></li>
+<li><a href="#_if_you_want_to_start_from_scratch">2.2.6. If you want to start from scratch</a></li>
+<li><a href="#_troubleshooting_a_vagrant_server">2.2.7. Troubleshooting a vagrant server</a></li>
+<li><a href="#_brief_notes_for_setting_up_your_own_vagrant_server">2.2.8. Brief notes for setting up your own Vagrant server</a></li>
 </ul>
 </li>
-<li><a href="#_getting_the_software_2">3. Getting the software</a>
-<ul class="sectlevel2">
-<li><a href="#_starting_up_on_your_own_linux_machine_2">3.1. Starting up on your own Linux machine</a></li>
-<li><a href="#_starting_up_on_a_non_linux_operating_system_windows_macos_2">3.2. Starting up on a non-Linux operating system (Windows, MacOS)</a></li>
-<li><a href="#_troubleshooting_a_vagrant_server_2">3.3. Troubleshooting a vagrant server</a></li>
-<li><a href="#_installing_the_code_and_setting_up_directories_2">3.4. Installing the code and setting up directories</a></li>
 </ul>
 </li>
-<li><a href="#_preparing_your_data">4. Preparing your data</a>
+<li><a href="#_installing_lsdtopotools_using_docker">3. Installing LSDTopoTools using Docker</a>
 <ul class="sectlevel2">
-<li><a href="#_get_some_data">4.1. Get some data</a></li>
-<li><a href="#_use_gdal">4.2. Use GDAL</a></li>
-<li><a href="#_stupid_nodata">4.3. Stupid nodata</a></li>
+<li><a href="#_should_i_use_docker_or_vagrant">3.1. Should I use Docker or Vagrant?</a></li>
+<li><a href="#_the_lsdtopotools_docker_container">3.2. The LSDTopoTools docker container</a></li>
 </ul>
 </li>
-<li><a href="#_preparing_your_data_2">5. Preparing your data</a>
+<li><a href="#_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</a></li>
+<li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">5. Installing LSDTopoTools at the University of Edinburgh.</a>
 <ul class="sectlevel2">
-<li><a href="#_get_some_data_2">5.1. Get some data</a></li>
-<li><a href="#_use_gdal_2">5.2. Use GDAL</a></li>
-<li><a href="#_stupid_nodata_2">5.3. Stupid nodata</a></li>
+<li><a href="#_mapping_your_network_drive">5.1. Mapping your network drive</a></li>
+<li><a href="#_getting_on_to_our_servers_with_nx">5.2. Getting on to our servers with NX</a></li>
+<li><a href="#_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</a></li>
 </ul>
 </li>
 </ul>
@@ -502,25 +503,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_the_software">2. Getting the software</h2>
+<h2 id="_installing_lsdtopotools_using_virtualbox_and_vagrant">2. Installing LSDTopoTools using VirtualBox and Vagrant</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We have attempted, to the best of our ability, to streamline the process of installing our software on any platform (Windows, Linux, MacOS). You will need to install two bits of software. If you have a decent internet connection this should take under an hour. The main rate limiting step is downloading files: You will need to download ~2Gb of software. This requirement is substantially reduced if you want to install on a native Linux machine.</p>
+<p>Our most tested method uses two software packages, which are both free to download:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> which is software for creating virtual machines, which are inplementations of operating systems that live in your host operating system (e.g., you can have a virtual Linux system operating within your Windows or MacOS operating system).</p>
+</li>
+<li>
+<p><a href="https://www.vagrantup.com/">Vagrant</a> which is software for managing and provisioning virtual machines.</p>
+</li>
+</ul>
 </div>
 <div class="sect2">
-<h3 id="_starting_up_on_your_own_linux_machine">2.1. Starting up on your own Linux machine</h3>
-<div class="paragraph">
-<p>If you work on a Linux operating system we have a python script for installing everything. You will need to be connected to the internet, and have python installed. You can skip ahead to the section <a href="#_installing_the_code_and_setting_up_directories">Installing the code and setting up directories</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_starting_up_on_a_non_linux_operating_system_windows_macos">2.2. Starting up on a non-Linux operating system (Windows, MacOS)</h3>
-<div class="paragraph">
-<p>Below are quick instructions. If you have trouble, follow the link above and then go through the complete instructions.</p>
-</div>
+<h3 id="_quick_instructions">2.1. Quick instructions</h3>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Quick Instructions for using Vagrant for LSDTopoTools</div>
+<div class="title">Quick instructions for starting a Vagrant server with LSDTopoTools</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -578,9 +580,321 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick instructions for setting up directories in your vagrant box</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use <code>putty.exe</code> (in Windows) or <code>vagrant ssh</code> (on MacOS/Linux) to log into your vagrant server.</p>
+</li>
+<li>
+<p>Go to the *LSDTopoTools directory by typing <code>cd /LSDTopoTools</code></p>
+</li>
+<li>
+<p>Type <code>python LSDTopoToolsSetup.py -id 0</code></p>
+</li>
+<li>
+<p>You are ready to go for some basic analysis!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_troubleshooting_a_vagrant_server">2.3. Troubleshooting a vagrant server</h3>
+<h3 id="_full_instructions_on_setting_up_our_vagrant_servers">2.2. Full instructions on setting up our Vagrant servers</h3>
+<div class="sect3">
+<h4 id="_first_steps_starting_a_vagrant_box">2.2.1. First steps: Starting a Vagrant box</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You will need sufficient space on your hard disk to host a guest operating system. You also need room for the <strong>LSDTopoTools</strong> dependencies. You will struggle if you have less than <strong>5Gb</strong> free.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://www.vagrantup.com/">Vagrant</a> is software that automates the creation and provisioning of virtual machines. What does that mean? It means that you will create a Linux server that runs inside of your day-to-day computer. This server will run even if you are using a different operating system (e.g., Windows). Vagrant machines can be configured using a vagrantfile, so you download our vagrantfile and you simply point vagrant to it and should get a working server that can run LSDTopoTools.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need software for running virtual machines. We recommend <a href="https://www.virtualbox.org/">virtualbox</a> since it is both well supported and free. Download and install. Our instructions assume you are using virtual box.</p>
+</li>
+<li>
+<p>Download and install <a href="https://www.vagrantup.com/">Vagrant</a>.</p>
+</li>
+<li>
+<p>Vagrant works via command line, so you will need to know how to open a terminal on <a href="http://www.macworld.co.uk/feature/mac-software/get-more-out-of-os-x-terminal-3608274/">OS X</a>, Linux (usually you can open one using <code>ctrl-alt-T</code>, but if you use Linux that means you were born knowing how to open a terminal), or a <a href="http://www.tenforums.com/tutorials/25581-windows-powershell-open-windows-10-a.html">Windows powershell</a>.</p>
+</li>
+<li>
+<p>If you are working on Windows, you will probably have to restart after installing Vagrant so that Windows can register the path to Vagrant.</p>
+</li>
+<li>
+<p>Okay, we now assume you have installed everything and are in a terminal or powershell. You need to make a directory where you keep information about your vagrant boxes. I made a folder names <code>vagrantboxes</code> and then subfolders for different boxes.</p>
+</li>
+<li>
+<p>If you are in Windows, you will need an <a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a> utility to communicate with your vagrant box. You should download <code>putty.exe</code> from the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty website</a>. In  Linux and MacOS <strong>ssh</strong> utilities are already installed.</p>
+</li>
+<li>
+<p>Now you should fetch one of our vagrantfiles from our git repo: <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles" class="bare">https://github.com/LSDtopotools/LSDTT_vagrantfiles</a></p>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Get the Vagrant Files</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The 32 bit file is here: <a href="https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_32bit_FFTW" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_32bit_FFTW</a></p>
+</li>
+<li>
+<p>The 64 bit file is here: <a href="https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW</a></p>
+</li>
+<li>
+<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating sytstems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">for example see this link</a>, you should choose the 32 bit vagrantfile.</p>
+</li>
+<li>
+<p>Save one of these files into the directory for your vagrant files. See below for the appropriate directory structure.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Rename the vagrantfile from the repo (either <code>Vagrantfile_32bit_FFTW</code> or <code>Vagrantfile_64bit_FFTW</code>) simply <code>vagrantfile</code></p>
+</li>
+<li>
+<p>If you use our vagrant files, you will need to make a directory <code>LSDTopoTools</code> in the same directory as your folders for different vagrant boxes.
+For example, you might make a directory <code>C:\VagrantBoxes\</code>, and in that directory you can put both <code>LSDTopoTools</code> and <code>Ubuntu32_FFTW</code> (or some such name) directories. You will put the vagrant file in the <code>Ubuntu32_FFTW</code> directory.
+Your tree might look a bit like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-directory_struct" data-lang="directory_struct">C:\vagrantboxes\
+|--Ubuntu32_FFTW
+   |-- vagrantfile
+|--Ubuntu64_FFTW
+   |-- vagrantfile
+|--LSDTopoTools</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is <strong>ESSENTIAL</strong> that the LSDTopoTools folder is present and is one directory level lower than the vagrant file. If this is not true, the vagrant machine will <strong>NOT WORK</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the above file structures the vagrantfiles have been renamed from the vagrant files in our repository.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Go into the folder with the operating system you want (e.g. <code>Ubuntu32_FFTW</code>):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS: &gt; cd C:\VagrantBoxes
+PS: &gt; cd C:\Ubuntu32_FFTW</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now start your vagrant box (this might take some time since it has to fetch stuff from the internet):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS: &gt; vagrant up</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You do not need to download a "base box" (that is a Linux operating system, in this case 32 bit Ubuntu) before you run <code>vagrant up</code>: Vagrant does this for you.
+However if you are running <code>vagrant up</code> for the first time Vagrant will download the box for you which will take some time (it is ~400Mb).
+You will only need to download the base box once.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Congratulations! You now have a functioning Vagrant box!! Now you need to log on to the box.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you want to update the base box you can use <code>vagrant box update</code> command from the powershell or terminal windows.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logging_on_to_your_vagrant_box">2.2.2. Logging on to your Vagrant box</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>All right! Your Vagrant box is running. Other than a sense of vague accomplishment, this doesn&#8217;t really help you run LSDTopoTools. You need to log on to the box.
+You will operate your vagrant box as a server: you log into the machine and run code on it, but you won&#8217;t have pretty windows to look at.
+You will run everything through an ssh terminal, using a command line interface.</p>
+</li>
+<li>
+<p>We do this using <a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a>.</p>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">A note on your vagrant ssh server</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a> allows you to communicate securely with a server on an unsecured connection (it encrypts communication between you and the server).</p>
+</li>
+<li>
+<p>You will use ssh to communicate with your Vagrant server. This server is <strong>not on the internet</strong> but rather is living <strong>on your computer</strong>.</p>
+</li>
+<li>
+<p>Vagrant is clever in that it sets up an <a href="https://en.wikipedia.org/wiki/IP_address">IP address</a> for your vagrant server (in other words your Linux machine living on your host computer, which could be Windows, Linux or OSX), and as such ssh can establish a connection to this machine via ssh.</p>
+</li>
+<li>
+<p>Vagrant&#8217;s default settings are to set your server up to sit on host <strong>127.0.0.1</strong> and port <strong>2222</strong>. You will need to use these settings in putty.exe</p>
+</li>
+<li>
+<p>When you first log in, putty or other ssh clients will ask you to cache a new host key.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>If you are starting from a Linux or OSX machine, an ssh client is built into your command prompt and you can just type <code>vagrant ssh</code> into the command prompt.</p>
+</li>
+<li>
+<p>If you are on Windows, you need to download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty.exe</a> and run it.</p>
+</li>
+<li>
+<p>In putty, set the host to <strong>127.0.0.1</strong> and the port to <strong>2222</strong>. These are vagrant&#8217;s default settings.</p>
+</li>
+<li>
+<p>You will need to add the RSA key to your cache (just say yes: remember you are not connecting to the internet where baddies can spy on you but rather a server running on your own computer).</p>
+</li>
+<li>
+<p>Now you need to <strong>log in</strong>. Your vagrant box has a <strong>username</strong> of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_your_vagrant_box_and_file_syncing">2.2.3. Your Vagrant box and file syncing</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>So you are logged in. Now what? It turns out Vagrant has done some clever things with your files.</p>
+</li>
+<li>
+<p>Vagrant can <a href="https://www.vagrantup.com/docs/getting-started/synced_folders.html">sync folders</a> across your Vagrant box and your host computer (that is, the computer you started vagrant from).</p>
+</li>
+<li>
+<p>When you log in to your vagrant box, you will not be in the same folder where I have built the <strong>LSDTopoTools</strong> file structures. You need to navigate down to this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
+/STUFF
+$ cd ..
+$ cd ..
+$ pwd
+/STUFF
+$ cd LSDTopoTools
+$ ls
+STUFF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also jump directly there:</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd /LSDTopoTools</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+. As you can see above, the <strong>LSDTopoTools</strong> folder contains folders for different <strong>LSDTopoTools</strong> packages, for topographic datasets.</p>
+</div>
+<div class="paragraph">
+<p>+
+. Here is the amazing thing: the files that are in LSDTopoTools folder in your vagrant box <strong>ARE ALSO</strong> visible, and synced, in your host computer.
+So if you use <strong>LSDTopoTools</strong> to do some analysis within your vagrant box, you will be able to see the files within your host computer as well.
+This means that you can, for example, do a Linux based <strong>LSDTopoTools</strong> analysis and then plot that analysis in a GIS on your host windows box without having to transfer files.
+Not only that, but you can modify the code, update python scripts, change parameter files, etc., with your favourite text editor in Windows (or OSX, or whatever) and those files will be visible to your Vagrant box. Fantastic!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_updating_to_the_latest_versions_of_the_software">2.2.4. Updating to the latest versions of the software</h4>
+<div class="paragraph">
+<p>To check out the latest version of our software you can run the <a href="https://www.vagrantup.com/docs/cli/provision.html">vagrant provision</a> command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS: &gt; vagrant up
+PS: &gt; vagrant provision</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_shutting_things_down">2.2.5. Shutting things down</h4>
+<div class="paragraph">
+<p>When you are finished with your session, you just need to go into the powershell or a terminal and type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS: &gt; vagrant halt</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_if_you_want_to_start_from_scratch">2.2.6. If you want to start from scratch</h4>
+<div class="paragraph">
+<p>If you want to remove the virtual machine, start it up and than run <a href="https://www.vagrantup.com/docs/cli/destroy.html">vagrant destroy</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS: &gt; vagrant up
+PS: &gt; vagrant destroy</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_troubleshooting_a_vagrant_server">2.2.7. Troubleshooting a vagrant server</h4>
 <div class="paragraph">
 <p>There are a few common problems people have when running a vagrant server.</p>
 </div>
@@ -598,24 +912,258 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_installing_the_code_and_setting_up_directories">2.4. Installing the code and setting up directories</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Easy setup quick start</div>
+<div class="sect3">
+<h4 id="_brief_notes_for_setting_up_your_own_vagrant_server">2.2.8. Brief notes for setting up your own Vagrant server</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This section is for customising your vagrant environment (or rather, your Ubuntu environment that vagrant sets up for you) and can be safely ignored by 95% of <strong>LSDTopoTools</strong> users. We include the below notes for obsessive hackers who have nothing better to do.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>If you just want to get started with the standard setup without any details, do the following:</p>
+<p>We have written Vagrant files for you so you don&#8217;t have to customise your working environment, but if you want to set up your own Vagrant boxes with your own software here are some notes.</p>
+</div>
+<div class="sect4">
+<h5 id="_initiating_a_vagrant_box">Initiating a Vagrant box</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go into an empty folder to start a new Vagrant box.</p>
+</li>
+<li>
+<p>Initiate Vagrant with:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS&gt; C:\&gt; vagrant init</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can initiate with a <code>base box</code>. In this example we use the Ubuntu precise 32 base box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS&gt; C:\vagrant init ubuntu/precise32</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This command (<code>init</code>) will simply make a vagrant file. To get the server up and running you need to <code>up</code> it. Before you do that you probably want to modify the vagrant file.</p>
+</li>
+<li>
+<p>One of the things you probably need to modify is the memory assigned to your guest vagrant box. In the vagrant file you should have:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-vagrantfile" data-lang="vagrantfile">  config.vm.provider "virtualbox" do |vb|
+    # Customize the amount of memory on the VM:
+    vb.memory = "3000"
+  end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default memory is something small, and the problem with it is that it will take the guest operating system too long to boot, and vagrant will time out. I would give the vagrant box 3-4 Gb of memory.</p>
+</div>
+</li>
+<li>
+<p>Now you can <code>up</code> your vagrant box. In the folder with the vagrant file, type:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS&gt; vagrant up</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If this is the first time booting the linux machine, this will take a while.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_notes_on_the_base_box">Notes on the base box</h5>
+<div class="paragraph">
+<p>Vagrant sets up a Linux server living in your computer (it is called the <strong>Host</strong> computer). The server will run a Linux operating system, and you need to choose a functioning base system
+<a href="https://atlas.hashicorp.com/boxes/search">vagrant base boxes</a>. Here we have started with <code>ubuntu/precise32</code>. You might want to try other base boxes, they can be found at the <a href="https://atlas.hashicorp.com/boxes/search">atlas website</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you choose a base box that you do not already have (and you start with none), vagrant will download it. They are big!! Usually over 500Mb (each is a fully operational linux operating system). You will either need a fast internet connection or a lot of time. Make sure you also have enough room on your hard disk.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>You do need to be careful with base boxes!</strong></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Not all base boxes work! On many windows machines, you can only run a 32 bit version of linux, even though you are almost certainly running 64 bit windows. You can change this by going into your BIOS and changing the settings, but that is dangerous and if you do not know what your BIOS is do not even think about attempting to change these settings.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In testing, I found many bases boxes did not work at all. The one that worked well for me was the <code>ubuntu/precise32</code> box. You can get this started with:</p>
+</div>
+<div class="paragraph">
+<p>Alternatively you can just <code>vagrant init</code> and empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can update your base box with the command <code>vagrant box update</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_details_of_provisioning">Details of provisioning</h5>
+<div class="paragraph">
+<p>If you change your vagrantfile with the box still running, you can run the new provisioning with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PS&gt; vagrant provision</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have downloaded our vagrant files, the provisioning of your virtual server should be automatic. However, you may wish to know what is happening during the provisioning, so here are some notes.</p>
+</div>
+<div class="paragraph">
+<p>To install software, we use the shell provisioning system of vagrant. This should go into the vagrantfile and will look a bit like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-vagrantfile" data-lang="vagrantfile">  config.vm.provision "shell", inline: &lt;&lt;-SHELL
+    sudo apt-get update
+    sudo apt-get install -y git
+  SHELL</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above shell command, we are installing git. The <code>-y</code> flag is important since apt-get will ask if you actually want to download the software and if you do not tell it <code>-y</code> from the shell script it will just abort the installation.</p>
+</div>
+<div class="paragraph">
+<p>You sync folders like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-vagrantfile" data-lang="vagrantfile">  config.vm.synced_folder "../LSDTopoTools", "/LSDTopoTools"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Were the first folder is the folder on the host machine and the second is the folder on the Vagrant box.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_lsdtopotools_using_docker">3. Installing LSDTopoTools using Docker</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_i_use_docker_or_vagrant">3.1. Should I use Docker or Vagrant?</h3>
+<div class="paragraph">
+<p>There are <a href="https://deliciousbrains.com/vagrant-docker-wordpress-development/">many</a>, <a href="https://www.vagrantup.com/intro/vs/docker.html">many</a>, <a href="https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment">many</a> <a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/">articles</a> comparing vagrant to docker.
+The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Entreprise. It does work on any recent version of Linux and MacOS. However the developers of <strong>LSDTopoTools</strong> don&#8217;t have access to Windows 10 Entreprise so can&#8217;t test the Docker versions on Windows, so we can&#8217;t offer support of this installation option.
+However if you have MacOS, native Linux or Windows 10 Enterprise you should consider using Docker since it involves fewer steps than our VirtualBox+Vagrant setup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_lsdtopotools_docker_container">3.2. The LSDTopoTools docker container</h3>
+<div class="paragraph">
+<p><a href="https://www.docker.com/">Docker</a> is software for creating an managing <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>. These containers are not complete operating systems, like one creates using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a>, so the boot time is quicker. Docker is perhaps simpler to use but oes not work on every operating system.</p>
+</div>
+<div class="paragraph">
+<p>The instructions here are a slight modification of <a href="https://hub.docker.com/r/afriel/lsdtopotools/">instructions</a> from <a href="https://github.com/AaronFriel">Aaron Friel</a>.</p>
+</div>
+<div class="paragraph">
+<p>To set up <strong>LSDTopoTools</strong> using Docker:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Go into a Linux terminal. If you are on your own computer and it is not Linux, you will need to start a Vagrant session. You will need <a href="https://www.python.org/">python</a> but this is now standard on most Linux distributions so we will assume you have it.</p>
+<p>Download and install <a href="https://www.docker.com/docker-windows">Docker for Windows</a> (only works with Windows 10 enterprise), <a href="https://www.docker.com/docker-mac">Docker for Mac</a>, or Docker for <a href="https://www.docker.com/docker-ubuntu">Ubuntu</a> or <a href="https://www.docker.com/docker-debian">Debian</a>.</p>
 </li>
 <li>
-<p>If you used our vagrantfile the setup tool will already be on your vagrant box. It is sitting in the LSDTopoTools directory. You can go there with <code>cd /LSDTopoTools</code>.</p>
+<p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\DockerBoxes\LSDTopoTools\</code>.</p>
 </li>
 <li>
-<p>If you are on your own linux machine you can get the setuptool with:</p>
+<p>Run the following command in a <a href="https://en.wikipedia.org/wiki/Cmd.exe">command prompt</a> or <a href="https://www.wikihow.com/Open-a-Terminal-Window-in-Mac">terminal for Mac</a> or Linux (if you use Linux I am sure you don&#8217;t need instruction on how to open a terminal):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">docker run --rm -it -v C:\DockerBoxes\LSDTopoTools\:/LSDTopoTools afriel/lsdtopotools</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that you will need to modify the path (here <code>C:\DockerBoxes\LSDTopoTools\</code>) to reflect your own directory where you want your LSDTopoTools files.</p>
+</div>
+</li>
+<li>
+<p>You should get a prompt that looks like this, perhaps with some different
+letters and numbers after the @:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root@9f73030d8598:/LSDTopoTools#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If this is your first time using the tools and your LSDTopoTools directory is
+empty, you will need to run the install script. In the prompt, enter:
+<code>install.sh</code> and hit <code>enter</code>.</p>
+</li>
+<li>
+<p>Follow docker documetation for your operating system to start and shut down docker containers.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our software is designed for linux operating systems but we do reccomend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start a terminal session.</p>
+</li>
+<li>
+<p>Install some essential softare (we will use Ubuntu installation, you need to modify these if you are on another version of Linux). This assumes you have the GNU c++ tools:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install -y git
+$ sudo apt-get install -y gdal-bin
+$ sudo apt-get install -y python-gdal
+$ sudo apt-get install -y libfftw3-dev
+$ sudo apt-get install -y cmake</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Go the the directory where you want to install <strong>LSDTopoTools</strong>.</p>
+</li>
+<li>
+<p>Download our setup script.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
@@ -626,12 +1174,9 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 <p>Run the setup tool:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0 -ChiM True</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 1</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>You are ready to go!!</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -639,68 +1184,16 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<strong>For native Linux users</strong>: The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In vagrant it always starts in the root directory (this is for file syncing purposes). However, if your native operating system is Linux, then you can either install in your home directory (<code>-id 0</code>) or in the directory where you called LSDTopoToolsSetup.py (<code>-id 1</code>).
+The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In vagrant it always starts in the root directory (this is for file syncing purposes). However, if your native operating system is Linux, then you can either install in your home directory (<code>-id 0</code>) or in the directory where you called LSDTopoToolsSetup.py (<code>-id 1</code>).
 </td>
 </tr>
 </table>
 </div>
 </li>
-</ol>
-</div>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
-<p>The first thing you need to do is get our python program <strong>LSDTopoToolsSetUp.py</strong>. It lives here: <a href="https://github.com/LSDtopotools/LSDAutomation/blob/master/LSDTopoToolsSetup.py" class="bare">https://github.com/LSDtopotools/LSDAutomation/blob/master/LSDTopoToolsSetup.py</a></p>
-<div class="paragraph">
-<p>You will need to run this file in your Linux environment, so in a terminal window type:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If <code>wget</code> doesn&#8217;t work, you can follow the link:
+<p>If <code>wget</code> doesn&#8217;t work, you can follow the link:
 <a href="https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</a><br>
-Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Now, in your terminal window run this script. It has some options:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For the most basic setup, type:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0 -ChiM True</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In our Vagrant setup, this will install everything in the root directory (you can go there with <code>$ cd /</code>),  which is the default setup generated by our <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles">Vagrantfile</a>. If you are not in vagrant the <strong>LSDTopoTools</strong> directories will be in your home directory (you can get there with <code>$ cd ~</code>).</p>
-</div>
-</li>
-<li>
-<p>If you don&#8217;t want <strong>LSDTopoTools</strong> in your home directory, you can install it in your current directory with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 1 -ChiM True</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
+Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.</p>
 </li>
 <li>
 <p>It turns out the <code>LSDTopoToolsSetup.py</code> tool has a number of options but this documentation is for the chi tools so we aren&#8217;t going to bother to explain them. However, if you want a preview of what it does, you can call its help options:</p>
@@ -714,533 +1207,108 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="_getting_the_software_2">3. Getting the software</h2>
+<h2 id="_installing_lsdtopotools_at_the_university_of_edinburgh">5. Installing LSDTopoTools at the University of Edinburgh.</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We have attempted, to the best of our ability, to streamline the process of installing our software on any platform (Windows, Linux, MacOS). You will need to install two bits of software. If you have a decent internet connection this should take under an hour. The main rate limiting step is downloading files: You will need to download ~2Gb of software. This requirement is substantially reduced if you want to install on a native Linux machine.</p>
+<p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="_starting_up_on_your_own_linux_machine_2">3.1. Starting up on your own Linux machine</h3>
+<h3 id="_mapping_your_network_drive">5.1. Mapping your network drive</h3>
 <div class="paragraph">
-<p>If you work on a Linux operating system we have a python script for installing everything. You will need to be connected to the internet, and have python installed. You can skip ahead to the section <a href="#_installing_the_code_and_setting_up_directories">Installing the code and setting up directories</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_starting_up_on_a_non_linux_operating_system_windows_macos_2">3.2. Starting up on a non-Linux operating system (Windows, MacOS)</h3>
-<div class="paragraph">
-<p>Below are quick instructions. If you have trouble, follow the link above and then go through the complete instructions.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Quick Instructions for using Vagrant for LSDTopoTools</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download and install <a href="https://www.virtualbox.org/">virtualbox</a>.</p>
-</li>
-<li>
-<p>Download and install <a href="https://www.vagrantup.com/">vagrant</a>. You might have to restart your computer after this. <strong>You need to install virtualbox before you install vagrant, or you might get errors.</strong></p>
-</li>
-<li>
-<p>If you are on Windows, download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty.exe</a>. If you are on Linux or MacOS you can skip this because they have built-in equivalents.</p>
-</li>
-<li>
-<p>Make a directory for your vagrant box. We tend to put ours in a directory called <code>VagrantBoxes</code>.</p>
-</li>
-<li>
-<p>Inside that directory make two new directories: <code>LSDTopoTools</code> and <code>Ubuntu</code>. The second directory&#8217;s name doesn&#8217;t matter, it is just for holding a vagrant file (see below). However you <strong>MUST</strong> have the <code>LSDTopoTools</code> directory. The directory name is <strong>case sensitive</strong>!</p>
-</li>
-<li>
-<p>Download one of our vagrantfiles: <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles" class="bare">https://github.com/LSDtopotools/LSDTT_vagrantfiles</a> into the <code>Ubuntu</code> directory (again, the name of the directory doesn&#8217;t matter).</p>
-</li>
-<li>
-<p>Rename the vagrantfile from the repo (either <code>Vagrantfile_32bit_FFTW</code> or <code>Vagrantfile_64bit_FFTW</code>) simply <code>vagrantfile</code>. Your operating system is almost certainly 64 bit, but on most computers you need to select 32 bit because the default setting is to disable 64 bit guest operating systems. This can be changed but only by expert users.</p>
-</li>
-<li>
-<p>Open a terminal or powershell window and navigate to the directory with the vagrantfile.</p>
-</li>
-<li>
-<p>Run <code>vagrant up</code> from the command line.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-If you are running <code>vagrant up</code> for the first time it can take some time to download the <a href="https://www.vagrantup.com/docs/getting-started/boxes.html">base box</a>. They are several hundred Mb each!
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Run <code>vagrant provision</code> after the box has started.</p>
-</li>
-<li>
-<p>If on Windows, you should now be able to use <code>putty.exe</code> to ssh into your LSDTopoTools server. The host name is almost always <code>127.0.0.1</code> and the port is almost always <code>2222</code>.</p>
-</li>
-<li>
-<p>On Windows, you will need to give a username and password after connecting using <code>putty.exe</code>. The machine is running locally on your computer so nothing is being sent over the internet. The username is always <code>vagrant</code>  and the password is also <code>vagrant</code>.</p>
-</li>
-<li>
-<p>If you are on MacOS or Linux you do not need <code>putty.exe</code>; all you need to do is type <code>vagrant ssh</code> into the command line. See the <a href="https://www.vagrantup.com/docs/getting-started/up.html">vagrant instructions</a>.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_troubleshooting_a_vagrant_server_2">3.3. Troubleshooting a vagrant server</h3>
-<div class="paragraph">
-<p>There are a few common problems people have when running a vagrant server.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If you are on an old computer, sometimes vagrant times out before the virtual machine boots. This most frequently happens the first time you boot a vagrant machine. The most effective way to fix this is with the canonical IT solution: turning it off and on again. To do that run <code>vagrant halt</code> and <code>vagrant up</code> in succession.</p>
-</li>
-<li>
-<p>If vagrant hangs up in the powershell or terminal window and does not give you back the command prompt, turn it off and on again by typing ctrl-c and then running the vagrant command again.</p>
-</li>
-<li>
-<p>If your files are not synching across your host and vagrant machine, it is probably because there is some misspelling in your <code>LSDTopoTools</code> folder on the host machine. Make sure that folder is in the correct place and is spelled correctly (remember it should be case sensitive!!).</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_installing_the_code_and_setting_up_directories_2">3.4. Installing the code and setting up directories</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Easy setup quick start</div>
-<div class="paragraph">
-<p>If you just want to get started with the standard setup without any details, do the following:</p>
+<p>You will need access to your data on the network drive to use <strong>LSDTopoTools</strong>. You only need to do this one in any computer lab (and possibly only once ever):</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Go into a Linux terminal. If you are on your own computer and it is not Linux, you will need to start a Vagrant session. You will need <a href="https://www.python.org/">python</a> but this is now standard on most Linux distributions so we will assume you have it.</p>
-</li>
-<li>
-<p>If you used our vagrantfile the setup tool will already be on your vagrant box. It is sitting in the LSDTopoTools directory. You can go there with <code>cd /LSDTopoTools</code>.</p>
-</li>
-<li>
-<p>If you are on your own linux machine you can get the setuptool with:</p>
-<div class="listingblock">
+<p>Open a file explorer window and under computer select the "University drive:</p>
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
+<img src="images/Udrive.jpg" alt="The U drive">
 </div>
+<div class="title">Figure 1. The university drive</div>
 </div>
 </li>
 <li>
-<p>Run the setup tool:</p>
-<div class="listingblock">
+<p>Then go into the Science and Engineering folder ("SCE"):</p>
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0 -ChiM True</code></pre>
+<img src="images/SCE.jpg" alt="SCE">
 </div>
+<div class="title">Figure 2. The science and engineering folder</div>
 </div>
 </li>
 <li>
-<p>You are ready to go!!</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<strong>For native Linux users</strong>: The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In vagrant it always starts in the root directory (this is for file syncing purposes). However, if your native operating system is Linux, then you can either install in your home directory (<code>-id 0</code>) or in the directory where you called LSDTopoToolsSetup.py (<code>-id 1</code>).
-</td>
-</tr>
-</table>
+<p>Then into the GeoSciences folder ("GEOS"):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/GEOS.jpg" alt="GEOS">
+</div>
+<div class="title">Figure 3. The geosciences folder</div>
+</div>
+</li>
+<li>
+<p>Then into the Drive Mapping folder ("drive_mapping"):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/DMAP.jpg" alt="Drive mapping">
+</div>
+<div class="title">Figure 4. The drive mapping folder</div>
+</div>
+</li>
+<li>
+<p>And finally double click the shortcut "Access Netdata":</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/NDATA.jpg" alt="Access netdata">
+</div>
+<div class="title">Figure 5. The access netdata shortcut</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
-</div>
+<div class="sect2">
+<h3 id="_getting_on_to_our_servers_with_nx">5.2. Getting on to our servers with NX</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The first thing you need to do is get our python program <strong>LSDTopoToolsSetUp.py</strong>. It lives here: <a href="https://github.com/LSDtopotools/LSDAutomation/blob/master/LSDTopoToolsSetup.py" class="bare">https://github.com/LSDtopotools/LSDAutomation/blob/master/LSDTopoToolsSetup.py</a></p>
-<div class="paragraph">
-<p>You will need to run this file in your Linux environment, so in a terminal window type:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If <code>wget</code> doesn&#8217;t work, you can follow the link:
-<a href="https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</a><br>
-Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.
-</td>
-</tr>
-</table>
-</div>
+<p>We will be working on the university of Edinburgh servers.</p>
 </li>
 <li>
-<p>Now, in your terminal window run this script. It has some options:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For the most basic setup, type:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0 -ChiM True</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In our Vagrant setup, this will install everything in the root directory (you can go there with <code>$ cd /</code>),  which is the default setup generated by our <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles">Vagrantfile</a>. If you are not in vagrant the <strong>LSDTopoTools</strong> directories will be in your home directory (you can get there with <code>$ cd ~</code>).</p>
-</div>
+<p>First you should start an <a href="https://www.nomachine.com/">NX</a> session. NX is installed on all the computer labs in GeoScience (and in many other computer labs) Follow these instructions: <a href="https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx" class="bare">https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx</a></p>
 </li>
 <li>
-<p>If you don&#8217;t want <strong>LSDTopoTools</strong> in your home directory, you can install it in your current directory with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 1 -ChiM True</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>It turns out the <code>LSDTopoToolsSetup.py</code> tool has a number of options but this documentation is for the chi tools so we aren&#8217;t going to bother to explain them. However, if you want a preview of what it does, you can call its help options:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -h</code></pre>
-</div>
-</div>
+<p>You will get something that looks like a desktop. Right click anywhere in the desktop and select "open terminal".</p>
 </li>
 </ol>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_preparing_your_data">4. Preparing your data</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Essential information about data preparation</div>
-<div class="paragraph">
-<p>Our software calculates metrics over entire landscapes and along channels, and needs to measure distances and lengths. For this reason the data <strong>must</strong> be in a <a href="https://geonet.esri.com/thread/23160">projected reference system</a>. Because converting data types is nontrivial, we have opted to assume a certain reference system:</p>
-</div>
-<div class="paragraph">
-<p><strong>All your raster data (i.e., your topographic data and subsidiary datasets) need to be in <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM</a> coordinate system.</strong></p>
-</div>
-<div class="paragraph">
-<p>We use <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">the UTM coordinate system</a> since it is a global dataset. However you will need to look up the UTM zone of your data. We use <a href="http://www.dmap.co.uk/utmworld.htm">this map</a> to determine our UTM zone.</p>
-</div>
-<div class="paragraph">
-<p><strong>If you fail to convert to UTM these programs will probably crash!</strong></p>
-</div>
-</div>
-</div>
 <div class="sect2">
-<h3 id="_get_some_data">4.1. Get some data</h3>
-<div class="paragraph">
-<p>There are many sources of topographic data, which we will not repeat here, but if you are looking for an easy interface to get either lidar or <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> data, we suggest <a href="http://www.opentopography.org/">opentopography</a>. This site is not just for USA-based lidar but also has very nice interfaces for <a href="http://opentopo.sdsc.edu/lidar?format=sd">global data sets</a>. It has, in our opinion, the best interface for getting <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> data.</p>
-</div>
-<div class="paragraph">
-<p>You can also find a list of freely available lidar datasets at this site:
-<a href="https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html?spref=tw" class="bare">https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html?spref=tw</a></p>
-</div>
-<div class="paragraph">
-<p>Once you download data you will need to convert it into a format and projection suitable for <strong>LSDTopoTools</strong>. If you have <a href="https://en.wikipedia.org/wiki/Raster_data">raster data</a>, the best way to preprocess your data is via <a href="http://www.gdal.org/">GDAL</a>, which is explained in the section below.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_gdal">4.2. Use GDAL</h3>
-<div class="paragraph">
-<p>When you download topographic data, it will come in all manner of formats, with all manner of coordinate systems. You need to convert the data into <strong>ENVI bil</strong> format and project it into UTM coordinates. You can do all this using <a href="http://www.gdal.org/">GDAL</a>.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>DO NOT</strong> use ESRI bil format! Use <strong>ENVI bil</strong> format. They have similar names but the data format is different!!!
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You need to convert your rasters to UTM coordinates! If you fail to do this at best the latitude-longitude data in csv files will be in the wrong place, and at worst the program will crash.
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Getting GDAL</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If you use our vagrant setup GDAL is already installed. This is appropriate for Windows and MacOS users.</p>
-</li>
-<li>
-<p>If you use Ubuntu, use: <code>sudo apt-get gdal-bin</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">If you don&#8217;t like using command line interface</div>
-<div class="paragraph">
-<p>All instructions below are based on using a command line interface. If you want to use our tools I am afraid you will need to get used to this. However, <a href="http://www.qgis.org/en/site/">QGIS</a> has GDAL built in so any raster conversions you do in <a href="http://www.qgis.org/en/site/">QGIS</a> will be the same as those listed below. If you use ArcMap there is no telling what you will get but the main thing you will probably get is frozen and/or crashed software. ArcMap is good for a lot of things but this is not one of them.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>If you want to learn all about GDAL you can look at our book: <a href="http://lsdtopotools.github.io/LSDTT_book/#_gdal_2" class="bare">http://lsdtopotools.github.io/LSDTT_book/#_gdal_2</a></p>
-</div>
-<div class="paragraph">
-<p>However, all you really need to use is <strong>gdalwarp</strong>.</p>
-</div>
+<h3 id="_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to the folder where your data is sitting (in Linux, e.g. within you vagrant Linux session).</p>
+<p>In this window type <code>cd ~</code>. This takes you to your home directory.</p>
 </li>
 <li>
-<p>Call <strong>gdalwarp</strong>:</p>
+<p>Download our setup tool by typing:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gdalwarp -t_srs '+proj=utm +zone=19 +south +datum=WGS84' -of ENVI InputDEM.tif Output_DEM.bil</code></pre>
+<pre>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</pre>
 </div>
 </div>
 </li>
 <li>
-<p>The above all contains the essentials:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>-t_srs '+proj=utm +zone=19 +south +datum=WGS84'</code> says you want to project into UTM zone 19 south. Change the "south" and the "zone" accordingly. For example, if you want zone 44 north, use <code>-t_srs '+proj=utm +zone=44 +north +datum=WGS84'</code>.</p>
-</li>
-<li>
-<p><code>-of ENVI</code> means you want ENVI bil format.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If you want to control the spacing of the points, include:</p>
+<p>Run the setup tool by typing</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gdalwarp -t_srs '+proj=utm +zone=19 +south +datum=WGS84' -tr 30 30 -r cubic -of ENVI InputDEM.tif Output_DEM.bil</code></pre>
+<pre>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</pre>
 </div>
 </div>
 </li>
 <li>
-<p>In this case the two extra flags are:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>-tr 30 30</code>: Resample to 30 metres in the x any y directions. Change the number for a different resolution.</p>
-</li>
-<li>
-<p><code>-r cubic</code>: This is the resampling method. <strong>DO NOT</strong> use the default; it is nearest neighbour and will result in a striped DEM.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If you want to clip the DEM add <code>-te &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt;</code> where you put the maximum and minimum extents within the <code>&lt;&gt;</code> symbols.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_stupid_nodata">4.3. Stupid nodata</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Often you get messed up NoData. That is, you get some gigantic number for nodata or the nodata doesn&#8217;t register on the projected DEM. You can attempt to fix this with gdal using the flag <code>dstnodata -9999</code>. However this doesn&#8217;t always work. Luckily, we have programmed some code to try to remove weird numbers, so when you run the code (see the section <a href="#Running the chi analysis">[Running the chi analysis]</a>) you turn the <code>remove_seas</code> switch to true and that should sort you out.</p>
-</li>
-<li>
-<p>Sometimes you get holes in your data. This is annoying. We have code to deal with that, but for now I will just say that you should use the <a href="http://www.opentopography.org/">opentopography</a> data server to get SRTM data as it is seamless. Note that for chi analysis, 30 metre resolution data is probably sufficient: see <a href="http://www.earth-surf-dynam.net/4/627/2016/">Grieve et al, 2016</a> and <a href="http://www.earth-surf-dynam.net/5/211/2017/">Purinton and Bookhagen, 2017</a>.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_preparing_your_data_2">5. Preparing your data</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Essential information about data preparation</div>
-<div class="paragraph">
-<p>Our software calculates metrics over entire landscapes and along channels, and needs to measure distances and lengths. For this reason the data <strong>must</strong> be in a <a href="https://geonet.esri.com/thread/23160">projected reference system</a>. Because converting data types is nontrivial, we have opted to assume a certain reference system:</p>
-</div>
-<div class="paragraph">
-<p><strong>All your raster data (i.e., your topographic data and subsidiary datasets) need to be in <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM</a> coordinate system.</strong></p>
-</div>
-<div class="paragraph">
-<p>We use <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">the UTM coordinate system</a> since it is a global dataset. However you will need to look up the UTM zone of your data. We use <a href="http://www.dmap.co.uk/utmworld.htm">this map</a> to determine our UTM zone.</p>
-</div>
-<div class="paragraph">
-<p><strong>If you fail to convert to UTM these programs will probably crash!</strong></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_get_some_data_2">5.1. Get some data</h3>
-<div class="paragraph">
-<p>There are many sources of topographic data, which we will not repeat here, but if you are looking for an easy interface to get either lidar or <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> data, we suggest <a href="http://www.opentopography.org/">opentopography</a>. This site is not just for USA-based lidar but also has very nice interfaces for <a href="http://opentopo.sdsc.edu/lidar?format=sd">global data sets</a>. It has, in our opinion, the best interface for getting <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> data.</p>
-</div>
-<div class="paragraph">
-<p>You can also find a list of freely available lidar datasets at this site:
-<a href="https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html?spref=tw" class="bare">https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html?spref=tw</a></p>
-</div>
-<div class="paragraph">
-<p>Once you download data you will need to convert it into a format and projection suitable for <strong>LSDTopoTools</strong>. If you have <a href="https://en.wikipedia.org/wiki/Raster_data">raster data</a>, the best way to preprocess your data is via <a href="http://www.gdal.org/">GDAL</a>, which is explained in the section below.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_gdal_2">5.2. Use GDAL</h3>
-<div class="paragraph">
-<p>When you download topographic data, it will come in all manner of formats, with all manner of coordinate systems. You need to convert the data into <strong>ENVI bil</strong> format and project it into UTM coordinates. You can do all this using <a href="http://www.gdal.org/">GDAL</a>.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>DO NOT</strong> use ESRI bil format! Use <strong>ENVI bil</strong> format. They have similar names but the data format is different!!!
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You need to convert your rasters to UTM coordinates! If you fail to do this at best the latitude-longitude data in csv files will be in the wrong place, and at worst the program will crash.
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Getting GDAL</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If you use our vagrant setup GDAL is already installed. This is appropriate for Windows and MacOS users.</p>
-</li>
-<li>
-<p>If you use Ubuntu, use: <code>sudo apt-get gdal-bin</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">If you don&#8217;t like using command line interface</div>
-<div class="paragraph">
-<p>All instructions below are based on using a command line interface. If you want to use our tools I am afraid you will need to get used to this. However, <a href="http://www.qgis.org/en/site/">QGIS</a> has GDAL built in so any raster conversions you do in <a href="http://www.qgis.org/en/site/">QGIS</a> will be the same as those listed below. If you use ArcMap there is no telling what you will get but the main thing you will probably get is frozen and/or crashed software. ArcMap is good for a lot of things but this is not one of them.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>If you want to learn all about GDAL you can look at our book: <a href="http://lsdtopotools.github.io/LSDTT_book/#_gdal_2" class="bare">http://lsdtopotools.github.io/LSDTT_book/#_gdal_2</a></p>
-</div>
-<div class="paragraph">
-<p>However, all you really need to use is <strong>gdalwarp</strong>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to the folder where your data is sitting (in Linux, e.g. within you vagrant Linux session).</p>
-</li>
-<li>
-<p>Call <strong>gdalwarp</strong>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gdalwarp -t_srs '+proj=utm +zone=19 +south +datum=WGS84' -of ENVI InputDEM.tif Output_DEM.bil</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>The above all contains the essentials:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>-t_srs '+proj=utm +zone=19 +south +datum=WGS84'</code> says you want to project into UTM zone 19 south. Change the "south" and the "zone" accordingly. For example, if you want zone 44 north, use <code>-t_srs '+proj=utm +zone=44 +north +datum=WGS84'</code>.</p>
-</li>
-<li>
-<p><code>-of ENVI</code> means you want ENVI bil format.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If you want to control the spacing of the points, include:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gdalwarp -t_srs '+proj=utm +zone=19 +south +datum=WGS84' -tr 30 30 -r cubic -of ENVI InputDEM.tif Output_DEM.bil</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In this case the two extra flags are:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>-tr 30 30</code>: Resample to 30 metres in the x any y directions. Change the number for a different resolution.</p>
-</li>
-<li>
-<p><code>-r cubic</code>: This is the resampling method. <strong>DO NOT</strong> use the default; it is nearest neighbour and will result in a striped DEM.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If you want to clip the DEM add <code>-te &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt;</code> where you put the maximum and minimum extents within the <code>&lt;&gt;</code> symbols.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_stupid_nodata_2">5.3. Stupid nodata</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Often you get messed up NoData. That is, you get some gigantic number for nodata or the nodata doesn&#8217;t register on the projected DEM. You can attempt to fix this with gdal using the flag <code>dstnodata -9999</code>. However this doesn&#8217;t always work. Luckily, we have programmed some code to try to remove weird numbers, so when you run the code (see the section <a href="#Running the chi analysis">[Running the chi analysis]</a>) you turn the <code>remove_seas</code> switch to true and that should sort you out.</p>
-</li>
-<li>
-<p>Sometimes you get holes in your data. This is annoying. We have code to deal with that, but for now I will just say that you should use the <a href="http://www.opentopography.org/">opentopography</a> data server to get SRTM data as it is seamless. Note that for chi analysis, 30 metre resolution data is probably sufficient: see <a href="http://www.earth-surf-dynam.net/4/627/2016/">Grieve et al, 2016</a> and <a href="http://www.earth-surf-dynam.net/5/211/2017/">Purinton and Bookhagen, 2017</a>.</p>
+<p>You should now have <strong>LSDTopoTools</strong> directories installed in your home directory.</p>
 </li>
 </ol>
 </div>
