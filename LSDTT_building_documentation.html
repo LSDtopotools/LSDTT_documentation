@@ -5,7 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Documentation for LSDTopoTools</title>
+<meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
+<title>Building LSDTopoTools documentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -424,47 +425,453 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
-<h1>Documentation for LSDTopoTools</h1>
+<h1>Building LSDTopoTools documentation</h1>
+<div class="details">
+<span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
 </div>
-<div id="content">
-<div class="paragraph">
-<p>You have landed at the main documentation page for <strong>LSDTopoTools</strong>, topographic analysis software initially developed by the Land Surface Dynamics group at the University of Edinburgh.</p>
-</div>
-<div class="paragraph">
-<p>Thedocumentation is organised into a series of websites. We also include compiled pdf versions of these documents. At the moment this documentation is under developement and not complete!</p>
-</div>
-<div class="paragraph">
-<p>The sections of the documentation are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
+<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a>
+<ul class="sectlevel2">
+<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</a></li>
+</ul>
 </li>
-<li>
-<p><a href="LSDTT_introduction_to_geospatial_data.html">Introduction to geospatial data</a></p>
-</li>
-<li>
-<p><a href="LSDTT_channel_extraction.html">Extracting channels using LSDTopoTools</a></p>
-</li>
-<li>
-<p><a href="LSDTT_building_documentation.html">Building the LSDTopoTools documentation</a></p>
-</li>
-<li>
-<p><a href="LSDTT_python_installation.html">Installing the python toolchain</a></p>
-</li>
+<li><a href="#_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</a></li>
+<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
 </ul>
 </div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>and many more to come.</p>
+<p>Most users will just look at our website. But some users may wish to build the documents themselves.
+The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After a number of painful windows installations, we have decided that life in linux is much easier.
+If you don&#8217;t have linux you can make a little linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. We will use <a href="https://rvm.io/">rvm</a> to get everything working.</p>
+</li>
+<li>
+<p>We need to install some software first:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository -y ppa:rael-gc/rvm
+$ sudo apt-get update
+$ sudo apt-get install rvm</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you need to logout of vagrant. It says that</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">Creating group 'rvm'
+
+Installing RVM to /usr/share/rvm/
+Installation of RVM in /usr/share/rvm/ is almost complete:
+
+  * First you need to add all users that will be using rvm to 'rvm' group,
+    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
+
+  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
+    in all your open shell windows, in rare cases you need to reopen all shell windows.</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>So after running <code>vagrant halt</code> and <code>vagrant up</code>, do the command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ source /etc/profile.d/rvm.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To see what users are in the group:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ getent group rvm</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To add the vagrant user:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G rvm vagrant
+$ getent group rvm</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In my installation you cannot just start installing stuff, <strong>you need to open a new terminal</strong>. So use either <code>ssh</code> (linux or MacOS) or <code>putty.exe</code> (windows) to open a new terminal.</p>
+</li>
+<li>
+<p>In your new terminal run (<strong>Warning: this takes a long time!</strong>):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ rvm install 2.3</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>I wanted to make sure we use this ruby default:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ rvm use --default 2.3</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then install bundler:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ gem install bundler</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now I went into a documentation folder and used <code>bundle install</code>. The gemfile is:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
+
+gem 'rake'
+gem 'asciidoctor'
+
+gem 'json'
+gem 'awesome_print'
+
+gem 'asciidoctor-epub3'
+gem 'asciidoctor-pdf'
+
+gem 'coderay'
+gem 'pygments.rb'
+gem 'thread_safe'
+gem 'epubcheck'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Yay, all the gems are installed! You can now compile our docs with:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</h3>
+<div class="paragraph">
+<p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, you need to install a bunch of stuff (this works in Ubuntu):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get -qq -y install bison flex libffi-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev libpango1.0-dev ttf-lyx</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now run bundle install with this Gemfile:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
+
+gem 'rake'
+gem 'asciidoctor'
+
+gem 'json'
+gem 'awesome_print'
+
+gem 'asciidoctor-mathematical'
+gem 'asciidoctor-epub3'
+gem 'asciidoctor-pdf'
+
+gem 'coderay'
+gem 'pygments.rb'
+gem 'thread_safe'
+gem 'epubcheck'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now, this is annoying. To get the pdf to work, you need to designate an <code>:imagesoutdir:</code> but a <strong>relative path will not work</strong>. So you need an absolute path in your root <code>.asc</code> file. So, for example, the root <code>.asc</code> file should contain the directives:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ascii" data-lang="ascii">:stem: latexmath
+:imagesoutdir: /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/Documentation/images</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>You need to change this line to suit your path!</strong></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The point of this template is to allow you to build a nice book that is easily converted to html. One nice place to host this website is <a href="https://github.com/">github</a>. These are instructions for starting your own book using the template, and setting it up as a github.io website.</p>
+</li>
+<li>
+<p>The first thing you need to do is make a directory for your very own book. Lets call it <code>MyBook</code>. Go into <code>MyBook</code> and clone this template into a directory called master:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir MyBook
+$ cd MyBook
+$ git clone https://github.com/simon-m-mudd/Book_template.git master</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Next, <strong>delete</strong> the <code>.git</code> directory inside the <code>master</code> directory.</p>
+</li>
+<li>
+<p>At this point you might want to rename some of the files and folders to suit your new book or website. If you forget to do this you can always change the names of files and directories by using the <code>git mv</code> command.</p>
+</li>
+<li>
+<p>Now use <code>git init</code> to start a new repository and then add and commit the files.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd master
+$ git init
+$ git add .
+$ git commit -m "Added the files" .</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now start a new repository on github <strong>without a readme</strong>.</p>
+</li>
+<li>
+<p>It will give you the remote name. Add it to the repository:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git remote add origin https://github.com/MYUSERNAME/MYREPONAME.git
+$ git push origin master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will need to replace <code>MYUSERNAME</code> and <code>MYREPONAME</code> with the appropraite names.</p>
+</div>
+</li>
+<li>
+<p>Refresh the github repository page. You should see all the files from the template.</p>
+</li>
+<li>
+<p>Now on the repository page, look above the files: you should see a tab for "Branches".
+Click on this and make a new branch called <code>gh-pages</code>.
++ Now go back into your terminal window, go down a level using <code>cd ..</code>, and clone the <strong>gh-pages</strong> branch.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
+$ git clone https://github.com/MYUSERNAME/MYREPONAME.git gh-pages</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Go into the gh-pages directory, check out the gh-pages branch, and delete the master branch (it will only delete the master branch form this directory).</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
+$ git checkout origin/gh-pages -b gh-pages
+$ git branch -d master</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You gh-pages branch is still full of rubbish you don&#8217;t need. Remove it all. Then make a dummy index page.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git rm -rf .
+$ echo "My Page" &gt; index.html
+$ git add index.html
+$ git commit -m "Added the index" .
+$ git push origin gh-pages</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Go back to the <strong>master</strong> folder and build the book:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
+$ cd master
+$ bundle exec rake book:build_html</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you are on Windows and using <strong>git bash</strong>, it will not recognise Ruby commands, so you will need to open a separate powershell window to run the <strong>bundle</strong> command. This should not be a problem on Linux and MacOS.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>This will create a directory called <strong>images</strong> and an html file called <strong>My_book.html</strong>.</p>
+</li>
+<li>
+<p>Rename <strong>My_book.html</strong> to <strong>index.html</strong> and copy it as well as the <strong>images</strong> directory into the <strong>gh-pages</strong> directory.</p>
+</li>
+<li>
+<p>Now go back into the <strong>gh-pages</strong> directory, add the <strong>images</strong> directory, and then <code>commit</code> and <code>push</code> the changes (the below commands assume you are sitting in the <code>master</code> directory):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
+$ cd gh-pages
+$ git add images
+$ git commit -m "Updated the website" .
+$ git push origin gh-pages</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You <strong>MUST</strong> push to the <strong>gh-pages</strong> branch!! When you work in the <strong>master</strong> directory you <code>push</code> and <code>pull</code> to the <strong>master</strong> branch, and when you work in the <strong>gh-pages</strong> folder you <code>push</code> and <code>pull</code> from the <strong>gh-pages</strong> branch! If you mess this up you might have some painful cleaning up to do.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Okay, you should now be able to look at your website on: <a href="http://MYUSERNAME.github.io/MYREPONAME" class="bare">http://MYUSERNAME.github.io/MYREPONAME</a>, where <code>MYUSERNAME</code> is your github username and <code>MYREPONAME</code> is the name of the repo in which you stored your new book.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>I do not want any messy merging conflicts! To avoid this please keep the <strong>master</strong> and <strong>gh-pages</strong> separate on your computer!</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When checking out the code, check them out into two directories:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDTopoTools/a_page.git master
+$ git clone https://github.com/LSDTopoTools/a_page.git gh-pages</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In the gh-pages directory, check out the gh-pages branch and get rid of the master branch:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
+$ git checkout origin/gh-pages -b gh-pages
+$ git branch -d master</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now, go back to the master branch, you can make changes there.</p>
+</li>
+<li>
+<p>When you commit changes to the master branch and you want to update the website, commit and push changes, then run bundle:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
+my/path/to/repo/book_template/master/
+$ git commit -m "My latest commit" .
+$ git push -u origin master
+$ bundle exec rake book:build_html</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now copy any new image files to the /images folder in the gh-pages branch (you will need to git add them),
+and rename <strong>My_book.html</strong> to <strong>index.html</strong> and copy to the gh-pages folder.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
+my/path/to/repo/book_template/gh-pages/
+$ cd images
+$ git add &lt;filenames of new images&gt;
+$ cd ..
+$ git commit "updating website" .</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now push the changes to the gh-pages branch</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
+my/path/to/repo/book_template/gh-pages/
+$ git push -u origin gh-pages</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 15:40:55 UTC
+Last updated 2017-10-24 15:21:13 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
