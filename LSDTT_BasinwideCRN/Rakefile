@@ -10,26 +10,26 @@ namespace :book do
   desc 'build basic book formats'
   task :build => :prebuild do
     puts "Converting to HTML..."
-    `bundle exec asciidoctor LSDTT_chi_analysis.asc -o LSDTT_chi_analysis.html`
-    puts " -- HTML output at LSDTT_chi_analysis.html"
+    `bundle exec asciidoctor LSDTT_BasinwideCRN.asc -o LSDTT_BasinwideCRN.html`
+    puts " -- HTML output at LSDTT_BasinwideCRN.html"
 
     puts "Converting to PDF... (this one takes a while)"
-      `bundle exec asciidoctor-pdf -r asciidoctor-mathematical LSDTT_chi_analysis.asc -o LSDTT_chi_analysis.pdf`
-    puts " -- PDF  output at LSDTT_chi_analysis.pdf"
+      `bundle exec asciidoctor-pdf -r asciidoctor-mathematical LSDTT_BasinwideCRN.asc -o LSDTT_BasinwideCRN.pdf`
+    puts " -- PDF  output at LSDTT_BasinwideCRN.pdf"
   end
   
   desc 'build html book formats'
   task :build_html => :prebuild do
     puts "Converting to HTML..."
-    `bundle exec asciidoctor LSDTT_chi_analysis.asc -o LSDTT_chi_analysis.html`
-    puts " -- HTML output at LSDTT_chi_analysis.html"
+    `bundle exec asciidoctor LSDTT_BasinwideCRN.asc -o LSDTT_BasinwideCRN.html`
+    puts " -- HTML output at LSDTT_BasinwideCRN.html"
   end 
   
   desc 'build html with github stylesheet'
   task :build_html_gitcss => :prebuild do
       puts "Converting to HTML with github stylesheet..."
-      `bundle exec asciidoctor LSDTT_chi_analysis.asc -a stylesheet=github.css -a stylesdir=./stylesheets -o LSDTT_chi_analysis_github_style.html`
-      puts " -- HTML output at LSDTT_chi_analysis_github_style.html"
+      `bundle exec asciidoctor LSDTT_BasinwideCRN.asc -a stylesheet=github.css -a stylesdir=./stylesheets -o LSDTT_BasinwideCRN_github_style.html`
+      puts " -- HTML output at LSDTT_BasinwideCRN_github_style.html"
   end  
   
 end
