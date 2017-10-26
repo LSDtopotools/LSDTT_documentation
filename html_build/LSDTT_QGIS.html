@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
+<title>QGIS Notes and Tips</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
+p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7;font-weight:bold}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
+.clearfix:after,.float-group:after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
+b.button:before{content:"[";padding:0 3px 0 2px}
+b.button:after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}
+#header:after,#content:after,#footnotes:after,#footer:after{clear:both}
+#content{margin-top:1.25em}
+#content:before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span:before{content:"\00a0\2013\00a0"}
+#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark:before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber:after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media only screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+.sect1{padding-bottom:.625em}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:initial}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]:before{display:block}
+.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote:before{display:none}
+.verseblock{margin:0 1em 1.25em 1em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 0 1.25em 0;display:block}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
+.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot{border-width:1px 0}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
+ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
+ul.inline>li>*{display:block}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
+.colist>table tr>td:last-of-type{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]:after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@media print{@page{margin:1.25cm .75cm}
+*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]:after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+.sect1{padding-bottom:0!important}
+.sect1+.sect1{border:0!important}
+#header>h1:first-child{margin-top:1.25rem}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span:before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]:before{display:block}
+#footer{background:none!important;padding:0 .9375em}
+#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>QGIS Notes and Tips</h1>
+<div class="details">
+<span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_preface_by_simon_mudd">Preface by Simon Mudd</a></li>
+<li><a href="#_background_and_motivation">1. Background and Motivation</a>
+<ul class="sectlevel2">
+<li><a href="#_the_qgis_version_used_for_this_book">1.1. The QGIS version used for this book</a></li>
+<li><a href="#_basic_qgis_layout">1.2. Basic QGIS layout</a></li>
+</ul>
+</li>
+<li><a href="#_adding_data">2. Adding data</a>
+<ul class="sectlevel2">
+<li><a href="#_adding_raster_data">2.1. Adding raster data</a></li>
+<li><a href="#_adding_vector_data">2.2. Adding vector data</a></li>
+<li><a href="#_import_point_data_from_text_or_spreadsheet">2.3. Import point data from text or spreadsheet</a>
+<ul class="sectlevel3">
+<li><a href="#_preparing_your_text_data_or_spreadsheet">2.3.1. Preparing your text data or spreadsheet</a></li>
+<li><a href="#_geographic_coordinates">2.3.2. Geographic coordinates</a></li>
+<li><a href="#_projected_coordinates">2.3.3. Projected coordinates</a></li>
+<li><a href="#_preparing_the_actual_data_in_a_spreadsheet">2.3.4. Preparing the actual data in a spreadsheet</a></li>
+<li><a href="#_preparing_the_actual_data_in_a_comma_separated_value_csv_file">2.3.5. Preparing the actual data in a comma separated value (csv) file</a></li>
+<li><a href="#_a_special_case_gps_coordinates_and_the_british_national_grid">2.3.6. A special case: GPS coordinates and the British National Grid</a></li>
+<li><a href="#_another_special_case_csv_data_from_lsdtopotools">2.3.7. Another special case: csv data from LSDTopoTools</a></li>
+</ul>
+</li>
+<li><a href="#_importing_the_data_into_qgis">2.4. Importing the data into QGIS</a>
+<ul class="sectlevel3">
+<li><a href="#_selecting_the_coordinate_system">2.4.1. Selecting the coordinate system</a></li>
+</ul>
+</li>
+<li><a href="#_saving_your_imported_data">2.5. Saving your imported data</a></li>
+<li><a href="#_summary">2.6. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_manipulating_vector_data">3. Manipulating vector data</a>
+<ul class="sectlevel2">
+<li><a href="#_adjusting_point_locations">3.1. Adjusting point locations</a></li>
+<li><a href="#_extracting_data_from_a_raster_onto_points">3.2. Extracting data from a raster onto points</a></li>
+<li><a href="#_selecting_specific_points">3.3. Selecting specific points</a></li>
+<li><a href="#_summary_2">3.4. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_an_example_using_data_from_lsdtopotools">4. An example using data from LSDTopoTools</a>
+<ul class="sectlevel2">
+<li><a href="#_getting_the_data_in_linux">4.1. Getting the data in linux</a></li>
+<li><a href="#_a_first_basic_analysis">4.2. A first basic analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_the_driver_file_for_the_first_analysis">4.2.1. The driver file for the first analysis</a></li>
+</ul>
+</li>
+<li><a href="#_getting_surface_metrics">4.3. Getting surface metrics</a>
+<ul class="sectlevel3">
+<li><a href="#_questions_and_tasks_for_surface_metrics">4.3.1. Questions and tasks for surface metrics</a></li>
+</ul>
+</li>
+<li><a href="#_draniage_area_and_channel_extraction">4.4. Draniage area and channel extraction</a>
+<ul class="sectlevel3">
+<li><a href="#_questions_for_channel_extraction">4.4.1. Questions for channel extraction.</a></li>
+</ul>
+</li>
+<li><a href="#_summary_3">4.5. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_projections_and_transformations">Appendix A: Projections and transformations</a>
+<ul class="sectlevel2">
+<li><a href="#_what_are_coordinate_systems">A.1. What are coordinate systems?</a></li>
+<li><a href="#_common_epsg_codes">A.2. Common EPSG codes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_preface_by_simon_mudd">Preface by Simon Mudd</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Calling this a "book" is a bit presumptuous. Rather, this is a collection of notes on  simple operations within QGIS. It stems from a <a href="http://www.drps.ed.ac.uk/16-17/dpt/cxgegr10094.htm">course at Edinburgh</a> where the topic is <a href="http://www.geomorphology.org.uk/what-geomorphology-0">Geomorphology</a> but for the course project students need to analyse topographic data. This is not meant to be a course on QGIS! However if you are just looking to get started with the very basics you might find it helpful.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_background_and_motivation">1. Background and Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://www.qgis.org/en/site/">QGIS</a> is a free and open source <a href="https://en.wikipedia.org/wiki/Geographic_information_system">Geographic Information System</a> (GIS). This book contains instructions on how to perform basic operations within <a href="http://www.qgis.org/en/site/">QGIS</a>. It is not meant to be a QGIS course, but rather should get you started if you just want to look at some data.</p>
+</div>
+<div class="paragraph">
+<p>If you want to actually gain a deeper understanding of QGIS there are many excellent resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.qgistutorials.com/en/docs/learning_resources.html" class="bare">http://www.qgistutorials.com/en/docs/learning_resources.html</a> A curated collection of QGIS learning resources</p>
+</li>
+<li>
+<p><a href="http://qgis-tutorials.mangomap.com/" class="bare">http://qgis-tutorials.mangomap.com/</a> A series of brief videos explaining simple QGIS tasks</p>
+</li>
+<li>
+<p><a href="http://gis.stackexchange.com/questions/3651/where-to-find-qgis-tutorials-and-web-resources" class="bare">http://gis.stackexchange.com/questions/3651/where-to-find-qgis-tutorials-and-web-resources</a> Another list of QGIS resources.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, QGIS now has a large, active and growing user community and if you type in a question about QGIS into a search engine you are almost certain to find a solution to your problem.</p>
+</div>
+<div class="paragraph">
+<p>So, with all of these fantastic resources, why, you ask, am I writing these notes? In short, my students need to do a very specific subset of GIS tasks; these tasks are explained here. Hopefully the result is more efficient then sending many students separately to the myriad of QGIS websites.</p>
+</div>
+<div class="sect2">
+<h3 id="_the_qgis_version_used_for_this_book">1.1. The QGIS version used for this book</h3>
+<div class="paragraph">
+<p>We use the long term release (LTE) version of QGIS 2.14 (Essen): <a href="http://www.qgis.org/en/site/forusers/download.html" class="bare">http://www.qgis.org/en/site/forusers/download.html</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_qgis_layout">1.2. Basic QGIS layout</h3>
+<div class="paragraph">
+<p>When you load QGIS you will see a bunch of toolbars and panels. This brief section describes a few of the key elements. If you want more detail see the QGIS documentation: <a href="https://docs.qgis.org/2.2/en/docs/training_manual/introduction/overview.html" class="bare">https://docs.qgis.org/2.2/en/docs/training_manual/introduction/overview.html</a></p>
+</div>
+<div class="paragraph">
+<p>The basic layout of QGIS looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/QGIS_layout.jpg" alt="QGIS layout">
+</div>
+<div class="title">Figure 1. Basic QGIS 2.14 layout</div>
+</div>
+<div class="paragraph">
+<p>On the right you will see some "panels". You can drag these around the screen if you like. In addition, you can right click in the menu bars near the top of the window to select different panels.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/QGIS_select_panels.jpg" alt="QGIS panels">
+</div>
+<div class="title">Figure 2. Right click to select panels</div>
+</div>
+<div class="paragraph">
+<p>If you accidentally remove a panel you can get it back by right clicking near the top of the page and reselecting the panel.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>layers</strong> panel shows you what data you currently have loaded into QGIS (see bottom left in above images: there is one layer loaded called <strong>WAWater</strong>).</p>
+</div>
+<div class="paragraph">
+<p>In the screen is also a panel for adding data, which is called the <strong>Manage layers toolbar</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/QGIS_manage_layers_toolbar.jpg" alt="QGIS layers">
+</div>
+<div class="title">Figure 3. The layers toolbar</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the above image I have moved the toolbar to display horizontally; any of these toolbars or panels can be moved around by clicking and dragging them.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you look below the actual data window, which in QGIS is called the <strong>map canvas</strong> (where in the above images the layer WAWater is displayed), you see some important information in what QGIS calls the <strong>status bar</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/QGIS_status_bar.jpg" alt="QGIS status bar">
+</div>
+<div class="title">Figure 4. The status bar</div>
+</div>
+<div class="paragraph">
+<p>This contains the location of your mouse pointer in the <strong>map canvas</strong>, some information about scale and rotation of your map, and importantly the <a href="https://en.wikipedia.org/wiki/Map_projection">projection</a>. Map projections all have something called an <strong>EPSG</strong> number, so for example the British National Grid is <a href="http://spatialreference.org/ref/epsg/osgb-1936-british-national-grid/">EPSG:27700</a>, the global WGS84 projection is <a href="http://spatialreference.org/ref/epsg/wgs-84/">EPSG:4326</a>, and WGS UTM coordinates for the northern hemisphere are <strong>EPSG:326XX</strong> where the XX is the zone number, and <strong>EPSG:327XX</strong> is for the southern hemisphere. You can read more on projections in <a href="#_projections_and_transformations">our appendix</a>.</p>
+</div>
+<div class="paragraph">
+<p>Now that you have some idea about what the main QGIS window looks like, it is time to move on and add some data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_data">2. Adding data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter details the basics of adding data to QGIS. Before you add any data, you should know that geographic data comes in two basic flavours: <a href="https://en.wikipedia.org/wiki/Raster_data">raster</a> and <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector</a> data.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Raster data is built on a regular grid. It has <a href="https://en.wikipedia.org/wiki/Pixel">pixels</a> that contain different values. If the raster data has "bands" it just means that there are multiple values assigned to each pixel. The most common version of raster bands is for image data that has a red, green and blue band (RGB).</p>
+</li>
+<li>
+<p>Vector data, in a GIS context, actually means a number of related data types that contain locations at specific points. So points, lines or polylines, and polygons are all considered vector data. You can read about the differences here: <a href="https://en.wikipedia.org/wiki/GIS_file_formats#Vector_formats" class="bare">https://en.wikipedia.org/wiki/GIS_file_formats#Vector_formats</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For each of these two data types, there are many different file formats that QGIS can read. If you want to read about them the QGIS documentation has lists for  <a href="https://docs.qgis.org/2.2/en/docs/user_manual/working_with_vector/supported_data.html">supported vector</a> file formats, and for rasters QGIS supports anything supported by another bit of software called <a href="http://www.gdal.org/">GDAL</a>: here is the list of <a href="http://www.gdal.org/formats_list.html">supported raster formats</a>. In the following sections we will very briefly explain how to import these data into QGIS.</p>
+</div>
+<div class="sect2">
+<h3 id="_adding_raster_data">2.1. Adding raster data</h3>
+<div class="paragraph">
+<p>To add raster data you need to click on the part of the <strong>manage layers toolbar</strong> that looks like a checkerboard:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Add_raster_layer.jpg" alt="QGIS add raster data">
+</div>
+<div class="title">Figure 5. Adding raster data</div>
+</div>
+<div class="paragraph">
+<p>There are enormous numbers of <a href="http://www.gdal.org/formats_list.html">raster file formats</a>. These can broadly be broken into these categories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rasters that consist of only one file, such as the <strong>GeoTiff</strong> format. Just select that one file and off you go!</p>
+</li>
+<li>
+<p>Rasters that have two or more files. One file holds the data and the other files hold some extra information like the projection (often in a <strong>.prj</strong> file) and header information (often in a <strong>.hdr</strong> file). The different files will all have the same prefix (e.g., WAWater.bil, WAWater.hdr, WAWater.prj). You need to select the big file that holds all the data.</p>
+</li>
+<li>
+<p>Rasters that are made up of folders. The <a href="http://www.esri.com/">ESRI</a> native format is like this, because ESRI evidently loves to make things difficult and impenetrable. Somewhere deep in one of these folders will be a large file called something like <strong>w001001.adf</strong>. You need to open that one. Why does it have such a stupid name? Only ESRI knows. There is probably a text file from 1980 sitting in a server in <a href="https://en.wikipedia.org/wiki/Redlands,_California">Redlands, CA</a> that explains how stupid filenames are part of the <a href="http://desktop.arcgis.com/en/arcmap/">ArcMap</a> business model.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>IF</strong> the raster layer has information about its <a href="https://en.wikipedia.org/wiki/Map_projection">projection</a>, then the layer will just pop up in both your <strong>layer panel</strong> and your <strong>map canvas</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If the raster layer doesn&#8217;t have this information you will need to assign a projection. If you don&#8217;t know what the projection is, I am afraid I cannot help you: it is your data! If you do know what the projection should be, probably the best way to search for it is by finding its EPSG number using a search engine and then enter that in the projection search (you should see a <strong>filter</strong> box).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_vector_data">2.2. Adding vector data</h3>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/GIS_file_formats#Vector">Vector data</a>, in a GIS, refers to a family of different types of data including points, lines, polylines, and polygons. The data are made up of points (sometimes called "vertices") that have specific locations. Unlike in a raster, these points do not need to be regularly spaced. There are a number of different varieties of vector data, the most common being ESRI shapefiles. A list of QGIS compatible formats can be found on the <a href="https://docs.qgis.org/2.2/en/docs/user_manual/working_with_vector/supported_data.html">QGIS documentation website</a>.</p>
+</div>
+<div class="paragraph">
+<p>To add vector data, you need to click on the part of the <strong>manage layers toolbar</strong> that looks like a series of points connected by lines:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Add_vector_layer.jpg" alt="QGIS add vector data">
+</div>
+<div class="title">Figure 6. Adding vector data</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_import_point_data_from_text_or_spreadsheet">2.3. Import point data from text or spreadsheet</h3>
+<div class="paragraph">
+<p>In many situations you might collect data in the field using a GPS, or get data from some other software (e.g., <a href="https://lsdtopotools.github.io/">LSDTopoTools</a>) that is not in a standard vector format. As long as the data has some spatial coordinates, you should be able to import it into QGIS. QGIS can read various formats but you will help yourself if you prepare your data in a common data format. Here we will describe importing data from either a spreadsheet (e.g., an <strong>.xlsx</strong> file) or a comma separated value file (<strong>.csv</strong>). One difference between ArcMap and QGIS is that ArcMap can import Excel files directly whereas in QGIS you need to convert to csv.</p>
+</div>
+<div class="sect3">
+<h4 id="_preparing_your_text_data_or_spreadsheet">2.3.1. Preparing your text data or spreadsheet</h4>
+<div class="paragraph">
+<p>These instructions refer to point data. Making polygons and lines requires information about how points are connected so we will not discuss that at this stage. For point data the key thing is to know where the points are! In the most common case one has collected data using a GPS, and written them down somewhere. We need to get these data into QGIS.</p>
+</div>
+<div class="paragraph">
+<p>As we will see momentarily, QGIS asks for the <strong>X Field</strong> and <strong>Y Field</strong>. What these are will depend on the <strong>projection</strong> of your data.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you are using a GPS you need to know what in which coordinate system the GPS reports its data. Make sure you check the settings of your GPS before you start collecting data so you know the coordinate system. If you fail to do this and the data is in latitude and longitude it is usually okay to assume the coordinates are in WGS84.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_geographic_coordinates">2.3.2. Geographic coordinates</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>If the coordinate system is <strong>geographic</strong> you will get latitude and longitude. This can be a little confusing because we often talk about x and y coordinates or latitude and longitude in that order, but in a sense these orders are reversed:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The latitude is the <strong>Y Field</strong></p>
+</li>
+<li>
+<p>The longitude is the <strong>X Field</strong></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If you get latitude and longitude, you might get them in degrees, minutes and seconds (e.g., 3° 10` 22``). I am afraid QGIS doesn&#8217;t really like this. You will need to convert to <strong>decimal degrees</strong> (e.g., 3.1727778). There are online converters for this. You can also just copy the coordinates in google maps and it will spit out the coordinates in decimal degrees.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_projected_coordinates">2.3.3. Projected coordinates</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>If the coordinate system is <strong>projected</strong>, your data will either be in <strong>X</strong>, <strong>Y</strong> coordinates or <strong>Easting</strong> and <strong>Northing</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Easting</strong> is the <strong>X Field</strong></p>
+</li>
+<li>
+<p><strong>Northing</strong> is the <strong>Y Field</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_preparing_the_actual_data_in_a_spreadsheet">2.3.4. Preparing the actual data in a spreadsheet</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>All you need to do is put your X and Y data in separate columns, and then have additional columns for the associated data. Here are two examples:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/excel_lat_long.jpg" alt="Spreadsheet data with latitude and longitude">
+</div>
+<div class="title">Figure 7. Data in a spreadsheet with latitude and longitude coordinates</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/excel_east_north.jpg" alt="Spreadsheet data with easting and northing">
+</div>
+<div class="title">Figure 8. Data in a spreadsheet with easting and northing</div>
+</div>
+</li>
+<li>
+<p>Hopefully you get the idea: you always need two columns for location data.</p>
+</li>
+<li>
+<p>Now, you need to save spreadsheet data as a <code>csv</code> file (ArcMap can import <code>xlsx</code> or <code>xls</code> files directly but in QGIS it is easier to convert to <code>csv</code>). Simply take your spreadsheet and <code>save as</code> a <code>csv</code> file:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/save_as_csv.jpg" alt="Save as csv">
+</div>
+<div class="title">Figure 9. Save spreadsheet as csv</div>
+</div>
+</li>
+<li>
+<p>Once you&#8217;ve done this you can move on to the import data stage.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_preparing_the_actual_data_in_a_comma_separated_value_csv_file">2.3.5. Preparing the actual data in a comma separated value (csv) file</h4>
+<div class="paragraph">
+<p>A comma separated value file (csv) is just a text file that has values separated by commas. It does what it says on the tin. You can save any Excel worksheet as a <code>csv</code> file (see above). The advantage of <code>csv</code> files is that you don&#8217;t need Excel to read the data: you can read it with any text editor. However <code>csv</code> files only contain the values: you can&#8217;t save graphs or formatting. If you want separate worksheets you need to save them as separate files. The second example above in csv format look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csv" data-lang="csv">easting,northing,gremlins,temperature
+124061,66412,0,7.221
+124135,66418,12,5.432
+124137,66477,6,4</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_special_case_gps_coordinates_and_the_british_national_grid">2.3.6. A special case: GPS coordinates and the British National Grid</h4>
+<div class="paragraph">
+<p>The <a href="https://www.ordnancesurvey.co.uk/support/the-national-grid.html">British National Grid</a> has a system of referencing that mixes letters and numbers, following the long British tradition of conceiving systems that are inscrutable to outsiders.</p>
+</div>
+<div class="paragraph">
+<p>When you set your GPS to British National Grid, it will spit out some numbers but also some letters. For example, you might get something like <strong>NT 51422 13172</strong>.
+QGIS and other GIS systems only want numbers. How do we turn these letters into numbers?</p>
+</div>
+<div class="paragraph">
+<p>The answers is that we need to count boxes along the grid, shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/os-grid.jpg" alt="The OS grid">
+</div>
+<div class="title">Figure 10. Ordnance survey grid</div>
+</div>
+<div class="paragraph">
+<p>You need to add a digit to the front of your coordinates based on the letters. Each row and column represents a digit, and these are counted from the bottom left corner. The first row and column begin with digit 0, then next 1, and so on. The coordinate <strong>NT</strong> is in the 4th column and 7th row, but the first row and column are zero, so you put a 3 and 6 in front of the coordinates:</p>
+</div>
+<div class="paragraph">
+<p><strong>NT 51422 13172</strong> &#8594; <strong>351422, 613172</strong></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_another_special_case_csv_data_from_lsdtopotools">2.3.7. Another special case: csv data from LSDTopoTools</h4>
+<div class="paragraph">
+<p><a href="http://lsdtopotools.github.io/">LSDTopoTools</a> is a software package developed at the University of Edinburgh School of GeoScience for topographic analysis (if you want to use it, <a href="https://lsdtopotools.github.io/LSDTopoTools_workshop/">start here</a>). A number of its analysis routines create csv data. These data contain latitude and longitude coordiantes: these coordinates are <strong>in a WGS84 projection, <a href="http://spatialreference.org/ref/epsg/wgs-84/">EPSG:4326</a></strong>. When you import csv data from <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> make sure your projections is <strong>EPSG:4326</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_importing_the_data_into_qgis">2.4. Importing the data into QGIS</h3>
+<div class="paragraph">
+<p>One you have organised your data, you can import it using the menus:</p>
+</div>
+<div class="paragraph">
+<p>Layer&#8594;Add layer&#8594;Add Delimited Text Layer</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Import_text_data.jpg" alt="QGIS add text data">
+</div>
+<div class="title">Figure 11. Adding delimited layer</div>
+</div>
+<div class="paragraph">
+<p>Once you select the <strong>Add delimited text layer</strong> option, you will get a dialog box asking to upload a file:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/create_layer_dialog.jpg" alt="QGIS add text data dialog">
+</div>
+<div class="title">Figure 12. Add text layer dialog</div>
+</div>
+<div class="paragraph">
+<p>If you select the <strong>csv</strong> file you will see that many of the fields are selected for you automatically:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/create_layer_dialog_file_selected.jpg" alt="QGIS add text data dialog">
+</div>
+<div class="title">Figure 13. Add text once you have selected the file</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You need to check on the <strong>X Field</strong> and <strong>Y Field</strong> entries to make sure that they are correct!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Another gotcha is that when loading a csv file you must select <strong>csv file format</strong> just below where you select the file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Okay, nearly there!! Once you hit okay, you will need to select the coordinate system.</p>
+</div>
+<div class="sect3">
+<h4 id="_selecting_the_coordinate_system">2.4.1. Selecting the coordinate system</h4>
+<div class="paragraph">
+<p>This deserves its own header since it is so important. If you don&#8217;t choose the correct coordinate system, your data will be in the wrong place!! This is what the dialog looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/select_coordinate_system.jpg" alt="QGIS select coordinate system">
+</div>
+<div class="title">Figure 14. Selecting a coordinate system</div>
+</div>
+<div class="paragraph">
+<p>In the image above, I have used the filter tool to select the WGS84 UTM 30N zone (this happens to be the zone for Scotland and much of western Europe). I found it using the EPSG code. Some common EPSG codes are listed <a href="#_common_epsg_codes">in this table</a>, and you can search for codes here: <a href="http://www.spatialreference.org/" class="bare">http://www.spatialreference.org/</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_saving_your_imported_data">2.5. Saving your imported data</h3>
+<div class="paragraph">
+<p>You can keep your data in csv format, but if you do that, you will need to import it each time you want to look at it. It is probably better to save it in a vector file format. Find the layer in the layers panel (in this example I have a layer called "Channel_width"), and right click on it. Then choose "save as":</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/save_as_right_click.jpg" alt="Get save as with right click">
+</div>
+<div class="title">Figure 15. Saving imported data</div>
+</div>
+<div class="paragraph">
+<p>Once you have clicked "save as", you will get this dialog box:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/save_as_dialog.jpg" alt="Save as dialog box">
+</div>
+<div class="title">Figure 16. The dialog box for saving in vector format</div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://en.wikipedia.org/wiki/Shapefile">ESRI shapefile</a> format is the default. This format can be read by a number of different software packages and is a safe choice. The drawback is that it generates many different files. Another option is the <a href="http://geojson.org/">GeoJSON</a> format, which is frequently used in web mapping applications. We recommend using one of these two formats.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+QGIS is a bit picky about the file names when you save the file; you should use the "browse" dialog and name the file there rather than just typing a name.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You should notice that the new file has appeared in the layers dialog:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/new_layer.jpg" alt="New layer">
+</div>
+<div class="title">Figure 17. Your brand new vector data as a layer</div>
+</div>
+<div class="paragraph">
+<p>You can now right click on the old layer (which is just csv data) and remove it. Note if you just want to zoom in on just your imported data, you can right click on the layer and select "zoom to layer":</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Zoom_to_layer.jpg" alt="Layer zoom">
+</div>
+<div class="title">Figure 18. Right click on a layer to zoom to its extent</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary">2.6. Summary</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manipulating_vector_data">3. Manipulating vector data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Occasionally you will need to adjust vector data, or add data categgories to your data based on other datasets.</p>
+</div>
+<div class="sect2">
+<h3 id="_adjusting_point_locations">3.1. Adjusting point locations</h3>
+<div class="paragraph">
+<p>Handheld <a href="https://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> units are often used in the field to determine location of sampling points. The accuracy of GPS measurements varies, and if you are working with a relatively high resolution <a href="https://en.wikipedia.org/wiki/Digital_elevation_model">DEM</a> (e.g., 5 m resolution or better).</p>
+</div>
+<div class="paragraph">
+<p>In this example we will look at some point data that was collected in a channel. We have extracted drainage area (using <a href="https://lsdtopotools.github.io/LSDTopoTools_workshop/">LSDTopoTools</a>), in the image below the channels are those with high drainage area and have purple colours:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Points_over_draiage_area.jpg" alt="Points over drainage area">
+</div>
+<div class="title">Figure 19. Point data aver drainage area</div>
+</div>
+<div class="paragraph">
+<p>In this image, you can see that the channel point locations are not all on the channel. THis is because the DEM has a pixel size of 5 metres and the error on the GPS unit is greater than 5 metres. Also, in some cases the channel routing algorithms, combined with a noisy DEM, route the channels to the wrong place. In addition, one of these points seems spurious (the one anomalously to the East), so we might remove it from the dataset.</p>
+</div>
+<div class="paragraph">
+<p>To edit the points, right click on the layer (not the csv file but a vector layer you created in <a href="#_saving_your_imported_data">previous steps</a>) and select "toggle editing":</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Toggle_editing.jpg" alt="Toggle editing">
+</div>
+<div class="title">Figure 20. Enable editing of vector data</div>
+</div>
+<div class="paragraph">
+<p>Once you do this the editing toolbar will become active:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Editing_toolbar.jpg" alt="Editing toolbar">
+</div>
+<div class="title">Figure 21. The editing toolbar</div>
+</div>
+<div class="paragraph">
+<p>You can then select the "node tool" to move nodes to the channel. You can also delete nodes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Node_tool.jpg" alt="Node tool">
+</div>
+<div class="title">Figure 22. The node tool</div>
+</div>
+<div class="paragraph">
+<p>You can either save or roll back edits (if you are unhappy with your work) by clicking on the icon with several pencils:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Save_editing.jpg" alt="Save editing">
+</div>
+<div class="title">Figure 23. Saving or rolling back changes</div>
+</div>
+<div class="paragraph">
+<p>Once you are finished editing make sure you turn the editing back off using the "toggle editing" button.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_extracting_data_from_a_raster_onto_points">3.2. Extracting data from a raster onto points</h3>
+<div class="paragraph">
+<p>Another common operation is to extract raster data onto points. There is a handy tutorial about this already: <a href="http://www.qgistutorials.com/en/docs/sampling_raster_data.html" class="bare">http://www.qgistutorials.com/en/docs/sampling_raster_data.html</a>, but we are going to use the previous dataset here.</p>
+</div>
+<div class="paragraph">
+<p>First, you need to click on the <strong>plugins</strong> menu bar and select "manage and install plugins":</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Plugins_browser.jpg" alt="Plugins browser">
+</div>
+<div class="title">Figure 24. Opening the plugins browser</div>
+</div>
+<div class="paragraph">
+<p>Search for "point sampling tool" and install:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Get_point_sampling.jpg" alt="Get the point sampling tool">
+</div>
+<div class="title">Figure 25. Get the point sampling tool</div>
+</div>
+<div class="paragraph">
+<p>Once you do that, the "point sampling tool" can be found under the plugins menu:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Point_sampling.jpg" alt="Plugins browser">
+</div>
+<div class="title">Figure 26. Selecting the point sampling tool</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Important notes about the point sampling tool</div>
+<div class="paragraph">
+<p>I have some bad news: the point sampling tool is very picky about the data you can use. Here are some gotchas:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you edited your vector file and deleted a point, it turns out that point is still there, but has a "NULL" data entry. The extract point tool does not like this one bit. It is very hard to get rid of these points in a shapefile. In a geojson file, you can open the file, delete the point with "null" in the line, and save the file.</p>
+</li>
+<li>
+<p>All of the layers need to be in the same projection. Because raster layers take up a lot of space you should check on your raster&#8217;s projection and then save your vector data in that same projection. Right click on the layer, select "save as" and then on the CRS button select the same projection as your raster.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Select the layer from which to extract data, and use the "browse" button to save the file. In addition, I recommend keeping all of the data in the original vector file:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Extracting_data_by_points.jpg" alt="Extracting data by points">
+</div>
+<div class="title">Figure 27. Extracting the data using the point sampling tool</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The point extraction tool can only save files as ESRI shapefiles.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can then right click on the new layer, view the attribute table and copy the data into a clipboard:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Copy_data_to_clipboard.jpg" alt="Copy to clipboard">
+</div>
+<div class="title">Figure 28. Copy the data to clipboard</div>
+</div>
+<div class="paragraph">
+<p>This can then be pasted into a spreadsheet.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selecting_specific_points">3.3. Selecting specific points</h3>
+<div class="paragraph">
+<p>In this example we will load some data from csv and then select a subset of these points.</p>
+</div>
+<div class="paragraph">
+<p>The data we will load comes from a <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/full">chi analysis</a> of a small Scottish catchement using <a href="https://lsdtopotools.github.io/LSDTopoTools_workshop/#_running_a_chi_analysis">LSDTopoTools</a>. Note, chi is a Greek letter pronounced "kai".</p>
+</div>
+<div class="paragraph">
+<p>First, we <a href="#_importing_the_data_into_qgis">import the csv data</a>. You should get something that looks a bit like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Chi_network.jpg" alt="Chi network">
+</div>
+<div class="title">Figure 29. A chi network derived from LSDTopoTools</div>
+</div>
+<div class="paragraph">
+<p>Now, suppose we only want a subset of these data. How do we extract them?</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, select the "select features by freehand" icon on the <strong>attributes toolbar</strong> (if this toolbar is missing, right click near the top of the QGIS window and activate it):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Select_features_freehand.jpg" alt="Select features freehand">
+</div>
+<div class="title">Figure 30. Select features by freehand</div>
+</div>
+</li>
+<li>
+<p>Then, select the points you want:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Selecting.jpg" alt="Select points you want">
+</div>
+<div class="title">Figure 31. Select the points you want</div>
+</div>
+</li>
+<li>
+<p>Right click on the layer, and then choose "save as". On the "save as" menu, make sure you select the option to "Save only selected features". In this case I am exporting a shapefile since I want access to the underlying data.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Save_as_selected.jpg" alt="Save selected features as shapefile">
+</div>
+<div class="title">Figure 32. Saving the selected features as a shapefile</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also save as a csv file to just get the selected values. If you only want to plot, say, a river profile of selected points this can come in handy.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Great! Now you can make new files that include just a subset of your initial data.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_2">3.4. Summary</h3>
+<div class="paragraph">
+<p>In this chapter we have learned how to edit vector data, and extract underlying raster data using vector data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_an_example_using_data_from_lsdtopotools">4. An example using data from LSDTopoTools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter gives and example of computing some basic raster and csv data from <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> and then importing it into QGIS. We use these examples in of one the practical exercises in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
+</div>
+<div class="paragraph">
+<p>One of the objectives of this exercise is to get you familiar with moving between a linux environment and QGIS,</p>
+</div>
+<div class="sect2">
+<h3 id="_getting_the_data_in_linux">4.1. Getting the data in linux</h3>
+<div class="paragraph">
+<p>The data for this excercise <a href="https://github.com/LSDtopotools/LSDTT_workshop_data">lives online</a> and you could download it by clicking on it. But we are going to get the data from command line in a linux environment as a gentle introduction.</p>
+</div>
+<div class="paragraph">
+<p>These instructions have been designed for students at the Unviversity of Edinburgh but if you want to try them outside of the Edinburgh computing environment you should <a href="http://lsdtopotools.github.io/LSDTT_book/#_installing_lsdtopotools_using_virtualbox_and_vagrant">read our instructions about how to set up a linux environment on your home computer, regardless of its operating system</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The first thing you need to do is log into a linux server.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>At Edinburgh, the computer labs should all have <a href="http://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx">nx</a> installed. Use it to log into the GeoScience servers.</p>
+</li>
+<li>
+<p>Outside Edinburgh, you use <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">putty.exe</a> (windows) or ssh (MacOS or Linux) to get into a <a href="http://lsdtopotools.github.io/LSDTT_book/#_installing_lsdtopotools_using_virtualbox_and_vagrant">vagrant LSDTopoTools box</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If you are at Edinburgh, you need to make a terminal window in the <strong>nx</strong> desktop. All you do is <strong>right-click</strong> and select <strong>open terminal window</strong>.</p>
+</li>
+<li>
+<p>To see where you are, type <code>pwd</code> in the command line:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">A very brief overview of linux commands</div>
+<div class="paragraph">
+<p><code>pwd</code>  &#8201;&#8212;&#8201;Tells you what directory you are currently in.</p>
+</div>
+<div class="paragraph">
+<p><code>cd</code>   &#8201;&#8212;&#8201;change directory. You need to give it the directory name.</p>
+</div>
+<div class="paragraph">
+<p><code>cd ..</code>&#8201;&#8212;&#8201;go up a directory.</p>
+</div>
+<div class="paragraph">
+<p><code>ls</code>   &#8201;&#8212;&#8201;list what is in the directory.</p>
+</div>
+<div class="paragraph">
+<p><code>mkdir</code>&#8201;&#8212;&#8201;make a new directory.</p>
+</div>
+<div class="paragraph">
+<p><code>wget</code> &#8201;&#8212;&#8201;download a file from the internet. Needs to be followed by an html/ftp address.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>You can use <code>cd</code> and <code>cd ..</code> to move around. When you have found a good place to put your data get it using <code>wget</code>. Make sure to copy these commands and enter them one line at a time.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA.hdr
+$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA.bil
+$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA_BasicMetrics01.driver
+$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA_BasicMetrics02.driver
+$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA_BasicMetrics03.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type <code>ls</code> after you have done that to see if you&#8217;ve got the files.</p>
+</div>
+</li>
+<li>
+<p>Now type <code>pwd</code>. <strong>THIS TELLS YOU WHERE YOUR DATA IS!</strong> You need to copy this directory! In you terminal, if you highlight the text linux will automatically copy this data</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/linux_highlight.jpg" alt="Highlighted text">
+</div>
+<div class="title">Figure 33. Highlight in a terminal and the highlighted text will be copied to the clipboard.</div>
+</div>
+<div class="paragraph">
+<p>Save that directory somewhere (like  text file) you can find it again later.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_first_basic_analysis">4.2. A first basic analysis</h3>
+<div class="paragraph">
+<p>This first example is extremely simple but it will introduce you to calling <strong>LSDTopoTools</strong> programs.</p>
+</div>
+<div class="paragraph">
+<p>All <strong>LSDTopoTools</strong> programs are called from a terminal window. They read a file, which we call either a <strong>parameter</strong> or <strong>driver</strong> file which tell the program what to do. When you call the program, you need to tell it where this driver file is. You do this by telling the program the directory in which the <strong>driver</strong> file is located, and the name of the <strong>driver</strong> file.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>LSDTopoTools</strong> program we will be using is called <code>LSDTT_BasicMetrics.out</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We have put this program online. There are three different versions, since it has been compiled for a few different linux environments:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are at Edinburgh, the program is called <code>LSDTT_BasicMetrics.out</code>. It works on Scientific Linux 7.</p>
+</li>
+<li>
+<p>If you are using our vagrant 32 bit ubuntu system, the program is called <code>LSDTT_BasicMetrics_U64.out</code>.</p>
+</li>
+<li>
+<p>If you are using our vagrant 64 bit ubuntu system, the program is called <code>LSDTT_BasicMetrics_U32.out</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Get the version for your operating system. For example, if you are using the Edinburgh servers, get it with:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/LSDTT_BasicMetrics.out</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use <code>ls</code> to make sure this program and all the data you downloaded from the last section is in the same folder. It should look like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">smudd@burn practical_02 $ ls
+LSDTT_BasicMetrics.out    WA_BasicMetrics02.driver  WA.bil
+WA_BasicMetrics01.driver  WA_BasicMetrics03.driver  WA.hdr
+smudd@burn practical_02 $</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_the_driver_file_for_the_first_analysis">4.2.1. The driver file for the first analysis</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before we run the program we need to modify the driver file. The first driver file looks like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
+# Comments are preceeded by the hash symbol
+# Documentation can be found here:
+# https://simon-m-mudd.github.io/QGIS_book/#_an_example_using_data_from_lsdtopotools
+
+# These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
+read path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data
+write path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data
+read fname: WA
+write fname: WA_FirstExample
+channel heads fname: NULL
+
+# The data that you want printed to file
+write_hillshade: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You need to be able to edit this file. You should edit it in your host operating system (e.g. not via a terminal or nx, but rather in Windows or MacOS). In the Edinburgh compouter labs there is a text editor called <strong>PSPad</strong>. You can open that program and drag text files into it and edit them. <strong>*Do not use Wordpad or Word!! They insert all kinds of formatting and change the filenames and will, in general, mess everything up!</strong></p>
+</li>
+<li>
+<p>We need to ensure that the <strong>driver</strong> functions point to the correct data. Copy the location of the data by using the <code>pwd</code> command (see last section), and paste that in to these lines (<strong>YOUR DIRECTORY WILL NOT BE THE SAME, USE <code>pwd</code> TO FIND THE CORRECT DIRECTORY</strong>):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">read path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
+write path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <strong>must</strong> be a space after the <code>:</code> character.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now we are going to run the program. We run it in a terminal window like this (make sure you are in the directory with the data):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ chmod 744 LSDTT_BasicMetrics.out
+$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first command (<code>chmod</code>) is there just to give you permission to execute the program. The second is the actual program call. <strong>You will need to modify the directory to be the one that contains your data!</strong></p>
+</div>
+</li>
+<li>
+<p>If you had all the directory names correct, you will get some text to screen that ends with a statement about hillshading. In fact all this does is print a hillshade of the raster.</p>
+</li>
+<li>
+<p>Open QGIS and load the raster. The new raster is in the same directory with your other data and is called <code>WA_FirstExample_hs.bil</code>. To load raster data in QGIS follow these instructions: <a href="#_adding_raster_data">Adding raster data</a>. The data will look like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_HS.jpg" alt="Whiteadder hillshade">
+</div>
+<div class="title">Figure 34. A hillshade of the Whiteadder catchement</div>
+</div>
+</li>
+<li>
+<p>As you can see, the DEM has quite a few artifacts. There isn&#8217;t much we can do about that, I&#8217;m afraid.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_surface_metrics">4.3. Getting surface metrics</h3>
+<div class="paragraph">
+<p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:
+* First we make sure directories are correct in the <strong>driver</strong> file.
+* Second, we call <code>LSDTT_BasicMetrics.out</code> in the terminal.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>So, this time change the <code>read path</code> and <code>write path</code> in the file <code>WA_BasicMetrics02.driver</code> to your directory.</p>
+</li>
+<li>
+<p>Run the program:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics02.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This does more stuff. We can look at the <strong>driver file</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
+# Comments are preceded by the hash symbol
+# Documentation can be found here:
+# https://simon-m-mudd.github.io/QGIS_book/#_an_example_using_data_from_lsdtopotools
+
+# These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
+write path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
+read fname: WA
+write fname: WA_SecondExample
+channel heads fname: NULL
+
+# Parameters for surface metrics
+surface_fitting_radius: 11
+print_slope: true
+print_aspect: true
+print_curvature: true
+print_tangential_curvature: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In this case the program is printing <strong>slope</strong>, <strong>aspect</strong>, <strong>curvature</strong>, and <strong>tangential curvature</strong> rasters. They have filenames that reflect their contents so have a look. Slope tells you how steep the landscape is, aspect which direction the surface is pointing, curvature how, uh, curvy the landscape is (mathematically it is how quickly slope changes in space) and the tangential curvature is how curvy the landscape is in the direction of steepest descent. Essentially tangential curvature tells you how tightly curved contours are and is useful for finding valleys.</p>
+</li>
+<li>
+<p>The way these are calculated is by fitting a surface of radius <code>surface_fitting_radius</code> to the points in the DEM and then calculating derivatives of that surface.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_questions_and_tasks_for_surface_metrics">4.3.1. Questions and tasks for surface metrics</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Try changing the <code>surface_fitting_radius</code>. What happens?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_draniage_area_and_channel_extraction">4.4. Draniage area and channel extraction</h3>
+<div class="paragraph">
+<p>Finally, we will compute some drainage areas and extract a channel network. To do this run the <strong>driver file</strong> <code>WA_BasicMetrics03.driver</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First modify the directories in <code>WA_BasicMetrics03.driver</code>.</p>
+</li>
+<li>
+<p>Run the program:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics03.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Yet more stuff will come out. Some are drainage area rasters, but there is also a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
+</li>
+<li>
+<p>To load this in QGIS, follow the instructions here: <a href="#_import_point_data_from_text_or_spreadsheet">Import point data from text or spreadsheet</a>. You will get something that looks a bit like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_CN.jpg" alt="Whiteadder channel network">
+</div>
+<div class="title">Figure 35. A simple channel network</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_questions_for_channel_extraction">4.4.1. Questions for channel extraction.</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Try changing the <code>threshold_contributing_pixels</code> parameter. What happens to the channel network.</p>
+</li>
+<li>
+<p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read fname:</code> parameter to reflect the smoothed raster.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_3">4.5. Summary</h3>
+<div class="paragraph">
+<p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projections_and_transformations">Appendix A: Projections and transformations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We live on the surface of a planet, Earth, that is almost a perfect sphere. Our computer screens and sheets of paper are flat. This causes all sorts of problems. The problems are addressed by using <a href="https://en.wikipedia.org/wiki/Map_projection">map projections</a>. I am afraid if you use geographic data you will have to deal with projections, which, unless you are a cartographer, will be tedious and frustrating. Hopefully this appendix will help you understand how to appropriately manage projections within QGIS and other environments.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_are_coordinate_systems">A.1. What are coordinate systems?</h3>
+<div class="paragraph">
+<p>Coordinate systems are simply reference frames for describing position. All geographic data must be placed in a coordinate system. Over the years, cartographers have developed numerous systems so now whenever we collect geographic data there are a myriad of choices when it comes to selecting a coordinate system. A full description can be <a href="http://resources.esri.com/help/9.3/arcgisengine/dotnet/89b720a5-7339-44b0-8b58-0f5bf2843393.htm">found on the ESRI website</a>, so here we will stick to the basics.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, a coordinate system can fall into two categories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>A geographic coordinate system</strong> which uses spherical coordinates. Latitude and longitude are the most familiar measures of such a coordinate system since these give locations on the surface of a sphere. The units of geographic coordinate systems are angular units (e.g., degrees).</p>
+</li>
+<li>
+<p><strong>A projected coordinate system</strong> projects your data, collected from the surface of a sphere, onto a flat surface. National grids (like the British National Grid) tend to be in projected coordinates: they measure locations in distances (e.g., metres from a reference location, sometimes reported on easting and northing).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are many, many different coordinate systems. For example, in the United States there are 124 (!!) local coordinate systems called <a href="https://en.wikipedia.org/wiki/State_Plane_Coordinate_System">State planes</a>. Most countries have their own coordinate system. There are also global coordinate systems.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_common_epsg_codes">A.2. Common EPSG codes</h3>
+<div class="paragraph">
+<p>You can search for coordinate systems on the handy <a href="http://spatialreference.org/" class="bare">http://spatialreference.org/</a> website.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Common EPSG codes</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">EPSG code</th>
+<th class="tableblock halign-left valign-top">Coordinate system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://spatialreference.org/ref/epsg/wgs-84/">EPSG:4326</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WGS1984 Global Geographic coordinate system.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://spatialreference.org/ref/epsg/32601/">EPSG:326XX</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WGS1984 Universal Transverse Mercator (UTM) for the <em>northern</em> hemisphere. A global projected coordiante system. The <strong>XX</strong> above denotes the zone. Here is an <a href="http://www.dmap.co.uk/utmworld.htm">image of the zones</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://spatialreference.org/ref/epsg/32601/">EPSG:327XX</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WGS1984 Universal Transverse Mercator (UTM) for the <em>southern</em> hemisphere. A global projected coordiante system. The <strong>XX</strong> above denotes the zone. Here is an <a href="http://www.dmap.co.uk/utmworld.htm">image of the zones</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://spatialreference.org/ref/sr-org/6864/">EPSG:3857</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web Mercator projected coordinate system (used in Google maps and <a href="http://www.openstreetmap.org/">Open Street Map</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://spatialreference.org/ref/epsg/osgb-1936-british-national-grid/">EPSG:27700</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The British National Grid</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-10-26 07:54:05 UTC
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>

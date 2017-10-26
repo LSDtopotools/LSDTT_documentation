@@ -424,10 +424,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>Documentation for LSDTopoTools</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_overview">1. Overview</a></li>
+<li><a href="#_strong_lsdtopotools_strong_documentation_topics">2. <strong>LSDTopoTools</strong> documentation topics</a></li>
+<li><a href="#_versions_of_the_strong_lsdtopotools_strong_documentation">3. Versions of the <strong>LSDTopoTools</strong> documentation</a></li>
+<li><a href="#_strong_lsdtopotools_strong_authors">4. <strong>LSDTopoTools</strong> authors</a></li>
+<li><a href="#_strong_lsdtopotools_strong_publications">5. <strong>LSDTopoTools</strong> publications</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -438,6 +449,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="title">Figure 1. LSD logo</div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview">1. Overview</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You have landed at the main documentation page for <strong>LSDTopoTools</strong>, topographic analysis software initially developed by the Land Surface Dynamics group at the University of Edinburgh.</p>
 </div>
@@ -447,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_lsdtopotools_strong_documentation_topics">1. <strong>LSDTopoTools</strong> documentation topics</h2>
+<h2 id="_strong_lsdtopotools_strong_documentation_topics">2. <strong>LSDTopoTools</strong> documentation topics</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. <strong>LSDTopoTools</strong> documentation topics</caption>
@@ -475,12 +491,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our channel extraction algorithms</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_LSDTT_chi_analysis.html">Channel steepness analysis with LSDTopoTools</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_chi_analysis.html">Channel steepness analysis with LSDTopoTools</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our tools for analysing channel profiles.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_BasinwideCRN.html">Computing erosion rates based on <sup>10</sup>Be and <sup>26</sup>Al concentrations with LSDTopoTools</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our tools for calculating erosion rates using in-situ cosmogenic nuclides.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_QGIS.html">Some tips and tricks for using QGIS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The contains some brief notes about using QGIS. Not *LSDTopoTools specific, but should be useful if you want to look at output ising a GIS.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_building_documentation.html">Building the LSDTopoTools documentation</a></p></td>
@@ -495,7 +515,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_versions_of_the_strong_lsdtopotools_strong_documentation">2. Versions of the <strong>LSDTopoTools</strong> documentation</h2>
+<h2 id="_versions_of_the_strong_lsdtopotools_strong_documentation">3. Versions of the <strong>LSDTopoTools</strong> documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We will archive all versions of the documentation. Links to these versions will reside here.</p>
@@ -508,15 +528,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><a href="index.html">Development version</a></th>
-<th class="tableblock halign-left valign-top">This is the in-progress documentation.</th>
+<th class="tableblock halign-left valign-top">link</th>
+<th class="tableblock halign-left valign-top">description</th>
 </tr>
 </thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="index.html">Development version</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the in-progress documentation.</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_lsdtopotools_strong_authors">3. <strong>LSDTopoTools</strong> authors</h2>
+<h2 id="_strong_lsdtopotools_strong_authors">4. <strong>LSDTopoTools</strong> authors</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>LSDTopoTools</strong> has had many developers over the years.</p>
@@ -524,63 +550,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 3. <strong>LSDTopoTools</strong> developers</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Person</th>
+<th class="tableblock halign-left valign-top">Contributions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contributions</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Simon M. Mudd</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Martin D. Hurst</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">David Milodowski</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stuart W.D. Grieve</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fiona J. Clubb</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Marie-Alice Harel</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Declan A. Valters</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boris Gailleton</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -588,7 +597,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_lsdtopotools_strong_publications">4. <strong>LSDTopoTools</strong> publications</h2>
+<h2 id="_strong_lsdtopotools_strong_publications">5. <strong>LSDTopoTools</strong> publications</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This list will grow as we add papers.</p>
@@ -598,7 +607,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-25 12:10:59 UTC
+Last updated 2017-10-26 07:54:06 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
