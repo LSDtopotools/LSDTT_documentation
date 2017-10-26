@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
-<title>Building LSDTopoTools documentation</title>
+<title>LSDTopoTools background</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -429,440 +429,179 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Building LSDTopoTools documentation</h1>
+<h1>LSDTopoTools background</h1>
 <div class="details">
 <span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
-<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a>
-<ul class="sectlevel2">
-<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</a></li>
-</ul>
-</li>
-<li><a href="#_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</a></li>
-<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
+<li><a href="#_background">1. Background</a></li>
+<li><a href="#_what_is_this_software">2. What is this software?</a></li>
+<li><a href="#_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">3. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/LSD-logo.png" alt="LSD logo" width="200">
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Only interested in getting the software to work?</div>
+<div class="paragraph">
+<p>This brief document describes the history and philosophy of <a href="https://lsdtopotools.github.io/">LSDTopoTools</a>.
+If you just want to get started analysing landscapes, you should jump to the <a href="LSDTT_installation.html">installation pages</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also navigate back to the <a href="index.html">main landing page of LSDTopoTools documentation</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
+<h2 id="_background">1. Background</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Most users will just look at our website. But some users may wish to build the documents themselves.
-The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>After a number of painful windows installations, we have decided that life in linux is much easier.
-If you don&#8217;t have linux you can make a little linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a></p>
+<p><strong>LSDTopoTools</strong> is software for analysing landscapes. It has applications in hydrology, ecology, soil science, and geomorphology. This document is not about the use of the software, but rather about its history and its philosophy. Your author feels the need to write these things down because:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. We will use <a href="https://rvm.io/">rvm</a> to get everything working.</p>
+<p>Readers might wonder why we don&#8217;t use existing software and</p>
 </li>
 <li>
-<p>We need to install some software first:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install software-properties-common
-$ sudo apt-add-repository -y ppa:rael-gc/rvm
-$ sudo apt-get update
-$ sudo apt-get install rvm</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then you need to logout of vagrant. It says that</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">Creating group 'rvm'
-
-Installing RVM to /usr/share/rvm/
-Installation of RVM in /usr/share/rvm/ is almost complete:
-
-  * First you need to add all users that will be using rvm to 'rvm' group,
-    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
-
-  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
-    in all your open shell windows, in rare cases you need to reopen all shell windows.</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>So after running <code>vagrant halt</code> and <code>vagrant up</code>, do the command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source /etc/profile.d/rvm.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To see what users are in the group:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To add the vagrant user:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G rvm vagrant
-$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In my installation you cannot just start installing stuff, <strong>you need to open a new terminal</strong>. So use either <code>ssh</code> (linux or MacOS) or <code>putty.exe</code> (windows) to open a new terminal.</p>
-</li>
-<li>
-<p>In your new terminal run (<strong>Warning: this takes a long time!</strong>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm install 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>I wanted to make sure we use this ruby default:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm use --default 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then install bundler:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gem install bundler</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now I went into a documentation folder and used <code>bundle install</code>. The gemfile is:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Yay, all the gems are installed! You can now compile our docs with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
+<p>I feel very strongly about open science and this is a chance to proselytize.</p>
 </li>
 </ol>
 </div>
-<div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</h3>
 <div class="paragraph">
-<p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
+<p>Firstly, we should tell you that LSD stands for <em>Land Surface Dynamics</em>,
+and is named after <a href="http://www.ed.ac.uk/geosciences/research/research-institutes/global-change/land-surface">Land Surface Dynamics research cluster</a>
+in the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of GeoSciences</a> at the <a href="http://www.ed.ac.uk/home">University of Edinburgh</a>.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, you need to install a bunch of stuff (this works in Ubuntu):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get -qq -y install bison flex libffi-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev libpango1.0-dev ttf-lyx</code></pre>
+<div class="paragraph">
+<p>The project started around 2010 due to my increasing frustration with my inability to reproduce topographic analyses that I found in scientific papers and saw at conferences.
+Some of the papers that had irreproducible analyses were my own!
+Like many scientists working with topographic data, I was using a geographic information system (GIS) to prepare figures and analyze topography,
+and after a long session of clicking on commercial software to get just that right figure,
+I did not have a record of the steps I took to get there. <strong>Mea culpa</strong>.
+However, I do not think I am the only person guilty of doing this!
+I wanted a way of doing topographic analysis that did not involve a sequence of mouse clicks.</p>
 </div>
+<div class="paragraph">
+<p>A second motivation came when my PhD student, <a href="http://www.gla.ac.uk/schools/ges/staff/martinhurst/">Martin Hurst</a>,
+finished his PhD and left Edinburgh for warmer pastures in England (he is now back in Scotland, where he belongs).
+His PhD included several novel analyses that were
+<a href="http://onlinelibrary.wiley.com/doi/10.1029/2011JF002057/full">clearly</a>
+<a href="http://onlinelibrary.wiley.com/doi/10.1002/jgrf.20049/full">very</a>
+<a href="http://www.sciencemag.org/content/341/6148/868.short">useful</a>,
+but also built using the python functionality in a certain commercial GIS and not very portable.
+I and my other PhD students wanted to run Martin&#8217;s analyses on other landscapes,
+but this proved to be a painful process that required numerous emails and telephone calls between Martin and our group.</p>
 </div>
-</li>
-<li>
-<p>Now run bundle install with this Gemfile:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-mathematical'
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
+<div class="paragraph">
+<p>This motivated me to start writing my own software for dealing with topographic data.
+This seemed crazy at the time. Why were we trying to reinvent a GIS?
+The answer is that the resulting software, <a href="https://lsdtopotools.github.io/">LSDTopoTools</a>,
+<strong>IS NOT A GIS</strong>! It is a series of algorithms that are open-source and can be used to analyze topography,
+and the programs that run these analyses, which we call driver programs,
+are intended to be redistributed such that if you have the same topographic data as was used in the original analysis,
+you should be able to reproduce the analysis <strong>exactly</strong>.
+In addition the philosophy of my research group is that each of our publications will coincide with the release of the software used to generate the figures: we made the (often frightening) decision that there would be no hiding behind cherry-picked figures.
+(Of course, our figures in our papers are chosen to be good illustrations of some landscape property,
+but other researchers can always use our code to find the ugly examples as well).</p>
 </div>
-</div>
-</li>
-<li>
-<p>Now, this is annoying. To get the pdf to work, you need to designate an <code>:imagesoutdir:</code> but a <strong>relative path will not work</strong>. So you need an absolute path in your root <code>.asc</code> file. So, for example, the root <code>.asc</code> file should contain the directives:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ascii" data-lang="ascii">:stem: latexmath
-:imagesoutdir: /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/Documentation/images</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>You need to change this line to suit your path!</strong></p>
-</li>
-</ol>
-</div>
+<div class="paragraph">
+<p>We hope that others outside our group will find our tools useful, and this document will help users get our tools working on their systems.
+I do plead for patience: we have yet to involve anyone in the project that has any formal training in computer science of software engineering!
+But we do hope to distribute beyond the walls of the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of GeoScience at the University of Edinburgh</a>,
+so please contact us for help, questions or suggestions.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</h2>
+<h2 id="_what_is_this_software">2. What is this software?</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://lsdtopotools.github.io/">LSDTopoTools</a> is a software package designed to analyze landscapes for applications in geomorphology, hydrology, ecology and allied fields.
+It is not intended as a substitute for a GIS, but rather is designed to be a research and analysis tool that produces <strong>reproducible</strong> data.
+The motivations behind its development were:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The point of this template is to allow you to build a nice book that is easily converted to html. One nice place to host this website is <a href="https://github.com/">github</a>. These are instructions for starting your own book using the template, and setting it up as a github.io website.</p>
+<p>To serve as a framework for implementing the latest developments in topographic analysis.</p>
 </li>
 <li>
-<p>The first thing you need to do is make a directory for your very own book. Lets call it <code>MyBook</code>. Go into <code>MyBook</code> and clone this template into a directory called master:</p>
-<div class="listingblock">
+<p>To serve as a framework for developing new topographic analysis techniques.</p>
+</li>
+<li>
+<p>To serve as a framework for numerical modelling of landscapes (for hydrology, geomorphology and ecology).</p>
+</li>
+<li>
+<p>To improve the <strong>speed</strong> and <strong>performance</strong> of topographic analysis versus other tools (e.g., commercial GIS software).</p>
+</li>
+<li>
+<p>To enable <strong>reproducible</strong> topographic analysis in the research context.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The toolbox is organized around objects, which are used to store and manipulate specific kinds of data,
+and driver functions, which users write to interface with the objects.</p>
+</div>
+<div class="sidebarblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir MyBook
-$ cd MyBook
-$ git clone https://github.com/simon-m-mudd/Book_template.git master</code></pre>
+<div class="title">Looking at the source code (most users will not need to bother with this)</div>
+<div class="paragraph">
+<p>The <a href="http://www.geos.ed.ac.uk/~s0675405/LSD_Docs/index.html">Source code documentation site</a>
+tells you all about the objects: these pages get into the nitty gritty of the computational algorithms
+and I only recommend looking at them if you plan on developing the code.</p>
 </div>
-</div>
-</li>
-<li>
-<p>Next, <strong>delete</strong> the <code>.git</code> directory inside the <code>master</code> directory.</p>
-</li>
-<li>
-<p>At this point you might want to rename some of the files and folders to suit your new book or website. If you forget to do this you can always change the names of files and directories by using the <code>git mv</code> command.</p>
-</li>
-<li>
-<p>Now use <code>git init</code> to start a new repository and then add and commit the files.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd master
-$ git init
-$ git add .
-$ git commit -m "Added the files" .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now start a new repository on github <strong>without a readme</strong>.</p>
-</li>
-<li>
-<p>It will give you the remote name. Add it to the repository:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git remote add origin https://github.com/MYUSERNAME/MYREPONAME.git
-$ git push origin master</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You will need to replace <code>MYUSERNAME</code> and <code>MYREPONAME</code> with the appropraite names.</p>
-</div>
-</li>
-<li>
-<p>Refresh the github repository page. You should see all the files from the template.</p>
-</li>
-<li>
-<p>Now on the repository page, look above the files: you should see a tab for "Branches".
-Click on this and make a new branch called <code>gh-pages</code>.
-+ Now go back into your terminal window, go down a level using <code>cd ..</code>, and clone the <strong>gh-pages</strong> branch.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
-$ git clone https://github.com/MYUSERNAME/MYREPONAME.git gh-pages</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Go into the gh-pages directory, check out the gh-pages branch, and delete the master branch (it will only delete the master branch form this directory).</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You gh-pages branch is still full of rubbish you don&#8217;t need. Remove it all. Then make a dummy index page.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git rm -rf .
-$ echo "My Page" &gt; index.html
-$ git add index.html
-$ git commit -m "Added the index" .
-$ git push origin gh-pages</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Go back to the <strong>master</strong> folder and build the book:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
-$ cd master
-$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-If you are on Windows and using <strong>git bash</strong>, it will not recognise Ruby commands, so you will need to open a separate powershell window to run the <strong>bundle</strong> command. This should not be a problem on Linux and MacOS.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>This will create a directory called <strong>images</strong> and an html file called <strong>My_book.html</strong>.</p>
-</li>
-<li>
-<p>Rename <strong>My_book.html</strong> to <strong>index.html</strong> and copy it as well as the <strong>images</strong> directory into the <strong>gh-pages</strong> directory.</p>
-</li>
-<li>
-<p>Now go back into the <strong>gh-pages</strong> directory, add the <strong>images</strong> directory, and then <code>commit</code> and <code>push</code> the changes (the below commands assume you are sitting in the <code>master</code> directory):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
-$ cd gh-pages
-$ git add images
-$ git commit -m "Updated the website" .
-$ git push origin gh-pages</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You <strong>MUST</strong> push to the <strong>gh-pages</strong> branch!! When you work in the <strong>master</strong> directory you <code>push</code> and <code>pull</code> to the <strong>master</strong> branch, and when you work in the <strong>gh-pages</strong> folder you <code>push</code> and <code>pull</code> from the <strong>gh-pages</strong> branch! If you mess this up you might have some painful cleaning up to do.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Okay, you should now be able to look at your website on: <a href="http://MYUSERNAME.github.io/MYREPONAME" class="bare">http://MYUSERNAME.github.io/MYREPONAME</a>, where <code>MYUSERNAME</code> is your github username and <code>MYREPONAME</code> is the name of the repo in which you stored your new book.</p>
-</li>
-</ol>
+<p>For most readers of this documentation,
+you can exist in blissful ignorance of the implementation and simply stay on these pages to learn how to
+use the software for your topographic analysis needs.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
+<h2 id="_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">3. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>I do not want any messy merging conflicts! To avoid this please keep the <strong>master</strong> and <strong>gh-pages</strong> separate on your computer!</p>
+<p>One of the things our group does as geomorphologists is try to understand the physics and evolution of the Earth&#8217;s surface by analyzing topography.
+Many geomorphologists will take some topographic data and perform a large number of steps to produce and original analysis.
+Our code is designed to automate such steps as well as make these steps reproducible.
+If you send another geomorphologist your code and data they should be able to exactly reproduce your analysis.
+This is not true of work done in ArcMap or other GIS systems. ArcMap and QGIS are good at many things!
+But they are not that great for analysis that can easily be reproduced by other groups.
+Our software was built to do the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>When checking out the code, check them out into two directories:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDTopoTools/a_page.git master
-$ git clone https://github.com/LSDTopoTools/a_page.git gh-pages</code></pre>
-</div>
-</div>
+<p><strong>LSDTopoTools</strong> automates things that would be slow in ArcMap or QGIS.</p>
 </li>
 <li>
-<p>In the gh-pages directory, check out the gh-pages branch and get rid of the master branch:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
-</div>
-</div>
+<p><strong>LSDTopoTools</strong> is designed to be <strong>reproducible</strong>: it does not depend on one individuals mouse clicks.</p>
 </li>
 <li>
-<p>Now, go back to the master branch, you can make changes there.</p>
+<p><strong>LSDTopoTools</strong> uses the latest fast algorithms so it is much faster than ArcMap or QGIS for many things (for example, flow routing).</p>
 </li>
 <li>
-<p>When you commit changes to the master branch and you want to update the website, commit and push changes, then run bundle:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-my/path/to/repo/book_template/master/
-$ git commit -m "My latest commit" .
-$ git push -u origin master
-$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
+<p><strong>LSDTopoTools</strong> has topographic analysis algorithms designed and coded by us or designed by someone else but
+coded by us soon after publication that are not available in ArcMap or QGIS.</p>
 </li>
 <li>
-<p>Now copy any new image files to the /images folder in the gh-pages branch (you will need to git add them),
-and rename <strong>My_book.html</strong> to <strong>index.html</strong> and copy to the gh-pages folder.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-my/path/to/repo/book_template/gh-pages/
-$ cd images
-$ git add &lt;filenames of new images&gt;
-$ cd ..
-$ git commit "updating website" .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now push the changes to the gh-pages branch</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-my/path/to/repo/book_template/gh-pages/
-$ git push -u origin gh-pages</code></pre>
-</div>
-</div>
+<p><strong>LSDTopoTools</strong> contains some elements of landscape evolution models which cannot be done in ArcMap or QGIS.</p>
 </li>
 </ol>
 </div>
@@ -871,7 +610,7 @@ $ git push -u origin gh-pages</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 15:21:13 UTC
+Last updated 2017-10-26 10:32:13 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
