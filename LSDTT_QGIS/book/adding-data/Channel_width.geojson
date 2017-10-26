@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::27700" } },
+"features": [
+{ "type": "Feature", "properties": { "Site": 1, "Easting (m)": 366068, "Northing (m)": 662276, "River Width (m)": 1.4 }, "geometry": { "type": "Point", "coordinates": [ 366068.0, 662276.0 ] } },
+{ "type": "Feature", "properties": { "Site": 2, "Easting (m)": 366077, "Northing (m)": 662280, "River Width (m)": 1.6 }, "geometry": { "type": "Point", "coordinates": [ 366077.0, 662280.0 ] } },
+{ "type": "Feature", "properties": { "Site": 3, "Easting (m)": 366087, "Northing (m)": 662278, "River Width (m)": 1.3 }, "geometry": { "type": "Point", "coordinates": [ 366087.0, 662278.0 ] } },
+{ "type": "Feature", "properties": { "Site": 4, "Easting (m)": 366096, "Northing (m)": 662277, "River Width (m)": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 366096.0, 662277.0 ] } },
+{ "type": "Feature", "properties": { "Site": 5, "Easting (m)": 366106, "Northing (m)": 662276, "River Width (m)": 1.8 }, "geometry": { "type": "Point", "coordinates": [ 366106.0, 662276.0 ] } },
+{ "type": "Feature", "properties": { "Site": 6, "Easting (m)": 366117, "Northing (m)": 662275, "River Width (m)": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 366117.0, 662275.0 ] } },
+{ "type": "Feature", "properties": { "Site": 7, "Easting (m)": 366162, "Northing (m)": 662286, "River Width (m)": 1.7 }, "geometry": { "type": "Point", "coordinates": [ 366162.0, 662286.0 ] } },
+{ "type": "Feature", "properties": { "Site": 8, "Easting (m)": 366131, "Northing (m)": 662293, "River Width (m)": 1.5 }, "geometry": { "type": "Point", "coordinates": [ 366131.0, 662293.0 ] } },
+{ "type": "Feature", "properties": { "Site": 9, "Easting (m)": 366132, "Northing (m)": 662303, "River Width (m)": 1.3 }, "geometry": { "type": "Point", "coordinates": [ 366132.0, 662303.0 ] } },
+{ "type": "Feature", "properties": { "Site": 10, "Easting (m)": 366137, "Northing (m)": 662310, "River Width (m)": 1.1 }, "geometry": { "type": "Point", "coordinates": [ 366137.0, 662310.0 ] } },
+{ "type": "Feature", "properties": { "Site": 11, "Easting (m)": 366145, "Northing (m)": 662316, "River Width (m)": 1.8 }, "geometry": { "type": "Point", "coordinates": [ 366145.0, 662316.0 ] } }
+]
+}
