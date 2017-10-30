@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
-<title>LSDTopoTools background</title>
+<title>LSDTopoTools background and philosophy</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -429,16 +429,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>LSDTopoTools background</h1>
+<h1>LSDTopoTools background and philosophy</h1>
 <div class="details">
 <span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_background">1. Background</a></li>
-<li><a href="#_what_is_this_software">2. What is this software?</a></li>
-<li><a href="#_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">3. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</a></li>
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_a_brief_history_by_simon_mudd">2. A brief history (by Simon Mudd)</a></li>
+<li><a href="#_some_comments_on_open_data_and_reproducibility">3. Some comments on open data and reproducibility</a></li>
+<li><a href="#_the_philosophy_behind_lsdtopotools">4. The philosophy behind LSDTopoTools</a></li>
+<li><a href="#_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">5. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</a></li>
 </ul>
 </div>
 </div>
@@ -465,10 +467,10 @@ If you just want to get started analysing landscapes, you should jump to the <a 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_background">1. Background</h2>
+<h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> is software for analysing landscapes. It has applications in hydrology, ecology, soil science, and geomorphology. This document is not about the use of the software, but rather about its history and its philosophy. Your author feels the need to write these things down because:</p>
+<p><strong>LSDTopoTools</strong> is software for analysing landscapes. It has applications in hydrology, ecology, soil science, and geomorphology. This document is not about the use of the software, but rather about its history and its philosophy. Your authors feel the need to write these things down because:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -476,7 +478,7 @@ If you just want to get started analysing landscapes, you should jump to the <a 
 <p>Readers might wonder why we don&#8217;t use existing software and</p>
 </li>
 <li>
-<p>I feel very strongly about open science and this is a chance to proselytize.</p>
+<p>We feel very strongly about open science and this is a chance to proselytize.</p>
 </li>
 </ol>
 </div>
@@ -485,6 +487,11 @@ If you just want to get started analysing landscapes, you should jump to the <a 
 and is named after <a href="http://www.ed.ac.uk/geosciences/research/research-institutes/global-change/land-surface">Land Surface Dynamics research cluster</a>
 in the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of GeoSciences</a> at the <a href="http://www.ed.ac.uk/home">University of Edinburgh</a>.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_a_brief_history_by_simon_mudd">2. A brief history (by Simon Mudd)</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The project started around 2010 due to my increasing frustration with my inability to reproduce topographic analyses that I found in scientific papers and saw at conferences.
 Some of the papers that had irreproducible analyses were my own!
@@ -526,7 +533,15 @@ so please contact us for help, questions or suggestions.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_is_this_software">2. What is this software?</h2>
+<h2 id="_some_comments_on_open_data_and_reproducibility">3. Some comments on open data and reproducibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>What seperates science from philosophy and art? Philosophers like Popper have argued that a defining feature of science is the ability to falsify hypotheses. Scientists need a way to know if a hypothesis is wrong. Other scientists must be able to test the findings. In scientific publications if other scientists cannot test the results, then the paper is more of an advertisement than actual science (in the succinct words of one of our Hutton Club speakers). Testability and reproducibility is the aspiration but in reality very few scientific papers are reproducible. This has been at times described as a "crisis" in science. On the LSDTopoTools team, we aspire for our publications to be fully reproducible. We admit to not fully reaching this goal in many cases: it poses technological barriers when you are processing many, many, gigabytes of data and requires carefully thought out workflows to maintain reproducibility. Each publication we make results in a slightly more streamlined workflow for reproducibility. Hopefully our experience can help others in creating reproducible research since we have learned many lessons about the best way to create fully reproducible analyses the hard way.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_philosophy_behind_lsdtopotools">4. The philosophy behind LSDTopoTools</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="http://lsdtopotools.github.io/">LSDTopoTools</a> is a software package designed to analyze landscapes for applications in geomorphology, hydrology, ecology and allied fields.
@@ -564,17 +579,28 @@ and driver functions, which users write to interface with the objects.</p>
 tells you all about the objects: these pages get into the nitty gritty of the computational algorithms
 and I only recommend looking at them if you plan on developing the code.</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This page is slightly out of date since Stuart, the owner of the website has moved to a different university. We will update this with a more stable website at some point.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="paragraph">
 <p>For most readers of this documentation,
-you can exist in blissful ignorance of the implementation and simply stay on these pages to learn how to
-use the software for your topographic analysis needs.</p>
+you can exist in blissful ignorance of the implementation and simply stay on these pages to learn how to use the software for your topographic analysis needs.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">3. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</h2>
+<h2 id="_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">5. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>One of the things our group does as geomorphologists is try to understand the physics and evolution of the Earth&#8217;s surface by analyzing topography.
@@ -597,8 +623,7 @@ Our software was built to do the following:</p>
 <p><strong>LSDTopoTools</strong> uses the latest fast algorithms so it is much faster than ArcMap or QGIS for many things (for example, flow routing).</p>
 </li>
 <li>
-<p><strong>LSDTopoTools</strong> has topographic analysis algorithms designed and coded by us or designed by someone else but
-coded by us soon after publication that are not available in ArcMap or QGIS.</p>
+<p><strong>LSDTopoTools</strong> has topographic analysis algorithms designed and coded by us or designed by someone else but coded by us soon after publication that are not available in ArcMap or QGIS.</p>
 </li>
 <li>
 <p><strong>LSDTopoTools</strong> contains some elements of landscape evolution models which cannot be done in ArcMap or QGIS.</p>
@@ -610,7 +635,7 @@ coded by us soon after publication that are not available in ArcMap or QGIS.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-28 09:02:29 UTC
+Last updated 2017-10-30 15:47:07 CDT
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -465,6 +465,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>link::index.html[Return to the main LSDTopoTools landing page]</p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
@@ -718,17 +725,16 @@ since it is a widely used projection system with units of meters.</p>
 <div class="sect1">
 <h2 id="_gdal">5. GDAL</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you installed our software using vagrant this will be installed automatically. Instructions are here: <a href="#Installing LSDTopoTools using VirtualBox and Vagrant">[Installing LSDTopoTools using VirtualBox and Vagrant]</a>.
-</td>
-</tr>
-</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">How do I get GDAL on my computer</div>
+<div class="paragraph">
+<p><a href="http://www.gdal.org/">GDAL (the Geospatial Data Abstraction Library)</a> is very easy to install if you have a Linux operating system. Many people don&#8217;t have a Linux operating system, however. We reccomend using either Docker or Vagrant to manage a Linux system that lives within your home operating system. The instructions are included link::LSDTT_installation.html[in our instructions on how to install LSDTopoTools]. We bundle GDAL with LSDTopoTools installations.</p>
+</div>
+<div class="paragraph">
+<p>You use GDAL via a command line interface. If you don&#8217;t know anything about that, please read our documentation on <a href="LSDTT_using_linux.html">an introduction to Linux</a>.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Now that you know something about data formats, projections and transformations (since you read very carefully the preceding sections),
@@ -1245,7 +1251,7 @@ $ gdal_merge.py -of ENVI -o merged_dem.bil --optfile DEMs.txt</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-26 07:54:06 UTC
+Last updated 2017-10-30 15:47:07 CDT
 </div>
 </div>
 <script type="text/x-mathjax-config">
