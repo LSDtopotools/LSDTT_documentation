@@ -442,12 +442,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_getting_the_code_using_lsdtopotoolssetup_py">2.1. Getting the code using LSDTopoToolsSetup.py</a></li>
 <li><a href="#_clone_the_github_repository_not_needed_if_you_used_lsdtopotoolssetup_py">2.2. Clone the GitHub repository (not needed if you used LSDTopoToolsSetup.py)</a></li>
 <li><a href="#_alternatively_get_the_zipped_code">2.3. Alternatively, get the zipped code</a></li>
-<li><a href="#_install_the_point_cloud_library">2.4. Install the Point Cloud Library</a>
-<ul class="sectlevel3">
-<li><a href="#_ubuntu_16_04_lts">2.4.1. Ubuntu 16.04 LTS</a></li>
-</ul>
-</li>
-<li><a href="#_install_a_couple_of_other_libraries">2.5. Install a couple of other libraries</a></li>
 </ul>
 </li>
 <li><a href="#_preliminary_steps">3. Preliminary steps</a>
@@ -485,6 +479,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <img src="images/Le_Sueur_terraces.png" alt="Le Sueur terraces" width="1000" height="600">
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Before you start</div>
+<div class="paragraph">
+<p>Before you start you need to install <strong>LSDTopoTools</strong>. If you haven&#8217;t done that, please follow the link below.</p>
+</div>
+<div class="paragraph">
+<p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
+</div>
+<div class="paragraph">
+<p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
+</div>
+</div>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -492,13 +500,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-These tools have extra dependencies in addition to a standard installation of LSDTopoTools. If you are using our vagrant distribution with <code>LSDTopoToolsSetup.py</code> then these should be installed for you with the floodplain and terrace code.  If not, make sure you have read the <a href="#Requirements for swaths and point clouds">requirements overview</a> section and installed the libraries needed to run these tools. Detailed installation information is also found in the <a href="#The Swath and Point Cloud tools">appendix</a>.
+These tools have extra dependencies in addition to a standard installation of LSDTopoTools. If you are using our vagrant distribution with <code>LSDTopoToolsSetup.py</code> then these should be installed for you with the floodplain and terrace code.  If not, make sure you follow the instructions on installing extra dependencies: <a href="LSDTT_installation.html#_extra_dependencies_for_swaths_and_point_clouds">pcl and extra dependecies installation</a>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>This chapter outlines a method of extracting floodplains and terraces across the landscape based on thresholds of local gradient and elevation compared to the nearest channel.  These thresholds are calculated statistically from the DEM using quantile-quantile plots, and do not need to be set manually by the user for the lansdcape in question.  For more details on the methodology please refer to <a href="http://www.earth-surf-dynam-discuss.net/esurf-2017-21/">Clubb et al. (2017)</a>.</p>
+<p>This document outlines a method of extracting floodplains and terraces across the landscape based on thresholds of local gradient and elevation compared to the nearest channel.  These thresholds are calculated statistically from the DEM using quantile-quantile plots, and do not need to be set manually by the user for the lansdcape in question.  For more details on the methodology please refer to <a href="http://www.earth-surf-dynam-discuss.net/esurf-2017-21/">Clubb et al. (2017)</a>.</p>
 </div>
 <div class="paragraph">
 <p>Floodplains are extracted across the whole DEM using thresholds of local gradient and relief relative to the nearest identified channel pixel. Terraces are extracted along a channel swath profile using an algorithm developed by <a href="http://www.earth-surf-dynam-discuss.net/1/387/2013/esurfd-1-387-2013.html">Hergarten et al. (2014)</a>.  The user needs to provide a CSV file with a pair of latitude and longitude coordinates.  The code will extract the channel network between these coordinates and identify all terraces along this baseline channel.</p>
@@ -532,18 +540,6 @@ These tools have extra dependencies in addition to a standard installation of LS
 <p>The user can specify various topographic metrics to calculate for each patch of floodplain or terrace, such as elevation compared to the channel.</p>
 </li>
 </ol>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-This method is in development. We cannot guarantee a bug-free experience!
-</td>
-</tr>
-</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -654,148 +650,6 @@ so if you previously downloaded a zipper repository this will overwrite it.
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_install_the_point_cloud_library">2.4. Install the Point Cloud Library</h3>
-<div class="paragraph">
-<p>If you aren&#8217;t working on our vagrant system, you will need to make sure that you have the <a href="http://pointclouds.org/">Point Cloud Library</a> installed.  You can do this on Linux using the <code>apt-get</code> command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
-$ sudo apt-get update
-$ sudo apt-get install libpcl-all</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_ubuntu_16_04_lts">2.4.1. Ubuntu 16.04 LTS</h4>
-<div class="paragraph">
-<p>If you are using ubuntu 16.04, the above commands won&#8217;t work as the repository is broken. You can install the <code>pcl</code> library using the following steps:</p>
-</div>
-<div class="paragraph">
-<p>Install oracle-java8-jdk:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo add-apt-repository -y ppa:webupd8team/java &amp;&amp; sudo apt update &amp;&amp; sudo apt -y install oracle-java8-installer</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Install various dependencies and pre-requisites:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt -y install g++ cmake cmake-gui doxygen mpi-default-dev openmpi-bin openmpi-common libusb-1.0-0-dev libqhull* libusb-dev libgtest-dev
-$ sudo apt -y install git-core freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libphonon-dev libphonon-dev phonon-backend-gstreamer
-$ sudo apt -y install phonon-backend-vlc graphviz mono-complete qt-sdk libflann-dev libflann1.8 libboost1.58-all-dev
-
-$ cd ~/Downloads
-$ wget http://launchpadlibrarian.net/209530212/libeigen3-dev_3.2.5-4_all.deb
-$ sudo dpkg -i libeigen3-dev_3.2.5-4_all.deb
-$ sudo apt-mark hold libeigen3-dev
-
-$ wget http://www.vtk.org/files/release/7.1/VTK-7.1.0.tar.gz
-$ tar -xf VTK-7.1.0.tar.gz
-$ cd VTK-7.1.0 &amp;&amp; mkdir build &amp;&amp; cd build
-$ cmake ..
-$ make
-$ sudo make install</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Install Point Cloud Library v1.8:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
-$ wget https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.0.tar.gz
-$ tar -xf pcl-1.8.0.tar.gz
-$ cd pcl-pcl-1.8.0 &amp;&amp; mkdir build &amp;&amp; cd build
-$ cmake ..
-$ make
-$ sudo make install</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Do some clean up:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
-$ rm libeigen3-dev_3.2.5-4_all.deb VTK-7.1.0.tar.gz pcl-1.8.0.tar.gz
-$ sudo rm -r VTK-7.1.0 pcl-pcl-1.8.0</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should now have pcl installed on your system! You can do a small test of the installation if you want to:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ mkdir pcl-test &amp;&amp; cd pcl-test</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create a CMakeLists.txt file and save this in the directory <code>pcl-test</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-project(pcl-test)
-find_package(PCL 1.2 REQUIRED)
-
-include_directories(${PCL_INCLUDE_DIRS})
-link_directories(${PCL_LIBRARY_DIRS})
-add_definitions(${PCL_DEFINITIONS})
-
-add_executable(pcl-test main.cpp)
-target_link_libraries(pcl-test ${PCL_LIBRARIES})
-
-SET(COMPILE_FLAGS "-std=c++11")
-add_definitions(${COMPILE_FLAGS})</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create a file and call it <code>main.cpp</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>#include &lt;iostream&gt;
-
-int main() {
-    std::cout &lt;&lt; "hello, world!" &lt;&lt; std::endl;
-    return (0);
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Compile the cpp file and then test it :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir build &amp;&amp; cd build
-$ cmake ..
-$ make
-$ ./pcl-test</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Output should be <code>hello, world!</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_install_a_couple_of_other_libraries">2.5. Install a couple of other libraries</h3>
-<div class="paragraph">
-<p>You might find you need to install a couple of other libraries for the floodplain and terrace drivers to compile properly. If you are using Ubuntu, you can do this using the following commands:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get update
-$ sudo apt-get install libgoetiff-dev
-$ sudo apt-get install liblas-dev</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -1477,7 +1331,7 @@ The first point in the csv file must be the <strong>upstream</strong> point and 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-30 17:02:31 CDT
+Last updated 2017-10-31 08:02:34 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
