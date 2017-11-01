@@ -479,7 +479,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Your phone and your fancy computer with a fruit-based operating system have lots of nice icons that you tap, click or swipe to get apps and programs. These have been designed by someone with a degree in design from the Glasgow School of Art and a PhD in Computer Science from Stanford. That person&#8217;s usually has a cool Gaelic name like Mhairi but grew up in Hong Kong, Phuket and Hartford, Connecticut and in her spare time has a closed loop organic farm that produces the best Tilapia this side of Manaus.</p>
+<p>Your phone and your fancy computer with a fruit-based operating system have lots of nice icons that you tap, click or swipe to get apps and programs. These have been designed by someone with a degree in design from the Glasgow School of Art and a PhD in Computer Science from Stanford. That person usually has a cool Gaelic name like Mhairi but grew up in Hong Kong, Phuket and Hartford, Connecticut and in her spare time has a closed loop organic farm that produces the best Tilapia this side of Manaus.</p>
 </div>
 <div class="paragraph">
 <p>Unfortunately for you, you need to use some scientific software partially programmed by someone named Mudd who grew up in <a href="https://en.wikipedia.org/wiki/Riverside,_California">Riverside</a>. There is no fancy user interface. There are no icons at all! The software runs in Linux. Why do scientists make everything so difficult!!!</p>
@@ -637,6 +637,9 @@ $ pwd
 <li>
 <p><strong>To delete a directory</strong> type <code>rmdir</code> and the directory name. <strong>The directory must be empty</strong>.</p>
 </li>
+<li>
+<p><strong>To delete a non-empty directory</strong>, i.e. all the files and sub-directories within it, type <code>rm -r</code> and the directory name. <strong>Be VERY careful where you type this command as it will delete everything in a directory.</strong>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -670,10 +673,10 @@ $ pwd
 <p><strong>Tab</strong> will auto-complete file and directory names. So you only need to type the first few letters of a directory and then tab and it will give you the entire file or directory name.</p>
 </li>
 <li>
-<p><strong>ctrl-a</strong> moves the cursor to the beginning of the line.</p>
+<p><strong>ctrl-a</strong> or the <strong>Home</strong> key moves the cursor to the beginning of the line.</p>
 </li>
 <li>
-<p><strong>ctrl-e</strong> moves the cursor to the end of the line.</p>
+<p><strong>ctrl-e</strong> or the <strong>End</strong> key moves the cursor to the end of the line.</p>
 </li>
 </ul>
 </div>
@@ -695,7 +698,7 @@ $ pwd
 <p>Everything in a computer is organised into files. These are collections of numbers and/or text that contain information and sometimes programs. These files need to be put somewhere so they are organised into directories which can be nested: i.e., a directory can be inside of another directory. Linux users are born with this knowledge, but users of more intuitive devices and operating systems are not.</p>
 </div>
 <div class="paragraph">
-<p>Our software is distributed as source code. These are files with all the instructions for the programs. They are not the programs themselves! Most of the instructions live in <strong>objects</strong> that have both a <code>cpp</code> and <code>hpp</code> file. They are stored in a directory together. Contained alongside these files are a few other directory. There is always a <code>TNT</code> folder for storing some files for matrix and vector operations. There will always be another directory with some variant of the word <code>driver</code> in it. Then there might be some other directories. <strong>Do not move these files around! Their location relative to each other is important!!</strong>.</p>
+<p>Our software is distributed as source code. These are files with all the instructions for the programs. They are not the programs themselves! Most of the instructions live in <strong>objects</strong> that have both a <code>cpp</code> and <code>hpp</code> file. They are stored in a directory together. Contained alongside these files are a few other directories. There is always a <code>TNT</code> folder for storing some files for matrix and vector operations. There will always be another directory with some variant of the word <code>driver</code> in it. Then there might be some other directories. <strong>Do not move these files around! Their location relative to each other is important!!</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Inside the folder that has <code>driver</code> in the name there will be yet more <code>cpp</code> files. There will also be files with the extension <code>make</code>. These <code>make</code> files are instructions to change the source code into a program that you can run. The <code>make</code> file assumes that files are in specific directories relative to each other so it is important not to move the relative locations of the <code>cpp</code> files and the various directories such as the <code>TNT</code> directory. If you move these files the you will not be able to <code>make</code> the programs.</p>
@@ -839,7 +842,7 @@ $ ls *.make</code></pre>
 <p>This will list a bunch of makefiles. By running the command <code>make -f</code> and then the name of a makefile you will compile a program. The <code>-f</code> just tells <code>make</code> that you are using a makefile with a specific name and not a file called <code>make</code>.</p>
 </div>
 <div class="paragraph">
-<p>Calling <code>make</code> with a <strong>makefile</strong> results in a program, that has the extension <code>.out</code> or <code>.exe</code>. The extension doesn&#8217;t really matter. We could have told the makefile to give the program the extension <code>.hibswinthecup</code> and it should still work. BUT it will only work with the operating system within which it was compiled: in this case the Ubuntu system that vagrant set up.</p>
+<p>Calling <code>make</code> with a <strong>makefile</strong> results in a program, that has the extension <code>.out</code> or <code>.exe</code>. The extension doesn&#8217;t really matter. We could have told the makefile to give the program the extension <code>.hibswinthecup</code> and it should still work (though it may take 114 years or so with this extension). BUT it will only work with the operating system within which it was compiled: in this case the Ubuntu system that vagrant set up.</p>
 </div>
 <div class="paragraph">
 <p>The crucial thing to realise here is that the program is located in the <code>driver_functions_MuddChi2014</code> directory. If you want to run this program you need to be in this directory. In Linux you can check what directory you are in by typing <code>pwd</code>.</p>
@@ -857,7 +860,7 @@ $ ls *.make</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-You need to tell the programs where the data is! People raised on smartphones and tablets seem to struggle with this. In many labratory sessions I have the computational equivalent of this converation: Student "I can&#8217;t get into my new apartment. Can you help?" Me: "Where did you put your keys?" Student: "I don&#8217;t know." Please don&#8217;t be that student.
+You need to tell the programs where the data is! People raised on smartphones and tablets seem to struggle with this. In many laboratory sessions I have the computational equivalent of this converation: Student "I can&#8217;t get into my new apartment. Can you help?" Me: "Where did you put your keys?" Student: "I don&#8217;t know." Please don&#8217;t be that student.
 </td>
 </tr>
 </table>
@@ -928,6 +931,21 @@ but if you want more information there are numerous websites that list common sh
 </div>
 <div class="sect2">
 <h3 id="_commands_that_will_save_you_vast_amounts_of_time">5.2. Commands that will save you vast amounts of time</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The linux and GNU developers have spent many hours writing help pages called <code>man</code> pages (short for "manual", as in, "read the manual"). For lots of detail on how to run some of these commands, you can usually type <code>man</code> followed by the name of the command, e.g. <code>man cp</code>. For more concise info, you can usually type <code>COMMAND --help</code>, e.g. <code>cp --help</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is a brief reference:</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Essential commands</caption>
 <colgroup>

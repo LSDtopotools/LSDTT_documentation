@@ -446,24 +446,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_an_example_using_data_from_lsdtopotools">2. An example using data from LSDTopoTools</a>
+<li><a href="#_basic_analysese_in_lsdtopotools_using_the_lsdtt_basic_analysis_program">2. Basic analysese in LSDTopotools using the LSDTT_basic_analysis program.</a></li>
+<li><a href="#_your_first_analysis_using_lsdtopotools">3. Your first analysis using LSDTopoTools</a>
 <ul class="sectlevel2">
-<li><a href="#_a_first_basic_analysis">2.1. A first basic analysis</a>
+<li><a href="#_download_and_run_the_setup_tool">3.1. Download and run the setup tool</a></li>
+<li><a href="#_run_a_basic_analysis">3.2. Run a basic analysis</a></li>
+<li><a href="#_getting_surface_metrics">3.3. Getting surface metrics</a>
 <ul class="sectlevel3">
-<li><a href="#_the_driver_file_for_the_first_analysis">2.1.1. The driver file for the first analysis</a></li>
+<li><a href="#_questions_and_tasks_for_surface_metrics">3.3.1. Questions and tasks for surface metrics</a></li>
 </ul>
 </li>
-<li><a href="#_getting_surface_metrics">2.2. Getting surface metrics</a>
+<li><a href="#_draniage_area_and_channel_extraction">3.4. Draniage area and channel extraction</a>
 <ul class="sectlevel3">
-<li><a href="#_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</a></li>
+<li><a href="#_questions_for_channel_extraction">3.4.1. Questions for channel extraction.</a></li>
 </ul>
 </li>
-<li><a href="#_draniage_area_and_channel_extraction">2.3. Draniage area and channel extraction</a>
-<ul class="sectlevel3">
-<li><a href="#_questions_for_channel_extraction">2.3.1. Questions for channel extraction.</a></li>
-</ul>
-</li>
-<li><a href="#_summary">2.4. Summary</a></li>
+<li><a href="#_summary">3.5. Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -476,6 +474,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="images/LSD-logo.png" alt="LSD logo" width="200">
 </div>
+</div>
+<div class="paragraph">
+<p><a href="index.html">Return to main <strong>LSDTopoTools</strong> landing page</a></p>
 </div>
 </div>
 </div>
@@ -502,7 +503,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_the_basic_structure_of_an_analysis">1.1. The basic structure of an analysis</h3>
 <div class="paragraph">
-<p>Our analyses are packaged into seperate programs. They are run from the Linux shell. All of our programs operate the same way:</p>
+<p>Our analyses are packaged into separate programs. They are run from the Linux shell. All of our programs operate the same way:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -610,147 +611,196 @@ write fname: Data_prefix</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_an_example_using_data_from_lsdtopotools">2. An example using data from LSDTopoTools</h2>
+<h2 id="_basic_analysese_in_lsdtopotools_using_the_lsdtt_basic_analysis_program">2. Basic analysese in LSDTopotools using the LSDTT_basic_analysis program.</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter gives and example of computing some basic raster and csv data from <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> and then importing it into QGIS. We use these examples in of one the practical exercises in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
+<p>This chapter will walk you through some basic topographic analysis using our program <strong>LSDTT_BasicMetrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. It can calculate drainage area. It can also extract channel networks. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because</p>
 </div>
-<div class="paragraph">
-<p>One of the objectives of this exercise is to get you familiar with moving between a linux environment and QGIS, which you can read about <a href="LSDTT_QGIS.html">in our QGIS documentation</a></p>
-</div>
-<div class="sect2">
-<h3 id="_a_first_basic_analysis">2.1. A first basic analysis</h3>
-<div class="paragraph">
-<p>This first example is extremely simple but it will introduce you to calling <strong>LSDTopoTools</strong> programs.</p>
-</div>
-<div class="paragraph">
-<p>All <strong>LSDTopoTools</strong> programs are called from a terminal window. They read a file, which we call either a <strong>parameter</strong> or <strong>driver</strong> file which tell the program what to do. When you call the program, you need to tell it where this driver file is. You do this by telling the program the directory in which the <strong>driver</strong> file is located, and the name of the <strong>driver</strong> file.</p>
-</div>
-<div class="paragraph">
-<p>The <strong>LSDTopoTools</strong> program we will be using is called <code>LSDTT_BasicMetrics.out</code>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We have put this program online. There are three different versions, since it has been compiled for a few different linux environments:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If you are at Edinburgh, the program is called <code>LSDTT_BasicMetrics.out</code>. It works on Scientific Linux 7.</p>
+<p>The slope and curvature metrics in typical GIS software only uses information from the nearest pixels. We fit a polynomial surface from a neighbourhood of pixels. See <a href="http://onlinelibrary.wiley.com/doi/10.1029/2011JF002057/abstract">Hurst et al., 2012, DOI: 10.1029/2011JF002057</a> and <a href="https://www.earth-surf-dynam.net/4/627/2016/">Grieve et al., 2016, doi:10.5194/esurf-4-627-2016</a> for the rationale.</p>
 </li>
 <li>
-<p>If you are using our vagrant 32 bit ubuntu system, the program is called <code>LSDTT_BasicMetrics_U64.out</code>.</p>
+<p>Our channel extractions for the d8 method are based on the <a href="http://www.sciencedirect.com/science/article/pii/S0169555X12004618">FASTSCAPE</a> algorithm and are <strong>MUCH</strong> faster than running channel extraction in typical GIS software.</p>
 </li>
 <li>
-<p>If you are using our vagrant 64 bit ubuntu system, the program is called <code>LSDTT_BasicMetrics_U32.out</code>.</p>
+<p>The program does some data preprocessing behind the scenes that you would need to do manually in a GIS.</p>
+</li>
+<li>
+<p>We have automated some basin selection routines, which again you would need to do by hand in a GIS.</p>
+</li>
+<li>
+<p>Our channel extraction spits out networks with drainage areas, locations, chi coordinates and all sorts of other goodies that again, would take ages on a GIS.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The exaples in this section are used for both <strong>LSDTopoTools</strong> workshops as well as in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Before you start</div>
+<div class="paragraph">
+<p>Before you start you need to install <strong>LSDTopoTools</strong>. If you haven&#8217;t done that, please follow the link below.</p>
+</div>
+<div class="paragraph">
+<p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
+</div>
+<div class="paragraph">
+<p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_your_first_analysis_using_lsdtopotools">3. Your first analysis using LSDTopoTools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We are going to run an <strong>LSDTopoTools</strong> program that is used for basic topographic analysis.</p>
+</div>
+<div class="sect2">
+<h3 id="_download_and_run_the_setup_tool">3.1. Download and run the setup tool</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First open a terminal window. This will be in either a vagrant server, a docker container, an NX window or your native linux system, depending on how you <a href="LSDTT_installation.html">installed <strong>LSDTopoTools</strong></a>. Once you are in a terminal window, you will see some text and then a <code>$</code> symbol which tells you that the linux machine is waiting for a command. Type your commands after this symbol (in docker this might be a <code>#</code> symbol).</p>
 </li>
 <li>
-<p>Get the version for your operating system. For example, if you are using the Edinburgh servers, get it with:</p>
+<p>We are going to download a python script into your home directory. The <code>cd ~</code> command gets you to your home diretory in linux. Go there and then download a file using <code>wget</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/LSDTT_BasicMetrics.out</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
+$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Use <code>ls</code> to make sure this program and all the data you downloaded from the last section is in the same folder. It should look like this:</p>
+<p>Now we run the setup tool. Doing this will trigger a bunch of stuff that will take a few minutes.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">smudd@burn practical_02 $ ls
-LSDTT_BasicMetrics.out    WA_BasicMetrics02.driver  WA.bil
-WA_BasicMetrics01.driver  WA_BasicMetrics03.driver  WA.hdr
-smudd@burn practical_02 $</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are on a native linux machine or Edinburgh servers, this will install <strong>LSDTopoTools</strong> in your home directory. In docker or vagrant it will install in the root directory (<code>/</code>).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_a_basic_analysis">3.2. Run a basic analysis</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We need two terminal windows open. You already have one open, so open another one.</p>
+</li>
+<li>
+<p>In the first terminal do the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In docker or vagrant:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In a native linux or on Edinburgh&#8217;s servers type:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
 </div>
 </div>
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="_the_driver_file_for_the_first_analysis">2.1.1. The driver file for the first analysis</h4>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
-<p>Before we run the program we need to modify the driver file. The first driver file looks like this:</p>
+<p>We will explain all this stuff in more detail later, for now just execute the commands.</p>
+</li>
+<li>
+<p>Now in the other terminal window type:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For vagrant/docker:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
-# Comments are preceeded by the hash symbol
-# Documentation can be found here:
-# https://simon-m-mudd.github.io/QGIS_book/#_an_example_using_data_from_lsdtopotools
-
-# These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
-read path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data
-write path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data
-read fname: WA
-write fname: WA_FirstExample
-channel heads fname: NULL
-
-# The data that you want printed to file
-write_hillshade: true</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>You need to be able to edit this file. You should edit it in your host operating system (e.g. not via a terminal or nx, but rather in Windows or MacOS). In the Edinburgh compouter labs there is a text editor called <strong>PSPad</strong>. You can open that program and drag text files into it and edit them. <strong>*Do not use Wordpad or Word!! They insert all kinds of formatting and change the filenames and will, in general, mess everything up!</strong></p>
-</li>
-<li>
-<p>We need to ensure that the <strong>driver</strong> functions point to the correct data. Copy the location of the data by using the <code>pwd</code> command (see last section), and paste that in to these lines (<strong>YOUR DIRECTORY WILL NOT BE THE SAME, USE <code>pwd</code> TO FIND THE CORRECT DIRECTORY</strong>):</p>
+<p>For native linux/Edinburgh:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">read path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
-write path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <strong>must</strong> be a space after the <code>:</code> character.
-</td>
-</tr>
-</table>
+</li>
+</ol>
 </div>
 </li>
 <li>
-<p>Now we are going to run the program. We run it in a terminal window like this (make sure you are in the directory with the data):</p>
+<p>We want to update the path names. So get the path updater script and run it:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ chmod 744 LSDTT_BasicMetrics.out
-$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics01.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py
+$ python LSDTTParamfileUpdater.py</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The first command (<code>chmod</code>) is there just to give you permission to execute the program. The second is the actual program call. <strong>You will need to modify the directory to be the one that contains your data!</strong></p>
+</li>
+<li>
+<p>Okay, now go back to the first terminal window. Type the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For docker/vagrant</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For native Linux/Edinburgh servers</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
 <p>If you had all the directory names correct, you will get some text to screen that ends with a statement about hillshading. In fact all this does is print a hillshade of the raster.</p>
 </li>
 <li>
-<p>Open QGIS and load the raster. The new raster is in the same directory with your other data and is called <code>WA_FirstExample_hs.bil</code>. To load raster data in QGIS follow these instructions: <a href="#Adding raster data">[Adding raster data]</a>. The data will look like this:</p>
+<p>You can look at this raster in <a href="http://www.qgis.org/en/site/">QGIS</a>. We have some <a href="LSDTT_QGIS.html">instructions for QGIS</a>, if you want to see instructions for <a href="LSDTT_QGIS.html#_adding_data">adding data click here</a>.</p>
+</li>
+<li>
+<p>Open QGIS and load the raster. The new raster is in the same directory with your other data and is called <code>WA_FirstExample_hs.bil</code>.The data will look like this:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/WA_HS.jpg" alt="Whiteadder hillshade">
+<img src="../images/WA_HS.jpg" alt="Whiteadder hillshade">
 </div>
 <div class="title">Figure 2. A hillshade of the Whiteadder catchement</div>
 </div>
 </li>
 <li>
-<p>As you can see, the DEM has quite a few artifacts. There isn&#8217;t much we can do about that, I&#8217;m afraid.</p>
+<p>As you can see, the DEM has quite a few artefacts. There isn&#8217;t much we can do about that, I&#8217;m afraid.</p>
 </li>
 </ol>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_getting_surface_metrics">2.2. Getting surface metrics</h3>
+<h3 id="_getting_surface_metrics">3.3. Getting surface metrics</h3>
 <div class="paragraph">
 <p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:
 * First we make sure directories are correct in the <strong>driver</strong> file.
@@ -804,7 +854,7 @@ print_tangential_curvature: true</code></pre>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</h4>
+<h4 id="_questions_and_tasks_for_surface_metrics">3.3.1. Questions and tasks for surface metrics</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -815,7 +865,7 @@ print_tangential_curvature: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_draniage_area_and_channel_extraction">2.3. Draniage area and channel extraction</h3>
+<h3 id="_draniage_area_and_channel_extraction">3.4. Draniage area and channel extraction</h3>
 <div class="paragraph">
 <p>Finally, we will compute some drainage areas and extract a channel network. To do this run the <strong>driver file</strong> <code>WA_BasicMetrics03.driver</code>.</p>
 </div>
@@ -847,11 +897,11 @@ print_tangential_curvature: true</code></pre>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_questions_for_channel_extraction">2.3.1. Questions for channel extraction.</h4>
+<h4 id="_questions_for_channel_extraction">3.4.1. Questions for channel extraction.</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Try changing the <code>threshold_contributing_pixels</code> parameter. What happens to the channel network.</p>
+<p>Try changing the <code>threshold_contributing_pixels</code> parameter. What happens to the channel network?</p>
 </li>
 <li>
 <p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read fname:</code> parameter to reflect the smoothed raster.</p>
@@ -861,7 +911,7 @@ print_tangential_curvature: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary">2.4. Summary</h3>
+<h3 id="_summary">3.5. Summary</h3>
 <div class="paragraph">
 <p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
 </div>

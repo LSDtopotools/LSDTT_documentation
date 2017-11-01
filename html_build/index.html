@@ -434,7 +434,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_overview">1. Overview</a></li>
 <li><a href="#_where_is_all_the_code">2. Where is all the code?</a></li>
-<li><a href="#_strong_lsdtopotools_strong_documentation_topics">3. <strong>LSDTopoTools</strong> documentation topics</a></li>
+<li><a href="#_strong_lsdtopotools_strong_documentation_topics">3. <strong>LSDTopoTools</strong> documentation topics</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction_installation_and_first_tutorial_of_strong_lsdtopotools_strong">3.1. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></a></li>
+<li><a href="#_documents_for_associtated_software_and_background_reading">3.2. Documents for associtated software and background reading</a></li>
+<li><a href="#_strong_lsdtopotools_strong_python_scripts">3.3. <strong>LSDTopoTools</strong> python scripts</a></li>
+<li><a href="#_strong_lsdtopotools_strong_analysis_packages">3.4. <strong>LSDTopoTools</strong> analysis packages</a></li>
+</ul>
+</li>
 <li><a href="#_versions_of_the_strong_lsdtopotools_strong_documentation">4. Versions of the <strong>LSDTopoTools</strong> documentation</a></li>
 <li><a href="#_lsdtopotools_authors">5. LSDTopoTools authors</a></li>
 <li><a href="#_lsdtopotools_publications_and_software_releases">6. LSDTopoTools publications and software releases</a>
@@ -486,8 +493,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Please follow the links below to find the relevant documentation.</p>
 </div>
+<div class="sect2">
+<h3 id="_introduction_installation_and_first_tutorial_of_strong_lsdtopotools_strong">3.1. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. <strong>LSDTopoTools</strong> documentation topics</caption>
+<caption class="title">Table 1. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -508,13 +517,89 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">A guide to installation of <strong>LSDTopoTools</strong>. Includes instructions for all operating systems, using either Vagrant or Docker, or native Linux installation at the University of Edinburgh or elsewhere.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_basic_usage.html">Basic topographic analyses in LSDTopoTools</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the launch point for your first analyses in <strong>LSDTopoTools</strong>. The documents take you through some basic steps and show how to do simple, everyday analyses like get gradient and curvature, calculate drainage areas, and extract channel networks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_documents_for_associtated_software_and_background_reading">3.2. Documents for associtated software and background reading</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">link</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_introduction_to_geospatial_data.html">Introduction to geospatial data</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A brief introduction to geospatial data. Where to get it, how to manipulate it, and information about the different forms of this data.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_basic_usage.html">Basic topographic analyses in LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the launch point for your first analyses in <strong>LSDTopoTools</strong>. The documents take you through some basic steps and show how to do simple, everyday analyses like get gradient and curvature, calculate drainage areas, and extract channel networks.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_using_linux.html">A very brief introduction to using a Linux shell</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To use <strong>LSDTopoTools</strong> you need to issue commands in a Linux shell. This contains minimal instructions on how to navigate in this environment.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_QGIS.html">Some tips and tricks for using QGIS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The contains some brief notes about using QGIS. Not *LSDTopoTools specific, but should be useful if you want to look at output using a GIS.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_building_documentation.html">Building the LSDTopoTools documentation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An overview of how to build the LSDTopoTools documentation. Most users will not need this: they can just look at the documents online!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_strong_lsdtopotools_strong_python_scripts">3.3. <strong>LSDTopoTools</strong> python scripts</h3>
+<div class="paragraph">
+<p>The serious number crunching in <strong>LSDTopoTools</strong> is done in C++ code, but our visualisation and automation scripts are written in python. Below are documents associated with these scripts.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. <strong>LSDTopoTools</strong> documentation topics</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">link</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_python_installation.html">Installing the python toolchain</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Explanation of how to get our python tools working. Includes some basic python notes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_strong_lsdtopotools_strong_analysis_packages">3.4. <strong>LSDTopoTools</strong> analysis packages</h3>
+<div class="paragraph">
+<p>These documents describe our individual analysis packages. They are more specialised than the <a href="LSDTT_basic_usage.html">basic metrics program</a>. We use these packages for research, most of them are associated with one or more scientific publications, or our collaborations with government, humanitarian organisations and private buisnesses.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. <strong>LSDTopoTools</strong> documentation topics</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">link</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_channel_extraction.html">Extracting channels using LSDTopoTools</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our channel extraction algorithms</p></td>
@@ -531,24 +616,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_floodplains_terraces.html">Floodplain and terrace analysis using LSDTopoTools</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our tools for extracting floodplains and terraces. Note that this requires the extra dependencies that you can read about in the last section of the <a href="LSDTT_installation.html">installation instructions</a>.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_using_linux.html">A very brief introduction to using a Linux shell</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To use <strong>LSDTopoTools</strong> you need to issue commands in a Linux shell. This contains minimal instructions on how to navigate in this environment.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_QGIS.html">Some tips and tricks for using QGIS</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The contains some brief notes about using QGIS. Not *LSDTopoTools specific, but should be useful if you want to look at output using a GIS.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_building_documentation.html">Building the LSDTopoTools documentation</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An overview of how to build the LSDTopoTools documentation. Most users will not need this: they can just look at the documents online!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_python_installation.html">Installing the python toolchain</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Explanation of how to get our python tools working. Includes some basic python notes.</p></td>
-</tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -558,7 +628,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>We will archive all versions of the documentation. Links to these versions will reside here.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. <strong>LSDTopoTools</strong> documentation topics</caption>
+<caption class="title">Table 5. <strong>LSDTopoTools</strong> documentation topics</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -585,7 +655,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>LSDTopoTools</strong> has had many developers over the years.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. <strong>LSDTopoTools</strong> developers</caption>
+<caption class="title">Table 6. <strong>LSDTopoTools</strong> developers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 66.6666%;">
