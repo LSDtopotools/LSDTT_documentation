@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
-<title>Building LSDTopoTools documentation</title>
+<title>Using linux</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -429,340 +429,282 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Building LSDTopoTools documentation</h1>
+<h1>Using linux</h1>
 <div class="details">
 <span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
-<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a>
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_getting_into_a_linux_shell">2. Getting into a Linux shell</a></li>
+<li><a href="#_i_am_in_a_terminal_window_now_what">3. I am in a terminal window. Now what?</a>
 <ul class="sectlevel2">
-<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">2.1. If you want to make pdf files using asciidoctor with equations in them</a></li>
+<li><a href="#_files_and_directories">3.1. Files and directories</a></li>
+<li><a href="#_useful_basic_tasks">3.2. Useful basic tasks</a></li>
+<li><a href="#_keyboard_shortcuts">3.3. Keyboard shortcuts</a></li>
 </ul>
 </li>
-<li><a href="#_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</a></li>
-<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
+<li><a href="#_setting_up_your_file_system_and_keeping_it_clean_strong_essential_reading_if_you_are_new_to_linux_strong">4. Setting up your file system and keeping it clean <strong>ESSENTIAL READING IF YOU ARE NEW TO LINUX</strong></a>
+<ul class="sectlevel2">
+<li><a href="#_files_and_directories_2">4.1. Files and directories</a></li>
+<li><a href="#_directories_in_vagrant">4.2. Directories in Vagrant</a>
+<ul class="sectlevel3">
+<li><a href="#_vagrant_directories_in_windows">4.2.1. Vagrant directories in windows</a></li>
+<li><a href="#_vagrant_directories_in_the_client_linux_machine">4.2.2. Vagrant directories in the client Linux machine</a></li>
+</ul>
+</li>
+<li><a href="#_difference_between_the_source_code_and_the_programs">4.3. Difference between the source code and the programs</a></li>
+<li><a href="#_know_where_your_data_is">4.4. Know where your data is</a></li>
+</ul>
+</li>
+<li><a href="#_shell_cheat_sheet">5. Shell cheat sheet</a>
+<ul class="sectlevel2">
+<li><a href="#_external_resources">5.1. External resources</a></li>
+<li><a href="#_commands_that_will_save_you_vast_amounts_of_time">5.2. Commands that will save you vast amounts of time</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Most users will just look at our website. But some users may wish to build the documents themselves.
-The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
+<p><a href="index.html">Navigate back to main LSDTopoTools landing page</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
+<h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After a number of painful windows installations, we have decided that life in linux is much easier.
-If you don&#8217;t have linux you can make a little linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a></p>
+<p>Your phone and your fancy computer with a fruit-based operating system have lots of nice icons that you tap, click or swipe to get apps and programs. These have been designed by someone with a degree in design from the Glasgow School of Art and a PhD in Computer Science from Stanford. That person usually has a cool Gaelic name like Mhairi but grew up in Hong Kong, Phuket and Hartford, Connecticut and in her spare time has a closed loop organic farm that produces the best Tilapia this side of Manaus.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="paragraph">
+<p>Unfortunately for you, you need to use some scientific software partially programmed by someone named Mudd who grew up in <a href="https://en.wikipedia.org/wiki/Riverside,_California">Riverside</a>. There is no fancy user interface. There are no icons at all! The software runs in Linux. Why do scientists make everything so difficult!!!</p>
+</div>
+<div class="paragraph">
+<p>Well, it turns out that it is much, much, much easier to install the common tools scientists use within Linux (MacOS is built on top of Linux). Also, although you will not believe it at first, doing things in Linux via the command line is faster than clicking on buttons. There is a reason most programmers still use this interface.</p>
+</div>
+<div class="paragraph">
+<p>Modern Linux operating systems like <a href="https://www.ubuntu.com/">Ubuntu</a> or <a href="https://www.debian.org/">Debian</a> have windowing systems like, uh, Windows and MacOS but in this section we will use something called the <strong>shell</strong>, which is a command line tool (you type commands onto a line).</p>
+</div>
+<div class="paragraph">
+<p>If you really want to learn about the shell you should go to the <a href="https://swcarpentry.github.io/shell-novice/">software carpentry website</a>. What you will find here are the commands that are essential for working with our software, <a href="index.html">LSDTopoTools</a>, which are a subset of what you will find in the <a href="https://swcarpentry.github.io/shell-novice/">software carpentry</a> tutorials.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_into_a_linux_shell">2. Getting into a Linux shell</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Getting a shell window will vary depending on your system.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. We will use <a href="https://rvm.io/">rvm</a> to get everything working.</p>
+<p>If you are on a native linux system you should already know how to get a window into the shell (it is usually called a terminal window). If you don&#8217;t know how to do that google is your friend ("ubuntu terminal").</p>
 </li>
 <li>
-<p>We need to install some software first:</p>
+<p>If you are using a virtual machine managed by Vagrant, one you either <strong>ssh</strong> or use <strong>putty.exe</strong> to access your virtual machine, you will be in a terminal window. You will find instructions on how to do this along with the Vagrant documentation.</p>
+</li>
+<li>
+<p>If you are using Docker, you will run <code>docker</code> from command line (the docker instructions will tell you how to do that) and you will end up in a shell within your Docker container.</p>
+</li>
+<li>
+<p>If you are using <a href="https://www.nomachine.com/">NX</a>, like we do at the university of Edinburgh, then just right click anywhere on the desktop and select <strong>Open in Terminal</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i_am_in_a_terminal_window_now_what">3. I am in a terminal window. Now what?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first thing you need to know about is figuring out where you are, and how to move around.</p>
+</div>
+<div class="paragraph">
+<p>If you want to know all about this, go to <a href="https://swcarpentry.github.io/shell-novice/02-filedir/">software carpentry</a>. Here we will give you just the basics.</p>
+</div>
+<div class="paragraph">
+<p>Note that if you are in a linux shell you will usually have the dollar symbol (<code>$</code>) as a command prompt. So if you see this:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install software-properties-common
-$ sudo apt-add-repository -y ppa:rael-gc/rvm
-$ sudo apt-get update
-$ sudo apt-get install rvm</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then you need to logout of vagrant. It says that</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">Creating group 'rvm'
-
-Installing RVM to /usr/share/rvm/
-Installation of RVM in /usr/share/rvm/ is almost complete:
-
-  * First you need to add all users that will be using rvm to 'rvm' group,
-    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
-
-  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
-    in all your open shell windows, in rare cases you need to reopen all shell windows.</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>So after running <code>vagrant halt</code> and <code>vagrant up</code>, do the command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source /etc/profile.d/rvm.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To see what users are in the group:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To add the vagrant user:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G rvm vagrant
-$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In my installation you cannot just start installing stuff, <strong>you need to open a new terminal</strong>. So use either <code>ssh</code> (linux or MacOS) or <code>putty.exe</code> (windows) to open a new terminal.</p>
-</li>
-<li>
-<p>In your new terminal run (<strong>Warning: this takes a long time!</strong>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm install 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>I wanted to make sure we use this ruby default:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm use --default 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then install bundler:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gem install bundler</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now I went into a documentation folder and used <code>bundle install</code>. The gemfile is:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Yay, all the gems are installed! You can now compile our docs with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The installation of the gem <code>nokogiri</code> can be very temperamental, one particular issue on MacOS is that its install clashes with <a href="https://github.com/ggreer/the_silver_searcher"><code>The Silver Searcher</code></a>. To resolve this issue, first run <code>brew unlink xz</code> to remove symlinks to <code>xz</code>, then re-run <code>bundle install</code> and once that completes, reapply the symlinks to <code>xz</code>: <code>brew link xz</code>.</p>
+<p>it means you will be entering a shell command.</p>
 </div>
 <div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">2.1. If you want to make pdf files using asciidoctor with equations in them</h3>
+<h3 id="_files_and_directories">3.1. Files and directories</h3>
 <div class="paragraph">
-<p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
+<p>Everything in a computer is organised into files. These are collections of numbers and/or text that contain information and sometimes programs. These files need to be put somewhere so they are organised into directories which can be nested: i.e., a directory can be inside of another directory. Linux users are born with this knowledge, but users of more intuitive devices and operating systems are not.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>First, you need to install a bunch of stuff (this works in Ubuntu):</p>
+<p><strong>If you want to know where you are</strong> type <code>pwd</code></p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get -qq -y install bison flex libffi-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev libpango1.0-dev ttf-lyx</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
+/usr</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In this case when you type <code>pwd</code> it tells you that you are in the <code>/usr</code> directory. The slash symbol: <code>/</code> separates directories. So if you have <code>/usr/Data/Rabbits</code> it means that the <code>Rabbits</code> directory is in the <code>Data</code> directory, which is in the <code>usr</code> directory.</p>
 </div>
 </li>
 <li>
-<p>Now run bundle install with this Gemfile:</p>
+<p><strong>To see what is there in the directory</strong> type <code>ls</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-mathematical'
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ls
+a_directory another_directory a.file Data</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Both files and directories are listed when you type <code>ls</code>. If you type <code>ls -l</code> you get loads more information. See <a href="https://swcarpentry.github.io/shell-novice/02-filedir/">software carpentry</a> for more information.</p>
 </div>
 </li>
 <li>
-<p>Now, this is annoying. To get the pdf to work, you need to designate an <code>:imagesoutdir:</code> but a <strong>relative path will not work</strong>. So you need an absolute path in your root <code>.asc</code> file. So, for example, the root <code>.asc</code> file should contain the directives:</p>
+<p><strong>To move to a new directory</strong>, type <code>cd</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ascii" data-lang="ascii">:stem: latexmath
-:imagesoutdir: /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/Documentation/images</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd another_directory
+$ pwd
+/usr/another_directory</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p><strong>You need to change this line to suit your path!</strong></p>
+<p><strong>To go up a directory</strong> type <code>cd ..</code></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
+$ pwd
+/usr</code></pre>
+</div>
+</div>
 </li>
-</ol>
+<li>
+<p><strong>You can also jump straight to the directory you want</strong>: just type <code>cd</code> and then the full path:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
+/I/am/lost/in/a/vortex/of/directories
+$ cd /usr/Data/Rabbits
+$ pwd
+/usr/Data/Rabbits</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Going to your home directory</strong>: type <code>cd ~</code>. Every Linux user has a home directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
+$ pwd
+/my/home/directory</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>If you want to make a new directory</strong> type <code>mkdir</code> and then the directory name.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir a_new_directory</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>To move a file</strong> type <code>mv</code> and then the name of the file and the name of the destination:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mv a.data b.data</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>To copy a file</strong> type <code>cp</code> and then the name of the file and new file. This produces a duplicate with a new name and/or location.</p>
+</li>
+<li>
+<p><strong>To delete a file</strong> type <code>rm</code> and the filename. <strong>This is irreversible so be careful!!</strong></p>
+</li>
+<li>
+<p><strong>To delete a directory</strong> type <code>rmdir</code> and the directory name. <strong>The directory must be empty</strong>.</p>
+</li>
+<li>
+<p><strong>To delete a non-empty directory</strong>, i.e. all the files and sub-directories within it, type <code>rm -r</code> and the directory name. <strong>Be VERY careful where you type this command as it will delete everything in a directory.</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_useful_basic_tasks">3.2. Useful basic tasks</h3>
+<div class="paragraph">
+<p>There are a few tasks that are rather useful. I&#8217;ll list two of them here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Downloading files from the internet</strong>: type <code>wget</code> and then the web address (with the <code>http://</code> and all that stuff). This seems to be <strong>MUCH</strong> faster that downloading stuff via a web browser. It is really useful for big files.</p>
+</li>
+<li>
+<p><strong>Unzipping stuff</strong>: type <code>tar -xzf</code> if you have a file with the extension <code>.tar.gz</code>. Again, this is much faster than doing it in a windows file explorer.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_keyboard_shortcuts">3.3. Keyboard shortcuts</h3>
+<div class="paragraph">
+<p>One of the reasons programmers love the shell is that there are loads of shortcuts. This speeds things up when you are working. The most useful ones seem to be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Up arrow</strong> lets you scroll through all your past commands.</p>
+</li>
+<li>
+<p><strong>Tab</strong> will auto-complete file and directory names. So you only need to type the first few letters of a directory and then tab and it will give you the entire file or directory name.</p>
+</li>
+<li>
+<p><strong>ctrl-a</strong> or the <strong>Home</strong> key moves the cursor to the beginning of the line.</p>
+</li>
+<li>
+<p><strong>ctrl-e</strong> or the <strong>End</strong> key moves the cursor to the end of the line.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</h2>
+<h2 id="_setting_up_your_file_system_and_keeping_it_clean_strong_essential_reading_if_you_are_new_to_linux_strong">4. Setting up your file system and keeping it clean <strong>ESSENTIAL READING IF YOU ARE NEW TO LINUX</strong></h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The point of this template is to allow you to build a nice book that is easily converted to html. One nice place to host this website is <a href="https://github.com/">github</a>. These are instructions for starting your own book using the template, and setting it up as a github.io website.</p>
-</li>
-<li>
-<p>The first thing you need to do is make a directory for your very own book. Lets call it <code>MyBook</code>. Go into <code>MyBook</code> and clone this template into a directory called master:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir MyBook
-$ cd MyBook
-$ git clone https://github.com/simon-m-mudd/Book_template.git master</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Next, <strong>delete</strong> the <code>.git</code> directory inside the <code>master</code> directory.</p>
-</li>
-<li>
-<p>At this point you might want to rename some of the files and folders to suit your new book or website. If you forget to do this you can always change the names of files and directories by using the <code>git mv</code> command.</p>
-</li>
-<li>
-<p>Now use <code>git init</code> to start a new repository and then add and commit the files.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd master
-$ git init
-$ git add .
-$ git commit -m "Added the files" .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now start a new repository on github <strong>without a readme</strong>.</p>
-</li>
-<li>
-<p>It will give you the remote name. Add it to the repository:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git remote add origin https://github.com/MYUSERNAME/MYREPONAME.git
-$ git push origin master</code></pre>
-</div>
+<div class="paragraph">
+<p>The past decade has seen rapid advances in user interfaces, the result of which is that you don&#8217;t really have to know anything about how computers work to use modern computing devices. I am afraid nobody associated with this software project is employed to write a slick user interface. In addition, we don&#8217;t want a slick user interface since sliding and tapping on a touchscreen to get what you want does not enhance repoducible data analysis. So I am very sorry to say that to use this software you will need to know something about computers.</p>
 </div>
 <div class="paragraph">
-<p>You will need to replace <code>MYUSERNAME</code> and <code>MYREPONAME</code> with the appropraite names.</p>
+<p>If you are not familiar with Linux or directory structures this is essential reading.</p>
 </div>
-</li>
-<li>
-<p>Refresh the github repository page. You should see all the files from the template.</p>
-</li>
-<li>
-<p>Now on the repository page, look above the files: you should see a tab for "Branches".
-Click on this and make a new branch called <code>gh-pages</code>.
-+ Now go back into your terminal window, go down a level using <code>cd ..</code>, and clone the <strong>gh-pages</strong> branch.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
-$ git clone https://github.com/MYUSERNAME/MYREPONAME.git gh-pages</code></pre>
+<div class="sect2">
+<h3 id="_files_and_directories_2">4.1. Files and directories</h3>
+<div class="paragraph">
+<p>Everything in a computer is organised into files. These are collections of numbers and/or text that contain information and sometimes programs. These files need to be put somewhere so they are organised into directories which can be nested: i.e., a directory can be inside of another directory. Linux users are born with this knowledge, but users of more intuitive devices and operating systems are not.</p>
 </div>
+<div class="paragraph">
+<p>Our software is distributed as source code. These are files with all the instructions for the programs. They are not the programs themselves! Most of the instructions live in <strong>objects</strong> that have both a <code>cpp</code> and <code>hpp</code> file. They are stored in a directory together. Contained alongside these files are a few other directories. There is always a <code>TNT</code> folder for storing some files for matrix and vector operations. There will always be another directory with some variant of the word <code>driver</code> in it. Then there might be some other directories. <strong>Do not move these files around! Their location relative to each other is important!!</strong>.</p>
 </div>
-</li>
-<li>
-<p>Go into the gh-pages directory, check out the gh-pages branch, and delete the master branch (it will only delete the master branch form this directory).</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
+<div class="paragraph">
+<p>Inside the folder that has <code>driver</code> in the name there will be yet more <code>cpp</code> files. There will also be files with the extension <code>make</code>. These <code>make</code> files are instructions to change the source code into a program that you can run. The <code>make</code> file assumes that files are in specific directories relative to each other so it is important not to move the relative locations of the <code>cpp</code> files and the various directories such as the <code>TNT</code> directory. If you move these files the you will not be able to <code>make</code> the programs.</p>
 </div>
-</div>
-</li>
-<li>
-<p>You gh-pages branch is still full of rubbish you don&#8217;t need. Remove it all. Then make a dummy index page.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git rm -rf .
-$ echo "My Page" &gt; index.html
-$ git add index.html
-$ git commit -m "Added the index" .
-$ git push origin gh-pages</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Go back to the <strong>master</strong> folder and build the book:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
-$ cd master
-$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-If you are on Windows and using <strong>git bash</strong>, it will not recognise Ruby commands, so you will need to open a separate powershell window to run the <strong>bundle</strong> command. This should not be a problem on Linux and MacOS.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>This will create a directory called <strong>images</strong> and an html file called <strong>My_book.html</strong>.</p>
-</li>
-<li>
-<p>Rename <strong>My_book.html</strong> to <strong>index.html</strong> and copy it as well as the <strong>images</strong> directory into the <strong>gh-pages</strong> directory.</p>
-</li>
-<li>
-<p>Now go back into the <strong>gh-pages</strong> directory, add the <strong>images</strong> directory, and then <code>commit</code> and <code>push</code> the changes (the below commands assume you are sitting in the <code>master</code> directory):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ..
-$ cd gh-pages
-$ git add images
-$ git commit -m "Updated the website" .
-$ git push origin gh-pages</code></pre>
-</div>
+<div class="paragraph">
+<p>We tend to keep data separate from the programs. So you should make a <strong>different</strong> set of folders for your raw data and for the outputs of our programs.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -771,22 +713,44 @@ $ git push origin gh-pages</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-You <strong>MUST</strong> push to the <strong>gh-pages</strong> branch!! When you work in the <strong>master</strong> directory you <code>push</code> and <code>pull</code> to the <strong>master</strong> branch, and when you work in the <strong>gh-pages</strong> folder you <code>push</code> and <code>pull</code> from the <strong>gh-pages</strong> branch! If you mess this up you might have some painful cleaning up to do.
+<strong>DO NOT</strong> put any spaces in the names of your files or directories. Frequently <strong>LSDTopoTools</strong> asks for paths and filenames, and tells them apart with spaces. If your filename or directory has a space in it,  <strong>LSDTopoTools</strong> will think the name has ended in the middle and you will get an error.
 </td>
 </tr>
 </table>
 </div>
-</li>
-<li>
-<p>Okay, you should now be able to look at your website on: <a href="http://MYUSERNAME.github.io/MYREPONAME" class="bare">http://MYUSERNAME.github.io/MYREPONAME</a>, where <code>MYUSERNAME</code> is your github username and <code>MYREPONAME</code> is the name of the repo in which you stored your new book.</p>
-</li>
-</ol>
+</div>
+<div class="sect2">
+<h3 id="_directories_in_vagrant">4.2. Directories in Vagrant</h3>
+<div class="paragraph">
+<p>If you use our <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles">vagrantfiles</a> then you will need some specific directories. Our instructions assume this directory structure so if you have your own Linux box and you want to copy and paste things from our instructions then you should replicate this directory structure.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you use vagrant there will be directories in your host machine (i.e., your computer) and on the client machine (i.e., the Linux virtual machine that lives inside of you host machine). The file systems of these two computers are synced so if you change a file in one you will change the file in the other!
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_vagrant_directories_in_windows">4.2.1. Vagrant directories in windows</h4>
+<div class="paragraph">
+<p>In windows you should have a directory called something like <code>VagrantBoxes</code>. Inside this directory you need directories to store the vagrantfiles, and a directory called <code>LSDTopoTools</code>. The directories need to look like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">|-VagrantFiles
+  |-LSDTopoTools
+  |-Ubuntu32_FFTW
+    | vagrantfile
+  |-Ubuntu32
+    | vagrantfile</code></pre>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
-<div class="sectionbody">
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -794,87 +758,295 @@ You <strong>MUST</strong> push to the <strong>gh-pages</strong> branch!! When yo
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
+The names <code>VagrantBoxes</code> and <code>Ubuntu32</code>, <code>Ubuntu32_FFTW</code> don&#8217;t really matter; you just need to have a place to contain all your files associated with vagrant and within this subdirectories for vagrantfiles. If your vagrantfile is for and Ubuntu 32 bit system that includes FFTW then you might call the folder <code>Ubuntu32_FFTW</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+There <strong>MUST</strong> be an <code>LSDTopoTools</code> directory one level above your vagrantfile. This directory name is <strong>case sensitive</strong>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>I do not want any messy merging conflicts! To avoid this please keep the <strong>master</strong> and <strong>gh-pages</strong> separate on your computer!</p>
+<p>When you make the <code>LSDTopoTools</code> directory it will initially be empty. When you run <code>vagrant up</code> it will fill up with stuff (see below).</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>When checking out the code, check them out into two directories:</p>
+</div>
+<div class="sect3">
+<h4 id="_vagrant_directories_in_the_client_linux_machine">4.2.2. Vagrant directories in the client Linux machine</h4>
+<div class="paragraph">
+<p>If you use our vagrantfiles to set up <strong>LSDTopoTools</strong>, they will construct a file system. It will have a directory <code>LSDTopoTools</code> in the root directory and within that directory will be two directories called <code>Git_projects</code> and <code>Topographic_projects</code>. The file system looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">Ubuntu file system</div>
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">|-LSDTopoTools
+  |-Git_projects
+    |-LSDTopoTools_AnalysisDriver
+      |- lots and lots of files and some directories
+    |-LSDTopoTools_ChannelExtraction
+      |- lots and lots of files and some directories
+    |-More directories that hold source code
+  |-Topographic_projects
+    |-Test_data
+      |- Some topographic datasets</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These files are in the root directory so you can get to the by just using <code>cd \</code> and then the name of the folder:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDTopoTools/a_page.git master
-$ git clone https://github.com/LSDTopoTools/a_page.git gh-pages</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>In the gh-pages directory, check out the gh-pages branch and get rid of the master branch:</p>
+<div class="paragraph">
+<p>Here is the clever bit: after you have run <code>vagrant up</code> these folders will also appear in your host system. But they will be in your <code>VagrantBoxes</code> folder. So in Linux the path to the git projects folder is <code>/LSDTopoTools/Git_projects</code> and in Windows the path will be something like <code>C:\VagrantBoxes\LSDTopoTools\Git_projects</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_difference_between_the_source_code_and_the_programs">4.3. Difference between the source code and the programs</h3>
+<div class="paragraph">
+<p>You can download our various packages using <code>git</code>, but many of them will be downloaded automatically by our <strong>vagrantfiles</strong>. Suppose you were looking at the <code>LSDTopoTools_ChiMudd2014</code> package. In our Linux vagrant system, the path to this would be <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you type:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014
+&amp; ls</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Now, go back to the master branch, you can make changes there.</p>
-</li>
-<li>
-<p>When you commit changes to the master branch and you want to update the website, commit and push changes, then run bundle:</p>
+<div class="paragraph">
+<p>You will see a large number of files ending with <code>.cpp</code> and <code>.hpp</code>. These are files containing the instructions for computation. But they are not the program! You need to translate these files into something the computer can understand and for this you use a compiler. But there is another layer because we use lots of files so we need to compile lots of files, so we use something called a <code>makefile</code> which is a set of instructions about what bits of source code to mash together to make a program.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>*makefiles</strong> are in a folder called <code>driver_functions_MuddChi2014</code>. All of our packages have a directory with some variation of <code>driver</code> in the name. You need to go into this folder to get to the makefiles. You can see them with:</p>
+</div>
 <div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/driver_functions_MuddChi2014
+$ ls *.make</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will list a bunch of makefiles. By running the command <code>make -f</code> and then the name of a makefile you will compile a program. The <code>-f</code> just tells <code>make</code> that you are using a makefile with a specific name and not a file called <code>make</code>.</p>
+</div>
+<div class="paragraph">
+<p>Calling <code>make</code> with a <strong>makefile</strong> results in a program, that has the extension <code>.out</code> or <code>.exe</code>. The extension doesn&#8217;t really matter. We could have told the makefile to give the program the extension <code>.hibswinthecup</code> and it should still work (though it may take 114 years or so with this extension). BUT it will only work with the operating system within which it was compiled: in this case the Ubuntu system that vagrant set up.</p>
+</div>
+<div class="paragraph">
+<p>The crucial thing to realise here is that the program is located in the <code>driver_functions_MuddChi2014</code> directory. If you want to run this program you need to be in this directory. In Linux you can check what directory you are in by typing <code>pwd</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_know_where_your_data_is">4.4. Know where your data is</h3>
+<div class="paragraph">
+<p>When you run a makefile it will create a program sitting in some directory. Your data, if you are being clean and organised, will sit somewhere else.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You need to tell the programs where the data is! People raised on smartphones and tablets seem to struggle with this. In many laboratory sessions I have the computational equivalent of this converation: Student "I can&#8217;t get into my new apartment. Can you help?" Me: "Where did you put your keys?" Student: "I don&#8217;t know." Please don&#8217;t be that student.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Most of our programs need to look for another file, sometimes called a <strong>driver</strong> file and sometimes called a <strong>parameter</strong> file. We probably should use a consistent naming convention for these files but I&#8217;m afraid you will need to live with our sloppiness. You get what you pay for, after all.</p>
+</div>
+<div class="paragraph">
+<p>The programs will be in your source code folders, so for example, you might have a program called <code>get_chi_profiles.exe</code> in the <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/driver_functions_MuddChi2014</code> directory. You then have to tell this program where the driver or parameter file is:</p>
+</div>
+<div class="listingblock">
+<div class="title">A typical call to an <strong>LSDTopoTools</strong> program</div>
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-my/path/to/repo/book_template/master/
-$ git commit -m "My latest commit" .
-$ git push -u origin master
-$ bundle exec rake book:build_html</code></pre>
+/LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/driver_functions_MuddChi2014
+$ ./git_get_profiles.exe /LSDTopoTools/Topographic_projects/Test_data/ Example.driver</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the above examples, <code>./git_get_profiles.exe</code> is calling the program.</p>
+</div>
+<div class="paragraph">
+<p><code>/LSDTopoTools/Topographic_projects/Test_data/</code> is the folder where the driver/parameter file is. We tend to keep the topographic data and parameter files together. The final <code>/</code> is important: some of our programs will check for it but others won&#8217;t (sorry) and they will not run properly without it.</p>
+</div>
+<div class="paragraph">
+<p><code>Example.driver</code> is the filename of the driver/parameter file.</p>
+</div>
+<div class="paragraph">
+<p>In the above example it means that the parameter file will be in the folder <code>/LSDTopoTools/Topographic_projects/Test_data/</code> even though your program is in a different folder (<code>/LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/driver_functions_MuddChi2014/</code>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shell_cheat_sheet">5. Shell cheat sheet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here are some resources and commands that we hope you find useful.</p>
+</div>
+<div class="sect2">
+<h3 id="_external_resources">5.1. External resources</h3>
+<div class="paragraph">
+<p>You can start by watching the videos listed below (in the <a href="#Videos">[Videos]</a> section),
+but if you want more information there are numerous websites that list common shell commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://mally.stanford.edu/~sr/computing/basic-unix.html" class="bare">http://mally.stanford.edu/~sr/computing/basic-unix.html</a></p>
 </li>
 <li>
-<p>Now copy any new image files to the /images folder in the gh-pages branch (you will need to git add them),
-and rename <strong>My_book.html</strong> to <strong>index.html</strong> and copy to the gh-pages folder.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-my/path/to/repo/book_template/gh-pages/
-$ cd images
-$ git add &lt;filenames of new images&gt;
-$ cd ..
-$ git commit "updating website" .</code></pre>
-</div>
-</div>
+<p><a href="http://www.math.utah.edu/lab/unix/unix-commands.html" class="bare">http://www.math.utah.edu/lab/unix/unix-commands.html</a></p>
 </li>
 <li>
-<p>Now push the changes to the gh-pages branch</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-my/path/to/repo/book_template/gh-pages/
-$ git push -u origin gh-pages</code></pre>
-</div>
-</div>
+<p><a href="http://www.tutorialspoint.com/unix/unix-useful-commands.htm" class="bare">http://www.tutorialspoint.com/unix/unix-useful-commands.htm</a>
+*`http://freeengineer.org/learnUNIXin10minutes.html</p>
 </li>
-</ol>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want a gentle introduction to the shell,
+<a href="http://software-carpentry.org/">Software Carpentry </a> is an excellent resource.</p>
+</div>
+<div class="paragraph">
+<p>Software carpentry&#8217;s tutorials on the shell are here:
+<a href="http://software-carpentry.org/v5/novice/shell/index.html" class="bare">http://software-carpentry.org/v5/novice/shell/index.html</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_commands_that_will_save_you_vast_amounts_of_time">5.2. Commands that will save you vast amounts of time</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The linux and GNU developers have spent many hours writing help pages called <code>man</code> pages (short for "manual", as in, "read the manual"). For lots of detail on how to run some of these commands, you can usually type <code>man</code> followed by the name of the command, e.g. <code>man cp</code>. For more concise info, you can usually type <code>COMMAND --help</code>, e.g. <code>cp --help</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is a brief reference:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Essential commands</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cd /directory1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change directory to /directory1. See <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/3/html/Step_by_Step_Guide/s1-navigating-cd.html">notes here</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cd ..</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Go up a directory level</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all the files within a directory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ls -l</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all the files with details</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ls *pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all files ending with <code>pattern</code> (so you could look for python files with <code>ls *.py</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ls pattern*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all files starting with <code>pattern</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ls *pattern*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all files with <code>pattern</code> in them.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mv file1 file2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Moves a file. The files can have a directory path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cp file1 file2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copies file1 to file2. Can include a directory path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mkdir directoryname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Makes a directory with the name directoryname</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rm file1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes the file with filename file1. The pattern rules using <code>*</code> apply here (see <code>ls</code> commands).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rmdir directoryname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes the directory directoryname. <strong>It has to be empty</strong>. If you want to remove a directory that contains files you need to use <code>rmdir -r directroyname</code>. Be warned: mess this up and you can delete lots of files!! There is no undelete!</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Commands that will make things go <strong>MUCH</strong> faster</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tab</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autocompletes file and directory names.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl-e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Moves cursor to end of command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl-a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Moves cursor to beginning of command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Up and down arrows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scrolls through history of commands</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 16:23:10 UTC
+Last updated 2017-10-26 12:56:04 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

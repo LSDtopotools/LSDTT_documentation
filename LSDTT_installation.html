@@ -468,35 +468,61 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</a></li>
 </ul>
 </li>
+<li><a href="#_extra_dependencies_for_swaths_and_point_clouds">6. Extra dependencies for swaths and point clouds</a>
+<ul class="sectlevel2">
+<li><a href="#_install_the_point_cloud_library">6.1. Install the Point Cloud Library</a>
+<ul class="sectlevel3">
+<li><a href="#_ubuntu_14_and_12">6.1.1. Ubuntu 14 and 12</a></li>
+<li><a href="#_ubuntu_16_04_lts">6.1.2. Ubuntu 16.04 LTS</a></li>
+</ul>
+</li>
+<li><a href="#_extra_libraries_for_the_floodplain_and_terrace_extraction">6.2. Extra libraries for the floodplain and terrace extraction</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/LSD-logo.png" alt="LSD logo" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="index.html">Return to main LSDTopoTools documentation page</a></p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the installation instructions for <strong>LSDTopoTools</strong>, which is a collection of programs for analysing topography and modelling hydrology, landscape evolution and soil development.</p>
+<p>Welcome to the installation instructions for <a href="http://lsdtopotools.github.io/"><strong>LSDTopoTools</strong></a>, which is a collection of programs for analysing topography and modelling hydrology, landscape evolution and soil development.</p>
 </div>
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> is built for Linux operating systems. Most users will not use a Linux operating system as their day-to-day operating system; Windows and MacOS are much more popular. However, through the either virtualisation or containers you can build a Linux environment within any operating system. In fact, building either a virtual machine or a container has the advantage of ensuring that everyone useing these systems has the same environment. This precludes the "works on my machine" problem that is common amongst scientific software packages.</p>
+<p><strong>LSDTopoTools</strong> is built for Linux operating systems. Wait stop!! Where are you going? Come back!! We are going to get this to work on your computer, honest!</p>
 </div>
 <div class="paragraph">
-<p>In these documents you will find five flavours of <strong>LSDTopoTools</strong> installation instructions:</p>
+<p>Most users will not use a Linux operating system as their day-to-day operating system; Windows and MacOS are much more popular. However, through the either virtualisation or containers you can build a Linux environment within any operating system. In fact, building either a virtual machine or a container has the advantage of ensuring that everyone using these systems has the same environment. This precludes the "works on my machine" problem that is common amongst scientific software packages.</p>
+</div>
+<div class="paragraph">
+<p>In these documents you will find four flavours of <strong>LSDTopoTools</strong> installation instructions:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Installation using VirtualBox+Vagrant. This method is the most tested. You might consider this the default method.</p>
+<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>+https://www.vagrantup.com/[Vagrant]. This method is the most tested. You might consider this the default method.</p>
 </li>
 <li>
-<p>Installation using Docker. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
+<p>Installation using <a href="https://www.docker.com/">Docker</a>. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
 </li>
 <li>
-<p>Native installation on a Linux system. If your native system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need.</p>
+<p>Native installation on a Linux system. If your native operating system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need. The documents are made under the assumption that you use <a href="https://www.ubuntu.com/">Ubuntu</a>, but if you are a Linux user we are confident you&#8217;ll be able to port the instructions to your native system (usually this involves replacing <code>sudo apt-get</code> with <code>sudo yum</code>).</p>
 </li>
 <li>
-<p>University of Edinburgh installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific for Edinburgh students for use on the School of GeoSciences students.</p>
+<p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific for Edinburgh students for use on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers.</p>
 </li>
 </ul>
 </div>
@@ -511,12 +537,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> which is software for creating virtual machines, which are inplementations of operating systems that live in your host operating system (e.g., you can have a virtual Linux system operating within your Windows or MacOS operating system).</p>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> is software for creating virtual machines, which are implementations of operating systems that live in your host operating system (e.g., you can have a virtual Linux system operating within your Windows or MacOS operating system).</p>
 </li>
 <li>
-<p><a href="https://www.vagrantup.com/">Vagrant</a> which is software for managing and provisioning virtual machines.</p>
+<p><a href="https://www.vagrantup.com/">Vagrant</a> is software for managing and provisioning virtual machines.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you download Virtualbox 5.1 instead: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_1" class="bare">https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</a>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_quick_instructions">2.1. Quick instructions</h3>
@@ -526,7 +564,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and install <a href="https://www.virtualbox.org/">virtualbox</a>.</p>
+<p>Download and install <a href="https://www.virtualbox.org/">virtualbox</a>. As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you download Virtualbox 5.1 instead: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_1" class="bare">https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</a></p>
 </li>
 <li>
 <p>Download and install <a href="https://www.vagrantup.com/">vagrant</a>. You might have to restart your computer after this. <strong>You need to install virtualbox before you install vagrant, or you might get errors.</strong></p>
@@ -655,7 +693,7 @@ You will need sufficient space on your hard disk to host a guest operating syste
 <p>The 64 bit file is here: <a href="https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW</a></p>
 </li>
 <li>
-<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating sytstems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">for example see this link</a>, you should choose the 32 bit vagrantfile.</p>
+<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating systems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">for example see this link</a>, you should choose the 32 bit vagrantfile.</p>
 </li>
 <li>
 <p>Save one of these files into the directory for your vagrant files. See below for the appropriate directory structure.</p>
@@ -838,24 +876,22 @@ STUFF</code></pre>
 <div class="paragraph">
 <p>You can also jump directly there:</p>
 </div>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>$ cd /LSDTopoTools</pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>+
-. As you can see above, the <strong>LSDTopoTools</strong> folder contains folders for different <strong>LSDTopoTools</strong> packages, for topographic datasets.</p>
-</div>
-<div class="paragraph">
-<p>+
-. Here is the amazing thing: the files that are in LSDTopoTools folder in your vagrant box <strong>ARE ALSO</strong> visible, and synced, in your host computer.
+</li>
+<li>
+<p>As you can see above, the <strong>LSDTopoTools</strong> folder contains folders for different <strong>LSDTopoTools</strong> packages, for topographic datasets.</p>
+</li>
+<li>
+<p>Here is the amazing thing: the files that are in LSDTopoTools folder in your vagrant box <strong>ARE ALSO</strong> visible, and synced, in your host computer.
 So if you use <strong>LSDTopoTools</strong> to do some analysis within your vagrant box, you will be able to see the files within your host computer as well.
-This means that you can, for example, do a Linux based <strong>LSDTopoTools</strong> analysis and then plot that analysis in a GIS on your host windows box without having to transfer files.
-Not only that, but you can modify the code, update python scripts, change parameter files, etc., with your favourite text editor in Windows (or OSX, or whatever) and those files will be visible to your Vagrant box. Fantastic!</p>
+This means that you can, for example, do a Linux-based <strong>LSDTopoTools</strong> analysis and then plot that analysis in a GIS on your host windows box without having to transfer files.
+Not only that, but you can modify the code, update python scripts, change parameter files, etc., with your favourite text editor in Windows (or MacOS, or whatever) and those files will be visible to your Vagrant box. Fantastic!</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -884,7 +920,7 @@ PS: &gt; vagrant provision</code></pre>
 <div class="sect3">
 <h4 id="_if_you_want_to_start_from_scratch">2.2.6. If you want to start from scratch</h4>
 <div class="paragraph">
-<p>If you want to remove the virtual machine, start it up and than run <a href="https://www.vagrantup.com/docs/cli/destroy.html">vagrant destroy</a>:</p>
+<p>If you want to remove the virtual machine, start it up and then run <a href="https://www.vagrantup.com/docs/cli/destroy.html">vagrant destroy</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1076,14 +1112,14 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 <h3 id="_should_i_use_docker_or_vagrant">3.1. Should I use Docker or Vagrant?</h3>
 <div class="paragraph">
 <p>There are <a href="https://deliciousbrains.com/vagrant-docker-wordpress-development/">many</a>, <a href="https://www.vagrantup.com/intro/vs/docker.html">many</a>, <a href="https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment">many</a> <a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/">articles</a> comparing vagrant to docker.
-The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Entreprise. It does work on any recent version of Linux and MacOS. However the developers of <strong>LSDTopoTools</strong> don&#8217;t have access to Windows 10 Entreprise so can&#8217;t test the Docker versions on Windows, so we can&#8217;t offer support of this installation option.
+The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Enterprise. It does work on any recent version of Linux and MacOS. However the developers of <strong>LSDTopoTools</strong> don&#8217;t have access to Windows 10 Enterprise so can&#8217;t test the Docker versions on Windows, so we can&#8217;t offer support of this installation option.
 However if you have MacOS, native Linux or Windows 10 Enterprise you should consider using Docker since it involves fewer steps than our VirtualBox+Vagrant setup.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_the_lsdtopotools_docker_container">3.2. The LSDTopoTools docker container</h3>
 <div class="paragraph">
-<p><a href="https://www.docker.com/">Docker</a> is software for creating an managing <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>. These containers are not complete operating systems, like one creates using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a>, so the boot time is quicker. Docker is perhaps simpler to use but oes not work on every operating system.</p>
+<p><a href="https://www.docker.com/">Docker</a> is software for creating and managing <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>. These containers are not complete operating systems, like one creates using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a>, so the boot time is quicker. Docker is perhaps simpler to use but does not work on every operating system.</p>
 </div>
 <div class="paragraph">
 <p>The instructions here are a slight modification of <a href="https://hub.docker.com/r/afriel/lsdtopotools/">instructions</a> from <a href="https://github.com/AaronFriel">Aaron Friel</a>.</p>
@@ -1095,6 +1131,9 @@ However if you have MacOS, native Linux or Windows 10 Enterprise you should cons
 <ol class="arabic">
 <li>
 <p>Download and install <a href="https://www.docker.com/docker-windows">Docker for Windows</a> (only works with Windows 10 enterprise), <a href="https://www.docker.com/docker-mac">Docker for Mac</a>, or Docker for <a href="https://www.docker.com/docker-ubuntu">Ubuntu</a> or <a href="https://www.docker.com/docker-debian">Debian</a>.</p>
+</li>
+<li>
+<p>On Mac we recommend installing docker using brew: <code>brew cask install docker</code></p>
 </li>
 <li>
 <p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\DockerBoxes\LSDTopoTools\</code>.</p>
@@ -1129,7 +1168,10 @@ empty, you will need to run the install script. In the prompt, enter:
 <code>install.sh</code> and hit <code>enter</code>.</p>
 </li>
 <li>
-<p>Follow docker documetation for your operating system to start and shut down docker containers.</p>
+<p>Some users have reported permissions problems with running <code>install.sh</code> on a fresh docker install. If this happens you need to run this command <code>chmod 0744 /bin/install.sh</code> to update the permissions on the install script and then run <code>install.sh as normal.</code></p>
+</li>
+<li>
+<p>Follow docker documentation for your operating system to start and shut down docker containers.</p>
 </li>
 </ol>
 </div>
@@ -1315,10 +1357,183 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_extra_dependencies_for_swaths_and_point_clouds">6. Extra dependencies for swaths and point clouds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some of our tools require the point cloud library. TO get this working you need a few different utilities and libraries (take a deep breath)</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>cmake</code> utility. This is like <code>make</code> but is required for our tools that examine point clouds,
+since it is required by something called the <a href="http://pointclouds.org/">point cloud library</a>.</p>
+</li>
+<li>
+<p><a href="http://pointclouds.org/">pcl</a>: The Point Cloud Library.</p>
+</li>
+<li>
+<p><a href="http://www.liblas.org/">libLAS</a>: a library for working with LAS format data.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Our Vagrant installation installs these automatically. The docker installation (since it is 3rd party) does not. However you can install on an Ubuntu system (and the Docker installation is Ubuntu) using the following instructions.</p>
+</div>
+<div class="sect2">
+<h3 id="_install_the_point_cloud_library">6.1. Install the Point Cloud Library</h3>
+<div class="paragraph">
+<p>If you are using an older version of ubuntu there is a package. Newer versions of Ubuntu don&#8217;t have it, so you will need to install by hand</p>
+</div>
+<div class="sect3">
+<h4 id="_ubuntu_14_and_12">6.1.1. Ubuntu 14 and 12</h4>
+<div class="paragraph">
+<p>This is relatively painless (we hope):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+$ sudo apt-get update
+$ sudo apt-get install libpcl-all</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ubuntu_16_04_lts">6.1.2. Ubuntu 16.04 LTS</h4>
+<div class="paragraph">
+<p>If you are using ubuntu 16.04, the above commands won&#8217;t work as the repository is broken. You can install the <code>pcl</code> library using the following steps:</p>
+</div>
+<div class="paragraph">
+<p>Install oracle-java8-jdk:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo add-apt-repository -y ppa:webupd8team/java &amp;&amp; sudo apt update &amp;&amp; sudo apt -y install oracle-java8-installer</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install various dependencies and pre-requisites:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt -y install g++ cmake cmake-gui doxygen mpi-default-dev openmpi-bin openmpi-common libusb-1.0-0-dev libqhull* libusb-dev libgtest-dev
+$ sudo apt -y install git-core freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libphonon-dev libphonon-dev phonon-backend-gstreamer
+$ sudo apt -y install phonon-backend-vlc graphviz mono-complete qt-sdk libflann-dev libflann1.8 libboost1.58-all-dev
+
+$ cd ~/Downloads
+$ wget http://launchpadlibrarian.net/209530212/libeigen3-dev_3.2.5-4_all.deb
+$ sudo dpkg -i libeigen3-dev_3.2.5-4_all.deb
+$ sudo apt-mark hold libeigen3-dev
+
+$ wget http://www.vtk.org/files/release/7.1/VTK-7.1.0.tar.gz
+$ tar -xf VTK-7.1.0.tar.gz
+$ cd VTK-7.1.0 &amp;&amp; mkdir build &amp;&amp; cd build
+$ cmake ..
+$ make
+$ sudo make install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install Point Cloud Library v1.8:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
+$ wget https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.0.tar.gz
+$ tar -xf pcl-1.8.0.tar.gz
+$ cd pcl-pcl-1.8.0 &amp;&amp; mkdir build &amp;&amp; cd build
+$ cmake ..
+$ make
+$ sudo make install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Do some clean up:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
+$ rm libeigen3-dev_3.2.5-4_all.deb VTK-7.1.0.tar.gz pcl-1.8.0.tar.gz
+$ sudo rm -r VTK-7.1.0 pcl-pcl-1.8.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should now have pcl installed on your system! You can do a small test of the installation if you want to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
+$ mkdir pcl-test &amp;&amp; cd pcl-test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a CMakeLists.txt file and save this in the directory <code>pcl-test</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+project(pcl-test)
+find_package(PCL 1.2 REQUIRED)
+
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable(pcl-test main.cpp)
+target_link_libraries(pcl-test ${PCL_LIBRARIES})
+
+SET(COMPILE_FLAGS "-std=c++11")
+add_definitions(${COMPILE_FLAGS})</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a file and call it <code>main.cpp</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; "hello, world!" &lt;&lt; std::endl;
+    return (0);
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compile the cpp file and then test it :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir build &amp;&amp; cd build
+$ cmake ..
+$ make
+$ ./pcl-test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output should be <code>hello, world!</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_extra_libraries_for_the_floodplain_and_terrace_extraction">6.2. Extra libraries for the floodplain and terrace extraction</h3>
+<div class="paragraph">
+<p>You might find you need to install a couple of other libraries for the floodplain and terrace drivers to compile properly. If you are using Ubuntu, you can do this using the following commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get update
+$ sudo apt-get install libgoetiff-dev
+$ sudo apt-get install liblas-dev</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 09:41:11 UTC
+Last updated 2017-10-31 09:57:51 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

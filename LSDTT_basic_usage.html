@@ -5,8 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="Simon M. Mudd, Fiona J. Clubb, and Boris Gailleton, School of GeoSciences, University of Edinburgh">
-<title>User guide to chi analysis</title>
+<meta name="author" content="Simon M. Mudd School of GeoSciences, University of Edinburgh">
+<title>Introduction to using LSDTopoTools</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,49 +427,1101 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
-<h1>User guide to chi analysis</h1>
+<h1>Introduction to using LSDTopoTools</h1>
 <div class="details">
-<span id="author" class="author">Simon M. Mudd, Fiona J. Clubb, and Boris Gailleton, School of GeoSciences, University of Edinburgh</span><br>
+<span id="author" class="author">Simon M. Mudd School of GeoSciences, University of Edinburgh</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction_and_overview">1. Introduction and overview</a>
+<ul class="sectlevel2">
+<li><a href="#_the_basic_structure_of_an_analysis">1.1. The basic structure of an analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_running_a_typical_analysis">1.1.1. Running a typical analysis</a></li>
+<li><a href="#_how_do_i_change_my_parameter_files">1.1.2. How do I change my parameter files?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopotools using the LSDTT_BasicMetrics program.</a>
+<ul class="sectlevel2">
+<li><a href="#_your_first_analysis_using_lsdtopotools">2.1. Your first analysis using LSDTopoTools</a>
+<ul class="sectlevel3">
+<li><a href="#_download_and_run_the_setup_tool">2.1.1. Download and run the setup tool</a></li>
+<li><a href="#_run_a_basic_analysis">2.1.2. Run a basic analysis</a></li>
+</ul>
+</li>
+<li><a href="#_getting_surface_metrics">2.2. Getting surface metrics</a>
+<ul class="sectlevel3">
+<li><a href="#_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</a></li>
+</ul>
+</li>
+<li><a href="#_draniage_area_and_channel_extraction">2.3. Draniage area and channel extraction</a>
+<ul class="sectlevel3">
+<li><a href="#_questions_for_channel_extraction">2.3.1. Questions for channel extraction.</a></li>
+</ul>
+</li>
+<li><a href="#_summary">2.4. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_analysis_options_for_the_lsdtt_basicmetrics_program">Appendix A: Analysis options for the LSDTT_BasicMetrics program</a>
+<ul class="sectlevel2">
+<li><a href="#_basic_file_input_and_output">A.1. Basic file input and output</a></li>
+<li><a href="#_dem_preprocessing">A.2. DEM preprocessing</a></li>
+<li><a href="#_basic_data_output">A.3. Basic data output</a></li>
+<li><a href="#_surface_fitting">A.4. Surface fitting</a></li>
+<li><a href="#_drainage_area_extraction">A.5. Drainage area extraction</a></li>
+<li><a href="#_basic_channel_extraction_and_printing">A.6. Basic channel extraction and printing</a></li>
+<li><a href="#_more_advanced_channel_and_basin_selection">A.7. More advanced channel and basin selection</a>
+<ul class="sectlevel3">
+<li><a href="#_basic_parameters_for_the_chi_coordinate">A.7.1. Basic parameters for the chi coordinate</a></li>
+</ul>
+</li>
+<li><a href="#_example_parameter_files">A.8. Example parameter files</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/preface.asc[]</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/LSD-logo.png" alt="LSD logo" width="200">
+</div>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/01-introduction/1-introduction.asc[]</p>
+<p><a href="index.html">Return to main <strong>LSDTopoTools</strong> landing page</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction_and_overview">1. Introduction and overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document takes you through an inital <strong>LSDTopoTools</strong> analysis. Through the tutorials contained here we will demonstrate how our analysis programs run: they all share a common interface.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Before you start</div>
+<div class="paragraph">
+<p>Before you start you need to install <strong>LSDTopoTools</strong>. If you haven&#8217;t done that, please follow the link below.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/02-getting-the-software/getting-the-software.asc[]</p>
+<p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/03-preparing-your-data/preparing-your-data.asc[]</p>
+<p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_basic_structure_of_an_analysis">1.1. The basic structure of an analysis</h3>
+<div class="paragraph">
+<p>Our analyses are packaged into separate programs. They are run from the Linux shell. All of our programs operate the same way:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You keep the program and the data in two different directories.</p>
+</li>
+<li>
+<p>The directory with the data also has a parameter file, which contains instructions for the program.</p>
+</li>
+<li>
+<p>You have to tell the program where the data directory is, as well as the name of the parameter file. You do this from the command line.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/04-running-chi-analysis/running-chi-analysis.asc[]</p>
+<p>The basic structure looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic_analysis.png" alt="The basic structre of an LSDTopoTools analysis" width="400">
+</div>
+<div class="title">Figure 1. All <strong>LSDTopoTools</strong> analyses work like this.</div>
+</div>
+<div class="sect3">
+<h4 id="_running_a_typical_analysis">1.1.1. Running a typical analysis</h4>
+<div class="paragraph">
+<p>In the next section we will walk you though an analysis. But reading this will help you understand where you are going.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We usually keep two terminal windows open.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The first one is in the directory with the program. We call the program from here.</p>
+</li>
+<li>
+<p>The second one is in the directory with the data. The main reasen we keep this open is to use the <code>pwd</code> command to copy the directory name into the first terminal window.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the first window you call the program. It will look like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./An_LSDTT_program.exe /LSDTopoTools/Topographic_projects/A_project AParameterFile.param</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The program name (<code>./An_LSDTT_program.exe</code>), the directory name (<code>/LSDTopoTools/Topographic_projects/A_project</code>) and the paremeter file name (<code>AParameterFile.param</code>) will change but all *LSDTopoTools calls follow this same basic structure.</p>
+</li>
+<li>
+<p>Now, all parameter files have these basic elements in them:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">read path: /LSDTopoTools/Topographic_projects/A_project
+write path: /LSDTopoTools/Topographic_projects/A_project
+read fname: Data_prefix
+write fname: Data_prefix</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/05-visualisation/visualisation.asc[]</p>
+<p><strong>You need to change the path and fnames to reflect your data!</strong>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_do_i_change_my_parameter_files">1.1.2. How do I change my parameter files?</h4>
+<div class="paragraph">
+<p>Just edit your paramter files in a text editor. This is just a program that edits plain text. <strong>DO NOT</strong> use a word processor. These modify file types. There are many options for text editors but we like <a href="http://brackets.io/">Brackets</a>. <a href="https://atom.io/">Atom</a> is also a nice alternative.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/06-example-analyses/examples-of-chi-analysis.asc[]</p>
+<p>However, editing the paths can be a bit annoying if you are moving data from place to place, so we have a python script, called <code>LSDTTParamfileUpdater.py</code> that updates the paths in the parameter file for you. The way you run that is:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download the script into your data folder (i.e. in the second terminal window you have open above):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the file</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Once you&#8217;ve done this you are ready to call the program!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopotools using the LSDTT_BasicMetrics program.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter will walk you through some basic topographic analysis using our program <strong>LSDTT_BasicMetrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. It can calculate drainage area. It can also extract channel networks. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The slope and curvature metrics in typical GIS software only uses information from the nearest pixels. We fit a polynomial surface from a neighbourhood of pixels. See <a href="http://onlinelibrary.wiley.com/doi/10.1029/2011JF002057/abstract">Hurst et al., 2012, DOI: 10.1029/2011JF002057</a> and <a href="https://www.earth-surf-dynam.net/4/627/2016/">Grieve et al., 2016, doi:10.5194/esurf-4-627-2016</a> for the rationale.</p>
+</li>
+<li>
+<p>Our channel extractions for the d8 method are based on the <a href="http://www.sciencedirect.com/science/article/pii/S0169555X12004618">FASTSCAPE</a> algorithm and are <strong>MUCH</strong> faster than running channel extraction in typical GIS software.</p>
+</li>
+<li>
+<p>The program does some data preprocessing behind the scenes that you would need to do manually in a GIS.</p>
+</li>
+<li>
+<p>We have automated some basin selection routines, which again you would need to do by hand in a GIS.</p>
+</li>
+<li>
+<p>Our channel extraction spits out networks with drainage areas, locations, chi coordinates and all sorts of other goodies that again, would take ages on a GIS.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/07-concavity/calculating-concavity.asc[]</p>
+<p>The examples in this section are used for both <strong>LSDTopoTools</strong> workshops as well as in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Before you start</div>
+<div class="paragraph">
+<p>Before you start you need to install <strong>LSDTopoTools</strong>. If you haven&#8217;t done that, please follow the link below.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/08-annexes/annexes.asc[]</p>
+<p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
+</div>
+<div class="paragraph">
+<p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_your_first_analysis_using_lsdtopotools">2.1. Your first analysis using LSDTopoTools</h3>
+<div class="paragraph">
+<p>We are going to run an <strong>LSDTopoTools</strong> program that is used for basic topographic analysis.</p>
+</div>
+<div class="sect3">
+<h4 id="_download_and_run_the_setup_tool">2.1.1. Download and run the setup tool</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need to open a terminal or shell window. If you don&#8217;t know what this is <a href="LSDTT_installation.html">read the installation instructions</a>.</p>
+</li>
+<li>
+<p>First open a terminal window. This will be in either a vagrant server, a docker container, an NX window or your native linux system, depending on how you <a href="LSDTT_installation.html">installed <strong>LSDTopoTools</strong></a>. Once you are in a terminal window, you will see some text and then a <code>$</code> symbol which tells you that the linux machine is waiting for a command. Type your commands after this symbol (in docker this might be a <code>#</code> symbol).</p>
+</li>
+<li>
+<p>We are going to download a python script into your home directory. The <code>cd ~</code> command gets you to your home diretory in linux. Go there and then download a file using <code>wget</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
+$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Make sure the <code>wget</code> call (with the web address) is all on one line.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now we run the setup tool. Doing this will trigger a bunch of stuff that will take a few minutes. You could waste some time <a href="https://twitter.com/David_Rudnick/status/923196115910119424">on the internet</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are on a native linux machine or Edinburgh servers, this will install <strong>LSDTopoTools</strong> in your home directory. In docker or vagrant it will install in the root directory (<code>/</code>).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_a_basic_analysis">2.1.2. Run a basic analysis</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We need two terminal windows open. You already have one open, so open another one. I will colour note the terminal (<span class="red">Terminal 1</span> or <span class="blue">Terminal 2</span>) in each step</p>
+</li>
+<li>
+<p><span class="red">Terminal 1</span> In the first terminal do the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><span class="red">Terminal 1</span> In docker or vagrant:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><span class="red">Terminal 1</span> In a native linux or on Edinburgh&#8217;s servers type:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><span class="red">Terminal 1</span> We will explain all this stuff in more detail later, for now just execute the commands.</p>
+</li>
+<li>
+<p><span class="blue">Terminal 2</span> Now in the other terminal window type:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For vagrant/docker:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For native linux/Edinburgh:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><span class="blue">Terminal 2</span> We want to update the path names. So get the path updater script and run it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py
+$ python LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><span class="red">Terminal 1</span> Okay, now go back to the first terminal window. Type the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For docker/vagrant</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For native Linux/Edinburgh servers</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><span class="red">Terminal 1</span> If you had all the directory names correct, you will get some text to screen that ends with a statement about hillshading. In fact all this does is print a hillshade of the raster.</p>
+</li>
+<li>
+<p>You can look at this raster in <a href="http://www.qgis.org/en/site/">QGIS</a>. We have some <a href="LSDTT_QGIS.html">instructions for QGIS</a>, if you want to see instructions for <a href="LSDTT_QGIS.html#_adding_data">adding data click here</a>.</p>
+</li>
+<li>
+<p>Open QGIS and load the raster. The new raster is in the same directory with your other data and is called <code>WA_FirstExample_hs.bil</code>.The data will look like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_HS.jpg" alt="Whiteadder hillshade">
+</div>
+<div class="title">Figure 2. A hillshade of the Whiteadder catchement</div>
+</div>
+</li>
+<li>
+<p>As you can see, the DEM has quite a few artefacts. There isn&#8217;t much we can do about that, I&#8217;m afraid.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_surface_metrics">2.2. Getting surface metrics</h3>
+<div class="paragraph">
+<p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:
+* First we make sure directories are correct in the <strong>driver</strong> file. This should have already happened if you have run <code>LSDTTParamfileUpdater.py</code>.
+* Second, we call <code>LSDTT_BasicMetrics.out</code> in the terminal.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the program:</p>
+</li>
+<li>
+<p><span class="red">Terminal 1</span> We run the program again, but with a new driver file. Type the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For docker/vagrant</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics02.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For native Linux/Edinburgh servers</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics02.driver</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>This does more stuff. We can look at the <strong>driver file</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
+# Comments are preceded by the hash symbol
+
+# These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/
+write path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/
+read fname: WA
+write fname: WA_SecondExample
+channel heads fname: NULL
+
+# Parameters for surface metrics
+surface_fitting_radius: 11
+print_slope: true
+print_aspect: true
+print_curvature: true
+print_tangential_curvature: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In this case the program is printing <strong>slope</strong>, <strong>aspect</strong>, <strong>curvature</strong>, and <strong>tangential curvature</strong> rasters. They have filenames that reflect their contents so have a look. Slope tells you how steep the landscape is, aspect which direction the surface is pointing, curvature how, uh, curvy the landscape is (mathematically it is how quickly slope changes in space) and the tangential curvature is how curvy the landscape is in the direction of steepest descent. Essentially tangential curvature tells you how tightly curved contours are and is useful for finding valleys.</p>
+</li>
+<li>
+<p>The way these are calculated is by fitting a surface of radius <code>surface_fitting_radius</code> to the points in the DEM and then calculating derivatives of that surface.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Try changing the <code>surface_fitting_radius</code>. What happens?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_draniage_area_and_channel_extraction">2.3. Draniage area and channel extraction</h3>
+<div class="paragraph">
+<p>Finally, we will compute some drainage areas and extract a channel network. To do this run the <strong>driver file</strong> <code>WA_BasicMetrics03.driver</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the program using:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>OR</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+I am going to let you figure out which one to use&#8230;&#8203;you will need to work this out on your own at some point.</p>
+</div>
+<div class="paragraph">
+<p>+
+. Yet more stuff will come out. Some are drainage area rasters, but there is also a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
+</div>
+<div class="paragraph">
+<p>+
+. You will get a file with point, which you can load into QGIS. You can read about how to do that <a href="LSDTT_QGIS.html#_import_point_data_from_text_or_spreadsheet">in our QGIS instructions</a>. You will get something that looks a bit like this:</p>
+</div>
+<div class="paragraph">
+<p>+
+.A simple channel network
+image::images/WA_CN.jpg[Whiteadder channel network]</p>
+</div>
+<div class="sect3">
+<h4 id="_questions_for_channel_extraction">2.3.1. Questions for channel extraction.</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Try changing the <code>threshold_contributing_pixels</code> parameter. What happens to the channel network?</p>
+</li>
+<li>
+<p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read fname:</code> parameter to reflect the smoothed raster.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary">2.4. Summary</h3>
+<div class="paragraph">
+<p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/03-more-advanced-options/more-advanced-options.asc[]</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analysis_options_for_the_lsdtt_basicmetrics_program">Appendix A: Analysis options for the LSDTT_BasicMetrics program</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All <strong>LSDTopoTools</strong> parameter files have the same format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># comment
+keyword: value
+keywords with spaces: value</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The parameter file has a specific format, but the filename can be anything you want. We tend to use the extensions <code>.param</code> and <code>.driver</code> for these files, but you could use the extension <code>.MyDogSpot</code> if that tickled your fancy.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">LSDTopoTools parameter file format</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>#</code> denotes a comment. The program will ignore line that start with this symbol.</p>
+</li>
+<li>
+<p>Keywords or phrases are followed by a colon (<code>:</code>).</p>
+</li>
+<li>
+<p>Keywords <strong>MUST be spelled exactly</strong>. They are not case sensitive. If you have a leading space it will not work. If you have a space before the colon (<code>:</code>) it will not work.</p>
+</li>
+<li>
+<p>The order of the keywords do not matter.</p>
+</li>
+<li>
+<p>If a keyword is not found, a default value is assigned. That is, you don&#8217;t need to worry about forgetting an essential parameter since they all are assigned default values.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Input format</div>
+<div class="paragraph">
+<p>Below are options for the parameter files. For these programs there are options for converting to point data, which requires georeferencing. Therefore, all DEMs must be in ENVI <code>bil</code> format (<strong>DO NOT</strong> use ArcMap&#8217;s bil format: these are two different things. See the section <a href="#Preparing your data">[Preparing your data]</a> if you want more details).
+The reason we use <code>bil</code> format is because it retains georeferencing which is essential to our file output since many of the files output to <code>csv</code> format with latitude and longitude as coordinates.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_file_input_and_output">A.1. Basic file input and output</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path to which data is written. <strong>The code will NOT create a path: you need to make the write path before you start running the program.</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path from which data is read.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write fname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix of rasters to be written <strong>without extension</strong>.
+For example if this is <code>Test</code> and you have selected <code>bil</code> format then a fill operation will result in a file called <code>Test_Fill.bil</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read fname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The filename of the raster to be read without extension. For example if the raster is <code>MyRaster.bil</code>, read fname will be <code>MyRaster</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">channel heads fname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The filename of a channel heads file. You can import channel heads. If this is set to <code>NULL</code> then the channels will be calculated using a pixel threshold.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_dem_preprocessing">A.2. DEM preprocessing</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have the <code>remove_seas</code> keyword set to true, the program will change any elevation node below this value to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have the <code>remove_seas</code> keyword set to true, the program will change any elevation node above this value to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove_seas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this changes extreme value in the elevation to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min_slope_for_fill</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum slope between pixels for use in the fill function.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">raster_is_filled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, the code assumes the raster is already filled and doesn&#8217;t perform the filling routine. This should save some time in computation, but make sure the raster really is filled or else you will get segmentation faults!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only_check_parameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this checks parameter values but doesn&#8217;t run any analyses. Mainly used to see if raster files exist.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_basic_data_output">A.3. Basic data output</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">convert_csv_to_geojson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this converts any csv file (except for slope-area data) to geojson format. This format takes up much more space than csv (file sizes can be 10x larger) but is georeferenced and can be loaded directly into a GIS. Also useful for webmapping. It assumes your raster is in UTM coordinates, and prints points with latitude and longitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_raster_without_seas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints a raster that has removed the seas (and very high peaks). This is useful if your NoDataValue is not registering and you use the <code>minimum_elevation</code>, <code>maximum_eleation</code>, and <code>remove_seas</code> flags to correct this. <strong>WARNING!</strong> This overwrites your original raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_fill_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the fill raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hillshade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the hillshade raster. The format of this is stupidly different from other printing calls for a stupid inheritance reason. Try to ignore. Most GIS routines have a hillshading options but for some reason they look crappier than our in-house hillshading. I&#8217;m not sure why but if you want a hillshade I recommend using this function.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_distance_from_outlet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints a raster that gives the distance from the outlet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_wiener_filtered_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This returns a filtered raster using something called a <a href="https://en.wikipedia.org/wiki/Wiener_filter">Wiener filter</a>. It is a rather fancy way to smooth topography. Note that this uses a memory-hungry <a href="https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">fourier transform</a> and so will struggle or even crash on large DEMs.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_surface_fitting">A.4. Surface fitting</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. These are options for polynomial surface fitting.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">surface_fitting_radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The radius of the polynomial window over which the surface is fitted. If you have lidar data, we have found that a radius of 5-8 metres works best.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_smoothed_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints a raster of elevations that have been smoothed over the polynomial window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_slope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the topographic gradient raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_aspect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the aspect raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the curvature raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_planform_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the planform curvature raster. That is the curvature of the countour lines.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_profile_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the profile curvature raster. That is the curvature along the line of steepest descent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_tangential_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the tangential curvature raster. This is the curvature perpendicular to the line of steepest descent. A bit like the planform curvature but adjusted for slope.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_point_classification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints a point classification raster. This takes the value 1 if there is a peak, 2 if there is a depression and 3 if there is a saddle.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_drainage_area_extraction">A.5. Drainage area extraction</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 5. These are options for drainage area extraction.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">surface_fitting_radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The radius of the polynomial window over which the surface is fitted. If you have lidar data, we have found that a radius of 5-8 metres works best.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_dinf_drainage_area_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints drainage area calculated using the d-infinity algorithm.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_d8_drainage_area_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints drainage area calculated using the d8 algorithm. This is simply the steepest of the 8 nearest neighbours.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_QuinnMD_drainage_area_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints drainage area calculated using the Quinn algorithm. This is a multiple flow direction algorithm.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_FreemanMD_drainage_area_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints drainage area calculated using the Freeman algorithm. This is a multiple flow direction algorithm.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_MD_drainage_area_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints drainage area calculated using the multidirectional algorithm. This is a multiple flow direction algorithm. Unlike the Quinn and Freeman algorithms it makes no attempt whatsoever to control dispersion.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_basic_channel_extraction_and_printing">A.6. Basic channel extraction and printing</h3>
+<div class="paragraph">
+<p>This simply gets a channel network and prints its location. It is a rather rudimentary way of seeing where channels are. More advanced options are in the next table.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 6. These are options for drainage area extraction.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_stream_order_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the stream order raster (but printing this to csv is more efficient, use <code>print_channels_to_csv</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_channels_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints the channel network to a csv file. Includes stream order and other useful information. Much more memory efficient than printing the whole raster. It prints <strong>all</strong> channel nodes across the DEM rather than printing nodes upstream of selected basins. <strong>If you want to see the channels selected for chi analysis use <code>print_chi_data_maps</code>.</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_junction_index_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the junction index raster (but printing this to csv is more efficient, use <code>print_junctions_to_csv</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_junctions_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints the junction indices to a csv file. Much more memory efficient than printing the whole raster.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_more_advanced_channel_and_basin_selection">A.7. More advanced channel and basin selection</h3>
+<div class="paragraph">
+<p>These options give you a bit of control over selecting basins.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you just want the largest complete basin, set <code>find_largest_complete_basins: true</code> <strong>AND</strong> <code>maximum_basin_size_pixels: 10e20</code> (or any really big number).
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 7. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find_basins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is true, it i) Gets all the basins in a DEM and takes those between the <code>minimum_basin_size_pixels</code> and <code>maximum_basin_size_pixels</code>. It then removes basins that are influenced by the edge of the DEM, and then removes nested basins. The reason for removing basins draining the edge is that all drainage areas and chi coordinates require that the basin is complete. If not, your areas and chi coordinate, will be incorrect.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BaselevelJunctions_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You can write a file that contains a list of junction numbers (to see where they are, use <code>print_junctions_to_csv</code>) to get basins above specific junctions only. The file format is just a list of integers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CHeads_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reads a channel heads file. It will supercede the <code>threshold_contributing_pixels</code> flag. That is, if you give a valid CHeads filename the code will ignore the threshold pixels and use the sources in the file instead. You can calculate channel heads using our <a href="https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction">channel extraction tools</a>. The file needs to be a <strong>csv</strong> file and you pass the filename <strong>WITHOUT EXTENSION</strong>. The format of the filename is one with 5 columns: <code>node_index,row,col,x,y</code>. The <code>x,y</code> coordinates are in local UTM coordinates.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">threshold_contributing_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels required to generate a channel (i.e., the source threshold).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum_basin_size_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum number of pixels in a basin for it to be retained. This operation works on the baselevel basins: subbasins within a large basin are retained.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_basin_size_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum number of pixels in a basin for it to be retained. This is only used by <code>find_complete_basins_in_window</code> but that algorithm for selecting basins is the default.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">extend_channel_to_node_before_receiver_junction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, the channel network will extend beyond selected baselevel junctions downstream until it reaches the pixel before the receiver junction. If false, the channel simply extends upstream from the selected basin. The reason for this switch is because if one if extracting basins by drainage order, then the, say, a 2nd order drainage basin starts at the node immediately upstream of the most upstream 3rd order junction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only_take_largest_basin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is true, a chi map is created based only upon the largest basin in the raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_basin_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints a raster with the basins. <strong>IMPORTANT!</strong> This should be set to true if you want to use any of our <a href="https://github.com/LSDtopotools/LSDMappingTools">python plotting functions</a> that use basin information. Note that if this is true it will also print csv files with basin numbers and source numbers to assist plotting.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_chi_data_maps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This prints the channel networks (a bit like <code>print_channels_to_csv</code>) but contains <strong>MUCH</strong> more informatioon: elevation, flow distance, dranage area (from d8), the chi coordinate (have a look at our <a href="LSDTT_chi_analysis.html">chi documentation for more details</a>) and various keys to sources and basins so you can colour or sort channels by basin or tributary if you want. If you are going to work with channels using <strong>LSDTT_BasicMetrics</strong> this is the output to use.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_basic_parameters_for_the_chi_coordinate">A.7.1. Basic parameters for the chi coordinate</h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 8. Parameters for calculating the chi coordinate.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A_0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>A<sub>0</sub></em> parameter (which nondimensionalises area) for chi analysis. This is in m<sup>2</sup>. Note that when <em>A<sub>0</sub></em> = 1 then the slope in chi space is the same as the channel steepness index (often denoted by <em>k<sub>s</sub></em>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m_over_n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>m/n</em> parameter (sometimes known as the concavity index) for calculating chi. Note that if you do any <em>m/n</em> analysis (either <code>calculate_MLE_collinearity</code> or <code>print_profiles_fxn_movern_csv</code>) this <em>m/n</em> value will be replaced.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_parameter_files">A.8. Example parameter files</h3>
+<div class="paragraph">
+<p>We have a number of example parameter files in the repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples">LSDTT_chi_examples</a>. The chapter on examples will walk you through the various things these files do.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 09:41:11 UTC
+Last updated 2017-11-02 13:25:45 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
