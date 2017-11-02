@@ -439,7 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
 <li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a>
 <ul class="sectlevel2">
-<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</a></li>
+<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">2.1. If you want to make pdf files using asciidoctor with equations in them</a></li>
 </ul>
 </li>
 <li><a href="#_if_you_are_a_developer_and_want_to_get_the_documentation_working">3. If you are a developer and want to get the documentation working</a></li>
@@ -581,8 +581,11 @@ gem 'epubcheck'</code></pre>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>The installation of the gem <code>nokogiri</code> can be very temperamental, one particular issue on MacOS is that its install clashes with <a href="https://github.com/ggreer/the_silver_searcher"><code>The Silver Searcher</code></a>. To resolve this issue, first run <code>brew unlink xz</code> to remove symlinks to <code>xz</code>, then re-run <code>bundle install</code> and once that completes, reapply the symlinks to <code>xz</code>: <code>brew link xz</code>.</p>
+</div>
 <div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equation_in_them">2.1. If you want to make pdf files using asciidoctor with equation in them</h3>
+<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">2.1. If you want to make pdf files using asciidoctor with equations in them</h3>
 <div class="paragraph">
 <p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
 </div>
@@ -871,7 +874,7 @@ $ git push -u origin gh-pages</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 15:21:13 UTC
+Last updated 2017-11-02 16:23:10 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

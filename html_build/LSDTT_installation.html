@@ -1112,7 +1112,7 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 <h3 id="_should_i_use_docker_or_vagrant">3.1. Should I use Docker or Vagrant?</h3>
 <div class="paragraph">
 <p>There are <a href="https://deliciousbrains.com/vagrant-docker-wordpress-development/">many</a>, <a href="https://www.vagrantup.com/intro/vs/docker.html">many</a>, <a href="https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment">many</a> <a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/">articles</a> comparing vagrant to docker.
-The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Entreprise. It does work on any recent version of Linux and MacOS. However the developers of <strong>LSDTopoTools</strong> don&#8217;t have access to Windows 10 Entreprise so can&#8217;t test the Docker versions on Windows, so we can&#8217;t offer support of this installation option.
+The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Enterprise. It does work on any recent version of Linux and MacOS. However the developers of <strong>LSDTopoTools</strong> don&#8217;t have access to Windows 10 Enterprise so can&#8217;t test the Docker versions on Windows, so we can&#8217;t offer support of this installation option.
 However if you have MacOS, native Linux or Windows 10 Enterprise you should consider using Docker since it involves fewer steps than our VirtualBox+Vagrant setup.</p>
 </div>
 </div>
@@ -1131,6 +1131,9 @@ However if you have MacOS, native Linux or Windows 10 Enterprise you should cons
 <ol class="arabic">
 <li>
 <p>Download and install <a href="https://www.docker.com/docker-windows">Docker for Windows</a> (only works with Windows 10 enterprise), <a href="https://www.docker.com/docker-mac">Docker for Mac</a>, or Docker for <a href="https://www.docker.com/docker-ubuntu">Ubuntu</a> or <a href="https://www.docker.com/docker-debian">Debian</a>.</p>
+</li>
+<li>
+<p>On Mac we recommend installing docker using brew: <code>brew cask install docker</code></p>
 </li>
 <li>
 <p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\DockerBoxes\LSDTopoTools\</code>.</p>
@@ -1163,6 +1166,9 @@ letters and numbers after the @:</p>
 <p>If this is your first time using the tools and your LSDTopoTools directory is
 empty, you will need to run the install script. In the prompt, enter:
 <code>install.sh</code> and hit <code>enter</code>.</p>
+</li>
+<li>
+<p>Some users have reported permissions problems with running <code>install.sh</code> on a fresh docker install. If this happens you need to run this command <code>chmod 0744 /bin/install.sh</code> to update the permissions on the install script and then run <code>install.sh as normal.</code></p>
 </li>
 <li>
 <p>Follow docker documentation for your operating system to start and shut down docker containers.</p>
