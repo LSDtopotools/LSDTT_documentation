@@ -467,6 +467,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_summary">2.4. Summary</a></li>
 </ul>
 </li>
+<li><a href="#_more_advanced_options_in_lsdtt_basicmetrics">3. More advanced options in LSDTT_BasicMetrics</a>
+<ul class="sectlevel2">
+<li><a href="#_what_channels_do_you_want_selecting_basins">3.1. What channels do you want? Selecting basins</a>
+<ul class="sectlevel3">
+<li><a href="#_geojson_data">3.1.1. Geojson data</a></li>
+</ul>
+</li>
+<li><a href="#_picking_basins">3.2. Picking basins</a></li>
+<li><a href="#_an_important_note_on_basin_selection">3.3. An important note on basin selection.</a></li>
+<li><a href="#_getting_a_channel_network_with_more_information">3.4. Getting a channel network with more information</a></li>
+</ul>
+</li>
 <li><a href="#_analysis_options_for_the_lsdtt_basicmetrics_program">Appendix A: Analysis options for the LSDTT_BasicMetrics program</a>
 <ul class="sectlevel2">
 <li><a href="#_basic_file_input_and_output">A.1. Basic file input and output</a></li>
@@ -926,30 +938,28 @@ print_tangential_curvature: true</code></pre>
 <div class="paragraph">
 <p><strong>OR</strong></p>
 </div>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>+
-I am going to let you figure out which one to use&#8230;&#8203;you will need to work this out on your own at some point.</p>
+<p>I am going to let you figure out which one to use&#8230;&#8203;you will need to work this out on your own at some point.</p>
 </div>
-<div class="paragraph">
-<p>+
-. Yet more stuff will come out. Some are drainage area rasters, but there is also a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
+</li>
+<li>
+<p>Yet more stuff will come out. Some are drainage area rasters, but there is also a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
+</li>
+<li>
+<p>You will get a file with point, which you can load into QGIS. You can read about how to do that <a href="LSDTT_QGIS.html#_import_point_data_from_text_or_spreadsheet">in our QGIS instructions</a>. You will get something that looks a bit like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_CN.jpg" alt="Whiteadder channel network">
 </div>
-<div class="paragraph">
-<p>+
-. You will get a file with point, which you can load into QGIS. You can read about how to do that <a href="LSDTT_QGIS.html#_import_point_data_from_text_or_spreadsheet">in our QGIS instructions</a>. You will get something that looks a bit like this:</p>
+<div class="title">Figure 3. A simple channel network</div>
 </div>
-<div class="paragraph">
-<p>+
-.A simple channel network
-image::images/WA_CN.jpg[Whiteadder channel network]</p>
+</li>
+</ol>
 </div>
 <div class="sect3">
 <h4 id="_questions_for_channel_extraction">2.3.1. Questions for channel extraction.</h4>
@@ -970,8 +980,199 @@ image::images/WA_CN.jpg[Whiteadder channel network]</p>
 <div class="paragraph">
 <p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_more_advanced_options_in_lsdtt_basicmetrics">3. More advanced options in LSDTT_BasicMetrics</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_basic_usage.asc - include::book/03-more-advanced-options/more-advanced-options.asc[]</p>
+<p>One of the most common operations when analysing topographic data is extracting channel networks. We have an entire <a href="LSDTT_channel_extraction.html">package for that</a>, which has a number of different <a href="https://zenodo.org/record/824198#.WfseyFu0OUk">channel extraction algorithms</a>.</p>
+</div>
+<div class="paragraph">
+<p>However, my users just want channels extracted with the minimum of fuss and so we provide a simple channel profile extraction tool in <strong>LSDTT_BasicMetrics</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_channels_do_you_want_selecting_basins">3.1. What channels do you want? Selecting basins</h3>
+<div class="paragraph">
+<p>Sometimes you don&#8217;t want every channel in the landscape, but only particular channels. We have some basin selection tools for this.</p>
+</div>
+<div class="paragraph">
+<p>The next driver file has some options for selecting basins (<code>WA_BasicMetrics04.driver</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
+write path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
+read fname: WA
+write fname: WA_FourthExample
+channel heads fname: NULL
+
+# Basic channel network
+threshold_contributing_pixels: 5000
+print_junctions_to_csv: true
+
+# Convert to json
+convert_csv_to_geojson: true
+
+# Getting the basins
+find_basins: true
+minimum_basin_size_pixels: 10000
+maximum_basin_size_pixels: 100000000
+only_take_largest_basin: false
+
+# Print the basin raster
+print_basin_raster: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The key elements here are:
+* <code>find_basins: true</code> This tells the program to find specific basins
+* <code>minimum_basin_size_pixels: 10000</code> This tells the program to get basins at least this big. They must be smaller than <code>maximum_basin_size_pixels</code>.
+* <code>only_take_largest_basin</code> When false it finds all basins in the size window, whereas if tru you only get the larges basin.
+* <code>print_basin_raster: true</code> this prints a basin raster.</p>
+</div>
+<div class="paragraph">
+<p>Run the driver and have a look at the new files.</p>
+</div>
+<div class="paragraph">
+<p>If you load the basin raster in QGIS (it has the extension <code>AllBasins</code>)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basins.jpg" alt="Whiteadder basins">
+</div>
+<div class="title">Figure 4. Basins extracted from the DEM</div>
+</div>
+<div class="paragraph">
+<p>You can try modifying some of the parameters like the minimum and maximum basin size and the flag <code>only_take_largest_basin</code> to see what you get.</p>
+</div>
+<div class="sect3">
+<h4 id="_geojson_data">3.1.1. Geojson data</h4>
+<div class="paragraph">
+<p>If you use the switch <code>convert_csv_to_geojson: true</code> the csv files will be converted to <a href="http://geojson.org/">geojson</a> files which can be loaded directly as shapefiles in a GIS. Have a look at our <a href="LSDTT_QGIS.html">QGIS documents</a>; we have <a href="LSDTT_QGIS.html#_adding_vector_data">instructions for loading "vector" data</a>. Geojson files contain GIS-readable vecotr data.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_picking_basins">3.2. Picking basins</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you ran the previous driver you will get a geojson file that has <code>_JN.geojson</code> in the name. If you load this data in a GIS you will see something like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/junctions.jpg" alt="Whiteadder junctions">
+</div>
+<div class="title">Figure 5. Junctions in the DEM</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/junction_information.jpg" alt="Whiteadder junction information">
+</div>
+<div class="title">Figure 6. Junction information in the DEM</div>
+</div>
+<div class="paragraph">
+<p>You can see in the table to the right the junction number is 12.</p>
+</div>
+</li>
+<li>
+<p>If you want to pick just that junctions you can make a text file and just write the junction numbers you want in that text file.</p>
+</li>
+<li>
+<p>We have added a junctions file in the directory with the data called <code>selected_WA.junctions</code>. It has a few junctions picked. The line to add to the parameter file are:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">BaselevelJunctions_file: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/selected_WA.junctions</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This line needs the entire path to your file. So you will probably need to go into the file and change the filename to match your directory structure.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Run the next parameter file (<code>WA_BasicMetrics05.driver</code>) and have a look at the basins generated. They will look something like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/selected_basins.jpg" alt="Whiteadder selected basins">
+</div>
+<div class="title">Figure 7. Selected basins</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_an_important_note_on_basin_selection">3.3. An important note on basin selection.</h3>
+<div class="paragraph">
+<p>In <strong>LSDTopoTools</strong> basins are selected on the basis of junctions. But junctions have two or more contributing channels! The basin selected by a junction <strong>includes</strong> the channel going downstream that stops one pixel before the next junction. In this way we can select basins that are representative of a given <a href="https://en.wikipedia.org/wiki/Strahler_number">Strahler order</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_a_channel_network_with_more_information">3.4. Getting a channel network with more information</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The next driver file is <code>WA_BasicMetrics06.driver</code> and it looks like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
+write path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
+read fname: WA
+write fname: WA_SixthExample
+channel heads fname: NULL
+
+# Basic channel network
+threshold_contributing_pixels: 5000
+
+# Convert to json
+convert_csv_to_geojson: true
+
+# Getting the basins
+find_basins: true
+maximum_basin_size_pixels: 100000000
+only_take_largest_basin: true
+
+# Print the basin raster
+print_chi_data_maps: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The key element of this file is <code>print_chi_data_maps: true</code>. This prints a channel network that you can load into a GIS (the file has the extension <code>_chi_data_map</code>):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/chi_data_maps.jpg" alt="Channel network from chi data maps">
+</div>
+<div class="title">Figure 8. The channel network produced from the chi data maps</div>
+</div>
+</li>
+<li>
+<p>This looks a bit like the old channel network but the file contains much more information. If you open the csv file you will see the location of the points but also drainage area, elevation, flow distance, keys for identifying tributaries, and something called the chi coordinate, which you can read all about <a href="LSDTT_chi_analysis.html">in a different part of the documentation</a>.</p>
+</li>
+<li>
+<p>You could, for example, make a chi-elevation plot using the data in the csv file:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/chi_elevation.jpg" alt="Chi-elevation plot in the basin">
+</div>
+<div class="title">Figure 9. A chi-elevation plot for the basin</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1391,7 +1592,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you just want the largest complete basin, set <code>find_largest_complete_basins: true</code> <strong>AND</strong> <code>maximum_basin_size_pixels: 10e20</code> (or any really big number).
+If you just want the largest complete basin, set <code>find_largest_complete_basins: true</code> <strong>AND</strong> <code>maximum_basin_size_pixels: 10000000000000</code> (or any really big number).
 </td>
 </tr>
 </table>
@@ -1521,7 +1722,7 @@ If you just want the largest complete basin, set <code>find_largest_complete_bas
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 13:25:45 UTC
+Last updated 2017-11-03 16:48:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
