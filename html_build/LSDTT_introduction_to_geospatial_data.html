@@ -436,12 +436,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_two_basic_kinds_of_geospatial_data">1.1. Two basic kinds of geospatial data</a></li>
+</ul>
+</li>
 <li><a href="#_topographic_data">2. Topographic data</a></li>
 <li><a href="#_data_sources">3. Data sources</a>
 <ul class="sectlevel2">
-<li><a href="#_what_data_does_lsdtopotoolbox_take">3.1. What data does LSDTopoToolbox take?</a></li>
+<li><a href="#_what_data_does_lsdtopotools_take">3.1. What data does LSDTopoTools take?</a></li>
 <li><a href="#_downloading_data">3.2. Downloading data</a></li>
+<li><a href="#_global_datasets">3.3. Global datasets</a></li>
 </ul>
 </li>
 <li><a href="#_projections_and_transformations">4. Projections and transformations</a></li>
@@ -478,20 +483,83 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>This documentation is about geospatial data. We focus on how to obtain geospatial data and how to manipulate it using, primarily, the GDAL command line tools.</p>
 </div>
+<div class="sect2">
+<h3 id="_two_basic_kinds_of_geospatial_data">1.1. Two basic kinds of geospatial data</h3>
+<div class="paragraph">
+<p>Geospatial data comes in two primary types: <a href="https://en.wikipedia.org/wiki/Raster_data">raster data</a> and <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector data</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can read in greater detail about different geospatial data formats <a href="https://en.wikipedia.org/wiki/GIS_file_formats">on wikipedia</a>, but the basic data structures are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Raster data is data that is distributed on a grid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A raster is just a grid of data, where each cell in the grid has some value (or values).</p>
+</li>
+<li>
+<p>The cells are sometimes also called pixels. With image data, each pixel in the raster might have several values, such as the value of red, green and blue hues.</p>
+</li>
+<li>
+<p>Image data thus has <strong>bands</strong>: each band is the information pertaining to the different colors.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Vector data is data that is a collection of points or polygons distributed in space.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>"Vector" in the geospatial context doesn&#8217;t mean the same thing as in a mathematial context: vector geospatial data includes any data that has vertices that can be anywhere in space.</p>
+</li>
+<li>
+<p>This contrasts with raster data where the data points are fixed in space, usually on a rectangular grid.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In most GIS systems, the handling of these two data types are different and you load them with different buttons on your GIS. Below are the two buttons in QGIS 2.14. Usually the raster button looks a bit like a grid and the vector button looks a bit like some shapes with distinct points.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Add_raster_and_vector.jpg" alt="QGIS add data buttons">
+</div>
+<div class="title">Figure 1. Add raster and vector buttons in QGIS. The one that looks like a grid is the add raster button</div>
+</div>
+<div class="paragraph">
+<p>These different kinds of data have different file formats. There is are two linked software libraries for processing these data, called <a href="http://www.gdal.org/">GDAL</a> and <a href="http://gdal.org/1.11/ogr/">OGR</a>: they are commonly used in geospatial software so you should be able to convert between the data types that are read by these two packages. Click on the links for information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.gdal.org/formats_list.html">Common raster file formats</a>.</p>
+</li>
+<li>
+<p><a href="http://www.gdal.org/ogr_formats.html">Common vector file formats</a>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_topographic_data">2. Topographic data</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Topographic data comes in a number of formats, but at a basic level most topographic data is in the form of a <a href="https://en.wikipedia.org/wiki/Raster_graphics"><strong>raster</strong></a>.
-A raster is just a grid of data, where each cell in the grid has some value (or values).
-The cells are sometimes also called pixels. With image data, each pixel in the raster might have several values, such as the value of red, green and blue hues.
-Image data thus has <strong>bands</strong>: each band is the information pertaining to the different colors.</p>
+<p>Much of what we do using <strong>LSDTopoTools</strong> is process topographic data.</p>
 </div>
 <div class="paragraph">
-<p>Topographic data, on the other hand, is almost always <strong>single band</strong>: each pixel or cell only has one data value: the elevation.
-Derivative topographic data, such a slope or aspect, also tends to be in single band rasters.</p>
+<p>Topographic data comes in a number of formats, but at a basic level most topographic data is in the form of a <a href="https://en.wikipedia.org/wiki/Raster_graphics"><strong>raster</strong></a>.</p>
+</div>
+<div class="paragraph">
+<p>Topographic data is almost always <strong>single band</strong>: each pixel or cell only has one data value: the elevation. Derivative topographic data, such a slope or aspect, also tends to be in single band rasters.</p>
 </div>
 <div class="paragraph">
 <p>It is possible to get topographic data that is not in raster format (that is, the data is not based on a grid).
@@ -512,17 +580,41 @@ is delivered as a point cloud and you need software to convert the point cloud t
 <h2 id="_data_sources">3. Data sources</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before you can start analyzing topography and working with topographic data,
+<p>Before you can start analysing topography and working with topographic data,
 you will need to get data and then get it into the correct format.
 This page explains how to do so.</p>
 </div>
 <div class="sect2">
-<h3 id="_what_data_does_lsdtopotoolbox_take">3.1. What data does LSDTopoToolbox take?</h3>
+<h3 id="_what_data_does_lsdtopotools_take">3.1. What data does LSDTopoTools take?</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Although <strong>LSDTopoTools</strong> works with three data formats, the only one that retains georeferenceing information (where you are in space) is the <strong>ENVI bil</strong> format, so we highly recommend you convert all data to <strong>ENVI bil</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Do not mix <strong>ESRI bil</strong> format with <strong>ENVI bil</strong> format! <strong>They are not the same!</strong> You need to use <strong>ENVI bil</strong>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>The LSDTopoToolbox works predominantly with raster data;
+<p>The LSDTopoTools works predominantly with raster data;
 if you don&#8217;t know what that is you can read about it here:  <a href="http://en.wikipedia.org/wiki/Raster_data" class="bare">http://en.wikipedia.org/wiki/Raster_data</a>.
 In most cases, the raster data you will start with is a digital elevation model (DEM).
-Digital elevation models (and rasters in general) come in all sorts of formats. LSDTopoToolbox works with three formats:</p>
+Digital elevation models (and rasters in general) come in all sorts of formats. LSDTopoTools works with three formats:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. File input and output options</caption>
@@ -582,7 +674,7 @@ and you must convert this data before it can be used by LSDTopoTools.</p>
 <div class="sect2">
 <h3 id="_downloading_data">3.2. Downloading data</h3>
 <div class="paragraph">
-<p>If you want to analyze topography, you should get some topographic data!
+<p>If you want to analyse topography, you should get some topographic data!
 The last decade has seen incredible gains in the availability and resolution of topographic data.
 Today, you can get topographic data from a number of sources. The best way to find this data is through search engines,
 but below are some common sources:</p>
@@ -603,64 +695,86 @@ but below are some common sources:</p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html">List maintained by Jošt Hobič</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a list of freely available lidar data maintained by Jošt Hobič. The most complete list on the web. <a href="https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html" class="bare">https://arheologijaslovenija.blogspot.co.uk/p/blog-page_81.html</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.opentopography.org/">opentopography</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lidar raster and point cloud data, funded by the National Science foundation. <a href="http://www.opentopography.org/" class="bare">http://www.opentopography.org/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.csc.noaa.gov/inventory/#"> U.S. Interagency Elevation Inventory</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR and IfSAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar and IfSAR</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lidar raster and point cloud data, and IFSAR (5 m resolution or better), collated by NOAA. <a href="http://www.csc.noaa.gov/inventory/#" class="bare">http://www.csc.noaa.gov/inventory/#</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://viewer.nationalmap.gov/basic/">USGS national map viewer</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Various (including IfSAR and LiDAR, and satellite imagery)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Various (including IfSAR and lidar, and satellite imagery)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">United States elevation data hosted by the United States Geological Survey. Mostly data from the United States. <a href="http://viewer.nationalmap.gov/basic/" class="bare">http://viewer.nationalmap.gov/basic/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://earthexplorer.usgs.gov/">EarthExplorer</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Various (including LiDAR, IfSAR, ASTER and SRTM data)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Another USGS data page. THis has more global coverage and is a good place to download SRTM 30 mdata. <a href="http://earthexplorer.usgs.gov/" class="bare">http://earthexplorer.usgs.gov/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Various (including lidar, IfSAR, ASTER and SRTM data)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Another USGS data page. This has more global coverage and is a good place to download SRTM 30 mdata. <a href="http://earthexplorer.usgs.gov/" class="bare">http://earthexplorer.usgs.gov/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://centrodedescargas.cnig.es/CentroDescargas/buscadorCatalogo.do?codFamilia=LIDAR">Spanish LiDAR</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This site has lidar data from Spain: <a href="http://centrodedescargas.cnig.es/CentroDescargas/buscadorCatalogo.do?codFamilia=LIDAR" class="bare">http://centrodedescargas.cnig.es/CentroDescargas/buscadorCatalogo.do?codFamilia=LIDAR</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta?lang=en">Finland LiDAR</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Finland&#8217;s national LiDAR dataset: <a href="https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta?lang=en" class="bare">https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta?lang=en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://download.kortforsyningen.dk/">Denmark LiDAR</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Denmark&#8217;s national LiDAR dataset: <a href="http://download.kortforsyningen.dk/" class="bare">http://download.kortforsyningen.dk/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.geostore.com/environment-agency/WebStore?xml=environment-agency/xml/application.xml">Environment Agency (UK) LiDAR</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR holdings of the Environment Agency (UK): <a href="http://www.geostore.com/environment-agency/WebStore?xml=environment-agency/xml/application.xml" class="bare">http://www.geostore.com/environment-agency/WebStore?xml=environment-agency/xml/application.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lidar holdings of the Environment Agency (UK): <a href="http://www.geostore.com/environment-agency/WebStore?xml=environment-agency/xml/application.xml" class="bare">http://www.geostore.com/environment-agency/WebStore?xml=environment-agency/xml/application.xml</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.territorio.provincia.tn.it/portal/server.pt/community/lidar/847/lidar/23954">Trentino (Italy) LiDAR</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LiDAR</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lidar from the Trentio, a province in the Italian Alps: <a href="http://www.lidar.provincia.tn.it:8081/WebGisIT/pages/webgis.faces" class="bare">http://www.lidar.provincia.tn.it:8081/WebGisIT/pages/webgis.faces</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lidar from the Trentio, a province in the Italian Alps: <a href="http://www.lidar.provincia.tn.it:8081/WebGisIT/pages/webgis.faces" class="bare">http://www.lidar.provincia.tn.it:8081/WebGisIT/pages/webgis.faces</a></p></td>
 </tr>
 </tbody>
 </table>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Global datasets</div>
+</div>
+<div class="sect2">
+<h3 id="_global_datasets">3.3. Global datasets</h3>
 <div class="paragraph">
-<p>There are several global topographic datasets. The oldest of these is <a href="https://lta.cr.usgs.gov/GTOPO30">gtopo30</a>,
-which was completed in 1996 and contains ~1 km resolution global data.
-This was followed by the <a href="https://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission">Shuttle Radar Topography Mission (SRTM)</a>
-that produced a 90 meter resolution DEM in 2003; followed by the
+<p>There are several global topographic datasets.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The oldest of these is <a href="https://lta.cr.usgs.gov/GTOPO30">gtopo30</a>,
+which was completed in 1996 and contains ~1 km resolution global data.</p>
+</li>
+<li>
+<p>This was followed by the <a href="https://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission">Shuttle Radar Topography Mission (SRTM)</a>
+that produced a 90 meter resolution DEM in 2003.</p>
+</li>
+<li>
+<p>SRTM was followed by the
 <a href="https://asterweb.jpl.nasa.gov/gdem.asp">Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER)</a>
-30 meter resolution global DEM in 2009. In 2014
-<a href="http://www.cgiar-csi.org/data/srtm-90m-digital-elevation-database-v4-1">SRTM released a global 30 meter dataset</a>.
-2015 has seen the release of the <a href="http://www.geo-airbusds.com/worlddem/">WorldDEM</a>, a 12 meter resolution topographic dataset.</p>
+30 meter resolution global DEM in 2009.</p>
+</li>
+<li>
+<p>In 2014
+<a href="http://www.cgiar-csi.org/data/srtm-90m-digital-elevation-database-v4-1">SRTM released a global 30 meter dataset</a>.</p>
+</li>
+<li>
+<p>2015 has seen the release of the <a href="http://www.geo-airbusds.com/worlddem/">WorldDEM</a>, a 12 meter resolution topographic dataset.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>GTOPO30, SRTM and ASTER data are all freely available for download. The WorldDEM is a commercial product.
@@ -668,6 +782,12 @@ If you are looking for a global dataset at reasonable resolution that is not com
 You can download ASTER and SRTM data at the same site and make your own comparisons,
 but ASTER has widely publicised <a href="http://www.digital-geography.com/dem-comparison-srtm-3-vs-aster-gdem-v2/#.ViS2wX6rRaQ">data quality issues</a>
 so we recommend the SRTM 30 meter data.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Where to get global data</div>
+<div class="paragraph">
+<p>As of late 2016, <a href="http://www.opentopography.org/">opentropography.org</a> has been hosting global datasets. If you click on <strong>raster data</strong> and then <strong>global data sets</strong> you will find various global datasets. *The download interface is MUCH BETTER that other interfaces. You do not need to sign in, it gives seamless data, you can keep track of where you have downloaded data. It is just very good. If you are looking for 90m or 30m data this website is your one stop shop.</p>
 </div>
 </div>
 </div>
@@ -1251,7 +1371,7 @@ $ gdal_merge.py -of ENVI -o merged_dem.bil --optfile DEMs.txt</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 14:57:37 UTC
+Last updated 2017-10-26 07:54:06 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
