@@ -5,7 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Documentation for LSDTopoTools</title>
+<meta name="author" content="Simon M Mudd, School of GeoSciences, University of Edinburgh">
+<title>Troubleshooting LSDTopoTools and associated software</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -428,29 +429,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Documentation for LSDTopoTools</h1>
+<h1>Troubleshooting LSDTopoTools and associated software</h1>
+<div class="details">
+<span id="author" class="author">Simon M Mudd, School of GeoSciences, University of Edinburgh</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_overview">1. Overview</a></li>
-<li><a href="#_where_is_all_the_code">2. Where is all the code?</a></li>
-<li><a href="#_strong_lsdtopotools_strong_documentation_topics">3. <strong>LSDTopoTools</strong> documentation topics</a>
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_computational_issues">2. Computational issues</a>
 <ul class="sectlevel2">
-<li><a href="#_introduction_installation_and_first_tutorial_of_strong_lsdtopotools_strong">3.1. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></a></li>
-<li><a href="#_background_reading_and_associated_software">3.2. Background reading and associated software</a></li>
-<li><a href="#_strong_lsdtopotools_strong_python_scripts">3.3. <strong>LSDTopoTools</strong> python scripts</a></li>
-<li><a href="#_strong_lsdtopotools_strong_analysis_packages">3.4. <strong>LSDTopoTools</strong> analysis packages</a></li>
-<li><a href="#_strong_lsdtopotools_strong_technical_details">3.5. <strong>LSDTopoTools</strong> technical details</a></li>
+<li><a href="#_the_code_doesn_t_compile">2.1. The code doesn&#8217;t compile</a></li>
+<li><a href="#_segmentation_faults_and_core_dumps">2.2. Segmentation faults and core dumps</a>
+<ul class="sectlevel3">
+<li><a href="#_the_missing_file_problem">2.2.1. The missing file problem</a></li>
+<li><a href="#_the_naughty_developer_problem">2.2.2. The naughty developer problem</a></li>
+<li><a href="#_the_strong_lsdtopotools_strong_memory_problem">2.2.3. The <strong>LSDTopoTools</strong> memory problem</a></li>
 </ul>
 </li>
-<li><a href="#_versions_of_the_strong_lsdtopotools_strong_documentation">4. Versions of the <strong>LSDTopoTools</strong> documentation</a></li>
-<li><a href="#_lsdtopotools_authors">5. LSDTopoTools authors</a></li>
-<li><a href="#_lsdtopotools_publications_and_software_releases">6. LSDTopoTools publications and software releases</a>
+</ul>
+</li>
+<li><a href="#_troubleshooting_vagrant_problems">3. Troubleshooting vagrant problems</a>
 <ul class="sectlevel2">
-<li><a href="#_citable_versions_of_our_software">6.1. Citable versions of our software</a></li>
-<li><a href="#_publications_describing_lsdtopotools_algorithms">6.2. Publications describing LSDTopoTools algorithms</a></li>
-<li><a href="#_publications_from_our_group_that_use_lsdtopotools">6.3. Publications from our group that use LSDTopoTools</a></li>
-<li><a href="#_publications_from_other_groups_that_have_used_lsdtopotools">6.4. Publications from other groups that have used LSDTopoTools</a></li>
+<li><a href="#_vagrant_up_doesn_t_work">3.1. Vagrant up doesn&#8217;t work</a></li>
+<li><a href="#_vagrant_cant_see_my_files">3.2. Vagrant cant see my files</a></li>
+<li><a href="#_vagrant_is_completely_messed_up">3.3. Vagrant is completely messed up</a></li>
+</ul>
+</li>
+<li><a href="#_troubleshooting_problems_on_edinburgh_servers">4. Troubleshooting problems on Edinburgh servers</a>
+<ul class="sectlevel2">
+<li><a href="#_nx_doesn_t_work">4.1. NX doesn&#8217;t work</a></li>
+<li><a href="#_i_can_t_see_my_files">4.2. I can&#8217;t see my files</a></li>
+</ul>
+</li>
+<li><a href="#_troubleshooting_docker">5. Troubleshooting Docker</a>
+<ul class="sectlevel2">
+<li><a href="#_setup_script_won_t_work">5.1. Setup script won&#8217;t work</a></li>
 </ul>
 </li>
 </ul>
@@ -461,367 +475,269 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="images/LSD-logo.png" alt="LSD logo" width="200">
+<img src="images/LSD-logo.png" alt="LSDTopoTools" width="200">
 </div>
+</div>
+<div class="paragraph">
+<p><a href="index.html">Return to the main <strong>LSDTopoTools</strong> landing page</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_overview">1. Overview</h2>
+<h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You have landed at the main documentation page for <a href="http://lsdtopotools.github.io/"><strong>LSDTopoTools</strong></a>. <strong>LSDTopoTools</strong> is a software package that is used to analyse topography for applications in hydrology, geomorphology, soil science and ecology. The software began within the <a href="https://www.geos.ed.ac.uk/geosciences/research/research-institutes/global-change/land-surface-dynamics">Land Surface Dynamics group</a> at the <a href="https://www.ed.ac.uk/geosciences/">University of Edinburgh</a>, and now has developers and users around the world.</p>
+<p><strong>LSDTopoTools</strong> is research software, and unfortunately it can misbehave. In this document we list common problems associated with running of the code.</p>
 </div>
 <div class="paragraph">
-<p>The documentation is organised into a series of websites, listed below in the <a href="index.html#_strong_lsdtopotools_strong_documentation_topics">LSDTopoTools documentation topics</a> section.</p>
+<p>If you have a problem that is not listed here, please contact the <a href="http://www.geos.ed.ac.uk/homes/smudd">lead developer</a> of <strong>LSDTopoTools</strong>, and the team will try to find a solution and post it in this appendix.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_where_is_all_the_code">2. Where is all the code?</h2>
+<h2 id="_computational_issues">2. Computational issues</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The code lives as a series of repositories on Github: <a href="https://github.com/LSDtopotools" class="bare">https://github.com/LSDtopotools</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_strong_lsdtopotools_strong_documentation_topics">3. <strong>LSDTopoTools</strong> documentation topics</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Please follow the links below to find the relevant documentation.</p>
+<p>We will list common computational problems here.</p>
 </div>
 <div class="sect2">
-<h3 id="_introduction_installation_and_first_tutorial_of_strong_lsdtopotools_strong">3.1. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></h3>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Introduction, installation, and first tutorial of <strong>LSDTopoTools</strong></caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_general_overview.html">Background and philosophy of LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This brief document describes some of the background to <strong>LSDTopoTools</strong> and the philosophy behind having open, reproducible topographic analysis software.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A guide to installation of <strong>LSDTopoTools</strong>. Includes instructions for all operating systems, using either Vagrant or Docker, or native Linux installation at the University of Edinburgh or elsewhere.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_basic_usage.html">Basic topographic analyses in LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the launch point for your first analyses in <strong>LSDTopoTools</strong>. The documents take you through some basic steps and show how to do simple, everyday analyses like get gradient and curvature, calculate drainage areas, and extract channel networks.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_background_reading_and_associated_software">3.2. Background reading and associated software</h3>
+<h3 id="_the_code_doesn_t_compile">2.1. The code doesn&#8217;t compile</h3>
 <div class="paragraph">
-<p>If you are doing topographic analysis, you will need more than just the core <strong>LSDTopoTools</strong> packages. These documents contain instructions on how to get raster data (primarily topogrpahic data) and manipulatie it with <a href="http://www.gdal.org/">GDAL</a>, how to look at data in <a href="http://www.qgis.org/en/site/">QGIS</a>, how to use a linux shell, and how to build our documentation on your own computer. This last section will likely only appeal to <strong>LSDTopoTools</strong> developers. The rest of you can just view the documents on the web.</p>
+<p>If the code doesn&#8217;t compile, make sure</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. Background reading and associated software</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_introduction_to_geospatial_data.html">Introduction to geospatial data</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A brief introduction to geospatial data. Where to get it, how to manipulate it, and information about the different forms of this data.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_using_linux.html">A very brief introduction to using a Linux shell</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To use <strong>LSDTopoTools</strong> you need to issue commands in a Linux shell. This contains minimal instructions on how to navigate in this environment.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_QGIS.html">Some tips and tricks for using QGIS</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The contains some brief notes about using QGIS. Not *LSDTopoTools specific, but should be useful if you want to look at output using a GIS.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_building_documentation.html">Building the LSDTopoTools documentation</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An overview of how to build the LSDTopoTools documentation. Most users will not need this: they can just look at the documents online!</p></td>
-</tr>
-</tbody>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>You have <a href="LSDTT_installation.html">installed a Linux operating system</a>.</p>
+</li>
+<li>
+<p>You are actually in that operating system and not in your host operating system (i.e. windows or MacOS).</p>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="_strong_lsdtopotools_strong_python_scripts">3.3. <strong>LSDTopoTools</strong> python scripts</h3>
 <div class="paragraph">
-<p>The serious number crunching in <strong>LSDTopoTools</strong> is done in C++ code, but our visualisation and automation scripts are written in python. Below are documents associated with these scripts.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. <strong>LSDTopoTools</strong> python scripts</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_python_installation.html">Installing the python toolchain</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Explanation of how to get our python tools working. Includes some basic python notes.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_strong_lsdtopotools_strong_analysis_packages">3.4. <strong>LSDTopoTools</strong> analysis packages</h3>
-<div class="paragraph">
-<p>These documents describe our individual analysis packages. They are more specialised than the <a href="LSDTT_basic_usage.html">basic metrics program</a>. We use these packages for research, most of them are associated with one or more scientific publications, or our collaborations with government, humanitarian organisations and private buisnesses.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. <strong>LSDTopoTools</strong> analysis packages.</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_channel_extraction.html">Extracting channels using LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our channel extraction algorithms.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_chi_analysis.html">Channel steepness analysis with LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our tools for analysing channel profiles.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_BasinwideCRN.html">Computing erosion rates based on <sup>10</sup>Be and <sup>26</sup>Al concentrations with LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our tools for calculating erosion rates using in-situ cosmogenic nuclides.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_floodplains_terraces.html">Floodplain and terrace analysis using LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our tools for extracting floodplains and terraces. Note that this requires the extra dependencies that you can read about in the last section of the <a href="LSDTT_installation.html">installation instructions</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_hillslope_metricshtml">Hillslope metrics using LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation onhow to get hillslope lengths, ridgetop curvature, hillslope relief and similar operations that can aid in determining sediment flux laws and landscape transience.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_MuddPILE.html">Landscape evolution using LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation for our simple landscape evolution model, MuddPILE.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_strong_lsdtopotools_strong_technical_details">3.5. <strong>LSDTopoTools</strong> technical details</h3>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 5. <strong>LSDTopoTools</strong> technical details</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="LSDTT_troubleshooting.html">Troubleshooting LSDTopoTools</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Common problems and their solutions.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_versions_of_the_strong_lsdtopotools_strong_documentation">4. Versions of the <strong>LSDTopoTools</strong> documentation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We will archive all versions of the documentation. Links to these versions will reside here.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 6. <strong>LSDTopoTools</strong> documentation topics</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">link</th>
-<th class="tableblock halign-left valign-top">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="index.html">Development version</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the in-progress documentation.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_lsdtopotools_authors">5. LSDTopoTools authors</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>LSDTopoTools</strong> has had many developers over the years.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. <strong>LSDTopoTools</strong> developers</caption>
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 66.6666%;">
-<col style="width: 16.6668%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Person</th>
-<th class="tableblock halign-left valign-top">Notes</th>
-<th class="tableblock halign-left valign-top">links</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Simon M. Mudd</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Started the <strong>LSDRaster</strong> and <strong>LSDFlowInfo</strong> objects as a 3 month side project. "Lead developer" by virtue of being dumb enough to start the project. 95% of errors and examples of poor design are his fault. But being lead developer means he has many opportunities to leave <a href="https://www.youtube.com/watch?v=OcLhUiYrZhA#t=5m34s">little</a> <a href="https://www.youtube.com/watch?v=LeHkQYDoVJ0">secrets</a> in the code.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.geos.ed.ac.uk/homes/smudd">Web</a> <a href="https://scholar.google.co.uk/citations?user=9iv6l7wAAAAJ&amp;hl=en">Scholar</a> <a href="https://github.com/simon-m-mudd">Github</a> <a href="https://twitter.com/SimonMariusMudd?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Martin D. Hurst</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Martin&#8217;s original code, linking python to ArcMap, was one of the inspirations for the initial version of the software. He has written a number of the routines associated with extracting tectonic information from lidar data.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.gla.ac.uk/schools/ges/staff/martinhurst/">Web</a> <a href="https://scholar.google.co.uk/citations?user=9&#8212;&#8203;6x5sAAAAJ&amp;hl=en">Scholar</a> <a href="https://github.com/mdhurst1">Github</a> <a href="https://twitter.com/MartinDHurst?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">David T. Milodowski</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wrote many of the filtering and surface metric algorithms. Also wrote algorithms related to ecology, and has contributed throughout the code.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://scholar.google.co.uk/citations?user=ay1R3UgAAAAJ&amp;hl=en">Scholar</a> <a href="https://github.com/DTMilodowski">Github</a> <a href="https://twitter.com/DMilodowski?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stuart W.D. Grieve</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wrote many of the hillslope length algorithms (along with Martin) as well as many of the algorithms and objects related to basin selection and processing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://swdg.io/">Web</a> <a href="https://scholar.google.co.uk/citations?user=VwQbAzQAAAAJ&amp;hl=en">Scholar</a> <a href="https://github.com/sgrieve">Github</a> <a href="https://twitter.com/GIStuart?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fiona J. Clubb</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wrote many of the channel extraction algorithms as well as the floodplain and terrace algorithms. Has contributed throughout the software.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fclubb.github.io/">Web</a> <a href="https://scholar.google.co.uk/citations?user=LnCvUwwAAAAJ&amp;hl=en">Scholar</a> <a href="https://github.com/fclubb">Github</a> <a href="https://twitter.com/FionaClubb25?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Marie-Alice Harel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wrote a number of automation algorithms for cosmogenic processing and linking basin erosion statistics to channel properties. Now working full time as an illustrator.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.instagram.com/maharelillo/">Instagram</a> <a href="https://twitter.com/maharelillo?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Declan A. Valters</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The lead developer of HAIL-CAESER, an LSDTopoTools port of CAESAR-LISFLOOD. Also helped write channel steepness analysis algorithms and a number of visualisation tools.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://dvalts.io/">Web</a> <a href="https://scholar.google.co.uk/citations?user=0OIHQmIAAAAJ&amp;hl=en">Scholar</a> <a href="https://github.com/dvalters">Github</a> <a href="https://twitter.com/dvalts?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Boris Gailleton</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Has developed, along with Fiona Clubb, the knickpoint extraction algorithms. Also has developed routines for linking lithology to topography.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.ed.ac.uk/geosciences/people/person.html?indv=5391">Web</a> <a href="https://github.com/bgailleton">Github</a> <a href="https://twitter.com/boris_gailleton?lang=en">Twitter</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your name here</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If you want to develop <strong>LSDTopoTools</strong> and add routines, contact Simon and your name could appear on this list.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://en.wikipedia.org/wiki/Ada_Lovelace">Web</a> <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Translator%27s+notes+to+an+article+on+Babbage%27s+Analytical+Engine&amp;btnG=">Scholar</a> <a href="https://gist.github.com/maya-shankar/566df19bfe1ef16ab4417e4bec5f24c6">Github</a> <a href="https://twitter.com/hashtag/adalovelaceday?lang=en">Twitter</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_lsdtopotools_publications_and_software_releases">6. LSDTopoTools publications and software releases</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We have published papers that descrbe the algorithms, papers that use the software, and other groups have also used the software for their work. We also publish releases of the software that are fully citable.</p>
-</div>
-<div class="sect2">
-<h3 id="_citable_versions_of_our_software">6.1. Citable versions of our software</h3>
-<div class="paragraph">
-<p>Clubb, F. J., Mudd, S. M., Milodowski, D. T., &amp; Grieve, S. W. D. (2017). LSDDrainageDensity v1.0. Zenodo. <a href="https://doi.org/10.5281/zenodo.824423" class="bare">https://doi.org/10.5281/zenodo.824423</a>
-Clubb, F. J., Mudd, S. M., Milodowski, D. T., Grieve, S. W. D., &amp; Hurst, M. D. (2017). LSDChannelExtraction v 1.0. Zenodo. <a href="https://doi.org/10.5281/zenodo.824198" class="bare">https://doi.org/10.5281/zenodo.824198</a>
-Clubb, F. J., Mudd, S. M., Grieve, S. W. D., Milodowski, D. T., Valters, D. A., &amp; Hurst, M. D. (2017). LSDTerraceModel v1.0. Zenodo. <a href="https://doi.org/10.5281/zenodo.824205" class="bare">https://doi.org/10.5281/zenodo.824205</a>
-Goodwin, G. C. H., Mudd, S. M., &amp; Clubb, F. J. (2017). LSDtopotools Marsh Platform Identification Tool. Zenodo. <a href="https://doi.org/10.5281/zenodo.1007788" class="bare">https://doi.org/10.5281/zenodo.1007788</a>
-Mudd, S. M., Jenkinson, J., Valters, D. A., &amp; Clubb, F. J. (2017). MuddPILE the Parsimonious Integrated Landscape Evolution Model. Zenodo. <a href="https://doi.org/10.5281/zenodo.997407" class="bare">https://doi.org/10.5281/zenodo.997407</a></p>
+<p>If you are at Edinburgh you might also get compile problems because you are on an old server. See the <a href="#_troubleshooting_problems_on_edinburgh_servers">Troubleshooting problems on Edinburgh servers</a> section.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_publications_describing_lsdtopotools_algorithms">6.2. Publications describing LSDTopoTools algorithms</h3>
+<h3 id="_segmentation_faults_and_core_dumps">2.2. Segmentation faults and core dumps</h3>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/Segmentation_fault">Segmentation faults</a> are caused when <strong>LSDTopoTools</strong> attempts to access some data in your computer&#8217;s <a href="https://en.wikipedia.org/wiki/Computer_memory">memory</a> (think of it as the computer&#8217;s brain) that is not there. Sometimes when this happens you might also get a <a href="https://en.wikipedia.org/wiki/Core_dump">core dump</a>. These sorts of faults are vexing because the program will not tell you where the problem is when it crashes.</p>
+</div>
+<div class="paragraph">
+<p>Most of these faults are due to the following three reasons:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Clubb, F. J., Mudd, S. M., Milodowski, D. T., Valters, D. A., Slater, L. J., Hurst, M. D., &amp; Limaye, A. B. (2017). Geomorphometric delineation of floodplains and terraces from objectively defined topographic thresholds. Earth Surface Dynamics, 5(3), 369–385. <a href="https://doi.org/https://doi.org/10.5194/esurf-5-369-2017" class="bare">https://doi.org/https://doi.org/10.5194/esurf-5-369-2017</a></p>
+<p><strong>LSDTopoTools</strong> is looking for a file that is not there. You solve this by checking filenames.</p>
 </li>
 <li>
-<p>Clubb, F. J., Mudd, S. M., Milodowski, D. T., Hurst, M. D., &amp; Slater, L. J. (2014). Objective extraction of channel heads from high-resolution topographic data. Water Resources Research, 50(5), 4283–4304. <a href="https://doi.org/10.1002/2013WR015167" class="bare">https://doi.org/10.1002/2013WR015167</a></p>
+<p>There is a bug in the <strong>LSDTopoTools</strong> source code that wasn&#8217;t uncovered in testing.</p>
 </li>
 <li>
-<p>Grieve, S. W. D., Mudd, S. M., &amp; Hurst, M. D. (2016). How long is a hillslope? Earth Surface Processes and Landforms, 41(8), 1039–1054. <a href="https://doi.org/10.1002/esp.3884" class="bare">https://doi.org/10.1002/esp.3884</a></p>
-</li>
-<li>
-<p>Grieve, S. W. D., Mudd, S. M., Hurst, M. D., &amp; Milodowski, D. T. (2016). A nondimensional framework for exploring the relief structure of landscapes. Earth Surface Dynamics, 4(2), 309–325. <a href="https://doi.org/10.5194/esurf-4-309-2016" class="bare">https://doi.org/10.5194/esurf-4-309-2016</a></p>
-</li>
-<li>
-<p>Milodowski, D. T., Mudd, S. M., &amp; Mitchard, E. T. A. (2015). Topographic roughness as a signature of the emergence of bedrock in eroding landscapes. Earth Surface Dynamics, 3(4), 483–499.</p>
-</li>
-<li>
-<p>Mudd, S. M., Attal, M., Milodowski, D. T., Grieve, S. W. D., &amp; Valters, D. A. (2014). A statistical framework to quantify spatial variation in channel gradients using the integral method of channel profile analysis. Journal of Geophysical Research: Earth Surface, 119(2), 2013JF002981. <a href="https://doi.org/10.1002/2013JF002981" class="bare">https://doi.org/10.1002/2013JF002981</a></p>
-</li>
-<li>
-<p>Mudd, S. M., Harel, M.-A., Hurst, M. D., Grieve, S. W. D., &amp; Marrero, S. M. (2016). The CAIRN method: automated, reproducible calculation of catchment-averaged denudation rates from cosmogenic nuclide concentrations. Earth Surface Dynamics, 4(3), 655–674. <a href="https://doi.org/10.5194/esurf-4-655-2016" class="bare">https://doi.org/10.5194/esurf-4-655-2016</a></p>
+<p><strong>LSDTopoTools</strong> runs out of memory.</p>
 </li>
 </ol>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The most persistent and common problem for our users is when LSDTopoTools runs out of memory. There is not much we can do about this without totally rewriting the code (which is several hundred thousand lines long at this point). If you get a <strong>segmentation fault</strong> or a <strong>core dump</strong> there is a high probability that you have run out of memory. See details below, but to fix this you either need to use a smaller DEM or give more memory to your system.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect2">
-<h3 id="_publications_from_our_group_that_use_lsdtopotools">6.3. Publications from our group that use LSDTopoTools</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Clubb, F. J., Mudd, S. M., Attal, M., Milodowski, D. T., and Grieve, S. W. D. (2016) The relationship between drainage density, erosion rate, and hilltop curvature: implications for sediment transport processes. Journal of Geophysical Research: Earth Surface, 121(10), 1724-1745.  <a href="https://doi.org/10.1002/2015JF003747" class="bare">https://doi.org/10.1002/2015JF003747</a></p>
-</li>
-<li>
-<p>Devrani, R., Singh, V., Mudd, S. M., &amp; Sinclair, H. D. (2015). Prediction of flash flood hazard impact from Himalayan river profiles. Geophysical Research Letters, 42(14), 2015GL063784. <a href="https://doi.org/10.1002/2015GL063784" class="bare">https://doi.org/10.1002/2015GL063784</a></p>
-</li>
-<li>
-<p>Grieve, S. D., Mudd, S. M., Milodowski, D. T., Clubb, F. J., &amp; Furbish, D. J. (2016). How does grid-resolution modulate the topographic expression of geomorphic processes? Earth Surface Dynamics, 4(3), 627–653. <a href="https://doi.org/10.5194/esurf-4-627-2016" class="bare">https://doi.org/10.5194/esurf-4-627-2016</a></p>
-</li>
-<li>
-<p>Harel, M.-A., Mudd, S. M., &amp; Attal, M. (2016). Global analysis of the stream power law parameters based on worldwide Be-10 denudation rates. Geomorphology, 268, 184–196. <a href="https://doi.org/10.1016/j.geomorph.2016.05.035" class="bare">https://doi.org/10.1016/j.geomorph.2016.05.035</a></p>
-</li>
-<li>
-<p>Mudd, S. M. (2017). Detection of transience in eroding landscapes. Earth Surface Processes and Landforms, 42(1), 24–41. <a href="https://doi.org/10.1002/esp.3923" class="bare">https://doi.org/10.1002/esp.3923</a></p>
-</li>
-<li>
-<p>Parker, R. N., Hales, T. C., Mudd, S. M., Grieve, S. W. D., &amp; Constantine, J. A. (2016). Colluvium supply in humid regions limits the frequency of storm-triggered landslides. Scientific Reports, 6, srep34438. <a href="https://doi.org/10.1038/srep34438" class="bare">https://doi.org/10.1038/srep34438</a></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_publications_from_other_groups_that_have_used_lsdtopotools">6.4. Publications from other groups that have used LSDTopoTools</h3>
+<div class="sect3">
+<h4 id="_the_missing_file_problem">2.2.1. The missing file problem</h4>
 <div class="paragraph">
-<p>This is an incomplete list! If you use the code and write a paper or have a conference abstract please let us know by contacting Simon.</p>
+<p>In recent years we have added error checking capabilities so that if <strong>LSDTopoTools</strong> will tell you if it can&#8217;t find a file. However we have not done this with every single component of the code so occasionally <strong>LSDTopoTools</strong> will crash because it can&#8217;t find a file. To fix this you need to check all your file names and directory paths.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_naughty_developer_problem">2.2.2. The naughty developer problem</h4>
+<div class="paragraph">
+<p>Sometimes the <strong>LSDTopoTools</strong> developers release code that has a bug. Bad developers, bad!! To fix this you need to tell us about it and we will try to find the problem. Unless you are a proficient C++ hacker there is not much you can do about this other than to wait for us to address the problem. However, in most cases the crashing software is caused by the memory problem rather than a bug.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_strong_lsdtopotools_strong_memory_problem">2.2.3. The <strong>LSDTopoTools</strong> memory problem</h4>
+<div class="paragraph">
+<p>Let me start by saying that the developers of <strong>LSDTopoTools</strong> are geoscientists and not professional software developers. When we built <strong>LSDTopoTools</strong> we were aiming for speed and we don&#8217;t know how to do data streaming, so the way <strong>LSDTopoTools</strong> works is to dump everything into your computer&#8217;s <a href="https://en.wikipedia.org/wiki/Computer_memory">memory</a> and work with the data there. This was not a problem for us because we use Linux servers that have may hundreds of gigabytes of memory.</p>
+</div>
+<div class="paragraph">
+<p>However, topographic datasets are getting bigger and bigger, and we have also tried to distribute <strong>LSDTopoTools</strong> to people who don&#8217;t have a fancy and fast rack workstation, so memory has become an issue.</p>
+</div>
+<div class="paragraph">
+<p>For most of our applications the following things happen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The DEM is loaded.</p>
+</li>
+<li>
+<p>A filled raster is created.</p>
+</li>
+<li>
+<p>An object containing all the information about the flow network (how all the pixels are connected) is created. This is called the <strong>Flow Info</strong> object.</p>
+</li>
+<li>
+<p>An object containing how all the river networks and junctions are connected is created.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to these quite standard operations, any additional computation is done in yet more data structures that are in your computer&#8217;s memory. The <strong>Flow Info</strong> object alone is <strong>very</strong> memory intensive. It takes up 10-20 times the memory of your DEM. What does this mean? Everything together means that you will need something like 30 times the amount of memory as the size of your DEM to do operations involving any sort of flow routing or channel networks.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Memory rule of thumb</div>
+<div class="paragraph">
+<p>If you do anything that requires knowing something about how pixels are connected, for example any drainage or river network calculations, you will need between <strong>20-30x</strong> the amount of memory as the size of the DEM.</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_the_memory_problem_and_vagrant_machines">The memory problem and vagrant machines</h5>
+<div class="paragraph">
+<p>For people without a Linux workstation, you need to install with either a <a href="LSDTT_installation.html#_installing_lsdtopotools_using_docker">container</a> or with a LSDTT_installation.html#_installing_lsdtopotools_using_virtualbox_and_vagrant[virtual machine]. <strong>Both of these options give you limited memory</strong>. The problem is most severe in the Vagrant setup.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>default</strong> <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles">vagrantfile</a> setting is to give your server 3GB of memory. This is the line of the vagrant file where it does that:</p>
+</div>
+<div class="listingblock">
+<div class="title">Location of the memory setting in our vagrantfiles</div>
+<div class="content">
+<pre class="highlight"><code class="language-vagrantfile" data-lang="vagrantfile">    # Customize the amount of memory on the VM:
+    # You should adjust this based on your computer's memory
+    # 32 bit machines generally cannot exceed 3GB of memory
+    vb.memory = "3000"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>With this amount of memory you are limited to operations that involve channel networks on DEM of ~100MB.</strong> We have not done extensive testing of this but our anecdotal evidence suggests this is the limit with 3GB of memory. If you want to process a 1 GB DEM then you will probably need around 30GB of memory.</p>
+</div>
+<div class="paragraph">
+<p>If you want to process bigger DEMs you need to give your machine more memory by changing the <code>vb.memory</code> setting in your vagrantfile.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_the_memory_problem_and_32_bit_vagrant_machines">The memory problem and 32-bit vagrant machines</h5>
+<div class="paragraph">
+<p>There is one more wrinkle to this. Most Windows machines have a default setting that they cannot have 64-bit guest operating systems. If you try to start up a 64-bit vagrant machine on a windows computer it usually simply will not work. Our testing on MacOS suggests that most of these systems will allow a 64-bit operating system.</p>
+</div>
+<div class="paragraph">
+<p>Docker allows 64 bit operating systems so this is really a problem limited to Vagrant implementations on Windows machines. If you have Windows 10 Enterprise you might consider using Docker.</p>
+</div>
+<div class="paragraph">
+<p>There is a limit to the amount of memory a 32-bit system can have; <a href="https://en.wikipedia.org/wiki/3_GB_barrier">it is around 3GB</a>. So unless you <a href="https://forums.virtualbox.org/viewtopic.php?f=1&amp;t=62339">are willing to change your Windows computer&#8217;s default settings</a>, you are limited to "small" DEMs. Sorry about that.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshooting_vagrant_problems">3. Troubleshooting vagrant problems</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_vagrant_up_doesn_t_work">3.1. Vagrant up doesn&#8217;t work</h3>
+<div class="paragraph">
+<p>Sometimes, on slower machines, <code>vagrant up</code> times out. Just run <code>vagrant up</code> again.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vagrant_cant_see_my_files">3.2. Vagrant cant see my files</h3>
+<div class="paragraph">
+<p>Make sure your the directory structure on the host machine is correct:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">| Vagrantboxes
+    | Ubuntu_vagrant
+      | vagrantfile
+    | LSDTopoTools</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the LSDTopoTools directory is in the wrong place or misspelled (<strong>it is case sensitive</strong>) then vagrant will not sync your files.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vagrant_is_completely_messed_up">3.3. Vagrant is completely messed up</h3>
+<div class="paragraph">
+<p>To start again from scratch, go to the directory with the vagrantfile and run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-consol" data-lang="consol">$ vagrant destroy</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This will erase your Ubuntu box and start again. Meaning you will have to download the 700Mb operating system again.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshooting_problems_on_edinburgh_servers">4. Troubleshooting problems on Edinburgh servers</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_nx_doesn_t_work">4.1. NX doesn&#8217;t work</h3>
+<div class="paragraph">
+<p>Sometimes, NX decides it won&#8217;t work for ambigous reasons. You can always log on to our servers via <a href="https://en.wikipedia.org/wiki/Secure_Shell"><strong>ssh</strong></a>. An SSH program is avaialble in all computing labs. The address of the geoscience servers is <code>ssh.geos.ed.ac.uk</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_i_can_t_see_my_files">4.2. I can&#8217;t see my files</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Undergraduates: Your normal file storage area at Edinburgh is generally refered to as the <strong>M drive</strong>. You have a second drive, usually called the <strong>T drive</strong>, that you acces via the netdata path. To activate that path <a href="LSDTT_installation.html#_mapping_your_network_drive">follow these instructions</a>.</p>
+</li>
+<li>
+<p>Taught MSc students: We think this works the same as undergraduates.</p>
+</li>
+<li>
+<p>MSc by research: We think this works the same as PhD students.</p>
+</li>
+<li>
+<p>PhD students/Staff: When you ssh/NX into the servers you will be in your <strong>M drive</strong>. You will need to create a shortcut to your <strong>T drive</strong> or and <strong>shared drives</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshooting_docker">5. Troubleshooting Docker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the moment our <a href="LSDTT_installation.html#_installing_lsdtopotools_using_docker">Docker installation</a> is provided by a 3rd party. We have not extensively tested this because it does not work on our machines (you need either MacOS or Windows 10 Enterprise). The <strong>LSDTopoTools</strong> developer who works on a fruit-based operating system, <a href="http://swdg.io/">Stuart Grieve</a>, is trying to get an in-house implementation running but for most Docker questions I am afraid there won&#8217;t be that much support.</p>
+</div>
+<div class="sect2">
+<h3 id="_setup_script_won_t_work">5.1. Setup script won&#8217;t work</h3>
+<div class="paragraph">
+<p>To fix this problem you need to change permissions on the install script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">chmod 0744 /bin/install.sh</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -829,7 +745,7 @@ Mudd, S. M., Jenkinson, J., Valters, D. A., &amp; Clubb, F. J. (2017). MuddPILE 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 10:49:42 UTC
+Last updated 2017-11-07 11:13:51 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

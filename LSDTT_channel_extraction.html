@@ -491,12 +491,55 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_calculating_drainage_density">7. Calculating drainage density</a>
+<ul class="sectlevel2">
+<li><a href="#_get_the_code_for_drainage_density_analysis">7.1. Get the code for drainage density analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_clone_the_github_repository">7.1.1. Clone the GitHub repository</a></li>
+<li><a href="#_alternatively_get_the_zipped_code">7.1.2. Alternatively, get the zipped code</a></li>
+<li><a href="#_get_the_example_datasets">7.1.3. Get the example datasets</a></li>
+<li><a href="#_get_the_example_parameter_files">7.1.4. Get the example parameter files</a></li>
+<li><a href="#_python_scripts">7.1.5. Python scripts</a></li>
+</ul>
+</li>
+<li><a href="#_preliminary_steps">7.2. Preliminary steps</a>
+<ul class="sectlevel3">
+<li><a href="#_getting_the_channel_head_file">7.2.1. Getting the channel head file</a></li>
+<li><a href="#_selecting_a_window_size">7.2.2. Selecting a window size</a></li>
+</ul>
+</li>
+<li><a href="#_analysing_drainage_density_for_all_basins">7.3. Analysing drainage density for all basins</a>
+<ul class="sectlevel3">
+<li><a href="#_creating_the_paramter_file">7.3.1. Creating the paramter file</a></li>
+<li><a href="#_step_1_get_the_junctions_of_all_the_basins">7.3.2. Step 1: Get the junctions of all the basins</a></li>
+<li><a href="#_step_2_get_the_drainage_density_of_each_basin">7.3.3. Step 2: Get the drainage density of each basin</a></li>
+<li><a href="#_step_3_plotting_the_data">7.3.4. Step 3: Plotting the data</a></li>
+<li><a href="#_summary">7.3.5. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">7.4. Analysing drainage density for basins with CRN-derived erosion rates</a>
+<ul class="sectlevel3">
+<li><a href="#_formatting_your_erosion_rate_data">7.4.1. Formatting your erosion rate data</a></li>
+<li><a href="#_creating_the_paramter_file_2">7.4.2. Creating the paramter file</a></li>
+<li><a href="#_step_1_run_the_code">7.4.3. Step 1: Run the code</a></li>
+<li><a href="#_step_2_plot_the_data">7.4.4. Step 2: Plot the data</a></li>
+<li><a href="#_summary_2">7.4.5. Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/ind_so_wiener.png" alt="An extracted channel network">
+</div>
+<div class="title">Figure 1. An extracted channel network</div>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Before you start</div>
@@ -517,29 +560,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the installation instructions for <strong>LSDTopoTools</strong>, which is a collection of programs for analysing topography and modelling hydrology, landscape evolution and soil development.</p>
+<p>Terrestrial landscapes are almost all dissected by channels. Mapping channels and rivers has been a feature of cartography from its start. A few centuries ago, finding river sources use to be <a href="https://en.wikipedia.org/wiki/Nile#Search_for_the_source_of_the_Nile">an amusing way</a>  <a href="https://en.wikipedia.org/wiki/Amazon_River#Origins">to get your name in a newspaper</a>. In fact, there continue to this day to be stunts looking for <a href="http://www.bbc.co.uk/earth/story/20160516-why-it-is-hard-to-find-the-source-of-rivers-like-the-amazon">the source</a> <a href="http://news.bbc.co.uk/1/hi/england/hampshire/4864782.stm">of major rivers</a>.</p>
 </div>
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> is built for Linux operating systems. Most users will not use a Linux operating system as their day-to-day operating system; Windows and MacOS are much more popular. However, through the either virtualisation or containers you can build a Linux environment within any operating system. In fact, building either a virtual machine or a container has the advantage of ensuring that everyone useing these systems has the same environment. This precludes the "works on my machine" problem that is common amongst scientific software packages.</p>
+<p>Taking boats through precarious jungles is good fun for some, but in fact we can now use digital topography to look for the characteristic topographic signs of channels on the landscapes using remotely-sensed data. These signs can simply be the "v-shaped" valleys that you might have learned about in school, or could include more advanced techniques. We now have <a href="http://www.eorc.jaxa.jp/ALOS/en/aw3d30/index.htm">topographic</a> <a href="https://www.pgc.umn.edu/data/arcticdem/">data</a> <a href="https://tandemx-science.dlr.de/">covering the</a> <a href="https://asterweb.jpl.nasa.gov/gdem.asp">entire</a> <a href="https://www2.jpl.nasa.gov/srtm/">planet</a> so as long ago as 2005 (when the <a href="https://www2.jpl.nasa.gov/srtm/">SRTM 90 dataset was released</a>) it was trivially easy to find the longest channel in a river network.
+Knowing in detail where the channel head is, however, is not at all trivial and now that <a href="https://en.wikipedia.org/wiki/Lidar">lidar data</a> is widely available, we can look for topographic signature of channel at scaled approaching those of the actual channel heads.</p>
 </div>
 <div class="paragraph">
-<p>In these documents you will find five flavours of <strong>LSDTopoTools</strong> installation instructions:</p>
+<p>In this documentation we have compiled several methods for determining the location of channel heads using high resolution data, and ported them into <strong>LSDTopoTools</strong>. These algorithms should be, for the most part, accurate to ~20-30 metres of the actual channel head. For details see the following paper:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Installation using VirtualBox+Vagrant. This method is the most tested. You might consider this the default method.</p>
-</li>
-<li>
-<p>Installation using Docker. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
-</li>
-<li>
-<p>Native installation on a Linux system. If your native system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need.</p>
-</li>
-<li>
-<p>University of Edinburgh installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific for Edinburgh students for use on the School of GeoSciences students.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1002/2013WR015167/full">Clubb, F. J., S. M. Mudd, D. T. Milodowski, M. D. Hurst, and L. J. Slater (2014), Objective extraction of channel heads from high-resolution topographic data, <em>Water Resour. Res.</em>, <strong>50</strong>, 4283–4304, doi:10.1002/2013WR015167.</a></p>
+</div>
+<div class="paragraph">
+<p>We have also attempted to quantify the resolution of data needed for the different methods; the answer is that you <em>might</em> be able to extract a reasonable channel network from 10 metres resolution data, but 30 metre resolution data is not trustworthy. If you have lidar data, use that. The details are contained in the following paper:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.earth-surf-dynam.net/4/627/2016/">Grieve, S. W. D., Mudd, S. M., Milodowski, D. T., Clubb, F. J., and Furbish, D. J.: How does grid-resolution modulate the topographic expression of geomorphic processes?, <em>Earth Surf. Dynam.</em>, <strong>4</strong>, 627-653, https://doi.org/10.5194/esurf-4-627-2016, 2016.</a></p>
+</div>
+<div class="paragraph">
+<p>For completeness we include our historic functions for calculating channel sources, but in general the only tool you will need is <a href="#_the_channel_extraction_tool">The Channel Extraction tool</a>. We also refer readers to the <a href="https://sites.google.com/site/geonethome/home">GeoNet channel extraction tool</a>, which was developed by Paola Passalacqua and colleagues.</p>
 </div>
 </div>
 </div>
@@ -654,7 +694,7 @@ so if you previously downloaded a zipper repository this will overwrite it.
 <div class="content">
 <img src="images/ind_map.png" alt="Shaded relief map of Indian Creek">
 </div>
-<div class="title">Figure 1. Shaded relief image of Indian Creek catchment, Ohio USA, UTM Zone 17N</div>
+<div class="title">Figure 2. Shaded relief image of Indian Creek catchment, Ohio USA, UTM Zone 17N</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -707,7 +747,7 @@ You can also work with the DEM <code>gabilan.bil</code> that is included by defa
 <div class="sect3">
 <h4 id="_channel_extraction_options">3.1.1. Channel extraction options</h4>
 <div class="paragraph">
-<p>The parameter file has keywords followed by a value. The format of this file is similar to the files used in the <code>LSDTT_analysis_from_paramfile</code> program, which you can read about in the section <a href="#Running your first analysis">[Running your first analysis]</a>.</p>
+<p>The parameter file has keywords followed by a value. The format of this file is similar to the files used in our <strong>LSDTT_BasicMetrics</strong> program, which you can read about in the our section introducing LSDTopoTools: <a href="LSDTT_basic_usage.html">Basic usage of <strong>LSDTopoTools</strong></a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1209,7 +1249,7 @@ Threshold area for channel extraction</code></pre>
 <div class="content">
 <img src="images/ind_so_area.png" alt="Map of Indian Creek with channel network extracted from threshold area">
 </div>
-<div class="title">Figure 2. Map of Indian Creek with channel network extracted from threshold area</div>
+<div class="title">Figure 3. Map of Indian Creek with channel network extracted from threshold area</div>
 </div>
 </div>
 </div>
@@ -1432,7 +1472,7 @@ Minimum catchment area (suggested to be 400)</code></pre>
 <div class="content">
 <img src="images/ind_so_pel.png" alt="Map of Indian Creek with channel network extracted from Pelletier algorithm">
 </div>
-<div class="title">Figure 3. Map of Indian Creek with channel network extracted from Pelletier algorithm</div>
+<div class="title">Figure 4. Map of Indian Creek with channel network extracted from Pelletier algorithm</div>
 </div>
 </div>
 </div>
@@ -1535,7 +1575,7 @@ connected_components_threshold 100</code></pre>
 <div class="content">
 <img src="images/ind_so_wiener.png" alt="Map of Indian Creek with channel network extracted from LSDTopoTools geometric algorithm with an Optimal Wiener filter">
 </div>
-<div class="title">Figure 4. Map of Indian Creek with channel network extracted from LSDTopoTools geometric algorithm with an Optimal Wiener filter</div>
+<div class="title">Figure 5. Map of Indian Creek with channel network extracted from LSDTopoTools geometric algorithm with an Optimal Wiener filter</div>
 </div>
 </div>
 </div>
@@ -1730,7 +1770,580 @@ number_of_junctions_dreich 1</code></pre>
 <div class="content">
 <img src="images/ind_so_dreich.png" alt="Map of Indian Creek with channel network extracted from DrEICH algorithm">
 </div>
-<div class="title">Figure 5. Map of Indian Creek with channel network extracted from DrEICH algorithm</div>
+<div class="title">Figure 6. Map of Indian Creek with channel network extracted from DrEICH algorithm</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_calculating_drainage_density">7. Calculating drainage density</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Drainage density is a fundamental landscape metric which describes the total length of channels in a basin normalised by the basin area, first described by Horton (1945).  In this chapter we describe how to calculate the drainage density and mean hilltop curvature of a specified order of drainage basins (for example, all second order basins). We also include code which will calculate the drainage density of each basin given a list of cosmogenic radionuclide (CRN)-derived erosion rate data. We used this code to examine the relationship between drainage density and erosion rate in our paper published in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2015JF003747/full">JGR Earth Surface</a> in 2016.</p>
+</div>
+<div class="paragraph">
+<p>Citation: Clubb, F. J., S. M. Mudd, M. Attal, D. T. Milodowski, and S. W. D. Grieve (2016), The relationship between drainage density, erosion rate, and hilltop curvature: Implications for sediment transport processes, J. Geophys. Res. Earth Surf., 121, doi:10.1002/2015JF003747.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick guide if you already know what you are doing</div>
+<div class="paragraph">
+<p>Here is a quick overview of how to set up and run the code, if you have done it before:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Choose the channel extraction method that you would like to use.</p>
+</li>
+<li>
+<p>Make sure your DEM is in <code>bil</code> format and is in the Topographic_projects folder</p>
+</li>
+<li>
+<p>Create a parameter file for your DEM</p>
+</li>
+<li>
+<p>Make sure you have created a channel network for your DEM, and have the <code>_CH</code> file in your repository.</p>
+</li>
+<li>
+<p>Clone the drainage density code: <a href="https://github.com/LSDtopotools/LSDTopoTools_DrainageDensity" class="bare">https://github.com/LSDtopotools/LSDTopoTools_DrainageDensity</a></p>
+</li>
+<li>
+<p>Compile step 1 of the code using <code>make -f drainage_density_step1_junctions.make</code></p>
+</li>
+<li>
+<p>Run step 1 of the program with <code>./drainage_density_step1_junctions.out /path_to_data_folder/ parameter_file.driver</code></p>
+</li>
+<li>
+<p>Compile step 2 of the code using <code>make -f drainage_density_step2_basins.make</code></p>
+</li>
+<li>
+<p>Run step 2 of the code using <code>./drainage_density_step2_basins.out /path_to_data_folder/ parameter_file.driver</code></p>
+</li>
+<li>
+<p>Run the Python scripts to plot the data.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_the_code_for_drainage_density_analysis">7.1. Get the code for drainage density analysis</h3>
+<div class="paragraph">
+<p>The code for the drainage density analysis can be found in our GitHub repository.  This repository contains code for extracting the drainage density for a series of basins defined by points from cosmogenic radionuclide samples, as well as the drainage density and mean hilltop curvature for basins of a specified order.</p>
+</div>
+<div class="sect3">
+<h4 id="_clone_the_github_repository">7.1.1. Clone the GitHub repository</h4>
+<div class="paragraph">
+<p>First navigate to the folder where you will keep the GitHub repository.  If you have downloaded LSDTopoTools using vagrant, then this should be in the folder <code>Git_projects</code>.  Please refer to the chapter on <a href="#Installing LSDTopoTools using VirtualBox and Vagrant">[Installing LSDTopoTools using VirtualBox and Vagrant]</a> for more information on this.  To navigate to this folder in a UNIX terminal use the <code>cd</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/$ cd /LSDTopoTools
+vagrant@vagrant-ubuntu-precise-32:/$ cd /Git_projects</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use the command <code>pwd</code> to check you are in the right folder.  Once you are in this folder, you can clone the repository from the <a href="https://github.com">GitHub website</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects$ pwd
+/LSDTopoTools/Git_projects
+vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects$ git clone https://github.com/LSDtopotools/LSDTopoTools_DrainageDensity.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Navigate to this folder again using the <code>cd</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools_DrainageDensity/</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_alternatively_get_the_zipped_code">7.1.2. Alternatively, get the zipped code</h4>
+<div class="paragraph">
+<p>If you don&#8217;t want to use <em>git</em>, you can download a zipped version of the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects$ pwd
+/LSDTopoTools/Git_projects
+vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects$ wget https://github.com/LSDtopotools/LSDTopoTools_DrainageDensity/archive/master.zip
+vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects$ gunzip master.zip</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://github.com">GitHub</a> zips all repositories into a file called <code>master.zip</code>,
+so if you previously downloaded a zipper repository this will overwrite it.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_the_example_datasets">7.1.3. Get the example datasets</h4>
+<div class="paragraph">
+<p>We have provided some example datasets which you can use in order to test the drainage density analysis. In this tutorial we will work using a LiDAR dataset from the Guadalupe Mountains, New Mexico.  This is a clip of the original dataset, which we have resampled to 2 m resolution. The full dataset is available from <a href="http://www.opentopography.org/">OpenTopography.</a>. If you are using the vagrant distribution, create a new folder within the <code>Topographic_projects</code> folder, and then navigate to this folder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Topographic_projects$ mkdir Guadalupe_NM
+vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Topographic_projects$ cd Guadalupe_NM/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can get the clip from our ExampleTopoDatasets repository using <code>wget</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/raw/master/Guadalupe_DEM.bil
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/raw/master/Guadalupe_DEM.hdr</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This dataset is already in the preferred format for use with LSDTopoTools (the ENVI <code>bil</code> format). The figure below shows a shaded relief map of part of the Guadalupe Mountains DEM which will be used in these examples.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Guadalupe_map.png" alt="Shaded relief map of Guadalupe Mountains" width="600" height="400">
+</div>
+<div class="title">Figure 7. Shaded relief image of the Guadalupe Mountains DEM, NM, USA, UTM Zone 17N</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_the_example_parameter_files">7.1.4. Get the example parameter files</h4>
+<div class="paragraph">
+<p>We have also provided some examples parameter files that are used to run the drainage density analysis.  These should be placed in the same folder as your DEM (e.g. in the folder <code>/LSDTopoTools/Topographic_projects/Guadalupe_NM/</code>. You can get the example parameter file using <code>wget</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/tree/master/example_parameter_files/drainage_density_guadalupe.driver</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_python_scripts">7.1.5. Python scripts</h4>
+<div class="paragraph">
+<p>We have also provided some Python scripts for creating figures from the draiange density analysis.  These should produce similar figures to those in Clubb et al. (2016), JGR-ES.  These scripts are in the directory <code>Python_scripts</code> within <code>LSDTopoTools_DrainageDensity</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects/LSDTopoTools_DrainageDensity$ cd Python_scripts
+vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects/LSDTopoTools_DrainageDensity/Python_scripts$ ls
+drainage_density_plot.py	drainage_density_plot_cosmo.py</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preliminary_steps">7.2. Preliminary steps</h3>
+<div class="sect3">
+<h4 id="_getting_the_channel_head_file">7.2.1. Getting the channel head file</h4>
+<div class="paragraph">
+<p>Before the drainage density analysis can be run, you must create a channel network for your DEM.  This can be done using any of the channel extraction algorithms within LSDTopoTools. Once you have run the channel extraction algorithm, you must make sure that the <code>bil</code> and <code>hdr</code> files with the channel head locations are placed in the same folder as the DEM you intend to use for the drainage density analysis.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_selecting_a_window_size">7.2.2. Selecting a window size</h4>
+<div class="paragraph">
+<p>Before we can run the drainage density algorithm, we need to calculate the correct window size for calculating mean hilltop curvature across the DEM.  Please refer to the <a href="#Selecting A Window Size">[Selecting A Window Size]</a> section for information on how to calculate a window size for your DEM.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_analysing_drainage_density_for_all_basins">7.3. Analysing drainage density for all basins</h3>
+<div class="paragraph">
+<p>This section provides instructions for how to extract the drainage density and mean hilltop curvature for every basin in the landscape of a given order (e.g. all second order drainage basins).</p>
+</div>
+<div class="sect3">
+<h4 id="_creating_the_paramter_file">7.3.1. Creating the paramter file</h4>
+<div class="paragraph">
+<p>In order to run the drainage density analysis code you must first create a parameter file for your DEM.  This should be placed in the same folder as your DEM and the channel heads <code>bil</code> file.  If you followed the instructions in the <a href="#_get_the_code_for_drainage_density_analysis">Get the code for drainage density analysis</a> section then you will already have an example parameter file for the Guadalupe Mountains DEM called <code>drainage_density_guadalupe.driver</code>.  Parameter files should have the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Name of the DEM without extension
+Name of the channel heads file - will vary depending on your channel extraction method
+Minimum slope for filling the DEM
+Order of basins to extract
+Window size (m): calculate for your DEM resolution</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example parameter file for the Guadalupe Mountains DEM is set out below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Guadalupe_DEM
+Guadalupe_DEM_CH_DrEICH
+0.0001
+2
+6</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_1_get_the_junctions_of_all_the_basins">7.3.2. Step 1: Get the junctions of all the basins</h4>
+<div class="paragraph">
+<p>The first step of the analysis creates a text file with all the junction numbers of the basins of the specified stream order.  Before the code can be run, you must compile it using the makefile in the folder <code>LSDTopoTools_DrainageDensity/driver_functions_DrainageDensity</code>.  Navigate to the folder using the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd driver_functions_DrainageDensity/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and compile the code with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ make -f drainage_density_step1_junctions.make</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This may come up with some warnings, but should create the file <code>drainage_density_step1_junctions.out</code>. You can then run the program with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./drainage_density_step1_junctions.out /path/to/DEM/location/ name_of_parameter_file.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For our example, the command would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./drainage_density_step1_junctions.out /LSDTopoTools/Topographic_projects/Guadalupe_NM/ drainage_density_guadalupe.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The program will create a text file called <code>DEM_name_DD_junctions.txt</code> which will be ingested by step 2 of the analysis.  It will also create some new rasters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DEM_name_fill: the filled DEM</p>
+</li>
+<li>
+<p>DEM_name_HS: a hillshade of the DEM</p>
+</li>
+<li>
+<p>DEM_name_SO: the channel network</p>
+</li>
+<li>
+<p>DEM_name_JI: the locations of all the tributary junctions</p>
+</li>
+<li>
+<p>DEM_name_CHT: the curvature for all the hilltops in the DEM</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_get_the_drainage_density_of_each_basin">7.3.3. Step 2: Get the drainage density of each basin</h4>
+<div class="paragraph">
+<p>The second step of the analysis ingests the junctions text file created in step 1. For each junction it will extract the upstream drainage basin, and calculate the drainage density and mean hilltop curvature for the basin.  This will be written to a text file which can be plotted up using our Python script.</p>
+</div>
+<div class="paragraph">
+<p>First, compile the code with the makefile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ make -f drainage_density_step2_basins.make</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This may come up with some warnings, but should create the file <code>drainage_density_step2_basins.out</code>. You can then run the program with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./drainage_density_step2_basins.out /path/to/DEM/location/ name_of_parameter_file.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For our example, the command would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./drainage_density_step2_basins.out /LSDTopoTools/Topographic_projects/Guadalupe_NM/ drainage_density_guadalupe.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This program will create 2 text files.  The first one will be called <code>DEM_name_drainage_density_cloud.txt</code> and will have 3 rows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Drainage density of the basin</p>
+</li>
+<li>
+<p>Mean hilltop curvature of the basin</p>
+</li>
+<li>
+<p>Drainage area of the basin</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This text file represents the data for every basin in the DEM.  The second text file will be called <code>DEM_name_drainage_density_binned.txt</code>, where the drainage density and hilltop curvature data has been binned with a bin width of 0.005 m<sup>-1</sup>.  It has 6 rows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mean hilltop curvature for the bin</p>
+</li>
+<li>
+<p>Standard deviation of curvature</p>
+</li>
+<li>
+<p>Standard error of curvature</p>
+</li>
+<li>
+<p>Drainage density for the bin</p>
+</li>
+<li>
+<p>Standard deviation of drainage density</p>
+</li>
+<li>
+<p>Standard error of drainage density</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These text files are read by <code>drainage_density_plot.py</code> to create plots of the drainage density and mean hilltop curvature.  The code also produces <code>DEM_name_basins.bil</code>, which is a raster with all the basins analysed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3_plotting_the_data">7.3.4. Step 3: Plotting the data</h4>
+<div class="paragraph">
+<p>Navigate to the folder <code>Python_scripts</code> within the <code>LSDTopoTools_DrainageDensity</code> repository.  You should find the following files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects/LSDTopoTools_DrainageDensity/Python_scripts$ ls
+drainage_density_plot.py	drainage_density_plot_cosmo.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open the file called <code>drainage_density_plot_cosmo.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="#Getting python running">[Getting python running]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Open the file called <code>drainage_density_plot.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="#Getting python running">[Getting python running]</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you want to run the script on the example dataset you can just run it without changing anything. The script will create the file <code>Guadalupe_DEM_drainage_density_all_basins.png</code> in the same folder as your DEM is stored in.  If you want to run it on your own data, simply open the Python script in your favourite text editor.  At the bottom of the file you need to change the DataDirectory (Line 165) and the DEM identifier (Line 167) to reflect your data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python"># Set the data directory here - this should point to the folder with your DEM
+DataDirectory = 'C:\\vagrantboxes\\LSDTopoTools\\Topographic_projects\\Guadalupe_NM\\'
+# Name of the DEM WITHOUT FILE EXTENSION
+DEM_name = 'Guadalupe_DEM'
+make_plots(DataDirectory, DEM_name)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should end up with a plot like the one below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Guadalupe_DEM_drainage_density_all_basins.png" alt="Plot of drainage density against mean hilltop curvature" width="600" height="400">
+</div>
+<div class="title">Figure 8. Plot of drainage density against mean hilltop curvature for the Guadalupe Mountains example dataset</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_summary">7.3.5. Summary</h4>
+<div class="paragraph">
+<p>You should now be able to extract the drainage density and mean hilltop curvature for all basins of a given order for your DEM, and use Python to plot the results.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">7.4. Analysing drainage density for basins with CRN-derived erosion rates</h3>
+<div class="paragraph">
+<p>This section provides instructions for how to extract the drainage density for basins upstream of a series of point locations, such as cosmogenic radionuclide (CRN)-derived erosion rate samples.  As an example, we will use the erosion rate data collected by Hurst et al. (2012) and Riebe et al. (2000) for the Feather River, Northern California.  The lidar data for this area is available from <a href="http://www.opentopography.org/">OpenTopography</a>. We haven&#8217;t included it in our example datasets as it is too large, but information on how to convert it into the right format can be found in our section on <a href="#GDAL">[GDAL]</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_formatting_your_erosion_rate_data">7.4.1. Formatting your erosion rate data</h4>
+<div class="paragraph">
+<p>The program needs to read in a text file with the erosion rate data.  This file needs to be called <code>DEM_name_cosmo.txt</code> where <code>DEM_name</code> is the name of the DEM <strong>without extension</strong>.  The file should have a row for each sample, with 4 columns, each separated by a space:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>X coordinate - same as DEM coordinate system</p>
+</li>
+<li>
+<p>Y coordinate - same as DEM coordinate system</p>
+</li>
+<li>
+<p>Erosion rate of the sample</p>
+</li>
+<li>
+<p>Error of the sample</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>An example of the file for the Feather River is shown below (UTM Zone 10N):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">640504.269	4391321.669	125.9	23.2
+647490.779	4388656.033	253.8	66.6
+648350.747	4388752.059	133.3	31.9
+643053.985	4388961.321	25.2	2.7
+643117.485	4389018.471	18.5	2
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This file has to be stored <strong>in the same folder as your DEM</strong>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_the_paramter_file_2">7.4.2. Creating the paramter file</h4>
+<div class="paragraph">
+<p>Along with the text file with the erosion rate data, you must also create a parameter file to run the code with.  This should have the same format as the parameter file for running the analysis on all the basins, minus the last two lines. The format is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Name of the DEM without extension
+Name of the channel heads file - will vary depending on your channel extraction method
+Minimum slope for filling the DEM</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should also be stored in the same folder as your DEM.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_1_run_the_code">7.4.3. Step 1: Run the code</h4>
+<div class="paragraph">
+<p>Before the code can be run, you must compile it using the makefile in the folder <code>LSDTopoTools_DrainageDensity/driver_functions_DrainageDensity</code>.  Navigate to the folder using the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd driver_functions_DrainageDensity/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and compile the code with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ make -f get_drainage_density_cosmo.make</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This may come up with some warnings, but should create the file <code>get_drainage_density_cosmo.out</code>. You can then run the program with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./get_drainage_density_cosmo.out /path/to/DEM/location/ name_of_parameter_file.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>/path/to/DEM/location</code> is the path to your DEM, and <code>name_of_parameter_file.driver</code> is the name of the parameter file you created.</p>
+</div>
+<div class="paragraph">
+<p>The program will create a text file called <code>DEM_name_drainage_density_cosmo.txt</code> which can be ingested by our Python script to plot up the data.  This file has 9 rows with the following data:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Drainage density of the basin</p>
+</li>
+<li>
+<p>Mean basin slope</p>
+</li>
+<li>
+<p>Standard deviation of slope</p>
+</li>
+<li>
+<p>Standard error of slope</p>
+</li>
+<li>
+<p>Basin erosion rate</p>
+</li>
+<li>
+<p>Error of the basin erosion rate</p>
+</li>
+<li>
+<p>Basin drainage area</p>
+</li>
+<li>
+<p>Mean hilltop curvature of the basin</p>
+</li>
+<li>
+<p>Standard error of hilltop curavture</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>It will also create some new rasters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DEM_name_slope: slope of the DEM</p>
+</li>
+<li>
+<p>DEM_name_curv: curvature of the DEM</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_plot_the_data">7.4.4. Step 2: Plot the data</h4>
+<div class="paragraph">
+<p>Navigate to the folder <code>Python_scripts</code> within the <code>LSDTopoTools_DrainageDensity</code> repository.  You should find the following files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects/LSDTopoTools_DrainageDensity/Python_scripts$ ls
+drainage_density_plot.py	drainage_density_plot_cosmo.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open the file called <code>drainage_density_plot_cosmo.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="#Getting python running">[Getting python running]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Open the Python script in your favourite text editor.  At the bottom of the file you need to change the DataDirectory (Line 131) and the DEM identifier (Line 133) to reflect your data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python"># change this to the path to your DEM
+DataDirectory = 'C:\\vagrantboxes\\LSDTopoTools\\Topographic_projects\\Feather_River\\'
+# Name of the DEM WITHOUT FILE EXTENSION
+DEM_name = 'fr1m_nogaps'
+make_plots(DataDirectory, DEM_name)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should end up with a plot like the one below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/fr1m_nogaps_drainage_density_cosmo.png" alt="Plot of drainage density against erosion rate" width="600" height="400">
+</div>
+<div class="title">Figure 9. Plot of drainage density against erosion rate for basins with CRN samples for Feather River, California</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_summary_2">7.4.5. Summary</h4>
+<div class="paragraph">
+<p>You should now be able to extract the drainage density for a series of different basins across the landscape.  These can either be all basins of a specific order (Step 1), or basins defined by point coordinates (e.g. for catchment-averaged erosion rates from CRN samples in Step 2).</p>
 </div>
 </div>
 </div>
@@ -1739,7 +2352,7 @@ number_of_junctions_dreich 1</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-26 07:54:06 UTC
+Last updated 2017-11-07 10:49:42 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
