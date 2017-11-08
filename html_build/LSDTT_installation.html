@@ -513,10 +513,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>+https://www.vagrantup.com/[Vagrant]. This method is the most tested. You might consider this the default method.</p>
+<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is the most tested. You might consider this the default method.</p>
 </li>
 <li>
-<p>Installation using <a href="https://www.docker.com/">Docker</a>. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
+<p>Installation using <a href="https://www.docker.com/">Docker</a>. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on Windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
 </li>
 <li>
 <p>Native installation on a Linux system. If your native operating system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need. The documents are made under the assumption that you use <a href="https://www.ubuntu.com/">Ubuntu</a>, but if you are a Linux user we are confident you&#8217;ll be able to port the instructions to your native system (usually this involves replacing <code>sudo apt-get</code> with <code>sudo yum</code>).</p>
@@ -627,7 +627,7 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 <p>Use <code>putty.exe</code> (in Windows) or <code>vagrant ssh</code> (on MacOS/Linux) to log into your vagrant server.</p>
 </li>
 <li>
-<p>Go to the *LSDTopoTools directory by typing <code>cd /LSDTopoTools</code></p>
+<p>Go to the <strong>LSDTopoTools</strong> directory by typing <code>cd /LSDTopoTools</code></p>
 </li>
 <li>
 <p>Type <code>python LSDTopoToolsSetup.py -id 0</code></p>
@@ -693,7 +693,7 @@ You will need sufficient space on your hard disk to host a guest operating syste
 <p>The 64 bit file is here: <a href="https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW</a></p>
 </li>
 <li>
-<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating systems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">for example see this link</a>, you should choose the 32 bit vagrantfile.</p>
+<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating systems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">(for example see this link)</a>, you should choose the 32 bit vagrantfile.</p>
 </li>
 <li>
 <p>Save one of these files into the directory for your vagrant files. See below for the appropriate directory structure.</p>
@@ -843,7 +843,7 @@ You will run everything through an ssh terminal, using a command line interface.
 <p>You will need to add the RSA key to your cache (just say yes: remember you are not connecting to the internet where baddies can spy on you but rather a server running on your own computer).</p>
 </li>
 <li>
-<p>Now you need to <strong>log in</strong>. Your vagrant box has a <strong>username</strong> of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
+<p>Now you need to <strong>log in</strong>. Your vagrant box has a username of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
 </li>
 </ol>
 </div>
@@ -943,7 +943,7 @@ PS: &gt; vagrant destroy</code></pre>
 <p>If vagrant hangs up in the powershell or terminal window and does not give you back the command prompt, turn it off and on again by typing ctrl-c and then running the vagrant command again.</p>
 </li>
 <li>
-<p>If your files are not synching across your host and vagrant machine, it is probably because there is some misspelling in your <code>LSDTopoTools</code> folder on the host machine. Make sure that folder is in the correct place and is spelled correctly (remember it should be case sensitive!!).</p>
+<p>If your files are not syncing across your host and vagrant machine, it is probably because there is some misspelling in your <code>LSDTopoTools</code> folder on the host machine. Make sure that folder is in the correct place and is spelled correctly (remember it should be case sensitive!!).</p>
 </li>
 </ul>
 </div>
@@ -1056,7 +1056,10 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 <p>In testing, I found many bases boxes did not work at all. The one that worked well for me was the <code>ubuntu/precise32</code> box. You can get this started with:</p>
 </div>
 <div class="paragraph">
-<p>Alternatively you can just <code>vagrant init</code> and empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
+<p>FIONA: WHAT IS SUPPOSED TO GO HERE??</p>
+</div>
+<div class="paragraph">
+<p>Alternatively you can just <code>vagrant init</code> an empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
 </div>
 <div class="paragraph">
 <p>You can update your base box with the command <code>vagrant box update</code>.</p>
@@ -1549,7 +1552,7 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 09:57:51 UTC
+Last updated 2017-11-07 21:53:52 CST
 </div>
 </div>
 <script type="text/x-mathjax-config">
