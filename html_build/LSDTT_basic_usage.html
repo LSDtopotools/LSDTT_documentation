@@ -446,7 +446,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopotools using the LSDTT_BasicMetrics program.</a>
+<li><a href="#_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopoTools using the LSDTT_BasicMetrics program</a>
 <ul class="sectlevel2">
 <li><a href="#_your_first_analysis_using_lsdtopotools">2.1. Your first analysis using LSDTopoTools</a>
 <ul class="sectlevel3">
@@ -459,7 +459,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</a></li>
 </ul>
 </li>
-<li><a href="#_draniage_area_and_channel_extraction">2.3. Draniage area and channel extraction</a>
+<li><a href="#_drainage_area_and_channel_extraction">2.3. Drainage area and channel extraction</a>
 <ul class="sectlevel3">
 <li><a href="#_questions_for_channel_extraction">2.3.1. Questions for channel extraction.</a></li>
 </ul>
@@ -561,7 +561,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_running_a_typical_analysis">1.1.1. Running a typical analysis</h4>
 <div class="paragraph">
-<p>In the next section we will walk you though an analysis. But reading this will help you understand where you are going.</p>
+<p>In the next section we will walk you though an analysis. However, reading this will help you understand where you are going, so we recommend you read the whole thing!</p>
 </div>
 <div class="ulist">
 <ul>
@@ -573,7 +573,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The first one is in the directory with the program. We call the program from here.</p>
 </li>
 <li>
-<p>The second one is in the directory with the data. The main reasen we keep this open is to use the <code>pwd</code> command to copy the directory name into the first terminal window.</p>
+<p>The second one is in the directory with the data. The main reason we keep this open is to use the <code>pwd</code> command to copy the directory name into the first terminal window.</p>
 </li>
 </ul>
 </div>
@@ -587,7 +587,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p>The program name (<code>./An_LSDTT_program.exe</code>), the directory name (<code>/LSDTopoTools/Topographic_projects/A_project</code>) and the paremeter file name (<code>AParameterFile.param</code>) will change but all *LSDTopoTools calls follow this same basic structure.</p>
+<p>The program name (<code>./An_LSDTT_program.exe</code>), the directory name (<code>/LSDTopoTools/Topographic_projects/A_project</code>) and the parameter file name (<code>AParameterFile.param</code>) will change but all <strong>LSDTopoTools</strong> calls follow this same basic structure.</p>
 </li>
 <li>
 <p>Now, all parameter files have these basic elements in them:</p>
@@ -600,7 +600,7 @@ write fname: Data_prefix</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>You need to change the path and fnames to reflect your data!</strong>.</p>
+<p><strong>You need to change the path and fnames to reflect your data!</strong></p>
 </div>
 </li>
 </ul>
@@ -609,7 +609,7 @@ write fname: Data_prefix</code></pre>
 <div class="sect3">
 <h4 id="_how_do_i_change_my_parameter_files">1.1.2. How do I change my parameter files?</h4>
 <div class="paragraph">
-<p>Just edit your paramter files in a text editor. This is just a program that edits plain text. <strong>DO NOT</strong> use a word processor. These modify file types. There are many options for text editors but we like <a href="http://brackets.io/">Brackets</a>. <a href="https://atom.io/">Atom</a> is also a nice alternative.</p>
+<p>You can edit your parameter files in a text editor: this is just a program that edits plain text. <strong>DO NOT</strong> use a word processor. These modify file types. There are many options for text editors but we like <a href="http://brackets.io/">Brackets</a>, or <a href="https://atom.io/">Atom</a> is also a nice alternative.</p>
 </div>
 <div class="paragraph">
 <p>However, editing the paths can be a bit annoying if you are moving data from place to place, so we have a python script, called <code>LSDTTParamfileUpdater.py</code> that updates the paths in the parameter file for you. The way you run that is:</p>
@@ -642,10 +642,10 @@ write fname: Data_prefix</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopotools using the LSDTT_BasicMetrics program.</h2>
+<h2 id="_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopoTools using the LSDTT_BasicMetrics program</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter will walk you through some basic topographic analysis using our program <strong>LSDTT_BasicMetrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. It can calculate drainage area. It can also extract channel networks. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because:</p>
+<p>This chapter will walk you through some basic topographic analysis using our program <strong>LSDTT_BasicMetrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. ALong side these metrics it can also extract channel networks, and get drainage areas. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -753,7 +753,7 @@ Make sure the <code>wget</code> call (with the web address) is all on one line.
 </div>
 </li>
 <li>
-<p><span class="red">Terminal 1</span> In a native linux or on Edinburgh&#8217;s servers type:</p>
+<p><span class="red">Terminal 1</span> In native linux or on Edinburgh&#8217;s servers type:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
@@ -846,10 +846,15 @@ $ python LSDTTParamfileUpdater.py</code></pre>
 <div class="sect2">
 <h3 id="_getting_surface_metrics">2.2. Getting surface metrics</h3>
 <div class="paragraph">
-<p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:
-* First we make sure directories are correct in the <strong>driver</strong> file. This should have already happened if you have run <code>LSDTTParamfileUpdater.py</code>.
-* Second, we call <code>LSDTT_BasicMetrics.out</code> in the terminal.</p>
+<p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>First we make sure directories are correct in the <strong>driver</strong> file. This should have already happened if you have run <code>LSDTTParamfileUpdater.py</code>.</p>
+</li>
+<li>
+<p>Second, we call <code>LSDTT_BasicMetrics.out</code> in the terminal.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -910,6 +915,9 @@ print_tangential_curvature: true</code></pre>
 </li>
 </ol>
 </div>
+</li>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</h4>
 <div class="ulist">
@@ -922,7 +930,7 @@ print_tangential_curvature: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_draniage_area_and_channel_extraction">2.3. Draniage area and channel extraction</h3>
+<h3 id="_drainage_area_and_channel_extraction">2.3. Drainage area and channel extraction</h3>
 <div class="paragraph">
 <p>Finally, we will compute some drainage areas and extract a channel network. To do this run the <strong>driver file</strong> <code>WA_BasicMetrics03.driver</code>.</p>
 </div>
@@ -940,7 +948,7 @@ print_tangential_curvature: true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -951,7 +959,7 @@ print_tangential_curvature: true</code></pre>
 <p>Yet more stuff will come out. Some are drainage area rasters, but there is also a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
 </li>
 <li>
-<p>You will get a file with point, which you can load into QGIS. You can read about how to do that <a href="LSDTT_QGIS.html#_import_point_data_from_text_or_spreadsheet">in our QGIS instructions</a>. You will get something that looks a bit like this:</p>
+<p>You will get a file with points, which you can load into QGIS. You can read about how to do that <a href="LSDTT_QGIS.html#_import_point_data_from_text_or_spreadsheet">in our QGIS instructions</a>. You will get something that looks a bit like this:</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/WA_CN.jpg" alt="Whiteadder channel network">
@@ -969,7 +977,7 @@ print_tangential_curvature: true</code></pre>
 <p>Try changing the <code>threshold_contributing_pixels</code> parameter. What happens to the channel network?</p>
 </li>
 <li>
-<p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read fname:</code> parameter to reflect the smoothed raster.</p>
+<p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read fname</code> parameter to reflect the smoothed raster.</p>
 </li>
 </ul>
 </div>
@@ -990,7 +998,7 @@ print_tangential_curvature: true</code></pre>
 <p>One of the most common operations when analysing topographic data is extracting channel networks. We have an entire <a href="LSDTT_channel_extraction.html">package for that</a>, which has a number of different <a href="https://zenodo.org/record/824198#.WfseyFu0OUk">channel extraction algorithms</a>.</p>
 </div>
 <div class="paragraph">
-<p>However, my users just want channels extracted with the minimum of fuss and so we provide a simple channel profile extraction tool in <strong>LSDTT_BasicMetrics</strong>.</p>
+<p>However, many users just want channels extracted with the minimum of fuss and so we provide a simple channel profile extraction tool in <strong>LSDTT_BasicMetrics</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="_what_channels_do_you_want_selecting_basins">3.1. What channels do you want? Selecting basins</h3>
@@ -1028,11 +1036,23 @@ print_basin_raster: true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The key elements here are:
-* <code>find_basins: true</code> This tells the program to find specific basins
-* <code>minimum_basin_size_pixels: 10000</code> This tells the program to get basins at least this big. They must be smaller than <code>maximum_basin_size_pixels</code>.
-* <code>only_take_largest_basin</code> When false it finds all basins in the size window, whereas if tru you only get the larges basin.
-* <code>print_basin_raster: true</code> this prints a basin raster.</p>
+<p>The key elements here are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find_basins: true</code> This tells the program to find specific basins</p>
+</li>
+<li>
+<p><code>minimum_basin_size_pixels: 10000</code> This tells the program to get basins at least this big. They must be smaller than <code>maximum_basin_size_pixels</code>.</p>
+</li>
+<li>
+<p><code>only_take_largest_basin</code> When false it finds all basins in the size window, whereas if tru you only get the larges basin.</p>
+</li>
+<li>
+<p><code>print_basin_raster: true</code> this prints a basin raster.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Run the driver and have a look at the new files.</p>
@@ -1052,7 +1072,7 @@ print_basin_raster: true</code></pre>
 <div class="sect3">
 <h4 id="_geojson_data">3.1.1. Geojson data</h4>
 <div class="paragraph">
-<p>If you use the switch <code>convert_csv_to_geojson: true</code> the csv files will be converted to <a href="http://geojson.org/">geojson</a> files which can be loaded directly as shapefiles in a GIS. Have a look at our <a href="LSDTT_QGIS.html">QGIS documents</a>; we have <a href="LSDTT_QGIS.html#_adding_vector_data">instructions for loading "vector" data</a>. Geojson files contain GIS-readable vecotr data.</p>
+<p>If you use the switch <code>convert_csv_to_geojson: true</code> the csv files will be converted to <a href="http://geojson.org/">geojson</a> files which can be loaded directly as shapefiles in a GIS. Have a look at our <a href="LSDTT_QGIS.html">QGIS documents</a>; we have <a href="LSDTT_QGIS.html#_adding_vector_data">instructions for loading "vector" data</a>. Geojson files contain GIS-readable vector data.</p>
 </div>
 </div>
 </div>
@@ -1079,7 +1099,7 @@ print_basin_raster: true</code></pre>
 </div>
 </li>
 <li>
-<p>If you want to pick just that junctions you can make a text file and just write the junction numbers you want in that text file.</p>
+<p>If you want to pick certain junctions you can make a text file and just write the junction numbers you want in that text file.</p>
 </li>
 <li>
 <p>We have added a junctions file in the directory with the data called <code>selected_WA.junctions</code>. It has a few junctions picked. The line to add to the parameter file are:</p>
