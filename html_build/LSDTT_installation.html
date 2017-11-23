@@ -466,6 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_mapping_your_network_drive">5.1. Mapping your network drive</a></li>
 <li><a href="#_getting_on_to_our_servers_with_nx">5.2. Getting on to our servers with NX</a></li>
 <li><a href="#_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</a></li>
+<li><a href="#_testing_the_tool">5.4. Testing the tool</a></li>
 </ul>
 </li>
 <li><a href="#_extra_dependencies_for_swaths_and_point_clouds">6. Extra dependencies for swaths and point clouds</a>
@@ -1258,6 +1259,43 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <div class="paragraph">
 <p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick Setup for Edinburgh Geoscience users</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start an <a href="https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx">nx session</a>.</p>
+</li>
+<li>
+<p>Open a terminal window.</p>
+</li>
+<li>
+<p>Go to your home directory: <code>cd ~</code></p>
+</li>
+<li>
+<p>Download the setup tool:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the setup tool by typing</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>See instructins below for testing the tool.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_mapping_your_network_drive">5.1. Mapping your network drive</h3>
 <div class="paragraph">
@@ -1356,7 +1394,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <p>Download our setup tool by typing:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
 </div>
 </div>
 </li>
@@ -1364,12 +1402,72 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <p>Run the setup tool by typing</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p>You should now have <strong>LSDTopoTools</strong> directories installed in your home directory. You can always get to your home directory by typing <code>cd ~</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_the_tool">5.4. Testing the tool</h3>
+<div class="paragraph">
+<p>Now, if you want to test the tool:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the example data directory: <code>cd ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></p>
+</li>
+<li>
+<p>You want to add the path to the main program:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ PATH=$PATH:~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver;export PATH</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This update to your path is only valid for your current terminal session. You will need to enter this command each time you start a new session.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Download the path modification tool:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>run the tool</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Okay, now tes the program:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ LSDTT_BasicMetrics.out . WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If the program does some things and then says <code>I&#8217;m all finished! Have a nice day.</code> it means it has worked!</p>
 </li>
 </ol>
 </div>
@@ -1552,7 +1650,7 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 21:53:52 CST
+Last updated 2017-10-31 09:57:51 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
