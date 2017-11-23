@@ -466,6 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_mapping_your_network_drive">5.1. Mapping your network drive</a></li>
 <li><a href="#_getting_on_to_our_servers_with_nx">5.2. Getting on to our servers with NX</a></li>
 <li><a href="#_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</a></li>
+<li><a href="#_testing_the_tool">5.4. Testing the tool</a></li>
 </ul>
 </li>
 <li><a href="#_extra_dependencies_for_swaths_and_point_clouds">6. Extra dependencies for swaths and point clouds</a>
@@ -513,10 +514,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>+https://www.vagrantup.com/[Vagrant]. This method is the most tested. You might consider this the default method.</p>
+<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is the most tested. You might consider this the default method.</p>
 </li>
 <li>
-<p>Installation using <a href="https://www.docker.com/">Docker</a>. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
+<p>Installation using <a href="https://www.docker.com/">Docker</a>. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on Windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
 </li>
 <li>
 <p>Native installation on a Linux system. If your native operating system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need. The documents are made under the assumption that you use <a href="https://www.ubuntu.com/">Ubuntu</a>, but if you are a Linux user we are confident you&#8217;ll be able to port the instructions to your native system (usually this involves replacing <code>sudo apt-get</code> with <code>sudo yum</code>).</p>
@@ -627,7 +628,7 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 <p>Use <code>putty.exe</code> (in Windows) or <code>vagrant ssh</code> (on MacOS/Linux) to log into your vagrant server.</p>
 </li>
 <li>
-<p>Go to the *LSDTopoTools directory by typing <code>cd /LSDTopoTools</code></p>
+<p>Go to the <strong>LSDTopoTools</strong> directory by typing <code>cd /LSDTopoTools</code></p>
 </li>
 <li>
 <p>Type <code>python LSDTopoToolsSetup.py -id 0</code></p>
@@ -693,7 +694,7 @@ You will need sufficient space on your hard disk to host a guest operating syste
 <p>The 64 bit file is here: <a href="https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDTT_vagrantfiles/master/Vagrantfile_64bit_FFTW</a></p>
 </li>
 <li>
-<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating systems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">for example see this link</a>, you should choose the 32 bit vagrantfile.</p>
+<p>Although most computers today are 64 bit, most of them, as default, disable guest 64 bit operating systems. Unless you know how to turn this on <a href="http://stackoverflow.com/questions/27884846/virtualization-not-enabled-in-bios">(for example see this link)</a>, you should choose the 32 bit vagrantfile.</p>
 </li>
 <li>
 <p>Save one of these files into the directory for your vagrant files. See below for the appropriate directory structure.</p>
@@ -843,7 +844,7 @@ You will run everything through an ssh terminal, using a command line interface.
 <p>You will need to add the RSA key to your cache (just say yes: remember you are not connecting to the internet where baddies can spy on you but rather a server running on your own computer).</p>
 </li>
 <li>
-<p>Now you need to <strong>log in</strong>. Your vagrant box has a <strong>username</strong> of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
+<p>Now you need to <strong>log in</strong>. Your vagrant box has a username of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
 </li>
 </ol>
 </div>
@@ -943,7 +944,7 @@ PS: &gt; vagrant destroy</code></pre>
 <p>If vagrant hangs up in the powershell or terminal window and does not give you back the command prompt, turn it off and on again by typing ctrl-c and then running the vagrant command again.</p>
 </li>
 <li>
-<p>If your files are not synching across your host and vagrant machine, it is probably because there is some misspelling in your <code>LSDTopoTools</code> folder on the host machine. Make sure that folder is in the correct place and is spelled correctly (remember it should be case sensitive!!).</p>
+<p>If your files are not syncing across your host and vagrant machine, it is probably because there is some misspelling in your <code>LSDTopoTools</code> folder on the host machine. Make sure that folder is in the correct place and is spelled correctly (remember it should be case sensitive!!).</p>
 </li>
 </ul>
 </div>
@@ -1056,7 +1057,10 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 <p>In testing, I found many bases boxes did not work at all. The one that worked well for me was the <code>ubuntu/precise32</code> box. You can get this started with:</p>
 </div>
 <div class="paragraph">
-<p>Alternatively you can just <code>vagrant init</code> and empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
+<p>FIONA: WHAT IS SUPPOSED TO GO HERE??</p>
+</div>
+<div class="paragraph">
+<p>Alternatively you can just <code>vagrant init</code> an empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
 </div>
 <div class="paragraph">
 <p>You can update your base box with the command <code>vagrant box update</code>.</p>
@@ -1168,7 +1172,7 @@ empty, you will need to run the install script. In the prompt, enter:
 <code>install.sh</code> and hit <code>enter</code>.</p>
 </li>
 <li>
-<p>Some users have reported permissions problems with running <code>install.sh</code> on a fresh docker install. If this happens you need to run this command <code>chmod 0744 /bin/install.sh</code> to update the permissions on the install script and then run <code>install.sh as normal.</code></p>
+<p>Some users have reported permissions problems with running <code>install.sh</code> on a fresh docker install. If this happens you need to run this command <code>chmod 0744 /bin/install.sh</code> to update the permissions on the install script and then run <code>install.sh</code> as normal.</p>
 </li>
 <li>
 <p>Follow docker documentation for your operating system to start and shut down docker containers.</p>
@@ -1182,7 +1186,7 @@ empty, you will need to run the install script. In the prompt, enter:
 <h2 id="_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our software is designed for linux operating systems but we do reccomend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
+<p>Our software is designed for linux operating systems but we do recommend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1238,7 +1242,7 @@ The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In 
 Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.</p>
 </li>
 <li>
-<p>It turns out the <code>LSDTopoToolsSetup.py</code> tool has a number of options but this documentation is for the chi tools so we aren&#8217;t going to bother to explain them. However, if you want a preview of what it does, you can call its help options:</p>
+<p>The <code>LSDTopoToolsSetup.py</code> tool has a number of options: if you want a preview of what it does, you can call its help options:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -h</code></pre>
@@ -1255,6 +1259,43 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <div class="paragraph">
 <p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick Setup for Edinburgh Geoscience users</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start an <a href="https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx">nx session</a>.</p>
+</li>
+<li>
+<p>Open a terminal window.</p>
+</li>
+<li>
+<p>Go to your home directory: <code>cd ~</code></p>
+</li>
+<li>
+<p>Download the setup tool:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the setup tool by typing</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>See instructins below for testing the tool.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_mapping_your_network_drive">5.1. Mapping your network drive</h3>
 <div class="paragraph">
@@ -1263,7 +1304,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Open a file explorer window and under computer select the "University drive:</p>
+<p>Open a file explorer window and under computer select the "University drive":</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Udrive.jpg" alt="The U drive">
@@ -1315,7 +1356,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We will be working on the university of Edinburgh servers.</p>
+<p>We will be working on the University of Edinburgh servers.</p>
 </li>
 <li>
 <p>First you should start an <a href="https://www.nomachine.com/">NX</a> session. NX is installed on all the computer labs in GeoScience (and in many other computer labs) Follow these instructions: <a href="https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx" class="bare">https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx</a></p>
@@ -1353,7 +1394,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <p>Download our setup tool by typing:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
 </div>
 </div>
 </li>
@@ -1361,12 +1402,72 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <p>Run the setup tool by typing</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p>You should now have <strong>LSDTopoTools</strong> directories installed in your home directory. You can always get to your home directory by typing <code>cd ~</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_the_tool">5.4. Testing the tool</h3>
+<div class="paragraph">
+<p>Now, if you want to test the tool:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the example data directory: <code>cd ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></p>
+</li>
+<li>
+<p>You want to add the path to the main program:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ PATH=$PATH:~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver;export PATH</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This update to your path is only valid for your current terminal session. You will need to enter this command each time you start a new session.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Download the path modification tool:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>run the tool</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTTParamfileUpdater.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Okay, now tes the program:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ LSDTT_BasicMetrics.out . WA_BasicMetrics01.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If the program does some things and then says <code>I&#8217;m all finished! Have a nice day.</code> it means it has worked!</p>
 </li>
 </ol>
 </div>
@@ -1377,7 +1478,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <h2 id="_extra_dependencies_for_swaths_and_point_clouds">6. Extra dependencies for swaths and point clouds</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Some of our tools require the point cloud library. TO get this working you need a few different utilities and libraries (take a deep breath)</p>
+<p>Some of our tools require the point cloud library. To get this working you need a few different utilities and libraries (take a deep breath):</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1399,7 +1500,7 @@ since it is required by something called the <a href="http://pointclouds.org/">p
 <div class="sect2">
 <h3 id="_install_the_point_cloud_library">6.1. Install the Point Cloud Library</h3>
 <div class="paragraph">
-<p>If you are using an older version of ubuntu there is a package. Newer versions of Ubuntu don&#8217;t have it, so you will need to install by hand</p>
+<p>If you are using an older version of ubuntu there is a package. Newer versions of Ubuntu don&#8217;t have it, so you will unfortunately need to install by hand.</p>
 </div>
 <div class="sect3">
 <h4 id="_ubuntu_14_and_12">6.1.1. Ubuntu 14 and 12</h4>
@@ -1549,7 +1650,7 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 09:03:14 UTC
+Last updated 2017-10-31 09:57:51 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

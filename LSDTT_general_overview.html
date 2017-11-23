@@ -495,7 +495,7 @@ in the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of 
 <div class="paragraph">
 <p>The project started around 2010 due to my increasing frustration with my inability to reproduce topographic analyses that I found in scientific papers and saw at conferences.
 Some of the papers that had irreproducible analyses were my own!
-Like many scientists working with topographic data, I was using a geographic information system (GIS) to prepare figures and analyze topography,
+Like many scientists working with topographic data, I was using a geographic information system (GIS) to prepare figures and analyse topography,
 and after a long session of clicking on commercial software to get just that right figure,
 I did not have a record of the steps I took to get there. <strong>Mea culpa</strong>.
 However, I do not think I am the only person guilty of doing this!
@@ -516,7 +516,7 @@ but this proved to be a painful process that required numerous emails and teleph
 <p>This motivated me to start writing my own software for dealing with topographic data.
 This seemed crazy at the time. Why were we trying to reinvent a GIS?
 The answer is that the resulting software, <a href="https://lsdtopotools.github.io/">LSDTopoTools</a>,
-<strong>IS NOT A GIS</strong>! It is a series of algorithms that are open-source and can be used to analyze topography,
+<strong>IS NOT A GIS</strong>! It is a series of algorithms that are open-source and can be used to analyse topography,
 and the programs that run these analyses, which we call driver programs,
 are intended to be redistributed such that if you have the same topographic data as was used in the original analysis,
 you should be able to reproduce the analysis <strong>exactly</strong>.
@@ -527,7 +527,7 @@ but other researchers can always use our code to find the ugly examples as well)
 <div class="paragraph">
 <p>We hope that others outside our group will find our tools useful, and this document will help users get our tools working on their systems.
 I do plead for patience: we have yet to involve anyone in the project that has any formal training in computer science or software engineering!
-But we do hope to distribute beyond the walls of the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of GeoScience at the University of Edinburgh</a>,
+But we do hope to distribute beyond the walls of the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of GeoSciences at the University of Edinburgh</a>,
 so please contact us for help, questions or suggestions.</p>
 </div>
 </div>
@@ -536,7 +536,62 @@ so please contact us for help, questions or suggestions.</p>
 <h2 id="_some_comments_on_open_data_and_reproducibility">3. Some comments on open data and reproducibility</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>What seperates science from philosophy and art? Philosophers like Popper have argued that a defining feature of science is the ability to falsify hypotheses. Scientists need a way to know if a hypothesis is wrong. Other scientists must be able to test the findings. In scientific publications, if other scientists cannot test the results, then the paper is more of an advertisement than actual science (in the succinct words of one of our Hutton Club speakers). Testability and reproducibility is the aspiration but in reality very few scientific papers are reproducible. This has been at times described as a "crisis" in science. On the LSDTopoTools team, we aspire for our publications to be fully reproducible. We admit to not fully reaching this goal in many cases: it poses technological barriers when you are processing many, many, gigabytes of data and requires carefully thought out workflows to maintain reproducibility. Each publication we make results in a slightly more streamlined workflow for reproducibility. Hopefully our experience can help others in creating reproducible research since we have learned many lessons about the best way to create fully reproducible analyses the hard way.</p>
+<p>What seperates science from philosophy and art? If you look up "science" in a dictionary you will probably find something similar to what is on the
+<a href="http://en.wikipedia.org/wiki/Science">Wikipedia page for science</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Science (from Latin scientia, meaning "knowledge") is a systematic enterprise that builds and organizes knowledge in the form of testable explanations and predictions about nature and the universe.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; from Wikipedia
+</div>
+</div>
+<div class="paragraph">
+<p>Two important words in that definition are "systematic" and "testable".
+Philosophers like <a href="https://en.wikipedia.org/wiki/Karl_Popper">Karl Popper</a> have argued that a defining feature of science is the ability to falsify hypotheses. Scientists need a way to know if a hypothesis is wrong. Other scientists must be able to test the findings.</p>
+</div>
+<div class="paragraph">
+<p>In 1989 <a href="https://en.wikipedia.org/wiki/Cold_fusion">Stanley Pons and Martin Fleischmann</a> claimed to have carried out a successful cold fusion experiment,
+but others were unable to reproduce their results and thus their findings were considered unsound.
+Naturally you want to avoid this sort of thing. Ideally all research should be reproducible.
+But researchers actually have quite a poor track record for creating reproducible research.
+Here is a fun game: ask any senior academic to reproduce the results from their PhD or even show the documentation of the data, figure preparation, etc.
+Many will be unable to do so.</p>
+</div>
+<div class="paragraph">
+<p>In scientific publications, if other scientists cannot test the results, then the paper is more of an advertisement than actual science (in the succinct words of one of our Hutton Club speakers). Testability and reproducibility is the aspiration but in reality very few scientific papers are reproducible. This has been at times described as a "crisis" in science. In fact, Nature published an entire special collection on this topic:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.nature.com/nature/focus/reproducibility/#editorial">Nature special collection on reproducibility</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This problem can be mitigated significantly if you are using computation to test hypotheses. However this is only possible if other actually have access to the programs you use for your research. Again, several recent articles have highlighted the need for transparent computation in science.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.nature.com/ngeo/journal/v7/n11/full/ngeo2283.html">Open code for open science</a> (published in Nature).</p>
+</li>
+<li>
+<p><a href="http://www.nature.com/news/code-share-1.16232">Code share</a> (published in Nature Geoscience).</p>
+</li>
+<li>
+<p><a href="http://www.nature.com/news/journals-unite-for-reproducibility-1.16259">Journals unite for reproducibility</a> (published in Nature).</p>
+</li>
+<li>
+<p><a href="http://earthweb.ess.washington.edu/roe/Knowability_590/">Knowability and no ability course pages at the University of Washington</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On the LSDTopoTools team, we aspire for our publications to be fully reproducible. We admit to not fully reaching this goal in many cases. When you are processing many, many, gigabytes of data there are technial barries to making all the steps open and reproducible (e.g.,, how do we make all the topographic data public?), and making the work reproducible requires carefully thought out workflows. Each publication we make results in a slightly more streamlined workflow for reproducibility. Hopefully our experience can help others in creating reproducible research since we have learned many lessons about the best way to create fully reproducible analyses the hard way.</p>
 </div>
 </div>
 </div>
@@ -544,7 +599,7 @@ so please contact us for help, questions or suggestions.</p>
 <h2 id="_the_philosophy_behind_lsdtopotools">4. The philosophy behind LSDTopoTools</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://lsdtopotools.github.io/">LSDTopoTools</a> is a software package designed to analyze landscapes for applications in geomorphology, hydrology, ecology and allied fields.
+<p><a href="http://lsdtopotools.github.io/">LSDTopoTools</a> is a software package designed to analyse landscapes for applications in geomorphology, hydrology, ecology and allied fields.
 It is not intended as a substitute for a GIS, but rather is designed to be a research and analysis tool that produces <strong>reproducible</strong> data.
 The motivations behind its development were:</p>
 </div>
@@ -568,7 +623,7 @@ The motivations behind its development were:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>The toolbox is organized around objects, which are used to store and manipulate specific kinds of data,
+<p>The toolbox is organised around objects, which are used to store and manipulate specific kinds of data,
 and driver functions, which users write to interface with the objects.</p>
 </div>
 <div class="sidebarblock">
@@ -603,7 +658,7 @@ you can exist in blissful ignorance of the implementation and simply stay on the
 <h2 id="_why_don_t_we_just_use_arcmap_qgis_it_has_topographic_analysis_tools">5. Why don&#8217;t we just use ArcMap/QGIS? It has topographic analysis tools.</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>One of the things our group does as geomorphologists is try to understand the physics and evolution of the Earth&#8217;s surface by analyzing topography.
+<p>One of the things our group does as geomorphologists is try to understand the physics and evolution of the Earth&#8217;s surface by analysing topography.
 Many geomorphologists will take some topographic data and perform a large number of steps to produce and original analysis.
 Our code is designed to automate such steps as well as make these steps reproducible.
 If you send another geomorphologist your code and data they should be able to exactly reproduce your analysis.
@@ -635,7 +690,7 @@ Our software was built to do the following:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-28 10:26:14 UTC
+Last updated 2017-10-30 17:36:22 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
