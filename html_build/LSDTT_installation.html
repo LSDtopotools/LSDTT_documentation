@@ -448,8 +448,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_updating_to_the_latest_versions_of_the_software">2.2.4. Updating to the latest versions of the software</a></li>
 <li><a href="#_shutting_things_down">2.2.5. Shutting things down</a></li>
 <li><a href="#_if_you_want_to_start_from_scratch">2.2.6. If you want to start from scratch</a></li>
-<li><a href="#_troubleshooting_a_vagrant_server">2.2.7. Troubleshooting a vagrant server</a></li>
-<li><a href="#_brief_notes_for_setting_up_your_own_vagrant_server">2.2.8. Brief notes for setting up your own Vagrant server</a></li>
+</ul>
+</li>
+<li><a href="#_technical_details_on_vagrant">2.3. Technical details on vagrant</a></li>
+<li><a href="#_brief_notes_for_setting_up_your_own_vagrant_server">2.4. Brief notes for setting up your own Vagrant server</a>
+<ul class="sectlevel3">
+<li><a href="#_initiating_a_vagrant_box">2.4.1. Initiating a Vagrant box</a></li>
+<li><a href="#_notes_on_the_base_box">2.4.2. Notes on the base box</a></li>
+<li><a href="#_details_of_provisioning">2.4.3. Details of provisioning</a></li>
 </ul>
 </li>
 </ul>
@@ -540,6 +546,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> is software for creating virtual machines, which are implementations of operating systems that live in your host operating system (e.g., you can have a virtual Linux system operating within your Windows or MacOS operating system).</p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you download Virtualbox 5.1 instead: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_1" class="bare">https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><a href="https://www.vagrantup.com/">Vagrant</a> is software for managing and provisioning virtual machines.</p>
 </li>
@@ -552,7 +574,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you download Virtualbox 5.1 instead: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_1" class="bare">https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</a>
+As of 22-Dec-2017 Vagrant 2.0.1 has conflicts with some ruby packages. Make sure you download Vagrant 2.0.0: <a href="https://releases.hashicorp.com/vagrant/2.0.0/" class="bare">https://releases.hashicorp.com/vagrant/2.0.0/</a>
 </td>
 </tr>
 </table>
@@ -568,7 +590,7 @@ As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you downl
 <p>Download and install <a href="https://www.virtualbox.org/">virtualbox</a>. As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you download Virtualbox 5.1 instead: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_1" class="bare">https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</a></p>
 </li>
 <li>
-<p>Download and install <a href="https://www.vagrantup.com/">vagrant</a>. You might have to restart your computer after this. <strong>You need to install virtualbox before you install vagrant, or you might get errors.</strong></p>
+<p>Download and install <a href="https://www.vagrantup.com/">vagrant</a>. As of 22-Dec-2017 Vagrant 2.0.1 has conflicts with some ruby packages. Make sure you download Vagrant 2.0.0: <a href="https://releases.hashicorp.com/vagrant/2.0.0/" class="bare">https://releases.hashicorp.com/vagrant/2.0.0/</a> You might have to restart your computer after this. <strong>You need to install virtualbox before you install vagrant, or you might get errors.</strong></p>
 </li>
 <li>
 <p>If you are on Windows, download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty.exe</a>. If you are on Linux or MacOS you can skip this because they have built-in equivalents.</p>
@@ -663,10 +685,10 @@ You will need sufficient space on your hard disk to host a guest operating syste
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You need software for running virtual machines. We recommend <a href="https://www.virtualbox.org/">virtualbox</a> since it is both well supported and free. Download and install. Our instructions assume you are using virtual box.</p>
+<p>You need software for running virtual machines. We recommend <a href="https://www.virtualbox.org/">virtualbox</a> since it is both well supported and free. Download and install. Our instructions assume you are using virtual box. As of 01-Nov-2017 Vagrant does not work with VirtualBox 5.2. Make sure you download Virtualbox 5.1 instead: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_1" class="bare">https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</a></p>
 </li>
 <li>
-<p>Download and install <a href="https://www.vagrantup.com/">Vagrant</a>.</p>
+<p>Download and install <a href="https://www.vagrantup.com/">Vagrant</a>. As of 22-Dec-2017 Vagrant 2.01 has conflicts with some ruby packages. Make sure you download Vagrant 2.0.0: <a href="https://releases.hashicorp.com/vagrant/2.0.0/" class="bare">https://releases.hashicorp.com/vagrant/2.0.0/</a></p>
 </li>
 <li>
 <p>Vagrant works via command line, so you will need to know how to open a terminal on <a href="http://www.macworld.co.uk/feature/mac-software/get-more-out-of-os-x-terminal-3608274/">OS X</a>, Linux (usually you can open one using <code>ctrl-alt-T</code>, but if you use Linux that means you were born knowing how to open a terminal), or a <a href="http://www.tenforums.com/tutorials/25581-windows-powershell-open-windows-10-a.html">Windows powershell</a>.</p>
@@ -929,28 +951,19 @@ PS: &gt; vagrant provision</code></pre>
 PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_troubleshooting_a_vagrant_server">2.2.7. Troubleshooting a vagrant server</h4>
 <div class="paragraph">
-<p>There are a few common problems people have when running a vagrant server.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If you are on an old computer, sometimes vagrant times out before the virtual machine boots. This most frequently happens the first time you boot a vagrant machine. The most effective way to fix this is with the canonical IT solution: turning it off and on again. To do that run <code>vagrant halt</code> and <code>vagrant up</code> in succession.</p>
-</li>
-<li>
-<p>If vagrant hangs up in the powershell or terminal window and does not give you back the command prompt, turn it off and on again by typing ctrl-c and then running the vagrant command again.</p>
-</li>
-<li>
-<p>If your files are not syncing across your host and vagrant machine, it is probably because there is some misspelling in your <code>LSDTopoTools</code> folder on the host machine. Make sure that folder is in the correct place and is spelled correctly (remember it should be case sensitive!!).</p>
-</li>
-</ul>
+<p>Unresolved directive in book/02-vagrant_installation/vagrant_installation.asc - include::sections/troubleshooting.asc[]</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_brief_notes_for_setting_up_your_own_vagrant_server">2.2.8. Brief notes for setting up your own Vagrant server</h4>
+</div>
+<div class="sect2">
+<h3 id="_technical_details_on_vagrant">2.3. Technical details on vagrant</h3>
+<div class="paragraph">
+<p>Here are some technical details on vagrant. Hopefully you will never have to read any of this.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_brief_notes_for_setting_up_your_own_vagrant_server">2.4. Brief notes for setting up your own Vagrant server</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -966,8 +979,8 @@ This section is for customising your vagrant environment (or rather, your Ubuntu
 <div class="paragraph">
 <p>We have written Vagrant files for you so you don&#8217;t have to customise your working environment, but if you want to set up your own Vagrant boxes with your own software here are some notes.</p>
 </div>
-<div class="sect4">
-<h5 id="_initiating_a_vagrant_box">Initiating a Vagrant box</h5>
+<div class="sect3">
+<h4 id="_initiating_a_vagrant_box">2.4.1. Initiating a Vagrant box</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1020,8 +1033,8 @@ This section is for customising your vagrant environment (or rather, your Ubuntu
 </ol>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_notes_on_the_base_box">Notes on the base box</h5>
+<div class="sect3">
+<h4 id="_notes_on_the_base_box">2.4.2. Notes on the base box</h4>
 <div class="paragraph">
 <p>Vagrant sets up a Linux server living in your computer (it is called the <strong>Host</strong> computer). The server will run a Linux operating system, and you need to choose a functioning base system
 <a href="https://atlas.hashicorp.com/boxes/search">vagrant base boxes</a>. Here we have started with <code>ubuntu/precise32</code>. You might want to try other base boxes, they can be found at the <a href="https://atlas.hashicorp.com/boxes/search">atlas website</a>.</p>
@@ -1054,20 +1067,14 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 </table>
 </div>
 <div class="paragraph">
-<p>In testing, I found many bases boxes did not work at all. The one that worked well for me was the <code>ubuntu/precise32</code> box. You can get this started with:</p>
-</div>
-<div class="paragraph">
-<p>FIONA: WHAT IS SUPPOSED TO GO HERE??</p>
-</div>
-<div class="paragraph">
-<p>Alternatively you can just <code>vagrant init</code> an empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
+<p>In testing, I found many bases boxes did not work at all. The one that worked well for me was the <code>ubuntu/precise32</code> box. You can just <code>vagrant init</code> an empty vagrant instance and change the box in the vagrantfile with <code>config.vm.box = "ubuntu/precise32"</code>.</p>
 </div>
 <div class="paragraph">
 <p>You can update your base box with the command <code>vagrant box update</code>.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_details_of_provisioning">Details of provisioning</h5>
+<div class="sect3">
+<h4 id="_details_of_provisioning">2.4.3. Details of provisioning</h4>
 <div class="paragraph">
 <p>If you change your vagrantfile with the box still running, you can run the new provisioning with:</p>
 </div>
@@ -1103,7 +1110,6 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 </div>
 <div class="paragraph">
 <p>Were the first folder is the folder on the host machine and the second is the folder on the Vagrant box.</p>
-</div>
 </div>
 </div>
 </div>
