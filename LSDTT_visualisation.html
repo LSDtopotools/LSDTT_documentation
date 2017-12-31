@@ -459,6 +459,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</a>
 <ul class="sectlevel2">
 <li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a></li>
+<li><a href="#_a_note_on_the_test_datasets">4.2. A note on the test datasets</a></li>
+<li><a href="#_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</a></li>
 </ul>
 </li>
 </ul>
@@ -481,7 +483,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction_to_lsdtopotools_visualisation">1. Introduction to LSDTopoTools visualisation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> ingests data, digests it, and then produces gleaming, steaming new datasets. All of that number crunching is there to help you understand your study area. But <strong>LSDTopoTools</strong> does not provide a graphical user interface: it just spits out numbers (frequently in binary format). To look at the data you need to <em>visualise</em> it.</p>
+<p><strong>LSDTopoTools</strong> ingests data, digests it, and then produces gleaming, steaming new datasets. The number crunching that goes on inside of <strong>LSDTopoTools</strong> programs is there to help you understand your study area. But <strong>LSDTopoTools</strong> does not provide a graphical user interface: it just spits out numbers. Frequently these numbers are in binary format. To look at the data you need to <em>visualise</em> it.</p>
 </div>
 <div class="paragraph">
 <p>There are two common ways to visualise data produced by <strong>LSDTopoTools</strong>.</p>
@@ -489,7 +491,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Use a GIS. QGIS or ArcMap will do. <strong>LSDTopoTools</strong> output is designed to be compatible with these two GIS packages.</p>
+<p>Use a Geographic Information System (GIS). QGIS or ArcMap will do. The main difference betwen these packages is that one is free and open source (QGIS) and one is very very very expensive.  <strong>LSDTopoTools</strong> output is designed to be compatible with both of these GIS packages.</p>
 </li>
 <li>
 <p>Use our python plotting packages, including <strong>LSDMappingTools</strong>.</p>
@@ -510,13 +512,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>You have to press a bunch of buttons to get a certain formatting, and if you are loading diffent datasets there are more buttons to push. When you do thousands of analyses pressing these buttons begins to get very, very tedious so eventually you write scripts to automate the process. <strong>LSDMappingTools</strong> automates plotting of <strong>LSDTopoTools</strong> output so you don&#8217;t have to press so many buttons.</p>
+<p>You have to click a bunch of buttons to get a certain formatting, and if you are loading diffent datasets there are more buttons to click. When you do thousands of analyses clicking these buttons begins to get very, very tedious so eventually you write scripts to automate the process. <strong>LSDMappingTools</strong> automates plotting of <strong>LSDTopoTools</strong> output so you don&#8217;t have to click so many buttons.</p>
 </li>
 <li>
 <p>You want to reproduce a plot. Because a GIS involves lots of presing of buttons and clicking of mice, it is difficult to reproduce the exact same figure twice. But our philosophy is that science should be reproducible. So we have written scripts to guarantee that two users with the same data can produce <strong>exactly</strong> the same plot.</p>
 </li>
 <li>
-<p>You want a plot that is formatted for a publication. Have you ever submitted a manuscript with figures that you have spent hours perfecting in Inkscape or Illustrator and then reviewers ask you to change the figure or add some data? Isn&#8217;t that annoying? What if you wrote scripts where all the sizing, fonts, colouring, etc was just the way you want it so if the data changes you can just run a script again and you get a perfect figure without having to click buttons in Inkscape? We thought that would be great so we did it ourselves.</p>
+<p>You want a plot that is formatted for a publication. Have you ever submitted a manuscript with figures that you have spent hours perfecting in Inkscape or Illustrator and then reviewers ask you to change the figure or add some data? Isn&#8217;t that annoying? What if you wrote scripts where all the sizing, fonts, colouring, etc was exactly the way you want it so if the data changes you can just run a script again and you get a perfect figure without having to click buttons in Inkscape? We thought that would be great so we did it ourselves.</p>
 </li>
 </ul>
 </div>
@@ -524,18 +526,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>We now use <strong>LSDMappingTools</strong> regularly to make our figures. For some analyses, our plotting routines have been streamlined to the extent that you can get publication-ready figures in one python call. Sounds great, doesn&#8217;t it?</p>
 </div>
 <div class="paragraph">
-<p>Well, there are some serious drawbacks to using python:</p>
+<p>Well, there are some serious drawbacks to using python and <strong>LSDMappingTools</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The scripts require loads of interdependant python packages. It means that non only is installation a pain but it also takes up a lot of space (you need to download about a GB of python packages to get everything working). We have, however, spent a lot of time experimenting with different installation techniques so we are optimistic we can get python working on your system.</p>
+<p>The scripts require loads of interdependant python packages. It means that not only is installation a pain but it also takes up a lot of space (you need to download about a GB of python packages to get everything working). We have, however, spent a lot of time experimenting with different installation techniques so we are optimistic we can get python working on your system.</p>
 </li>
 <li>
 <p>If things go wrong it helps a lot to be good at Matplotlib. This has a steep learning curve.</p>
 </li>
 <li>
-<p>I am afraid our python repositories are a mess. Every now and then we try to clean these up but the documentation and organisation leaves a lot to be desired. We are sorry about this.</p>
+<p>I am afraid our python repositories are a mess. Every now and then we try to clean these up but the documentation and organisation leave a lot to be desired. We are sorry about this.</p>
 </li>
 </ul>
 </div>
@@ -646,7 +648,7 @@ Even if the python installation works flawlessly and installs first time, it wil
 <p>I (SMM) tried to install the toolchain once on our vagrant machine and it killed GDAL. I don&#8217;t understand why this happened but GDAL is absolutely essential to LSDTopoTools data preparation so I had to destroy my vagrant box and start again from scratch. So I&#8217;ve only got this working on my Windows system (but others have got it working on Linux and MacOS).</p>
 </li>
 <li>
-<p>Chances are you might want to use python for something other than LSDTopoTools and it is convineint to have pyhton installed on your host machine.</p>
+<p>Chances are you might want to use python for something other than LSDTopoTools and it is convenient to have python installed on your host machine.</p>
 </li>
 </ul>
 </div>
@@ -825,7 +827,7 @@ You cannot run spyder on the vagrant machine since it has no windowing system. I
 <p>Search for the file <strong>gcs.csv</strong>. Note the folder in which it is located. On my system it is in <code>C:\Miniconda2\Library\share\gdal</code></p>
 </li>
 <li>
-<p>Go into the control panel, go to system (or system and security, then system), click on <strong>advanced system settings</strong> and in system variables enter a new variable: <strong>GDAL_DATA</strong>. For the value of this enter the directory where the gdal data is that you fond above.</p>
+<p>Go into the control panel, go to system (or system and security, then system), click on <strong>advanced system settings</strong> and in system variables enter a new variable: <strong>GDAL_DATA</strong>. For the value of this enter the directory where the gdal data is that you found above.</p>
 </li>
 </ol>
 </div>
@@ -887,12 +889,43 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_a_note_on_the_test_datasets">4.2. A note on the test datasets</h3>
+<div class="paragraph">
+<p>We include several test datasets within the <strong>LSDMappingTools</strong> repository. The raster datasets are all in ENVI bil format, which include a <code>bil</code> file and a <code>hdr</code> file. The</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WA.bil</code>: The topographic raster</p>
+</li>
+<li>
+<p><code>WA_HS.bil</code>: hillshade</p>
+</li>
+<li>
+<p><code>WA_AllBasins.bil</code>: A raster map of the basins</p>
+</li>
+<li>
+<p><code>WA_all.csv</code>: A channel network generated by the <code>print_chi_data_maps: true</code> flag. See <a href="LSDTT_basic_usage.html#_getting_a_channel_network_with_more_information"><strong>LSDTopoTools</strong> basic usage documentation for details</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These datasets have all been geenrated by <strong>LSDTopoTools</strong>. You can read about how to generate them in the <a href="LSDTT_basic_usage.html"><strong>LSDTopoTools</strong> basic usage documentation</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</h3>
+<div class="paragraph">
+<p>The good news here is that installing the python tool is much more difficult than creating your first plot. If your python environment is working you are already most of the way there!</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 09:49:45 UTC
+Last updated 2017-11-10 18:22:20 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
