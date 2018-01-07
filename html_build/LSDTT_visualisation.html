@@ -452,15 +452,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_where_do_i_install_the_strong_lsdtopotools_strong_python_toolchain">3.1. Where do I install the <strong>LSDTopoTools</strong> python toolchain</a></li>
 <li><a href="#_setting_up_python_the_easy_way">3.2. Setting up Python the easy way</a></li>
 <li><a href="#_setting_up_python_the_hard_way_without_the_code_environment_yml_code_file">3.3. Setting up python the hard way (without the <code>environment.yml</code> file)</a></li>
-<li><a href="#_using_spyder">3.4. Using Spyder</a></li>
-<li><a href="#_fixing_python_gdal_in_windows">3.5. Fixing python gdal in windows</a></li>
-</ul>
-</li>
-<li><a href="#_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</a>
-<ul class="sectlevel2">
-<li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a></li>
-<li><a href="#_a_note_on_the_test_datasets">4.2. A note on the test datasets</a></li>
-<li><a href="#_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</a></li>
 </ul>
 </li>
 </ul>
@@ -494,7 +485,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Use a Geographic Information System (GIS). QGIS or ArcMap will do. The main difference betwen these packages is that one is free and open source (QGIS) and one is very very very expensive.  <strong>LSDTopoTools</strong> output is designed to be compatible with both of these GIS packages.</p>
 </li>
 <li>
-<p>Use our python plotting packages, including <strong>LSDMappingTools</strong>.</p>
+<p>Use our python plotting packages, including <strong>LSDMappingTools</strong>. These live in <a href="https://github.com/LSDtopotools/LSDMappingTools">their own github repository</a>.</p>
 </li>
 </ul>
 </div>
@@ -507,7 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>If you want to inspect individal data points you really need to use a GIS.</p>
 </div>
 <div class="paragraph">
-<p>However, there are some disadvantages to using a GIS, which is why we wrote <strong>LSDMappingTools</strong>.</p>
+<p>However, there are some disadvantages to using a GIS, which is why we wrote <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong></a>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -526,7 +517,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>We now use <strong>LSDMappingTools</strong> regularly to make our figures. For some analyses, our plotting routines have been streamlined to the extent that you can get publication-ready figures in one python call. Sounds great, doesn&#8217;t it?</p>
 </div>
 <div class="paragraph">
-<p>Well, there are some serious drawbacks to using python and <strong>LSDMappingTools</strong>:</p>
+<p>Well, there are some serious drawbacks to using python and <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong></a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -551,20 +542,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_using_a_gis_to_look_at_strong_lsdtopotools_strong_data">2. Using a GIS to look at <strong>LSDTopoTools</strong> data</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> outputs both raster and vector data. If you don&#8217;t know what those are please see our section on geospatial data.</p>
+<p><strong>LSDTopoTools</strong> outputs both raster and vector data. If you don&#8217;t know what those are please see our <a href="LSDTT_introduction_to_geospatial_data.html.html">section on geospatial data</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you want specific instructions for loading data please see our <a href="LSDTT_QGIS.html">QGIS section</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_raster_data">2.1. Raster data</h3>
 <div class="paragraph">
-<p>Our raster datasets are in the ENVI bil format. We like this format because it is simplebut contains all the georeferencing information you need to load it into a GIS.</p>
+<p>Our raster datasets are in the <a href="http://www.harrisgeospatial.com/docs/ENVIImageFiles.html">ENVI bil</a> format. We like this format because it is simple but contains all the georeferencing information you need to load it into a GIS.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The ENVI bil format can be read by both ArcMap and QGIS.</p>
+<p>The ENVI bil format can be read by both ArcMap and <a href="https://www.qgis.org/en/site/">QGIS</a>.</p>
 </li>
 <li>
-<p>You can convert it to other formats using GDAL. Note that QGIS has GDAL built in.</p>
+<p>You can convert it to other formats <a href="LSDTT_introduction_to_geospatial_data.html#_gdal">using GDAL</a>. Note that QGIS has GDAL built in.</p>
 </li>
 </ul>
 </div>
@@ -584,20 +578,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Most of our csv data files include the latitude and longitude of the points.</p>
 </li>
 <li>
-<p>If you import csv data into a GIS, you need to tell it the coordinate system. <strong>If the csv file has latitude and longitude headers, the coordinate system is WGS-84</strong></p>
+<p>If you import csv data into a GIS, you need to tell it the coordinate system. <strong>If the csv file has latitude and longitude headers, the coordinate system is WGS-84 which is the same as <a href="http://spatialreference.org/ref/epsg/wgs-84/">EPSG:4326</a></strong></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Geojson format. Some of our LSDTopoTools programs allow you to convert csv files into geojson files.</p>
+<p><a href="http://geojson.org/">Geojson</a> format. Some of our <strong>LSDTopoTools</strong> programs allow you to convert csv files into geojson files.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Geojson files contain georeferencing, so you can load them as victor data directly into a GIS: you don&#8217;t need to tell the GIS what coordinate system the data is in.</p>
 </li>
 <li>
-<p>Geojson data is also compatble with many web mapping formats, like d3.js</p>
+<p>Geojson data is also compatble with many web mapping formats, like <a href="https://d3js.org/">d3.js</a> or <a href="http://leafletjs.com/">leaflet</a>.</p>
 </li>
 <li>
 <p>Unfortunately, Geojson files are <strong>huge</strong> so if you are processing big datasets and are writing geojson data you will vey quickly end up filling your hard disk!</p>
@@ -670,7 +664,26 @@ Even if the python installation works flawlessly and installs first time, it wil
 <p>Open a command prompt (use the start menu to search for <strong>cmd.exe</strong>)</p>
 </li>
 <li>
-<p>Get our  <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/a1e4bd94911afc25a10ed2482553736bc2ce8894/environment.yml">environment file</a>.</p>
+<p>Get our  <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/conda_environments">environment file</a>. There are three of them:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>enviroment.yml</code> is for Windows.</p>
+</li>
+<li>
+<p><code>enviroment_inux32.yml</code> is for a 32 bit Linux system.</p>
+</li>
+<li>
+<p><code>enviroment_linx64.yml</code> is for a 64 bit Linux system.</p>
+</li>
+<li>
+<p>If you are on MacOS you shold try the <code>enviroment_linx64.yml</code> file.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Download the appropriate file onto your computer.</p>
 </li>
 <li>
 <p>Create the environment from that file with:</p>
@@ -708,6 +721,14 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 </div>
 <div class="sect2">
 <h3 id="_setting_up_python_the_hard_way_without_the_code_environment_yml_code_file">3.3. Setting up python the hard way (without the <code>environment.yml</code> file)</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">If the environment file doesn&#8217;t work</div>
+<div class="paragraph">
+<p>If the <code>enviroment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
+</div>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -744,180 +765,152 @@ Our visualisation routines involve some computation, and dealing with geospatial
 <p>You should create a python environment for <strong>LSDTopoTools</strong>. Read about <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">conda python environments here</a>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda config --add channels conda-forge
-&gt; conda create --name LSDTT
-&gt; conda install -n LSDTT shapely
-&gt; conda install -n LSDTT fiona
-&gt; conda install -n LSDTT rasterio
-&gt; conda install -n LSDTT scipy
-&gt; conda install -n LSDTT matplotlib
-&gt; conda install -n LSDTT pandas
-&gt; conda install -n LSDTT gdal
-&gt; conda install -n LSDTT pyproj
-&gt; conda install -n LSDTT descartes
-&gt; conda install -n LSDTT spyder
-&gt; conda activate LSDTT</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda create --name LSDTT
+&gt; conda activate LSDTT
+-----
++
+After doing this you should see the name of the enviroment on your termial or cammand window prompt:
++
+[source,console]</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Every time you use our tools, you should activate the <strong>LSDTT</strong> python environment.</p>
-</li>
-<li>
-<p>To run spyder you just type <code>spyder</code> at the command line.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Spyder needs an older version of a package called <strong>PyQt</strong>. If spyder doesn&#8217;t start correctly, run <code>conda install pyqt=4.10 -f</code>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-It is entirely possible that we have forgotten some package, but if you run one of our scripts and it tells you the package is not found, just use <code>conda</code> to install.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>(LSDTT) &gt;</p>
 </div>
 </li>
 </ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_using_spyder">3.4. Using Spyder</h3>
-<div class="paragraph">
-<p>Once you have installed python, you can use it from the command line (i.e. from a powershell or terminal window). However, you might prefer using a nice development environment that checks your code and has pretty colours and reassuring windows. When we are not using text editors (see our section <a href="#Text editors for modifying files">[Text editors for modifying files]</a>) we tend to use Spyder, which has an editor that can give you help with python packages and highlight your mistakes. You should have already installed it with <code>conda install spyder</code>, so to get it running go into a powershell or terminal window and just type:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; spyder</code></pre>
+<pre>+
+. Now we start by adding a bunch of standard packages:
++
+[source,console]</pre>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You cannot run spyder on the vagrant machine since it has no windowing system. If you want to run <strong>Spyder</strong> you need to use your host operating system. This is the one of the reasons we encourage you to do your python installation on your host operating system and not the vagrant machine.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fixing_python_gdal_in_windows">3.5. Fixing python gdal in windows</h3>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>If you are using windows, there is a stupid bug in the <strong>conda</strong> gdal package where it cannot find the gdal data. To fix this:</p>
+<p>conda config --add channels conda-forge
+conda install numpy scipy matplotlib pandas</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Search for the file <strong>gcs.csv</strong>. Note the folder in which it is located. On my system it is in <code>C:\Miniconda2\Library\share\gdal</code></p>
-</li>
-<li>
-<p>Go into the control panel, go to system (or system and security, then system), click on <strong>advanced system settings</strong> and in system variables enter a new variable: <strong>GDAL_DATA</strong>. For the value of this enter the directory where the gdal data is that you found above.</p>
-</li>
-</ol>
+</blockquote>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Okay, we are going to take you through some basic visualisation using <strong>LSDMappingTools</strong>.</p>
-</div>
-<div class="sect2">
-<h3 id="_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</h3>
-<div class="paragraph">
-<p>Our vagrant setup has no graphic interface (you only interact with it through a terminal) so we suggest using your host operating system for python.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>You need to clone our repository <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a>.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-At the moment <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> is a complete mess. It currently serves as a bit of a sandbox for visualisation development. One day we will clean it all up and make a nice, pretty release. But for now I&#8217;m afraid you&#8217;ll need to rely on this repository.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If you don&#8217;t want to install <a href="https://git-scm.com/">git</a> on your host operating system, you can clone the repository from your vagrant machine. Because of the clever way vagrant works you will be able to use these files in you host operating system.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects
-$ git clone https://github.com/LSDtopotools/LSDMappingTools.git</code></pre>
+<pre>+
+. Now install the geographic tools
++
+[source,console]</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-In your host operating system these files will not be in <code>/LSDTopoTools/Git_projects</code>. They will be within the <code>VagrantBoxes\LSDTopoTools\Git_projects</code> directory (wherever you put it. On windows I put mine in the <code>C</code> directory).
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Once you have this repository you can move on to our examples in the next chapter.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_a_note_on_the_test_datasets">4.2. A note on the test datasets</h3>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>We include several test datasets within the <strong>LSDMappingTools</strong> repository. The raster datasets are all in ENVI bil format, which include a <code>bil</code> file and a <code>hdr</code> file. The</p>
+<p>conda install gdal shapely fiona rasterio pyproj</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>WA.bil</code>: The topographic raster</p>
-</li>
-<li>
-<p><code>WA_HS.bil</code>: hillshade</p>
-</li>
-<li>
-<p><code>WA_AllBasins.bil</code>: A raster map of the basins</p>
-</li>
-<li>
-<p><code>WA_all.csv</code>: A channel network generated by the <code>print_chi_data_maps: true</code> flag. See <a href="LSDTT_basic_usage.html#_getting_a_channel_network_with_more_information"><strong>LSDTopoTools</strong> basic usage documentation for details</a></p>
-</li>
-</ul>
+</blockquote>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+. Finally add descartes
+[source, console]</pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>conda install -c conda-forge descartes</p>
+</div>
+</blockquote>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+This seems to only cause problems with 32 bit linux, other systems you can just add descartes with the gdal install line.
+
+. Every time you use our tools, you should activate the *LSDTT* python environment.
++
+. To run spyder you just type `spyder` at the command line.
++
+WARNING: Spyder needs an older version of a package called *PyQt*. If spyder doesn't start correctly, run `conda install pyqt=4.10 -f`
++
+NOTE: It is entirely possible that we have forgotten some package, but if you run one of our scripts and it tells you the package is not found, just use `conda` to install.
+
+=== Using Spyder
+
+Once you have installed python, you can use it from the command line (i.e. from a powershell or terminal window). However, you might prefer using a nice development environment that checks your code and has pretty colours and reassuring windows. When we are not using text editors (see our section &lt;&lt;Text editors for modifying files&gt;&gt;) we tend to use Spyder, which has an editor that can give you help with python packages and highlight your mistakes. You should have already installed it with `conda install spyder`, so to get it running go into a powershell or terminal window and just type:
+
+[source,console]</pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>spyder</p>
+</div>
+</blockquote>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IMPORTANT: You cannot run spyder on the vagrant machine since it has no windowing system. If you want to run *Spyder* you need to use your host operating system. This is the one of the reasons we encourage you to do your python installation on your host operating system and not the vagrant machine.
+
+=== Fixing python gdal in windows
+
+If you are using windows, there is a stupid bug in the *conda* gdal package where it cannot find the gdal data. To fix this:
+
+. Search for the file *gcs.csv*. Note the folder in which it is located. On my system it is in `C:\Miniconda2\Library\share\gdal`
+. Go into the control panel, go to system (or system and security, then system), click on *advanced system settings* and in system variables enter a new variable: *GDAL_DATA*. For the value of this enter the directory where the gdal data is that you found above.
+
+
+
+== Basic LSDTopoTools visualisation
+
+Okay, we are going to take you through some basic visualisation using *LSDMappingTools*.
+
+
+
+=== Getting our *LSDMappingTools* and other tools
+
+Our vagrant setup has no graphic interface (you only interact with it through a terminal) so we suggest using your host operating system for python.
+
+. You need to clone our repository https://github.com/LSDtopotools/LSDMappingTools[LSDMappingTools].
++
+WARNING: At the moment https://github.com/LSDtopotools/LSDMappingTools[LSDMappingTools] is a complete mess. It currently serves as a bit of a sandbox for visualisation development. One day we will clean it all up and make a nice, pretty release. But for now I'm afraid you'll need to rely on this repository.
++
+. If you don't want to install https://git-scm.com/[git] on your host operating system, you can clone the repository from your vagrant machine. Because of the clever way vagrant works you will be able to use these files in you host operating system.
++
+[source,console]</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>These datasets have all been geenrated by <strong>LSDTopoTools</strong>. You can read about how to generate them in the <a href="LSDTT_basic_usage.html"><strong>LSDTopoTools</strong> basic usage documentation</a>.</p>
+<p>$ cd /LSDTopoTools/Git_projects
+$ git clone <a href="https://github.com/LSDtopotools/LSDMappingTools.git" class="bare">https://github.com/LSDtopotools/LSDMappingTools.git</a></p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+NOTE: In your host operating system these files will not be in `/LSDTopoTools/Git_projects`. They will be within the `VagrantBoxes\LSDTopoTools\Git_projects` directory (wherever you put it. On windows I put mine in the `C` directory).
++
+. Once you have this repository you can move on to our examples in the next chapter.
+
+=== A note on the test datasets
+
+We include several test datasets within the *LSDMappingTools* repository. The raster datasets are all in ENVI bil format, which include a `bil` file and a `hdr` file. The
+
+* `WA.bil`: The topographic raster
+* `WA_HS.bil`: hillshade
+* `WA_AllBasins.bil`: A raster map of the basins
+* `WA_all.csv`: A channel network generated by the `print_chi_data_maps: true` flag. See link:LSDTT_basic_usage.html#_getting_a_channel_network_with_more_information[*LSDTopoTools* basic usage documentation for details]
+
+These datasets have all been geenrated by *LSDTopoTools*. You can read about how to generate them in the link:LSDTT_basic_usage.html[*LSDTopoTools* basic usage documentation].
+
+
+=== Your first LSDMappingTools plot
+
+The good news here is that installing the python tool is much more difficult than creating your first plot. If your python environment is working you are already most of the way there!</pre>
 </div>
-<div class="sect2">
-<h3 id="_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</h3>
-<div class="paragraph">
-<p>The good news here is that installing the python tool is much more difficult than creating your first plot. If your python environment is working you are already most of the way there!</p>
 </div>
 </div>
 </div>
