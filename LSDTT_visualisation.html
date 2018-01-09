@@ -460,7 +460,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a></li>
 <li><a href="#_a_note_on_the_test_datasets">4.2. A note on the test datasets</a></li>
-<li><a href="#_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</a></li>
+<li><a href="#_your_first_lsdmappingtools_plots">4.3. Your first LSDMappingTools plots</a>
+<ul class="sectlevel3">
+<li><a href="#_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</a></li>
+<li><a href="#_a_hillshade_with_some_basins">4.3.2. A hillshade with some basins</a></li>
+<li><a href="#_a_hillshade_with_some_channels">4.3.3. A hillshade with some channels</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -491,10 +497,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Use a Geographic Information System (GIS). QGIS or ArcMap will do. The main difference betwen these packages is that one is free and open source (QGIS) and one is very very very expensive.  <strong>LSDTopoTools</strong> output is designed to be compatible with both of these GIS packages.</p>
+<p>Use a Geographic Information System (GIS). <a href="https://www.qgis.org/en/site/">QGIS</a> or <a href="http://desktop.arcgis.com/en/arcmap/">ArcMap</a> will do. The main difference betwen these packages is that one is free and open source (QGIS) and one is very very very expensive.  <strong>LSDTopoTools</strong> output is designed to be compatible with both of these GIS packages.</p>
 </li>
 <li>
-<p>Use our python plotting packages, including <strong>LSDMappingTools</strong>.</p>
+<p>Use our python plotting packages, including <strong>LSDMappingTools</strong>. These live in <a href="https://github.com/LSDtopotools/LSDMappingTools">their own github repository</a>.</p>
 </li>
 </ul>
 </div>
@@ -507,7 +513,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>If you want to inspect individal data points you really need to use a GIS.</p>
 </div>
 <div class="paragraph">
-<p>However, there are some disadvantages to using a GIS, which is why we wrote <strong>LSDMappingTools</strong>.</p>
+<p>However, there are some disadvantages to using a GIS, which is why we wrote <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong></a>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -526,7 +532,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>We now use <strong>LSDMappingTools</strong> regularly to make our figures. For some analyses, our plotting routines have been streamlined to the extent that you can get publication-ready figures in one python call. Sounds great, doesn&#8217;t it?</p>
 </div>
 <div class="paragraph">
-<p>Well, there are some serious drawbacks to using python and <strong>LSDMappingTools</strong>:</p>
+<p>Well, there are some serious drawbacks to using python and <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong></a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -534,7 +540,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The scripts require loads of interdependant python packages. It means that not only is installation a pain but it also takes up a lot of space (you need to download about a GB of python packages to get everything working). We have, however, spent a lot of time experimenting with different installation techniques so we are optimistic we can get python working on your system.</p>
 </li>
 <li>
-<p>If things go wrong it helps a lot to be good at Matplotlib. This has a steep learning curve.</p>
+<p>If things go wrong it helps a lot to be good at <a href="https://matplotlib.org/">Matplotlib</a>. This has a steep learning curve.</p>
 </li>
 <li>
 <p>I am afraid our python repositories are a mess. Every now and then we try to clean these up but the documentation and organisation leave a lot to be desired. We are sorry about this.</p>
@@ -551,20 +557,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_using_a_gis_to_look_at_strong_lsdtopotools_strong_data">2. Using a GIS to look at <strong>LSDTopoTools</strong> data</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> outputs both raster and vector data. If you don&#8217;t know what those are please see our section on geospatial data.</p>
+<p><strong>LSDTopoTools</strong> outputs both raster and vector data. If you don&#8217;t know what those are please see our <a href="LSDTT_introduction_to_geospatial_data.html.html">section on geospatial data</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you want specific instructions for loading data please see our <a href="LSDTT_QGIS.html">QGIS section</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_raster_data">2.1. Raster data</h3>
 <div class="paragraph">
-<p>Our raster datasets are in the ENVI bil format. We like this format because it is simplebut contains all the georeferencing information you need to load it into a GIS.</p>
+<p>Our raster datasets are in the <a href="http://www.harrisgeospatial.com/docs/ENVIImageFiles.html">ENVI bil</a> format. We like this format because it is simple but contains all the georeferencing information you need to load it into a GIS.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The ENVI bil format can be read by both ArcMap and QGIS.</p>
+<p>The ENVI bil format can be read by both ArcMap and <a href="https://www.qgis.org/en/site/">QGIS</a>.</p>
 </li>
 <li>
-<p>You can convert it to other formats using GDAL. Note that QGIS has GDAL built in.</p>
+<p>You can convert it to other formats <a href="LSDTT_introduction_to_geospatial_data.html#_gdal">using GDAL</a>. Note that QGIS has GDAL built in.</p>
 </li>
 </ul>
 </div>
@@ -577,30 +586,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>csv format: This is comma seperated value.</p>
+<p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">csv format</a>: This is comma separated value.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Most of our csv data files include the latitude and longitude of the points.</p>
 </li>
 <li>
-<p>If you import csv data into a GIS, you need to tell it the coordinate system. <strong>If the csv file has latitude and longitude headers, the coordinate system is WGS-84</strong></p>
+<p>If you import csv data into a GIS, you need to tell it the coordinate system. <strong>If the csv file has latitude and longitude headers, the coordinate system is WGS-84 which is the same as <a href="http://spatialreference.org/ref/epsg/wgs-84/">EPSG:4326</a></strong></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Geojson format. Some of our LSDTopoTools programs allow you to convert csv files into geojson files.</p>
+<p><a href="http://geojson.org/">Geojson</a> format. Some of our <strong>LSDTopoTools</strong> programs allow you to convert csv files into geojson files.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Geojson files contain georeferencing, so you can load them as victor data directly into a GIS: you don&#8217;t need to tell the GIS what coordinate system the data is in.</p>
 </li>
 <li>
-<p>Geojson data is also compatble with many web mapping formats, like d3.js</p>
+<p>Geojson data is also compatible with many web mapping formats, like <a href="https://d3js.org/">d3.js</a> or <a href="http://leafletjs.com/">leaflet</a>.</p>
 </li>
 <li>
-<p>Unfortunately, Geojson files are <strong>huge</strong> so if you are processing big datasets and are writing geojson data you will vey quickly end up filling your hard disk!</p>
+<p>Unfortunately, Geojson files are <strong>huge</strong> so if you are processing big datasets and are writing geojson data you will very quickly end up filling your hard disk!</p>
 </li>
 </ul>
 </div>
@@ -670,7 +679,26 @@ Even if the python installation works flawlessly and installs first time, it wil
 <p>Open a command prompt (use the start menu to search for <strong>cmd.exe</strong>)</p>
 </li>
 <li>
-<p>Get our  <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/a1e4bd94911afc25a10ed2482553736bc2ce8894/environment.yml">environment file</a>.</p>
+<p>Get our  <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/conda_environments">environment file</a>. There are three of them:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>enviroment.yml</code> is for Windows.</p>
+</li>
+<li>
+<p><code>enviroment_inux32.yml</code> is for a 32 bit Linux system.</p>
+</li>
+<li>
+<p><code>enviroment_linx64.yml</code> is for a 64 bit Linux system.</p>
+</li>
+<li>
+<p>If you are on MacOS you shold try the <code>enviroment_linx64.yml</code> file.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Download the appropriate file onto your computer.</p>
 </li>
 <li>
 <p>Create the environment from that file with:</p>
@@ -708,6 +736,14 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 </div>
 <div class="sect2">
 <h3 id="_setting_up_python_the_hard_way_without_the_code_environment_yml_code_file">3.3. Setting up python the hard way (without the <code>environment.yml</code> file)</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">If the environment file doesn&#8217;t work</div>
+<div class="paragraph">
+<p>If the <code>enviroment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
+</div>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -744,19 +780,41 @@ Our visualisation routines involve some computation, and dealing with geospatial
 <p>You should create a python environment for <strong>LSDTopoTools</strong>. Read about <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">conda python environments here</a>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda config --add channels conda-forge
-&gt; conda create --name LSDTT
-&gt; conda install -n LSDTT shapely
-&gt; conda install -n LSDTT fiona
-&gt; conda install -n LSDTT rasterio
-&gt; conda install -n LSDTT scipy
-&gt; conda install -n LSDTT matplotlib
-&gt; conda install -n LSDTT pandas
-&gt; conda install -n LSDTT gdal
-&gt; conda install -n LSDTT pyproj
-&gt; conda install -n LSDTT descartes
-&gt; conda install -n LSDTT spyder
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda create --name LSDTT
 &gt; conda activate LSDTT</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After doing this you should see the name of the enviroment on your termial or cammand window prompt:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now we start by adding a bunch of standard packages:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda config --add channels conda-forge
+&gt; conda install numpy scipy matplotlib pandas</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now install the geographic tools</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install gdal shapely fiona rasterio pyproj</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Finally add descartes. Note that on windows, MacOS and 64 bit Linux you can just add <code>descart</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -c conda-forge descartes</code></pre>
 </div>
 </div>
 </li>
@@ -843,7 +901,7 @@ You cannot run spyder on the vagrant machine since it has no windowing system. I
 <div class="sect2">
 <h3 id="_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</h3>
 <div class="paragraph">
-<p>Our vagrant setup has no graphic interface (you only interact with it through a terminal) so we suggest using your host operating system for python.</p>
+<p>Our vagrant setup has no graphical user interface (you only interact with it through a terminal) so we suggest using your host operating system for python.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -892,7 +950,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <div class="sect2">
 <h3 id="_a_note_on_the_test_datasets">4.2. A note on the test datasets</h3>
 <div class="paragraph">
-<p>We include several test datasets within the <strong>LSDMappingTools</strong> repository. The raster datasets are all in ENVI bil format, which include a <code>bil</code> file and a <code>hdr</code> file. The</p>
+<p>The examples in this section are all from the <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/Tests"><code>Tests</code> folder in <strong>LSDMappingTools</strong></a>. The raster datasets are all in ENVI bil format, which include a <code>bil</code> file and a <code>hdr</code> file. The</p>
 </div>
 <div class="ulist">
 <ul>
@@ -908,16 +966,104 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <li>
 <p><code>WA_all.csv</code>: A channel network generated by the <code>print_chi_data_maps: true</code> flag. See <a href="LSDTT_basic_usage.html#_getting_a_channel_network_with_more_information"><strong>LSDTopoTools</strong> basic usage documentation for details</a></p>
 </li>
+<li>
+<p>A python script for testing some basic plots: <code>LSDMappingTools_test.py</code></p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These datasets have all been geenrated by <strong>LSDTopoTools</strong>. You can read about how to generate them in the <a href="LSDTT_basic_usage.html"><strong>LSDTopoTools</strong> basic usage documentation</a>.</p>
+<p>These datasets have all been generated by <strong>LSDTopoTools</strong>. You can read about how to generate them in the <a href="LSDTT_basic_usage.html"><strong>LSDTopoTools</strong> basic usage documentation</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</h3>
+<h3 id="_your_first_lsdmappingtools_plots">4.3. Your first LSDMappingTools plots</h3>
 <div class="paragraph">
-<p>The good news here is that installing the python tool is much more difficult than creating your first plot. If your python environment is working you are already most of the way there!</p>
+<p>The good news here is that installing the LSDTT python toolchain is more difficult than creating your first plot. If your python environment is working you are already most of the way there!</p>
+</div>
+<div class="paragraph">
+<p>We will walk through this example using the command line. You need to use the operating system within which you installed the LSDTT python environment. If you don&#8217;t know what that is read the <a href="#_installing_the_lsdtopotools_python_toolchain">installation section</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure your LSDTT python enviroment is activated:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In windows you will need to be in a <code>cmd.exe</code> window.</p>
+</li>
+<li>
+<p>In linux or MacOS you might need to type <code>source activate LSDTT</code> to get the environment to work.</p>
+</li>
+<li>
+<p>If the environment is loaded you should see it in parentheses before the command prompt, e.g., <code>(LSDTT) &gt;</code> or <code>(LSDTT) $</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Navigate to the folder in the <code>LSDMappingTools</code> repository called <code>Tests</code>.</p>
+</li>
+<li>
+<p>Call the <code>LSDMappingTools_test.py</code> python script. This script is called with a single number: 1,2 or 3. These make different plots.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</h4>
+<div class="paragraph">
+<p>This creates a very basic draped hillshade. It needs a elevation raster and a hillshade raster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_hillshade.png" alt="Draped hillshade" width="300">
+</div>
+<div class="title">Figure 1. A simple draped hillshade</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_hillshade_with_some_basins">4.3.2. A hillshade with some basins</h4>
+<div class="paragraph">
+<p>This creates a very basic hillshade with some basins plotted. It needs the elevation, hillshade, and basin raster, and a <code>_BasinInfo.csv</code> file (all of which are included in the test data folder):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_coloured_basins.png" alt="Some basins" width="300">
+</div>
+<div class="title">Figure 2. A simple draped hillshade</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_hillshade_with_some_channels">4.3.3. A hillshade with some channels</h4>
+<div class="paragraph">
+<p>This creates a very hillshade with a channel network. The channels come from a csv file that is derived from a chi data map. You can read about how to generate these in our link::LSDTT_basic_usage.html#_more_advanced_options_in_lsdtt_basicmetrics[LSDTT basic analysis documentation].</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_channels_by_basin.png" alt="Channels over a hillshade" width="300">
+</div>
+<div class="title">Figure 3. A simple draped hillshade</div>
+</div>
 </div>
 </div>
 </div>
@@ -925,7 +1071,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-10 18:22:20 UTC
+Last updated 2018-01-08 12:11:43 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
