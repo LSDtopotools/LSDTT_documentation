@@ -460,7 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a></li>
 <li><a href="#_a_note_on_the_test_datasets">4.2. A note on the test datasets</a></li>
-<li><a href="#_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</a>
+<li><a href="#_your_first_lsdmappingtools_plots">4.3. Your first LSDMappingTools plots</a>
 <ul class="sectlevel3">
 <li><a href="#_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</a></li>
 <li><a href="#_a_hillshade_with_some_basins">4.3.2. A hillshade with some basins</a></li>
@@ -976,7 +976,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </div>
 </div>
 <div class="sect2">
-<h3 id="_your_first_lsdmappingtools_plot">4.3. Your first LSDMappingTools plot</h3>
+<h3 id="_your_first_lsdmappingtools_plots">4.3. Your first LSDMappingTools plots</h3>
 <div class="paragraph">
 <p>The good news here is that installing the LSDTT python toolchain is more difficult than creating your first plot. If your python environment is working you are already most of the way there!</p>
 </div>
@@ -1017,7 +1017,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <div class="sect3">
 <h4 id="_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</h4>
 <div class="paragraph">
-<p>This creates a very basic draped hillshade:</p>
+<p>This creates a very basic draped hillshade. It needs a elevation raster and a hillshade raster:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1026,7 +1026,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/WA_hillshade.png" alt="Draped hillshade">
+<img src="images/WA_hillshade.png" alt="Draped hillshade" width="300">
 </div>
 <div class="title">Figure 1. A simple draped hillshade</div>
 </div>
@@ -1034,7 +1034,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <div class="sect3">
 <h4 id="_a_hillshade_with_some_basins">4.3.2. A hillshade with some basins</h4>
 <div class="paragraph">
-<p>This creates a very basic draped hillshade:</p>
+<p>This creates a very basic hillshade with some basins plotted. It needs the elevation, hillshade, and basin raster, and a <code>_BasinInfo.csv</code> file (all of which are included in the test data folder):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1043,7 +1043,7 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/WA_hillshade.png" alt="Draped hillshade">
+<img src="images/WA_coloured_basins.png" alt="Some basins" width="300">
 </div>
 <div class="title">Figure 2. A simple draped hillshade</div>
 </div>
@@ -1051,17 +1051,18 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <div class="sect3">
 <h4 id="_a_hillshade_with_some_channels">4.3.3. A hillshade with some channels</h4>
 <div class="paragraph">
-<p>This creates a very basic draped hillshade:</p>
+<p>This creates a very hillshade with a channel network. The channels come from a csv file that is derived from a chi data map. You can read about how to generate these in our link::LSDTT_basic_usage.html#_more_advanced_options_in_lsdtt_basicmetrics[LSDTT basic analysis documentation].</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>+
-.A simple draped hillshade
-image::images/WA_hillshade.png[Draped hillshade]</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/WA_channels_by_basin.png" alt="Channels over a hillshade" width="300">
+</div>
+<div class="title">Figure 3. A simple draped hillshade</div>
 </div>
 </div>
 </div>
