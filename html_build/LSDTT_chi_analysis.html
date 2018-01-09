@@ -511,21 +511,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_visualisation">6. Visualisation</a>
-<ul class="sectlevel2">
-<li><a href="#_using_a_gis">6.1. Using a GIS</a></li>
-<li><a href="#_using_python">6.2. Using python</a>
-<ul class="sectlevel3">
-<li><a href="#_setting_up_python">6.2.1. Setting up Python</a></li>
-<li><a href="#_doing_this_without_the_code_environment_yml_code_file">6.2.2. Doing this without the <code>environment.yml</code> file</a></li>
-<li><a href="#_using_spyder">6.2.3. Using Spyder</a></li>
-<li><a href="#_getting_our_plotting_tools">6.2.4. Getting our plotting tools</a></li>
-<li><a href="#_fixing_python_gdal_in_windows">6.2.5. Fixing python gdal in windows</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_appendix_chi_analysis_options_and_outputs">Appendix A: Appendix: chi analysis options and outputs</a>
+<li><a href="#_chi_analysis_options_and_outputs">Appendix A: Chi analysis options and outputs</a>
 <ul class="sectlevel2">
 <li><a href="#_text_editors_for_modifying_files">A.1. Text editors for modifying files</a></li>
 <li><a href="#_the_parameter_file">A.2. The parameter file</a></li>
@@ -556,7 +542,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_appendix_preparing_lithologic_data">Appendix B: Appendix: preparing lithologic data</a>
+<li><a href="#_preparing_lithologic_data">Appendix B: Preparing lithologic data</a>
 <ul class="sectlevel2">
 <li><a href="#_getting_your_lithologic_data_ready">B.1. Getting your lithologic data ready</a>
 <ul class="sectlevel3">
@@ -582,6 +568,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph">
 <p>This website deals with those components of <strong>LSDTopoTools</strong> dedicated to analysing channels, which builds upon some of the work we <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/full">published in 2014</a>. That software was rather difficult to run. After a few years of attempting to get undergraduates to use it, and having feedback from other users, we are pleased to present a updated version of the code. The new version is a much more automated version of the original code. In addition, we have substantially added flexibility and a number of new features. We hope to publish a description of the new features alongside some insights into landscape evolution in the near future. For now, I hope you find this easy enough to understand and install so that you can start exploring your own favourite rivers. I&#8217;m always pleaded to hear from users, so don&#8217;t hesitate to contact me about the software.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LSD-logo.png" alt="LSD logo" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="index.html">Click here for the main landing page of LSDTopoTools documentation</a>.</p>
 </div>
 </div>
 </div>
@@ -701,10 +695,10 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <p>A section on constraining the <em>m/n</em> ratio and channel concavity: <a href="#_calculating_concavity">Calculating concavity</a></p>
 </li>
 <li>
-<p>An appendix on details of running the software, including the options available and the data output formats: <a href="#_appendix_chi_analysis_options_and_outputs">Appendix: chi analysis options and outputs</a>. This section rather detailed; if you want specific examples that walk you through analysis go to sections on <a href="#_examples_of_chi_analysis">Examples of chi analysis</a>.</p>
+<p>An appendix on details of running the software, including the options available and the data output formats: <a href="#_chi_analysis_options_and_outputs">Chi analysis options and outputs</a>. This section rather detailed; if you want specific examples that walk you through analysis go to sections on <a href="#_examples_of_chi_analysis">Examples of chi analysis</a>.</p>
 </li>
 <li>
-<p>An appendix on preparing lithologic data: <a href="#_appendix_preparing_lithologic_data">Appendix: preparing lithologic data</a>.</p>
+<p>An appendix on preparing lithologic data: <a href="#_preparing_lithologic_data">Preparing lithologic data</a>.</p>
 </li>
 </ul>
 </div>
@@ -969,7 +963,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <p>In your host operating system, find the directory that contains the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> directory.</p>
 </li>
 <li>
-<p>You might want to open spyder (see the section: <a href="#_getting_our_plotting_tools">Getting our plotting tools</a> on how to get this) to look at the python script. To open spyder simply type <code>spyder</code> into a powershell window (Windows)  or terminal (Linux/MaxOS).</p>
+<p>You might want to open spyder (see the section: <a href="#Getting our plotting tools">[Getting our plotting tools]</a> on how to get this) to look at the python script. To open spyder simply type <code>spyder</code> into a powershell window (Windows)  or terminal (Linux/MaxOS).</p>
 </li>
 </ol>
 </div>
@@ -1005,7 +999,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <p>Our python scripts require that you install the <strong>LSDTopoTools</strong> python toolchain.</p>
 </div>
 <div class="paragraph">
-<p>link::LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain[Click here for instructions on how to install the <strong>LSDTT</strong> python tools].</p>
+<p><a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">Click here for instructions on how to install the <strong>LSDTT</strong> python tools</a>.</p>
 </div>
 </div>
 </div>
@@ -1029,9 +1023,12 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </li>
 <li>
 <p>You can run these scripts in your vagrant machine, but you will have to do the full python install there, and in addition you won&#8217;t be able to use any graphical interface (like <strong>spyder</strong>) so our recommendation is for you to run visualisation scripts in your host operating system.</p>
-<div class="paragraph">
-<p>+ In python, any lines between two blocks of <code>"""</code> symbols is a comment. In our program we put notes between these symbols. Don&#8217;t change them. For example:</p>
+</li>
+</ol>
 </div>
+</li>
+<li>
+<p>In python, any lines between two blocks of <code>"""</code> symbols is a comment. In our program we put notes between these symbols. Don&#8217;t change them. For example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-python" data-lang="python">    """
@@ -1045,9 +1042,6 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 <div class="paragraph">
 <p>The above lines just give you instructions.</p>
-</div>
-</li>
-</ol>
 </div>
 </li>
 <li>
@@ -1178,10 +1172,20 @@ In this documentation, you will find references to <em>concavity</em> or \(\thet
 <div class="sect2">
 <h3 id="_before_you_start">5.1. Before you start</h3>
 <div class="paragraph">
-<p>Before you start, make sure you have
-* Set up <strong>LSDTopoTools</strong> and compile it. Follow the instructions here: <a href="#_getting_the_software">Getting the software</a>
-* Install the appropriate python packages. Follow the instructions here: link::LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain[install the python toolchain]
-* Make sure your data is in the correct format (i.e., WGS1984 UTM projection, ENVI bil format). Follow instructions here: <a href="#_preparing_your_data">Preparing your data</a></p>
+<p>Before you start, make sure you have</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up <strong>LSDTopoTools</strong> and compile it. Follow the instructions here: <a href="#_getting_the_software">Getting the software</a></p>
+</li>
+<li>
+<p>Install the appropriate python packages. Follow the instructions here: <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">install the python toolchain</a></p>
+</li>
+<li>
+<p>Make sure your data is in the correct format (i.e., WGS1984 UTM projection, ENVI bil format). Follow instructions here: <a href="#_preparing_your_data">Preparing your data</a></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1337,7 +1341,7 @@ estimate_best_fit_movern: true</code></pre>
 </div>
 </li>
 <li>
-<p>Congratulations! You have set your first movern (<em>m/n</em>) analysis running. It might take a little while to work its way though all the analyses so sit back, relax, and catch up on some <a href="http://www.bbc.co.uk/football/hibernianfc/">important news</a>. When it finishes you will be ready to visualise your data.</p>
+<p>Congratulations! You have set your first movern (<em>m/n</em>) analysis running. It might take a little while to work its way though all the analyses so sit back, relax, and catch up on some <a href="http://www.bbc.co.uk/sport/football/teams/hibernian">important news</a>. When it finishes you will be ready to visualise your data.</p>
 </li>
 </ol>
 </div>
@@ -1360,7 +1364,7 @@ You need to run the analysis before any of this will work!
 <p>We have built a single python script that does all the visualisation for you. It works with one call to the script: <em>*easy peasy!!*</em></p>
 </div>
 <div class="paragraph">
-<p>Unfortunately there are a few hiccups in getting the python installed, which we describe in the section <a href="#_setting_up_python">Setting up Python</a>.</p>
+<p>Unfortunately there are a few hiccups in getting the python installed, which we <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">describe in a separate section on visualisation</a>.</p>
 </div>
 <div class="paragraph">
 <p>This will be slightly different than instructions in that section, since the advice there is to run python scripts from <strong>spyder</strong>. In this instance, we will run from command line.</p>
@@ -1370,13 +1374,10 @@ You need to run the analysis before any of this will work!
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If you are in Windows, you need to take care of a little problem first: <a href="#_fixing_python_gdal_in_windows">Fixing python gdal in windows</a></p>
+<p>Open a command shell window (search your star menu for <strong>cmd.exe</strong>).</p>
 </li>
 <li>
-<p>Now open a command shell window (search your star menu for <strong>cmd.exe</strong>).</p>
-</li>
-<li>
-<p>If you have installed a conda environment for <strong>LSDTopoTools</strong> (see the section <a href="#_setting_up_python">Setting up Python</a> for details), activate it with:</p>
+<p>If you have installed a conda environment for <strong>LSDTopoTools</strong> (see the section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">setting up Python</a> for details), activate it with:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
@@ -1384,7 +1385,7 @@ You need to run the analysis before any of this will work!
 </div>
 </li>
 <li>
-<p>Now, go to the place you cloned <strong>LSDMappingTools</strong>. For instructions on that look here: <a href="#_getting_our_plotting_tools">Getting our plotting tools</a>. You will need to use the <code>cd</code> command to get there.</p>
+<p>Now, go to the place you cloned <strong>LSDMappingTools</strong>. For instructions on that look here: <a href="LSDTT_visualisation.html#_getting_our_strong_lsdmappingtools_strong_and_other_tools">Getting our plotting tools</a>. You will need to use the <code>cd</code> command to get there.</p>
 </li>
 <li>
 <p>Once you are in the correct directory, you need to run the python script:</p>
@@ -1944,282 +1945,7 @@ You need to run the analysis before any of this will work!
 </div>
 </div>
 <div class="sect1">
-<h2 id="_visualisation">6. Visualisation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>LSDTopoTools</strong> produces two main data types: raster data and point data.
-This chapter is a brief overview of ways to visualise these datasets. We go through some examples in the next chapter.</p>
-</div>
-<div class="sect2">
-<h3 id="_using_a_gis">6.1. Using a GIS</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Raster data is output in ENVI bil format, which can be read by standard GIS software such as <a href="http://www.qgis.org/en/site/">QGIS</a> or <a href="https://www.arcgis.com/features/index.html">ArcMap</a>.</p>
-</li>
-<li>
-<p>Point data is output as <a href="https://en.wikipedia.org/wiki/Comma-separated_values">csv</a> files. You can also choose to output these data as <a href="http://geojson.org/">geojson</a> files.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>To load csv files into a GIS, you will need to import them. Here are instructions <a href="http://www.qgistutorials.com/en/docs/importing_spreadsheets_csv.html">for QGIS</a> and for <a href="http://support.esri.com/technical-article/000012745">ArcMap</a>. In both cases you will need to tell your GIS what coordinate system the data is in. <strong>LSDTopoTools</strong> writes latitude and longitude to our csv files in the <a href="http://spatialreference.org/ref/epsg/wgs-84/">WGS84</a> geographic coordinate system.</p>
-</li>
-<li>
-<p>Geojson files are <strong>huge</strong> compared to csv files but they can be used for web mapping (e.g., <a href="https://d3js.org/">D3.js</a> or <a href="http://leafletjs.com/">leaflet</a>), and they are georeferences so can be loaded directly into a GIS using the "add vector data" functionality.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_using_python">6.2. Using python</h3>
-<div class="paragraph">
-<p>We have a number of visualisation scripts built using <a href="https://www.python.org/">python</a> and its packages <a href="http://www.numpy.org/">numpy</a>, <a href="http://pandas.pydata.org/">pandas</a>, and <a href="https://matplotlib.org/">matplotlib</a>.</p>
-</div>
-<div class="sect3">
-<h4 id="_setting_up_python">6.2.1. Setting up Python</h4>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Do not set up python in a vagrant server. Instead do it in your host operating system. The vagrant server is a stripped down version of Linux that cannot generate windows so you can have only limited functionality of these tools in a vagrant server.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>This is a quick guide. There are many options for setting up python but this is our preferred setup.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download and install <a href="http://conda.pydata.org/miniconda.html">miniconda</a> on your host machine.</p>
-</li>
-<li>
-<p>Open a command prompt (use the start menu to search for <strong>cmd.exe</strong>)</p>
-</li>
-<li>
-<p>Get our  <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/a1e4bd94911afc25a10ed2482553736bc2ce8894/environment.yml">environment file</a>.</p>
-</li>
-<li>
-<p>Create the environment from that file with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda env create -f environment.yml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>I&#8217;m afraid this will take a little while.</p>
-</div>
-</li>
-<li>
-<p>Activate the environment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This environment does not include <strong>spyder</strong>, you can install it with <code>conda install -n LSDTT spyder</code>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_doing_this_without_the_code_environment_yml_code_file">6.2.2. Doing this without the <code>environment.yml</code> file</h4>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This is an alternative to the previous section!
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The best way to install python is <a href="http://conda.pydata.org/miniconda.html">miniconda</a>. Currently everything we use is tested on <strong>Python 2.7</strong>, so use the Python 2.7 installer. However, we have attempted to maintain compatibility to python 3.x. If you use that, it should be okay, but please report any bugs on the github page.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Our visualisation routines involve some computation, and dealing with geospatial data. This means that there are a number of packages to install. This might take some time. If you are already using python for something critical you may consider setting up a <a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/">virtual</a> <a href="http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/">environment</a> to ensure all of these new packages don&#8217;t break what you&#8217;ve already got.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Once you have installed  <a href="http://conda.pydata.org/miniconda.html">miniconda</a>, you can go into a command prompt (windows) or terminal (MacOS and Linux) and get the other stuff you need. To get the command prompt in windows look for the <strong>cmd.exe</strong> program.</p>
-</li>
-<li>
-<p>You should create a python environment for <strong>LSDTopoTools</strong>. Read about <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">conda python environments here</a>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda config --add channels conda-forge
-&gt; conda create --name LSDTT
-&gt; conda install -n LSDTT shapely
-&gt; conda install -n LSDTT fiona
-&gt; conda install -n LSDTT rasterio
-&gt; conda install -n LSDTT scipy
-&gt; conda install -n LSDTT matplotlib
-&gt; conda install -n LSDTT pandas
-&gt; conda install -n LSDTT gdal
-&gt; conda install -n LSDTT pyproj
-&gt; conda install -n LSDTT descartes
-&gt; conda install -n LSDTT spyder
-&gt; conda activate LSDTT</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Every time you use our tools, you should activate the <strong>LSDTT</strong> python environment.</p>
-</li>
-<li>
-<p>To run spyder you just type <code>spyder</code> at the command line.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Spyder needs an older version of a package called <strong>PyQt</strong>. If spyder doesn&#8217;t start correctly, run <code>conda install pyqt=4.10 -f</code>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-It is entirely possible that we have forgotten some package, but if you run one of our scripts and it tells you the package is not found, just use <code>conda</code> to install.
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_using_spyder">6.2.3. Using Spyder</h4>
-<div class="paragraph">
-<p>Once you have installed python, you can use it from the command line (i.e. from a powershell or terminal window). However, you might prefer using a nice development environment that checks your code and has pretty colours and reassuring windows. When we are not using text editors (see our section <a href="#_text_editors_for_modifying_files">Text editors for modifying files</a>) we tend to use Spyder, which has an editor that can give you help with python packages and highlight your mistakes. You should have already installed it with <code>conda install spyder</code>, so to get it running go into a powershell or terminal window and just type:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; spyder</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You cannot run spyder on the vagrant machine since it has no windowing system. If you want to run <strong>Spyder</strong> you need to use your host operating system. This is the one of the reasons we encourage you to do your python installation on your host operating system and not the vagrant machine.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_getting_our_plotting_tools">6.2.4. Getting our plotting tools</h4>
-<div class="paragraph">
-<p>Our vagrant setup has no graphic interface (you only interact with it through a terminal) so we suggest using your host operating system for python.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>You need to clone our repository <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a>.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-At the moment <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> is a complete mess. It currently serves as a bit of a sandbox for visualisation development. One day we will clean it all up and make a nice, pretty release. But for now I&#8217;m afraid you&#8217;ll need to rely on this repository.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If you don&#8217;t want to install <a href="https://git-scm.com/">git</a> on your host operating system, you can clone the repository from your vagrant machine. Because of the clever way vagrant works you will be able to use these files in you host operating system.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects
-$ git clone https://github.com/LSDtopotools/LSDMappingTools.git</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-In your host operating system these files will not be in <code>/LSDTopoTools/Git_projects</code>. They will be within the <code>VagrantBoxes\LSDTopoTools\Git_projects</code> directory (wherever you put it. On windows I put mine in the <code>C</code> directory).
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Once you have this repository you can move on to our examples in the next chapter.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_fixing_python_gdal_in_windows">6.2.5. Fixing python gdal in windows</h4>
-<div class="paragraph">
-<p>If you are using windows, there is a stupid bug in the <strong>conda</strong> gdal package where it cannot find the gdal data. To fix this:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Search for the file <strong>gcs.csv</strong>. Note the folder in which it is located. On my system it is in <code>C:\Miniconda2\Library\share\gdal</code></p>
-</li>
-<li>
-<p>Go into the control panel, go to system (or system and security, then system), click on <strong>advanced system settings</strong> and in system variables enter a new variable: <strong>GDAL_DATA</strong>. For the value of this enter the directory where the gdal data is that you fond above.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_appendix_chi_analysis_options_and_outputs">Appendix A: Appendix: chi analysis options and outputs</h2>
+<h2 id="_chi_analysis_options_and_outputs">Appendix A: Chi analysis options and outputs</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>This section is technical and not based on tutorials!</strong> It explains the various options and data outputs of the <strong>chi mapping tool</strong>.</p>
@@ -3456,7 +3182,7 @@ If the <code>convert_csv_to_geojson</code> flag is set to <code>true</code> then
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_preparing_lithologic_data">Appendix B: Appendix: preparing lithologic data</h2>
+<h2 id="_preparing_lithologic_data">Appendix B: Preparing lithologic data</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This appendix explains how to use our python routines to prepare lithology shapefiles for use in <strong>LSDTopoTools</strong>.</p>
@@ -3482,7 +3208,7 @@ basalt,1</code></pre>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-You can geenrate these lithologic keys manually, but formatting errors can easily be made. We propose there a method to generate automatically all these file with the right format from a shapefile containing the geological information. Here we present python scripts for manageing this process. You will need Python to use the generating script, you can refer to the <a href="#_using_python">Using python</a> section for instruction about installation.
+You can geenrate these lithologic keys manually, but formatting errors can easily be made. We propose there a method to generate automatically all these file with the right format from a shapefile containing the geological information. Here we present python scripts for manageing this process. You will need Python to use the generating script, you can refer to the <a href="#Using python">[Using python]</a> section for instruction about installation.
 </td>
 </tr>
 </table>
@@ -3490,7 +3216,7 @@ You can geenrate these lithologic keys manually, but formatting errors can easil
 <div class="sect3">
 <h4 id="_the_code_rasterization_py_code_script">B.1.1. The <code>Rasterization.py</code> script</h4>
 <div class="paragraph">
-<p>The Python script that automates this process is present in the LSDMappingTools plotting library developped in parallel of LSDTopoTools. You can refer to the section <a href="#_getting_our_plotting_tools">Getting our plotting tools</a> to download the needed repository. The script is <code>Rasterization.py</code> and can be executed using the command line (you do not need to edit the code).</p>
+<p>The Python script that automates this process is present in the LSDMappingTools plotting library developped in parallel of LSDTopoTools. You can refer to the section <a href="#Getting our plotting tools">[Getting our plotting tools]</a> to download the needed repository. The script is <code>Rasterization.py</code> and can be executed using the command line (you do not need to edit the code).</p>
 </div>
 <div class="paragraph">
 <p>The first step is to open a terminal and to navigate with <code>cd</code> until your *LSDMappingTools folder.
@@ -3579,7 +3305,7 @@ You can then obtain the documentation of this script by running the command <cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-09 14:34:06 UTC
+Last updated 2018-01-09 17:38:39 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
