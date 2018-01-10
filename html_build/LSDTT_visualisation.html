@@ -458,17 +458,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</a>
 <ul class="sectlevel2">
-<li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a></li>
+<li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a>
+<ul class="sectlevel3">
+<li><a href="#_ensuring_you_can_use_the_tools">4.1.1. Ensuring you can use the tools</a></li>
+</ul>
+</li>
 <li><a href="#_a_note_on_the_test_datasets">4.2. A note on the test datasets</a></li>
 <li><a href="#_your_first_lsdmappingtools_plots">4.3. Your first LSDMappingTools plots</a>
 <ul class="sectlevel3">
 <li><a href="#_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</a></li>
 <li><a href="#_a_hillshade_with_some_basins">4.3.2. A hillshade with some basins</a></li>
 <li><a href="#_a_hillshade_with_some_channels">4.3.3. A hillshade with some channels</a></li>
+<li><a href="#_what_these_basic_plots_do">4.3.4. What these basic plots do</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#_guide_to_lsdmappingtools">Appendix A: Guide to LSDMappingTools</a></li>
 </ul>
 </div>
 </div>
@@ -946,6 +952,19 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </li>
 </ol>
 </div>
+<div class="sect3">
+<h4 id="_ensuring_you_can_use_the_tools">4.1.1. Ensuring you can use the tools</h4>
+<div class="paragraph">
+<p>To use the tools you need to make sure that they are in your <a href="https://matplotlib.org/faq/environment_variables_faq.html">pythonpath</a>. You can do that for your current session with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">import sys
+
+sys.path.append("PATH/TO/LSDMappingTools/")</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_a_note_on_the_test_datasets">4.2. A note on the test datasets</h3>
@@ -982,6 +1001,21 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 </div>
 <div class="paragraph">
 <p>We will walk through this example using the command line. You need to use the operating system within which you installed the LSDTT python environment. If you don&#8217;t know what that is read the <a href="#_installing_the_lsdtopotools_python_toolchain">installation section</a>.</p>
+</div>
+<div class="paragraph">
+<p>The first plots are really just to test if your environemnt is working. But we will give you a bit of information about how the scripts work after you produce the plots.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The scipts here print figures to files; you will not see a window with a figure pop up. Instead, after you run the scripts, look in the <code>Tests</code> directory and open the <code>png</code> files.
+</td>
+</tr>
+</table>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1065,13 +1099,105 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <div class="title">Figure 3. A simple draped hillshade</div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_what_these_basic_plots_do">4.3.4. What these basic plots do</h4>
+<div class="paragraph">
+<p>To understand what these basic plots, we will highlight some of the basic elements of the script. You should have a basic understanding of python. If you don&#8217;t, you should try either <a href="https://swcarpentry.github.io/python-novice-inflammation/">software carpentry</a> or <a href="https://www.codecademy.com/learn/learn-python">code academy</a>.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, we are going to import a package called <strong>LSDMapWrappers</strong>. This is a small package that automates the most basic plots: simple draped hillshades, basin plots and channel plots.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">import LSDMapWrappers as LSDMW</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Later in the script there are a few options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">    if argv[0] == 1:
+        print("Getting basic hillshade")
+        LSDMW.SimpleHillshade(DataDir,DataFname)
+    elif argv[0] == 2:
+        print("Plotting some basins")
+        LSDMW.PrintBasins(DataDir,DataFname)
+    elif argv[0] == 3:
+        print("Plotting the channels")
+        LSDMW.PrintChannels(DataDir,DataFname)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see here that there are various types of plots from <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/LSDMapWrappers"><strong>LSDMapWrappers</strong></a>. As it turns out each of these different basic plots has a number of options. For example, here is the code in  <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/LSDMapWrappers"><strong>LSDMapWrappers</strong></a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">def SimpleHillshade(DataDirectory,Base_file, cmap = "jet", cbar_loc = "right", size_format = "ESURF", fig_format = "png", dpi = 250):
+    """
+    This function makes a shaded relief plot of the DEM with the basins coloured
+    by the basin ID.
+    Args:
+        DataDirectory (str): the data directory with the m/n csv files
+        Base_file (str): The prefix for the m/n csv files
+        cmap (str or colourmap): The colourmap to use for the plot
+        cbar_loc (str): where you want the colourbar. Options are none, left, right, top and botton. The colourbar will be of the elevation.
+                        If you want only a hillshade set to none and the cmap to "gray"
+        size_format (str): Either geomorphology or big. Anything else gets you a 4.9 inch wide figure (standard ESURF size)
+        fig_format (str): An image format. png, pdf, eps, svg all valid
+        dpi (int): The dots per inch of the figure
+    Returns:
+        Shaded relief plot. The elevation is also included in the plot.
+    Author: FJC, SMM
+    """</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see that these functions take the directory of the data files, a <code>Base_file</code> which is the name of the base raster, and a bunch of other options that allow you to modify the figure. <strong>LSDMapWrappers</strong> assumes that different map layers have specific names (it sacrifices flexibility for ease) so if your base raster is called <code>WA.bil</code> then it expects the hillshade to be called <code>WA_HS.bil</code> and the basin raster to be called <code>WA_AllBasins.bil1</code>, for example.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_guide_to_lsdmappingtools">Appendix A: Guide to LSDMappingTools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our <strong>LSDMappingTools</strong> repository contains a number of python routines for dealing with <strong>LSDTopoTools</strong> data.
+You can find the <strong>LSDMappingTools</strong> repository here:
+<a href="https://github.com/LSDtopotools/LSDMappingTools" class="bare">https://github.com/LSDtopotools/LSDMappingTools</a></p>
+</div>
+<div class="paragraph">
+<p><strong>LSDMappingTools</strong> is oganised into a number of small packages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>LSDPlottingTools</strong>: A collection of utilities for plotting. The main geospatial plotting routines are in <strong>LSDMapFigure</strong> but there are some older plotting routines, along with a lot of geospatial bells and whistles, within this packages. The other packages don&#8217;t work without this.</p>
+</li>
+<li>
+<p><strong>LSDMapArtist</strong>: The first attempt by <a href="https://github.com/dvalters?tab=repositories">Declan Valters</a> to build a <a href="https://matplotlib.org/users/artists.html">artist-based</a> geospatial plotting platform. The <em>artist</em> bit is an attempt to have a interface something like <a href="https://matplotlib.org/">matplotlib</a>. <strong>This has been replaced by LSDMapFigure and is here for educational purposes</strong>.</p>
+</li>
+<li>
+<p><strong>LSDMapFigure</strong>: This contains objects used for geospatial plotting.</p>
+</li>
+<li>
+<p><strong>LSDChiMappingExamples</strong>: Don&#8217;t bother with this for now. It is part of some tutorials we are developing bt those aren&#8217;t complete so you don&#8217;t need to look in there.</p>
+</li>
+<li>
+<p><strong>LSDMapWrappers</strong>: These have some simple plotting functions that allow users to make maps with minimal lines of code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have not got to the stage of building an installer yet so if you want any of this to work you first need to be in the <strong>LSDTopoTools</strong> pyhton environment. You can read about that in the section: <a href="#_installing_the_lsdtopotools_python_toolchain">Installing the LSDTopoTools python toolchain</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-08 12:11:43 UTC
+Last updated 2018-01-10 15:44:05 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
