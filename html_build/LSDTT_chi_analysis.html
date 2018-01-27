@@ -951,7 +951,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <p><code>test_drainage_boundaries: true</code> This is actually the default. We put it in the parameter file here to highlight its importance. The chi coordinate is calculated integrating drainage area along the channel so if your basin is truncated by the edge of the DEM it means that <strong>your chi coordinate will be incorrect</strong>.</p>
 </li>
 <li>
-<p><code>write hillshade: true</code>. Does what is says on the tin. It means that you will print a hillshade raster. You really need to do this the first time you analyse a DEM (but you only need to do it once). The reason is that all your figures will look much nicer with a hillshade!</p>
+<p><code>write_hillshade: true</code>. Does what is says on the tin. It means that you will print a hillshade raster. You really need to do this the first time you analyse a DEM (but you only need to do it once). The reason is that all your figures will look much nicer with a hillshade!</p>
 </li>
 </ol>
 </div>
@@ -963,7 +963,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <p>In your host operating system, find the directory that contains the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> directory.</p>
 </li>
 <li>
-<p>You might want to open spyder (see the section: <a href="#Getting our plotting tools">[Getting our plotting tools]</a> on how to get this) to look at the python script. To open spyder simply type <code>spyder</code> into a powershell window (Windows)  or terminal (Linux/MaxOS).</p>
+<p>You might want to open spyder (see our section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDTT python installation</a>. on how to get this) to look at the python script. To open spyder simply type <code>spyder</code> into a powershell window (Windows)  or terminal (Linux/MaxOS).</p>
 </li>
 </ol>
 </div>
@@ -1391,7 +1391,7 @@ You need to run the analysis before any of this will work!
 <p>Once you are in the correct directory, you need to run the python script:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; python PlotMoverNAnalysis.py -dir C:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples\ -fname movern_Xian -ALL True</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; python PlotMOverNAnalysis.py -dir C:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples\ -fname movern_Xian -ALL True</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1711,7 +1711,7 @@ You need to run the analysis before any of this will work!
 <div class="sect3">
 <h4 id="_files_created_by_the_python_script_plotmovernanalysis_py">5.6.2. Files created by the python script PlotMoverNAnalysis.py</h4>
 <div class="paragraph">
-<p>These files will be created by <strong>PlotMoverNAnalysis.py * and will be in the *summary_plots</strong> directory.</p>
+<p>These files will be created by <strong>PlotMOverNAnalysis.py * and will be in the *summary_plots</strong> directory.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 6. Summary files</caption>
@@ -2255,6 +2255,24 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If this is true, a chi map is created based only upon the largest basin in the raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove_basins_by_outlet_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is true, basins will be selected based on their outlet elevation. They values retained will fall into a window between and upper and lower threshold (given in the parameters <code>lower_outlet_elevation_threshold</code> and <code>upper_outlet_elevation_threshold</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lower_outlet_elevation_threshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The upper elevation threshold for selecting basin outlets. The is mainly for chi plot when we are comparing chi coordinates across drainage divides as suggested by <a href="http://science.sciencemag.org/content/343/6175/1248765">Willett et al 2014</a>. This technique does not work at al if the chi coordinate starts at different base levels so one appraoch is to select outles at similar elevations and hope that these represent the same base level.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upper_outlet_elevation_threshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The upper elevation threshold for selecting basin outlets. The is mainly for chi plot when we are comparing chi coordinates across drainage divides as suggested by <a href="http://science.sciencemag.org/content/343/6175/1248765">Willett et al 2014</a>. This technique does not work at al if the chi coordinate starts at different base levels so one appraoch is to select outles at similar elevations and hope that these represent the same base level.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">print_basin_raster</p></td>
@@ -3305,7 +3323,7 @@ You can then obtain the documentation of this script by running the command <cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-09 17:38:39 UTC
+Last updated 2018-01-27 09:02:44 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
