@@ -446,7 +446,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_getting_the_software">2. Getting the software</a>
 <ul class="sectlevel2">
-<li><a href="#_installing_the_code_and_setting_up_directories">2.1. Installing the code and setting up directories</a></li>
+<li><a href="#_what_versions_of_the_software_are_there">2.1. What versions of the software are there?</a></li>
+<li><a href="#_installing_the_code_and_setting_up_directories">2.2. Installing the code and setting up directories</a></li>
 </ul>
 </li>
 <li><a href="#_preparing_your_data">3. Preparing your data</a>
@@ -715,7 +716,51 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <p>Once you have a functioning Linux system (this can be within any operating environment, see <a href="LSDTT_installation.html">installation instructions</a>) you then need to get the chi analysis code.</p>
 </div>
 <div class="sect2">
-<h3 id="_installing_the_code_and_setting_up_directories">2.1. Installing the code and setting up directories</h3>
+<h3 id="_what_versions_of_the_software_are_there">2.1. What versions of the software are there?</h3>
+<div class="paragraph">
+<p>The first version of our chi mapping software was released along with the <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al. 2014 paper</a> in JGR-Earth Surface. The first version ws used in a number of papers and the instructions and code are archived on <a href="http://www.csdms.org">the CSDMS website</a>. However it has a few drawbacks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It only mapped the main stems and direct tributaries to the main stem.</p>
+</li>
+<li>
+<p>It was slow.</p>
+</li>
+<li>
+<p>It was difficult to use, involving 4 different programs to get to the final analysis.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since 2014 we have been working to fix these problems. The new program, which we call the <strong>Chi Mapping Tool</strong> retains some of the original algorithms of the 2014 paper (please cite that paper if you use it for your research!) but has a number of new features.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It can map across all channels in a landscape.</p>
+</li>
+<li>
+<p>It has much better routines for determining the landscape <em>m/n</em> ratio (and this is the subject of a new ESURF discussion paper).</p>
+</li>
+<li>
+<p>It is all packaged into a single program rather than 4 separate programs.</p>
+</li>
+<li>
+<p>It is very computationally intensive, so still relatively slow (compared to, say, simple slope&#8212;&#8203;area analysis) but is much faster than the old version.</p>
+</li>
+<li>
+<p>It is better integrated with our visualisation tools. I&#8217;m afraid the visualisation tools are the least well documented component of the software so please bear with us while we bring this up to a good standard.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The instructions you see below are all for the <strong>Chi Mapping Tool</strong>: you should only use the older versions of the code if you want to reproduce a result from a past paper.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_the_code_and_setting_up_directories">2.2. Installing the code and setting up directories</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Easy setup quick start</div>
@@ -849,10 +894,10 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <div class="paragraph">
 <p><strong>If you fail to convert to UTM these programs will probably crash!</strong></p>
 </div>
-</div>
-</div>
 <div class="paragraph">
 <p>Please read our section on <a href="LSDTT_introduction_to_geospatial_data.html">geospatial data</a> for more information about the data needs of <strong>LSDTopoTools</strong></p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_get_some_data">3.1. Get some data</h3>
