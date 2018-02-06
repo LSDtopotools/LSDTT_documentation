@@ -474,6 +474,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_guide_to_lsdmappingtools">Appendix A: Guide to LSDMappingTools</a></li>
 </ul>
 </div>
 </div>
@@ -688,16 +689,16 @@ Even if the python installation works flawlessly and installs first time, it wil
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>enviroment.yml</code> is for Windows.</p>
+<p><code>environment.yml</code> is for Windows.</p>
 </li>
 <li>
-<p><code>enviroment_inux32.yml</code> is for a 32 bit Linux system.</p>
+<p><code>environment_linux32.yml</code> is for a 32 bit Linux system.</p>
 </li>
 <li>
-<p><code>enviroment_linx64.yml</code> is for a 64 bit Linux system.</p>
+<p><code>environment_linux64.yml</code> is for a 64 bit Linux system.</p>
 </li>
 <li>
-<p>If you are on MacOS you shold try the <code>enviroment_linx64.yml</code> file.</p>
+<p>If you are on MacOS you shold try the <code>environment_linx64.yml</code> file.</p>
 </li>
 </ol>
 </div>
@@ -745,7 +746,7 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 <div class="content">
 <div class="title">If the environment file doesn&#8217;t work</div>
 <div class="paragraph">
-<p>If the <code>enviroment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
+<p>If the <code>environment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
 </div>
 </div>
 </div>
@@ -811,12 +812,12 @@ Our visualisation routines involve some computation, and dealing with geospatial
 <p>Now install the geographic tools</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install gdal shapely fiona rasterio pyproj</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install gdal shapely fiona rasterio pyproj basemap</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Finally add descartes. Note that on windows, MacOS and 64 bit Linux you can just add <code>descart</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
+<p>Finally add descartes. Note that on windows, MacOS and 64 bit Linux you can just add <code>descartes</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -c conda-forge descartes</code></pre>
@@ -1154,17 +1155,49 @@ The scipts here print figures to files; you will not see a window with a figure 
 <div class="paragraph">
 <p>You can see that these functions take the directory of the data files, a <code>Base_file</code> which is the name of the base raster, and a bunch of other options that allow you to modify the figure. <strong>LSDMapWrappers</strong> assumes that different map layers have specific names (it sacrifices flexibility for ease) so if your base raster is called <code>WA.bil</code> then it expects the hillshade to be called <code>WA_HS.bil</code> and the basin raster to be called <code>WA_AllBasins.bil1</code>, for example.</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_guide_to_lsdmappingtools">Appendix A: Guide to LSDMappingTools</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved directive in LSDTT_visualisation.asc - include::book/05-guide-to-LSDMappingTools/guide-to-LSDMappingTools.asc[]</p>
+<p>Our <strong>LSDMappingTools</strong> repository contains a number of python routines for dealing with <strong>LSDTopoTools</strong> data.
+You can find the <strong>LSDMappingTools</strong> repository here:
+<a href="https://github.com/LSDtopotools/LSDMappingTools" class="bare">https://github.com/LSDtopotools/LSDMappingTools</a></p>
 </div>
+<div class="paragraph">
+<p><strong>LSDMappingTools</strong> is oganised into a number of small packages:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>LSDPlottingTools</strong>: A collection of utilities for plotting. The main geospatial plotting routines are in <strong>LSDMapFigure</strong> but there are some older plotting routines, along with a lot of geospatial bells and whistles, within this packages. The other packages don&#8217;t work without this.</p>
+</li>
+<li>
+<p><strong>LSDMapArtist</strong>: The first attempt by <a href="https://github.com/dvalters?tab=repositories">Declan Valters</a> to build a <a href="https://matplotlib.org/users/artists.html">artist-based</a> geospatial plotting platform. The <em>artist</em> bit is an attempt to have a interface something like <a href="https://matplotlib.org/">matplotlib</a>. <strong>This has been replaced by LSDMapFigure and is here for educational purposes</strong>.</p>
+</li>
+<li>
+<p><strong>LSDMapFigure</strong>: This contains objects used for geospatial plotting.</p>
+</li>
+<li>
+<p><strong>LSDChiMappingExamples</strong>: Don&#8217;t bother with this for now. It is part of some tutorials we are developing bt those aren&#8217;t complete so you don&#8217;t need to look in there.</p>
+</li>
+<li>
+<p><strong>LSDMapWrappers</strong>: These have some simple plotting functions that allow users to make maps with minimal lines of code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have not got to the stage of building an installer yet so if you want any of this to work you first need to be in the <strong>LSDTopoTools</strong> pyhton environment. You can read about that in the section: <a href="#_installing_the_lsdtopotools_python_toolchain">Installing the LSDTopoTools python toolchain</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-27 09:02:44 UTC
+Last updated 2018-01-10 15:44:05 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
