@@ -534,6 +534,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p><a href="index.html">Return to main <strong>LSDTopoTools</strong> landing page</a></p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ind_so_wiener.png" alt="An extracted channel network">
@@ -729,7 +732,7 @@ You can also work with the DEM <code>gabilan.bil</code> that is included by defa
 <p>The <a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013) method</a>.</p>
 </li>
 <li>
-<p>A geometric method combining elements of <a href="https://sites.google.com/site/geonethome/home">the Geonet website[Geonet (Passalacqua et al., 2010)</a> and <a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013)</a> methods that we developed for <a href="http://www.earth-surf-dynam.net/4/627/2016/esurf-4-627-2016.html">Grieve et al. (2016)</a> and <a href="http://onlinelibrary.wiley.com/doi/10.1002/2015JF003747/full">Clubb et al. (2016)</a> We call this the "Wiener" method (after the <a href="https://en.wikipedia.org/wiki/Wiener_filter">wiener filter</a> used to preprocess the data).</p>
+<p>A geometric method combining elements of <a href="https://sites.google.com/site/geonethome/home">Geonet (Passalacqua et al., 2010)</a> and <a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013)</a> methods that we developed for <a href="http://www.earth-surf-dynam.net/4/627/2016/esurf-4-627-2016.html">Grieve et al. (2016)</a> and <a href="http://onlinelibrary.wiley.com/doi/10.1002/2015JF003747/full">Clubb et al. (2016)</a> We call this the "Wiener" method (after the <a href="https://en.wikipedia.org/wiki/Wiener_filter">wiener filter</a> used to preprocess the data).</p>
 </li>
 </ul>
 </div>
@@ -789,7 +792,7 @@ The parameter file has a specific format, but the filename can be anything you w
 </div>
 </div>
 <div class="paragraph">
-<p>Below are options for the parameter files. Note that all DEMs must be in ENVI <code>bil</code> format (<strong>DO NOT</strong> use ArcMap&#8217;s bil format: these are two different things. See the section <a href="#What data does LSDTopoToolbox take?">[What data does LSDTopoToolbox take?]</a> if you want more details).
+<p>Below are options for the parameter files. Note that all DEMs must be in ENVI <code>bil</code> format (<strong>DO NOT</strong> use ArcMap&#8217;s bil format: these are two different things. See the <a href="LSDTT_introduction_to_geospatial_data.html#_data_sources">documentation on data sources</a> if you want more details).
 The reason we use <code>bil</code> format is because it retains georeferencing which is essential to our file output since many of the files output to <code>csv</code> format with latitude and longitude as coordinates.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -1028,7 +1031,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_example_channel_extraction_parameter_file">3.1.2. Example channel extraction parameter file</h4>
 <div class="paragraph">
-<p>Below is an exaple parameter file. This file is included in the repository along with the driver functions.</p>
+<p>Below is an example parameter file. This file is included in the repository along with the driver functions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1038,7 +1041,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 # TBA
 
 # These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
 read path: /LSDTopoTools/Topographic_projects/test_data
 write path: /LSDTopoTools/Topographic_projects/test_data
 read fname: gabilan
@@ -1127,7 +1130,7 @@ print_channels_to_csv: true</code></pre>
 <p>Now got into the directory with the <strong>chi mapping tool</strong> (i.e., <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/driver_functions_ChannelExtraction</code>) and run:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
 </div>
 </div>
 </li>
@@ -1143,7 +1146,7 @@ print_channels_to_csv: true</code></pre>
 <div class="content">
 <div class="title"><strong>Important Warning</strong></div>
 <div class="paragraph">
-<p>This describes our original way of doig things, but now you should use the <strong>channel extraction tool</strong>
+<p>This describes our original way of doing things, but now you should use the <strong>channel extraction tool</strong>
 Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extraction tool</a>.</p>
 </div>
 </div>
@@ -1268,7 +1271,7 @@ Threshold area for channel extraction</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To run the Dreich algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you are using <strong>vagrant</strong> this will already be installed, so you can ignore this message.
+To run the Dreich algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
 </td>
 </tr>
 </table>
@@ -1330,7 +1333,7 @@ print_channels_to_csv: true</code></pre>
 <p>Now got into the directory with the <strong>chi mapping tool</strong> (i.e., <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/driver_functions_ChannelExtraction</code>) and run:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
 </div>
 </div>
 </li>
@@ -1388,7 +1391,7 @@ Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extrac
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To run the Pelletier algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>.
+To run the Pelletier algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
 </td>
 </tr>
 </table>
@@ -1410,7 +1413,7 @@ To run the Pelletier algorithm you need to have the Fast Fourier Transform Libra
 <div class="sect4">
 <h5 id="_run_the_analysis_2">Run the analysis</h5>
 <div class="paragraph">
-<p>We first need to create a parameter file similar to that for the <a href="#Basic channel extraction using thresholds">[Basic channel extraction using thresholds]</a>. To create your parameter file, open any text editor and create a file with the following lines:</p>
+<p>We first need to create a parameter file. To create your parameter file, open any text editor and create a file with the following lines:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1488,7 +1491,7 @@ Minimum catchment area (suggested to be 400)</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To run the LSDTopoTools algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>.
+To run the LSDTopoTools algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
 </td>
 </tr>
 </table>
@@ -1511,7 +1514,7 @@ To run the LSDTopoTools algorithm you need to have the Fast Fourier Transform Li
 <div class="sect3">
 <h4 id="_run_the_analysis_3">5.2.4. Run the analysis</h4>
 <div class="paragraph">
-<p>We first need to create a parameter file similar to that for the <a href="#Basic channel extraction using thresholds">[Basic channel extraction using thresholds]</a>. To create your parameter file, open any text editor and create a file with the following lines:</p>
+<p>We first need to create a parameter file. To create your parameter file, open any text editor and create a file with the following lines:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1599,7 +1602,7 @@ that occur when fluvial incision gives way to hillslope sediment transport proce
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To run the Dreich algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you are using <strong>vagrant</strong> this will already be installed, so you can ignore this message.
+To run the Dreich algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
 </td>
 </tr>
 </table>
@@ -1655,7 +1658,7 @@ print_channels_to_csv: true</code></pre>
 <p>Now got into the directory with the <strong>chi mapping tool</strong> (i.e., <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/driver_functions_ChannelExtraction</code>) and run:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
 </div>
 </div>
 </li>
@@ -1679,7 +1682,7 @@ Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extrac
 <div class="sect3">
 <h4 id="_run_the_chi_analysis">6.2.1. Run the chi analysis</h4>
 <div class="paragraph">
-<p>Before the Dreich algorithm can be run the <em>m/n</em> value for the landscape must be determined.  This can be done using the <a href="#Chi analysis">[Chi analysis]</a> in LSDTopoTools.</p>
+<p>Before the Dreich algorithm can be run the <em>m/n</em> value for the landscape must be determined.  This can be done using the <a href="LSDTT_chi_analysis.html">chi analysis tools</a> in <strong>LSDTopoTools</strong>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1699,7 +1702,7 @@ Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extrac
 <div class="sect3">
 <h4 id="_run_the_analysis_4">6.2.3. Run the analysis</h4>
 <div class="paragraph">
-<p>We first need to create a parameter file similar to that for the <a href="#Basic channel extraction using thresholds">[Basic channel extraction using thresholds]</a>. To create your parameter file, open any text editor and create a file with the following lines:</p>
+<p>We first need to create a parameter file. To create your parameter file, open any text editor and create a file with the following lines:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1835,7 +1838,7 @@ number_of_junctions_dreich 1</code></pre>
 <div class="sect3">
 <h4 id="_clone_the_github_repository">7.1.1. Clone the GitHub repository</h4>
 <div class="paragraph">
-<p>First navigate to the folder where you will keep the GitHub repository.  If you have downloaded LSDTopoTools using vagrant, then this should be in the folder <code>Git_projects</code>.  Please refer to the chapter on <a href="#Installing LSDTopoTools using VirtualBox and Vagrant">[Installing LSDTopoTools using VirtualBox and Vagrant]</a> for more information on this.  To navigate to this folder in a UNIX terminal use the <code>cd</code> command:</p>
+<p>First navigate to the folder where you will keep the GitHub repository.  If you have downloaded LSDTopoTools using vagrant, then this should be in the folder <code>Git_projects</code>.  Please refer to the <a href="LSDTT_installation.html">documentation on installing LSDTopoTools</a>.  To navigate to this folder in a UNIX terminal use the <code>cd</code> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2134,10 +2137,10 @@ drainage_density_plot.py	drainage_density_plot_cosmo.py</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Open the file called <code>drainage_density_plot_cosmo.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="#Getting python running">[Getting python running]</a>.</p>
+<p>Open the file called <code>drainage_density_plot_cosmo.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">the LSDTopoTools python toolchain</a>.</p>
 </div>
 <div class="paragraph">
-<p>Open the file called <code>drainage_density_plot.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="#Getting python running">[Getting python running]</a>.</p>
+<p>Open the file called <code>drainage_density_plot.py</code>.  We suggest doing this on your host machine rather than the virtual machine: for instructions about how to install Python on your host machine please see the section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">the LSDTopoTools python toolchain</a>.</p>
 </div>
 <div class="paragraph">
 <p>If you want to run the script on the example dataset you can just run it without changing anything. The script will create the file <code>Guadalupe_DEM_drainage_density_all_basins.png</code> in the same folder as your DEM is stored in.  If you want to run it on your own data, simply open the Python script in your favourite text editor.  At the bottom of the file you need to change the DataDirectory (Line 165) and the DEM identifier (Line 167) to reflect your data:</p>
@@ -2171,7 +2174,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 <div class="sect2">
 <h3 id="_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">7.4. Analysing drainage density for basins with CRN-derived erosion rates</h3>
 <div class="paragraph">
-<p>This section provides instructions for how to extract the drainage density for basins upstream of a series of point locations, such as cosmogenic radionuclide (CRN)-derived erosion rate samples.  As an example, we will use the erosion rate data collected by Hurst et al. (2012) and Riebe et al. (2000) for the Feather River, Northern California.  The lidar data for this area is available from <a href="http://www.opentopography.org/">OpenTopography</a>. We haven&#8217;t included it in our example datasets as it is too large, but information on how to convert it into the right format can be found in our section on <a href="#GDAL">[GDAL]</a>.</p>
+<p>This section provides instructions for how to extract the drainage density for basins upstream of a series of point locations, such as cosmogenic radionuclide (CRN)-derived erosion rate samples.  As an example, we will use the erosion rate data collected by Hurst et al. (2012) and Riebe et al. (2000) for the Feather River, Northern California.  The lidar data for this area is available from <a href="http://www.opentopography.org/">OpenTopography</a>. We haven&#8217;t included it in our example datasets as it is too large, but information on how to convert it into the right format can be found in our section on <a href="LSDTT_introduction_to_geospatial_data.html#_gdal">GDAL</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_formatting_your_erosion_rate_data">7.4.1. Formatting your erosion rate data</h4>

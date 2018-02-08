@@ -689,16 +689,16 @@ Even if the python installation works flawlessly and installs first time, it wil
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>enviroment.yml</code> is for Windows.</p>
+<p><code>environment.yml</code> is for Windows.</p>
 </li>
 <li>
-<p><code>enviroment_inux32.yml</code> is for a 32 bit Linux system.</p>
+<p><code>environment_linux32.yml</code> is for a 32 bit Linux system.</p>
 </li>
 <li>
-<p><code>enviroment_linx64.yml</code> is for a 64 bit Linux system.</p>
+<p><code>environment_linux64.yml</code> is for a 64 bit Linux system.</p>
 </li>
 <li>
-<p>If you are on MacOS you shold try the <code>enviroment_linx64.yml</code> file.</p>
+<p>If you are on MacOS you shold try the <code>environment_linx64.yml</code> file.</p>
 </li>
 </ol>
 </div>
@@ -746,7 +746,7 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 <div class="content">
 <div class="title">If the environment file doesn&#8217;t work</div>
 <div class="paragraph">
-<p>If the <code>enviroment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
+<p>If the <code>environment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
 </div>
 </div>
 </div>
@@ -812,12 +812,12 @@ Our visualisation routines involve some computation, and dealing with geospatial
 <p>Now install the geographic tools</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install gdal shapely fiona rasterio pyproj</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install gdal shapely fiona rasterio pyproj basemap</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Finally add descartes. Note that on windows, MacOS and 64 bit Linux you can just add <code>descart</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
+<p>Finally add descartes. Note that on windows, MacOS and 64 bit Linux you can just add <code>descartes</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -c conda-forge descartes</code></pre>
