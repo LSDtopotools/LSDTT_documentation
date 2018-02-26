@@ -458,7 +458,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</a>
 <ul class="sectlevel2">
-<li><a href="#_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</a>
+<li><a href="#_getting_our_lsdmappingtools_and_other_tools">4.1. Getting our LSDMappingTools and other tools</a>
 <ul class="sectlevel3">
 <li><a href="#_ensuring_you_can_use_the_tools">4.1.1. Ensuring you can use the tools</a></li>
 </ul>
@@ -474,7 +474,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_guide_to_lsdmappingtools">Appendix A: Guide to LSDMappingTools</a></li>
+<li><a href="#_lsdtopotools_visualisation_from_command_line">5. LSDTopoTools visualisation from command line</a>
+<ul class="sectlevel2">
+<li><a href="#_getting_the_example_data">5.1. Getting the example data</a></li>
+<li><a href="#_getting_lsdmappingtools">5.2. Getting LSDMappingTools</a></li>
+<li><a href="#_a_slightly_different_way_to_make_plots">5.3. A slightly different way to make plots</a>
+<ul class="sectlevel3">
+<li><a href="#_the_basic_structure_of_a_plotbasicrasters_py_call">5.3.1. The basic structure of a PlotBasicRasters.py call</a></li>
+<li><a href="#_a_basic_hillshade_using_plotbasicrasters_py">5.3.2. A basic hillshade using PlotBasicRasters.py</a></li>
+<li><a href="#_making_a_basemap">5.3.3. Making a basemap</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -905,7 +917,7 @@ You cannot run spyder on the vagrant machine since it has no windowing system. I
 <p>Okay, we are going to take you through some basic visualisation using <strong>LSDMappingTools</strong>.</p>
 </div>
 <div class="sect2">
-<h3 id="_getting_our_strong_lsdmappingtools_strong_and_other_tools">4.1. Getting our <strong>LSDMappingTools</strong> and other tools</h3>
+<h3 id="_getting_our_lsdmappingtools_and_other_tools">4.1. Getting our LSDMappingTools and other tools</h3>
 <div class="paragraph">
 <p>Our vagrant setup has no graphical user interface (you only interact with it through a terminal) so we suggest using your host operating system for python.</p>
 </div>
@@ -955,14 +967,40 @@ In your host operating system these files will not be in <code>/LSDTopoTools/Git
 <div class="sect3">
 <h4 id="_ensuring_you_can_use_the_tools">4.1.1. Ensuring you can use the tools</h4>
 <div class="paragraph">
-<p>To use the tools you need to make sure that they are in your <a href="https://matplotlib.org/faq/environment_variables_faq.html">pythonpath</a>. You can do that for your current session with:</p>
+<p>I am very sorry to tell you that we do not have a nice pacakge installation for <strong>LSDMappingTools</strong>. If you want to make one please fork the repo and try it out. Although [Benoit Bovy] might have already done it by the time you read this.</p>
 </div>
+<div class="paragraph">
+<p>That means:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need to ensure you are in the <strong>LSDTopoTools</strong> python environment, which is descripted in the <a href="#_installing_the_lsdtopotools_python_toolchain">previous section</a>.</p>
+</li>
+<li>
+<p>For typical usage you need to be sitting in the directory holding <strong>LSDMappingTools</strong> (i.e., the directory into which you cloned the repository).</p>
+</li>
+<li>
+<p>You can avoid being in the <strong>LSDMappingTools</strong> by altering your <a href="https://matplotlib.org/faq/environment_variables_faq.html">pythonpath</a>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can do that within a current python session with (but you need to actually go into the python scripts and add this line):</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-python" data-lang="python">import sys
 
 sys.path.append("PATH/TO/LSDMappingTools/")</code></pre>
 </div>
+</div>
+</li>
+<li>
+<p>Because that is a little bit tedious we usually just call <strong>LSDMappingTools</strong> scripts from withing the <strong>LSDMappingTools</strong> directory. We recognise this is a little obtuse but these tools have evolved as the scripts we use to create figures for papers rather than as a coherent software package. If you are unhappy with the ad-hoc state of this package we would be <strong>delighted</strong> if you forked the repo and tried to wrap it as a package.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1085,7 +1123,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 <div class="sect3">
 <h4 id="_a_hillshade_with_some_channels">4.3.3. A hillshade with some channels</h4>
 <div class="paragraph">
-<p>This creates a very hillshade with a channel network. The channels come from a csv file that is derived from a chi data map. You can read about how to generate these in our link::LSDTT_basic_usage.html#_more_advanced_options_in_lsdtt_basicmetrics[LSDTT basic analysis documentation].</p>
+<p>This creates a very hillshade with a channel network. The channels come from a csv file that is derived from a chi data map. You can read about how to generate these in our <a href="LSDTT_basic_usage.html#_more_advanced_options_in_lsdtt_basicmetrics">LSDTT basic analysis documentation</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1160,44 +1198,278 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_guide_to_lsdmappingtools">Appendix A: Guide to LSDMappingTools</h2>
+<h2 id="_lsdtopotools_visualisation_from_command_line">5. LSDTopoTools visualisation from command line</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our <strong>LSDMappingTools</strong> repository contains a number of python routines for dealing with <strong>LSDTopoTools</strong> data.
-You can find the <strong>LSDMappingTools</strong> repository here:
-<a href="https://github.com/LSDtopotools/LSDMappingTools" class="bare">https://github.com/LSDtopotools/LSDMappingTools</a></p>
+<p>In this section we are going to use some more flexible tools which you call from a command line.</p>
+</div>
+<div class="sect2">
+<h3 id="_getting_the_example_data">5.1. Getting the example data</h3>
+<div class="paragraph">
+<p>The data we will use in this section is in the <code>LSDTT_chi_examples</code> repository: <a href="https://github.com/LSDtopotools/LSDTT_chi_examples" class="bare">https://github.com/LSDtopotools/LSDTT_chi_examples</a></p>
 </div>
 <div class="paragraph">
-<p><strong>LSDMappingTools</strong> is oganised into a number of small packages:</p>
+<p>The data is based on a series of catchements draining the southern side of the Shillong Plateau in India, one of the wettest places on Earth. The data we will use has been derived from using our <a href="LSDTT_chi_analysis.html">channel steepness tools</a>, but we won&#8217;t make you run the code, we simply provide the processed data.</p>
+</div>
+<div class="paragraph">
+<p>These are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>LSDPlottingTools</strong>: A collection of utilities for plotting. The main geospatial plotting routines are in <strong>LSDMapFigure</strong> but there are some older plotting routines, along with a lot of geospatial bells and whistles, within this packages. The other packages don&#8217;t work without this.</p>
+<p><code>Mega_divide.bil</code>: The topographic raster</p>
 </li>
 <li>
-<p><strong>LSDMapArtist</strong>: The first attempt by <a href="https://github.com/dvalters?tab=repositories">Declan Valters</a> to build a <a href="https://matplotlib.org/users/artists.html">artist-based</a> geospatial plotting platform. The <em>artist</em> bit is an attempt to have a interface something like <a href="https://matplotlib.org/">matplotlib</a>. <strong>This has been replaced by LSDMapFigure and is here for educational purposes</strong>.</p>
+<p><code>Mega_divide_hs.bil</code>: hillshade</p>
 </li>
 <li>
-<p><strong>LSDMapFigure</strong>: This contains objects used for geospatial plotting.</p>
+<p><code>Mega_divide_AllBasins.bil</code>: A raster map of the basins</p>
 </li>
 <li>
-<p><strong>LSDChiMappingExamples</strong>: Don&#8217;t bother with this for now. It is part of some tutorials we are developing bt those aren&#8217;t complete so you don&#8217;t need to look in there.</p>
+<p><code>Mega_divide_AllBasinsInfo.csv</code>: A comma separated value file that contains information about the basins. It is generated using the <code>print_basin_raster: true</code> option in our <a href="LSDTT_chi_analysis.html">chi mapping tools</a>.</p>
 </li>
 <li>
-<p><strong>LSDMapWrappers</strong>: These have some simple plotting functions that allow users to make maps with minimal lines of code.</p>
+<p><code>Mega_divide_Maskedchi.bil</code>: A raster that contains the chi coordinates of this landscape.</p>
+</li>
+<li>
+<p><code>Mega_divide_chi_data_map.csv</code>: A csv file containing information about the channel network. It contains information like the area location, stream order, basin number, source number and chi coordinate of the extracted channel network. This comes from using the <a href="LSDTT_chi_analysis.html">chi mapping tool</a> with the option <code>print_chi_data_maps: true</code>.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To get the data, you need to clone the repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples" class="bare">https://github.com/LSDtopotools/LSDTT_chi_examples</a>. If you are using a <a href="LSDTT_installation.html#_installing_lsdtopotools_using_virtualbox_and_vagrant">vagrant box</a> or a <a href="LSDTT_installation.html#_installing_lsdtopotools_using_docker">docker container</a> you should probably put this into the <code>/LSDTopoTools/Topographic_projects</code> directory.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_chi_examples</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You need to know where this repository is!! <strong>MAKE SURE YOU KNOW THE PATH TO THIS DIRECTORY SINCE YOU WILL USE IT TO CALL OUR PYTHON SCRIPTS.</strong></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_lsdmappingtools">5.2. Getting LSDMappingTools</h3>
+<div class="paragraph">
+<p>You also need to get <a href="https://github.com/LSDtopotools/LSDTTMappingTools">LSDMappingTools</a>. See the section <a href="#_getting_our_lsdmappingtools_and_other_tools">Getting our LSDMappingTools and other tools</a>. Please don&#8217;t just skim that section, it contains important information that is essential for getting the tool working properly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_slightly_different_way_to_make_plots">5.3. A slightly different way to make plots</h3>
+<div class="paragraph">
+<p>In the previous section, we made some plots by calling plotting routines in the package <code>LSDMapWrappers</code>. In this section we will use a command line tool to generate plots.</p>
+</div>
+<div class="paragraph">
+<p>The command line tool is called <code>PlotBasicRasters.py</code> and you give it arguments to make plots. It wraps various functions that live within several <strong>LSDMappingTools</strong> packages.</p>
+</div>
+<div class="paragraph">
+<p>It can be used as a general plotting tool but was primarily designed to interface with output from <strong>LSDTopoTools</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The name of this script, <code>PlotBasicRasters.py</code> is perhaps a bit misleading because in fact you can make a large number of plots including draped plots, plots that include basins, and channel profile plots.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_basic_structure_of_a_plotbasicrasters_py_call">5.3.1. The basic structure of a PlotBasicRasters.py call</h4>
+<div class="paragraph">
+<p><code>PlotBasicRasters.py</code> is called with a number of command line arguments. Once you are used to the syntax, you should also be able to use similar packages such as <code>PlotMOverNAnalysis.py</code> and <code>PlotLithoInfo.py</code>.</p>
+</div>
+<div class="paragraph">
+<p>The main elements of a call are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The call to the actual python script: <code>python PlotBasicRasters.py</code></p>
+</li>
+<li>
+<p>The directory of your data: <code>-dir \My\Data\Location</code></p>
+</li>
+<li>
+<p>The prefix of the data files <code>-fname RasterPrefix</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>We have not got to the stage of building an installer yet so if you want any of this to work you first need to be in the <strong>LSDTopoTools</strong> pyhton environment. You can read about that in the section: <a href="#_installing_the_lsdtopotools_python_toolchain">Installing the LSDTopoTools python toolchain</a>.</p>
+<p>After that, there are a number of different command line options. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-PD True</code>: This creates a drape plot. It expects there to be a raster that has <code>_hs</code> after the raster prefix. So for example if your raster prefix is <code>Xian</code> you need a raster file <code>Xian.bil</code> and a hillshade raster <code>Xian_hs.bil</code></p>
+</li>
+<li>
+<p><code>-PB True</code>: This creates a basin plot. It expects there to be a raster that has <code>_AllBasins</code> after the raster prefix. So for example if your raster prefix is <code>Xian</code> you need a raster file <code>Xian.bil</code> and a hillshade raster <code>Xian_AllBasins.bil</code>. In addition you need a <code>_BasinsInfo.csv</code> file. This is generated with basin printing functions in some of the <strong>LSDTopoTools</strong> programs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_basic_hillshade_using_plotbasicrasters_py">5.3.2. A basic hillshade using PlotBasicRasters.py</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, make sure you have the LSDTT python environment activated.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In linux:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ source activate LSDTT</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In a windows <strong>cmd.exe</strong> prompt:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ source activate LSDTT</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Now, go to the directory where you cloned <a href="https://github.com/LSDtopotools/LSDTMappingTools">LSDMappingTools</a>. <strong>Unless you have altered your <a href="https://matplotlib.org/faq/environment_variables_faq.html">pythonpath</a> you will need to be in this directory for any calls to the python routines to work.</strong></p>
+</li>
+<li>
+<p>You also need to look up the location of your data.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are in Linux the location will be something like: <code>/LSDTopoTools/Topographic_projects/LSDTT_chi_examples</code> or <code>~/LSDTopoTools/Topographic_projects/LSDTT_chi_examples</code>.</p>
+</li>
+<li>
+<p>If you are in Windows the locations will be something like: <code>c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>So, lets start with a basic call to plot the elevation over a hillshade.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>I am going to assume you have used a vagrant box but you are calling <code>PlotBasicRasters.py</code> from windows. Your system might differ so you&#8217;ll need to update the path names.</p>
+</li>
+<li>
+<p>Here is the call:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -drape_fname Mega_divide -PD True -dpi 100</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>This prints a figure in the <strong>raster_plots</strong> directory. The resulting figure looks like:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_drape.png" alt="Draped elevation plot" width="300">
+</div>
+<div class="title">Figure 4. A simple draped elevation plot</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The <code>-PD True</code> options turns on the drape plotting</p>
+</li>
+<li>
+<p>The <code>-drape_fname Mega_divide</code> means that we will just drape the elevation over the hillshade.</p>
+</li>
+<li>
+<p>The <code>-dpi 100</code> option means that the dots per inch of the figure will be 100.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Why don&#8217;t we alter this figure a bit. We can change the colourbar location, or the colourbar label, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -drape_fname Mega_divide -PD True -drape_cbar_label "Elevation (m)" -drape_cbar_loc bottom -dpi 100</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This figure includes some additional options:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>-drape_cbar_label "Elevation (m)"</code> this option lets you change the name of the colourbar label.</p>
+</li>
+<li>
+<p><code>-drape_cbar_loc bottom</code> this option allows you to move the colourbar. The options are <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, and <code>none</code>.</p>
+<div class="paragraph">
+<p>The figure looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_drape_v2.png" alt="Draped elevation plot" width="300">
+</div>
+<div class="title">Figure 5. A simple draped elevation plot, with some modifications.</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_making_a_basemap">5.3.3. Making a basemap</h4>
+<div class="paragraph">
+<p>We made a hillshade! Great. But we don&#8217;t actually know where we are in the world. However there is an option to create a basemap to see where your raster is.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To call the basemap image, you can use:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -BM True -bmrem 20</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The key flags here are:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>-BM True</code> This flag simply turns on the basemap. The are printed into the directory <strong>basemap_plots</strong>.</p>
+</li>
+<li>
+<p><code>-bmrem 20</code> This option sets how wide the image is. This is a multiple of the total width (or height, if that if greater) of the base raster.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The figure looks like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_basemap.png" alt="Basemap plot" width="300">
+</div>
+<div class="title">Figure 6. A simple basemap.</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-10 15:44:05 UTC
+Last updated 2018-02-26 21:43:38 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

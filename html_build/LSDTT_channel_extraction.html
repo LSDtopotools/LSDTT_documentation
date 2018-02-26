@@ -839,7 +839,50 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. Options for what analysis to do.</caption>
+<caption class="title">Table 2. Raster preprocessing</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have the <code>remove_seas</code> keyword set to true, the program will change any elevation node below this value to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have the <code>remove_seas</code> keyword set to true, the program will change any elevation node above this value to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove_seas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this changes extreme value in the elevation to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">raster_is_filled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, the code assumes the raster is already filled and doesn&#8217;t perform the filling routine. This should save some time in computation, but make sure the raster really is filled or else you will get segmentation faults!</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Options for what analysis to do.</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -882,7 +925,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Options for what files to output</caption>
+<caption class="title">Table 4. Options for what files to output</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -949,7 +992,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Parameters for extracting the channel network</caption>
+<caption class="title">Table 5. Parameters for extracting the channel network</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1958,7 +2001,7 @@ drainage_density_plot.py	drainage_density_plot_cosmo.py</code></pre>
 <div class="sect3">
 <h4 id="_selecting_a_window_size">7.2.2. Selecting a window size</h4>
 <div class="paragraph">
-<p>Before we can run the drainage density algorithm, we need to calculate the correct window size for calculating mean hilltop curvature across the DEM.  Please refer to the <a href="#Selecting A Window Size">[Selecting A Window Size]</a> section for information on how to calculate a window size for your DEM.</p>
+<p>Before we can run the drainage density algorithm, we need to calculate the correct window size for calculating mean hilltop curvature across the DEM.  Please refer to the <a href="LSDTT_hillslope_metrics.html#_selecting_a_window_size">selecting a window size</a> section for information on how to calculate a window size for your DEM.</p>
 </div>
 </div>
 </div>
@@ -2355,7 +2398,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-08 12:11:43 UTC
+Last updated 2017-11-07 10:49:42 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

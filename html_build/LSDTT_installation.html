@@ -885,12 +885,25 @@ You will run everything through an ssh terminal, using a command line interface.
 <li>
 <p>If you are starting from a Linux or OSX machine, an ssh client is built into your command prompt and you can just type <code>vagrant ssh</code> into the command prompt.</p>
 </li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_windows_login">Windows login</h5>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>If you are on Windows, you need to download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty.exe</a> and run it.</p>
 </li>
 <li>
 <p>In putty, set the host to <strong>127.0.0.1</strong> and the port to <strong>2222</strong>. These are vagrant&#8217;s default settings.</p>
 </li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_windows_using_the_old_version_precise_pangolin">Windows using the old version (precise pangolin)</h5>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>You will need to add the RSA key to your cache (just say yes: remember you are not connecting to the internet where baddies can spy on you but rather a server running on your own computer).</p>
 </li>
@@ -898,6 +911,57 @@ You will run everything through an ssh terminal, using a command line interface.
 <p>Now you need to <strong>log in</strong>. Your vagrant box has a username of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_windows_using_the_new_version_precise_pangolin">Windows using the new version (precise pangolin)</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the new version (which has a Precise Pangolin box: this is <a href="https://wiki.ubuntu.com/Releases">supported until 2021</a>).</p>
+</li>
+<li>
+<p>This seems to upset <strong>putty.exe</strong>. Here is how to fix that.</p>
+</li>
+<li>
+<p>Run <code>vagrant up</code>.</p>
+</li>
+<li>
+<p>Then download <strong>puttygen.exe</strong> from the <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">putty website</a>.</p>
+</li>
+<li>
+<p>Run puttygen and <strong>load</strong> an existing key. Vagrant makes a private key called <code>private_key</code>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>It will be in your vagrantboxes folder. Somewhere like C:/Vagrant/Ubuntu32/.vagrant/machines/default/virtualbox/</p>
+</li>
+<li>
+<p>Click on <code>load</code> in <strong>puttygen.exe</strong>. You need to make sure it is looking for <strong>all files</strong> and not <strong>putty key files (ppk)</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Once you load that you can put in your own private passphrase.</p>
+</li>
+<li>
+<p>Then save this key as something sensible (like <code>private_key_putty.ppk</code>).</p>
+</li>
+<li>
+<p>Now in putty look on the right with all the setting options and click on Connection &#8594; ssh.</p>
+</li>
+<li>
+<p>Then click on <code>Auth</code> and then <code>browse</code> for your private key.</p>
+</li>
+<li>
+<p>Then click on <code>session</code> and save this as <code>Vagrant_xenial</code> or something like that.</p>
+</li>
+<li>
+<p>When you ssh in using putty you will need to use <code>vagrant</code> as the username but then you use your private passphrase to get on the system.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -2086,7 +2150,7 @@ Calling this script only updates the path for the terminal session from which it
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-05 17:44:34 UTC
+Last updated 2018-01-29 16:18:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
