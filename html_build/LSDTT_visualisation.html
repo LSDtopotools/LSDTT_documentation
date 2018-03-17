@@ -485,6 +485,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_making_a_basemap">5.3.3. Making a basemap</a></li>
 </ul>
 </li>
+<li><a href="#_more_complex_plots_with_plotbasicrasters_py">5.4. More complex plots with PlotBasicRasters.py</a>
+<ul class="sectlevel3">
+<li><a href="#_a_basic_channel_plot_plotbasicrasters_py">5.4.1. A basic channel plot PlotBasicRasters.py</a></li>
+<li><a href="#_plotting_basins">5.4.2. Plotting basins</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1407,6 +1413,9 @@ The scipts here print figures to files; you will not see a window with a figure 
 </li>
 <li>
 <p><code>-drape_cbar_loc bottom</code> this option allows you to move the colourbar. The options are <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, and <code>none</code>.</p>
+</li>
+<li>
+<p><code>drape_cmap jet</code> The sets the colourmap. See the matplotlib documentation for all the possibilities.   If you do a bit of googling you will find that in fact <em>jet</em> is a terrible colourbar which leads people to see patterns that aren&#8217;t there. You should consider a colourbar like <code>cubehelix</code>.</p>
 <div class="paragraph">
 <p>The figure looks like this:</p>
 </div>
@@ -1416,6 +1425,19 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 <div class="title">Figure 5. A simple draped elevation plot, with some modifications.</div>
 </div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>You may wish to play with some of the two other flags and see the results:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>-fmt png</code> This sets the vigure format. Options are <code>svg</code>, <code>png</code>, <code>pdf</code>. Other amige formats will work, see <code>matplotlib</code> documentation for <code>savefig</code>.</p>
+</li>
+<li>
+<p><code>-size ESURF</code> This sets the size of the figure. Or more accurately, the width of the figure. The <code>geomorphology</code> option is 6.25 inches wide (matplotlib uses inches as its length unit&#8230;&#8203;don&#8217;t send me nasty letters in support of the metric system). The <code>big</code> option is 16 inches wide. Everything else will default to the Copernicus (the publishing house for EGU journals) width of 4.92 inches.</p>
 </li>
 </ol>
 </div>
@@ -1458,6 +1480,103 @@ The scipts here print figures to files; you will not see a window with a figure 
 <img src="images/Mega_divide_basemap.png" alt="Basemap plot" width="300">
 </div>
 <div class="title">Figure 6. A simple basemap.</div>
+</div>
+</li>
+<li>
+<p>You can also try to modify the latitude and longitude line spacing by mydifying the flag <code>-bmpsm 0.5</code>. This is a multiplier of how many lat-long lines you want in relation to the width of the map. It uses the smaller of the width and height of the basemap. Try varying this between 0.2 and 3 and see what happens.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_more_complex_plots_with_plotbasicrasters_py">5.4. More complex plots with PlotBasicRasters.py</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Reminder of basic call to PlotBasicRasters.py</div>
+<div class="ulist">
+<ul>
+<li>
+<p>First you need to be in the LSDTopoTools python environment. Read the section on <a href="#_getting_our_lsdmappingtools_and_other_tools">Getting our LSDMappingTools and other tools</a> and make sure you <code>activate</code> the LSDTT python environment.</p>
+</li>
+<li>
+<p>The the components of a call are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The call to the actual python script: <code>python PlotBasicRasters.py</code></p>
+</li>
+<li>
+<p>The directory of your data: <code>-dir \My\Data\Location</code></p>
+</li>
+<li>
+<p>The prefix of the data files <code>-fname RasterPrefix</code></p>
+</li>
+<li>
+<p>Then any optional flags you want. To see your choices run <code>python PlotBasicRasters.py -h</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>We are now going to get a bit more complex and plot some basins and channels.
+The structure of the python call remain the same, we just call different flags for <code>PlotBasicRasters.py</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_a_basic_channel_plot_plotbasicrasters_py">5.4.1. A basic channel plot PlotBasicRasters.py</h4>
+<div class="paragraph">
+<p>In the first example we will create a very simple channel plot.</p>
+</div>
+<div class="paragraph">
+<p>Simply call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PCh True</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The figure looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_channels_chi_channels_and_basins.png" alt="Channel plot" width="300">
+</div>
+<div class="title">Figure 7. A simple channel plot.</div>
+</div>
+<div class="paragraph">
+<p>The default of this plot is to plot the channels coloured by elevation, using a blue colour scale. Like most features of <code>PlotBasicRasters.py</code> there are a number of flags that can modify this plot. Many of the options involve selecting basins. So we will explore basin selection next.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_basins">5.4.2. Plotting basins</h4>
+<div class="paragraph">
+<p>Channels conduct water, sediment and nutrients downslope, but they can also communicate tectonic signals upslope. In many landscapes they set the pace of landscape evolution. Channels are orgaonised into connected networks, contained within drainage basins.</p>
+</div>
+<div class="paragraph">
+<p><strong>LSDTopoTools</strong> analyses frequently involve sorting and selecting drainage basins. <strong>LSDMappingTools</strong> is designed to ingest and use the drainage basin information produced by <strong>LSDTopoTools</strong>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We can start with a very basic basin plot:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PB True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The resulting figure looks like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_basins_selected_basins.png" alt="A simple basin" width="300">
+</div>
+<div class="title">Figure 8. A simple basin plot.</div>
 </div>
 </li>
 </ol>
