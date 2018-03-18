@@ -489,6 +489,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_a_basic_channel_plot_plotbasicrasters_py">5.4.1. A basic channel plot PlotBasicRasters.py</a></li>
 <li><a href="#_plotting_basins">5.4.2. Plotting basins</a></li>
+<li><a href="#_plotting_basins_and_channels">5.4.3. Plotting basins and channels</a></li>
 </ul>
 </li>
 </ul>
@@ -1544,7 +1545,7 @@ The structure of the python call remain the same, we just call different flags f
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Mega_divide_channels_chi_channels_and_basins.png" alt="Channel plot" width="300">
+<img src="images/Mega_divide_channels_chi_channels_and_basins.png" alt="Channel plot" width="500">
 </div>
 <div class="title">Figure 7. A simple channel plot.</div>
 </div>
@@ -1574,9 +1575,99 @@ The structure of the python call remain the same, we just call different flags f
 <p>The resulting figure looks like this:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Mega_divide_basins_selected_basins.png" alt="A simple basin" width="300">
+<img src="images/Mega_divide_basins_selected_basins.png" alt="A simple basin" width="500">
 </div>
 <div class="title">Figure 8. A simple basin plot.</div>
+</div>
+</li>
+<li>
+<p>The basin numbering is determined algorithmically, but you might want to rename your basins. To do this, you use the <code>-rename_dict</code> flag. This takes the form of a python dictionary. You have keys and values. Each key is the index of the basin (the number in the previous figure) and the value is the new name. These are separated by colons (<code>:</code>). To do multiple basins you separate these <code>key:value</code> pairs with commas. Here is an example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PB True -rename_dict 0:supa,1:dupa</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+when you include the <code>rename_dict</code> there should either be no spaces or the entire dictionary needs to be in quotation marks.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>The resulting figure looks like this</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_basins_selected_basins_v2.png" alt="A simple basin with renamed basins" width="500">
+</div>
+<div class="title">Figure 9. A simple basin plot with renamed basins.</div>
+</div>
+</li>
+<li>
+<p>You can also select basins by using the <code>-basin_keys</code> flag. If you leave this blank, it assumes you want all basins. If you include a comma separated list, it only keeps the basins you have named. <strong>The basin indices used are the original, not renamed basin indices</strong>. That is, if you are using <code>-rename_dict</code> you need to keep track of the original indices of the basins.</p>
+</li>
+<li>
+<p>An example is:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PB True -rename_dict 0:supa,1:dupa -basin_keys 0,1,5,6</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Again, you must ensure there are no spaces in the list because if there are, the python code will assume this is a new flag and will crash. Here is what the figure looks like:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_basins_selected_basins_v3.png" alt="A simple basin" width="500">
+</div>
+<div class="title">Figure 10. A basin plot with selected basins with some renaming.</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_basins_and_channels">5.4.3. Plotting basins and channels</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The basin selection algorithms work with channel plotting as well. You can do this with the <code>-PCh</code> flag, or alternatively you can use the <code>-PBC</code> flag to have some semitransparent basins under the channels.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -basin_keys 0,1,5,6 -PBC True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The figure looks like:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divide_BChElevation_chi_channels_and_basins.png" alt="Selected channels" width="500">
+</div>
+<div class="title">Figure 11. A basin plot with selected basins with some renaming channels.</div>
+</div>
+</li>
+<li>
+<p>You can also change the colouring of the channels using a flag <code>-SimpleChFmt</code>. You can choose <code>elevation</code>, <code>drainage_area</code>, <code>source_key</code>, or <code>basin_key</code> to colour your channels. This works with both the <code>-PCh</code> and <code>-PBC</code> flags:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -basin_keys 0,1,5,6 -PBC True -SimpleChFmt source_key</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The figure looks like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Mega_divideBSourceKey_chi_channels_and_basins.png" alt="Selected channels" width="500">
+</div>
+<div class="title">Figure 12. A basin plot with selected basins with some renaming channels.</div>
 </div>
 </li>
 </ol>
