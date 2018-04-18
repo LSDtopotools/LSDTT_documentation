@@ -494,6 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_installing_the_lsdtopotools_python_toolchain">7. Installing the LSDTopoTools python toolchain</a></li>
+<li><a href="#_get_a_text_editor">8. Get a text editor!</a></li>
 <li><a href="#_using_the_lsdtopotoolssetup_py_script">Appendix A: Using the LSDTopoToolsSetup.py script</a>
 <ul class="sectlevel2">
 <li><a href="#_getting_the_lsdtopotools_setup_script">A.1. Getting the LSDTopoTools setup script</a>
@@ -884,12 +885,25 @@ You will run everything through an ssh terminal, using a command line interface.
 <li>
 <p>If you are starting from a Linux or OSX machine, an ssh client is built into your command prompt and you can just type <code>vagrant ssh</code> into the command prompt.</p>
 </li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_windows_login">Windows login</h5>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>If you are on Windows, you need to download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty.exe</a> and run it.</p>
 </li>
 <li>
 <p>In putty, set the host to <strong>127.0.0.1</strong> and the port to <strong>2222</strong>. These are vagrant&#8217;s default settings.</p>
 </li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_windows_using_the_old_version_precise_pangolin">Windows using the old version (precise pangolin)</h5>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>You will need to add the RSA key to your cache (just say yes: remember you are not connecting to the internet where baddies can spy on you but rather a server running on your own computer).</p>
 </li>
@@ -897,6 +911,57 @@ You will run everything through an ssh terminal, using a command line interface.
 <p>Now you need to <strong>log in</strong>. Your vagrant box has a username of <strong>vagrant</strong> and a password of <strong>vagrant</strong>.</p>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_windows_using_the_new_version_precise_pangolin">Windows using the new version (precise pangolin)</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the new version (which has a Precise Pangolin box: this is <a href="https://wiki.ubuntu.com/Releases">supported until 2021</a>).</p>
+</li>
+<li>
+<p>This seems to upset <strong>putty.exe</strong>. Here is how to fix that.</p>
+</li>
+<li>
+<p>Run <code>vagrant up</code>.</p>
+</li>
+<li>
+<p>Then download <strong>puttygen.exe</strong> from the <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">putty website</a>.</p>
+</li>
+<li>
+<p>Run puttygen and <strong>load</strong> an existing key. Vagrant makes a private key called <code>private_key</code>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>It will be in your vagrantboxes folder. Somewhere like C:/Vagrant/Ubuntu32/.vagrant/machines/default/virtualbox/</p>
+</li>
+<li>
+<p>Click on <code>load</code> in <strong>puttygen.exe</strong>. You need to make sure it is looking for <strong>all files</strong> and not <strong>putty key files (ppk)</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Once you load that you can put in your own private passphrase.</p>
+</li>
+<li>
+<p>Then save this key as something sensible (like <code>private_key_putty.ppk</code>).</p>
+</li>
+<li>
+<p>Now in putty look on the right with all the setting options and click on Connection &#8594; ssh.</p>
+</li>
+<li>
+<p>Then click on <code>Auth</code> and then <code>browse</code> for your private key.</p>
+</li>
+<li>
+<p>Then click on <code>session</code> and save this as <code>Vagrant_xenial</code> or something like that.</p>
+</li>
+<li>
+<p>When you ssh in using putty you will need to use <code>vagrant</code> as the username but then you use your private passphrase to get on the system.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -1737,6 +1802,18 @@ $ ./pcl-test</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_extra_libraries_for_the_floodplain_and_terrace_extraction">6.2. Extra libraries for the floodplain and terrace extraction</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+As of January 2018 liblas does not compile on our vagrant server since liblas3 is not available for Ubuntu 12. We are working to fix this problem.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>You might find you need to install a couple of other libraries for the floodplain and terrace drivers to compile properly. If you are using Ubuntu, you can do this using the following commands:</p>
 </div>
@@ -1760,7 +1837,37 @@ $ sudo apt-get install liblas-dev</code></pre>
 <p>Because <strong>LSDTopoTools</strong> handles primarily spatial data, a number of python packages for handling spatial data are needed in the <strong>LSDTopoTools</strong> python toolchain. We have attempted to make setting up this toolchain as painless as possible using <a href="https://conda.io/miniconda.html">miniconda</a> and <a href="https://conda.io/docs/using/envs.html">conda environments</a>.</p>
 </div>
 <div class="paragraph">
-<p>Please see the chapter on [LSDTopoTools visualisation] for instructions on how to [install the LSDTopoTools python toolchain].</p>
+<p>Please see the chapter on <a href="LSDTT_visualisation.html">LSDTopoTools visualisation</a> for instructions on how to <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">install the LSDTopoTools python toolchain</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_get_a_text_editor">8. Get a text editor!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A text editor isn&#8217;t part of <strong>LSDTopoTools</strong> but you need one to do anything. You will need to modify parameter files and you might even get to the stage of opening Pass:[c++] or Python scripts and editing them so you will need an editor.</p>
+</div>
+<div class="paragraph">
+<p>If you are Linux native you probably chortle superiorly if you lean someone doesn&#8217;t use <code>vi</code> to modify files, but most students have usually only interacted with text files via a word processor.</p>
+</div>
+<div class="paragraph">
+<p>A word processor (e.g., <strong>Word</strong>, or whatever fasionable software is on your fruit-based computer) <strong>will not work</strong> to modify code: these convert your text into binary files and add a bunch of formatting.</p>
+</div>
+<div class="paragraph">
+<p>You need to work with raw <code>ascii</code> files, and for that you need a text editor. We like these:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Brackets is a multi platform text editor (it works on all operating systems) and is free. It has nice file navigation. This documentation was written using Brackets.</p>
+</li>
+<li>
+<p>Atom is another multi platform editor. Similar to Brackets. Also free.</p>
+</li>
+<li>
+<p>PSPad is a freeware text editor (it will ask you occasionally for a donation). I quite like it for Pass:[c++] code and other code since it has a quite nice built-in function navigator.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2043,7 +2150,7 @@ Calling this script only updates the path for the terminal session from which it
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-08 12:11:43 UTC
+Last updated 2018-01-29 16:18:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

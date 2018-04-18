@@ -1443,32 +1443,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 11. The spinup parameter to control all spinup parameters</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Keyword</th>
-<th class="tableblock halign-left valign-top">Input type</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">diamond_square_spinup</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true, spins up by initiating a diamond square surface, adding a roughened parabola, and then cycling through som high erosion rates with very rapid fluvial incision (at high values of <em>K</em>) to get a nice pretty spun up surface in the least amount of time. This combination of steps is the result of us playing with parameters over 3 weeks of simulations trying to get the "nicest" surfaces.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 12. Rudimentary spinup parameters</caption>
+<caption class="title">Table 11. Rudimentary spinup parameters</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1523,7 +1498,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 13. Cyclic spinup parameters. We find dissection goes faster if you cycle between uplift rates and <em>K</em> values.</caption>
+<caption class="title">Table 12. Cyclic spinup parameters. We find dissection goes faster if you cycle between uplift rates and <em>K</em> values.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1578,7 +1553,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 14. Options for "snapping" to steady state. This calculates the chi coordinate and then creates a steady state fluvial surface using equation 4 from <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/full">Mudd et al 2014 JGR-ES</a>.</caption>
+<caption class="title">Table 13. Options for "snapping" to steady state. This calculates the chi coordinate and then creates a steady state fluvial surface using equation 4 from <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/full">Mudd et al 2014 JGR-ES</a>.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1621,7 +1596,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 15. Options for forcing dissection</caption>
+<caption class="title">Table 14. Options for forcing dissection</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1670,7 +1645,7 @@ Virtually all spinup routines use only fluvial erosion. You can include hillslop
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 16. To turn <strong>hillslopes on</strong></caption>
+<caption class="title">Table 15. To turn <strong>hillslopes on</strong></caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1695,7 +1670,7 @@ Virtually all spinup routines use only fluvial erosion. You can include hillslop
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 17. Options for rudimentary steady forcing</caption>
+<caption class="title">Table 16. Options for rudimentary steady forcing</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1738,7 +1713,7 @@ Virtually all spinup routines use only fluvial erosion. You can include hillslop
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 18. Options for cyclic forcing (where <em>U</em> or <em>K</em> varies through cycles)</caption>
+<caption class="title">Table 17. Options for cyclic forcing (where <em>U</em> or <em>K</em> varies through cycles)</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1788,7 +1763,7 @@ The <em>U</em> parameter of the cyclic forcing; it is then multiplied by  <code>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 19. Options for random forcing (where <em>U</em> varies randomly)</caption>
+<caption class="title">Table 18. Options for random forcing (where <em>U</em> varies randomly)</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1856,7 +1831,7 @@ The <em>U</em> parameter of the cyclic forcing; it is then multiplied by  <code>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 20. Parameters for controlling spatially varying <em>K</em> and <em>U</em>.</caption>
+<caption class="title">Table 19. Parameters for controlling spatially varying <em>K</em> and <em>U</em>.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1911,7 +1886,7 @@ The <em>U</em> parameter of the cyclic forcing; it is then multiplied by  <code>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 21. Parameters for runs involving spatial variation in <em>K</em> and <em>U</em></caption>
+<caption class="title">Table 20. Parameters for runs involving spatial variation in <em>K</em> and <em>U</em></caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2087,7 +2062,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 <p>Any run you do will produce some standard files. The primary ones are the elevation rasters, but if you use the "normal" forcings, which here means anything after the spinup stage (see parameter file options for details), you will also get a <code>csv</code> file that contains information about the time steps.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 22. These are basic files that are printed in more or less every run.</caption>
+<caption class="title">Table 21. These are basic files that are printed in more or less every run.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -2113,7 +2088,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 <div class="sect3">
 <h4 id="_optional_raster_output">4.4.2. Optional raster output</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 23. These are basic rasters that don&#8217;t require chi analysis.</caption>
+<caption class="title">Table 22. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2156,7 +2131,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-08 12:11:43 UTC
+Last updated 2017-09-19 16:55:19 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
