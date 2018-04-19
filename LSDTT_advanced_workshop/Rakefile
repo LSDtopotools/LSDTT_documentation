@@ -28,10 +28,24 @@ namespace :book do
   desc 'build html with github stylesheet'
   task :build_html_gitcss => :prebuild do
       puts "Converting to HTML with github stylesheet..."
-      `bundle exec asciidoctor LSDTT_advanced_workshopn.asc -a stylesheet=github.css -a stylesdir=./stylesheets -o LSDTT_advanced_workshop_github_style.html`
+      `bundle exec asciidoctor LSDTT_advanced_workshop.asc -a stylesheet=github.css -a stylesdir=./stylesheets -o LSDTT_advanced_workshop_github_style.html`
       puts " -- HTML output at LSDTT_advanced_workshop_github_style.html"
   end
 
+  desc 'build docbook'
+  task :build_docbook => :prebuild do
+      puts "Converting to docbook..."
+      `bundle exec asciidoctor -d book -b docbook5 LSDTT_advanced_workshop.asc -o LSDTT_advanced_workshop.docbook`
+      puts " -- docbook output at LSDTT_advanced_workshop.docbook"
+  end    
+    
+  desc 'build epub'
+  task :build_epub => :prebuild do
+      puts "Converting to epub..."
+      `asciidoctor-epub3 LSDTT_advanced_workshop.asc -o LSDTT_advanced_workshop.epub`
+      puts " -- epub output at LSDTT_advanced_workshop.epub"
+  end     
+    
 end
 
 task :default => "book:build"
