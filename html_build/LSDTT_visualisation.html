@@ -543,13 +543,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>You have to click a bunch of buttons to get a certain formatting, and if you are loading diffent datasets there are more buttons to click. When you do thousands of analyses clicking these buttons begins to get very, very tedious so eventually you write scripts to automate the process. <strong>LSDMappingTools</strong> automates plotting of <strong>LSDTopoTools</strong> output so you don&#8217;t have to click so many buttons.</p>
+<p>You have to click a bunch of buttons to get a certain formatting, and if you are loading diffent datasets there are more buttons to click. After you have done thousands of analyses requiring clicking each time, having to click these buttons begins to get very, very tedious. In fact it can get close to driving you mad and you might start muttering to strangers on the street or plants. Eventually you realise that you are clicking buttons so much that it would actually be more time efficient to learn the nuances of geospatial data visualisation using python than to keep clicking buttons. This leads you to write scripts to automate the visualisation process. This is not a hypothetical story, it acutally happened. <strong>LSDMappingTools</strong> automates plotting of <strong>LSDTopoTools</strong> output so you don&#8217;t have to click so many buttons.</p>
 </li>
 <li>
-<p>You want to reproduce a plot. Because a GIS involves lots of presing of buttons and clicking of mice, it is difficult to reproduce the exact same figure twice. But our philosophy is that science should be reproducible. So we have written scripts to guarantee that two users with the same data can produce <strong>exactly</strong> the same plot.</p>
+<p>You want to reproduce a plot. Because a GIS involves lots of presing of buttons and clicking of mice, it is difficult to reproduce the exact same figure twice. Have we mentioned how much we hate clicking buttons? Our philosophy is that science should be reproducible. So we have written scripts to guarantee that two users with the same data can produce <strong>exactly</strong> the same plot.</p>
 </li>
 <li>
-<p>You want a plot that is formatted for a publication. Have you ever submitted a manuscript with figures that you have spent hours perfecting in Inkscape or Illustrator and then reviewers ask you to change the figure or add some data? Isn&#8217;t that annoying? What if you wrote scripts where all the sizing, fonts, colouring, etc was exactly the way you want it so if the data changes you can just run a script again and you get a perfect figure without having to click buttons in Inkscape? We thought that would be great so we did it ourselves.</p>
+<p>You want a plot that is formatted for a publication. Have you ever submitted a manuscript with figures that you have spent hours perfecting in Inkscape or Illustrator or iPaidAShittonToAppleGraphix and then reviewers ask you to change the figure or add some data? Isn&#8217;t that annoying? What if you wrote scripts where all the sizing, fonts, colouring, etc was exactly the way you want it so if the data changes you can just run a script again and you get a perfect figure without having to click buttons in Inkscape? We thought that would be great so we did it ourselves.</p>
 </li>
 </ul>
 </div>
@@ -562,7 +562,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>The scripts require loads of interdependant python packages. It means that not only is installation a pain but it also takes up a lot of space (you need to download about a GB of python packages to get everything working). We have, however, spent a lot of time experimenting with different installation techniques so we are optimistic we can get python working on your system.</p>
+<p>The scripts require loads of interdependant python packages. It means that not only is installation a pain but it also takes up a lot of space (you need to download about a GB of python packages to get everything working). We have, however, spent a lot of time experimenting with different installation techniques so we are optimistic we can get python working on your system. Loads of people are switching from languages like c++ to python since python is soooo easy to use and portable. We love python. It is easy to use. But I will throw my book "The c++ programming language" by Bjarne Stroustrup at anyone who claims that python is more portable than c++.</p>
 </li>
 <li>
 <p>If things go wrong it helps a lot to be good at <a href="https://matplotlib.org/">Matplotlib</a>. This has a steep learning curve.</p>
@@ -668,7 +668,7 @@ Even if the python installation works flawlessly and installs first time, it wil
 <div class="sect2">
 <h3 id="_where_do_i_install_the_strong_lsdtopotools_strong_python_toolchain">3.1. Where do I install the <strong>LSDTopoTools</strong> python toolchain</h3>
 <div class="paragraph">
-<p>If you are working in native linux then you don&#8217;t have to worry about this. But if you are using either a Docker or Vagrant setup, you will: do you install on your host operating system or on the Linux system that lives as a container or virtual machine?</p>
+<p>If you are working in native linux then you don&#8217;t have to worry about this. But if you are using either a Docker or Vagrant setup, you will need to worry. Do you install on your host operating system or on the Linux system that lives as a container or virtual machine?</p>
 </div>
 <div class="paragraph">
 <p>We have installed the toolchain on our host operating system. There are three main reasons we did this:</p>
@@ -679,10 +679,10 @@ Even if the python installation works flawlessly and installs first time, it wil
 <p>The container/virtual machine systems have no windowing so you can&#8217;t use spyder. We like to use spyder so we wanted a windowing system.</p>
 </li>
 <li>
-<p>I (SMM) tried to install the toolchain once on our vagrant machine and it killed GDAL. I don&#8217;t understand why this happened but GDAL is absolutely essential to LSDTopoTools data preparation so I had to destroy my vagrant box and start again from scratch. So I&#8217;ve only got this working on my Windows system (but others have got it working on Linux and MacOS).</p>
+<p>I (SMM) tried to install the toolchain once on our vagrant machine and it killed GDAL. I don&#8217;t understand why this happened but GDAL is absolutely essential to <strong>LSDTopoTools</strong> data preparation so I had to destroy my vagrant box and start again from scratch. So I&#8217;ve only got this working on my Windows system (but others have got it working on Linux and MacOS).</p>
 </li>
 <li>
-<p>Chances are you might want to use python for something other than LSDTopoTools and it is convenient to have python installed on your host machine.</p>
+<p>Chances are you might want to use python for something other than <strong>LSDTopoTools</strong> and it is convenient to have python installed on your host machine.</p>
 </li>
 </ul>
 </div>
@@ -717,7 +717,7 @@ Even if the python installation works flawlessly and installs first time, it wil
 <p><code>environment_linux64.yml</code> is for a 64 bit Linux system.</p>
 </li>
 <li>
-<p>If you are on MacOS you shold try the <code>environment_linx64.yml</code> file.</p>
+<p>If you are on MacOS you should try the <code>environment_linx64.yml</code> file. If you use MacOS please let us know if it works.</p>
 </li>
 </ol>
 </div>
@@ -784,7 +784,7 @@ This is an alternative to the previous section!
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The best way to install python is <a href="http://conda.pydata.org/miniconda.html">miniconda</a>. Currently everything we use is tested on <strong>Python 2.7</strong>, so use the Python 2.7 installer. However, we have attempted to maintain compatibility to python 3.x. If you use that, it should be okay, but please report any bugs on the github page.</p>
+<p>The best way to install python is <a href="http://conda.pydata.org/miniconda.html">miniconda</a>. Currently everything we use is tested on <strong>Python 2.7</strong>, but we have attempted to maintain compatibility to python 3.x. In fact, some essential packages within <strong>LSDMappingTools</strong> will soon lose Python 2.7 support so we now reccomend a python 3.x install. Unfortunately we have not tested all of the scripts for python 3.x compatibility yet!!!!</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -802,7 +802,7 @@ Our visualisation routines involve some computation, and dealing with geospatial
 <p>Once you have installed  <a href="http://conda.pydata.org/miniconda.html">miniconda</a>, you can go into a command prompt (windows) or terminal (MacOS and Linux) and get the other stuff you need. To get the command prompt in windows look for the <strong>cmd.exe</strong> program.</p>
 </li>
 <li>
-<p>You should create a python environment for <strong>LSDTopoTools</strong>. Read about <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">conda python environments here</a>:</p>
+<p>You should create a python environment for <strong>LSDTopoTools</strong>. This will keep the <strong>LSDMappingTools</strong> dependencies separate from your other python installations so we don&#8217;t break your other python stuff. Read about <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">conda python environments here</a>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">&gt; conda create --name LSDTT
@@ -810,7 +810,7 @@ Our visualisation routines involve some computation, and dealing with geospatial
 </div>
 </div>
 <div class="paragraph">
-<p>After doing this you should see the name of the enviroment on your termial or cammand window prompt:</p>
+<p>After doing this you should see the name of the environment on your termial or command prompt:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -836,7 +836,7 @@ Our visualisation routines involve some computation, and dealing with geospatial
 </div>
 </li>
 <li>
-<p>Finally add descartes. Note that on windows, MacOS and 64 bit Linux you can just add <code>descartes</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
+<p>Finally add <code>descartes</code>. Note that on windows, MacOS and 64 bit Linux you can just add <code>descartes</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -c conda-forge descartes</code></pre>
@@ -879,7 +879,7 @@ It is entirely possible that we have forgotten some package, but if you run one 
 <div class="sect2">
 <h3 id="_using_spyder">3.4. Using Spyder</h3>
 <div class="paragraph">
-<p>Once you have installed python, you can use it from the command line (i.e. from a powershell or terminal window). However, you might prefer using a nice development environment that checks your code and has pretty colours and reassuring windows. When we are not using text editors (see our section <a href="#Text editors for modifying files">[Text editors for modifying files]</a>) we tend to use Spyder, which has an editor that can give you help with python packages and highlight your mistakes. You should have already installed it with <code>conda install spyder</code>, so to get it running go into a powershell or terminal window and just type:</p>
+<p>Once you have installed python, you can use it from the command line (i.e. from a powershell or terminal window). That is how we do it. However, you might prefer using a nice development environment that checks your code and has pretty colours and reassuring windows. When we are not using text editors (see our section <a href="#Text editors for modifying files">[Text editors for modifying files]</a>) we tend to use Spyder, which has an editor that can give you help with python packages and highlight your mistakes. You should have already installed it with <code>conda install spyder</code>, so to get it running go into a powershell or terminal window and just type:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1096,7 +1096,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 <div class="sect3">
 <h4 id="_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</h4>
 <div class="paragraph">
-<p>This creates a very basic draped hillshade. It needs a elevation raster and a hillshade raster:</p>
+<p>This creates a very basic draped hillshade. The "drape" is an elevation raster draped over a hillshade. For obvious reasons it needs a elevation raster and a hillshade raster:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1147,7 +1147,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 <div class="sect3">
 <h4 id="_what_these_basic_plots_do">4.3.4. What these basic plots do</h4>
 <div class="paragraph">
-<p>To understand what these basic plots, we will highlight some of the basic elements of the script. You should have a basic understanding of python. If you don&#8217;t, you should try either <a href="https://swcarpentry.github.io/python-novice-inflammation/">software carpentry</a> or <a href="https://www.codecademy.com/learn/learn-python">code academy</a>.</p>
+<p>To understand what these basic plots, we will highlight some of the basic elements of the script. You should have a basic understanding of python. If you don&#8217;t, we can recommend the extremely useful courses from either <a href="https://swcarpentry.github.io/python-novice-inflammation/">software carpentry</a> or <a href="https://www.codecademy.com/learn/learn-python">code academy</a>.</p>
 </div>
 <div class="paragraph">
 <p>Firstly, we are going to import a package called <strong>LSDMapWrappers</strong>. This is a small package that automates the most basic plots: simple draped hillshades, basin plots and channel plots.</p>

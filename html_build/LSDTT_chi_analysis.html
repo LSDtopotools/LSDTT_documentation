@@ -485,29 +485,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_what_the_code_estimate_best_fit_movern_code_routine_does">5.2.3. What the <code>estimate_best_fit_movern</code> routine does</a></li>
 </ul>
 </li>
-<li><a href="#_running_the_em_m_n_em_analysis">5.3. Running the <em>m/n</em> analysis</a></li>
-<li><a href="#_visualising_the_results_of_our_m_n_analyses">5.4. Visualising the results of our m/n analyses</a>
+<li><a href="#_running_the_concavity_analysis">5.3. Running the concavity analysis</a></li>
+<li><a href="#_visualising_the_results_of_our_concavity_analyses">5.4. Visualising the results of our concavity analyses</a>
 <ul class="sectlevel3">
 <li><a href="#_generating_all_the_plots">5.4.1. Generating all the plots</a></li>
 <li><a href="#_what_sort_of_plots_do_i_get">5.4.2. What sort of plots do I get?</a></li>
 </ul>
 </li>
-<li><a href="#_interpreting_results_from_the_em_m_n_em_analyses_and_pitfalls">5.5. Interpreting results from the <em>m/n</em> analyses and pitfalls</a>
+<li><a href="#_interpreting_results_from_the_concavity_analyses_and_pitfalls">5.5. Interpreting results from the concavity analyses and pitfalls</a>
 <ul class="sectlevel3">
 <li><a href="#_uncertainty_and_confidence_in_the_results">5.5.1. Uncertainty and confidence in the results</a></li>
 <li><a href="#_parameter_values_that_appear_to_influence_results">5.5.2. Parameter values that appear to influence results</a></li>
 </ul>
 </li>
-<li><a href="#_files_output_by_the_m_n_analysis">5.6. Files output by the m/n analysis</a>
+<li><a href="#_files_output_by_the_concavity_analysis">5.6. Files output by the concavity analysis</a>
 <ul class="sectlevel3">
 <li><a href="#_files_created_by_the_strong_chi_mapping_tool_strong">5.6.1. Files created by the <strong>chi mapping tool</strong></a></li>
 <li><a href="#_files_created_by_the_python_script_plotmovernanalysis_py">5.6.2. Files created by the python script PlotMoverNAnalysis.py</a></li>
 </ul>
 </li>
-<li><a href="#_all_options_used_in_the_m_n_analyses">5.7. All options used in the m/n analyses</a>
+<li><a href="#_all_options_used_in_the_concavity_analyses">5.7. All options used in the concavity analyses</a>
 <ul class="sectlevel3">
-<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis">5.7.1. Parameters for exploring the <em>m/n</em> ratio with chi analysis</a></li>
-<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis">5.7.2. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</a></li>
+<li><a href="#_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.7.1. Parameters for exploring channel concavity ratio with chi analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.7.2. Parameters for exploring the concavity with slope-area analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -525,8 +525,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</a></li>
 <li><a href="#_burning_rasters_to_csv">A.3.6. Burning rasters to csv</a></li>
 <li><a href="#_integrating_lithologic_information">A.3.7. Integrating lithologic information</a></li>
-<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis_2">A.3.8. Parameters for exploring the <em>m/n</em> ratio with chi analysis</a></li>
-<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis_2">A.3.9. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis">A.3.8. Parameters for exploring the <em>m/n</em> ratio with chi analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis">A.3.9. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</a></li>
 <li><a href="#_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</a></li>
 <li><a href="#_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</a></li>
 <li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</a></li>
@@ -1201,13 +1201,13 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <h2 id="_calculating_concavity">5. Calculating concavity</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section you will find instructions on using the <strong>chi mapping tool</strong> to calculate channel concavity. What is channel concavity? If you look at typical channels, you will find steep headwaters but as you move downstream the channels will become gentler. Authors in the middle of the twentieth century began to calculate channel slope as one moved downstream and found systematic relationships between drainage area, <em>A</em> and channel slope, <em>S</em>, finding that the relasionship could be described with \(S = k_s A^{-\theta}\). This relationship is often called Flint&#8217;s law, after a 1975 paper. The exponent, \(\theta\), is called the concavity because it describes how concave the channel is: if the channel profile has little variation in slope downstream the channel has a low concavity.</p>
+<p>In this section you will find instructions on using the <strong>chi mapping tool</strong> to calculate channel concavity. What is channel concavity? If you look at typical channels, you will find steep headwaters but as you move downstream the channels will become gentler. Authors in the middle of the twentieth century began to calculate channel slope as one moved downstream and found systematic relationships between drainage area, <em>A</em> and channel slope, <em>S</em>, finding that the relasionship could be described with \(S = k_s A^{-\theta}\). This relationship is often called Flint&#8217;s law, after a 1975 paper. Marie Morisawa had basically figured out this relasionship in the early 1960s, so we should probably all be calling this Morisawa&#8217;s law. The exponent, \(\theta\), is called the concavity because it describes how concave the channel is: if the channel profile has little variation in slope downstream the channel has a low concavity.</p>
+</div>
+<div class="paragraph">
+<p>A number of authors have used channel steepness to infer either erosion and uplift rates across river networks, and these calculations often involve computing the channel concavity. This can be done in a number of ways. We at <strong>LSDTopoTools</strong> have included a number of methods, both traditional and newly developed, for the purpose of computing the channel concavity in river networks. In this section you will find instructions for using our tools.</p>
 </div>
 <div class="paragraph">
 <p>A number of models have been proposed for channel incision into bedrock, and a number of these models describe erosion as some function of slope and drainage area, and in the simplest version of these family of models, called stream power models, the concavity is related to the slope and area exponents, where erosion rate is modelled as \(E = k A^m S^n\) and if uplift is balanced by erosion the predicted topographic outcome is \(\theta = m/n\). There is much debate about the appropriateness of these simple models but it is probably not controversial to say that most geomorphologists believe the concavity reflects the transport and erosion processes taking place within upland rivers.</p>
-</div>
-<div class="paragraph">
-<p>In addition, a number of authors have used channel steepness to infer either erosion and uplift rates across river networks, and these calculations often involve computing the channel concavity. This can be done in a number of ways. We at <strong>LSDTopoTools</strong> have included a number of methods, both traditional and newly developed, for the purpose of computing the channel concavity in river networks. In this section you will find instructions for using our tools.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1216,7 +1216,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-In this documentation, you will find references to <em>concavity</em> or \(\theta\) and the \(m/n\) ratio. The concavity, \(\theta\), is a purely geometric relationship between channel slope and drainage area. On the other hand \(m/n\) is derived from stream power and therefore includes some assumptions about the incision model. Because chi (\(\chi\)) can be calculated by assuming an \(m/n\) ratio using topographic data, it also describes slope-area relationships, but chi analysis is more closely linked to incision models than concavity. Because most of our methods use chi analysis, we use typically state that our methods search for the most likely \(m/n\) ratio rather than the most likely concavity.
+In this documentation, you will find references to <em>concavity</em> or \(\theta\) and the \(m/n\) ratio. The concavity, \(\theta\), is a purely geometric relationship between channel slope and drainage area. On the other hand \(m/n\) is derived from stream power and therefore includes some assumptions about the incision model. Because chi (\(\chi\)) can be calculated by assuming a value of \(\theta\) topographic data, it also describes slope-area relationships, but chi analysis chi analysis also can be used to test if tributaries and trunk channels lie at the same elevation at the same values of chi. We call this a collinearity test. Linking collinearity to concavity requires some assumptions about channel incision that can be derived from Playfair&#8217;s law, stating that in general tributary channels enter the main valley at the same elevation as the main channel, implying that the erosion rate of the tributary is the same as the main channel. You can read the details in our esurf manuscript or in earlier papers by [Niemann et al., 2001] and [Wobus et al., 2006].
 </td>
 </tr>
 </table>
@@ -1246,13 +1246,27 @@ In this documentation, you will find references to <em>concavity</em> or \(\thet
 <p>For these analyses you will use our multi-purpose channel analysis package: the <strong>chi mapping tool</strong>. We will assume you have already compiled the tool and know how to direct it to your data using the <em>driver file</em>. If you don&#8217;t know about those things you&#8217;ll need to go back a few chapters in this documentation.</p>
 </div>
 <div class="paragraph">
-<p>The good news is that we have automated the computations with a single switch in the driver function. In the driver file, you just need the option <code>estimate_best_fit_movern: true</code>.
-However, there are a few more options that are important in generating sensible output for the analysis</p>
+<p>The good news is that we have automated the computations with a single switch in the driver function. In the driver file, you just need the option <code>estimate_best_fit_movern: true</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The initial versions of this software linked concavity to the <em>m/n</em> ratio, which comes from the stream power law. In fact you can show that our chi methods, which use the degree of collinearity of tributaries and the main stem, can be posed as tests of concavity (a geometric description) rather than <em>m/n</em>. However for legacy reasons many of the variables have <code>movern</code> in them.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>However, there are a few more options that are important in generating sensible output for the analysis</p>
 </div>
 <div class="sect3">
 <h4 id="_some_key_options">5.2.1. Some key options</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Main options for performing a concavity or <em>m/n</em> analysis</caption>
+<caption class="title">Table 1. Main options for performing a concavity analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1272,13 +1286,13 @@ However, there are a few more options that are important in generating sensible 
 <td class="tableblock halign-left valign-top"><p class="tableblock">estimate_best_fit_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">You need to switch this to <code>true</code> to perform all the analysis for channel concavity or <em>m/n</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You need to switch this to <code>true</code> to perform all the analysis for channel concavity.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">collinearity_MLE_sigma</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is a scaling factor for our maximum likelihood estimator (MLE). In our paper we demonstrate how this is simply a constant that can be removed from MLE calculations, so superficially its value doesn&#8217;t matter. However, if this value is low, then the MLE values will be zero and you will not get reliable results. If you are getting estimates of <em>m/n</em> that are very low, it might be because sigma is too low. If this is the case you should increase sigma until the best fit values of <em>m/n</em> do not change. <strong>In most cases you can use the default but if you have very large networks you may need to increase this parameter</strong>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a scaling factor for our maximum likelihood estimator (MLE). It does not affect which concavity is the most liukeley, but does affect the abosulute value of MLE. If this value is low, then the MLE values will be zero and you will not get reliable results. If you are getting estimates of concavity that are very low, it might be because sigma is too low. If this is the case you should increase sigma until the best fit values of concavity do not change. <strong>In most cases you can use the default but if you have very large networks you may need to increase this parameter</strong>. Note that the disorder metrics do not use MLE or the sigma value so changing this has no effect whatsoever on the disorder metrics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">threshold_contributing_pixels</p></td>
@@ -1304,13 +1318,13 @@ However, there are a few more options that are important in generating sensible 
 <div class="sect3">
 <h4 id="_other_options_all_have_sensible_defaults">5.2.2. Other options: all have sensible defaults</h4>
 <div class="paragraph">
-<p>There are a number of other options you can choose in the <em>m/n</em> analysis but we have extensively tested the method on dozens of numerical and real test landscapes and the defaults work under most conditions. We encourage users to test the sensitivity of their results to these parameters, but for initial analyses you should not have to change any extra parameters.</p>
+<p>There are a number of other options you can choose in the concavity analysis but we have extensively tested the method on dozens of numerical and real test landscapes and the defaults work under most conditions. We encourage users to test the sensitivity of their results to these parameters, but for initial analyses you should not have to change any extra parameters.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_what_the_code_estimate_best_fit_movern_code_routine_does">5.2.3. What the <code>estimate_best_fit_movern</code> routine does</h4>
 <div class="paragraph">
-<p>If you set <code>estimate_best_fit_movern</code> you switch on all the routines for <em>m/n</em> analysis, and plotting of the data. These switches are:</p>
+<p>If you set <code>estimate_best_fit_movern</code> you switch on all the routines for concavity analysis, and plotting of the data. These switches are:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1320,7 +1334,7 @@ print_basin_raster: true
 write_hillshade: true
 print_chi_data_maps: true
 
-# run the chi methods of estimating best fit m/n
+# run the chi methods of estimating best fit concavity
 this_bool_map["calculate_MLE_collinearity: true
 calculate_MLE_collinearity_with_points_MC: true
 print_profiles_fxn_movern_csv: true
@@ -1337,7 +1351,7 @@ segment_slope_area_data: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_running_the_em_m_n_em_analysis">5.3. Running the <em>m/n</em> analysis</h3>
+<h3 id="_running_the_concavity_analysis">5.3. Running the concavity analysis</h3>
 <div class="paragraph">
 <p>As with all of our tools, we suggest you keep your data and the source code separate. We will assume the standard directory structure described in the section: <a href="#_installing_the_code_and_setting_up_directories">Installing the code and setting up directories</a>.</p>
 </div>
@@ -1370,7 +1384,7 @@ threshold_contributing_pixels: 5000
 minimum_basin_size_pixels: 150000
 maximum_basin_size_pixels: 400000
 
-# Everything you need for an m over n analysis
+# Everything you need for a concavity analysis
 estimate_best_fit_movern: true</code></pre>
 </div>
 </div>
@@ -1393,13 +1407,13 @@ estimate_best_fit_movern: true</code></pre>
 </div>
 </li>
 <li>
-<p>Congratulations! You have set your first movern (<em>m/n</em>) analysis running. It might take a little while to work its way though all the analyses so sit back, relax, and catch up on some <a href="http://www.bbc.co.uk/sport/football/teams/hibernian">important news</a>. When it finishes you will be ready to visualise your data.</p>
+<p>Congratulations! You have set your first concavity analysis running. It might take a little while to work its way though all the analyses so sit back, relax, and catch up on some <a href="http://www.bbc.co.uk/sport/football/teams/hibernian">important news</a>. When it finishes you will be ready to visualise your data.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_the_results_of_our_m_n_analyses">5.4. Visualising the results of our m/n analyses</h3>
+<h3 id="_visualising_the_results_of_our_concavity_analyses">5.4. Visualising the results of our concavity analyses</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1492,7 +1506,7 @@ You need to run the analysis before any of this will work!
 <div class="title">Figure 4. The extracted basins for the <em>m/n</em> analysis</div>
 </div>
 <div class="paragraph">
-<p>It also contains images of the most likely <em>m/n</em> ratio following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, and collinearity using chi points at random intervals iterated upon using a Monte-Carlo scheme. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted <em>m/n</em> ratios is the slope-area data, whereas the most trustworthy are the data derived from the Monte Carlo chi approach. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the <em>m/n</em> ratio and if they disagree our guidance is to use the Monte Carlo chi method.</p>
+<p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, and collinearity using chi points at random intervals iterated upon using a Monte-Carlo scheme. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from the Monte Carlo chi approach. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the Monte Carlo chi method.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1525,7 +1539,7 @@ You need to run the analysis before any of this will work!
 <div class="sect4">
 <h5 id="_figures_in_the_strong_chi_plots_strong_directory">Figures in the <strong>chi_plots</strong> directory</h5>
 <div class="paragraph">
-<p>This directory has a large number of images: each chi-elevation plot for each basin for each <em>m/n</em> tested. If you are seeing interesting patterns in the raster data you should absolutely explore these plots to see what the chi profiles are doing as you vary <em>m/n</em>.</p>
+<p>This directory has a large number of images: each chi-elevation plot for each basin for each concavity value tested. If you are seeing interesting patterns in the raster data you should absolutely explore these plots to see what the chi profiles are doing as you vary concavity.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1537,29 +1551,29 @@ You need to run the analysis before any of this will work!
 <div class="sect4">
 <h5 id="_figures_in_the_strong_summary_plots_strong_directory">Figures in the <strong>summary_plots</strong> directory</h5>
 <div class="paragraph">
-<p>We also print summary plots that let you explore the variation of computed <em>m/n</em> values across a landscape. There are three plots in this directory and two <strong>.csv</strong> files that contain the underlying data. The three plots are</p>
+<p>We also print summary plots that let you explore the variation of computed concavity values across a landscape. There are three plots in this directory and two <strong>.csv</strong> files that contain the underlying data. The three plots are</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>A plot showing the best fit <em>m/n</em> as a function of basin key that includes the various chi methods and the slope-area method using a regression through all the data.</p>
+<p>A plot showing the best fit concavity as a function of basin key that includes the various chi methods and the slope-area method using a regression through all the data.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/movern_Xian_movern_summary.png" alt="Summary _m/n_ plot">
+<img src="images/movern_Xian_movern_summary.png" alt="Summary concavity plot">
 </div>
 <div class="title">Figure 9. Summary plot of most likely <em>m/n</em> ratio for various methods</div>
 </div>
 </li>
 <li>
-<p>A plot showing the best fit <em>m/n</em> as a function of basin key that includes the various chi methods and the slope-area method using a regression through all segments and tributaries. These S-A data tend to have very high variability, as reflected in the uncertainty bands.</p>
+<p>A plot showing the best fit concavity as a function of basin key that includes the various chi methods and the slope-area method using a regression through all segments and tributaries. These S-A data tend to have very high variability, as reflected in the uncertainty bands.</p>
 </li>
 <li>
-<p>A plot showing the probability of different <em>m/n</em> values of each of the different methods plotted as a <a href="http://blog.revolutionanalytics.com/2017/07/joyplots.html">joyplot</a>.</p>
+<p>A plot showing the probability of different concavity values of each of the different methods plotted as a <a href="http://blog.revolutionanalytics.com/2017/07/joyplots.html">joyplot</a>.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/movern_Xian_movern_hist.png" alt="Joyplot of the _m/n_ ratio">
+<img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 10. Joyplot of the most likeley <em>m/n</em> values across all basins in the landscape</div>
+<div class="title">Figure 10. Joyplot of the most likeley concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
@@ -1568,29 +1582,44 @@ You need to run the analysis before any of this will work!
 </div>
 </div>
 <div class="sect2">
-<h3 id="_interpreting_results_from_the_em_m_n_em_analyses_and_pitfalls">5.5. Interpreting results from the <em>m/n</em> analyses and pitfalls</h3>
+<h3 id="_interpreting_results_from_the_concavity_analyses_and_pitfalls">5.5. Interpreting results from the concavity analyses and pitfalls</h3>
 <div class="paragraph">
 <p>We have tested these routines across a number of landscapes and hope that other workers will find them useful and enhance their own work. Here we explore a number of issues we have come across in interpreting results from these analyses.</p>
 </div>
 <div class="sect3">
 <h4 id="_uncertainty_and_confidence_in_the_results">5.5.1. Uncertainty and confidence in the results</h4>
 <div class="paragraph">
-<p>There are issues in both slope-area analysis and chi-based methods of estimating concavity (\(\theta\)) and the <em>m/n</em> ratio. S-A data is extremely noisy, whereas the chi method makes some assumptions about how channels erode. In real landscapes, there in no way to test if the extracted <em>m/n</em> ratio is correct.</p>
+<p>There are issues in both slope-area analysis and chi-based methods of estimating concavity (\(\theta\)). S-A data is extremely noisy, whereas the chi method makes some assumptions about how channels erode. In real landscapes, there in no way to test if the extracted concavity value is correct.</p>
 </div>
 <div class="paragraph">
-<p>We have attempted to understand how well these methods do using numerical models that force to opey the stream power law. This has the obvious drawback that we don&#8217;t know if the stream power law is representative of channel erosion processes in any given landscape. But at a minimum we can force an <em>m/n</em> ratio under idealised, simulated conditions and see how well the methods are able to reproduce the correct <em>m/n</em> ratio.</p>
+<p>We have attempted to understand how well these methods do using numerical models forced to obey the stream power law. This has the obvious drawback that we don&#8217;t know if the stream power law is representative of channel erosion processes in any given landscape. But at a minimum we can force a concavity value (in stream power the <em>m/n</em> ratio is equal to the concavity) under idealised, simulated conditions and see how well the methods are able to reproduce the correct concavity.</p>
 </div>
 <div class="paragraph">
-<p>We have performed a number of simulations where uplift (and thus erosion) rates vary in time, where the <em>n</em> exponent varies between model runs, and where both uplift and erodibility vary in space. The latter two violate assumption of the chi method but in real landscapes many of these assumptions will be violated and we wanted to know if one could still extract reasonable approximations of the <em>m/n</em> ratio.</p>
+<p>We have performed a number of simulations where uplift (and thus erosion) rates vary in time, where the <em>n</em> exponent varies between model runs, and where both uplift and erodibility vary in space. The latter two violate assumption of the chi method but in real landscapes many of these assumptions will be violated and we wanted to know if one could still extract reasonable approximations of the concavity.</p>
 </div>
 <div class="paragraph">
-<p>What we found was that slope area analysis performs the worst when reconstructing <em>m/n</em> values, whereas our Monte Carlo points method performs the best: even in highly perturbed landscapes the true <em>m/n</em> ratio fell within the error bounds of the compute <em>m/n</em> ratio. For full reporting of these results please see our upcoming ESURF paper (as of 14-September we are not finished but we hope to submit in October).</p>
+<p>What we found was that slope area analysis performs the worst when reconstructing concavity values, whereas both our bootstrapped points method and the disorder method perform best. For full reporting of these results please see our upcoming ESURF paper (as of 14-September we are not finished but we hope to submit in October).</p>
 </div>
 <div class="paragraph">
-<p><strong>For slope-area analysis</strong>, we tried to estimate uncertainty initially by getting the uncertainties on the regression coefficients of log <em>S</em>-log <em>A</em> data (we did this with bootstrapping and looking standard uncertainties of regression coefficients found in typical statistical packages). The problem with this is that there are very large numbers of data points and these uncertainty metrics are reduced (i.e. lower uncertainty) as more data is added. So the regression coefficients, according to these metrics, are very certain, but compared to model runs the coefficients are wrong! Our approach has been to estimate the <em>m/n</em> ratio for all tributaries, and for segments of the channel network, as well as for all data and for the truck channel, and report all the values. These have very high ranges of values in most landscapes. Overall our recommendation is that if slope area data agrees with chi-based metrics that one can have high confidence in the estimated <em>m/n</em> values but otherwise slope area data should be treated with caution.</p>
+<p><strong>For slope-area analysis</strong>, we tried to estimate uncertainty initially by getting the uncertainties on the regression coefficients of log <em>S</em>-log <em>A</em> data (we did this with bootstrapping and looking standard uncertainties of regression coefficients found in typical statistical packages). The problem with this is that there are very large numbers of data points and these uncertainty metrics are reduced (i.e. lower uncertainty) as more data is added. So the regression coefficients, according to these metrics, are very certain, but compared to model runs the coefficients are wrong! Our approach has been to estimate concavity for all tributaries, and for segments of the channel network, as well as for all data and for the truck channel, and report all the values. These have very high ranges of values in most landscapes. Overall our recommendation is that if slope area data agrees with chi-based metrics that one can have high confidence in the estimated concavity values but otherwise slope area data should be treated with caution.</p>
 </div>
 <div class="paragraph">
-<p><strong>For chi-based analyses</strong>, we tried several methods. Firstly, we compare the fit between all tributary data and the trunk channel. Since all data is used, there are no measures of uncertainty. This is quite unsatisfying so the second method we used was to randomly select a fixed number of points at fixed locations upstream of the tributary junction, calculate the likelihood based on these points, and iterate using this method several hundred or even thousand times. This allows is to calculate a range of maximum likelihood estimators (MLE) for each <em>m/n</em> ratio, and we then can calculate the uncertainty bands. We do this by using the minimum MLE value for the most likely <em>m/n</em> and then seeing where this is equal to the maximum value of MLE for other <em>m/n</em> ratios.</p>
+<p><strong>For chi-based analyses</strong>, we tried several methods. Firstly, we compare the fit between all tributary data and the trunk channel. Since all data is used, there are no measures of uncertainty. This is quite unsatisfying so the second method we used was to randomly select a fixed number of points at fixed locations upstream of the tributary junction, calculate the likelihood based on these points, and iterate using this method several hundred or even thousand times. This allows is to calculate a range of maximum likelihood estimators (MLE) for each concavity value, and we then can calculate the uncertainty bands. We do this by using the minimum MLE value for the most likely concavity value and then seeing where this is equal to the maximum value of MLE for other concavity value.</p>
+</div>
+<div class="paragraph">
+<p>We also have a chi based disorder metric based on one proposed by <a href="https://www.earth-surf-dynam.net/4/1/2016/">Hergarten et al., 2016</a>. We add uncertainty tests to this method: instead of calculating disorder for the entire network we use combinations of tributaries and build a population of lowest channel disorder for all combinations possible of three tributaries and the main stem.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Because the methods are quite different, we are not able to quantify uncertainty in the same way. This means that the uncertainty metrics should be used with extreme caution!
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -1607,19 +1636,19 @@ You need to run the analysis before any of this will work!
 <p>Avoiding fan surfaces or alluvial surfaces: Our tools are mainly designed for mountain landscapes. Alluvial fans and alluvial channel have different concavities than bedrock channels. In addition, these tend to be low relief surfaces so slope values are very sensitive to topographic errors. By turning <code>remove_seas: true</code> and setting the <code>minimum_elevation</code> to a value that is the approximate elevation of your mountain front.</p>
 </li>
 <li>
-<p>The <code>collinearity_MLE_sigma</code> should be increased if you are finding that most of your <em>m/n</em> ratios are coming out as the same, very low value. Sometimes channels have low concavity! But sometimes the MLEs in a basin are all zero and in this case the code defaults to the lowest <em>m/n</em> value given (<code>start_movern</code>). You can tell if channels are actually low concavity by looking at the chi plots.</p>
+<p>The <code>collinearity_MLE_sigma</code> should be increased if you are finding that most of your concavity values are coming out as the same, very low value. Sometimes channels have low concavity! But sometimes the MLEs in a basin are all zero and in this case the code defaults to the lowest concavity value given (<code>start_movern</code>). You can tell if channels are actually low concavity by looking at the chi plots.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_files_output_by_the_m_n_analysis">5.6. Files output by the m/n analysis</h3>
+<h3 id="_files_output_by_the_concavity_analysis">5.6. Files output by the concavity analysis</h3>
 <div class="paragraph">
-<p>The \(m/n\) analysis will produce a number of new files in both raster and comma separated value formats. You can also tell the code to print csv files to geojson files if you want to directly load them into your favourite GIS.</p>
+<p>The concavity analysis will produce a number of new files in both raster and comma separated value formats. You can also tell the code to print csv files to geojson files if you want to directly load them into your favourite GIS.</p>
 </div>
 <div class="paragraph">
-<p>We expect most users will go straight to the figures generated by our python script, which should be publication quality. However, we list here the file outputs so you can inspect the data outputs ith which you can create your own plotting routines, if you so wish. We believe data should be transparent and reproducible, so all our python plots make figures from data that has been printed to file: you will always be able to see the data behind the figures. Please do not abuse our willingness to do this by taking our data and publishing horrible figures created in excel.</p>
+<p>We expect most users will go straight to the figures generated by our <a href="#_visualising_the_results_of_our_concavity_analyses">python script</a>, which should generate dozens of publication quality figures (we have enven sized the figures so they are just right for a journal page). However, we list here the file outputs so you can inspect the data outputs ith which you can create your own plotting routines, if you so wish. We believe data should be transparent and reproducible, so all our python plots make figures from data that has been printed to file: you will always be able to see the data behind the figures. Please do not abuse our willingness to do this by taking our data and publishing horrible figures created in excel.</p>
 </div>
 <div class="sect3">
 <h4 id="_files_created_by_the_strong_chi_mapping_tool_strong">5.6.1. Files created by the <strong>chi mapping tool</strong></h4>
@@ -1676,12 +1705,12 @@ You need to run the analysis before any of this will work!
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_chi_data_map</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This contains data for the channel pixels that is used to plot channels, such as location of the pixels (in lat-long WGS1984), elevation, flow distance, drainage area, and information about the basin and source key (the latter being a key to identify individual tributaries). Chi is also reported in this file, it is defaulted to <em>m/n</em> = 0.5. To look at profiles with different <em>m/n</em> values use <code>_movern</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains data for the channel pixels that is used to plot channels, such as location of the pixels (in lat-long WGS1984), elevation, flow distance, drainage area, and information about the basin and source key (the latter being a key to identify individual tributaries). Chi is also reported in this file, it is defaulted to a concavity value = 0.5. To look at profiles with different concavity values use <code>_movern</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This prints the chi-elevation profiles. The data includes locations f the channel points, and also chi coordinate for each point for every <em>m/n</em> value analysed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This prints the chi-elevation profiles. The data includes locations f the channel points, and also chi coordinate for each point for every concavity value analysed.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1703,27 +1732,37 @@ You need to run the analysis before any of this will work!
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movernstats_XX_fullstats</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the MLE and RMSE values for each tributary in each basin when compared to the trunk stream. Every <em>m/n</em> value has its own file, so if <em>m/n</em> = 0.1, the filename would be called <code>_movernstats_0.1_fullstats</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the MLE and RMSE values for each tributary in each basin when compared to the trunk stream. Every concavity value has its own file, so if concavity = 0.1, the filename would be called <code>_movernstats_0.1_fullstats</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movernstats_basinstats</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This takes the total MLE for each basin, which is the product of the MLE values for each tributary in the basin, and reports these for each <em>m/n</em> value investigated. Essentially collates MLE information from the <code>_movernstats_XX_fullstats</code> files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This takes the total MLE for each basin, which is the product of the MLE values for each tributary in the basin, and reports these for each concavity value investigated. Essentially collates MLE information from the <code>_movernstats_XX_fullstats</code> files.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_MCpoint_XX_pointsMC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the Monte-Carlo points approach. For each <em>m/n</em> value, it samples points for <code>N</code> iterations (determined by the <code>MC_point_iterations</code> flag) and then calculates summary statistics for each basin. These include minimum, first quartile, median, third quartile and maximum MLE values. Each <em>m/n</em> ratio gets its own file, so if <em>m/n</em> = 1 the file is called <code>_MCpoint_0.1_pointsMC.csv</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the Monte-Carlo points approach. For each concavity value, it samples points for <code>N</code> iterations (determined by the <code>MC_point_iterations</code> flag) and then calculates summary statistics for each basin. These include minimum, first quartile, median, third quartile and maximum MLE values. Each concavity ratio gets its own file, so if concavity = 1 the file is called <code>_MCpoint_0.1_pointsMC.csv</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_MCpoint_points_MC_basinstats</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the Monte-Carlo points approach, compiling data from the <code><em>MCpoint_XX_pointsMC.csv</code>. The file reports on each basin, with the first quartile, median and third quartile reported for every _m/n</em> analysed. Note that now that I have gone through the trouble of writing this documentation it is unlikely these idiotic filenames will change. I take full responsiblity. Mi dispiache. SMM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the Monte-Carlo points approach, compiling data from the <code>_MCpoint_XX_pointsMC.csv</code>. The file reports on each basin, with the first quartile, median and third quartile reported for every concavity value analysed. Note that now that I have gone through the trouble of writing this documentation it is unlikely these idiotic filenames will change. I take full responsiblity. Mi dispiache. SMM</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movern_residuals_median</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This reports the median value of all the residuals of the full chi dataset between tributaries and the trunk stream. The idea here was that the best fit <em>m/n</em> value might correspond to where residuals were evenly distributed above and below the main stem channel. After testing this, however, we found that this always overestimated <em>m/n</em>, so we do not include it in the summary plots. Retained here for completeness. The first and third quartile of residuals are also reported in their own files (<code>_movern_residuals_Q1</code> and <code>_movern_residuals_Q3</code>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reports the median value of all the residuals of the full chi dataset between tributaries and the trunk stream. The idea here was that the best fit concavity value might correspond to where residuals were evenly distributed above and below the main stem channel. After testing this, however, we found that this always overestimated concavity, so we do not include it in the summary plots. Retained here for completeness. The first and third quartile of residuals are also reported in their own files (<code>_movern_residuals_Q1</code> and <code>_movern_residuals_Q3</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_fullstats_disorder_uncert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains the disorder statistics for every basin. To get this file you need to set <code>movern_disorder_test: true</code>. Each basin reports the disorder statistic for every concavity value. The minimum value of disorder is used to select the most likeley concavity.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_fullstats_disorder_uncert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains the disorder statistics for every basin. To get this file you need to set <code>movern_disorder_test: true</code> and <code>disorder_use_uncert: true</code>. The colums are: basin key, the number of combinations (so the number of samples), the minimum, first quartile, median, third quartila and maximum values for best fit concavity (determined with the minimum disorder statistic). It also includes the mean, standard deviation, standard error and <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">MAD</a> for the combination results. Finally, it reports the minimum disorder concavity for all tributaries in the basin (i.e., the minimum disorder if you use all the data).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1783,26 +1822,26 @@ You need to run the analysis before any of this will work!
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movern_summary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This contains summary data on the most likely <em>m/n</em> ratio using a number of different methods. The methods are labelled in the column headers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains summary data on the most likely concavity vlue using a number of different methods. The methods are labelled in the column headers.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_SA_segment_summary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This contains the summary data on the best fit <em>m/n</em> values of slope-area segments in each basin.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains the summary data on the best fit concavity values of slope-area segments in each basin.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_all_options_used_in_the_m_n_analyses">5.7. All options used in the m/n analyses</h3>
+<h3 id="_all_options_used_in_the_concavity_analyses">5.7. All options used in the concavity analyses</h3>
 <div class="paragraph">
-<p>This is a complete list of the options that are used in the \(m/n\) analysis. Note that many other options are possible for printing, basin selection and output data formats. You will find all possible options in the section: <a href="#_parameter_file_options">Parameter file options</a>. What is reported below is just repeated from that section.</p>
+<p>This is a complete list of the options that are used in the concavity analysis. Note that many other options are possible for printing, basin selection and output data formats. You will find all possible options in the section: <a href="#_parameter_file_options">Parameter file options</a>. What is reported below is just repeated from that section.</p>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis">5.7.1. Parameters for exploring the <em>m/n</em> ratio with chi analysis</h4>
+<h4 id="_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.7.1. Parameters for exploring channel concavity ratio with chi analysis</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. Parameters for trying to constrain the <em>m/n</em> ratio using chi analysis</caption>
+<caption class="title">Table 7. Parameters for trying to constrain concavity using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1822,49 +1861,74 @@ You need to run the analysis before any of this will work!
 <td class="tableblock halign-left valign-top"><p class="tableblock">start_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the <em>m/n</em> testing functions, the program starts at this <em>m/n</em> value and then iterates through a number of increasing <em>m/n</em> values, calculating the goodness of fit to each one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity testing functions, the program starts at this concavity value (if you assume stream power, then this is the same as <em>m/n</em>, hence the parameter name) and then iterates through a number of increasing <em>m/n</em> values, calculating the goodness of fit to each one.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delta_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the <em>m/n</em> testing functions, the program increments <em>m/n</em> by this value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity testing functions, the program increments concavity by this value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">n_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the <em>m/n</em> testing functions, the program increments <em>m/n</em> this number of times.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity testing functions, the program increments concavity this number of times.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">only_use_mainstem_as_reference</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true this compares the goodness of fit between the mainstem and all tributaries in each basin for each <em>m/n</em> value. If false, it compares <strong>all</strong> tributaries and the main stem to every other tributary.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true this compares the goodness of fit between the mainstem and all tributaries in each basin for each concavity value. If false, it compares <strong>all</strong> tributaries and the main stem to every other tributary.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_profiles_fxn_movern_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true this loops though every concavity value and prints (to a single csv file) all the chi-elevation profiles. Used to visualise the effect of changing the concavity ratio on the profiles.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 8. Differenty types of concavity tests</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine <em>m/n</em> ratios. This uses <strong>ALL</strong> nodes in the channel network. The effect is that longer channels have greater influence of the result than small channels.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. This uses <strong>ALL</strong> nodes in the channel network. The effect is that longer channels have greater influence of the result than small channels.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity_with_points</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine <em>m/n</em> ratios. It uses specific points on tributaries to compare to the mainstem. These are located at fixed chi distances upstream of the lower junction of the tributary. The effect is to ensure that all tributaries are weighted similarly in calculating <em>m/n</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. It uses specific points on tributaries to compare to the mainstem. These are located at fixed chi distances upstream of the lower junction of the tributary. The effect is to ensure that all tributaries are weighted similarly in calculating concavity.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity_with_points_MC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine <em>m/n</em> ratios. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is reapeated a number of times (the default is 1000) to quantify uncertanty in the best fit <em>m/n</em> ration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is reapeated a number of times (the default is 1000) to quantify uncertanty in the best fit concavity.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">collinearity_MLE_sigma</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A value that scales MLE. It does not affect which <em>m/n</em> value is the most likely. However it affects the absolute value of MLE. If it is set too low, MLE values for poorly fit segments will be zero. We have performed sensitivity and found that once all channels have nonzero MLE values the most likely channel does not change. So this should be set high enough to ensure there are nonzero MLE values for all tributaries. Set this too high, however, and all MLE values will be very close to 1 so plotting becomes difficult as the difference between MLE are at many significant digits (e.g., 0.9999997 vs 0.9999996). We have found that a value of 1000 works in most situations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A value that scales MLE. It does not affect which concavity is the most likely. However it affects the absolute value of MLE. If it is set too low, MLE values for poorly fit segments will be zero. We have performed sensitivity and found that once all channels have nonzero MLE values the most likely channel does not change. So this should be set high enough to ensure there are nonzero MLE values for all tributaries. Set this too high, however, and all MLE values will be very close to 1 so plotting becomes difficult as the difference between MLE are at many significant digits (e.g., 0.9999997 vs 0.9999996). We have found that a value of 1000 works in most situations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MC_point_fractions</p></td>
@@ -1876,7 +1940,7 @@ You need to run the analysis before any of this will work!
 <td class="tableblock halign-left valign-top"><p class="tableblock">MC_point_iterations</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For the <code>calculate_MLE_collinearity_with_points_MC</code> analysis, this is the number iterations of drawing random points with which to build best fit <em>m/n</em> statistics.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the <code>calculate_MLE_collinearity_with_points_MC</code> analysis, this is the number iterations of drawing random points with which to build best fit concavity statistics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max_MC_point_fraction</p></td>
@@ -1888,14 +1952,39 @@ You need to run the analysis before any of this will work!
 <td class="tableblock halign-left valign-top"><p class="tableblock">movern_residuals_test</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the mean residual between the main stem and all the tributary nodes. It is used to search for the <em>m/n</em> value where the residual switches from negative to positive. The rationale is that the correct <em>m/n</em> might be reflected where the mean residual is closest to zero.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the mean residual between the main stem and all the tributary nodes. It is used to search for the concavity value where the residual switches from negative to positive. The rationale is that the correct concavity might be reflected where the mean residual is closest to zero.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">print_profiles_fxn_movern_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">movern_disorder_test</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true this loops though every <em>m/n</em> value and prints (to a single csv file) all the chi-elevation profiles. Used to visualise the effect of changing the <em>m/n</em> ratio on the profiles.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test for concavity using the disorder metric similar to that used in <a href="https://www.earth-surf-dynam.net/4/1/2016/">Hergarten et al. 2016</a>. Caluculates the disorder statistic for each basin while looping through all the concavity values. User should look for lowest disorder value.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disorder_use_uncert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This attempts to get an idea of uncertainty on the disorder metric by taking all combinations of 3 tributaries plus the main stem and calulating the disorder metric. Then the best fir concavity for each combination is determined. The best fit concavities from all combinations are then used to calculate minimum, 1st quartile, median, 3rd quartile and maximum values for the least disordered concavity. In addition the mean, standard deviation, standard error, and MAD are calculated. Finally the file produced by this also gives the least disordered concavity if you conisder all the tributaries.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 9. Parameters for exploring the concavity using monte carlo markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCMC_movern_analysis</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
@@ -1924,9 +2013,9 @@ You need to run the analysis before any of this will work!
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis">5.7.2. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.7.2. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 8. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
+<caption class="title">Table 10. Parameters for exploring the concavity ratio with slope-area analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2134,7 +2223,7 @@ The reason we use <code>bil</code> format is because it retains georeferencing w
 <div class="sect3">
 <h4 id="_basic_file_input_and_output">A.3.1. Basic file input and output</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 9. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
+<caption class="title">Table 11. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2180,7 +2269,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_dem_preprocessing">A.3.2. DEM preprocessing</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 10. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
+<caption class="title">Table 12. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2238,7 +2327,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_selecting_channels_and_basins">A.3.3. Selecting channels and basins</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 11. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<caption class="title">Table 13. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -2338,7 +2427,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_basic_data_output_before_calculating_chi">A.3.4. Basic data output (before calculating chi)</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 12. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
+<caption class="title">Table 14. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2414,7 +2503,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 13. Parameters for calculating the chi coordinate.</caption>
+<caption class="title">Table 15. Parameters for calculating the chi coordinate.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2475,7 +2564,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 14. Parameters for burning a raster to csv files.</caption>
+<caption class="title">Table 16. Parameters for burning a raster to csv files.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2530,7 +2619,7 @@ These option are undergoing active development. New options will be regularly ad
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 15. Parameters for burning a raster to csv files.</caption>
+<caption class="title">Table 17. Parameters for burning a raster to csv files.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2574,9 +2663,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis_2">A.3.8. Parameters for exploring the <em>m/n</em> ratio with chi analysis</h4>
+<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis">A.3.8. Parameters for exploring the <em>m/n</em> ratio with chi analysis</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 16. Parameters for trying to constrain the <em>m/n</em> ratio using chi analysis</caption>
+<caption class="title">Table 18. Parameters for trying to constrain the <em>m/n</em> ratio using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2698,9 +2787,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis_2">A.3.9. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</h4>
+<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis">A.3.9. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 17. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
+<caption class="title">Table 19. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2770,7 +2859,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <div class="sect3">
 <h4 id="_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 18. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
+<caption class="title">Table 20. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2831,7 +2920,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <p>For most of our visualisation routines, the key printing option to set to <strong>true</strong> is <code>print_chi_data_maps</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 19. Options for printing simple chi maps</caption>
+<caption class="title">Table 21. Options for printing simple chi maps</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2871,7 +2960,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <div class="sect3">
 <h4 id="_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 20. Options for chi maps and secondary data files that split channels and basins</caption>
+<caption class="title">Table 22. Options for chi maps and secondary data files that split channels and basins</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2944,7 +3033,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <p>These allow the user to drive chi with discharge rather than drainage area. It is somewhat rudimentary at the moment in that it  assumes the rainfall rate in length per time is translated into some constant discharge. This is not a hydrological model! It simply accumulates precipitation through a channel network with no regard to hydrological processes, infiltration and evaporation, or the timing of storms.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 21. Parameters for dealing with precipitation and discharge.</caption>
+<caption class="title">Table 23. Parameters for dealing with precipitation and discharge.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3050,7 +3139,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 <div class="sect3">
 <h4 id="_raster_output">A.6.1. Raster output</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 22. These are basic rasters that don&#8217;t require chi analysis.</caption>
+<caption class="title">Table 24. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3126,7 +3215,7 @@ If the <code>convert_csv_to_geojson</code> flag is set to <code>true</code> then
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 23. Point data available in csv or geojson format. Switch to true to turn on.</caption>
+<caption class="title">Table 25. Point data available in csv or geojson format. Switch to true to turn on.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">

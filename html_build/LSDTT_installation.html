@@ -1686,7 +1686,31 @@ $ sudo apt-get install libpcl-all</code></pre>
 <div class="sect3">
 <h4 id="_ubuntu_16_04_lts">6.1.2. Ubuntu 16.04 LTS</h4>
 <div class="paragraph">
-<p>If you are using ubuntu 16.04, the above commands won&#8217;t work as the repository is broken. You can install the <code>pcl</code> library using the following steps:</p>
+<p>First, try this. It is possible it will only work on 64 bit systems:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get update
+$ sudo apt-get install libpcl-dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If that doesn&#8217;t work you need to install from source. I am very sorry about this.</p>
+</div>
+<div class="paragraph">
+<p>To install the <code>pcl</code> library from source you use the following steps:</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This will take at least an hour!! It will also download an insane amount of stuff onto your machine. You must ensure that you follow the steps in the correct order.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Install oracle-java8-jdk:</p>
@@ -1703,14 +1727,26 @@ $ sudo apt-get install libpcl-all</code></pre>
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt -y install g++ cmake cmake-gui doxygen mpi-default-dev openmpi-bin openmpi-common libusb-1.0-0-dev libqhull* libusb-dev libgtest-dev
 $ sudo apt -y install git-core freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libphonon-dev libphonon-dev phonon-backend-gstreamer
-$ sudo apt -y install phonon-backend-vlc graphviz mono-complete qt-sdk libflann-dev libflann1.8 libboost1.58-all-dev
-
-$ cd ~/Downloads
+$ sudo apt -y install phonon-backend-vlc graphviz mono-complete qt-sdk libflann-dev libflann1.8 libboost1.58-all-dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install the eigen linear algebra package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
 $ wget http://launchpadlibrarian.net/209530212/libeigen3-dev_3.2.5-4_all.deb
 $ sudo dpkg -i libeigen3-dev_3.2.5-4_all.deb
-$ sudo apt-mark hold libeigen3-dev
-
-$ wget http://www.vtk.org/files/release/7.1/VTK-7.1.0.tar.gz
+$ sudo apt-mark hold libeigen3-dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install VTK (this has some plotting functionality, <strong>this takes AGES.</strong>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget http://www.vtk.org/files/release/7.1/VTK-7.1.0.tar.gz
 $ tar -xf VTK-7.1.0.tar.gz
 $ cd VTK-7.1.0 &amp;&amp; mkdir build &amp;&amp; cd build
 $ cmake ..
@@ -1719,7 +1755,7 @@ $ sudo make install</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Install Point Cloud Library v1.8:</p>
+<p>Now install the Point Cloud Library v1.8:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1809,7 +1845,7 @@ $ ./pcl-test</code></pre>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-As of January 2018 liblas does not compile on our vagrant server since liblas3 is not available for Ubuntu 12. We are working to fix this problem.
+As of January 2018 liblas does not compile on our vagrant server since liblas3 is not available for Ubuntu 12. We have updated the vagrantfiles to Ubuntu 14 so you should use the new vagrantfiles (this will require downloading a new vagrant box if you were using the old vagrantfile). We don&#8217;t use Ubuntu 16 since it is such an incredible pain to install the point cloud library on it.
 </td>
 </tr>
 </table>
