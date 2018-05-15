@@ -441,7 +441,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_plotting">3. Plotting</a>
 <ul class="sectlevel2">
 <li><a href="#_the_philosophy">3.1. The philosophy</a></li>
-<li><a href="#_how_to_plot">3.2. How to plot</a></li>
+<li><a href="#_how_to_plot">3.2. How to plot</a>
+<ul class="sectlevel3">
+<li><a href="#_the_basis">3.2.1. The basis</a></li>
+<li><a href="#_first_maps">3.2.2. First maps</a></li>
+<li><a href="#_statistical_descriptions">3.2.3. Statistical descriptions</a></li>
+<li><a href="#_quantitative_selection_of_knickpoints">3.2.4. Quantitative selection of knickpoints</a></li>
+<li><a href="#_profile_plots">3.2.5. Profile plots</a></li>
+</ul>
+</li>
+<li><a href="#_plotting_with_other_tools_e_g_gis">3.3. Plotting with other tools (e.g. GIS)</a></li>
 </ul>
 </li>
 </ul>
@@ -650,7 +659,7 @@ m_over_n: 0.45</pre>
 <p>All the plotting routine have a common start: you need to call the python script and flag the <strong>path</strong> and <strong>common prefix</strong> of all the files as follow: <code>python PlotKnickpointAnalysis -dir /home/boris/Desktop/GIS/massif_central/ -fname massif_central_DEM</code></p>
 </li>
 <li>
-<p>The second step is optional: you can select specific river to plot: <code>-basin_keys 1,5</code> will only select the basin 1 and 5; <code>-source_keys 54,0,12,18</code> will only select rivers 54,0,12 and 18 and finally <code>-min_sl 10000</code> will only select rivers with a flowing length &gt; 10000 metres. These options are combined and can overlap, if you select a river key that is not in the basin key, it won&#8217;t be included. Default option (if you don&#8217;t use the flag) means all selected.</p>
+<p>The second step is optional: you can select specific river to plot: <code>-basin_keys 1,5</code> will only select the basin 1 and 5; <code>-source_keys 54,0,12,18</code> will only select rivers 54,0,12 and 18 and finally <code>-min_sl 10000</code> will only select rivers with a flowing length &gt; 10000 metres. None of these flags means all selected.</p>
 </li>
 <li>
 <p><code>-rasplot True</code> will plot three maps: a topographic map, a knickpoint map with the river network drapped on the shaded elevation and a knickpoint map with the river network on black background.</p>
@@ -671,11 +680,332 @@ m_over_n: 0.45</pre>
 <p><code>-cov 3,5,2</code> is a parameter that apply a basic cut off value on the knickpoints, in order to select the main ones. In this example it will select knickpoint with  $\Delta k_{sn}&#8592;3$, $\Delta k_{sn}&gt;5$ and $\Deltaz_{seg}&gt;2$.</p>
 </li>
 <li>
+<p><code>-GS 2.1,5,3.4,45</code> sets a common relative size of break-in-slope knickpoints along all the figures. On this example, it set all the knickpoints &#8656;2.1 with a size of 5, all the knickpoints &gt; 3.4 with a size of 45 and all the intermediate with an adapted size.</p>
+</li>
+<li>
 <p>Finally <code>-all true</code> will plot all the option above. <code>-allD True</code> add some debugging plot such as ksn profiles.</p>
 </li>
 </ol>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>The knickpoint algorithm produces large datasets. We provide available plotting routines to help the user dealing with this. These routines can help having a first overview of the data, statistical description, thin the dataset, and produce publication-ready plots thanks to <code>matplotlib</code> python package. All the routines are implemented into the LSDMappingTools suite. We will describe these plotting routines with an applied example from the paper: The Smugglers basin (Santa Cruz Island, USA).</p>
+</div>
+<div class="sect3">
+<h4 id="_the_basis">3.2.1. The basis</h4>
+<div class="paragraph">
+<p>The plotting routines are accessible via command-line or as a python package (<strong>I aim to have a conda package at the time of the submission, I am not far from it</strong>). The first thing you need to do is accessing the LSDMappingTools folder via your terminal (<strong>REFERENCE TO THE ACTUAL TUTO TO INSTALL LSDMT</strong>). The command-lin tool can be called by running the python script <code>PlotKnickpointAnalysis.py</code>. All the plotting functions within this tool need to begin with the path and prefix of your files using the flags <code>-dir</code> and <code>-fname</code> as follow:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Just running this will not produce anything, but will display all the available options that we will describe along this tutorial - guide - documentation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_first_maps">3.2.2. First maps</h4>
+<div class="paragraph">
+<p>The first visualisation you probably want is a map of the knickpoints. The <code>-rasplot</code> flag will produce a set of maps with the knickpoints on top and a topographic map.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>As you will notice, the output is fairly dense. A first adjustment consists in thinning your dataset would be to select a set of river rather than the entire network. You can select the network by basin ID with the flag <code>-basin_keys</code>, by sources <code>-source_keys</code> and/or by minimum flow distance with <code>-min_sl</code>. These option are cumulative. The following example select only the sources 34, 56 and 756 in the basin 21:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -source_keys 34,56,756 -basin_keys 21</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Or more generally if you just want the river &gt;5000 metres long:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Alright, We still have a lot of knickpoints, but in less rivers now. Now let&#8217;s get interested on how to thin the dataset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_statistical_descriptions">3.2.3. Statistical descriptions</h4>
+<div class="paragraph">
+<p>A basic but efficient data description is an histogram. The flag <code>-statplot</code> will generates a set of 2 histograms: one describing the spread of delta ksn, the break-in-slope component, and the other describing the spread of delta segmented elevation.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -statplot True -min_sl 5000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>These histograms automatically choose the number of bins on the histogram. It is however possible to customize that parameter with the flag <code>-nbh</code> to precise the number of bins.</p>
+</div>
+<div class="paragraph">
+<p>These plots can offer a first-order idea of the knickpoint values. You shall now pick from these cut-off values to isolate your main knickpoints.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_quantitative_selection_of_knickpoints">3.2.4. Quantitative selection of knickpoints</h4>
+<div class="paragraph">
+<p>One could use the histogram distribution of the data to extract cut-off values to isolate the main knickpoints, or use its own statistical tools, the flag <code>-cov</code> will remove knickpoints using their values. 3 values have to be precised with the flag: the first is a minimum value for the negative delta ksn, the second is for the minimum value for the positive delta ksn and the third the minimum for delta segmented elevation. The following example remove knickpoints  with a delta ksn &lt; -2, delta ksn &gt; 3 and delta segmented elevation &gt; 5 (and plot a map):</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000 -cov 2,3,5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Ok, you know have now a fair selection of knickpoints, you may want to customise the appeareance of the plot, for extensive customisations you can directly use the python Object Oriented dedicated code. The following flags can be added to help with map plotting:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Map customisation flags</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flags</th>
+<th class="tableblock halign-left valign-top">Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-coeff_size_kp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default: 1, increase/decrease the size of all the knickpoints.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-GS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manage the relative size of the knickpoints. DWE: <code>-GS 2.1,5,4.6,50</code> would set all the knickpoints&lt;2.1 to 5, &gt;4.6 to 50.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the rest</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_profile_plots">3.2.5. Profile plots</h4>
+<div class="paragraph">
+<p>Complementary to the map plots, you can generate river profiles with the <code>-rivplot</code> flag. It produces for each selected source ID a chi-elevation and a long profile with the selected knickpoints on top.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000 -cov 2,3,5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Ok I&#8217;ll need to expand that after Romania.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plotting_with_other_tools_e_g_gis">3.3. Plotting with other tools (e.g. GIS)</h3>
+<div class="paragraph">
+<p>One could want to plot the output by oneself. The Algorithm produce a set of raster and csv files that one can import and plot with other plotting routine. <code>X</code> being the prefix of all the output, the algorithm generates additional rasters: hillshaded DEM <code>X_hs.bil</code> and delimination of analysed basins <code>X_AllBasins.bil</code>.</p>
+</div>
+<div class="paragraph">
+<p>It also generates the point-based data. <code>X_ksnkp_mchi.csv</code> contains all the river-related data:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. X_ksnkp_mchi.csv</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Column</th>
+<th class="tableblock halign-left valign-top">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easting in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Northing in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The chi coordinate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elevation of the river point in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flow_distance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flowing distance from the outlet in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drainage_area</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drainage area of the point in meter square.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m_chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chi-elevation steepness calculated with Mudd et al., 2014 JGR algorithm. Is k_sn if A0 = 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique ID of this river, from source to the point where it reaches a longer river or the outlet of the basin.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basin_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique basin ID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other Columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other columns are for debugguing purposes, Ignore them, I&#8217;ll remove them after the publication of the paper.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>X_ksnkp.csv</code> contains all the knickpoint-related data:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. X_ksnkp.csv</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Column</th>
+<th class="tableblock halign-left valign-top">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easting in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Northing in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude in WGS84</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The chi coordinate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elevation of the river point in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flow_distance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flowing distance from the outlet in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drainage_area</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drainage area of the point in meter square.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delta_ksn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnitude of the knickpoint "slope-break" component quantified by it&#8217;s drop/increase of ksn.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delta_segelev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnitude of the knickpoint "vertical-step" component quantified by sharp increase of segmented elevation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sharpness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated Chi distance between all the combined knickpoints. 0 for single knickpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 if increase of delta_ksn, -1 if decrease.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique ID of this river, from source to the point where it reaches a longer river or the outlet of the basin.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basin_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique basin ID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other Columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other columns are for debugguing purposes, Ignore them, I&#8217;ll remove them after the publication of the paper.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The two other files are to help the automated plotting routines to be faster.</p>
 </div>
 </div>
 </div>
@@ -683,7 +1013,7 @@ m_over_n: 0.45</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-04 11:18:11 UTC
+Last updated 2018-03-02 13:48:15 GMT
 </div>
 </div>
 <script type="text/x-mathjax-config">
