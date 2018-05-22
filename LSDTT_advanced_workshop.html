@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
-<title>Building LSDTopoTools documentation</title>
+<meta name="generator" content="Asciidoctor 1.5.6.2">
+<meta name="author" content="Simon Mudd, Fiona Clubb">
+<title>LSDTopoTools: open-source software for topographic analysis</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -425,371 +425,500 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
-<body class="book toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Building LSDTopoTools documentation</h1>
-<div class="details">
-<span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
-</div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
-<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a></li>
-<li><a href="#_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</a>
-<ul class="sectlevel2">
-<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</a></li>
-</ul>
-</li>
-<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
-</ul>
-</div>
+<h1>LSDTopoTools: open-source software for topographic analysis</h1>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/LSD-logo_horizontal.png" alt="LSD logo horizontal" width="300">
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
+<h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Most users will just look at our website. But some users may wish to build the documents themselves.
-The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
+<p><strong>LSDTopoTools</strong> is software for performing topographic analysis of landscapes, with applications in hydrology, ecology, soil science, and geomorphology.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Just tell me how to build the documentation</div>
+<div class="paragraph">
+<p>Firstly, we should tell you that LSD stands for <em>Land Surface Dynamics</em>,
+and is named after <a href="http://www.ed.ac.uk/geosciences/research/research-institutes/global-change/land-surface">Land Surface Dynamics research cluster</a>
+in the <a href="http://www.ed.ac.uk/schools-departments/geosciences/">School of GeoSciences</a> at the <a href="http://www.ed.ac.uk/home">University of Edinburgh</a>.</p>
+</div>
+<div class="paragraph">
+<p>Today we&#8217;ll use the code to (hopefully) extract channel networks, get maps of slope and curvature across the landscape, and do some chi profile analysis.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_philosophy_behind_lsdtopotools">The philosophy behind LSDTopoTools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>LSDTopoTools is a software package designed to analyse landscapes for applications in geomorphology, hydrology, ecology and allied fields. It is not intended as a substitute for a GIS, but rather is designed to be a research and analysis tool that produces reproducible data. The motivations behind its development were:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To serve as a framework for implementing the latest developments in topographic analysis.</p>
+</li>
+<li>
+<p>To serve as a framework for developing new topographic analysis techniques.</p>
+</li>
+<li>
+<p>To serve as a framework for numerical modelling of landscapes (for hydrology, geomorphology and ecology).</p>
+</li>
+<li>
+<p>To improve the speed and performance of topographic analysis versus other tools (e.g., commercial GIS software).</p>
+</li>
+<li>
+<p>To enable reproducible topographic analysis in the research context.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The toolbox is organised around objects, which are used to store and manipulate specific kinds of data, and driver functions, which users write to interface with the objects.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting started</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_installing_lsdtopotools">Installing LSDTopoTools</h3>
+<div class="paragraph">
+<p>Hopefully everyone managed to get the code installed either on Windows using vagrant, Mac with docker, or Linux natively.  If you had problems getting it to install, then just let me know and I will help out!</p>
+</div>
+<div class="paragraph">
+<p>You can also find detailed installation instructions <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_installation.html">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_code_structure_and_organisation">Basic code structure and organisation</h3>
+<div class="paragraph">
+<p>Our analyses are packaged into separate programs. They are run from the Linux shell. All of our programs operate the same way:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: Install the Asciidoctor toolchain.</p>
+<p>You keep the program and the data in two different directories.</p>
 </li>
 <li>
-<p>Step 2: From the main repostory directory run the python script <code>compile_LSDTTDocs.py</code>.</p>
+<p>The directory with the data also has a parameter file, which contains instructions for the program.</p>
+</li>
+<li>
+<p>You have to tell the program where the data directory is, as well as the name of the parameter file. You do this from the command line.</p>
 </li>
 </ul>
 </div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/basic_analysis.png" alt="basic analysis" width="500">
 </div>
+<div class="title">Figure 1. Basic setup of LSDTopoTools. There are two main directories: the read directory where the data is stored, and the driver directory where the code is stored</div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>After a number of painful windows installations, we have decided that life in Linux is much easier.
-If you don&#8217;t have Linux you can make a little Linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a>. You can read about setting up one of these Linux machines in the <a href="LSDTT_installation.html">LSDTopoTools installation instructions</a>.</p>
+<p>We have already set up this directory structure for you with <code>LSDTopoToolsSetup.py</code>. The folder <code>/LSDTopoTools/</code> has the structure:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. If you are not on an Ubuntu system you will need to replace the <code>apt-get</code> commands with whatever command work on your operating system (e.g., <code>yum</code>). After trying a number of options, we have found that <a href="https://rvm.io/">rvm</a> is the best way to get everything working.</p>
-</li>
-<li>
-<p>Open a terminal in your Linux system. If you don&#8217;t know what that is <a href="LSDTT_using_linux.html">read our introduction to Linux</a>.</p>
-</li>
-<li>
-<p>We need to install some software first:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install software-properties-common
-$ sudo apt-add-repository -y ppa:rael-gc/rvm
-$ sudo apt-get update
-$ sudo apt-get install rvm</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">/LSDTopoTools/
+--Git_projects
+--Topographic_projects</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You will then need to log out of your Linux system and log back in again. rvm will tell you this:</p>
+<p>All of the code is stored in the <code>Git_projects</code> folder, and all of the DEMs can be stored in the <code>Topographic_projects</code> folder.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">Creating group 'rvm'
-
-Installing RVM to /usr/share/rvm/
-Installation of RVM in /usr/share/rvm/ is almost complete:
-
-  * First you need to add all users that will be using rvm to 'rvm' group,
-    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
-
-  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
-    in all your open shell windows, in rare cases you need to reopen all shell windows.</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In vagrant you can run <code>vagrant halt</code> and <code>vagrant up</code>; in Docker just shut down and re-start the container. Then do this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source /etc/profile.d/rvm.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To see what users are in the group:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To add the vagrant user:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G rvm vagrant
-$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In my installation you cannot just start installing stuff, <strong>you need to open a new terminal</strong>. So use either <code>ssh</code> (Linux or MacOS) or <code>putty.exe</code> (windows) to open a new terminal.</p>
-</li>
-<li>
-<p>In your new terminal run (<strong>Warning: this takes a long time!</strong>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm install 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>I wanted to make sure we use this ruby default:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm use --default 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then install bundler:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gem install bundler</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now I went into a documentation folder and used <code>bundle install</code>. The gemfile is:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Yay, all the gems are installed!</p>
-</li>
-<li>
-<p>The installation of the gem <code>nokogiri</code> can be very temperamental, one particular issue on MacOS is that its install clashes with <a href="https://github.com/ggreer/the_silver_searcher"><code>The Silver Searcher</code></a>. To resolve this issue, first run <code>brew unlink xz</code> to remove symlinks to <code>xz</code>, then re-run <code>bundle install</code> and once that completes, reapply the symlinks to <code>xz</code>: <code>brew link xz</code>.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure bundle install works on any of the gemfiles in the subdirectories of the documentation.</p>
-</li>
-<li>
-<p>If you go into any subdirecory, you can now compile <em>that section</em> with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You can imagine that doing this in every folder is really tedious. We made a python script to compile everything at once.</p>
-</li>
-<li>
-<p>Go into the main documenttion directory.</p>
-</li>
-<li>
-<p>Run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python compile_LSDTTDocs.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This will put the complete website in the <strong>html_build</strong> folder.</p>
-</li>
-</ol>
 </div>
 <div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</h3>
+<h3 id="_get_the_example_datasets">Get the example datasets</h3>
 <div class="paragraph">
-<p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
+<p>I have transformed the Santa Cruz dataset into the correct format for our code. All the DEMs need to be in the ENVI BIL format (see our <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html">instructions</a> if you&#8217;re interested in how to transform the DEMs).  You can get the 1m dataset of the Pozo catchment, and the 1 and 10 m DEMs of the whole Santa Cruz island <a href="https://drive.google.com/drive/folders/1i97fGk4SVtljjPpu-d2jCcIg8sp9MZBn">here</a>.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, you need to install a bunch of stuff (this works in Ubuntu):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get -qq -y install bison flex libffi-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev libpango1.0-dev ttf-lyx</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now run bundle install with this Gemfile:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-mathematical'
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In our documentation pages this gemfile is usually stored under the name <code>Gemfile_pdf.gem</code>. To bundle install from this genfile you use the command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle install --gemfile=Gemfile_pdf</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Troubleshooting</strong>: the <code>Mathematical</code> gem sometimes doens&#8217;t work (or sadly, often doesn&#8217;t work). If this happens, run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ MATHEMATICAL_SKIP_STRDUP=1 gem install mathematical</code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Installing this takes an age!
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Now, this is annoying. To get the pdf to work, you need to designate an <code>:imagesoutdir:</code> but a <strong>relative path will not work</strong>. So you need an absolute path in your root <code>.asc</code> file. So, for example, the root <code>.asc</code> file should contain the directives:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ascii" data-lang="ascii">:stem: latexmath
-:imagesoutdir: /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/Documentation/images</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>You need to change this line to suit your path!</strong></p>
-</li>
-</ol>
+<div class="paragraph">
+<p>I suggest we make a new folder in the <code>Topographic_projects</code> directory called <code>Santa_Cruz</code> for today, and put all the DEMs in there.  This shared folder also contains an example parameter file for extracting channel networks, getting slopes and curvatures, and doing chi profile analysis on the Pozo catchment.   These parameter files also need to be stored in the <code>Santa_Cruz</code> folder.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
+<h2 id="_channel_extraction">Channel extraction</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Our channel extraction tool bundles four methods of channel extraction. These are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A rudimentary extraction using a drainage area threshold.</p>
+</li>
+<li>
+<p>The <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013WR015167/abstract">Dreich method (Clubb et al., 2014)</a>.</p>
+</li>
+<li>
+<p>The <a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013) method</a>.</p>
+</li>
+<li>
+<p>A geometric method combining elements of <a href="https://sites.google.com/site/geonethome/home">Geonet (Passalacqua et al., 2010)</a> and <a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013)</a> methods that we developed for <a href="http://www.earth-surf-dynam.net/4/627/2016/esurf-4-627-2016.html">Grieve et al. (2016)</a> and <a href="http://onlinelibrary.wiley.com/doi/10.1002/2015JF003747/full">Clubb et al. (2016)</a> We call this the "Wiener" method (after the <a href="https://en.wikipedia.org/wiki/Wiener_filter">wiener filter</a> used to preprocess the data).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These methods are run based on a common interface via the program <code>channel_extraction_tool.exe</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ind_so_pel.png" alt="ind so pel" width="400">
+</div>
+<div class="title">Figure 2. Example channel network for Indian Creek, Ohio, extracted using our tools</div>
+</div>
+<div class="sect2">
+<h3 id="_the_parameter_files">The parameter files</h3>
+<div class="paragraph">
+<p>Like most of <strong>LSDTopoTools</strong>, you run this program by directing it to a parameter file. The parameter file has a series of keywords. Our convention is to place the parameter file in the same directory as your data.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
-You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
+The parameter file has a specific format, but the filename can be anything you want. We tend to use the extensions <code>.param</code> and <code>.driver</code> for these files, but you could use the extension <code>.MyDogSpot</code> if that tickled your fancy.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>I do not want any messy merging conflicts! To avoid this please keep the <strong>master</strong> and <strong>gh-pages</strong> separate on your computer!</p>
+<p>The parameter file has keywords followed by the <code>:</code> character. After that there is a space and the value.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Channel extraction parameter file format</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Lines beginning with <code>#</code> are comments.</p>
+</li>
+<li>
+<p>Keywords or phrases are followed by a colon (<code>:</code>).</p>
+</li>
+<li>
+<p>The order of the keywords do not matter.</p>
+</li>
+<li>
+<p>Keywords are not sensitive, but must match expected keywords.</p>
+</li>
+<li>
+<p>If a keyword is not found, a default value is assigned.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_channel_extraction_parameter_file">Example channel extraction parameter file</h4>
+<div class="paragraph">
+<p>Below is an example parameter file. This file is included in the shared folder with the DEM data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for channel extraction
+# Comments are preceeded by the hash symbol
+# Documentation can be found here:
+# TBA
+
+# These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz
+write path: /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz
+read fname: Pozo_DTM
+write fname: Pozo_DTM
+channel heads fname: NULL
+
+# Parameter for filling the DEM
+min_slope_for_fill: 0.0001
+
+# Parameters for selecting channels and basins
+
+# threshold_contributing_pixels: 2500
+print_area_threshold_channels: false
+print_wiener_channels: true
+print_pelletier_channels: false
+print_dreich_channels: false
+
+# write hillshade: true
+print_stream_order_raster: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information on all the different options available see <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html">the full channel extraction documentation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_code">Running the code</h3>
+<div class="paragraph">
+<p>To run the <code>channel_extraction_tool</code>, first navigate to the channel extraction repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /opt/LSDTopoTools/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The objects which host the main functionality are stored here.  We keep the driver functions, used to actually run the code, in the folder <code>driver_functions_ChannelExtraction</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd driver_functions_ChannelExtraction</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;re in the right folder, you can run the code with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /path/to/data/folder name_of_parameter_file.param</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For our example, it would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/ LSDTT_channel_extraction.param</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_slope_and_curvature_maps">Getting slope and curvature maps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now we&#8217;ll do some basic topographic analysis using our program <strong>LSDTT_BasicMetrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because the slope and curvature metrics in typical GIS software only uses information from the nearest pixels. We fit a polynomial surface from a neighbourhood of pixels. See <a href="http://onlinelibrary.wiley.com/doi/10.1029/2011JF002057/abstract">Hurst et al., 2012, DOI: 10.1029/2011JF002057</a> and <a href="https://www.earth-surf-dynam.net/4/627/2016/">Grieve et al., 2016, doi:10.5194/esurf-4-627-2016</a> for the rationale.</p>
+</div>
+<div class="sect2">
+<h3 id="_parameter_files">Parameter files</h3>
+<div class="paragraph">
+<p>Similar to the channel extraction, we also need to define a parameter file for running the slope and curvature analysis.  An example for our DEM is shown below, which again needs to be in the same directory as the DEM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># Parameters for extracting simple surface metrics
+# Comments are preceded by the hash symbol
+
+# These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/
+write path: /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/
+read fname: Pozo_DTM
+write fname: Pozo_DTM
+channel heads fname: NULL
+
+# Parameters for surface metrics
+surface_fitting_radius: 7
+print_slope: true
+print_aspect: true
+print_curvature: true
+print_tangential_curvature: true</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_the_code">Run the code</h3>
+<div class="paragraph">
+<p>To get the slope and curvature, we&#8217;re going to use a different repository than for the channel extraction. Navigate to the folder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /opt/LSDTopoTools/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then run the code with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /path/to/input/data/ name_of_parameter_file.param</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For our example, we would have:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/ LSDTT_BasicMetrics.param</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_channel_steepness_analysis">Channel steepness analysis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final thing we&#8217;ll do today is to do some channel steepness analysis.  For background into channel profile analysis using both slope-area plots and \(\chi\), you can refer to our <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html">website</a> which has a lot of detail on this.  Here, I&#8217;ll just go through how to actually run the code.</p>
+</div>
+<div class="sect2">
+<h3 id="_using_the_chi_mapping_tool">Using the chi mapping tool</h3>
+<div class="paragraph">
+<p>This runs in the same way as the channel extraction and the slope and curvature methods, using the <code>LSDTopoTools_ChiMudd2014</code> repository.  We&#8217;ll select a series of basins to perform the analysis on, and then print out some csv files and rasters which can be used to visualise channel steepness.</p>
+</div>
+<div class="paragraph">
+<p>Again, we use a parameter file to run the chi mapping tool.  It also has a series of keywords which are used to set which analyses we perform.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>When checking out the code, check them out into two directories:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_documentation.git master
-$ git clone https://github.com/LSDtopotools/LSDTT_documentation.git gh-pages</code></pre>
-</div>
-</div>
+<p>The important elements of the parameter file are:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>test_drainage_boundaries: true</code> This is actually the default. We put it in the parameter file here to highlight its importance. The chi coordinate is calculated integrating drainage area along the channel so if your basin is truncated by the edge of the DEM it means that <strong>your chi coordinate will be incorrect</strong>.</p>
 </li>
 <li>
-<p>In the gh-pages directory, check out the gh-pages branch and get rid of the master branch:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now, go back to the master branch, you can make changes there.</p>
-</li>
-<li>
-<p>You can use the python script <a href="https://github.com/LSDtopotools/LSDTT_documentation/blob/master/compile_LSDTTDocs.py"><code>compile_LSDTTDocs.py</code></a> to compile all the documentation in the repository. This will create a website in the <strong>html_build</strong> folder.</p>
-</li>
-<li>
-<p>If you want things to appear on the github website, you need to copy the files in the html_build folder (but not the <code>.git</code> folder) to the gh-pages directory.</p>
-</li>
-<li>
-<p>Then go to the gh-pages directory and add any new files:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-/some/path/to/LSDTT_documentation/master
-$ cd ..
-$ cd gh-pages
-$ git add *.html
-$ cd images
-$ git add *.png *.jpg *.gif *.svg
-$ cd ..
-$ git commit -m "Updating website" .
-$ git push origin gh-pages</code></pre>
-</div>
-</div>
+<p><code>write hillshade: true</code>. Does what is says on the tin. It means that you will print a hillshade raster. You really need to do this the first time you analyse a DEM (but you only need to do it once). The reason is that all your figures will look much nicer with a hillshade!</p>
 </li>
 </ol>
+</div>
+</li>
+<li>
+<p>We are going to visualise the output using python.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_some_comments_on_basin_selection">Some comments on basin selection</h3>
+<div class="paragraph">
+<p>In the <strong>chi mapping tool</strong>, we have several ways to select basins. We feel the default method is best (<code>find_complete_basins_in_window</code>). The options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find_complete_basins_in_window</code>: This goes through several refining steps. If first checks every basin in the raster and selects basins within a size window between <code>minimum_basin_size_pixels</code> and <code>maximum_basin_size_pixels</code>. It then takes the resulting list of basins and removes any that are influenced by the edge of the DEM (to ensure drainage area of the basin is correct). Finally, it removes nested basins, so that in the end you have basins of approximately the same size, not influenced by the edge of the DEM, and with no nested basins.</p>
+</li>
+<li>
+<p><code>find_largest_complete_basins</code>: This is a somewhat old version that takes all basins draining to edge and works upstream from their outlets to find the largest sub-basin that is not influenced by the edge. To get this to work you <strong>MUST ALSO</strong> set <code>find_complete_basins_in_window: false</code>.</p>
+</li>
+<li>
+<p><code>test_drainage_boundaries</code>: If either <code>find_complete_basins_in_window</code> or <code>find_largest_complete_basins</code> are <code>true</code> then this is ignored. If not, then it eliminates any basin that is influenced by the edge of the DEM.</p>
+</li>
+<li>
+<p><code>BaselevelJunctions_file</code>: If this points to a file that includes a series of integers that refer to junction indices, it will load these indices. If the file doesn&#8217;t contain a series of integers the most likely result is that it will crash!</p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/Xian_coloured_basins.png" alt="Xian coloured basins" width="600">
+</div>
+<div class="title">Figure 3. Example basins extracted for Xi&#8217;an province, China</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_code_2">Running the code</h3>
+<div class="paragraph">
+<p>You run the <code>chi_mapping_tool</code> the same way as the other programs. Navigate to the driver directory for chi analysis:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /opt/LSDTopoTools/LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/driver_functions_MuddChi2014</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then run the code with the path to the input data and the parameter file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/ LSDTT_chi_analysis.param</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_parameter_file">Example parameter file</h3>
+<div class="paragraph">
+<p>Below is an example parameter file for the Santa Cruz dataset that will extract all the basins and produce chi data for each channel in each basin.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for performing chi analysis
+# Comments are preceded by the hash symbol
+# Documentation can be found here:
+# https://lsdtopotools.github.io/LSDTopoTools_ChiMudd2014/
+
+# These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
+read path: /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/
+write path: /opt/LSDTopoTools/LSDTopoTools/Topographic_projects/Santa_Cruz/
+read fname: Pozo_DTM
+write fname: Pozo_DTM
+channel heads fname: Pozo_DTM_Dsources
+
+# Parameter for filling the DEM
+min_slope_for_fill: 0.0001
+
+# Parameters for selecting channels and basins
+threshold_contributing_pixels: 5000
+minimum_basin_size_pixels: 50000
+maximum_basin_size_pixels: 600000
+test_drainage_boundaries: false
+find_largest_complete_basins: false
+find_complete_basins_in_window: true
+
+# The data that you want printed to file
+write hillshade: false
+print_basin_raster: true
+
+# Chi analysis options
+print_chi_data_maps: true</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visualisation">Visualisation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you look in the <code>Santa_Cruz</code> folder you&#8217;ll now see a lot of different rasters and CSV files that have been produced as a result of the analysis.  We can load these into QGIS for a first look at the data.  Some interesting things to look at might be:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Channel extraction</strong>: we output the results of the channel extraction as a stream order raster (with the extension <code>_SO</code>), a CSV of the full channel network (extension <code>_CN</code>), and a CSV with all of the channel heads (extension <code>_sources</code>).  Each channel extraction algorithm has a different letter associated with it, so area threshold is <code>AT</code>, DrEICh is <code>D</code>, Wiener is <code>W</code>, and Pelletier is <code>P</code>.</p>
+</li>
+<li>
+<p><strong>Basic metrics</strong>: this is pretty self explanatory, but we printed out maps of curvature, slope, aspect, and tangential curvature from our polyfitting surface routines.  Each one has the appropriate extension.</p>
+</li>
+<li>
+<p><strong>Chi profile analysis</strong>: we output a <code>csv</code> file which has all of the chi data for each channel, with the extension <code>_chi_data_map.csv</code>. You can load this into QGIS and see all of the data.  We also output a raster of all the extracted basins which is useful for checking if you got the minimum and maximum basin sizes correct, with the extension <code>_AllBasins.bil</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_python_scripts">Python scripts</h3>
+<div class="paragraph">
+<p>We&#8217;re also working on some python scripts for visualising the software.  This repository is messy and not very well ordered yet, but can be cloned <a href="https://github.com/LSDtopotools/LSDMappingTools.git">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can read about our python tools here: link:LSDTT_visualisation.html</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-19 11:44:38 UTC
+Last updated 2018-04-18 13:15:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

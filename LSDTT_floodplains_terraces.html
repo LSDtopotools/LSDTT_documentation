@@ -461,11 +461,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_terraces">5. Terraces</a>
 <ul class="sectlevel2">
 <li><a href="#_get_the_example_files">5.1. Get the example files</a></li>
-<li><a href="#_creating_the_parameter_file">5.2. Creating the parameter file</a></li>
-<li><a href="#_getting_the_latitude_and_longitude_coordinates">5.3. Getting the latitude and longitude coordinates</a></li>
-<li><a href="#_if_you_used_lsdtopotoolssetup_py_2">5.4. If you used LSDTopoToolsSetup.py</a></li>
-<li><a href="#_if_you_didn_t_use_lsdtopotoolssetup_py_2">5.5. If you didn&#8217;t use LSDTopoToolsSetup.py</a></li>
-<li><a href="#_analysing_the_results_2">5.6. Analysing the results</a></li>
+<li><a href="#_get_the_channels">5.2. Get the channels</a></li>
+<li><a href="#_creating_the_parameter_file">5.3. Creating the parameter file</a></li>
+<li><a href="#_getting_the_latitude_and_longitude_coordinates">5.4. Getting the latitude and longitude coordinates</a>
+<ul class="sectlevel3">
+<li><a href="#_debugging_if_the_swath_fails">5.4.1. Debugging if the swath fails</a></li>
+</ul>
+</li>
+<li><a href="#_if_you_used_lsdtopotoolssetup_py_2">5.5. If you used LSDTopoToolsSetup.py</a></li>
+<li><a href="#_if_you_didn_t_use_lsdtopotoolssetup_py_2">5.6. If you didn&#8217;t use LSDTopoToolsSetup.py</a></li>
+<li><a href="#_analysing_the_results_2">5.7. Analysing the results</a></li>
 </ul>
 </li>
 </ul>
@@ -489,21 +494,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
 </div>
 <div class="paragraph">
+<p>You will need to install the <a href="http://pointclouds.org/">point cloud library</a> for the terrace code to work. If you are using our vagrant distribution with <code>LSDTopoToolsSetup.py</code> then these should be installed for you with the floodplain and terrace code, but for this to work you need the correct system.  If you have Ubuntu 14 (using vagrant or docker, see installation instructions) this is easy. On other systems it is hard. See these instructions for details: <a href="LSDTT_installation.html#_install_the_point_cloud_library">pcl installation instructions</a>.</p>
+</div>
+<div class="paragraph">
 <p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
 </div>
 </div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-These tools have extra dependencies in addition to a standard installation of LSDTopoTools. If you are using our vagrant distribution with <code>LSDTopoToolsSetup.py</code> then these should be installed for you with the floodplain and terrace code.  If not, make sure you follow the instructions on installing extra dependencies: <a href="LSDTT_installation.html#_extra_dependencies_for_swaths_and_point_clouds">pcl and extra dependecies installation</a>.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>This document outlines a method of extracting floodplains and terraces across the landscape based on thresholds of local gradient and elevation compared to the nearest channel.  These thresholds are calculated statistically from the DEM using quantile-quantile plots, and do not need to be set manually by the user for the lansdcape in question.  For more details on the methodology please refer to <a href="http://www.earth-surf-dynam-discuss.net/esurf-2017-21/">Clubb et al. (2017)</a>.</p>
@@ -660,13 +656,16 @@ so if you previously downloaded a zipper repository this will overwrite it.
 <div class="sect2">
 <h3 id="_getting_the_channel_head_file">3.1. Getting the channel head file</h3>
 <div class="paragraph">
-<p>Before the floodplain/terrace extraction algorithm can be run, you must create a channel network for your DEM.  This can be done using the <a href="#Channel extraction">[Channel extraction]</a> algorithms within LSDTopoTools.  There are several channel extraction algorithms which you can choose from: for more details please refer to the <a href="#Channel extraction">[Channel extraction]</a> section.  Once you have run the channel extraction algorithm, you must make sure that the <code>csv</code> file with the channel head locations is placed in the same folder as your DEM.</p>
+<p>Before the floodplain/terrace extraction algorithm can be run, you must create a channel network for your DEM.  This can be done using the <a href="LSDTT_channel_extraction.html">channel extration</a> algorithms within LSDTopoTools.  There are several channel extraction algorithms which you can choose from: for more details please refer to the <a href="LSDTT_channel_extraction.html">channel extration section</a>.  Once you have run the channel extraction algorithm, you must make sure that the <code>csv</code> file with the channel head locations is placed in the same folder as your DEM.</p>
+</div>
+<div class="paragraph">
+<p>If you are computing floodplains you might want a fancy channel extraction algorithm (like Driech or the Wiener method, see the channel extraction documentation), but for terraces you really are only going to need to pick up the big channels and you can get those with threshold drainage area. So you may with to save some time by extracting channels with this method for terrace studies.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_finding_the_correct_window_size">3.2. Finding the correct window size</h3>
 <div class="paragraph">
-<p>Before we can run the floodplain/terrace extraction algorithm, we need to calculate the correct window size for calculating slope across the DEM.  This is used to calculate the thresholds for floodplain/terrace identification.  Please refer to the <a href="#Selecting A Window Size">[Selecting A Window Size]</a> section for information on how to calculate a window size for your DEM.  We suggest a value of around 6 m for 1 m resolution DEMs, and a value of 15 m for 10 m resoluton DEMs.</p>
+<p>Before we can run the floodplain/terrace extraction algorithm, we need to calculate the correct window size for calculating slope across the DEM.  This is used to calculate the thresholds for floodplain/terrace identification.  Please refer to the <a href="LSDTT_hillslope_metrics.html#_selecting_a_window_size">selecting A window size</a> section for information on how to calculate a window size for your DEM.  We suggest a value of around 6 m for 1 m resolution DEMs, and a value of 15 m for 10 m resoluton DEMs.</p>
 </div>
 </div>
 </div>
@@ -968,7 +967,22 @@ You must make sure the description of the parameter in your file matches EXACTLY
 <h2 id="_terraces">5. Terraces</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section explains how to extract terraces along a channel by providing coordinates specifying the upstream and downstream extent of the channel. We have provided some example datasets which you can use in order to test the terrace extraction.  If you are using the vagrant distribution, we recommend that you create a new directory in the <code>Topographic_projects</code> directory for each field site that you analyse.  Navigate to the <code>Topographic_projects</code> directory using the <code>cd</code> command:</p>
+<p>This section explains how to extract terraces along a channel by providing coordinates specifying the upstream and downstream extent of the channel.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The terrace analysis, unlike the floodplain analysis, requires the <a href="http://pointclouds.org/">point cloud library</a>. See the introduction of this chapter or see these instructions for details: <a href="LSDTT_installation.html#_install_the_point_cloud_library">pcl installation instructions</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We have provided some example datasets which you can use in order to test the terrace extraction.  If you are using the vagrant distribution, we recommend that you create a new directory in the <code>Topographic_projects</code> directory for each field site that you analyse.  Navigate to the <code>Topographic_projects</code> directory using the <code>cd</code> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1012,8 +1026,8 @@ $ wget https://github.com/LSDtopotools/ExampleTopoDatasets/raw/master/Eel_River_
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/tree/master/example_parameter_files/ExampleFiles_FloodplainTerraceExtraction/LSDTT_terraces.param
-$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/tree/master/example_parameter_files/ExampleFiles_FloodplainTerraceExtraction/Eel_River_DEM_coordinates.csv</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/tree/master/example_parameter_files/ExampleFiles_TerraceExtraction/LSDTT_terraces.param
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/tree/master/example_parameter_files/ExampleFiles_TerraceExtraction/Eel_River_DEM_coordinates.csv</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1021,9 +1035,15 @@ $ wget https://github.com/LSDtopotools/ExampleTopoDatasets/tree/master/example_p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creating_the_parameter_file">5.2. Creating the parameter file</h3>
+<h3 id="_get_the_channels">5.2. Get the channels</h3>
 <div class="paragraph">
-<p>In order to run the terrace extraction code you must first create a parameter file for your DEM.  If you have been following this tutorial, you should have downloaded an example parameter file for the Eel River DEM and placed this in the same folder as your DEM and the channel heads <code>csv</code> file.  The example from the Eel River is called <code>LSDTT_Swath.param</code> and should look like this:</p>
+<p>You need to run the <a href="LSDTT_channel_extraction.html">channel extraction tool</a> on the parameter file <code>eel_area_threshold.driver</code>. This will result in some channel network files, one of which will be a channel heads (or "sources") file: <code>Eel_River_DEM_ATsources.csv</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_the_parameter_file">5.3. Creating the parameter file</h3>
+<div class="paragraph">
+<p>In order to run the terrace extraction code you must first create a parameter file for your DEM.  If you have been following this tutorial, you should have downloaded an example parameter file for the Eel River DEM and placed this in the same folder as your DEM and the channel heads <code>csv</code> file.  The example from the Eel River is called <code>LSDTT_terraces.param</code> and should look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1035,7 +1055,7 @@ dem read extension: bil
 dem write extension: bil
 read path: /LSDTopoTools/Topographic_projects/Eel_River/
 read fname: Eel_River_DEM
-CHeads_file: Eel_River_DEM_Wsources
+CHeads_file: Eel_River_DEM_ATsources
 coords_csv_file: Eel_River_DEM_coordinates.csv
 
 # Parameters for DEM processing
@@ -1058,6 +1078,18 @@ Slope upper percentile: 75
 Min patch size: 1000
 Min terrace height: 5</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+if you use a different <a href="LSDTT_channel_extraction.html">channel extraction algorithm using the <strong>cannel extraction tool</strong></a> then the sources filename will differ. For example if you use a wiener method the channel heads filename will be <code>Eel_River_DEM_Wsources.csv</code> and the line on the parameter file for ingesting this data should be <code>CHeads_file: Eel_River_DEM_Wsources</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>You can run the analysis on the Eel River DEM using the example parameter file, and modify it as you wish for your own DEM.</p>
@@ -1196,7 +1228,7 @@ You must make sure the description of the parameter in your file matches EXACTLY
 </table>
 </div>
 <div class="sect2">
-<h3 id="_getting_the_latitude_and_longitude_coordinates">5.3. Getting the latitude and longitude coordinates</h3>
+<h3 id="_getting_the_latitude_and_longitude_coordinates">5.4. Getting the latitude and longitude coordinates</h3>
 <div class="paragraph">
 <p>To run the code, you need to provide a CSV file with two pairs of coordinates which specify the upstream and downstream points between which you want to find the terraces.  The easiest way to do this is on Google Earth.</p>
 </div>
@@ -1222,9 +1254,27 @@ The first point in the csv file must be the <strong>upstream</strong> point and 
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_debugging_if_the_swath_fails">5.4.1. Debugging if the swath fails</h4>
+<div class="paragraph">
+<p>If the swath fails, make sure the channel network extends near the points you have used for the swath starting and ending points. The channel extraction will generate a channel network raster, you can load this into your favourite GIS and also load the points: you will have to tell your GIS they are in WGS84 geographic projection (<strong>EPSG:4326</strong>) and make sure the points are close to channels.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+you will need a high number of significant digits in the lat-long coordinates. Do not let a spreadsheet program truncate the number of significant digits!
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_if_you_used_lsdtopotoolssetup_py_2">5.4. If you used LSDTopoToolsSetup.py</h3>
+<h3 id="_if_you_used_lsdtopotoolssetup_py_2">5.5. If you used LSDTopoToolsSetup.py</h3>
 <div class="paragraph">
 <p>Navigate to the folder <code>driver_functions_Floodplains-Terraces</code> directory in the folder <code>LSDTopoTools_FloodplainTerraceExtraction</code>:</p>
 </div>
@@ -1251,7 +1301,7 @@ The first point in the csv file must be the <strong>upstream</strong> point and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_if_you_didn_t_use_lsdtopotoolssetup_py_2">5.5. If you didn&#8217;t use LSDTopoToolsSetup.py</h3>
+<h3 id="_if_you_didn_t_use_lsdtopotoolssetup_py_2">5.6. If you didn&#8217;t use LSDTopoToolsSetup.py</h3>
 <div class="paragraph">
 <p>Before the code can be run, you must compile it. To do this you need to go to the <code>driver_functions_Floodplains-Terraces</code> directory in the folder <code>LSDTopoTools_FloodplainTerraceExtraction</code>.  Navigate to the folder using the command:</p>
 </div>
@@ -1286,7 +1336,7 @@ The first point in the csv file must be the <strong>upstream</strong> point and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_analysing_the_results_2">5.6. Analysing the results</h3>
+<h3 id="_analysing_the_results_2">5.7. Analysing the results</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">

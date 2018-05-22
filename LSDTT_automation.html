@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
-<title>Building LSDTopoTools documentation</title>
+<meta name="generator" content="Asciidoctor 1.5.6.2">
+<meta name="author" content="Calum Bradbury, Boris Gailleton, and Simon M Mudd School of GeoSciences, University of Edinburgh">
+<title>Automation of LSDTopoTools analysis</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -429,367 +429,69 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Building LSDTopoTools documentation</h1>
+<h1>Automation of LSDTopoTools analysis</h1>
 <div class="details">
-<span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
+<span id="author" class="author">Calum Bradbury, Boris Gailleton, and Simon M Mudd School of GeoSciences, University of Edinburgh</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
-<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a></li>
-<li><a href="#_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</a>
+<li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</a></li>
+<li><a href="#_before_you_start">1.1. Before you start</a></li>
 </ul>
 </li>
-<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
+<li><a href="#_getting_the_software">2. Getting the software</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>Most users will just look at our website. But some users may wish to build the documents themselves.
-The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
-</div>
-<div class="sidebarblock">
+<div class="imageblock">
 <div class="content">
-<div class="title">Just tell me how to build the documentation</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Step 1: Install the Asciidoctor toolchain.</p>
-</li>
-<li>
-<p>Step 2: From the main repostory directory run the python script <code>compile_LSDTTDocs.py</code>.</p>
-</li>
-</ul>
+<img src="images/LSD-logo.png" alt="LSD logo" width="200">
 </div>
 </div>
+<div class="paragraph">
+<p><a href="index.html">Click here for the main landing page of LSDTopoTools documentation</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
+<h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After a number of painful windows installations, we have decided that life in Linux is much easier.
-If you don&#8217;t have Linux you can make a little Linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a>. You can read about setting up one of these Linux machines in the <a href="LSDTT_installation.html">LSDTopoTools installation instructions</a>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. If you are not on an Ubuntu system you will need to replace the <code>apt-get</code> commands with whatever command work on your operating system (e.g., <code>yum</code>). After trying a number of options, we have found that <a href="https://rvm.io/">rvm</a> is the best way to get everything working.</p>
-</li>
-<li>
-<p>Open a terminal in your Linux system. If you don&#8217;t know what that is <a href="LSDTT_using_linux.html">read our introduction to Linux</a>.</p>
-</li>
-<li>
-<p>We need to install some software first:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install software-properties-common
-$ sudo apt-add-repository -y ppa:rael-gc/rvm
-$ sudo apt-get update
-$ sudo apt-get install rvm</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You will then need to log out of your Linux system and log back in again. rvm will tell you this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">Creating group 'rvm'
-
-Installing RVM to /usr/share/rvm/
-Installation of RVM in /usr/share/rvm/ is almost complete:
-
-  * First you need to add all users that will be using rvm to 'rvm' group,
-    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
-
-  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
-    in all your open shell windows, in rare cases you need to reopen all shell windows.</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In vagrant you can run <code>vagrant halt</code> and <code>vagrant up</code>; in Docker just shut down and re-start the container. Then do this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source /etc/profile.d/rvm.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To see what users are in the group:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To add the vagrant user:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G rvm vagrant
-$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In my installation you cannot just start installing stuff, <strong>you need to open a new terminal</strong>. So use either <code>ssh</code> (Linux or MacOS) or <code>putty.exe</code> (windows) to open a new terminal.</p>
-</li>
-<li>
-<p>In your new terminal run (<strong>Warning: this takes a long time!</strong>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm install 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>I wanted to make sure we use this ruby default:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm use --default 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then install bundler:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gem install bundler</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now I went into a documentation folder and used <code>bundle install</code>. The gemfile is:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Yay, all the gems are installed!</p>
-</li>
-<li>
-<p>The installation of the gem <code>nokogiri</code> can be very temperamental, one particular issue on MacOS is that its install clashes with <a href="https://github.com/ggreer/the_silver_searcher"><code>The Silver Searcher</code></a>. To resolve this issue, first run <code>brew unlink xz</code> to remove symlinks to <code>xz</code>, then re-run <code>bundle install</code> and once that completes, reapply the symlinks to <code>xz</code>: <code>brew link xz</code>.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure bundle install works on any of the gemfiles in the subdirectories of the documentation.</p>
-</li>
-<li>
-<p>If you go into any subdirecory, you can now compile <em>that section</em> with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You can imagine that doing this in every folder is really tedious. We made a python script to compile everything at once.</p>
-</li>
-<li>
-<p>Go into the main documenttion directory.</p>
-</li>
-<li>
-<p>Run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python compile_LSDTTDocs.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This will put the complete website in the <strong>html_build</strong> folder.</p>
-</li>
-</ol>
+<p>One of the goals of <strong>LSDTopoTools</strong> is to automate processing of large volumes of topographic data. We have written a number of python sripts that help this automation process.</p>
 </div>
 <div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</h3>
+<h3 id="_before_you_start">1.1. Before you start</h3>
 <div class="paragraph">
-<p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, you need to install a bunch of stuff (this works in Ubuntu):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get -qq -y install bison flex libffi-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev libpango1.0-dev ttf-lyx</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now run bundle install with this Gemfile:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-mathematical'
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In our documentation pages this gemfile is usually stored under the name <code>Gemfile_pdf.gem</code>. To bundle install from this genfile you use the command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle install --gemfile=Gemfile_pdf</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Troubleshooting</strong>: the <code>Mathematical</code> gem sometimes doens&#8217;t work (or sadly, often doesn&#8217;t work). If this happens, run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ MATHEMATICAL_SKIP_STRDUP=1 gem install mathematical</code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Installing this takes an age!
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Now, this is annoying. To get the pdf to work, you need to designate an <code>:imagesoutdir:</code> but a <strong>relative path will not work</strong>. So you need an absolute path in your root <code>.asc</code> file. So, for example, the root <code>.asc</code> file should contain the directives:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ascii" data-lang="ascii">:stem: latexmath
-:imagesoutdir: /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/Documentation/images</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>You need to change this line to suit your path!</strong></p>
-</li>
-</ol>
+<p>Our autmation scripts requre a variety of python packages. To ensure they actually work, you should install the <strong>LSDTopoTools</strong> pythn environment. Details for doing so live here: link:LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
+<h2 id="_getting_the_software">2. Getting the software</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>The automation scripts live on <a href="https://github.com/LSDtopotools/LSDAutomation">our automation github page</a>.</p>
 </div>
 <div class="paragraph">
-<p>I do not want any messy merging conflicts! To avoid this please keep the <strong>master</strong> and <strong>gh-pages</strong> separate on your computer!</p>
+<p>Clone them with:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>When checking out the code, check them out into two directories:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_documentation.git master
-$ git clone https://github.com/LSDtopotools/LSDTT_documentation.git gh-pages</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDAutomation.git</code></pre>
 </div>
-</div>
-</li>
-<li>
-<p>In the gh-pages directory, check out the gh-pages branch and get rid of the master branch:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now, go back to the master branch, you can make changes there.</p>
-</li>
-<li>
-<p>You can use the python script <a href="https://github.com/LSDtopotools/LSDTT_documentation/blob/master/compile_LSDTTDocs.py"><code>compile_LSDTTDocs.py</code></a> to compile all the documentation in the repository. This will create a website in the <strong>html_build</strong> folder.</p>
-</li>
-<li>
-<p>If you want things to appear on the github website, you need to copy the files in the html_build folder (but not the <code>.git</code> folder) to the gh-pages directory.</p>
-</li>
-<li>
-<p>Then go to the gh-pages directory and add any new files:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-/some/path/to/LSDTT_documentation/master
-$ cd ..
-$ cd gh-pages
-$ git add *.html
-$ cd images
-$ git add *.png *.jpg *.gif *.svg
-$ cd ..
-$ git commit -m "Updating website" .
-$ git push origin gh-pages</code></pre>
-</div>
-</div>
-</li>
-</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-19 11:44:38 UTC
+Last updated 2018-04-26 09:56:57 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

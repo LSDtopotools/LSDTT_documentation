@@ -5,8 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="Simon M. Mudd, School of GeoSciences, University of Edinburgh">
-<title>Building LSDTopoTools documentation</title>
+<meta name="author" content="B. Gailleton, School of GeoSciences, University of Edinburgh">
+<title>User guide to knickpoint analysis using LSDTopoTools</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -429,367 +429,616 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Building LSDTopoTools documentation</h1>
+<h1>User guide to knickpoint analysis using LSDTopoTools</h1>
 <div class="details">
-<span id="author" class="author">Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
+<span id="author" class="author">B. Gailleton, School of GeoSciences, University of Edinburgh</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
-<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a></li>
-<li><a href="#_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</a>
+<li><a href="#_the_methodology">1. The methodology</a></li>
+<li><a href="#_get_the_code">2. Get the code</a></li>
+<li><a href="#_the_parameters">3. The parameters</a></li>
+<li><a href="#_plotting">4. Plotting</a>
 <ul class="sectlevel2">
-<li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</a></li>
+<li><a href="#_the_philosophy">4.1. The philosophy</a></li>
+<li><a href="#_how_to_plot">4.2. How to plot</a>
+<ul class="sectlevel3">
+<li><a href="#_the_basis">4.2.1. The basis</a></li>
+<li><a href="#_first_maps">4.2.2. First maps</a></li>
+<li><a href="#_statistical_descriptions">4.2.3. Statistical descriptions</a></li>
+<li><a href="#_quantitative_selection_of_knickpoints">4.2.4. Quantitative selection of knickpoints</a></li>
+<li><a href="#_profile_plots">4.2.5. Profile plots</a></li>
 </ul>
 </li>
-<li><a href="#_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</a></li>
+<li><a href="#_plotting_with_other_tools_e_g_gis">4.3. Plotting with other tools (e.g. GIS)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Before you start</div>
+<div class="paragraph">
+<p>Before you start you need to install <strong>LSDTopoTools</strong>. If you haven&#8217;t done that, please follow the link below.</p>
+</div>
+<div class="paragraph">
+<p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
+</div>
+<div class="paragraph">
+<p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Knickpoints in reiver channels are areas of local steepening that can be caused by a number of factors such as lithologic differences or via transmission of changing erosion rates. A number of theories of channel incision suggest that if uplift rates changes, signals may propigate upstream through channel networks in the form of knickpoints and so locating knickpoints in river channels is often connected to interpreting the history of tectonic activity in an area through time.</p>
+</div>
+<div class="paragraph">
+<p>Initial efforts to locate knickpoints typically involved looking for waterfalls (a vertical knickpoint) or using channel long profiles. Later attempts integrted slope&#8212;&#8203;area data because normalising for drainage area is essential if one is to compare headwaters with larger channels downstream.</p>
+</div>
+<div class="paragraph">
+<p>Many authors report knickpoint locations but the methods used to indentify them are frequently only semi-quantitatve and very difficult to reproduce. We have implemented a knickpoint detection algorithm that aims to minimise user inputs. It is reproducible in that if the parameters of the method are reported and the same topographic data is used any author can reproduce the same map of knickpoint locations.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</h2>
+<h2 id="_the_methodology">1. The methodology</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Most users will just look at our website. But some users may wish to build the documents themselves.
-The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, which is a <a href="https://www.ruby-lang.org/en/">Ruby</a> documentation engine.</p>
+<p>The method has several steps, which will be outlined below. To summarise these steps here is a quick summary:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The method extracts channel steepness, $k_{sn}$, using a statsistical segmentation method of channel profiles   based on Mudd et al., 2014 JGR.</p>
+</li>
+<li>
+<p>These segments of $k_{sn}$ are derived using a Monte Carlo approach so there is noise at segment boundaries (since the derived segments represent many iteration of the segmentation algorithm). To constrina the exact locations of the transitions a Total Variation Denoising (TVD) method from Condat., 2013 is used to isolate the main $k_{sn}$ variations.</p>
+</li>
+<li>
+<p>We then use various algorithms for grouping and quantification of $k_{sn}$ variations.</p>
+</li>
+<li>
+<p>Finally we implement analysis of the segmented elevation to isolate the stepped changes using windowed statistics on it.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We do not descripbe these methods in detail in this docuentation: that information can be found in our upcoming ESURF paper. These instructions simply contain the instruction on how to use the software.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Just tell me how to build the documentation</div>
-<div class="ulist">
-<ul>
+<div class="title">Quick guide if you already know what you are doing</div>
+<div class="paragraph">
+<p>Here is a quick overview of how to set up and run the code, if you have done it before:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Step 1: Install the Asciidoctor toolchain.</p>
+<p>Choose the channel extraction method that you would like to use.</p>
 </li>
 <li>
-<p>Step 2: From the main repostory directory run the python script <code>compile_LSDTTDocs.py</code>.</p>
+<p>Make sure your DEM is in <code>bil</code> format and is in the repository folder</p>
 </li>
-</ul>
+<li>
+<p>Create a parameter file for your DEM</p>
+</li>
+<li>
+<p>Make sure you have created a channel network for your DEM, and have the <code>csv</code> file in your repository, except if you want to use the generic drainage are threshold.</p>
+</li>
+<li>
+<p>Compile the code, <code>make -f chi_mapping_tool.make</code>. This step is only required once after any updates or fresh install.</p>
+</li>
+<li>
+<p>Create a parameter file <code>something.param</code> with the requested parameters.</p>
+</li>
+<li>
+<p>run the analysis: <code>./chi_mapping_tool.exe /path/to/the/param/ something.param</code></p>
+</li>
+<li>
+<p>Open the resulting <code>bil</code> files in the GIS of your choice.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
+<h2 id="_get_the_code">2. Get the code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After a number of painful windows installations, we have decided that life in Linux is much easier.
-If you don&#8217;t have Linux you can make a little Linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a>. You can read about setting up one of these Linux machines in the <a href="LSDTT_installation.html">LSDTopoTools installation instructions</a>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We will assume you are using Ubuntu in a Vagrant box or Docker container. If you are not on an Ubuntu system you will need to replace the <code>apt-get</code> commands with whatever command work on your operating system (e.g., <code>yum</code>). After trying a number of options, we have found that <a href="https://rvm.io/">rvm</a> is the best way to get everything working.</p>
-</li>
-<li>
-<p>Open a terminal in your Linux system. If you don&#8217;t know what that is <a href="LSDTT_using_linux.html">read our introduction to Linux</a>.</p>
-</li>
-<li>
-<p>We need to install some software first:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install software-properties-common
-$ sudo apt-add-repository -y ppa:rael-gc/rvm
-$ sudo apt-get update
-$ sudo apt-get install rvm</code></pre>
-</div>
+<p>The knickpoint analysis tools lie within the <strong>chi mapping tool</strong>, so you can refer to the [installation instructions of that tool].
+Once you have compiled that tool (you can do that with either <code>LSDTopoToolsSetup.py</code> or by using <code>make -f chi_mapping_tool.make</code> you will then have the chi mapping tool program.</p>
 </div>
 <div class="paragraph">
-<p>You will then need to log out of your Linux system and log back in again. rvm will tell you this:</p>
+<p>You use this program by calling a parameter file. These parameter files are explained in excruciating detail in other components of the <strong>LSDTopoTools</strong> documentation. These are instructions for the sorts of analyses you want done to your topographic data. They consist of keywords, which must be spelled correctly and are case sensitive, followed by a colon (<code>:</code>). The next section explains the keywords you need in your parameter file to run the knickpoint analysis.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">Creating group 'rvm'
-
-Installing RVM to /usr/share/rvm/
-Installation of RVM in /usr/share/rvm/ is almost complete:
-
-  * First you need to add all users that will be using rvm to 'rvm' group,
-    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
-
-  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
-    in all your open shell windows, in rare cases you need to reopen all shell windows.</code></pre>
+<div class="paragraph">
+<p>By now you should have the <strong>chi mapping tool</strong> compiled and ready to run.</p>
 </div>
-</div>
-</li>
-<li>
-<p>In vagrant you can run <code>vagrant halt</code> and <code>vagrant up</code>; in Docker just shut down and re-start the container. Then do this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source /etc/profile.d/rvm.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To see what users are in the group:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To add the vagrant user:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G rvm vagrant
-$ getent group rvm</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In my installation you cannot just start installing stuff, <strong>you need to open a new terminal</strong>. So use either <code>ssh</code> (Linux or MacOS) or <code>putty.exe</code> (windows) to open a new terminal.</p>
-</li>
-<li>
-<p>In your new terminal run (<strong>Warning: this takes a long time!</strong>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm install 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>I wanted to make sure we use this ruby default:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ rvm use --default 2.3</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then install bundler:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ gem install bundler</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now I went into a documentation folder and used <code>bundle install</code>. The gemfile is:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Yay, all the gems are installed!</p>
-</li>
-<li>
-<p>The installation of the gem <code>nokogiri</code> can be very temperamental, one particular issue on MacOS is that its install clashes with <a href="https://github.com/ggreer/the_silver_searcher"><code>The Silver Searcher</code></a>. To resolve this issue, first run <code>brew unlink xz</code> to remove symlinks to <code>xz</code>, then re-run <code>bundle install</code> and once that completes, reapply the symlinks to <code>xz</code>: <code>brew link xz</code>.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>The next step is to create a parameter file to tell the code how to analyse your data.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</h2>
+<h2 id="_the_parameters">3. The parameters</h2>
 <div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick guide if you already know what you are doing</div>
+<div class="paragraph">
+<p>Here is a quick overview of how to set up and run the code, if you have run a <strong>LSDTopoTools</strong> analysis before:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Make sure bundle install works on any of the gemfiles in the subdirectories of the documentation.</p>
-</li>
-<li>
-<p>If you go into any subdirecory, you can now compile <em>that section</em> with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You can imagine that doing this in every folder is really tedious. We made a python script to compile everything at once.</p>
-</li>
-<li>
-<p>Go into the main documenttion directory.</p>
-</li>
-<li>
-<p>Run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python compile_LSDTTDocs.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This will put the complete website in the <strong>html_build</strong> folder.</p>
+<p>The beginning of your parameter file has information about the location and names of the input/ouput:</p>
 </li>
 </ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">read path: /home/boris/path/to/file/
+read fname: name_of_dem_without_extension
+
+write path: /home/boris/path/to/file/
+write fname: prefix_for_output</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>These parameters are linked to drainage network extraction, an exhaustive list is provided later. Here is a basic drainage extraction:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>threshold_contributing_pixels: 2000
+minimum_basin_size_pixels: 200000
+maximum_basin_size_pixels: 5000000
+m_over_n: 0.45</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The following parameters are defining the $k_{sn}$ extraction, using Mudd et al., 2014 JGR algorithm:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>force_skip_knickpoint_analysis: 2</code>: Number of nodes skipped during each montecarlo iterations. 1 - 4. A lower value means a better fit to chi-plot profile, but also more sensitive to noise.</p>
+</li>
+<li>
+<p><code>force_n_iteration_knickpoint_analysis: 40</code>: number of iteration for the segment testing. 20 is the minimum, over that value it does not change a lot the calculation.</p>
+</li>
+<li>
+<p><code>target_nodes: 80</code>: Will set the number of nodes investigated per segment. combined with <code>force_skip_knickpoint_analysis</code>, it will determine the size of the segments and thus the precision of the fitting (do you want the main trend or detail analysis?). <strong>Over 100 nodes, it becomes computationally really expensive, over 120, you will need days of processing, over 150, probably months, over 200 you won&#8217;t be alive when the results will strike. It depends on your priorities.</strong> 50-100 nodes will fit most of the needs.</p>
+</li>
+<li>
+<p>Other less affecting parameters can be adjusted for the segment fitting algorithm, you can refer to the documentation from Mudd et al., 2014 JGR.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The following parameter are controlling the knickpoint extraction:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>ksn_knickpoint_analysis: true</code>: switch on the analysis, as other analysis are available through <code>chi_mapping_tools.exe</code>, namely Chi extraction, $M_\chi$ extraction from Mudd et al., 2014 JGR and concavity index extraction from Mudd et al., 2018 Esurf.</p>
+</li>
+<li>
+<p><code>TVD_lambda: -1</code>: define the regulation parameter for the Total Variation Denoising algorithm, adapted from Condat, 2013. <code>-1</code> will choose an automatic value depending on your m/n. This parameter depends on the magnitude of $k_{sn}$ and can be adjusted manually. Higher $\lambda$ will produce a clearer signal but may inhibit or lower some knickpoint ($\Delta k_{sn}$).</p>
+</li>
+<li>
+<p><code>kp_node_combining: 10</code>: Determine the combining window for $\Delta k_{sn}$ knickpoint. It avoids getting artifact knickpoints, but a high window can shift knickpoint location. A low window can scatter large knickpoints into successive small ones.</p>
+</li>
+<li>
+<p><code>window_stepped_kp_detection: 100</code>: Determine the window for windowed statistics on segmented elevation to detect stepped knickpoints. Low windows are unefficient to catch these steps.</p>
+</li>
+<li>
+<p><code>std_dev_coeff_stepped_kp: 8</code>: Std deviation threshold to catch these variations. 7 - 9 gives a pretty reliable results. Lower value would produce many artifacts.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plotting">4. Plotting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Running the code will produce many ouput files. This section details the automated plotting routines we provided and used for the paper. For a more advance use, I&#8217;ll write a description of each output files and how to play with it using Python, Matplotlib,  Pandas and an homemade OO code.</p>
 </div>
 <div class="sect2">
-<h3 id="_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</h3>
+<h3 id="_the_philosophy">4.1. The philosophy</h3>
 <div class="paragraph">
-<p>Forget about doing this in Windows. Follow the instructions above on getting <a href="https://rvm.io/">rvm</a> installed on Linux.</p>
+<p>We provide automated and open-source plotting option using Python code and pakages. Many plotting option are automated thanks to the formatted outputs from the <code>c++</code> code and does not require coding to be used. Pltting routines are accessible via command line and propose a range of customization. For advanced plotting, we recommend to code directly in Python as Matplotlib package produce amazing publication-ready figures.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_plot">4.2. How to plot</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick guide if you already know what you are doing</div>
+<div class="paragraph">
+<p>Here is a quick overview of how to run the plotting routines:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, you need to install a bunch of stuff (this works in Ubuntu):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get -qq -y install bison flex libffi-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev libpango1.0-dev ttf-lyx</code></pre>
-</div>
-</div>
+<p>In a terminal, you need first to navigate to the LSDMappingTools folder, depending on your OS, you need to use the equivalent of <code>cd</code>. example on linux: <code>cd /home/boris/Desktop/LSDMappingTools/</code>, or on Windows: <code>cd C:\windows\something\LSDMappingTools\</code></p>
 </li>
 <li>
-<p>Now run bundle install with this Gemfile:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">source 'https://rubygems.org'
-
-gem 'rake'
-gem 'asciidoctor'
-
-gem 'json'
-gem 'awesome_print'
-
-gem 'asciidoctor-mathematical'
-gem 'asciidoctor-epub3'
-gem 'asciidoctor-pdf'
-
-gem 'coderay'
-gem 'pygments.rb'
-gem 'thread_safe'
-gem 'epubcheck'</code></pre>
-</div>
-</div>
+<p>All the plotting routine have a common start: you need to call the python script and flag the <strong>path</strong> and <strong>common prefix</strong> of all the files as follow: <code>python PlotKnickpointAnalysis -dir /home/boris/Desktop/GIS/massif_central/ -fname massif_central_DEM</code></p>
 </li>
 <li>
-<p>In our documentation pages this gemfile is usually stored under the name <code>Gemfile_pdf.gem</code>. To bundle install from this genfile you use the command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bundle install --gemfile=Gemfile_pdf</code></pre>
-</div>
-</div>
+<p>The second step is optional: you can select specific river to plot: <code>-basin_keys 1,5</code> will only select the basin 1 and 5; <code>-source_keys 54,0,12,18</code> will only select rivers 54,0,12 and 18 and finally <code>-min_sl 10000</code> will only select rivers with a flowing length &gt; 10000 metres. None of these flags means all selected.</p>
 </li>
 <li>
-<p><strong>Troubleshooting</strong>: the <code>Mathematical</code> gem sometimes doens&#8217;t work (or sadly, often doesn&#8217;t work). If this happens, run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ MATHEMATICAL_SKIP_STRDUP=1 gem install mathematical</code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Installing this takes an age!
-</td>
-</tr>
-</table>
-</div>
+<p><code>-rasplot True</code> will plot three maps: a topographic map, a knickpoint map with the river network drapped on the shaded elevation and a knickpoint map with the river network on black background.</p>
 </li>
 <li>
-<p>Now, this is annoying. To get the pdf to work, you need to designate an <code>:imagesoutdir:</code> but a <strong>relative path will not work</strong>. So you need an absolute path in your root <code>.asc</code> file. So, for example, the root <code>.asc</code> file should contain the directives:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ascii" data-lang="ascii">:stem: latexmath
-:imagesoutdir: /LSDTopoTools/Git_projects/LSDTopoTools_ChiMudd2014/Documentation/images</code></pre>
-</div>
-</div>
+<p><code>-rivplot True</code> will plot two river profile per river selected (<strong>It can take a lot of time and produce many files if you don&#8217;t sort your rivers</strong>) in $\chi&amp;-elevation and long profile representation. This can be customized with <code>-segelev True</code> to plot the segmented elevation of the river to assess if the segment-fitting paramters (e.g. <code>target_nodes</code>) are suitting user&#8217;s precision requirements.</p>
 </li>
 <li>
-<p><strong>You need to change this line to suit your path!</strong></p>
+<p><code>-basplot True</code> will plot two plots per basin selected, in $\chi&amp;-elevation and long profile representation.</p>
+</li>
+<li>
+<p><code>-statplot True</code> will plot histogram distributions of stepped knickpoints and $\Delta k_{sn}$. It provides a first order statistical description to sort knickpoints. It can be customized with <code>-nbh 80</code> to force a number of bins.</p>
+</li>
+<li>
+<p><code>-ksnPs True</code> is a calibrating plotting option that plots a $\chi - k_{sn}$ profile with raw and denoised $k_{sn}$ in order to check $\lambda$ effect.</p>
+</li>
+<li>
+<p><code>-cov 3,5,2</code> is a parameter that apply a basic cut off value on the knickpoints, in order to select the main ones. In this example it will select knickpoint with  $\Delta k_{sn}&#8592;3$, $\Delta k_{sn}&gt;5$ and $\Deltaz_{seg}&gt;2$.</p>
+</li>
+<li>
+<p><code>-GS 2.1,5,3.4,45</code> sets a common relative size of break-in-slope knickpoints along all the figures. On this example, it set all the knickpoints &#8656;2.1 with a size of 5, all the knickpoints &gt; 3.4 with a size of 45 and all the intermediate with an adapted size.</p>
+</li>
+<li>
+<p>Finally <code>-all true</code> will plot all the option above. <code>-allD True</code> add some debugging plot such as ksn profiles.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>The knickpoint algorithm produces large datasets. We provide available plotting routines to help the user dealing with this. These routines can help having a first overview of the data, statistical description, thin the dataset, and produce publication-ready plots thanks to <code>matplotlib</code> python package. All the routines are implemented into the LSDMappingTools suite. We will describe these plotting routines with an applied example from the paper: The Smugglers basin (Santa Cruz Island, USA).</p>
 </div>
-<div class="sect1">
-<h2 id="_if_you_are_making_changes_to_the_documentation">4. If you are making changes to the documentation</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You can ignore this unless you are helping write the template and have push permission. Currently this applies to nobody so they are more notes for myself to remember how I set up this repository.
-</td>
-</tr>
-</table>
+<div class="sect3">
+<h4 id="_the_basis">4.2.1. The basis</h4>
+<div class="paragraph">
+<p>The plotting routines are accessible via command-line or as a python package (<strong>I aim to have a conda package at the time of the submission, I am not far from it</strong>). The first thing you need to do is accessing the LSDMappingTools folder via your terminal (<strong>REFERENCE TO THE ACTUAL TUTO TO INSTALL LSDMT</strong>). The command-lin tool can be called by running the python script <code>PlotKnickpointAnalysis.py</code>. All the plotting functions within this tool need to begin with the path and prefix of your files using the flags <code>-dir</code> and <code>-fname</code> as follow:</p>
 </div>
 <div class="paragraph">
-<p>I do not want any messy merging conflicts! To avoid this please keep the <strong>master</strong> and <strong>gh-pages</strong> separate on your computer!</p>
+<p>+</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>When checking out the code, check them out into two directories:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_documentation.git master
-$ git clone https://github.com/LSDtopotools/LSDTT_documentation.git gh-pages</code></pre>
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>In the gh-pages directory, check out the gh-pages branch and get rid of the master branch:</p>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Just running this will not produce anything, but will display all the available options that we will describe along this tutorial - guide - documentation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_first_maps">4.2.2. First maps</h4>
+<div class="paragraph">
+<p>The first visualisation you probably want is a map of the knickpoints. The <code>-rasplot</code> flag will produce a set of maps with the knickpoints on top and a topographic map.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd gh-pages
-$ git checkout origin/gh-pages -b gh-pages
-$ git branch -d master</code></pre>
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Now, go back to the master branch, you can make changes there.</p>
-</li>
-<li>
-<p>You can use the python script <a href="https://github.com/LSDtopotools/LSDTT_documentation/blob/master/compile_LSDTTDocs.py"><code>compile_LSDTTDocs.py</code></a> to compile all the documentation in the repository. This will create a website in the <strong>html_build</strong> folder.</p>
-</li>
-<li>
-<p>If you want things to appear on the github website, you need to copy the files in the html_build folder (but not the <code>.git</code> folder) to the gh-pages directory.</p>
-</li>
-<li>
-<p>Then go to the gh-pages directory and add any new files:</p>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>As you will notice, the output is fairly dense. A first adjustment consists in thinning your dataset would be to select a set of river rather than the entire network. You can select the network by basin ID with the flag <code>-basin_keys</code>, by sources <code>-source_keys</code> and/or by minimum flow distance with <code>-min_sl</code>. These option are cumulative. The following example select only the sources 34, 56 and 756 in the basin 21:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-/some/path/to/LSDTT_documentation/master
-$ cd ..
-$ cd gh-pages
-$ git add *.html
-$ cd images
-$ git add *.png *.jpg *.gif *.svg
-$ cd ..
-$ git commit -m "Updating website" .
-$ git push origin gh-pages</code></pre>
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -source_keys 34,56,756 -basin_keys 21</code></pre>
 </div>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Or more generally if you just want the river &gt;5000 metres long:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Alright, We still have a lot of knickpoints, but in less rivers now. Now let&#8217;s get interested on how to thin the dataset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_statistical_descriptions">4.2.3. Statistical descriptions</h4>
+<div class="paragraph">
+<p>A basic but efficient data description is an histogram. The flag <code>-statplot</code> will generates a set of 2 histograms: one describing the spread of delta ksn, the break-in-slope component, and the other describing the spread of delta segmented elevation.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -statplot True -min_sl 5000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>These histograms automatically choose the number of bins on the histogram. It is however possible to customize that parameter with the flag <code>-nbh</code> to precise the number of bins.</p>
+</div>
+<div class="paragraph">
+<p>These plots can offer a first-order idea of the knickpoint values. You shall now pick from these cut-off values to isolate your main knickpoints.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_quantitative_selection_of_knickpoints">4.2.4. Quantitative selection of knickpoints</h4>
+<div class="paragraph">
+<p>One could use the histogram distribution of the data to extract cut-off values to isolate the main knickpoints, or use its own statistical tools, the flag <code>-cov</code> will remove knickpoints using their values. 3 values have to be precised with the flag: the first is a minimum value for the negative delta ksn, the second is for the minimum value for the positive delta ksn and the third the minimum for delta segmented elevation. The following example remove knickpoints  with a delta ksn &lt; -2, delta ksn &gt; 3 and delta segmented elevation &gt; 5 (and plot a map):</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000 -cov 2,3,5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Ok, you know have now a fair selection of knickpoints, you may want to customise the appeareance of the plot, for extensive customisations you can directly use the python Object Oriented dedicated code. The following flags can be added to help with map plotting:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Map customisation flags</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flags</th>
+<th class="tableblock halign-left valign-top">Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-coeff_size_kp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default: 1, increase/decrease the size of all the knickpoints.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-GS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manage the relative size of the knickpoints. DWE: <code>-GS 2.1,5,4.6,50</code> would set all the knickpoints&lt;2.1 to 5, &gt;4.6 to 50.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the rest</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_profile_plots">4.2.5. Profile plots</h4>
+<div class="paragraph">
+<p>Complementary to the map plots, you can generate river profiles with the <code>-rivplot</code> flag. It produces for each selected source ID a chi-elevation and a long profile with the selected knickpoints on top.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000 -cov 2,3,5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Ok I&#8217;ll need to expand that after Romania.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plotting_with_other_tools_e_g_gis">4.3. Plotting with other tools (e.g. GIS)</h3>
+<div class="paragraph">
+<p>One could want to plot the output by oneself. The Algorithm produce a set of raster and csv files that one can import and plot with other plotting routine. <code>X</code> being the prefix of all the output, the algorithm generates additional rasters: hillshaded DEM <code>X_hs.bil</code> and delimination of analysed basins <code>X_AllBasins.bil</code>.</p>
+</div>
+<div class="paragraph">
+<p>It also generates the point-based data. <code>X_ksnkp_mchi.csv</code> contains all the river-related data:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. X_ksnkp_mchi.csv</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Column</th>
+<th class="tableblock halign-left valign-top">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easting in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Northing in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The chi coordinate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elevation of the river point in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flow_distance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flowing distance from the outlet in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drainage_area</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drainage area of the point in meter square.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m_chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chi-elevation steepness calculated with Mudd et al., 2014 JGR algorithm. Is k_sn if A0 = 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique ID of this river, from source to the point where it reaches a longer river or the outlet of the basin.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basin_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique basin ID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other Columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other columns are for debugguing purposes, Ignore them, I&#8217;ll remove them after the publication of the paper.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>X_ksnkp.csv</code> contains all the knickpoint-related data:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. X_ksnkp.csv</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Column</th>
+<th class="tableblock halign-left valign-top">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easting in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Northing in UTM (Same zone than the Raster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Longitude in WGS84</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latitude in WGS84.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The chi coordinate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elevation of the river point in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flow_distance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flowing distance from the outlet in meters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drainage_area</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drainage area of the point in meter square.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delta_ksn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnitude of the knickpoint "slope-break" component quantified by it&#8217;s drop/increase of ksn.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delta_segelev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnitude of the knickpoint "vertical-step" component quantified by sharp increase of segmented elevation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sharpness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated Chi distance between all the combined knickpoints. 0 for single knickpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 if increase of delta_ksn, -1 if decrease.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique ID of this river, from source to the point where it reaches a longer river or the outlet of the basin.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basin_key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique basin ID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other Columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other columns are for debugguing purposes, Ignore them, I&#8217;ll remove them after the publication of the paper.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The two other files are to help the automated plotting routines to be faster.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-19 11:44:38 UTC
+Last updated 2018-05-22 15:46:18 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
