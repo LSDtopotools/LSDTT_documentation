@@ -525,8 +525,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</a></li>
 <li><a href="#_burning_rasters_to_csv">A.3.6. Burning rasters to csv</a></li>
 <li><a href="#_integrating_lithologic_information">A.3.7. Integrating lithologic information</a></li>
-<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis">A.3.8. Parameters for exploring the <em>m/n</em> ratio with chi analysis</a></li>
-<li><a href="#_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis">A.3.9. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_chi_analysis">A.3.8. Parameters for exploring the concavity with chi analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.3.9. Parameters for exploring the concavity with slope-area analysis</a></li>
 <li><a href="#_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</a></li>
 <li><a href="#_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</a></li>
 <li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</a></li>
@@ -1405,6 +1405,18 @@ estimate_best_fit_movern: true</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/LSDTT_chi_examples movern_Xian.driver</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This might take 20-30 minutes on a reasonable desktop computer.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Congratulations! You have set your first concavity analysis running. It might take a little while to work its way though all the analyses so sit back, relax, and catch up on some <a href="http://www.bbc.co.uk/sport/football/teams/hibernian">important news</a>. When it finishes you will be ready to visualise your data.</p>
@@ -1440,7 +1452,7 @@ You need to run the analysis before any of this will work!
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Open a command shell window (search your star menu for <strong>cmd.exe</strong>).</p>
+<p>Open a command shell window (search your start menu for <strong>cmd.exe</strong>).</p>
 </li>
 <li>
 <p>If you have installed a conda environment for <strong>LSDTopoTools</strong> (see the section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">setting up Python</a> for details), activate it with:</p>
@@ -1473,7 +1485,7 @@ You need to run the analysis before any of this will work!
 <div class="sect3">
 <h4 id="_what_sort_of_plots_do_i_get">5.4.2. What sort of plots do I get?</h4>
 <div class="paragraph">
-<p>In your data directory you will now find not one, but four new directories:</p>
+<p>In your data directory you will now find not one, not two, but <strong>four</strong>, yes <strong>four</strong> new directories:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1492,7 +1504,7 @@ You need to run the analysis before any of this will work!
 </ul>
 </div>
 <div class="paragraph">
-<p>These contain a cornucopia of images for you to explore.</p>
+<p>These contain a cornucopia of images for you to explore. Any you got all this for free!! If you use this software you might consider buying <a href="https://fclubb.github.io/">Fiona Clubb</a> a coffee or beer when you see her at a conferences given the amount of time she has just saved you by writing these routines.</p>
 </div>
 <div class="sect4">
 <h5 id="_figures_in_the_strong_raster_plots_strong_directory">Figures in the <strong>Raster_plots</strong> directory</h5>
@@ -1501,18 +1513,18 @@ You need to run the analysis before any of this will work!
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/movern_Xian_basin_keys.png" alt="Basins around Mount Hua for _m/n_ analysis">
+<img src="images/movern_Xian_basin_keys.png" alt="Basins around Mount Hua for concavity analysis">
 </div>
-<div class="title">Figure 4. The extracted basins for the <em>m/n</em> analysis</div>
+<div class="title">Figure 4. The extracted basins for the concavity analysis</div>
 </div>
 <div class="paragraph">
-<p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, and collinearity using chi points at random intervals iterated upon using a Monte-Carlo scheme. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from the Monte Carlo chi approach. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the Monte Carlo chi method.</p>
+<p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, collinearity using chi points at random intervals iterated upon using bootstrapping, and collinearity using a <a href="https://www.earth-surf-dynam.net/4/1/2016/esurf-4-1-2016.html">disorder metric</a>. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from disorder and bootstrapping approaches. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the disorder and bootstrapping methods.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/movern_Xian_basins_movern_chi_points.png" alt="Mount Hua Monte Carlo chi results">
+<img src="images/movern_Xian_basins_movern_chi_points.png" alt="Mount Hua bootstrapping chi results">
 </div>
-<div class="title">Figure 5. The most likely <em>m/n</em> values using collinearity test of chi profiles with Monte Carlo sampling</div>
+<div class="title">Figure 5. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
 </div>
 </div>
 <div class="sect4">
@@ -1561,19 +1573,25 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_summary.png" alt="Summary concavity plot">
 </div>
-<div class="title">Figure 9. Summary plot of most likely <em>m/n</em> ratio for various methods</div>
+<div class="title">Figure 9. Summary plot of most likely concavity ratio for various methods</div>
 </div>
 </li>
 <li>
-<p>A plot showing the best fit concavity as a function of basin key that includes the various chi methods and the slope-area method using a regression through all segments and tributaries. These S-A data tend to have very high variability, as reflected in the uncertainty bands.</p>
+<p>A plot showing the best fit concavity for just the bootstrap and disorder methods, which we have found to be the most reliable.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/movern_Xian_BD_movern_summary.png" alt="Summary concavity plot for bootstrap and disorder methods">
+</div>
+<div class="title">Figure 10. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
+</div>
 </li>
 <li>
-<p>A plot showing the probability of different concavity values of each of the different methods plotted as a <a href="http://blog.revolutionanalytics.com/2017/07/joyplots.html">joyplot</a>.</p>
+<p>A plot showing the probability of different concavity values of each of the different methods plotted as a <a href="http://blog.revolutionanalytics.com/2017/07/joyplots.html">Ridgeline plots</a>.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 10. Joyplot of the most likeley concavity values across all basins in the landscape</div>
+<div class="title">Figure 11. Ridgeline plot of the most likeley concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
@@ -1742,12 +1760,12 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_MCpoint_XX_pointsMC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the Monte-Carlo points approach. For each concavity value, it samples points for <code>N</code> iterations (determined by the <code>MC_point_iterations</code> flag) and then calculates summary statistics for each basin. These include minimum, first quartile, median, third quartile and maximum MLE values. Each concavity ratio gets its own file, so if concavity = 1 the file is called <code>_MCpoint_0.1_pointsMC.csv</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the <strong>bootstrap</strong> approach. For each concavity value, it samples points for <code>N</code> iterations (determined by the <code>MC_point_iterations</code> flag) and then calculates summary statistics for each basin. These include minimum, first quartile, median, third quartile and maximum MLE values. Each concavity ratio gets its own file, so if concavity = 1 the file is called <code>_MCpoint_0.1_pointsMC.csv</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_MCpoint_points_MC_basinstats</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the Monte-Carlo points approach, compiling data from the <code>_MCpoint_XX_pointsMC.csv</code>. The file reports on each basin, with the first quartile, median and third quartile reported for every concavity value analysed. Note that now that I have gone through the trouble of writing this documentation it is unlikely these idiotic filenames will change. I take full responsiblity. Mi dispiache. SMM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reports on the results from the <strong>bootstrap</strong> approach, compiling data from the <code>_MCpoint_XX_pointsMC.csv</code>. The file reports on each basin, with the first quartile, median and third quartile reported for every concavity value analysed. Note that now that I have gone through the trouble of writing this documentation it is unlikely these idiotic filenames will change. I take full responsiblity. Mi dispiache. SMM</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movern_residuals_median</p></td>
@@ -1861,19 +1879,19 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <td class="tableblock halign-left valign-top"><p class="tableblock">start_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity testing functions, the program starts at this concavity value (if you assume stream power, then this is the same as <em>m/n</em>, hence the parameter name) and then iterates through a number of increasing <em>m/n</em> values, calculating the goodness of fit to each one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity (\(\theta\), or here <em>m/n</em>) testing functions, the program starts at this <em>m/n</em> value and then iterates through a number of increasing <em>m/n</em> values, calculating the goodness of fit to each one.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delta_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity testing functions, the program increments concavity by this value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity (\(\theta\), or here <em>m/n</em>) testing functions, the program increments <em>m/n</em> by this value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">n_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity testing functions, the program increments concavity this number of times.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity (\(\theta\), or here <em>m/n</em>) testing functions, the program increments <em>m/n</em> this number of times.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">only_use_mainstem_as_reference</p></td>
@@ -1922,7 +1940,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity_with_points_MC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is reapeated a number of times (the default is 1000) to quantify uncertanty in the best fit concavity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is reapeated a number of times (the default is 1000) to quantify uncertanty in the best fit concavity. We call this the <strong>bootstrap</strong> method.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">collinearity_MLE_sigma</p></td>
@@ -2529,7 +2547,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <td class="tableblock halign-left valign-top"><p class="tableblock">m_over_n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>m/n</em> parameter (sometimes known as the concavity index) for calculating chi. Note that if you do any <em>m/n</em> analysis (either <code>calculate_MLE_collinearity</code> or <code>print_profiles_fxn_movern_csv</code>) this <em>m/n</em> value will be replaced.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>m/n</em> parameter (or concavity index, \(\theta\)) for calculating chi. Note that if you do any concavity analysis (either <code>calculate_MLE_collinearity</code> or <code>print_profiles_fxn_movern_csv</code>) this \(\theta\) value will be replaced.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">threshold_pixels_for_chi</p></td>
@@ -2663,9 +2681,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_chi_analysis">A.3.8. Parameters for exploring the <em>m/n</em> ratio with chi analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_chi_analysis">A.3.8. Parameters for exploring the concavity with chi analysis</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 18. Parameters for trying to constrain the <em>m/n</em> ratio using chi analysis</caption>
+<caption class="title">Table 18. Parameters for trying to constrain the concavity using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2685,49 +2703,49 @@ If your lithologic raster is significantly larger than your topographic raster i
 <td class="tableblock halign-left valign-top"><p class="tableblock">start_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the <em>m/n</em> testing functions, the program starts at this <em>m/n</em> value and then iterates through a number of increasing <em>m/n</em> values, calculating the goodness of fit to each one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity (\(\theta\), or here <em>m/n</em>) testing functions, the program starts at this <em>m/n</em> value and then iterates through a number of increasing <em>m/n</em> values, calculating the goodness of fit to each one.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delta_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the <em>m/n</em> testing functions, the program increments <em>m/n</em> by this value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity (\(\theta\), or here <em>m/n</em>) testing functions, the program increments <em>m/n</em> by this value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">n_movern</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the <em>m/n</em> testing functions, the program increments <em>m/n</em> this number of times.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In several of the concavity (\(\theta\), or here <em>m/n</em>) testing functions, the program increments <em>m/n</em> this number of times.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">only_use_mainstem_as_reference</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true this compares the goodness of fit between the mainstem and all tributaries in each basin for each <em>m/n</em> value. If false, it compares <strong>all</strong> tributaries and the main stem to every other tributary.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true this compares the goodness of fit between the mainstem and all tributaries in each basin for each \(\theta\) value. If false, it compares <strong>all</strong> tributaries and the main stem to every other tributary.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine <em>m/n</em> ratios. This uses <strong>ALL</strong> nodes in the channel network. The effect is that longer channels have greater influence of the result than small channels.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity (\(\theta\)) value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine \(\theta\). This uses <strong>ALL</strong> nodes in the channel network. The effect is that longer channels have greater influence of the result than small channels.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity_with_points</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine <em>m/n</em> ratios. It uses specific points on tributaries to compare to the mainstem. These are located at fixed chi distances upstream of the lower junction of the tributary. The effect is to ensure that all tributaries are weighted similarly in calculating <em>m/n</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity (\(\theta\)) value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine \(\theta\). It uses specific points on tributaries to compare to the mainstem. These are located at fixed chi distances upstream of the lower junction of the tributary. The effect is to ensure that all tributaries are weighted similarly in calculating \(\theta\).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity_with_points_MC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine <em>m/n</em> ratios. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is repeated a number of times (the default is 1000) to quantify uncertainty in the best fit <em>m/n</em> ration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine \(\theta\). It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is repeated a number of times (the default is 1000) to quantify uncertainty in the best fit \(\theta\).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">collinearity_MLE_sigma</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A value that scales MLE. It does not affect which <em>m/n</em> value is the most likely. However it affects the absolute value of MLE. If it is set too low, MLE values for poorly fit segments will be zero. We have performed sensitivity and found that once all channels have nonzero MLE values the most likely channel does not change. So this should be set high enough to ensure there are nonzero MLE values for all tributaries. Set this too high, however, and all MLE values will be very close to 1 so plotting becomes difficult as the difference between MLE are at many significant digits (e.g., 0.9999997 vs 0.9999996). We have found that a value of 1000 works in most situations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A value that scales MLE. It does not affect which concavity value is the most likely. However it affects the absolute value of MLE. If it is set too low, MLE values for poorly fit segments will be zero. We have performed sensitivity and found that once all channels have nonzero MLE values the most likely channel does not change. So this should be set high enough to ensure there are nonzero MLE values for all tributaries. Set this too high, however, and all MLE values will be very close to 1 so plotting becomes difficult as the difference between MLE are at many significant digits (e.g., 0.9999997 vs 0.9999996). We have found that a value of 1000 works in most situations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MC_point_fractions</p></td>
@@ -2739,7 +2757,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <td class="tableblock halign-left valign-top"><p class="tableblock">MC_point_iterations</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For the <code>calculate_MLE_collinearity_with_points_MC</code> analysis, this is the number iterations of drawing random points with which to build best fit <em>m/n</em> statistics.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the <code>calculate_MLE_collinearity_with_points_MC</code> analysis, this is the number iterations of drawing random points with which to build best fit \(\theta\) statistics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max_MC_point_fraction</p></td>
@@ -2751,43 +2769,55 @@ If your lithologic raster is significantly larger than your topographic raster i
 <td class="tableblock halign-left valign-top"><p class="tableblock">movern_residuals_test</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every <em>m/n</em> value and calculates the mean residual between the main stem and all the tributary nodes. It is used to search for the <em>m/n</em> value where the residual switches from negative to positive. The rationale is that the correct <em>m/n</em> might be reflected where the mean residual is closest to zero.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity (\(\theta\)) value and calculates the mean residual between the main stem and all the tributary nodes. It is used to search for the \(\theta\) value where the residual switches from negative to positive. The rationale is that the correct <em>m/n</em> might be reflected where the mean residual is closest to zero.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">print_profiles_fxn_movern_csv</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true this loops though every <em>m/n</em> value and prints (to a single csv file) all the chi-elevation profiles. Used to visualise the effect of changing the <em>m/n</em> ratio on the profiles.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true this loops though every \(\theta\) value and prints (to a single csv file) all the chi-elevation profiles. Used to visualise the effect of changing the concavity on the profiles.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">movern_disorder_test</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test for concavity using the disorder metric similar to that used in <a href="https://www.earth-surf-dynam.net/4/1/2016/">Hergarten et al. 2016</a>. Caluculates the disorder statistic for each basin while looping through all the concavity values. User should look for lowest disorder value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disorder_use_uncert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This attempts to get an idea of uncertainty on the disorder metric by taking all combinations of 3 tributaries plus the main stem and calulating the disorder metric. Then the best fir concavity for each combination is determined. The best fit concavities from all combinations are then used to calculate minimum, 1st quartile, median, 3rd quartile and maximum values for the least disordered concavity. In addition the mean, standard deviation, standard error, and MAD are calculated. Finally the file produced by this also gives the least disordered concavity if you conisder all the tributaries.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCMC_movern_analysis</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true, runs a Monte Carlo Markov Chain analysis of the best fit <em>m/n</em>. First attempts to tune the sigma value for the profiles to get an MCMC acceptance rate of 25%, then runs a chain to constrain uncertainties. At the moment the tuning doesn&#8217;t seem to be working properly!! This is also extremely computationally expensive, for a, say, 10Mb DEM analysis might last several days on a single CPU core. If you want uncertainty values for the <em>m/n</em> ratio you should use the <code>calculate_MLE_collinearity_with_points_MC</code> routine.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, runs a Monte Carlo Markov Chain analysis of the best fit concavity (\(\theta\)). First attempts to tune the sigma value for the profiles to get an MCMC acceptance rate of 25%, then runs a chain to constrain uncertainties. At the moment the tuning doesn&#8217;t seem to be working properly!! This is also extremely computationally expensive, for a, say, 10Mb DEM analysis might last several days on a single CPU core. If you want uncertainty values for the concavity value you should use the <code>calculate_MLE_collinearity_with_points_MC</code> routine.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCMC_chain_links</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number of links in the MCMC chain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of links in the MCMC chain.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCMC_movern_minimum</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.05</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum value of the <em>m/n</em> ratio tested by the MCMC routine.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum value of the \(\theta\) tested by the MCMC routine.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCMC_movern_maximum</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum value of the <em>m/n</em> ratio tested by the MCMC routine.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum value of the \(\theta\) tested by the MCMC routine.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_em_m_n_em_ratio_with_slope_area_analysis">A.3.9. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.3.9. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 19. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
 <colgroup>
