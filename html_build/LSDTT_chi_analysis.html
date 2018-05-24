@@ -1201,7 +1201,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <h2 id="_calculating_concavity">5. Calculating concavity</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section you will find instructions on using the <strong>chi mapping tool</strong> to calculate channel concavity. What is channel concavity? If you look at typical channels, you will find steep headwaters but as you move downstream the channels will become gentler. Authors in the middle of the twentieth century began to calculate channel slope as one moved downstream and found systematic relationships between drainage area, <em>A</em> and channel slope, <em>S</em>, finding that the relasionship could be described with \(S = k_s A^{-\theta}\). This relationship is often called Flint&#8217;s law, after a 1975 paper. Marie Morisawa had basically figured out this relasionship in the early 1960s, so we should probably all be calling this Morisawa&#8217;s law. The exponent, \(\theta\), is called the concavity because it describes how concave the channel is: if the channel profile has little variation in slope downstream the channel has a low concavity.</p>
+<p>In this section you will find instructions on using the <strong>chi mapping tool</strong> to calculate channel concavity. What is channel concavity? If you look at typical channels, you will find steep headwaters but as you move downstream the channels will become gentler. Authors in the middle of the twentieth century began to calculate channel slope as one moved downstream and found systematic relationships between drainage area, <em>A</em> and channel slope, <em>S</em>, finding that the relationship could be described with \(S = k_s A^{-\theta}\). This relationship is often called Flint&#8217;s law, after a 1975 paper. Marie Morisawa had basically figured out this relationship in the early 1960s, so we should probably all be calling this <a href="https://pubs.geoscienceworld.org/gsabulletin/article-lookup/73/9/1025">Morisawa&#8217;s law</a>. The exponent, \(\theta\), is called the concavity because it describes how concave the channel is: if the channel profile has little variation in slope downstream the channel has a low concavity.</p>
 </div>
 <div class="paragraph">
 <p>A number of authors have used channel steepness to infer either erosion and uplift rates across river networks, and these calculations often involve computing the channel concavity. This can be done in a number of ways. We at <strong>LSDTopoTools</strong> have included a number of methods, both traditional and newly developed, for the purpose of computing the channel concavity in river networks. In this section you will find instructions for using our tools.</p>
@@ -1292,7 +1292,7 @@ The initial versions of this software linked concavity to the <em>m/n</em> ratio
 <td class="tableblock halign-left valign-top"><p class="tableblock">collinearity_MLE_sigma</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is a scaling factor for our maximum likelihood estimator (MLE). It does not affect which concavity is the most liukeley, but does affect the abosulute value of MLE. If this value is low, then the MLE values will be zero and you will not get reliable results. If you are getting estimates of concavity that are very low, it might be because sigma is too low. If this is the case you should increase sigma until the best fit values of concavity do not change. <strong>In most cases you can use the default but if you have very large networks you may need to increase this parameter</strong>. Note that the disorder metrics do not use MLE or the sigma value so changing this has no effect whatsoever on the disorder metrics.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a scaling factor for our maximum likelihood estimator (MLE). It does not affect which concavity is the most likely, but does affect the absolute value of MLE. If this value is low, then the MLE values will be zero and you will not get reliable results. If you are getting estimates of concavity that are very low, it might be because sigma is too low. If this is the case you should increase sigma until the best fit values of concavity do not change. <strong>In most cases you can use the default but if you have very large networks you may need to increase this parameter</strong>. Note that the disorder metrics do not use MLE or the sigma value so changing this has no effect whatsoever on the disorder metrics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">threshold_contributing_pixels</p></td>
@@ -1591,7 +1591,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 11. Ridgeline plot of the most likeley concavity values across all basins in the landscape</div>
+<div class="title">Figure 11. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
@@ -1666,7 +1666,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <p>The concavity analysis will produce a number of new files in both raster and comma separated value formats. You can also tell the code to print csv files to geojson files if you want to directly load them into your favourite GIS.</p>
 </div>
 <div class="paragraph">
-<p>We expect most users will go straight to the figures generated by our <a href="#_visualising_the_results_of_our_concavity_analyses">python script</a>, which should generate dozens of publication quality figures (we have enven sized the figures so they are just right for a journal page). However, we list here the file outputs so you can inspect the data outputs ith which you can create your own plotting routines, if you so wish. We believe data should be transparent and reproducible, so all our python plots make figures from data that has been printed to file: you will always be able to see the data behind the figures. Please do not abuse our willingness to do this by taking our data and publishing horrible figures created in excel.</p>
+<p>We expect most users will go straight to the figures generated by our <a href="#_visualising_the_results_of_our_concavity_analyses">python script</a>, which should generate dozens of publication quality figures (we have even sized the figures so they are just right for a journal page). However, we list here the file outputs so you can inspect the data outputs with which you can create your own plotting routines, if you so wish. We believe data should be transparent and reproducible, so all our python plots make figures from data that has been printed to file: you will always be able to see the data behind the figures. Please do not abuse our willingness to do this by taking our data and publishing horrible figures created in excel.</p>
 </div>
 <div class="sect3">
 <h4 id="_files_created_by_the_strong_chi_mapping_tool_strong">5.6.1. Files created by the <strong>chi mapping tool</strong></h4>
@@ -1780,7 +1780,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_fullstats_disorder_uncert</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This contains the disorder statistics for every basin. To get this file you need to set <code>movern_disorder_test: true</code> and <code>disorder_use_uncert: true</code>. The colums are: basin key, the number of combinations (so the number of samples), the minimum, first quartile, median, third quartila and maximum values for best fit concavity (determined with the minimum disorder statistic). It also includes the mean, standard deviation, standard error and <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">MAD</a> for the combination results. Finally, it reports the minimum disorder concavity for all tributaries in the basin (i.e., the minimum disorder if you use all the data).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains the disorder statistics for every basin. To get this file you need to set <code>movern_disorder_test: true</code> and <code>disorder_use_uncert: true</code>. The columns are: basin key, the number of combinations (so the number of samples), the minimum, first quartile, median, third quartile and maximum values for best fit concavity (determined with the minimum disorder statistic). It also includes the mean, standard deviation, standard error and <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">MAD</a> for the combination results. Finally, it reports the minimum disorder concavity for all tributaries in the basin (i.e., the minimum disorder if you use all the data).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1802,7 +1802,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_SAvertical</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the slope area data. Slope is calculated over a fixed vertical interval, where the area is calculated in the middle of this vertical interval. The interval is set by <code>SA_vertical_interval</code>. The vertical intervals do not cross tributary junctions so there should be no large jumps in drainage area within a verical interval.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the slope area data. Slope is calculated over a fixed vertical interval, where the area is calculated in the middle of this vertical interval. The interval is set by <code>SA_vertical_interval</code>. The vertical intervals do not cross tributary junctions so there should be no large jumps in drainage area within a vertical interval.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_SAbinned</p></td>
@@ -1840,7 +1840,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_movern_summary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This contains summary data on the most likely concavity vlue using a number of different methods. The methods are labelled in the column headers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This contains summary data on the most likely concavity value using a number of different methods. The methods are labelled in the column headers.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">_SA_segment_summary</p></td>
@@ -1897,7 +1897,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <td class="tableblock halign-left valign-top"><p class="tableblock">only_use_mainstem_as_reference</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true this compares the goodness of fit between the mainstem and all tributaries in each basin for each concavity value. If false, it compares <strong>all</strong> tributaries and the main stem to every other tributary.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true this compares the goodness of fit between the tunk channel and all tributaries in each basin for each concavity value. If false, it compares <strong>all</strong> tributaries and the main stem to every other tributary.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">print_profiles_fxn_movern_csv</p></td>
@@ -1908,7 +1908,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 8. Differenty types of concavity tests</caption>
+<caption class="title">Table 8. Different types of concavity tests</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1940,7 +1940,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <td class="tableblock halign-left valign-top"><p class="tableblock">calculate_MLE_collinearity_with_points_MC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is reapeated a number of times (the default is 1000) to quantify uncertanty in the best fit concavity. We call this the <strong>bootstrap</strong> method.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true loops though every concavity value and calculates the goodness of fit between tributaries and the main stem. It reports back both MLE and RMSE values. Used to determine concavity. It uses specific points on tributaries to compare to the mainstem. The location of these points is selected at random and this process is repeated a number of times (the default is 1000) to quantify uncertainty in the best fit concavity. We call this the <strong>bootstrap</strong> method.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">collinearity_MLE_sigma</p></td>
@@ -1976,18 +1976,18 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <td class="tableblock halign-left valign-top"><p class="tableblock">movern_disorder_test</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test for concavity using the disorder metric similar to that used in <a href="https://www.earth-surf-dynam.net/4/1/2016/">Hergarten et al. 2016</a>. Caluculates the disorder statistic for each basin while looping through all the concavity values. User should look for lowest disorder value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test for concavity using the disorder metric similar to that used in <a href="https://www.earth-surf-dynam.net/4/1/2016/">Hergarten et al. 2016</a>. Calculates the disorder statistic for each basin while looping through all the concavity values. User should look for lowest disorder value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disorder_use_uncert</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This attempts to get an idea of uncertainty on the disorder metric by taking all combinations of 3 tributaries plus the main stem and calulating the disorder metric. Then the best fir concavity for each combination is determined. The best fit concavities from all combinations are then used to calculate minimum, 1st quartile, median, 3rd quartile and maximum values for the least disordered concavity. In addition the mean, standard deviation, standard error, and MAD are calculated. Finally the file produced by this also gives the least disordered concavity if you conisder all the tributaries.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This attempts to get an idea of uncertainty on the disorder metric by taking all combinations of 3 tributaries plus the main stem and calculating the disorder metric. Then the best fir concavity for each combination is determined. The best fit concavities from all combinations are then used to calculate minimum, 1st quartile, median, 3rd quartile and maximum values for the least disordered concavity. In addition the mean, standard deviation, standard error, and MAD are calculated. Finally the file produced by this also gives the least disordered concavity if you consider all the tributaries.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 9. Parameters for exploring the concavity using monte carlo markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
+<caption class="title">Table 9. Parameters for exploring the concavity using Monte Carlo-Markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
