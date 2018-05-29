@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="B. Gailleton, School of GeoSciences, University of Edinburgh">
+<meta name="author" content="B. Gailleton and Simon M. Mudd, School of GeoSciences, University of Edinburgh">
 <title>User guide to knickpoint analysis using LSDTopoTools</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -431,7 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>User guide to knickpoint analysis using LSDTopoTools</h1>
 <div class="details">
-<span id="author" class="author">B. Gailleton, School of GeoSciences, University of Edinburgh</span><br>
+<span id="author" class="author">B. Gailleton and Simon M. Mudd, School of GeoSciences, University of Edinburgh</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -439,19 +439,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_the_methodology">1. The methodology</a></li>
 <li><a href="#_get_the_code">2. Get the code</a></li>
 <li><a href="#_the_parameters">3. The parameters</a></li>
-<li><a href="#_plotting">4. Plotting</a>
+<li><a href="#_running_the_codeand_outputs">4. Running the codeand outputs</a></li>
+<li><a href="#_plotting">5. Plotting</a>
 <ul class="sectlevel2">
-<li><a href="#_the_philosophy">4.1. The philosophy</a></li>
-<li><a href="#_how_to_plot">4.2. How to plot</a>
+<li><a href="#_the_philosophy">5.1. The philosophy</a></li>
+<li><a href="#_how_to_plot">5.2. How to plot</a>
 <ul class="sectlevel3">
-<li><a href="#_the_basis">4.2.1. The basis</a></li>
-<li><a href="#_first_maps">4.2.2. First maps</a></li>
-<li><a href="#_statistical_descriptions">4.2.3. Statistical descriptions</a></li>
-<li><a href="#_quantitative_selection_of_knickpoints">4.2.4. Quantitative selection of knickpoints</a></li>
-<li><a href="#_profile_plots">4.2.5. Profile plots</a></li>
+<li><a href="#_the_basis">5.2.1. The basis</a></li>
+<li><a href="#_first_maps">5.2.2. First maps</a></li>
+<li><a href="#_statistical_descriptions">5.2.3. Statistical descriptions</a></li>
+<li><a href="#_quantitative_selection_of_knickpoints">5.2.4. Quantitative selection of knickpoints</a></li>
+<li><a href="#_profile_plots">5.2.5. Profile plots</a></li>
 </ul>
 </li>
-<li><a href="#_plotting_with_other_tools_e_g_gis">4.3. Plotting with other tools (e.g. GIS)</a></li>
+<li><a href="#_plotting_with_other_tools_e_g_gis">5.3. Plotting with other tools (e.g. GIS)</a></li>
 </ul>
 </li>
 </ul>
@@ -475,13 +476,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Knickpoints in reiver channels are areas of local steepening that can be caused by a number of factors such as lithologic differences or via transmission of changing erosion rates. A number of theories of channel incision suggest that if uplift rates changes, signals may propigate upstream through channel networks in the form of knickpoints and so locating knickpoints in river channels is often connected to interpreting the history of tectonic activity in an area through time.</p>
+<p>Knickpoints in river channels are areas of local steepening that can be caused by a number of factors such as lithologic differences or via transmission of changing erosion rates. A number of theories of channel incision suggest that if uplift rates changes, signals may propagate upstream through channel networks in the form of knickpoints and so locating knickpoints in river channels is often connected to interpreting the history of tectonic activity in an area through time.</p>
 </div>
 <div class="paragraph">
-<p>Initial efforts to locate knickpoints typically involved looking for waterfalls (a vertical knickpoint) or using channel long profiles. Later attempts integrted slope&#8212;&#8203;area data because normalising for drainage area is essential if one is to compare headwaters with larger channels downstream.</p>
+<p>Initial efforts to locate knickpoints typically involved looking for waterfalls (a vertical knickpoint) or using channel long profiles. Later attempts integrated slope&#8212;&#8203;area data because normalising for drainage area is essential if one is to compare headwaters with larger channels downstream.</p>
 </div>
 <div class="paragraph">
-<p>Many authors report knickpoint locations but the methods used to indentify them are frequently only semi-quantitatve and very difficult to reproduce. We have implemented a knickpoint detection algorithm that aims to minimise user inputs. It is reproducible in that if the parameters of the method are reported and the same topographic data is used any author can reproduce the same map of knickpoint locations.</p>
+<p>Many authors report knickpoint locations but the methods used to identify them are frequently only semi-quantitatve and very difficult to reproduce. We have implemented a knickpoint detection algorithm that aims to minimise user inputs. It is reproducible in that if the parameters of the method are reported and the same topographic data is used any author can reproduce the same map of knickpoint locations.</p>
 </div>
 </div>
 </div>
@@ -494,13 +495,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The method extracts channel steepness, $k_{sn}$, using a statsistical segmentation method of channel profiles   based on Mudd et al., 2014 JGR.</p>
+<p>The method extracts channel steepness, \(k_{sn}\), using a statistical segmentation method of channel profiles   based on Mudd et al., 2014 JGR.</p>
 </li>
 <li>
-<p>These segments of $k_{sn}$ are derived using a Monte Carlo approach so there is noise at segment boundaries (since the derived segments represent many iteration of the segmentation algorithm). To constrina the exact locations of the transitions a Total Variation Denoising (TVD) method from Condat., 2013 is used to isolate the main $k_{sn}$ variations.</p>
+<p>These segments of \(k_{sn}\) are derived using a Monte Carlo approach so there is noise at segment boundaries (since the derived segments represent many iteration of the segmentation algorithm). To constrain the exact locations of the transitions a Total Variation Denoising (TVD) method from Condat., 2013 is used to isolate the main \(k_{sn}\) variations.</p>
 </li>
 <li>
-<p>We then use various algorithms for grouping and quantification of $k_{sn}$ variations.</p>
+<p>We then use various algorithms for grouping and quantification of \(k_{sn}\) variations.</p>
 </li>
 <li>
 <p>Finally we implement analysis of the segmented elevation to isolate the stepped changes using windowed statistics on it.</p>
@@ -508,7 +509,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ol>
 </div>
 <div class="paragraph">
-<p>We do not descripbe these methods in detail in this docuentation: that information can be found in our upcoming ESURF paper. These instructions simply contain the instruction on how to use the software.</p>
+<p>We do not describe these methods in detail in this docuentation: that information can be found in our upcoming ESURF paper. These instructions simply contain the instruction on how to use the software.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -569,16 +570,13 @@ Once you have compiled that tool (you can do that with either <code>LSDTopoTools
 <div class="sect1">
 <h2 id="_the_parameters">3. The parameters</h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Quick guide if you already know what you are doing</div>
 <div class="paragraph">
 <p>Here is a quick overview of how to set up and run the code, if you have run a <strong>LSDTopoTools</strong> analysis before:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The beginning of your parameter file has information about the location and names of the input/ouput:</p>
+<p>The beginning of your parameter file has information about the location and names of the input and ouput:</p>
 </li>
 </ol>
 </div>
@@ -609,11 +607,17 @@ m_over_n: 0.45</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The following parameters are defining the $k_{sn}$ extraction, using Mudd et al., 2014 JGR algorithm:</p>
+<p>A list of options for the chi ananlysis can be found in our sections on <a href="LSDTT_chi_analysis.html#_parameter_file_options">channel steepness analysis</a></p>
+</li>
+<li>
+<p>The options specific to the knickpoint analysis can be found in the <a href="LSDTT_chi_analysis.html#_parameters_for_knickpoint_analyses">this section of the parameters for the chi tool</a>.</p>
+</li>
+<li>
+<p>The following parameters define the \(k_{sn}\) extraction, using <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">Mudd et al., 2014 JGR</a> algorithm:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>force_skip_knickpoint_analysis: 2</code>: Number of nodes skipped during each montecarlo iterations. 1 - 4. A lower value means a better fit to chi-plot profile, but also more sensitive to noise.</p>
+<p><code>force_skip_knickpoint_analysis: 2</code>: Number of nodes skipped during each Monte Carlo iterations. 1 - 4. A lower value means a better fit to chi-plot profile, but also more sensitive to noise.</p>
 </li>
 <li>
 <p><code>force_n_iteration_knickpoint_analysis: 40</code>: number of iteration for the segment testing. 20 is the minimum, over that value it does not change a lot the calculation.</p>
@@ -622,53 +626,119 @@ m_over_n: 0.45</pre>
 <p><code>target_nodes: 80</code>: Will set the number of nodes investigated per segment. combined with <code>force_skip_knickpoint_analysis</code>, it will determine the size of the segments and thus the precision of the fitting (do you want the main trend or detail analysis?). <strong>Over 100 nodes, it becomes computationally really expensive, over 120, you will need days of processing, over 150, probably months, over 200 you won&#8217;t be alive when the results will strike. It depends on your priorities.</strong> 50-100 nodes will fit most of the needs.</p>
 </li>
 <li>
-<p>Other less affecting parameters can be adjusted for the segment fitting algorithm, you can refer to the documentation from Mudd et al., 2014 JGR.</p>
+<p>Other parameters can be adjusted for the segment fitting algorithm, you can refer to the <a href="LSDTT_chi_analysis.html#_parameters_for_segmentation_of_channels">documentation</a> or <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">Mudd et al., 2014 JGR</a>.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>The following parameter are controlling the knickpoint extraction:</p>
+<p>The following parameters control the knickpoint extraction:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>ksn_knickpoint_analysis: true</code>: switch on the analysis, as other analysis are available through <code>chi_mapping_tools.exe</code>, namely Chi extraction, $M_\chi$ extraction from Mudd et al., 2014 JGR and concavity index extraction from Mudd et al., 2018 Esurf.</p>
+<p><code>ksn_knickpoint_analysis: true</code>: switch on the analysis, as other analysis are available through <code>chi_mapping_tools.exe</code>, namely Chi extraction, \(M_{\chi}\) extraction from <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">Mudd et al., 2014 JGR</a> and concavity index extraction from Mudd et al., 2018 Esurf.</p>
 </li>
 <li>
-<p><code>TVD_lambda: -1</code>: define the regulation parameter for the Total Variation Denoising algorithm, adapted from Condat, 2013. <code>-1</code> will choose an automatic value depending on your m/n. This parameter depends on the magnitude of $k_{sn}$ and can be adjusted manually. Higher $\lambda$ will produce a clearer signal but may inhibit or lower some knickpoint ($\Delta k_{sn}$).</p>
+<p><code>TVD_lambda: -1</code>: define the regulation parameter for the Total Variation Denoising algorithm, adapted from <a href="https://ieeexplore.ieee.org/abstract/document/6579659/">Condat, 2013</a>. <code>-1</code> will choose an automatic value depending on your concavity. This parameter depends on the magnitude of \(k_{sn}\) and can be adjusted manually. Higher \(\lambda\) values will produce a clearer signal but may inhibit or lower some knickpoint (\(\Delta k_{sn}\)). -1 is the default.</p>
 </li>
 <li>
-<p><code>kp_node_combining: 10</code>: Determine the combining window for $\Delta k_{sn}$ knickpoint. It avoids getting artifact knickpoints, but a high window can shift knickpoint location. A low window can scatter large knickpoints into successive small ones.</p>
+<p><code>kp_node_combining: 10</code>: Determine the combining window for \(\Delta k_{sn}\) knickpoint. It avoids getting artifact knickpoints, but a high window can shift knickpoint location. A low window can scatter large knickpoints into successive small ones. 10 is the deafult.</p>
 </li>
 <li>
-<p><code>window_stepped_kp_detection: 100</code>: Determine the window for windowed statistics on segmented elevation to detect stepped knickpoints. Low windows are unefficient to catch these steps.</p>
+<p><code>window_stepped_kp_detection: 100</code>: Determine the window for windowed statistics on segmented elevation to detect stepped knickpoints. Low windows are unefficient to catch these steps. 100 is the default</p>
 </li>
 <li>
-<p><code>std_dev_coeff_stepped_kp: 8</code>: Std deviation threshold to catch these variations. 7 - 9 gives a pretty reliable results. Lower value would produce many artifacts.</p>
+<p><code>std_dev_coeff_stepped_kp: 8</code>: Std deviation threshold to catch these variations. 7 - 9 gives a pretty reliable results. Lower value would produce many artifacts. 4 is the default</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>A typical parameter file would look like:</p>
+</li>
 </ol>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for selecting channels and basins
+threshold_contributing_pixels: 2500
+minimum_basin_size_pixels: 200000
+maximim_basin_size_pixels: 500000
+test_drainage_boundaries: false
+
+# Parameters for chi analysis
+A_0: 1
+m_over_n: 0.5
+n_iterations: 20
+target_nodes: 80
+minimum_segment_length: 10
+sigma: 10.0
+skip: 2
+
+# ksn_knickpoint_analysis
+ksn_knickpoint_analysis: true
+TVD_lambda: -1
+std_dev_coeff_stepped_kp: 8</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_plotting">4. Plotting</h2>
+<h2 id="_running_the_codeand_outputs">4. Running the codeand outputs</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Once you have <a href="LSDTT_chi_analysis.html#_installing_the_code_and_setting_up_directories">set up the chi mapping tool</a> you simply run the code pointing to your parameter file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ chi_mapping_tool.exe /path/to/parameter/file parameter_file.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Your life will be easier if you ensure the paths and filenames are all correct.</p>
+</li>
+<li>
+<p>The analysis will then churn away for some time, printing all manner of things to screen which hopefully are not error reports and that you can safely ignore.</p>
+</li>
+<li>
+<p>At the end of the process, you will have several new files:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>_ksnkp.csv</code>: This has summary information on the detected knickpoints.</p>
+</li>
+<li>
+<p><code>_ksnkp_mchi.csv</code>: This is a large file with information about all the segments, as well information about \(k_{sn}\) values, chi-elevation plots, and loads more information. It is the workhorse file for the plotting routines.</p>
+</li>
+<li>
+<p><code>_ksnkp_raw.csv</code>: Similar to the <code>_ksnkp.csv</code> file but contains all unfiltered knickpoint locations so that users can develop their own extraction algorithms.</p>
+</li>
+<li>
+<p><code>_ksnkp_SK.csv</code>: One day Boris will tell us all what this means.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plotting">5. Plotting</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Running the code will produce many ouput files. This section details the automated plotting routines we provided and used for the paper. For a more advance use, I&#8217;ll write a description of each output files and how to play with it using Python, Matplotlib,  Pandas and an homemade OO code.</p>
 </div>
 <div class="sect2">
-<h3 id="_the_philosophy">4.1. The philosophy</h3>
+<h3 id="_the_philosophy">5.1. The philosophy</h3>
 <div class="paragraph">
 <p>We provide automated and open-source plotting option using Python code and pakages. Many plotting option are automated thanks to the formatted outputs from the <code>c++</code> code and does not require coding to be used. Pltting routines are accessible via command line and propose a range of customization. For advanced plotting, we recommend to code directly in Python as Matplotlib package produce amazing publication-ready figures.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how_to_plot">4.2. How to plot</h3>
+<h3 id="_how_to_plot">5.2. How to plot</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Quick guide if you already know what you are doing</div>
@@ -718,7 +788,7 @@ m_over_n: 0.45</pre>
 <p>The knickpoint algorithm produces large datasets. We provide available plotting routines to help the user dealing with this. These routines can help having a first overview of the data, statistical description, thin the dataset, and produce publication-ready plots thanks to <code>matplotlib</code> python package. All the routines are implemented into the LSDMappingTools suite. We will describe these plotting routines with an applied example from the paper: The Smugglers basin (Santa Cruz Island, USA).</p>
 </div>
 <div class="sect3">
-<h4 id="_the_basis">4.2.1. The basis</h4>
+<h4 id="_the_basis">5.2.1. The basis</h4>
 <div class="paragraph">
 <p>The plotting routines are accessible via command-line or as a python package (<strong>I aim to have a conda package at the time of the submission, I am not far from it</strong>). The first thing you need to do is accessing the LSDMappingTools folder via your terminal (<strong>REFERENCE TO THE ACTUAL TUTO TO INSTALL LSDMT</strong>). The command-lin tool can be called by running the python script <code>PlotKnickpointAnalysis.py</code>. All the plotting functions within this tool need to begin with the path and prefix of your files using the flags <code>-dir</code> and <code>-fname</code> as follow:</p>
 </div>
@@ -738,7 +808,7 @@ m_over_n: 0.45</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_first_maps">4.2.2. First maps</h4>
+<h4 id="_first_maps">5.2.2. First maps</h4>
 <div class="paragraph">
 <p>The first visualisation you probably want is a map of the knickpoints. The <code>-rasplot</code> flag will produce a set of maps with the knickpoints on top and a topographic map.</p>
 </div>
@@ -786,7 +856,7 @@ m_over_n: 0.45</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_statistical_descriptions">4.2.3. Statistical descriptions</h4>
+<h4 id="_statistical_descriptions">5.2.3. Statistical descriptions</h4>
 <div class="paragraph">
 <p>A basic but efficient data description is an histogram. The flag <code>-statplot</code> will generates a set of 2 histograms: one describing the spread of delta ksn, the break-in-slope component, and the other describing the spread of delta segmented elevation.</p>
 </div>
@@ -809,9 +879,9 @@ m_over_n: 0.45</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quantitative_selection_of_knickpoints">4.2.4. Quantitative selection of knickpoints</h4>
+<h4 id="_quantitative_selection_of_knickpoints">5.2.4. Quantitative selection of knickpoints</h4>
 <div class="paragraph">
-<p>One could use the histogram distribution of the data to extract cut-off values to isolate the main knickpoints, or use its own statistical tools, the flag <code>-cov</code> will remove knickpoints using their values. 3 values have to be precised with the flag: the first is a minimum value for the negative delta ksn, the second is for the minimum value for the positive delta ksn and the third the minimum for delta segmented elevation. The following example remove knickpoints  with a delta ksn &lt; -2, delta ksn &gt; 3 and delta segmented elevation &gt; 5 (and plot a map):</p>
+<p>One could use the histogram distribution of the data to extract cut-off values to isolate the main knickpoints, or use its own statistical tools, the flag <code>-cov</code> will remove knickpoints using their values. 3 values have to be given to the program with the flag: the first is a minimum value for the negative delta ksn, the second is for the minimum value for the positive delta ksn and the third the minimum for delta segmented elevation. The following example remove knickpoints  with a delta ksn &lt; -2, delta ksn &gt; 3 and delta segmented elevation &gt; 5 (and plot a map):</p>
 </div>
 <div class="paragraph">
 <p>+</p>
@@ -856,7 +926,7 @@ m_over_n: 0.45</pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_profile_plots">4.2.5. Profile plots</h4>
+<h4 id="_profile_plots">5.2.5. Profile plots</h4>
 <div class="paragraph">
 <p>Complementary to the map plots, you can generate river profiles with the <code>-rivplot</code> flag. It produces for each selected source ID a chi-elevation and a long profile with the selected knickpoints on top.</p>
 </div>
@@ -865,19 +935,30 @@ m_over_n: 0.45</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rasplot True -min_sl 5000 -cov 2,3,5</code></pre>
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -rivplot True -min_sl 5000 -cov 2,3,5</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>+</p>
 </div>
 <div class="paragraph">
-<p>Ok I&#8217;ll need to expand that after Romania.</p>
+<p>You can also plot the k_sn_ values as a function of chi.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python PlotKnickpointAnalysis -dir /home/Triceratops/Desktop/LSD/ -fname smugglers -ksnPs True -min_sl 5000 -cov 2,3,5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_plotting_with_other_tools_e_g_gis">4.3. Plotting with other tools (e.g. GIS)</h3>
+<h3 id="_plotting_with_other_tools_e_g_gis">5.3. Plotting with other tools (e.g. GIS)</h3>
 <div class="paragraph">
 <p>One could want to plot the output by oneself. The Algorithm produce a set of raster and csv files that one can import and plot with other plotting routine. <code>X</code> being the prefix of all the output, the algorithm generates additional rasters: hillshaded DEM <code>X_hs.bil</code> and delimination of analysed basins <code>X_AllBasins.bil</code>.</p>
 </div>
@@ -1038,7 +1119,7 @@ m_over_n: 0.45</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-22 15:46:18 UTC
+Last updated 2018-05-29 10:01:22 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

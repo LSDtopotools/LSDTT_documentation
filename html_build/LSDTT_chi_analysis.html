@@ -531,6 +531,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</a></li>
 <li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</a></li>
 <li><a href="#_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.3.13. Parameters for dealing with discharge rather than drainage area</a></li>
+<li><a href="#_parameters_for_knickpoint_analyses">A.3.14. Parameters for knickpoint analyses</a></li>
 </ul>
 </li>
 <li><a href="#_example_parameter_files">A.4. Example parameter files</a></li>
@@ -3100,6 +3101,97 @@ If your lithologic raster is significantly larger than your topographic raster i
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_parameters_for_knickpoint_analyses">A.3.14. Parameters for knickpoint analyses</h4>
+<div class="paragraph">
+<p>These parameters drive the knickpoint extraction algorithms.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 24. Parameters for dealing with precipitation and discharge.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ksn_knickpoint_analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, the knickpoint analysis is run. This involves segmenting the chi-elevation data and is therefore quite time consuming.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">force_skip_knickpoint_analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the skip for the knickpoint analysis (i.e., not the same as the <code>skip</code> parameter).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">force_n_iteration_knickpoint_analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forces the nmber of iterations on the knickpoint analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">force_A0_knickpoint_analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enforces the A_0_ value in the knickpoint analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MZS_threshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A threshold value for detecting outliers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TVD_lambda</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A scaling factor for the TVD analysis on the Mchi values. -1 indicates that the lambda will be set by the concavity. You determine the concavity with our <a href="#_calculating_concavity">concavity tools</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TVD_lambda_bchi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A scaling factor for the TVD analysis on the knick intercept. Note that the main variations are extracted on \(M_{\chi}\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kp_node_combining</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine the combining window for \(\Delta k_{sn}\) knickpoint. It avoids getting artifact knickpoints, but a high window can shift knickpoint location. A low window can scatter large knickpoints into successive small ones.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stepped_combining_window</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forces the nmber of iterations on the knickpoint analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">window_stepped_kp_detection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine the window for windowed statistics on segmented elevation to detect stepped knickpoints. Low windows are unefficient to catch these steps.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">std_dev_coeff_stepped_kp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Std deviation threshold to catch these variations. 7 - 9 gives a reasonable results. Lower value would produce many artifacts. 4 is the default</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_example_parameter_files">A.4. Example parameter files</h3>
@@ -3169,7 +3261,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 <div class="sect3">
 <h4 id="_raster_output">A.6.1. Raster output</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 24. These are basic rasters that don&#8217;t require chi analysis.</caption>
+<caption class="title">Table 25. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3245,7 +3337,7 @@ If the <code>convert_csv_to_geojson</code> flag is set to <code>true</code> then
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 25. Point data available in csv or geojson format. Switch to true to turn on.</caption>
+<caption class="title">Table 26. Point data available in csv or geojson format. Switch to true to turn on.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
