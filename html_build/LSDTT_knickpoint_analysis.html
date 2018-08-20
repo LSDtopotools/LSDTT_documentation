@@ -457,6 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="images/kp_caraca_01.png" alt="kp caraca 01" width="1000" height="600">
 </div>
+<div class="title">Figure 1. Knickpoints extracted from the Quadrilatero Ferrifero, Brazil.</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -489,7 +490,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The method extracts channel steepness, \(k_{sn}\), using a statistical segmentation method of channel profiles based on <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">Mudd et al., 2014 JGR</a>.</p>
+<p>The method extracts channel steepness, \(k_{sn}\), using a statistical segmentation method of channel profiles based on <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">Mudd et al., 2014 JGR</a>. The knickpoint extraction does this automatically but detaiuls anbout the <strong>LSDTopoTools</strong> software for this can be found <a href="LSDTT_chi_analysis.html">in our instructions for channel steepness extraction</a>.</p>
 </li>
 <li>
 <p>These segments of \(k_{sn}\) are derived using a Monte Carlo approach so there is noise at segment boundaries: the derived segments represent many iteration of the segmentation algorithm. To constrain the exact locations of the transitions a Total Variation Denoising (TVD) method from <a href="https://ieeexplore.ieee.org/abstract/document/6579659/">Condat (2013)</a> is used to isolate the main \(k_{sn}\) variations.</p>
@@ -503,7 +504,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ol>
 </div>
 <div class="paragraph">
-<p>We do not describe these methods in detail in this documentation: that information can be found in our upcoming ESURF paper. These instructions are intended to simply get you using the software and extracting knickpoints and knickzones using your favourite topographic data.</p>
+<p>We do not describe these methods in detail in this documentation: that information can be found in our upcoming ESURF paper and <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">previous</a> <a href="https://www.earth-surf-dynam.net/6/505/2018/">papers</a> on our chi methods . These instructions are intended to simply get you using the software and extracting knickpoints and knickzones using your favourite topographic data.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -547,7 +548,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_get_the_code">2. Get the code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The knickpoint analysis tools lie within the <strong>chi mapping tool</strong>, so you can refer to the <a href="LSDTT_chi_analysis.html#_installing_the_code_and_setting_up_directories">installation instructions of that tool</a>.</p>
+<p>The knickpoint analysis tools lie within the <strong>chi mapping tool</strong>, so you can refer to the <a href="LSDTT_chi_analysis.html#_installing_the_code_and_setting_up_directories">installation instructions of that tool</a>. Once you install that you have the knickpoint extraction installed: you just need to switch on the correct flags in the  <a href="LSDTT_basic_usage.html#_the_basic_structure_of_an_analysis">parameter file</a>.</p>
 </div>
 <div class="paragraph">
 <p>Once you have compiled that tool (you can do that with either <code>LSDTopoToolsSetup.py</code> or by using <code>make -f chi_mapping_tool.make</code> you will then have the chi mapping tool program.</p>
@@ -998,7 +999,7 @@ std_dev_coeff_stepped_kp: 8</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-20 09:48:22 UTC
+Last updated 2018-08-20 10:03:01 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
