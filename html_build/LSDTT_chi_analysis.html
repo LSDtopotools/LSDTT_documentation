@@ -2369,6 +2369,24 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <td class="tableblock halign-left valign-top"><p class="tableblock">This reads a channel heads file. It will supercede the <code>threshold_contributing_pixels</code> flag. That is, if you give a valid CHeads filename the code will ignore the threshold pixels and use the sources in the file instead. You can calculate channel heads using our <a href="https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction">channel extraction tools</a>. The file needs to be a <strong>csv</strong> file and you pass the filename <strong>WITHOUT EXTENSION</strong>. The format of the filename is one with 5 columns: <code>node_index,row,col,x,y</code>. The <code>x,y</code> coordinates are in local UTM coordinates.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BaselevelJunctions_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reads a baselevel junctions file. It overrides other instructions for selecting basins. To use this you must have a file with differen junction indices as the outlets of your basins. These can be space separated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get_basins_from_outlets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is true the code will look for a file containing the latiitude and longitude coordinates of outlets.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basin_outlet_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The file containing the outlets. This file must be csv format and have the column headers <code>latitude</code> and <code>longitude</code>. The coordinates must be in WGS84 (EPSG:4326).</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">threshold_contributing_pixels</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
@@ -3157,7 +3175,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <td class="tableblock halign-left valign-top"><p class="tableblock">TVD_lambda</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A scaling factor for the TVD analysis on the Mchi values. -1 indicates that the lambda will be set by the concavity. You determine the concavity with our <a href="#_calculating_concavity">concavity tools</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A scaling factor for the TVD analysis on the Mchi values. -1 indicates that the lambda will be set by the concavity. You determine the concavity with our <a href="#_calculating_concavity">concavity tools</a>. If you get loads of tightly clustered knickpoints it means that the sterm:[k_{sn}] data is very noisy so you will need to increase the \(\lambda\) value. The default values of this are (concavity then \(\lambda\) pairs): 0.2&#8594;0.5, 0.5&#8594;20, 0.7&#8594;300. So for example if you want fewer tightly clustered knickpoint you may use \(\lambda\) = 500 if your concavity is 0.5.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TVD_lambda_bchi</p></td>
