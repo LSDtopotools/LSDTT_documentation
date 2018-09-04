@@ -442,7 +442,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_the_lsdtopotools_documentation_toolchain">1. The LSDTopoTools documentation toolchain</a></li>
-<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</a></li>
+<li><a href="#_building_the_documentation_the_easy_way_with_docker">2. Building the documentation the easy way with docker</a></li>
+<li><a href="#_some_notes_on_installing_ruby_for_lsdtopotools_by_hand">Some notes on installing Ruby for LSDTopoTools by hand.</a></li>
 <li><a href="#_building_the_html_documents_in_individual_folders_or_all_at_once">3. Building the html documents in individual folders or all at once.</a>
 <ul class="sectlevel2">
 <li><a href="#_if_you_want_to_make_pdf_files_using_asciidoctor_with_equations_in_them">3.1. If you want to make pdf files using asciidoctor with equations in them</a></li>
@@ -466,10 +467,17 @@ The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, 
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: Install the Asciidoctor toolchain.</p>
+<p>There are two paths to building the documentation.</p>
 </li>
 <li>
-<p>Step 2: From the main repostory directory run the python script <code>compile_LSDTTDocs.py</code>.</p>
+<p>Path 1: Use our dockerfile (this automatically builds the toolchain).</p>
+</li>
+<li>
+<p>Path 2: Have a linux operating system and install the toolchain by hand.
+*</p>
+</li>
+<li>
+<p>Once you have the toolchain, from the main repository directory run the python script <code>compile_LSDTTDocs.py</code>.</p>
 </li>
 </ul>
 </div>
@@ -478,8 +486,53 @@ The documents are built using <a href="http://asciidoctor.org">Asciidoctor</a>, 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools">2. Some notes on installing Ruby for LSDTopoTools.</h2>
+<h2 id="_building_the_documentation_the_easy_way_with_docker">2. Building the documentation the easy way with docker</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.docker.com/">Docker</a> is software for building <a href="https://www.docker.com/resources/what-container">containers</a>. It works on Linux systems, MacOS, and Windows 10 Enterprise.
+If you are a Windows user but don&#8217;t have Windows 10 Enterprise, I am afraid you will need to build a virtual windows machine using something like <a href="https://www.virtualbox.org/wiki/Downloads">virtual box</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First install docker. You can install it for <a href="https://www.docker.com/products/docker-desktop">Windows 10 and MacOS</a>, <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>, or  <a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>. A number of other linux environments are also available.</p>
+</li>
+<li>
+<p>Build a docker container with the <a href="https://github.com/LSDtopotools/LSDTT_documentation/blob/master/dockerfile">dockerfile from our documentation repository</a>: <code>build -t lsdtt_docs .</code></p>
+</li>
+<li>
+<p>Download the documentation repository somewhere.</p>
+</li>
+<li>
+<p>Run the docker container with a link to the documentation:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v /path/to/documentation:/documents/LSDTT_documents lsdtt_docs bash</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>When that container is running, go into the documentation directory and run our python script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># cd LSDTT_documentation
+# python compile_LSDTTDocs.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The resulting website will be in the directory <code>html_build</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_some_notes_on_installing_ruby_for_lsdtopotools_by_hand">Some notes on installing Ruby for LSDTopoTools by hand.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have built documentation using docker (the previous section) you can skip this section.</p>
+</div>
 <div class="paragraph">
 <p>After a number of painful windows installations, we have decided that life in Linux is much easier.
 If you don&#8217;t have Linux you can make a little Linux machine in your own computer using <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and <a href="https://www.vagrantup.com/">vagrant</a>, or using <a href="https://www.docker.com/">Docker</a>. You can read about setting up one of these Linux machines in the <a href="LSDTT_installation.html">LSDTopoTools installation instructions</a>.</p>
@@ -613,7 +666,7 @@ gem 'epubcheck'</code></pre>
 <p>Make sure bundle install works on any of the gemfiles in the subdirectories of the documentation.</p>
 </li>
 <li>
-<p>If you go into any subdirecory, you can now compile <em>that section</em> with:</p>
+<p>If you go into any subdirectory, you can now compile <em>that section</em> with:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ bundle exec rake book:build_html</code></pre>
@@ -624,7 +677,7 @@ gem 'epubcheck'</code></pre>
 <p>You can imagine that doing this in every folder is really tedious. We made a python script to compile everything at once.</p>
 </li>
 <li>
-<p>Go into the main documenttion directory.</p>
+<p>Go into the main documentation directory.</p>
 </li>
 <li>
 <p>Run:</p>
@@ -678,7 +731,7 @@ gem 'epubcheck'</code></pre>
 </div>
 </li>
 <li>
-<p>In our documentation pages this gemfile is usually stored under the name <code>Gemfile_pdf.gem</code>. To bundle install from this genfile you use the command:</p>
+<p>In our documentation pages this gemfile is usually stored under the name <code>Gemfile_pdf.gem</code>. To bundle install from this gemfile you use the command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ bundle install --gemfile=Gemfile_pdf</code></pre>
@@ -686,7 +739,7 @@ gem 'epubcheck'</code></pre>
 </div>
 </li>
 <li>
-<p><strong>Troubleshooting</strong>: the <code>Mathematical</code> gem sometimes doens&#8217;t work (or sadly, often doesn&#8217;t work). If this happens, run:</p>
+<p><strong>Troubleshooting</strong>: the <code>Mathematical</code> gem sometimes doensn&#8217;t work (or sadly, often doesn&#8217;t work). If this happens, run:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ MATHEMATICAL_SKIP_STRDUP=1 gem install mathematical</code></pre>
@@ -794,7 +847,7 @@ $ git push origin gh-pages</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-28 15:43:07 UTC
+Last updated 2018-09-04 11:35:41 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
