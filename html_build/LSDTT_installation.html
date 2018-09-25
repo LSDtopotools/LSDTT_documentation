@@ -442,49 +442,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">2. Installing LSDTopoTools using VirtualBox and Vagrant</a>
+<li><a href="#_installing_lsdtopotools_using_docker">2. Installing LSDTopoTools using Docker</a>
 <ul class="sectlevel2">
-<li><a href="#_quick_instructions">2.1. Quick instructions</a></li>
-<li><a href="#_full_instructions_on_setting_up_our_vagrant_servers">2.2. Full instructions on setting up our Vagrant servers</a>
-<ul class="sectlevel3">
-<li><a href="#_first_steps_starting_a_vagrant_box">2.2.1. First steps: Starting a Vagrant box</a></li>
-<li><a href="#_logging_on_to_your_vagrant_box">2.2.2. Logging on to your Vagrant box</a></li>
-<li><a href="#_your_vagrant_box_and_file_syncing">2.2.3. Your Vagrant box and file syncing</a></li>
-<li><a href="#_updating_to_the_latest_versions_of_the_software">2.2.4. Updating to the latest versions of the software</a></li>
-<li><a href="#_shutting_things_down">2.2.5. Shutting things down</a></li>
-<li><a href="#_if_you_want_to_start_from_scratch">2.2.6. If you want to start from scratch</a></li>
+<li><a href="#_should_i_use_docker_or_vagrant">2.1. Should I use Docker or Vagrant?</a></li>
+<li><a href="#_the_lsdtopotools_docker_container">2.2. The LSDTopoTools docker container</a></li>
 </ul>
 </li>
-<li><a href="#_troubleshooting_a_vagrant_server">2.3. Troubleshooting a vagrant server</a>
-<ul class="sectlevel3">
-<li><a href="#_vagrant_up_doesnt_work">2.3.1. Vagrant up doesn&#8217;t work</a></li>
-<li><a href="#_i_closed_the_window_running_vagrant_how_do_i_shut_it_down">2.3.2. I closed the window running vagrant: how do I shut it down?</a></li>
-<li><a href="#_vagrant_hangs_up_in_powershel_or_terminal_window">2.3.3. Vagrant hangs up in powershel or terminal window</a></li>
-<li><a href="#_file_syncing_doesnt_work">2.3.4. File syncing doesn&#8217;t work</a></li>
-<li><a href="#_i_get_some_crazy_conflict_about_ruby_when_i_run_vagrant_up">2.3.5. I get some crazy conflict about Ruby when I run vagrant up</a></li>
-<li><a href="#_i_ran_vagrant_up_now_what">2.3.6. I ran vagrant up. Now what?</a></li>
-</ul>
-</li>
-<li><a href="#_technical_details_on_vagrant">2.4. Technical details on vagrant</a>
-<ul class="sectlevel3">
-<li><a href="#_brief_notes_for_setting_up_your_own_vagrant_server">2.4.1. Brief notes for setting up your own Vagrant server</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_installing_lsdtopotools_using_docker">3. Installing LSDTopoTools using Docker</a>
+<li><a href="#_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</a></li>
+<li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</a>
 <ul class="sectlevel2">
-<li><a href="#_should_i_use_docker_or_vagrant">3.1. Should I use Docker or Vagrant?</a></li>
-<li><a href="#_the_lsdtopotools_docker_container">3.2. The LSDTopoTools docker container</a></li>
+<li><a href="#_mapping_your_network_drive">4.1. Mapping your network drive</a></li>
+<li><a href="#_getting_on_to_our_servers_with_mobaxterm">4.2. Getting on to our servers with MobaXterm</a></li>
+<li><a href="#_cloning_the_lsdtopotools2_repository">4.3. Cloning the LSDTopoTools2 repository</a></li>
+<li><a href="#_building_the_software">4.4. Building the software</a></li>
+<li><a href="#_making_sure_the_software_works">4.5. Making sure the software works</a></li>
 </ul>
 </li>
-<li><a href="#_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</a></li>
-<li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">5. Installing LSDTopoTools at the University of Edinburgh.</a>
+<li><a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">5. Installing LSDTopoTools using VirtualBox and Vagrant</a>
 <ul class="sectlevel2">
-<li><a href="#_mapping_your_network_drive">5.1. Mapping your network drive</a></li>
-<li><a href="#_getting_on_to_our_servers_with_nx">5.2. Getting on to our servers with NX</a></li>
-<li><a href="#_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</a></li>
-<li><a href="#_testing_the_tool_on_edinburgh_servers">5.4. Testing the tool on Edinburgh servers</a></li>
+<li><a href="#_quick_instructions">5.1. Quick instructions</a></li>
+<li><a href="#_full_instructions_on_setting_up_our_vagrant_servers">5.2. Full instructions on setting up our Vagrant servers</a>
+<ul class="sectlevel3">
+<li><a href="#_first_steps_starting_a_vagrant_box">5.2.1. First steps: Starting a Vagrant box</a></li>
+<li><a href="#_logging_on_to_your_vagrant_box">5.2.2. Logging on to your Vagrant box</a></li>
+<li><a href="#_your_vagrant_box_and_file_syncing">5.2.3. Your Vagrant box and file syncing</a></li>
+<li><a href="#_updating_to_the_latest_versions_of_the_software">5.2.4. Updating to the latest versions of the software</a></li>
+<li><a href="#_shutting_things_down">5.2.5. Shutting things down</a></li>
+<li><a href="#_if_you_want_to_start_from_scratch">5.2.6. If you want to start from scratch</a></li>
+</ul>
+</li>
+<li><a href="#_troubleshooting_a_vagrant_server">5.3. Troubleshooting a vagrant server</a>
+<ul class="sectlevel3">
+<li><a href="#_vagrant_up_doesnt_work">5.3.1. Vagrant up doesn&#8217;t work</a></li>
+<li><a href="#_i_closed_the_window_running_vagrant_how_do_i_shut_it_down">5.3.2. I closed the window running vagrant: how do I shut it down?</a></li>
+<li><a href="#_vagrant_hangs_up_in_powershel_or_terminal_window">5.3.3. Vagrant hangs up in powershel or terminal window</a></li>
+<li><a href="#_file_syncing_doesnt_work">5.3.4. File syncing doesn&#8217;t work</a></li>
+<li><a href="#_i_get_some_crazy_conflict_about_ruby_when_i_run_vagrant_up">5.3.5. I get some crazy conflict about Ruby when I run vagrant up</a></li>
+<li><a href="#_i_ran_vagrant_up_now_what">5.3.6. I ran vagrant up. Now what?</a></li>
+</ul>
+</li>
+<li><a href="#_technical_details_on_vagrant">5.4. Technical details on vagrant</a>
+<ul class="sectlevel3">
+<li><a href="#_brief_notes_for_setting_up_your_own_vagrant_server">5.4.1. Brief notes for setting up your own Vagrant server</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_extra_dependencies_for_swaths_and_point_clouds">6. Extra dependencies for swaths and point clouds</a>
@@ -554,10 +555,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is the most tested. You might consider this the default method.</p>
-</li>
-<li>
-<p>Installation using <a href="https://www.docker.com/">Docker</a>. This has fewer steps than the VirtualBox+Vagrant method. The Docker method and the VirtualBox method are not compatible on Windows machines (using Docker on Windows breaks VirtualBox). It only works on Windows 10 Enterprise and MacOS. If you have one of these systems you might consider Docker.</p>
+<p>Installation using <a href="https://www.docker.com/">Docker</a>. This works for MacOS and Linux well. It works for Windows 10 Enterprise edition. If you don&#8217;t have those operating systems you will need to use <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a> (see below).</p>
 </li>
 <li>
 <p>Native installation on a Linux system. If your native operating system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need. The documents are made under the assumption that you use <a href="https://www.ubuntu.com/">Ubuntu</a>, but if you are a Linux user we are confident you&#8217;ll be able to port the instructions to your native system (usually this involves replacing <code>sudo apt-get</code> with <code>sudo yum</code>).</p>
@@ -565,13 +563,386 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific for Edinburgh students for use on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers.</p>
 </li>
+<li>
+<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is well tested but it requires two bits of software instead of one for [Docker], and instead of a lightweight container you need a full blown Ubuntu system as a virtual machine, meaning that this takes up more space on your hard disk. Also, on Windows machines, it is difficult to install a 64-bit guest operating system: you will probably be limited to a 32-bit system that limits your memory if you use this approach. So if you have MacOS, Linux, or Windows 10 Enterprise you should probably use the Docker installation.</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_installing_lsdtopotools_using_virtualbox_and_vagrant">2. Installing LSDTopoTools using VirtualBox and Vagrant</h2>
+<h2 id="_installing_lsdtopotools_using_docker">2. Installing LSDTopoTools using Docker</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_i_use_docker_or_vagrant">2.1. Should I use Docker or Vagrant?</h3>
+<div class="paragraph">
+<p><strong>Short answer</strong>: If you have MacOS, Linux or Windows 10 Enterprise, use Docker. Otherwise use Vagrant.</p>
+</div>
+<div class="paragraph">
+<p><strong>Long answer</strong>: There are <a href="https://deliciousbrains.com/vagrant-docker-wordpress-development/">many</a>, <a href="https://www.vagrantup.com/intro/vs/docker.html">many</a>, <a href="https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment">many</a> <a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/">articles</a> comparing vagrant to docker.
+The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Enterprise. It does work on any recent version of Linux and MacOS. If you have MacOS, native Linux or Windows 10 Enterprise you should consider using Docker since it involves fewer steps than our VirtualBox+Vagrant setup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_lsdtopotools_docker_container">2.2. The LSDTopoTools docker container</h3>
+<div class="paragraph">
+<p><a href="https://www.docker.com/">Docker</a> is software for creating and managing <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>. These containers are not complete operating systems, like one creates using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a>, so the boot time is quicker. Docker is perhaps simpler to use but does not work on every operating system.</p>
+</div>
+<div class="paragraph">
+<p>The instructions here are a slight modification of <a href="https://hub.docker.com/r/afriel/lsdtopotools/">instructions</a> from <a href="https://github.com/AaronFriel">Aaron Friel</a>.</p>
+</div>
+<div class="paragraph">
+<p>To set up <strong>LSDTopoTools</strong> using Docker:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download and install <a href="https://www.docker.com/docker-windows">Docker for Windows</a> (only works with Windows 10 enterprise), <a href="https://www.docker.com/docker-mac">Docker for Mac</a>, or Docker for <a href="https://www.docker.com/docker-ubuntu">Ubuntu</a> or <a href="https://www.docker.com/docker-debian">Debian</a>.</p>
+</li>
+<li>
+<p>On Mac we recommend installing docker using brew: <code>brew cask install docker</code></p>
+</li>
+<li>
+<p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\DockerBoxes\LSDTopoTools\</code>.</p>
+</li>
+<li>
+<p>Run the following command in a <a href="https://en.wikipedia.org/wiki/Cmd.exe">command prompt</a> or <a href="https://www.wikihow.com/Open-a-Terminal-Window-in-Mac">terminal for Mac</a> or Linux (if you use Linux I am sure you don&#8217;t need instruction on how to open a terminal):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">docker run --rm -it -v C:\DockerBoxes\LSDTopoTools\:/LSDTopoTools afriel/lsdtopotools</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that you will need to modify the path (here <code>C:\DockerBoxes\LSDTopoTools\</code>) to reflect your own directory where you want your LSDTopoTools files.</p>
+</div>
+</li>
+<li>
+<p>You should get a prompt that looks like this, perhaps with some different
+letters and numbers after the @:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root@9f73030d8598:/LSDTopoTools#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If this is your first time using the tools and your LSDTopoTools directory is
+empty, you will need to run the install script. In the prompt, enter:
+<code>install.sh</code> and hit <code>enter</code>.</p>
+</li>
+<li>
+<p>Some users have reported permissions problems with running <code>install.sh</code> on a fresh docker install. If this happens you need to run this command <code>chmod 0744 /bin/install.sh</code> to update the permissions on the install script and then run <code>install.sh</code> as normal.</p>
+</li>
+<li>
+<p>Follow docker documentation for your operating system to start and shut down docker containers.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our software is designed for linux operating systems but we do recommend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start a terminal session.</p>
+</li>
+<li>
+<p>Install some essential softare (we will use Ubuntu installation, you need to modify these if you are on another version of Linux). This assumes you have the GNU c++ tools:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install -y git
+$ sudo apt-get install -y gdal-bin
+$ sudo apt-get install -y python-gdal
+$ sudo apt-get install -y libfftw3-dev
+$ sudo apt-get install -y cmake</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Go the the directory where you want to install <strong>LSDTopoTools</strong>.</p>
+</li>
+<li>
+<p>Download our setup script.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the setup tool:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 1</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In vagrant it always starts in the root directory (this is for file syncing purposes). However, if your native operating system is Linux, then you can either install in your home directory (<code>-id 0</code>) or in the directory where you called LSDTopoToolsSetup.py (<code>-id 1</code>).
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>If <code>wget</code> doesn&#8217;t work, you can follow the link:
+<a href="https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</a><br>
+Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.</p>
+</li>
+<li>
+<p>The <code>LSDTopoToolsSetup.py</code> tool has a number of options: if you want a preview of what it does, you can call its help options:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -h</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick Setup for Edinburgh Geoscience users</div>
+<div class="paragraph">
+<p><strong>If it is the first time you are using LSDTopoTools</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the windows search bar, look for <strong>MobaXterm personal edition</strong>.</p>
+</li>
+<li>
+<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
+</li>
+<li>
+<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
+</li>
+<li>
+<p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
+</li>
+<li>
+<p>Go into your T: drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
+</li>
+<li>
+<p>Now enter: <code>git clone <a href="https://github.com/LSDtopotools/LSDTopoTools2.git" class="bare">https://github.com/LSDtopotools/LSDTopoTools2.git</a></code></p>
+</li>
+<li>
+<p>Now enter: <code>cd LSDTopoTools2/src/</code></p>
+</li>
+<li>
+<p>Now enter: <code>sh build.sh</code></p>
+</li>
+<li>
+<p>You will need to wait a bit for this step.</p>
+</li>
+<li>
+<p>Now enter: <code>cd ..</code></p>
+</li>
+<li>
+<p>Finally enter: <code>sh lsdtt2_terminal.sh</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>If you have already followed the instructions above once</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the windows search bar, look for <strong>MobaXterm personal edition</strong>.</p>
+</li>
+<li>
+<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
+</li>
+<li>
+<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
+</li>
+<li>
+<p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code></p>
+</li>
+<li>
+<p>Go into your T: drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
+</li>
+<li>
+<p>Now enter: <code>cd LSDTopoTools2</code></p>
+</li>
+<li>
+<p>Finally enter: <code>sh lsdtt2_terminal.sh</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mapping_your_network_drive">4.1. Mapping your network drive</h3>
+<div class="paragraph">
+<p>You will need access to your data on the network drive to use <strong>LSDTopoTools</strong>. You only need to do this one in any computer lab (and possibly only once ever):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a file explorer window and under computer select the "University drive":</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Udrive.jpg" alt="The U drive">
+</div>
+<div class="title">Figure 1. The university drive</div>
+</div>
+</li>
+<li>
+<p>Then go into the Science and Engineering folder ("SCE"):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/SCE.jpg" alt="SCE">
+</div>
+<div class="title">Figure 2. The science and engineering folder</div>
+</div>
+</li>
+<li>
+<p>Then into the GeoSciences folder ("GEOS"):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/GEOS.jpg" alt="GEOS">
+</div>
+<div class="title">Figure 3. The geosciences folder</div>
+</div>
+</li>
+<li>
+<p>Then into the Drive Mapping folder ("drive_mapping"):</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/DMAP.jpg" alt="Drive mapping">
+</div>
+<div class="title">Figure 4. The drive mapping folder</div>
+</div>
+</li>
+<li>
+<p>And finally double click the shortcut "Access Netdata":</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/NDATA.jpg" alt="Access netdata">
+</div>
+<div class="title">Figure 5. The access netdata shortcut</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_on_to_our_servers_with_mobaxterm">4.2. Getting on to our servers with MobaXterm</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the windows search to find the program <strong>MobaXterm</strong>.</p>
+</li>
+<li>
+<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
+</li>
+<li>
+<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
+</li>
+<li>
+<p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
+</li>
+<li>
+<p>Go into your <strong>T:</strong> drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cloning_the_lsdtopotools2_repository">4.3. Cloning the LSDTopoTools2 repository</h3>
+<div class="paragraph">
+<p><strong>LSDTopoTools2</strong> lives in a <a href="https://github.com/">github</a> repository and you use a program names <a href="https://git-scm.com/">git</a> to get it. Don&#8217;t worry, this is easy.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type (or copy and paste): <code>git clone <a href="https://github.com/LSDtopotools/LSDTopoTools2.git" class="bare">https://github.com/LSDtopotools/LSDTopoTools2.git</a></code></p>
+</li>
+<li>
+<p>It will download some stuff. Now you need to build the software.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_building_the_software">4.4. Building the software</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type: <code>cd LSDTopoTools2/src</code></p>
+</li>
+<li>
+<p>Type: <code>sh build.sh</code></p>
+</li>
+<li>
+<p>Wait a bit until it finishes. It should take a minute or two.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_making_sure_the_software_works">4.5. Making sure the software works</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>cd ..</code> (this puts you into the main <strong>LSDTopoTools2</strong> directory)</p>
+</li>
+<li>
+<p>Now type: <code>sh lastt2_terminal.sh</code></p>
+</li>
+<li>
+<p>You can test the softare by typing: <code>lsdtt-basic-metrics</code> and see if it actually runs the program (it won&#8217;t do any analysis yet but it will tell you to give it some files).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_lsdtopotools_using_virtualbox_and_vagrant">5. Installing LSDTopoTools using VirtualBox and Vagrant</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Important note</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Starting in October 2018, we have moved to <a href="LSDTT_installation.html#_installing_lsdtopotools_using_docker">Docker as the default installation method</a>.
+If you use MacOS, Linux, or Windows 10 Enterprise, we suggest you use Docker. Otherwise, you should use this installation method.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Our most tested method uses two software packages, which are both free to download:</p>
 </div>
@@ -614,7 +985,7 @@ As of 22-Dec-2017 Vagrant 2.0.1 has conflicts with some ruby packages. Make sure
 </table>
 </div>
 <div class="sect2">
-<h3 id="_quick_instructions">2.1. Quick instructions</h3>
+<h3 id="_quick_instructions">5.1. Quick instructions</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Quick instructions for starting a Vagrant server with LSDTopoTools</div>
@@ -698,9 +1069,9 @@ If you are running <code>vagrant up</code> for the first time it can take some t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_full_instructions_on_setting_up_our_vagrant_servers">2.2. Full instructions on setting up our Vagrant servers</h3>
+<h3 id="_full_instructions_on_setting_up_our_vagrant_servers">5.2. Full instructions on setting up our Vagrant servers</h3>
 <div class="sect3">
-<h4 id="_first_steps_starting_a_vagrant_box">2.2.1. First steps: Starting a Vagrant box</h4>
+<h4 id="_first_steps_starting_a_vagrant_box">5.2.1. First steps: Starting a Vagrant box</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -852,7 +1223,7 @@ If you want to update the base box you can use <code>vagrant box update</code> c
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logging_on_to_your_vagrant_box">2.2.2. Logging on to your Vagrant box</h4>
+<h4 id="_logging_on_to_your_vagrant_box">5.2.2. Logging on to your Vagrant box</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -970,7 +1341,7 @@ You will run everything through an ssh terminal, using a command line interface.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_your_vagrant_box_and_file_syncing">2.2.3. Your Vagrant box and file syncing</h4>
+<h4 id="_your_vagrant_box_and_file_syncing">5.2.3. Your Vagrant box and file syncing</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1016,7 +1387,7 @@ Not only that, but you can modify the code, update python scripts, change parame
 </div>
 </div>
 <div class="sect3">
-<h4 id="_updating_to_the_latest_versions_of_the_software">2.2.4. Updating to the latest versions of the software</h4>
+<h4 id="_updating_to_the_latest_versions_of_the_software">5.2.4. Updating to the latest versions of the software</h4>
 <div class="paragraph">
 <p>To check out the latest version of our software you can run the <a href="https://www.vagrantup.com/docs/cli/provision.html">vagrant provision</a> command</p>
 </div>
@@ -1028,7 +1399,7 @@ PS: &gt; vagrant provision</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_shutting_things_down">2.2.5. Shutting things down</h4>
+<h4 id="_shutting_things_down">5.2.5. Shutting things down</h4>
 <div class="paragraph">
 <p>When you are finished with your session, you just need to go into the powershell or a terminal and type:</p>
 </div>
@@ -1039,7 +1410,7 @@ PS: &gt; vagrant provision</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_if_you_want_to_start_from_scratch">2.2.6. If you want to start from scratch</h4>
+<h4 id="_if_you_want_to_start_from_scratch">5.2.6. If you want to start from scratch</h4>
 <div class="paragraph">
 <p>If you want to remove the virtual machine, start it up and then run <a href="https://www.vagrantup.com/docs/cli/destroy.html">vagrant destroy</a>:</p>
 </div>
@@ -1052,12 +1423,12 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_troubleshooting_a_vagrant_server">2.3. Troubleshooting a vagrant server</h3>
+<h3 id="_troubleshooting_a_vagrant_server">5.3. Troubleshooting a vagrant server</h3>
 <div class="paragraph">
 <p>There are a few common problems people have when running a vagrant server.</p>
 </div>
 <div class="sect3">
-<h4 id="_vagrant_up_doesnt_work">2.3.1. Vagrant up doesn&#8217;t work</h4>
+<h4 id="_vagrant_up_doesnt_work">5.3.1. Vagrant up doesn&#8217;t work</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1070,7 +1441,7 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_i_closed_the_window_running_vagrant_how_do_i_shut_it_down">2.3.2. I closed the window running vagrant: how do I shut it down?</h4>
+<h4 id="_i_closed_the_window_running_vagrant_how_do_i_shut_it_down">5.3.2. I closed the window running vagrant: how do I shut it down?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1080,7 +1451,7 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_vagrant_hangs_up_in_powershel_or_terminal_window">2.3.3. Vagrant hangs up in powershel or terminal window</h4>
+<h4 id="_vagrant_hangs_up_in_powershel_or_terminal_window">5.3.3. Vagrant hangs up in powershel or terminal window</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1090,7 +1461,7 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_file_syncing_doesnt_work">2.3.4. File syncing doesn&#8217;t work</h4>
+<h4 id="_file_syncing_doesnt_work">5.3.4. File syncing doesn&#8217;t work</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1103,7 +1474,7 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_i_get_some_crazy_conflict_about_ruby_when_i_run_vagrant_up">2.3.5. I get some crazy conflict about Ruby when I run vagrant up</h4>
+<h4 id="_i_get_some_crazy_conflict_about_ruby_when_i_run_vagrant_up">5.3.5. I get some crazy conflict about Ruby when I run vagrant up</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1113,7 +1484,7 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_i_ran_vagrant_up_now_what">2.3.6. I ran vagrant up. Now what?</h4>
+<h4 id="_i_ran_vagrant_up_now_what">5.3.6. I ran vagrant up. Now what?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1124,12 +1495,12 @@ PS: &gt; vagrant destroy</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_technical_details_on_vagrant">2.4. Technical details on vagrant</h3>
+<h3 id="_technical_details_on_vagrant">5.4. Technical details on vagrant</h3>
 <div class="paragraph">
 <p>Here are some technical details on vagrant. Hopefully you will never have to read any of this.</p>
 </div>
 <div class="sect3">
-<h4 id="_brief_notes_for_setting_up_your_own_vagrant_server">2.4.1. Brief notes for setting up your own Vagrant server</h4>
+<h4 id="_brief_notes_for_setting_up_your_own_vagrant_server">5.4.1. Brief notes for setting up your own Vagrant server</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1278,371 +1649,6 @@ Not all base boxes work! On many windows machines, you can only run a 32 bit ver
 <p>Were the first folder is the folder on the host machine and the second is the folder on the Vagrant box.</p>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_lsdtopotools_using_docker">3. Installing LSDTopoTools using Docker</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_should_i_use_docker_or_vagrant">3.1. Should I use Docker or Vagrant?</h3>
-<div class="paragraph">
-<p>There are <a href="https://deliciousbrains.com/vagrant-docker-wordpress-development/">many</a>, <a href="https://www.vagrantup.com/intro/vs/docker.html">many</a>, <a href="https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment">many</a> <a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/">articles</a> comparing vagrant to docker.
-The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Enterprise. It does work on any recent version of Linux and MacOS. However the developers of <strong>LSDTopoTools</strong> don&#8217;t have access to Windows 10 Enterprise so can&#8217;t test the Docker versions on Windows, so we can&#8217;t offer support of this installation option.
-However if you have MacOS, native Linux or Windows 10 Enterprise you should consider using Docker since it involves fewer steps than our VirtualBox+Vagrant setup.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_the_lsdtopotools_docker_container">3.2. The LSDTopoTools docker container</h3>
-<div class="paragraph">
-<p><a href="https://www.docker.com/">Docker</a> is software for creating and managing <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>. These containers are not complete operating systems, like one creates using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a>, so the boot time is quicker. Docker is perhaps simpler to use but does not work on every operating system.</p>
-</div>
-<div class="paragraph">
-<p>The instructions here are a slight modification of <a href="https://hub.docker.com/r/afriel/lsdtopotools/">instructions</a> from <a href="https://github.com/AaronFriel">Aaron Friel</a>.</p>
-</div>
-<div class="paragraph">
-<p>To set up <strong>LSDTopoTools</strong> using Docker:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download and install <a href="https://www.docker.com/docker-windows">Docker for Windows</a> (only works with Windows 10 enterprise), <a href="https://www.docker.com/docker-mac">Docker for Mac</a>, or Docker for <a href="https://www.docker.com/docker-ubuntu">Ubuntu</a> or <a href="https://www.docker.com/docker-debian">Debian</a>.</p>
-</li>
-<li>
-<p>On Mac we recommend installing docker using brew: <code>brew cask install docker</code></p>
-</li>
-<li>
-<p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\DockerBoxes\LSDTopoTools\</code>.</p>
-</li>
-<li>
-<p>Run the following command in a <a href="https://en.wikipedia.org/wiki/Cmd.exe">command prompt</a> or <a href="https://www.wikihow.com/Open-a-Terminal-Window-in-Mac">terminal for Mac</a> or Linux (if you use Linux I am sure you don&#8217;t need instruction on how to open a terminal):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">docker run --rm -it -v C:\DockerBoxes\LSDTopoTools\:/LSDTopoTools afriel/lsdtopotools</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that you will need to modify the path (here <code>C:\DockerBoxes\LSDTopoTools\</code>) to reflect your own directory where you want your LSDTopoTools files.</p>
-</div>
-</li>
-<li>
-<p>You should get a prompt that looks like this, perhaps with some different
-letters and numbers after the @:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>root@9f73030d8598:/LSDTopoTools#</pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If this is your first time using the tools and your LSDTopoTools directory is
-empty, you will need to run the install script. In the prompt, enter:
-<code>install.sh</code> and hit <code>enter</code>.</p>
-</li>
-<li>
-<p>Some users have reported permissions problems with running <code>install.sh</code> on a fresh docker install. If this happens you need to run this command <code>chmod 0744 /bin/install.sh</code> to update the permissions on the install script and then run <code>install.sh</code> as normal.</p>
-</li>
-<li>
-<p>Follow docker documentation for your operating system to start and shut down docker containers.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Our software is designed for linux operating systems but we do recommend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Start a terminal session.</p>
-</li>
-<li>
-<p>Install some essential softare (we will use Ubuntu installation, you need to modify these if you are on another version of Linux). This assumes you have the GNU c++ tools:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install -y git
-$ sudo apt-get install -y gdal-bin
-$ sudo apt-get install -y python-gdal
-$ sudo apt-get install -y libfftw3-dev
-$ sudo apt-get install -y cmake</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Go the the directory where you want to install <strong>LSDTopoTools</strong>.</p>
-</li>
-<li>
-<p>Download our setup script.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Run the setup tool:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 1</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In vagrant it always starts in the root directory (this is for file syncing purposes). However, if your native operating system is Linux, then you can either install in your home directory (<code>-id 0</code>) or in the directory where you called LSDTopoToolsSetup.py (<code>-id 1</code>).
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If <code>wget</code> doesn&#8217;t work, you can follow the link:
-<a href="https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</a><br>
-Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.</p>
-</li>
-<li>
-<p>The <code>LSDTopoToolsSetup.py</code> tool has a number of options: if you want a preview of what it does, you can call its help options:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -h</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_lsdtopotools_at_the_university_of_edinburgh">5. Installing LSDTopoTools at the University of Edinburgh.</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Quick Setup for Edinburgh Geoscience users</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Start an <a href="https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx">nx session</a>.</p>
-</li>
-<li>
-<p>Open a terminal window.</p>
-</li>
-<li>
-<p>Go to your home directory: <code>cd ~</code></p>
-</li>
-<li>
-<p>Download the setup tool:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Run the setup tool by typing</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>See <a href="#_testing_the_tool_on_edinburgh_servers">instructions below</a> for testing the tool.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_mapping_your_network_drive">5.1. Mapping your network drive</h3>
-<div class="paragraph">
-<p>You will need access to your data on the network drive to use <strong>LSDTopoTools</strong>. You only need to do this one in any computer lab (and possibly only once ever):</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Open a file explorer window and under computer select the "University drive":</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Udrive.jpg" alt="The U drive">
-</div>
-<div class="title">Figure 1. The university drive</div>
-</div>
-</li>
-<li>
-<p>Then go into the Science and Engineering folder ("SCE"):</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/SCE.jpg" alt="SCE">
-</div>
-<div class="title">Figure 2. The science and engineering folder</div>
-</div>
-</li>
-<li>
-<p>Then into the GeoSciences folder ("GEOS"):</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/GEOS.jpg" alt="GEOS">
-</div>
-<div class="title">Figure 3. The geosciences folder</div>
-</div>
-</li>
-<li>
-<p>Then into the Drive Mapping folder ("drive_mapping"):</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/DMAP.jpg" alt="Drive mapping">
-</div>
-<div class="title">Figure 4. The drive mapping folder</div>
-</div>
-</li>
-<li>
-<p>And finally double click the shortcut "Access Netdata":</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/NDATA.jpg" alt="Access netdata">
-</div>
-<div class="title">Figure 5. The access netdata shortcut</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_getting_on_to_our_servers_with_nx">5.2. Getting on to our servers with NX</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We will be working on the University of Edinburgh servers.</p>
-</li>
-<li>
-<p>First you should start an <a href="https://www.nomachine.com/">NX</a> session. NX is installed on all the computer labs in GeoScience (and in many other computer labs) Follow these instructions: <a href="https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx" class="bare">https://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx</a></p>
-</li>
-<li>
-<p>You will get something that looks like a desktop. Right click anywhere in the desktop and select "open terminal".</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_using_the_lsdtopotools_setup_script">5.3. Using the LSDTopoTools setup script</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Before you do anything you need to move onto a decent server (the ssh server is only for logging in). Type either:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ssh burn</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>OR</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ssh achray</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In this window type <code>cd ~</code>. This takes you to your home directory.</p>
-</li>
-<li>
-<p>Download our setup tool by typing:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Run the setup tool by typing</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You should now have <strong>LSDTopoTools</strong> directories installed in your home directory. You can always get to your home directory by typing <code>cd ~</code>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_testing_the_tool_on_edinburgh_servers">5.4. Testing the tool on Edinburgh servers</h3>
-<div class="paragraph">
-<p>Now, if you want to test the tool:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go to the example data directory: <code>cd ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></p>
-</li>
-<li>
-<p>You want to add the path to the main program:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ PATH=$PATH:~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver;export PATH</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-This update to your path is only valid for your current terminal session. You will need to enter this command each time you start a new session.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Download the path modification tool:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>run the tool</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTTParamfileUpdater.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Okay, now tes the program:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ LSDTT_BasicMetrics.out . WA_BasicMetrics01.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>If the program does some things and then says <code>I&#8217;m all finished! Have a nice day.</code> it means it has worked!</p>
-</li>
-</ol>
 </div>
 </div>
 </div>
@@ -2191,7 +2197,7 @@ Calling this script only updates the path for the terminal session from which it
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-29 16:40:46 UTC
+Last updated 2018-09-25 14:37:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
