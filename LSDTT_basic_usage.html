@@ -451,13 +451,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopoTools using the LSDTT_BasicMetrics program</a>
+<li><a href="#_basic_analyses_in_lsdtopotools_using_the_lsdtt_basic_metrics_program">2. Basic analyses in LSDTopoTools using the lsdtt-basic-metrics program</a>
 <ul class="sectlevel2">
 <li><a href="#_your_first_analysis_using_lsdtopotools">2.1. Your first analysis using LSDTopoTools</a>
 <ul class="sectlevel3">
-<li><a href="#_download_and_run_the_setup_tool">2.1.1. Download and run the setup tool</a></li>
-<li><a href="#_add_the_basic_analysis_directory_to_your_path">2.1.2. Add the basic analysis directory to your path</a></li>
-<li><a href="#_run_a_basic_analysis">2.1.3. Run a basic analysis</a></li>
+<li><a href="#_get_the_test_data">2.1.1. Get the test data</a></li>
+<li><a href="#_run_an_analysis">2.1.2. Run an analysis</a></li>
+<li><a href="#_look_at_the_data">2.1.3. Look at the data</a></li>
 </ul>
 </li>
 <li><a href="#_getting_surface_metrics">2.2. Getting surface metrics</a>
@@ -485,7 +485,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_getting_a_channel_network_with_more_information">3.4. Getting a channel network with more information</a></li>
 </ul>
 </li>
-<li><a href="#_analysis_options_for_the_lsdtt_basicmetrics_program">Appendix A: Analysis options for the LSDTT_BasicMetrics program</a>
+<li><a href="#_analysis_options_for_the_lsdtt_basic_metrics_program">Appendix A: Analysis options for the lsdtt-basic-metrics program</a>
 <ul class="sectlevel2">
 <li><a href="#_basic_file_input_and_output">A.1. Basic file input and output</a></li>
 <li><a href="#_dem_preprocessing">A.2. DEM preprocessing</a></li>
@@ -545,13 +545,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>You keep the program and the data in two different directories.</p>
+<p>You call the programs (such as <code>lsdtt-basic-metrics</code> and <code>lsdtt-channel-extraction</code>) from the command line.</p>
 </li>
 <li>
-<p>The directory with the data also has a parameter file, which contains instructions for the program.</p>
-</li>
-<li>
-<p>You have to tell the program where the data directory is, as well as the name of the parameter file. You do this from the command line.</p>
+<p>These programs work on topographic data, and they use a parameter file that tells the programs what to do with the data.</p>
 </li>
 </ul>
 </div>
@@ -572,28 +569,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>We usually keep two terminal windows open.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The first one is in the directory with the program. We call the program from here.</p>
+<p>You run the program from a terminal window</p>
 </li>
 <li>
-<p>The second one is in the directory with the data. The main reason we keep this open is to use the <code>pwd</code> command to copy the directory name into the first terminal window.</p>
+<p>You can supply the program with either a directory, a parameter file, both of these things or none of these things.</p>
 </li>
-</ul>
+<li>
+<p>If you don&#8217;t supply a parameter filename, the program will assume the parameter file is called <code>LSDTT_parameters.driver</code></p>
+</li>
+<li>
+<p>If the parameter file doesn&#8217;t exist, you will get an error message.</p>
+<div class="paragraph">
+<p>Any of the following calls to one of the programs will work, as long as your files are in the right place:</p>
 </div>
-</li>
-<li>
-<p>In the first window you call the program. It will look like this:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./An_LSDTT_program.exe /LSDTopoTools/Topographic_projects/A_project AParameterFile.param</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics
+$ lsdtt-basic-metrics /LSDTopoTools/Topographic_projects/A_project
+$ lsdtt-basic-metrics AParameterFile.param
+$ lsdtt-basic-metrics /LSDTopoTools/Topographic_projects/A_project AParameterFile.param</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>The program name (<code>./An_LSDTT_program.exe</code>), the directory name (<code>/LSDTopoTools/Topographic_projects/A_project</code>) and the parameter file name (<code>AParameterFile.param</code>) will change but all <strong>LSDTopoTools</strong> calls follow this same basic structure.</p>
+<p>The program name (<code>lsdtt-basic-metrics</code>), the directory name (<code>/LSDTopoTools/Topographic_projects/A_project</code>) and the parameter file name (<code>AParameterFile.param</code>) will change but all <strong>LSDTopoTools</strong> calls follow this same basic structure.</p>
 </li>
 <li>
 <p>Now, all parameter files have these basic elements in them:</p>
@@ -605,9 +604,12 @@ read fname: Data_prefix
 write fname: Data_prefix</code></pre>
 </div>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p><strong>You need to change the path and fnames to reflect your data!</strong></p>
-</div>
+</li>
+<li>
+<p>If the <code>read path</code> and <code>write path</code> are not specified, then the program will assume the data is in the same directory as the program is being run.</p>
 </li>
 </ul>
 </div>
@@ -617,8 +619,22 @@ write fname: Data_prefix</code></pre>
 <div class="paragraph">
 <p>You can edit your parameter files in a text editor: this is just a program that edits plain text. <strong>DO NOT</strong> use a word processor. These modify file types. There are many options for text editors but we like <a href="http://brackets.io/">Brackets</a>, or <a href="https://atom.io/">Atom</a> is also a nice alternative.</p>
 </div>
+<div class="sect4">
+<h5 id="_a_note_on_read_and_write_paths">A note on read and write paths</h5>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you leave <code>read path</code> and <code>write path</code> blank, <strong>LSDTopoTools</strong> programs will assume the data is in the current directory and as long as your data is in the same directory as your parameter file you won&#8217;t need to bother with this section at all. 99% of <strong>LSDTopoTools</strong> users can skip this section.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>However, editing the paths can be a bit annoying if you are moving data from place to place, so we have a python script, called <code>LSDTTParamfileUpdater.py</code> that updates the paths in the parameter file for you. The way you run that is:</p>
+<p>Editing read and write paths can be a bit annoying if you are moving data from place to place, so we have a python script, called <code>LSDTTParamfileUpdater.py</code> that updates the paths in the parameter file for you. The way you run that is:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -639,7 +655,7 @@ write fname: Data_prefix</code></pre>
 </div>
 </li>
 <li>
-<p>Once you&#8217;ve done this you are ready to call the program!</p>
+<p>Again, you don&#8217;t need to do any of this if your data is in the same directory as your parameter file and you have left the <code>read path</code> and <code>write path</code> out of your parameter file.</p>
 </li>
 </ol>
 </div>
@@ -647,11 +663,12 @@ write fname: Data_prefix</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_basic_analyses_in_lsdtopotools_using_the_lsdtt_basicmetrics_program">2. Basic analyses in LSDTopoTools using the LSDTT_BasicMetrics program</h2>
+<h2 id="_basic_analyses_in_lsdtopotools_using_the_lsdtt_basic_metrics_program">2. Basic analyses in LSDTopoTools using the lsdtt-basic-metrics program</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter will walk you through some basic topographic analysis using our program <strong>LSDTT_BasicMetrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. Along side these metrics it can also extract channel networks, and get drainage areas. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because:</p>
+<p>This chapter will walk you through some basic topographic analysis using our program <strong>lsdtt-basic-metrics</strong>. This program can extract topographic metrics like slope, aspect and curvature. Along side these metrics it can also extract channel networks, and get drainage areas. The program is intended for everyday data processing. A number of these operations are available in GIS software, but we tend to prefer <strong>LSDTopoTools</strong> because:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -675,6 +692,11 @@ write fname: Data_prefix</code></pre>
 <div class="paragraph">
 <p>The examples in this section are used for both <strong>LSDTopoTools</strong> workshops as well as in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
 </div>
+<div class="sect2">
+<h3 id="_your_first_analysis_using_lsdtopotools">2.1. Your first analysis using LSDTopoTools</h3>
+<div class="paragraph">
+<p>We are going to run an <strong>LSDTopoTools2</strong> program that is used for basic topographic analysis. If you have installed the programs already you just need to make sure that they are in your path. See the installation instructions.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Before you start</div>
@@ -689,193 +711,52 @@ write fname: Data_prefix</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_your_first_analysis_using_lsdtopotools">2.1. Your first analysis using LSDTopoTools</h3>
-<div class="paragraph">
-<p>We are going to run an <strong>LSDTopoTools</strong> program that is used for basic topographic analysis.</p>
-</div>
 <div class="sect3">
-<h4 id="_download_and_run_the_setup_tool">2.1.1. Download and run the setup tool</h4>
+<h4 id="_get_the_test_data">2.1.1. Get the test data</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You need to open a terminal or shell window. If you don&#8217;t know what this is <a href="LSDTT_installation.html">read the installation instructions</a>.</p>
+<p>If you have installed <strong>LSDTopoTools</strong>, you will have a directory somewhere called <code>LSDTopoTools</code>.</p>
 </li>
 <li>
-<p>First open a terminal window. This will be in either a vagrant server, a docker container, an NX window or your native linux system, depending on how you <a href="LSDTT_installation.html">installed <strong>LSDTopoTools</strong></a>. Once you are in a terminal window, you will see some text and then a <code>$</code> symbol which tells you that the linux machine is waiting for a command. Type your commands after this symbol (in docker this might be a <code>#</code> symbol).</p>
-</li>
-<li>
-<p>We are going to download a python script into your home directory. The <code>cd ~</code> command gets you to your home diretory in linux. Go there and then download a file using <code>wget</code>:</p>
+<p>Go into this directory enter the following:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Make sure the <code>wget</code> call (with the web address) is all on one line.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Now we run the setup tool. Doing this will trigger a bunch of stuff that will take a few minutes. You could waste some time <a href="https://twitter.com/David_Rudnick/status/923196115910119424">on the internet</a>.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 0</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_workshop_data.git</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>If you are on a native linux machine or Edinburgh servers, this will install <strong>LSDTopoTools</strong> in your home directory. In docker or vagrant it will install in the root directory (<code>/</code>).</p>
+<p>This will download the test data.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_add_the_basic_analysis_directory_to_your_path">2.1.2. Add the basic analysis directory to your path</h4>
-<div class="paragraph">
-<p>We find it is easiest to keep your data separate from the source code. But unless you want to have lots of terminal windows open you need to call <strong>LSDTopoTools</strong> from your data directories. That is rather annoying so to avoid that you need to add the location of the <strong>LSDTopoTools</strong> directories to your path.</p>
-</div>
-<div class="paragraph">
-<p>In Vagrant or Docker, you do this with</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ PATH=$PATH:/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver;export PATH</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>On the university of Edinburgh servers you do this with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ PATH=$PATH:~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver;export PATH</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The difference between Edinburgh servers (or a native linux installation) and Docker/Vagrant is that <strong>LSDTopoTools</strong> is installed in you home directory on the former and in the root directory in the latter. So for Edinburgh you need a <code>~</code> to begin your path and on DockerVagrant you don&#8217;t.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Adding a path in this way is not permanent so you need to do this each time you start a terminal session. If you want it to be permanent look up on the magical internets how to update your bashrc profile.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_run_a_basic_analysis">2.1.3. Run a basic analysis</h4>
+<h4 id="_run_an_analysis">2.1.2. Run an analysis</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We need two terminal windows open. You already have one open, so open another one. I will colour note the terminal (<span class="red">Terminal 1</span> or <span class="blue">Terminal 2</span>) in each step</p>
+<p>Go into the directory with this data: <code>cd LSDTT_workshop_data</code>.</p>
 </li>
 <li>
-<p><span class="red">Terminal 1</span> In the first terminal do the following:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><span class="red">Terminal 1</span> In docker or vagrant:</p>
+<p>If you have installed <code>LSDTopoTools</code> correctly, you should just be able to call <code>lsdtt-basic-metrics</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics WA_BasicMetrics01.driver</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p><span class="red">Terminal 1</span> In native linux or on Edinburgh&#8217;s servers type:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Git_projects/LSDTopoTools_AnalysisDriver/Analysis_driver</code></pre>
-</div>
-</div>
+<p>This will spit out some information to you screen. It will also make a hillshade of the DEM, which is called <code>WA_FirstExample_hs.bil</code>.</p>
 </li>
 </ol>
 </div>
-</li>
-<li>
-<p><span class="red">Terminal 1</span> We will explain all this stuff in more detail later, for now just execute the commands.</p>
-</li>
-<li>
-<p><span class="blue">Terminal 2</span> Now in the other terminal window type:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For vagrant/docker:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></pre>
 </div>
-</div>
-</li>
-<li>
-<p>For native linux/Edinburgh:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><span class="blue">Terminal 2</span> We want to update the path names. So get the path updater script and run it:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py
-$ python LSDTTParamfileUpdater.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class="red">Terminal 1</span> Okay, now go back to the first terminal window. Type the following:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For docker/vagrant</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics01.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>For native Linux/Edinburgh servers</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics01.driver</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><span class="red">Terminal 1</span> If you had all the directory names correct, you will get some text to screen that ends with a statement about hillshading. In fact all this does is print a hillshade of the raster.</p>
-</li>
+<div class="sect3">
+<h4 id="_look_at_the_data">2.1.3. Look at the data</h4>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>You can look at this raster in <a href="http://www.qgis.org/en/site/">QGIS</a>. We have some <a href="LSDTT_QGIS.html">instructions for QGIS</a>, if you want to see instructions for <a href="LSDTT_QGIS.html#_adding_data">adding data click here</a>.</p>
 </li>
@@ -898,41 +779,16 @@ $ python LSDTTParamfileUpdater.py</code></pre>
 <div class="sect2">
 <h3 id="_getting_surface_metrics">2.2. Getting surface metrics</h3>
 <div class="paragraph">
-<p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:</p>
+<p>Now we will get a bit more information about the DEM. Again, we will run an <strong>LSDTopoTools</strong> program (<code>lsdtt-basic-metrics</code>) that will ingest a raster <code>WA.bil</code> and spit out some new rasters.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>First we make sure directories are correct in the <strong>driver</strong> file. This should have already happened if you have run <code>LSDTTParamfileUpdater.py</code>.</p>
-</li>
-<li>
-<p>Second, we call <code>LSDTT_BasicMetrics.out</code> in the terminal.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the program:</p>
-</li>
-<li>
-<p><span class="red">Terminal 1</span> We run the program again, but with a new driver file. Type the following:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For docker/vagrant</p>
+<p>Start by running the program with the second driver file:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics02.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics WA_BasicMetrics02.driver</code></pre>
 </div>
-</div>
-</li>
-<li>
-<p>For native Linux/Edinburgh servers</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics02.driver</code></pre>
-</div>
-</div>
-</li>
-</ol>
 </div>
 </li>
 <li>
@@ -943,9 +799,6 @@ $ python LSDTTParamfileUpdater.py</code></pre>
 # Comments are preceded by the hash symbol
 
 # These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
-read path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/
-write path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/
 read fname: WA
 write fname: WA_SecondExample
 channel heads fname: NULL
@@ -966,9 +819,6 @@ print_tangential_curvature: true</code></pre>
 <p>The way these are calculated is by fitting a surface of radius <code>surface_fitting_radius</code> to the points in the DEM and then calculating derivatives of that surface.</p>
 </li>
 </ol>
-</div>
-</li>
-</ul>
 </div>
 <div class="sect3">
 <h4 id="_questions_and_tasks_for_surface_metrics">2.2.1. Questions and tasks for surface metrics</h4>
@@ -992,7 +842,7 @@ print_tangential_curvature: true</code></pre>
 <p>Run the program using:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics WA_BasicMetrics03.driver</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1000,7 +850,7 @@ print_tangential_curvature: true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out ~/LSDTopoTools/Topographic_projects/LSDTT_workshop_data/ WA_BasicMetrics03.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics WA_BasicMetrics03.driver</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1050,7 +900,7 @@ print_tangential_curvature: true</code></pre>
 <p>One of the most common operations when analysing topographic data is extracting channel networks. We have an entire <a href="LSDTT_channel_extraction.html">package for that</a>, which has a number of different <a href="https://zenodo.org/record/824198#.WfseyFu0OUk">channel extraction algorithms</a>.</p>
 </div>
 <div class="paragraph">
-<p>However, many users just want channels extracted with the minimum of fuss and so we provide a simple channel profile extraction tool in <strong>LSDTT_BasicMetrics</strong>.</p>
+<p>However, many users just want channels extracted with the minimum of fuss and so we provide a simple channel profile extraction tool in <strong>lsdtt-basic-metrics</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="_what_channels_do_you_want_selecting_basins">3.1. What channels do you want? Selecting basins</h3>
@@ -1063,9 +913,6 @@ print_tangential_curvature: true</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
-read path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
-write path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
 read fname: WA
 write fname: WA_FourthExample
 channel heads fname: NULL
@@ -1200,9 +1047,6 @@ This line needs the entire path to your file. So you will probably need to go in
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
-read path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
-write path: /exports/csce/datastore/geos/users/smudd/analysis_for_papers/Test_basicmetrics/
 read fname: WA
 write fname: WA_SixthExample
 channel heads fname: NULL
@@ -1250,7 +1094,7 @@ print_chi_data_maps: true</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_analysis_options_for_the_lsdtt_basicmetrics_program">Appendix A: Analysis options for the LSDTT_BasicMetrics program</h2>
+<h2 id="_analysis_options_for_the_lsdtt_basic_metrics_program">Appendix A: Analysis options for the lsdtt-basic-metrics program</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>All <strong>LSDTopoTools</strong> parameter files have the same format:</p>
