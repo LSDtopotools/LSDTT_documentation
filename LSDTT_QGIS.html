@@ -482,12 +482,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_an_example_using_data_from_lsdtopotools">4. An example using data from LSDTopoTools</a>
 <ul class="sectlevel2">
-<li><a href="#_getting_the_data_in_linux">4.1. Getting the data in linux</a></li>
-<li><a href="#_a_first_basic_analysis">4.2. A first basic analysis</a>
+<li><a href="#_generating_the_data">4.1. Generating the data</a>
 <ul class="sectlevel3">
-<li><a href="#_the_driver_file_for_the_first_analysis">4.2.1. The driver file for the first analysis</a></li>
+<li><a href="#_what_data_should_you_have_and_where_is_it">4.1.1. What data should you have and where is it?</a></li>
 </ul>
 </li>
+<li><a href="#_a_first_basic_analysis">4.2. A first basic analysis</a></li>
 <li><a href="#_getting_surface_metrics">4.3. Getting surface metrics</a>
 <ul class="sectlevel3">
 <li><a href="#_questions_and_tasks_for_surface_metrics">4.3.1. Questions and tasks for surface metrics</a></li>
@@ -498,7 +498,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_questions_for_channel_extraction">4.4.1. Questions for channel extraction.</a></li>
 </ul>
 </li>
-<li><a href="#_summary_3">4.5. Summary</a></li>
+<li><a href="#_sampling_a_raster_with_point_data">4.5. Sampling a raster with point data.</a>
+<ul class="sectlevel3">
+<li><a href="#_questions">4.5.1. Questions:</a></li>
+</ul>
+</li>
+<li><a href="#_summary_3">4.6. Summary</a></li>
 </ul>
 </li>
 <li><a href="#_projections_and_transformations">Appendix A: Projections and transformations</a>
@@ -1208,44 +1213,32 @@ You can also save as a csv file to just get the selected values. If you only wan
 <p>This chapter gives and example of computing some basic raster and csv data from <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> and then importing it into QGIS. We use these examples in of one the practical exercises in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
 </div>
 <div class="paragraph">
-<p>One of the objectives of this exercise is to get you familiar with moving between a linux environment and QGIS,</p>
+<p>One of the objectives of this exercise is to get you familiar with moving between a linux environment and QGIS.</p>
 </div>
 <div class="sect2">
-<h3 id="_getting_the_data_in_linux">4.1. Getting the data in linux</h3>
+<h3 id="_generating_the_data">4.1. Generating the data</h3>
 <div class="paragraph">
-<p>The data for this excercise <a href="https://github.com/LSDtopotools/LSDTT_workshop_data">lives online</a> and you could download it by clicking on it. But we are going to get the data from command line in a linux environment as a gentle introduction.</p>
+<p>Okay, I am afraid this is something of a bait and switch: we are going to generate data using <strong>LSDTopoTools</strong> and to do that you need to follow the instricutions for <a href="LSDTT_basic_usage.html">basic LSDTopoTools usage</a>.</p>
 </div>
 <div class="paragraph">
-<p>These instructions have been designed for students at the Unviversity of Edinburgh but if you want to try them outside of the Edinburgh computing environment you should <a href="http://lsdtopotools.github.io/LSDTT_book/#_installing_lsdtopotools_using_virtualbox_and_vagrant">read our instructions about how to set up a linux environment on your home computer, regardless of its operating system</a>.</p>
+<p>At the end of that excercise you should</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The first thing you need to do is log into a linux server.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>At Edinburgh, the computer labs should all have <a href="http://www.ed.ac.uk/geosciences/intranet/it/linux-servers/nx">nx</a> installed. Use it to log into the GeoScience servers.</p>
+<p>Have <strong>LSDTopoTools</strong> installed.</p>
 </li>
 <li>
-<p>Outside Edinburgh, you use <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">putty.exe</a> (windows) or ssh (MacOS or Linux) to get into a <a href="http://lsdtopotools.github.io/LSDTT_book/#_installing_lsdtopotools_using_virtualbox_and_vagrant">vagrant LSDTopoTools box</a>.</p>
+<p>Be able to get into a linux environment (using University of Edinburgh servers and MobaXterm, or using Docker on your own computer).</p>
+</li>
+<li>
+<p>Have run the initial <code>lsdtt-basic-metrics</code> commands from the examples.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>If you are at Edinburgh, you need to make a terminal window in the <strong>nx</strong> desktop. All you do is <strong>right-click</strong> and select <strong>open terminal window</strong>.</p>
-</li>
-<li>
-<p>To see where you are, type <code>pwd</code> in the command line:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd</code></pre>
-</div>
-</div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">A very brief overview of linux commands</div>
+<div class="title">A few linux shortcuts</div>
 <div class="paragraph">
 <p><code>pwd</code>  &#8201;&#8212;&#8201;Tells you what directory you are currently in.</p>
 </div>
@@ -1266,151 +1259,29 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_what_data_should_you_have_and_where_is_it">4.1.1. What data should you have and where is it?</h4>
+<div class="paragraph">
+<p>After running the <a href="LSDTT_basic_usage.html">basic LSDTopoTools usage</a>, you will have a bunch of datasets within a directory called <code>LSDTT_workshop_data</code>. If you followed the instructions it will be inside a directory called <code>LSDTopoTools</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In your host operating system (e.g., the Windows computer in the Edinburgh computer labs and not the Linux machine you have accessed through MobaXterm), use your file explorer to find all these files.</p>
 </li>
 <li>
-<p>You can use <code>cd</code> and <code>cd ..</code> to move around. When you have found a good place to put your data get it using <code>wget</code>. Make sure to copy these commands and enter them one line at a time.:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA.hdr
-$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA.bil
-$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA_BasicMetrics01.driver
-$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA_BasicMetrics02.driver
-$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/WA_BasicMetrics03.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Type <code>ls</code> after you have done that to see if you&#8217;ve got the files.</p>
-</div>
+<p>We are going to look at these using QGIS.</p>
 </li>
-<li>
-<p>Now type <code>pwd</code>. <strong>THIS TELLS YOU WHERE YOUR DATA IS!</strong> You need to copy this directory! In you terminal, if you highlight the text linux will automatically copy this data</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/linux_highlight.jpg" alt="Highlighted text">
+</ul>
 </div>
-<div class="title">Figure 33. Highlight in a terminal and the highlighted text will be copied to the clipboard.</div>
-</div>
-<div class="paragraph">
-<p>Save that directory somewhere (like  text file) you can find it again later.</p>
-</div>
-</li>
-</ol>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_a_first_basic_analysis">4.2. A first basic analysis</h3>
-<div class="paragraph">
-<p>This first example is extremely simple but it will introduce you to calling <strong>LSDTopoTools</strong> programs.</p>
-</div>
-<div class="paragraph">
-<p>All <strong>LSDTopoTools</strong> programs are called from a terminal window. They read a file, which we call either a <strong>parameter</strong> or <strong>driver</strong> file which tell the program what to do. When you call the program, you need to tell it where this driver file is. You do this by telling the program the directory in which the <strong>driver</strong> file is located, and the name of the <strong>driver</strong> file.</p>
-</div>
-<div class="paragraph">
-<p>The <strong>LSDTopoTools</strong> program we will be using is called <code>LSDTT_BasicMetrics.out</code>.</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We have put this program online. There are three different versions, since it has been compiled for a few different linux environments:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If you are at Edinburgh, the program is called <code>LSDTT_BasicMetrics.out</code>. It works on Scientific Linux 7.</p>
-</li>
-<li>
-<p>If you are using our vagrant 32 bit ubuntu system, the program is called <code>LSDTT_BasicMetrics_U64.out</code>.</p>
-</li>
-<li>
-<p>If you are using our vagrant 64 bit ubuntu system, the program is called <code>LSDTT_BasicMetrics_U32.out</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Get the version for your operating system. For example, if you are using the Edinburgh servers, get it with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_workshop_data/master/LSDTT_BasicMetrics.out</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Use <code>ls</code> to make sure this program and all the data you downloaded from the last section is in the same folder. It should look like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">smudd@burn practical_02 $ ls
-LSDTT_BasicMetrics.out    WA_BasicMetrics02.driver  WA.bil
-WA_BasicMetrics01.driver  WA_BasicMetrics03.driver  WA.hdr
-smudd@burn practical_02 $</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect3">
-<h4 id="_the_driver_file_for_the_first_analysis">4.2.1. The driver file for the first analysis</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Before we run the program we need to modify the driver file. The first driver file looks like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
-# Comments are preceeded by the hash symbol
-# Documentation can be found here:
-# https://simon-m-mudd.github.io/QGIS_book/#_an_example_using_data_from_lsdtopotools
-
-# These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
-read path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data
-write path: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data
-read fname: WA
-write fname: WA_FirstExample
-channel heads fname: NULL
-
-# The data that you want printed to file
-write_hillshade: true</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You need to be able to edit this file. You should edit it in your host operating system (e.g. not via a terminal or nx, but rather in Windows or MacOS). In the Edinburgh compouter labs there is a text editor called <strong>PSPad</strong>. You can open that program and drag text files into it and edit them. <strong>*Do not use Wordpad or Word!! They insert all kinds of formatting and change the filenames and will, in general, mess everything up!</strong></p>
-</li>
-<li>
-<p>We need to ensure that the <strong>driver</strong> functions point to the correct data. Copy the location of the data by using the <code>pwd</code> command (see last section), and paste that in to these lines (<strong>YOUR DIRECTORY WILL NOT BE THE SAME, USE <code>pwd</code> TO FIND THE CORRECT DIRECTORY</strong>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">read path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
-write path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <strong>must</strong> be a space after the <code>:</code> character.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Now we are going to run the program. We run it in a terminal window like this (make sure you are in the directory with the data):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ chmod 744 LSDTT_BasicMetrics.out
-$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics01.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The first command (<code>chmod</code>) is there just to give you permission to execute the program. The second is the actual program call. <strong>You will need to modify the directory to be the one that contains your data!</strong></p>
-</div>
-</li>
-<li>
-<p>If you had all the directory names correct, you will get some text to screen that ends with a statement about hillshading. In fact all this does is print a hillshade of the raster.</p>
+<p>In the first example you generated a hillshade.</p>
 </li>
 <li>
 <p>Open QGIS and load the raster. The new raster is in the same directory with your other data and is called <code>WA_FirstExample_hs.bil</code>. To load raster data in QGIS follow these instructions: <a href="#_adding_raster_data">Adding raster data</a>. The data will look like this:</p>
@@ -1418,7 +1289,7 @@ $ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practical
 <div class="content">
 <img src="images/WA_HS.jpg" alt="Whiteadder hillshade">
 </div>
-<div class="title">Figure 34. A hillshade of the Whiteadder catchement</div>
+<div class="title">Figure 33. A hillshade of the Whiteadder catchement</div>
 </div>
 </li>
 <li>
@@ -1427,58 +1298,21 @@ $ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practical
 </ol>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="_getting_surface_metrics">4.3. Getting surface metrics</h3>
-<div class="paragraph">
-<p>Don&#8217;t worry, things are going to get easier. We are going to do essentially the same thing we did in the previous section:
-* First we make sure directories are correct in the <strong>driver</strong> file.
-* Second, we call <code>LSDTT_BasicMetrics.out</code> in the terminal.</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>So, this time change the <code>read path</code> and <code>write path</code> in the file <code>WA_BasicMetrics02.driver</code> to your directory.</p>
-</li>
-<li>
-<p>Run the program:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics02.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This does more stuff. We can look at the <strong>driver file</strong>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
-# Comments are preceded by the hash symbol
-# Documentation can be found here:
-# https://simon-m-mudd.github.io/QGIS_book/#_an_example_using_data_from_lsdtopotools
-
-# These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
-read path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
-write path: /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02
-read fname: WA
-write fname: WA_SecondExample
-channel heads fname: NULL
-
-# Parameters for surface metrics
-surface_fitting_radius: 11
-print_slope: true
-print_aspect: true
-print_curvature: true
-print_tangential_curvature: true</code></pre>
-</div>
-</div>
+<p>The second example generated a number of surface fitting rasters. These all have <code><em>secondexample</em></code> in the filename.</p>
 </li>
 <li>
 <p>In this case the program is printing <strong>slope</strong>, <strong>aspect</strong>, <strong>curvature</strong>, and <strong>tangential curvature</strong> rasters. They have filenames that reflect their contents so have a look. Slope tells you how steep the landscape is, aspect which direction the surface is pointing, curvature how, uh, curvy the landscape is (mathematically it is how quickly slope changes in space) and the tangential curvature is how curvy the landscape is in the direction of steepest descent. Essentially tangential curvature tells you how tightly curved contours are and is useful for finding valleys.</p>
 </li>
 <li>
 <p>The way these are calculated is by fitting a surface of radius <code>surface_fitting_radius</code> to the points in the DEM and then calculating derivatives of that surface.</p>
+</li>
+<li>
+<p>Load these into QGIS.</p>
 </li>
 </ol>
 </div>
@@ -1487,7 +1321,7 @@ print_tangential_curvature: true</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Try changing the <code>surface_fitting_radius</code>. What happens?</p>
+<p>Try changing the <code>surface_fitting_radius</code> using <code>lsdtt-basic-metrics</code>. What happens?</p>
 </li>
 </ul>
 </div>
@@ -1520,7 +1354,7 @@ print_tangential_curvature: true</code></pre>
 <div class="content">
 <img src="images/WA_CN.jpg" alt="Whiteadder channel network">
 </div>
-<div class="title">Figure 35. A simple channel network</div>
+<div class="title">Figure 34. A simple channel network</div>
 </div>
 </li>
 </ol>
@@ -1540,7 +1374,111 @@ print_tangential_curvature: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary_3">4.5. Summary</h3>
+<h3 id="_sampling_a_raster_with_point_data">4.5. Sampling a raster with point data.</h3>
+<div class="paragraph">
+<p>In many cases you might want to get some data from your raster to map nto some points you collected either in the field or extracted from a DEM (for example, like your channel network).</p>
+</div>
+<div class="paragraph">
+<p>One way to do this is by using the <a href="#_extracting_data_from_a_raster_onto_points">QGIS point sampling tool</a>. However, that tool is tempermental and we have another way to do that using <strong>LSDTopoTools</strong>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We have added a driver function that extracts information from a raster and adds it to a csv.</p>
+</li>
+<li>
+<p>You can run it jusgt as you ran the <a href="LSDTT_basic_usage.html">previous basic analyses</a> using the parameter file <code>WA_BasicMetrics07.driver</code>.</p>
+</li>
+<li>
+<p>This is what the paramete file looks like:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for burning data
+# You need to run the Third Example before running this example to get the channel network CSV
+# Comments are preceeded by the hash symbol
+# Documentation can be found at: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html
+
+# These are parameters for the file i/o
+read fname: WA
+write fname: WA_SeventhExample
+channel heads fname: NULL
+
+# Convert to json
+convert_csv_to_geojson: true
+
+# Raster burning
+burn_raster_to_csv: true
+burn_raster_prefix: WA_ThirdExample_d8_area
+burn_data_csv_column_header: d8_area
+csv_to_burn_name: WA_ThirdExample_CN.csv</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The key information is at the end.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>burn_raster_to_csv</code>: this switches on the "burning" or data from a raster to a csv file.</p>
+</li>
+<li>
+<p><code>burn_raster_prefix</code>: this is the name of the raster whose data you want on the csv. Don&#8217;t include the extension (e.g., <code>bil</code>)</p>
+</li>
+<li>
+<p><code>burn_data_csv_column_header</code>: this is what you will call the new column in your csv. It could be anything, so choose wisely!</p>
+</li>
+<li>
+<p><code>csv_to_burn_name</code>: This is the name of the csv file you want to append with the data from the raster.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You csv needs to have lat-long coordinates in WGS84 (EPSG:4326)
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_questions">4.5.1. Questions:</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Try to change the raster from which you extract data.</p>
+</li>
+<li>
+<p>Try to do the analysis mulpiple times to get multiple raster datasets on your csv file.</p>
+</li>
+<li>
+<p>Try to make your own csv to burn to the raster.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>First, create a csv with headers latitude and longitude (separated by a comma).</p>
+</li>
+<li>
+<p>Then go into google maps and right click in the Whiteadder catchement, selecting "what&#8217;s here"?</p>
+</li>
+<li>
+<p>Use the lat long coordinates to enter into your csv, save it, and try to burn raster values to it.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_3">4.6. Summary</h3>
 <div class="paragraph">
 <p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
 </div>
