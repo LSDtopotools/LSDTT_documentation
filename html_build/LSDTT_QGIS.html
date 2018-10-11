@@ -503,7 +503,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_questions">4.5.1. Questions:</a></li>
 </ul>
 </li>
-<li><a href="#_summary_3">4.6. Summary</a></li>
+<li><a href="#_channel_steepness_using_chi_analysis">4.6. Channel steepness using chi analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_run_the_chi_example">4.6.1. Run the chi example</a></li>
+</ul>
+</li>
+<li><a href="#_summary_3">4.7. Summary</a></li>
 </ul>
 </li>
 <li><a href="#_projections_and_transformations">Appendix A: Projections and transformations</a>
@@ -1329,24 +1334,13 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 <div class="sect2">
 <h3 id="_draniage_area_and_channel_extraction">4.4. Draniage area and channel extraction</h3>
-<div class="paragraph">
-<p>Finally, we will compute some drainage areas and extract a channel network. To do this run the <strong>driver file</strong> <code>WA_BasicMetrics03.driver</code>.</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First modify the directories in <code>WA_BasicMetrics03.driver</code>.</p>
+<p>If you run the <code>WA_BasicMetrics03.driver</code> you will get a channel network, and some additional rasters.</p>
 </li>
 <li>
-<p>Run the program:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./LSDTT_BasicMetrics.out /home/smudd/courses/Eroding_landscapes/2017/practicals/practical_02 WA_BasicMetrics03.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Yet more stuff will come out. Some are drainage area rasters, but there is also a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
+<p>The channel network is stored as a <code>csv</code> file, <code>WA_ThirdExample_CN.csv</code>.</p>
 </li>
 <li>
 <p>To load this in QGIS, follow the instructions here: <a href="#_import_point_data_from_text_or_spreadsheet">Import point data from text or spreadsheet</a>. You will get something that looks a bit like this:</p>
@@ -1367,7 +1361,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 <p>Try changing the <code>threshold_contributing_pixels</code> parameter. What happens to the channel network.</p>
 </li>
 <li>
-<p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read fname:</code> parameter to reflect the smoothed raster.</p>
+<p>More advanced: You can get a smoothed elevation raster with the following <strong>driver file</strong> line: <code>print_smoothed_elevation: true</code>. Try creating a smoothed elevation raster and then using this smoothed raster for the drainage extraction. You will need to change the <code>read_fname:</code> parameter to reflect the smoothed raster.</p>
 </li>
 </ul>
 </div>
@@ -1478,7 +1472,132 @@ You csv needs to have lat-long coordinates in WGS84 (EPSG:4326)
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary_3">4.6. Summary</h3>
+<h3 id="_channel_steepness_using_chi_analysis">4.6. Channel steepness using chi analysis</h3>
+<div class="paragraph">
+<p>In a final example, we will extract some channel steepness metrics.
+We will be using chi analysis, the purpose of which is to normalise channel profiles for drainage area. See the following paper for details: <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/esp.3302" class="bare">https://onlinelibrary.wiley.com/doi/full/10.1002/esp.3302</a></p>
+</div>
+<div class="paragraph">
+<p>We will use a program within <strong>LSDTopoTools</strong> to do the chi transformation and look at the steepness of the channel. The method is descripbed in this paper: <a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2013JF002981" class="bare">https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2013JF002981</a></p>
+</div>
+<div class="sect3">
+<h4 id="_run_the_chi_example">4.6.1. Run the chi example</h4>
+<div class="paragraph">
+<p>If you have followed the instructions for <a href="">installing LSDTopoTools</a> you will already have the required program.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go into the directory with the example data from the previous examples.</p>
+</li>
+<li>
+<p>Run the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping WA_ChiMapping01.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This is a different program from the last example (<code>lsdtt-chi-mapping</code>) but the parameter file has the same format:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for extracting simple surface metrics
+# Comments are preceeded by the hash symbol
+# Documentation can be found at: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html
+
+# These are parameters for the file i/o
+read fname: WA
+write fname: WA_ChiFirstExample
+channel heads fname: NULL
+
+# Some basin selection parameters
+only_take_largest_basin: true
+find_complete_basins_in_window: false
+print_basin_raster: true
+
+# We only want the study basin so I have selected the elevation of its outlet
+minimum_elevation: 218
+
+# Now the chi analysis
+print_segmented_M_chi_map_to_csv: true
+print_chi_data_maps: true
+convert_csv_to_geojson: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you have looked at <strong>LSDTopoTools</strong> parameter files before, some of this will look familiar to you.</p>
+</li>
+<li>
+<p>This will spit out four files (two geojson and two csv): <code>WA_ChiFirstExample_MChiSegmented</code> and <code>WA_ChiFirstExample_chi_data_map</code>.</p>
+<div class="paragraph">
+<p>==== Looking at channel steepness data</p>
+</div>
+</li>
+<li>
+<p>The <code>WA_ChiFirstExample_MChiSegmented</code> files contain channel steepnesses. If we load the <code>geojson</code> file it will look like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/chi_network.png" alt="Whiteadder chi network">
+</div>
+<div class="title">Figure 35. A channel network from chi analysis</div>
+</div>
+</li>
+<li>
+<p>If you click on the data you will see it has loads of different data elements. One of these is <code>m_chi</code>. This is the channel steepness. Because this was run with A_0_ = 0, <code>m_chi</code> is the same as the channel steepness index, k_sn_.</p>
+</li>
+<li>
+<p>You can right click on this layer, and select properties.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/select_properties.png" alt="Selecting point properties">
+</div>
+<div class="title">Figure 36. Selecting point properties</div>
+</div>
+</li>
+<li>
+<p>Then click on the symbology tab:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/symbology.png" alt="Selecting symbology">
+</div>
+<div class="title">Figure 37. Selecting symbology</div>
+</div>
+</li>
+<li>
+<p>And then click on graduated:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/graduated.png" alt="Graduated colours">
+</div>
+<div class="title">Figure 38. Graduated colours</div>
+</div>
+</li>
+<li>
+<p>And then select the m_chi as the data element by which to colour. You <strong>MUST</strong> click on the <strong>Classify</strong> button below for this to work:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/select_mchi.png" alt="Colour by M_chi_">
+</div>
+<div class="title">Figure 39. Colour by M_chi_</div>
+</div>
+</li>
+<li>
+<p>You should end up with a plot that looks a bit like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/mchi_map.png" alt="Channel steepness map">
+</div>
+<div class="title">Figure 40. Channel steepness map</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_3">4.7. Summary</h3>
 <div class="paragraph">
 <p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
 </div>
