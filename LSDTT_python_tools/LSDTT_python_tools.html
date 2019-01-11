@@ -441,21 +441,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduction">1. Introduction</a>
+<li><a href="#_forewords">1. Forewords</a></li>
+<li><a href="#_introduction">2. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_why_a_python_version">1.1. Why a Python Version</a></li>
-<li><a href="#_how">1.2. How</a></li>
+<li><a href="#_why_a_python_version">2.1. Why a Python Version</a></li>
+<li><a href="#_how">2.2. How</a></li>
 </ul>
 </li>
-<li><a href="#_installation">2. Installation</a>
+<li><a href="#_installation">3. Installation</a>
 <ul class="sectlevel2">
-<li><a href="#_a_python_environment">2.1. A python environment</a>
+<li><a href="#_a_python_environment">3.1. A python environment</a>
 <ul class="sectlevel3">
-<li><a href="#_what_is_a_python_environment_and_why">2.1.1. What is a python environment and why</a></li>
-<li><a href="#_installing_anaminiconda">2.1.2. Installing ana/miniconda</a></li>
-<li><a href="#_terminal_cmd_or_conda_prompt">2.1.3. Terminal, cmd or conda prompt</a></li>
-<li><a href="#_creating_environment">2.1.4. Creating environment</a></li>
-<li><a href="#_installing_the_packages_soon_to_be_automated">2.1.5. Installing the packages (Soon to be automated):</a></li>
+<li><a href="#_what_is_a_python_environment_and_why">3.1.1. What is a python environment and why</a></li>
+<li><a href="#_installing_anaminiconda">3.1.2. Installing ana/miniconda</a></li>
+<li><a href="#_terminal_cmd_or_conda_prompt">3.1.3. Terminal, cmd or conda prompt</a></li>
+<li><a href="#_creating_environment">3.1.4. Creating environment</a></li>
+<li><a href="#_installing_the_packages_soon_to_be_automated">3.1.5. Installing the packages (Soon to be automated):</a></li>
+<li><a href="#_troubleshoot">3.1.6. Troubleshoot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_lsdtopytools_scripting_for_lsdtopotools">4. lsdtopytools: scripting for lsdtopotools</a>
+<ul class="sectlevel2">
+<li><a href="#_code_structure_and_philosophy">4.1. Code structure and philosophy</a>
+<ul class="sectlevel3">
+<li><a href="#_python">4.1.1. Python</a></li>
+<li><a href="#_lsdtopytools_coding_style">4.1.2. lsdtopytools coding style</a></li>
+</ul>
+</li>
+<li><a href="#_getting_started">4.2. Getting started</a>
+<ul class="sectlevel3">
+<li><a href="#_load_your_data_into_the_system">4.2.1. Load your data into the system</a></li>
+<li><a href="#_running_a_routine_general_case">4.2.2. Running a routine: general case</a></li>
+<li><a href="#_save_and_load">4.2.3. Save and load</a></li>
+</ul>
+</li>
+<li><a href="#_raster_preprocessing">4.3. Raster preprocessing</a>
+<ul class="sectlevel3">
+<li><a href="#_principle">4.3.1. Principle</a></li>
+<li><a href="#_use_in_lsdtopytools">4.3.2. Use in lsdtopytools</a></li>
+<li><a href="#_plotting_and_preprocessing_caveats">4.3.3. Plotting and preprocessing caveats</a></li>
 </ul>
 </li>
 </ul>
@@ -464,74 +490,155 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_forewords">1. Forewords</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide aim to explain our <code>Python</code> bindings for <code>LSDTopoTools</code> algorithms (as much as possible). Through this guide, we will go through the reasons of developping such a tool; how to quickly install and use it on <code>Windows</code>, <code>linux</code> (and soon <code>Mac</code>); how the code works and how to run the different routines; our set of automated plotting routines and how to build yours; and finally a development guide for the lower-level interfaces.<br>
-<strong>WARNING:</strong> These tools are still in early development and might be quite unstable.</p>
+<p>This guide aims to explain our <code>Python</code> bindings for <code>LSDTopoTools</code> algorithms (as many as possible). In this guide, we will go through:</p>
+</div>
+<div class="paragraph">
+<p>+
+- the reasons of developping such a tool; how to quickly install and use it on <code>Windows</code>, <code>linux</code> (and probably <code>Mac</code>)</p>
+</div>
+<div class="paragraph">
+<p>+
+- how the code works and how to run the different routines</p>
+</div>
+<div class="paragraph">
+<p>+
+- our set of automated plotting routines and how to build yours</p>
+</div>
+<div class="paragraph">
+<p>+
+- and finally a development guide for the lower-level interfaces</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+These tools are still in early development and might be quite unstable.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_introduction">1. Introduction</h2>
+<h2 id="_introduction">2. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>LSDTopoTools is an open-source research software proving a large set of algorithms to quantitatively describe the morphology of landscapes. It covers a wide range of geomorphological applications with preprocessing routines (e.g., depression filling or carving, filtering), flow routines (Flow direction, accumulation, node ordering, &#8230;&#8203;), channel network extraction and advanced channel head location (TODO::references), blabla TODO::List application with references when my Mendeley will work again.<br>
 The core of he code is written in <code>cpp</code>, a fast and compiled low level language. Its main advantages is its speed, its flexibility (fine grained management of <code>memory</code> and <code>cpu</code>) and its wide community. Our algorithms are widely tested and developped in <code>cpp</code> and direct access is available through source code and docker containers (TODO:: ink to other doc pages).<br></p>
 </div>
 <div class="sect2">
-<h3 id="_why_a_python_version">1.1. Why a Python Version</h3>
+<h3 id="_why_a_python_version">2.1. Why a Python Version</h3>
 <div class="paragraph">
-<p><code>python</code> is a high-level <strong>interpreted</strong> language, meaning that it relies on already installed software to read and run the code: a python environment. Short story long it means that you can quickly write and run different code without worrying about recompiling your code. <code>Python</code> is also free and open-source meaning that you can install whichever versions you need on any computer. <code>Python</code> also is packaged based, meaning that many other people have already coded common tasks and you can install and use their packages easily. This makes software really easy and fast to develop.<br>
-However python has some drawbacks. It simplicity comes with a cost of performances: coding large numerical operations in pure <code>python</code> is slow and you need to find the package that has been optimising the specific routine you want and has binded ti to <code>python</code>. This is the case for most of the "common" routines (e.g., see <code>scipy</code> and <code>numpy</code> for an impressive collection of fast and fully coded numerical routines), but everything is not coded yet.<br>
-These are the reasons for this binding: providing access to the fast and optimised <code>cpp</code> routines from <code>python</code>: we therefore combine the simplicity, portability and software-catalog of <code>python</code> with the raw powerfullness of <code>cpp</code>.</p>
+<p><code>python</code> has many advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Free</strong> and <strong>open-source</strong>, making it a research-friendly language, as research should be accessible to anyone without the need of expensive proprietary software (not all universities, research institutes or individuals have access to MATLAB, ArcGIS or ERDAS for example).</p>
+</li>
+<li>
+<p>it is popular and has a <strong>HUGE</strong> community ready to help if you have a question.</p>
+</li>
+<li>
+<p>it is easy-to-read and has several level of difficulties: it can only be used as a scripting language (= just telling few instruction to the computer, basically as easy as talking to a child) if needed.</p>
+</li>
+<li>
+<p>it is packaged-based: you can install bit of codes other people made really easily and use it. No need to reinvent the wheel if it is already fast enough.</p>
+</li>
+<li>
+<p>Finally, it is simple to install and universal: you can use it on Windows, Linux, Mac, &#8230;&#8203;<br>
+These are the reasons for developping a <code>python</code> binding for our tools!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Of course python also has some drawbacks. It simplicity comes with a cost of performances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Large numerical operations in pure <code>python</code> can quickly become slow and you need to find the package that has been optimising the specific routine you want and has binded it to <code>python</code>. This is the case for most of the "common" routines (e.g., see <code>scipy</code> and <code>numpy</code> for an impressive collection of fast and fully coded numerical routines), but everything is not coded yet.</p>
+</li>
+<li>
+<p><code>Python</code> can become a bit confusing as there are many different ways and packages to do a tasks.<br>
+-</p>
+<div class="paragraph">
+<p>These are the reasons we are still coding in <code>cpp</code> and providing access to these fast and optimised routines from <code>python</code>: we therefore combine the simplicity, portability and software-catalog of <code>python</code> with the raw powerfullness of <code>cpp</code>. The only remaining drawback is that it requires some gymnastics behind the scene to transfer data between the two and to make easy installer, but you won&#8217;t care about that because we are doing it for you.</p>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how">1.2. How</h3>
+<h3 id="_how">2.2. How</h3>
 <div class="paragraph">
-<p>We use a combination of tools to provide three level of access and simplicity.
-. <code>lsdtt_xtensor_python</code>, a first-order interface to <code>LSDTopoTools</code>: (i) <code>xtensors</code>, a <code>cpp</code> data structure with (<em>inter alia</em>) in-built linkage with the universally used <code>python numpy ndarrays</code>; (ii) <code>pybinds11</code>, a complete toolbox to bind <code>cpp</code> data structure to <code>python</code> objects. This low-level interface, <code>lsdtt_xtensor_python</code>, is the backbone of the bindings: it communicates directly with <code>cpp</code> and deal with internal memory ownershop and this kind of questions. You may be interested by using directly this backend if you only want python access to the <code>cpp</code> code with minimum dependencies: if already built in <code>pip</code>, it only requires <code>pybinds</code> and <code>numpy</code> to run but requires minimum knowledge on <code>LSDTopoTools</code> code structure.
-. <code>lsdtopytools</code>, built on the top of <code>lsdtt_xtensor_python</code>, it provides a user friedly interface to the code with straighforward functions. It can loads most of the raster types thanks to <code>rasterio</code> (e.g., <code>tif</code>, <code>bil</code>, <code>ASCII grids</code>), offers powerfull and flexible data management with <code>pandas</code>, easy I/O operations, plotting with <code>matplotlib</code> and (soon) <code>cartopy</code>, and can easily be linked with any other packages.
-. A command line interface (Soon.)</p>
+<p>Some wonderful tools have make this binding possible and deserve credits:
+- <code>xtensors</code>, a <code>cpp</code> data structure with (<em>inter alia</em>) in-built linkage with the universally used <code>python numpy ndarrays</code>. This is developped by <a href="http://quantstack.net/">Quantstack</a>, I recommend having a look on the tools they develop for research, they are truly amazing</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pybind11</code>, a complete toolbox to bind <code>cpp</code> data structure to <code>python</code> objects. This low-level interface, <code>lsdtt_xtensor_python</code>, is the backbone of the bindings: it communicates directly with <code>cpp</code> and deal with internal memory ownership and this kind of questions.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Using these tools, we provide two packages to use our code from <code>python</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lsdtt_xtensor_python</code>, a low level interface. You may be interested by using directly this backend only if you want python access to the <code>cpp</code> code with minimum dependencies: if already built in <code>pip</code>, it only requires <code>pybinds</code> and <code>numpy</code> to run but requires minimum knowledge on <code>LSDTopoTools</code> code structure.</p>
+</li>
+<li>
+<p><code>lsdtopytools</code>, built on the top of <code>lsdtt_xtensor_python</code>, it provides a user friendly interface to the code with straighforward functions and lot of automations. It also provides additional routine to loads most of the raster types (e.g., <code>tif</code>, <code>bil</code>, <code>ASCII grids</code>), easy I/O operations, visualisations, and can easily be linked with any other packages.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_installation">2. Installation</h2>
+<h2 id="_installation">3. Installation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Soon, a <code>conda</code> receipe will be available, making the installation extremely straigh forward. But before that, it still requires few manipulations as I am still working on the best way to do it.</p>
+<p>Soon, a <code>conda</code> receipe will be available, making the installation extremely straigh forward. But before that, it still requires few simple manipulations as I am still working on the best way to do it.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">If you know how python works</div>
 <div class="paragraph">
-<p>Quick instruction if you are used to python environments:
-<strong>lsdtt_xtensor_python (required for any use)</strong>
-So far there are two cases: either we have already built binaries for your OS/cpu:
-<code>pip install lsdtt_xtensor</code> will be extremely fast and easy, we have wheels at least for windows at the moment (linux is somehow tricky, and I don&#8217;t have a mac).
-Otherwise you have to build it on your own machine (soon to be sorted with the conda reicepe):
-<code>conda install -c conda-forge pybind11 xtensor xtensor_python numpy</code>
-Then you need a <code>cpp14</code> ready default compiler (again, this is temporary). If you reach this stage, you are probably on linux so install a gcc&gt;=5 and you shall be alright. <code>pip install lsdtt_xtensor</code> will now take a while but will work (it is directly compiling the code on your machine).
-<strong>lsdtopytools and command-line (for the simple interface)</strong>
-Relatively easy:
-<code>conda install -c conda-forge numpy scipy pandas numba matplotlib gdal rasterio h5py</code>
+<p>Quick instruction if you are used to python environments:<br>
+<strong>lsdtt_xtensor_python (required for any use)</strong><br>
+So far there are two cases: either we have already built binaries for your OS/cpu:<br>
+<code>pip install lsdtt_xtensor</code> will be extremely fast and easy, we have wheels for windows for sure at the moment (linux is somehow tricky, and I don&#8217;t have a mac).<br>
+Otherwise you have to build it on your own machine (soon to be sorted with the conda reicepe):<br>
+<code>conda install -c conda-forge pybind11 xtensor xtensor_python numpy</code><br>
+Then you need a <code>cpp14</code> ready default compiler (again, this is temporary). If you reach this stage, you are probably on linux so install a gcc&gt;=5 and you shall be alright. <code>pip install lsdtt_xtensor</code> will now take a while but will work (it is directly compiling the code on your machine).<br>
+<strong>lsdtopytools and command-line (for the simple interface)</strong><br>
+Relatively easy: Install the dependencies and then the package.<br>
+<code>conda install -c conda-forge numpy scipy pandas numba matplotlib gdal rasterio h5py</code><br>
 <code>pip install lsdtopytools</code></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>The following guide gives you a step-by-step installation guide. It assumes no particular knowledge in computers/coding and will point to external tutorials when potentially needed. It will also explain the different steps, you don&#8217;t have to read it if you are in a hurry, but te more you understand what is happenning in the computer, the easier it is to debug it ( and indirectly, less complaining emails for us as well).</p>
+<p>The following guide gives you a step-by-step installation guide. It assumes no particular knowledge in computers/coding and will point to external tutorials when potentially needed. It will also explain the different steps, you don&#8217;t have to read it if you are in a hurry, but te more you understand what is happenning in the computer, the easier it is to debug it (and indirectly, less complaining emails for us as well).</p>
 </div>
 <div class="sect2">
-<h3 id="_a_python_environment">2.1. A python environment</h3>
+<h3 id="_a_python_environment">3.1. A python environment</h3>
 <div class="paragraph">
 <p>If you already are confortable with <code>python</code> and already have your own environment, you can skip that part.</p>
 </div>
 <div class="sect3">
-<h4 id="_what_is_a_python_environment_and_why">2.1.1. What is a python environment and why</h4>
+<h4 id="_what_is_a_python_environment_and_why">3.1.1. What is a python environment and why</h4>
 <div class="paragraph">
 <p>The first step is to create a python environment. As stated before, <code>python</code> is a "<em>packaged</em>" language: all the code take advantage of other bit of codes made by the community called packages. The (really) good thing with it is that a lot of algorithms are already coded and you can integrate it in your <code>python</code> environment easily.<br>
 The backside is that many packages relies on specific version of other packages and there can be some conflict when the environment becomes massif, the same way ArcGIS extentions are only compatible with some version of this software, or MATLAB scripts that absolutely require the specific version <code>2015rc4267-21f-march2016v2.5</code> to run.<br>
@@ -540,14 +647,14 @@ A practical example: you can have one environment with <code>lsdtopytools</code>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_installing_anaminiconda">2.1.2. Installing ana/miniconda</h4>
+<h4 id="_installing_anaminiconda">3.1.2. Installing ana/miniconda</h4>
 <div class="paragraph">
 <p>You can download <code>miniconda</code> from <a href="https://conda.io/miniconda.html">this website</a>, and install it. It does not matter whether you have <code>miniconda</code> or <code>anaconda</code>: these are just <em>light</em> and <strong>full</strong> versions of the same tool. We advice <code>miniconda</code> to only install what you need and we advice <code>python 3.6</code> or <code>3.7</code>: we only tested our code on these versions. The code is theoretically compatible with <code>3.5</code>, <code>3.4</code> and <code>2.7</code> but I would imagine that if you need such a specific version of <code>python</code>, you&#8217;ll know how to deal with custum installation. Also, you need to know if your computer is 32 (if old) or 64 bits (most of post 2010 computer).<br>
 You do not need admin right to install <code>conda</code> on your machine in case you are using institutions servers or computers.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_terminal_cmd_or_conda_prompt">2.1.3. Terminal, cmd or conda prompt</h4>
+<h4 id="_terminal_cmd_or_conda_prompt">3.1.3. Terminal, cmd or conda prompt</h4>
 <div class="paragraph">
 <p>As many (scientific) tools, the scripts need to be ran in a console/terminal/command prompt/whichever name you want. Many reasons for that: easier to manage, control and automate; quicker; actually easy to use. The only bad side is that it looks less attractive than a nice graphic interface. Basically, rather than double clic on a folder, you need to write <code>cd name_of_the_folder</code> to chagne the current directory for instance.</p>
 </div>
@@ -571,7 +678,7 @@ You do not need admin right to install <code>conda</code> on your machine in cas
 </div>
 </div>
 <div class="sect3">
-<h4 id="_creating_environment">2.1.4. Creating environment</h4>
+<h4 id="_creating_environment">3.1.4. Creating environment</h4>
 <div class="paragraph">
 <p>You are now within a <code>conda</code> environment that includes <code>python</code>. Let&#8217;s have a clean install, cleaner computing is easier to debug. The following command creates an ("sub")environment in you conda installation, where we will install the packages we need. To run the command, just copy-paste it in the terminal and hit <code>enter</code>.<br></p>
 </div>
@@ -601,7 +708,7 @@ You do not need admin right to install <code>conda</code> on your machine in cas
 </div>
 </div>
 <div class="sect3">
-<h4 id="_installing_the_packages_soon_to_be_automated">2.1.5. Installing the packages (Soon to be automated):</h4>
+<h4 id="_installing_the_packages_soon_to_be_automated">3.1.5. Installing the packages (Soon to be automated):</h4>
 <div class="paragraph">
 <p>let&#8217;s now install the required tools to run <code>lsdtt_xtensor_python</code> (the <code>cpp-python</code> mediator): we take advantage of carefully selected bits of other codes to help us.<br>
 The following command installs package. <code>install</code> means (surprise) install, and <code>-c conda-forge</code> means from the channel (= repository) "conda-forge" which is in plain language a big pile of easy-to-install python packages. + The following keywords are the name of the packages: (i) <code>pip</code>, it makes easier <code>python</code> packages installation, (ii) <code>numpy</code>, an <strong>EXTREMELY</strong> used and powerful tools for arrays and matrix calculations. It is written in <code>fortran</code> and <code>c</code>, therefore its built-in functions (e.g., sum, median, reordering, and millions of common tools) are fast. (iii) <code>pybinds</code>, requires to link <code>cpp</code> to <code>python</code>.<br></p>
@@ -633,18 +740,35 @@ This was the trickest part, if the terminal throw a lot of error messages, it me
 </div>
 <div class="paragraph">
 <p><code>lsdtt_xtensor_python</code> is required for any use of the python tools, but only provide minimal interface with the <code>cpp</code> code and require knowledge of its structure. You probably now need <code>lsdtopytools</code>, the full, user-friendly interface that also provide (will provide actually as it is work in progress) easy raster loading/saving, ergonomic data management and visualisation routines. This however requires a bunch of other packages to be install: the simplest a program is, the bigger the amount of code behind is.<br>
-<code>lsdtopytools</code>, even if you won&#8217;t inteact with most of these, basically requires the following packages:
-- <code>gdal</code>: a package, mostly in <code>C</code> that can deals with all the geodesy: projection, transformation, raster downsampling, WGS to UTM and billions of other tasks you don&#8217;t want to face manually. <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html#" class="bare">https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html#</a><em>gdal[More Information].
-- <code>rasterio</code>: provides a nice interface to <code>gdal</code>, because I also want to simplify my coding when possible. <a href="https://rasterio.readthedocs.io/en/latest/">More Information</a>.
-- <code>scipy</code>: alongside with <code>numpy</code>, it provides quick and useful stats, filters, modelling, math, _etc</em> routines for pre/post-processing. <a href="https://www.scipy.org/">More Information</a>.
-- <code>pandas</code>: provides table-like data analysis tools. Very useful to manage dataframes of thousands/millions of river points for examples. <a href="https://www.scipy.org/">More Information</a>.
-- <code>matplotlib</code>: paper-quality plots, unbeatable in this domains even if a bit frustrating sometimes. <a href="https://matplotlib.org/gallery/index.html">More Information</a>.
-- <code>numba</code>: I will get rid of that dependency at some point, it provides speed-up on some internal part of older code I used. Not really needed now I can send stuff to <code>cpp</code> directly with <code>numpy</code>, but I&#8217;ll need time to recode these few routines, sns. <a href="http://numba.pydata.org/">More information</a>.
-- <code>h5py</code>: is (will be, may be, idk yet) used to save file to the disk: fast and well structured, it is theoretically a better alternative to <code>csv</code> files. Outputs with <code>csv</code> will still be available to link with Arc/QGIS if needed. <a href="https://www.h5py.org/">More Information</a>.</p>
+<code>lsdtopytools</code>, even if you won&#8217;t inteact with most of these, basically requires the following packages:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>gdal</code>: a package, mostly in <code>C</code> that can deals with all the geodesy: projection, transformation, raster downsampling, WGS to UTM and billions of other tasks you don&#8217;t want to face manually. <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html#_gdal">More Information</a>.</p>
+</li>
+<li>
+<p><code>rasterio</code>: provides a nice interface to <code>gdal</code>, because I also want to simplify my coding when possible. <a href="https://rasterio.readthedocs.io/en/latest/">More Information</a>.</p>
+</li>
+<li>
+<p><code>scipy</code>: alongside with <code>numpy</code>, it provides quick and useful stats, filters, modelling, math, <em>etc</em> routines for pre/post-processing. <a href="https://www.scipy.org/">More Information</a>.</p>
+</li>
+<li>
+<p><code>pandas</code>: provides table-like data analysis tools. Very useful to manage dataframes of thousands/millions of river points for examples. <a href="https://www.scipy.org/">More Information</a>.</p>
+</li>
+<li>
+<p><code>matplotlib</code>: paper-quality plots, unbeatable in this domains even if a bit frustrating sometimes. <a href="https://matplotlib.org/gallery/index.html">More Information</a>.</p>
+</li>
+<li>
+<p><code>numba</code>: I will get rid of that dependency at some point, it provides speed-up on some internal part of older code I used. Not really needed now I can send stuff to <code>cpp</code> directly with <code>numpy</code>, but I&#8217;ll need time to recode these few routines, sns. <a href="http://numba.pydata.org/">More information</a>.</p>
+</li>
+<li>
+<p><code>h5py</code>: is (will be, may be, idk yet) used to save file to the disk: fast and well structured, it is theoretically a better alternative to <code>csv</code> files. Outputs with <code>csv</code> will still be available to link with Arc/QGIS if needed. <a href="https://www.h5py.org/">More Information</a>.</p>
 <div class="paragraph">
-<p>+
-To install, simply run:</p>
+<p>To install, simply run:</p>
+</div>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -652,7 +776,7 @@ To install, simply run:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It shall run for few minuts, and finally you are ready for the last bit:</p>
+<p>It shall run for few minuts to install these dependencies, and finally you are ready for the last bit:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -666,13 +790,309 @@ To install, simply run:</p>
 <p>And we are done with the installation!</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_troubleshoot">3.1.6. Troubleshoot</h4>
+<div class="paragraph">
+<p>There will be some, no worries.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lsdtopytools_scripting_for_lsdtopotools">4. lsdtopytools: scripting for lsdtopotools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter will explain the basics and more advanced uses of <code>lsdtopytools</code>, our user-friendly python package. The best way to learn is to practice: we therefore provide this code documentation for the details about each routines, but also a (hopefully at some point) dense <code>example</code> folder on the github page with many practical cases you can just copy and adapt to your needs.</p>
+</div>
+<div class="sect2">
+<h3 id="_code_structure_and_philosophy">4.1. Code structure and philosophy</h3>
+<div class="sect3">
+<h4 id="_python">4.1.1. Python</h4>
+<div class="paragraph">
+<p><code>python</code> is a nice high-level programming language. It is part of the <em>interpreted</em> languages, meaning that each line of code is interpreted one by one by a software (here python), other well-know free examples are <code>perl</code>, <code>R</code>, <code>Julia</code> or the somehow popular not-free and not open source <code>MATLAB</code>. These languages are useful to take abstraction of complex machine interaction such as memory management and control other more complex underlying code. There is no need to have advanced <code>python</code> or coding knowledge to use our tools, <code>python</code> is easy to write and read. <a href="https://www.codecademy.com/learn/learn-python">Code academy</a> offers a nice tutorial to get the basis (not mandatory but can be useful).<br>
+To run a custom <code>python</code> script: simply navigate to the right directory within your <code>conda</code> terminal (see installation instructions) and run <code>python name_of_my_script.py</code>.<br>
+If you don&#8217;t want to learn this useful tool, use the command-line interface.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_lsdtopytools_coding_style">4.1.2. lsdtopytools coding style</h4>
+<div class="paragraph">
+<p><code>lsdtopytools</code> is coded in an <em>object oriented</em> logic: we have some precoded routines absed on a common template that you just need to construct with your custom parameters. Basically all our routines are based on an original DEM that you load first. Then each routines depends on others and the code deals internally on how to call these interaction. This sound probably fuzzy so let&#8217;s illustrate with an example:<br>
+Let&#8217;s imagine you have a <code>geotif</code> DEM of your area and you want to extract channel steepness. You need many information to do so: the code needs to know the flow direction of your DEM cells, it needs to know the drainage area, which pixels is a river and many different bits of data you probably don&#8217;t have yet. Thanks to the <em>object orientation</em> you just have to call the <code>ksn</code> extraction routine and the code will know what it needs to calculate beforehand, tells you what it is defaulting and what you could add to cusomise each steps and finally run the wanted routine.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_started">4.2. Getting started</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Your data needs to be in UTM projection to work correctly. Geographic system (e.g., WGS84) are not in metres, therefore the metrics are not straightforward to understand.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_load_your_data_into_the_system">4.2.1. Load your data into the system</h4>
+<div class="paragraph">
+<p>The first step of each routines is to load the base raster: your dem from which the metrics will be calculated. You simply need to import the code (as any <code>python</code> code) and load the dem as follow:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">from lsdtopytools import LSDDEM # LSDEM is the object template abovementioned
+
+my_dem = LSDDEM(file_name = "name+of_my_dem.tif")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+THis is the simplest way to load a dem. It however implies that your dem is in the same folder than your <code>python</code> script. You can load a de with the following options:<br></p>
+</div>
+<div class="paragraph">
+<p>, path = "./", file_name = "test.tif", already_preprocessed = False, verbose = True)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>path</strong>: the path to your file. On windows it can be <code>"C:\Users\s1675537\Desktop\"</code>, on linux <code>"/home/s1675537/Data/"</code>. If you don&#8217;t give this option, the default value is <code>"./"</code>: it means current folder.</p>
+</li>
+<li>
+<p><strong>file_name</strong>: the file name with the extension. <code>lsdtopytools</code> relies on <code>rasterio</code> and <code>gdal</code> to load raster. It can (theoretically) understand <a href="https://www.gdal.org/formats_list.html">these</a> formats. The most common are working (<em>e.g.,</em> <code>.tif</code>, <code>.bil</code> or ASCII grids).</p>
+</li>
+<li>
+<p><strong>already_preprocessed</strong> (boolean): <code>False</code> if your DEM needs preprocessing (see <a href="#_raster_preprocessing">Raster preprocessing</a>) and <code>True</code> if already preprocessed externally.</p>
+</li>
+<li>
+<p><strong>verbose</strong> (boolean): The code can talk: it details what it is doing and tells you where there are some important warnings. Activated by default, you can turn it off with <code>verbose = False</code> if you want less outputs.</p>
+<div class="paragraph">
+<p>We are basically done with the initialisation, all the different metrics generated from DEM require this line of code at the beginning of a script. The next parts will describe the different routines.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_running_a_routine_general_case">4.2.2. Running a routine: general case</h4>
+<div class="paragraph">
+<p>Before explaining each routines, all of them are build following the same pattern around the <code>LSDDEM</code> object. You call the routine ON the object the following way:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+
+my_dem.routine_name(routine_param1 = 54, routine_param2 = "auto")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>It either process and store internally new result, return a dataset to you or generate a figure depending on the routine called. In a single script, if a routine has already been ran, the results are usually stored internally.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_save_and_load">4.2.3. Save and load</h4>
+<div class="paragraph">
+<p>Not available yet. But some routines can take a certain amount of time to run (even in <code>c++</code>), I am therefore implementing a save-load system based on <code>h5py</code> package. The aim is to load and save only what you need behind the scene to save memory and processing time. It will take a wee time to do properly, please bear with me. An easy solution would be to use <code>pickle</code>, but by experience it crashes and uses a LOT of memory when dealing with large dataset (e.g, a raster).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_raster_preprocessing">4.3. Raster preprocessing</h3>
+<div class="sect3">
+<h4 id="_principle">4.3.1. Principle</h4>
+<div class="paragraph">
+<p>Most of the routines uses flow information to generates metrics, the most striking example being river extraction: the program obviously needs to know where the water will flow to calculate rivers. Preprocessing in our case means <em>making sure that all our cells are draining to another one or to an edge</em>. This is essential as DEM are inherantly noisy: this noise will produce artificial pits and depressions. Although minor in the digital topography, these will be fatal to a program as the program will end any flow into these pit therefore biasing drainage area, flow direction, basin outlet or many other routines.<br>
+The solution is to <strong>carve</strong> (sometimes refered as breaching) or to fill these depressions. Respectively, it either "<em>dig</em>" a way out of the depression to the nearest outreach or fill the depression until water can (numerically, there no real water involved) drain to another cell. Carving usually modify less cells than filling but is more computationnaly expensive, and filling is usually required after carving to ensure minimum slope on flat surfaces.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_in_lsdtopytools">4.3.2. Use in lsdtopytools</h4>
+<div class="paragraph">
+<p>In the program, you can either feed the code with a dem externaly preprocessed, see <a href="#_load_your_data_into_the_system">Load your data into the system</a>, or use one of our filing and carving algorithm:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+
+my_dem.PreProcessing(filling = True, carving = True, minimum_slope_for_filling = 0.0001)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It preprocesses your base raster and save it into the associated <code>LSDDEM</code> object. The options are the following:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>carving (boolean): Enables the carving algorithm: Lindsay (2016), DOI: 10.1002/hyp.10648.</p>
+</li>
+<li>
+<p>filling (boolean): Enables the filling algorithm: Wang and Liu (2006), DOI: <a href="https://doi.org/10.1080/13658810500433453" class="bare">https://doi.org/10.1080/13658810500433453</a>.</p>
+</li>
+<li>
+<p>minimum_slope_for_filling: imposes a minimum slope while filling. Keep it low to avoid over filling flat areas.</p>
+<div class="paragraph">
+<p>After being preprocessed, the raster is ready to generate flow metrics.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_and_preprocessing_caveats">4.3.3. Plotting and preprocessing caveats</h4>
+<div class="paragraph">
+<p>This guide does not aim to discuss the filling and carving algorithm performances, relevant literature does that. So short story long, one might want to check the preprocessing result because (i) filling can generate "<em>overfilled</em>" areas, where for example a bridge or a dam creates an artificial obstacle; (ii) carving and filling alters the original data and therefore can generate unwanted artifact that one need to be aware to avoid misinterpretations.<br></p>
+</div>
+<div class="sect4">
+<h5 id="_topographic_map">Topographic map</h5>
+<div class="paragraph">
+<p>We provide some plotting routines to plot the topography and preprocessing results. The first routine generates a nice, publication-ready topographic map. It calculates an hillshade of your topography (simulation of natural light to enhance relief) and drape it on a topographic map, any metrics you want to plot need to be calculated beforehand.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Our plotting routines depend on other sub-modules that you need to import first: <code>from lsdtopytools import quickplot</code> will do the trick for this one.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+
+from lsdtopytools import quickplot
+
+quickplot.plot_nice_topography(my_dem, figure_width = 4, figure_width_units = "inches", cmap = "gist_earth", hillshade = True,  alpha_hillshade = 0.45, color_min = None, color_max = None, dpi = 300, output = "save", format_figure = "png")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p><code>quickplot.plot_nice_topography(my_dem)</code> would work with default parameters, but the following customisations are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>figure_width</code>: the real width of the final figure. A matplotlib figure contains the plot, its axis, labels, padding, etc.</p>
+</li>
+<li>
+<p><code>figure_width_units</code>: Can be <code>inches</code>, which unfortunately is the default in matplotlib or "centimetre", a real unit.</p>
+</li>
+<li>
+<p><code>cmap</code>: the name of the colormap to use. For example <code>"jet"</code> or our default <code>"gist_earth"</code>. Exhaustive list <a href="https://matplotlib.org/examples/color/colormaps_reference.html">on `matplotlib&#8217;s website</a>.</p>
+</li>
+<li>
+<p><code>hillshade</code>: <code>True</code> by default, you can switch it to <code>False</code> to disable the transparent hillshade draped on top of the topography.</p>
+</li>
+<li>
+<p><code>alpha_hillshade</code>: Transparency of the hillshade: 0 is fully transparent and 1 fully opaque (would hide the toography).</p>
+</li>
+<li>
+<p><code>color_min</code>: minimum elevation that will correspond to the minimum color on the colormap. For example if my landscape ranges from 50 to 2000 and if I set this value to 500, all value between 50 and 500 will have the same color. If you don&#8217;t customise it, it will be the minimum value.</p>
+</li>
+<li>
+<p><code>color_max</code>: same principle with the maximum color. If you don&#8217;t customise it, it will be the maximum value.</p>
+</li>
+<li>
+<p><code>dpi</code>: quality of the bitmap if saved. <code>300</code> is an acceptable quality, <code>900</code> would be really fine, for a large poster for example. Increasing the dpi obviously increases the size of the file.</p>
+</li>
+<li>
+<p><code>output</code>: Can be <code>"save"</code> to save a figure in the same folder than the raster you loaded; <code>"show"</code> triggers <code>plt.show()</code> and <code>"return"</code> which returns <code>fig,ax</code> if you need to customise your figure in <code>python</code> using <code>matplotlib</code>.</p>
+</li>
+<li>
+<p><code>format_figure</code>: If <code>output</code> is <code>"save"</code>, you can use <code>"png"</code> (good quality, medium size), <code>"svg"</code> (vector image, can be edited with illustrator (Proprietary), coreldraw (proprietary) or inkscape (free and open-source)) or any other <code>maplotlib</code>-supported format (It can depend on extra dependencies, see <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.savefig.html">this help page from <code>matplotlib</code> documentation</a>).</p>
+<div class="paragraph">
+<p>It will produce the following result:<br></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/example_topo.png" alt="example topo" width="1000" height="600">
+</div>
+<div class="title">Figure 1. Example topographic plot. Script available in the example folder on the github repository (TODO: Add link to the public repo)</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_preprocessing_check">Preprocessing check</h5>
+<div class="paragraph">
+<p>We also provide a quick plotting routine to check the preprocessing results and if any artifact has appeared. Use it as follow.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+quickplot.plot_preprocessing_diff(my_dem)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following customisations are available:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>figure_width</code>: the real width of the final figure. A matplotlib figure contains the plot, its axis, labels, padding, etc.</p>
+</li>
+<li>
+<p><code>figure_width_units</code>: Can be <code>inches</code>, which unfortunately is the default in matplotlib or "centimetre", a real unit.</p>
+</li>
+<li>
+<p><code>cmap</code>: the name of the colormap to use. For example <code>"jet"</code> or our default <code>"gist_earth"</code>. Exhaustive list <a href="https://matplotlib.org/examples/color/colormaps_reference.html">on `matplotlib&#8217;s website</a>.</p>
+</li>
+<li>
+<p><code>color_min</code>: minimum elevation that will correspond to the minimum color on the colormap. For example if my landscape ranges from 50 to 2000 and if I set this value to 500, all value between 50 and 500 will have the same color. If you don&#8217;t customise it, it will be the minimum value.</p>
+</li>
+<li>
+<p><code>color_max</code>: same principle with the maximum color. If you don&#8217;t customise it, it will be the maximum value.</p>
+</li>
+<li>
+<p><code>dpi</code>: quality of the bitmap if saved. <code>300</code> is an acceptable quality, <code>900</code> would be really fine, for a large poster for example. Increasing the dpi obviously increases the size of the file.</p>
+</li>
+<li>
+<p><code>output</code>: Can be <code>"save"</code> to save a figure in the same folder than the raster you loaded; <code>"show"</code> triggers <code>plt.show()</code> and <code>"return"</code> which returns <code>fig,ax</code> if you need to customise your figure in <code>python</code> using <code>matplotlib</code>.</p>
+</li>
+<li>
+<p><code>format_figure</code>: If <code>output</code> is <code>"save"</code>, you can use <code>"png"</code> (good quality, medium size), <code>"svg"</code> (vector image, can be edited with illustrator (Proprietary), coreldraw (proprietary) or inkscape (free and open-source)) or any other <code>maplotlib</code>-supported format (It can depend on extra dependencies, see <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.savefig.html">this help page from <code>matplotlib</code> documentation</a>).</p>
+</li>
+<li>
+<p><code>n_dec_lab</code> (int): precision of the colorbar tick labels.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It will produce the following results: an example with only filling and another one with carving and filling. Note that filling affect the raw data a bit more. A lot of changes happen only on few pixels and are hard to distinct. The significantly filled area correspond to a dam.<br></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/example_PP_delta.png" alt="example PP delta" width="1000" height="600">
+</div>
+<div class="title">Figure 2. Result after filling.</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/example_PP_both.png" alt="example PP both" width="1000" height="600">
+</div>
+<div class="title">Figure 3. Result after carving and fillings.</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-17 17:45:16 UTC
+Last updated 2018-12-22 10:18:44 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
