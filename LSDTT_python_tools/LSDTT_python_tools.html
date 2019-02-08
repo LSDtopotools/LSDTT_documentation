@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.8">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Boris Gailleton, School of Geosciences, University of Edinburgh (b.gailleton@sms.ed.ac.uk)">
 <title>Python bindings for LSDTopoTools: Users and dev guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -80,7 +80,7 @@ h2{font-size:1.6875em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
 h4,h5{font-size:1.125em}
 h6{font-size:1em}
-hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
 em,i{font-style:italic;line-height:inherit}
 strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
@@ -142,9 +142,9 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content{margin-top:1.25em}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
-#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
-#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
 #header .details br{display:none}
@@ -153,8 +153,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #header .details br+span#revremark::before{content:"\00a0|\00a0"}
 #header #revnumber{text-transform:capitalize}
 #header #revnumber::after{content:"\00a0"}
-#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
-#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
 #toc>ul{margin-left:.125em}
 #toc ul.sectlevel0>li>a{font-style:italic}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
@@ -165,13 +165,13 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
 #toc.toc2 ul ul{margin-left:0;padding-left:1em}
 #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
 body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
 @media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
 #toc.toc2{width:20em}
 #toc.toc2 #toctitle{font-size:1.375em}
@@ -188,7 +188,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 @media screen and (min-width:768px){#content{margin-bottom:1.25em}
 .sect1{padding-bottom:1.25em}}
 .sect1:last-child{padding-bottom:0}
-.sect1+.sect1{border-top:1px solid #e7e7e9}
+.sect1+.sect1{border-top:1px solid #efefed}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
 #content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
 #content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
@@ -203,7 +203,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -215,10 +215,10 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
 .sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
-.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
 @media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
-.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
 .literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
 .listingblock pre.highlightjs{padding:0}
 .listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
@@ -231,16 +231,19 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
 table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
 table.pyhltable td.code{padding-left:.75em;padding-right:0}
-pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
 pre.pygments .lineno{display:inline-block;margin-right:.25em}
 table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 .quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
-.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
 .quoteblock blockquote{margin:0;padding:0;border:0}
 .quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
 .quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
-.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote::before{display:none}
 .verseblock{margin:0 1em 1.25em}
 .verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
 .verseblock pre strong{font-weight:400}
@@ -248,13 +251,10 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
 .quoteblock .attribution br,.verseblock .attribution br{display:none}
 .quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
-.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
-.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
 .quoteblock.abstract{margin:0 1em 1.25em;display:block}
 .quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
-.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
-.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
-.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{word-spacing:0;line-height:1.6}
+.quoteblock.abstract blockquote::before,.quoteblock.abstract p::before{display:none}
 table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
 td.tableblock>.content{margin-bottom:-1.25em}
@@ -313,8 +313,8 @@ td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .colist td:not([class]):first-child img{max-width:none}
 .colist td:not([class]):last-child{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
-.imageblock.left{margin:.25em .625em 1.25em 0}
-.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
 .imageblock>.title{margin-bottom:0}
 .imageblock.thumb,.imageblock.th{border-width:6px}
 .imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
@@ -408,7 +408,7 @@ svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
-#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
 body.book #header{text-align:center}
 body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
 body.book #header .details{border:0!important;display:block;padding:0!important}
@@ -462,7 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_lsdtopytools_scripting_for_lsdtopotools">4. lsdtopytools: scripting for lsdtopotools</a>
+<li><a href="#_getting_started_with_lsdtopytools">4. Getting started with lsdtopytools</a>
 <ul class="sectlevel2">
 <li><a href="#_code_structure_and_philosophy">4.1. Code structure and philosophy</a>
 <ul class="sectlevel3">
@@ -486,6 +486,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_drainage_network_extraction">5. Drainage Network Extraction</a>
+<ul class="sectlevel2">
+<li><a href="#_common_flow_routines">5.1. Common Flow Routines</a></li>
+<li><a href="#_channel_network_extraction">5.2. Channel Network Extraction</a></li>
+<li><a href="#_watershed_labelling">5.3. Watershed labelling</a></li>
+<li><a href="#_visualisation_and_data_io">5.4. Visualisation and data I/O</a>
+<ul class="sectlevel3">
+<li><a href="#_plotting_routines">5.4.1. Plotting routines:</a></li>
+<li><a href="#_getting_and_saving_data">5.4.2. Getting and Saving Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -496,21 +509,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>This guide aims to explain our <code>Python</code> bindings for <code>LSDTopoTools</code> algorithms (as many as possible). In this guide, we will go through:</p>
 </div>
-<div class="paragraph">
-<p>+
-- the reasons of developping such a tool; how to quickly install and use it on <code>Windows</code>, <code>linux</code> (and probably <code>Mac</code>)</p>
-</div>
-<div class="paragraph">
-<p>+
-- how the code works and how to run the different routines</p>
-</div>
-<div class="paragraph">
-<p>+
-- our set of automated plotting routines and how to build yours</p>
-</div>
-<div class="paragraph">
-<p>+
-- and finally a development guide for the lower-level interfaces</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the reasons of developping such a tool; how to quickly install and use it on <code>Windows</code>, <code>linux</code> (and probably <code>Mac</code>)</p>
+</li>
+<li>
+<p>how the code works and how to run the different routines</p>
+</li>
+<li>
+<p>our set of automated plotting routines and how to build yours</p>
+</li>
+<li>
+<p>and finally a development guide for the lower-level interfaces</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -553,10 +566,12 @@ The core of he code is written in <code>cpp</code>, a fast and compiled low leve
 <p>it is packaged-based: you can install bit of codes other people made really easily and use it. No need to reinvent the wheel if it is already fast enough.</p>
 </li>
 <li>
-<p>Finally, it is simple to install and universal: you can use it on Windows, Linux, Mac, &#8230;&#8203;<br>
-These are the reasons for developping a <code>python</code> binding for our tools!</p>
+<p>Finally, it is simple to install and universal: you can use it on Windows, Linux, Mac, &#8230;&#8203; ++</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>These are the reasons for developping a <code>python</code> binding for our tools.</p>
 </div>
 <div class="paragraph">
 <p>Of course python also has some drawbacks. It simplicity comes with a cost of performances:</p>
@@ -567,10 +582,9 @@ These are the reasons for developping a <code>python</code> binding for our tool
 <p>Large numerical operations in pure <code>python</code> can quickly become slow and you need to find the package that has been optimising the specific routine you want and has binded it to <code>python</code>. This is the case for most of the "common" routines (e.g., see <code>scipy</code> and <code>numpy</code> for an impressive collection of fast and fully coded numerical routines), but everything is not coded yet.</p>
 </li>
 <li>
-<p><code>Python</code> can become a bit confusing as there are many different ways and packages to do a tasks.<br>
--</p>
+<p><code>Python</code> can become a bit confusing as there are many different ways and packages to do a tasks.<br></p>
 <div class="paragraph">
-<p>These are the reasons we are still coding in <code>cpp</code> and providing access to these fast and optimised routines from <code>python</code>: we therefore combine the simplicity, portability and software-catalog of <code>python</code> with the raw powerfullness of <code>cpp</code>. The only remaining drawback is that it requires some gymnastics behind the scene to transfer data between the two and to make easy installer, but you won&#8217;t care about that because we are doing it for you.</p>
+<p>These are the reasons we are still coding in <code>cpp</code> and providing access to these fast and optimised routines from <code>python</code>: our solution therefore combine the simplicity, portability and software-catalog of <code>python</code> with the raw powerfullness of <code>cpp</code>. The only remaining drawback is that it requires some gymnastics behind the scene to transfer data between the two and to make easy installer, but you won&#8217;t care about that because we are doing it for you.</p>
 </div>
 </li>
 </ul>
@@ -800,17 +814,17 @@ This was the trickest part, if the terminal throw a lot of error messages, it me
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lsdtopytools_scripting_for_lsdtopotools">4. lsdtopytools: scripting for lsdtopotools</h2>
+<h2 id="_getting_started_with_lsdtopytools">4. Getting started with lsdtopytools</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter will explain the basics and more advanced uses of <code>lsdtopytools</code>, our user-friendly python package. The best way to learn is to practice: we therefore provide this code documentation for the details about each routines, but also a (hopefully at some point) dense <code>example</code> folder on the github page with many practical cases you can just copy and adapt to your needs.</p>
+<p>This chapter will explain the basics and general uses of <code>lsdtopytools</code>. The best way to learn is to practice: we therefore provide this code documentation for the details about each routines, but also an (hopefully at some point) <code>example</code> folder on the github page with practical cases you can just copy and adapt to your needs.</p>
 </div>
 <div class="sect2">
 <h3 id="_code_structure_and_philosophy">4.1. Code structure and philosophy</h3>
 <div class="sect3">
 <h4 id="_python">4.1.1. Python</h4>
 <div class="paragraph">
-<p><code>python</code> is a nice high-level programming language. It is part of the <em>interpreted</em> languages, meaning that each line of code is interpreted one by one by a software (here python), other well-know free examples are <code>perl</code>, <code>R</code>, <code>Julia</code> or the somehow popular not-free and not open source <code>MATLAB</code>. These languages are useful to take abstraction of complex machine interaction such as memory management and control other more complex underlying code. There is no need to have advanced <code>python</code> or coding knowledge to use our tools, <code>python</code> is easy to write and read. <a href="https://www.codecademy.com/learn/learn-python">Code academy</a> offers a nice tutorial to get the basis (not mandatory but can be useful).<br>
+<p><code>python</code> is a nice high-level programming language. It is part of the <em>interpreted</em> languages, meaning that each line of code is interpreted one by one by a software (here python), other well-know free examples are <code>perl</code>, <code>R</code>, <code>Julia</code> or the somehow popular not free and not open source <code>MATLAB</code>. These languages are useful to take abstraction of complex machine interaction such as memory management and control other more complex underlying code. There is no need to have advanced <code>python</code> or coding knowledge to use our tools, <code>python</code> is easy to write and read. <a href="https://www.codecademy.com/learn/learn-python">Code academy</a> offers a nice tutorial to get the basis (not mandatory but can be useful).<br>
 To run a custom <code>python</code> script: simply navigate to the right directory within your <code>conda</code> terminal (see installation instructions) and run <code>python name_of_my_script.py</code>.<br>
 If you don&#8217;t want to learn this useful tool, use the command-line interface.</p>
 </div>
@@ -1017,7 +1031,7 @@ quickplot.plot_nice_topography(my_dem, figure_width = 4, figure_width_units = "i
 </li>
 </ul>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/example_topo.png" alt="example topo" width="1000" height="600">
 </div>
@@ -1072,13 +1086,13 @@ quickplot.plot_preprocessing_diff(my_dem)</code></pre>
 <div class="paragraph">
 <p>It will produce the following results: an example with only filling and another one with carving and filling. Note that filling affect the raw data a bit more. A lot of changes happen only on few pixels and are hard to distinct. The significantly filled area correspond to a dam.<br></p>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/example_PP_delta.png" alt="example PP delta" width="1000" height="600">
 </div>
 <div class="title">Figure 2. Result after filling.</div>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/example_PP_both.png" alt="example PP both" width="1000" height="600">
 </div>
@@ -1089,10 +1103,168 @@ quickplot.plot_preprocessing_diff(my_dem)</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_drainage_network_extraction">5. Drainage Network Extraction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter describes how to calculate common flow routines that are required for most of the analysis. All of the routines calculating flows or river-related metrics require the calculation of flow accumulation, direction, drainage area or the actual position of rivers.<br></p>
+</div>
+<div class="sect2">
+<h3 id="_common_flow_routines">5.1. Common Flow Routines</h3>
+<div class="paragraph">
+<p>Before locating the actual channel, the software needs to know few information in order to organise the cells and their connections. This is very straightforward:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+my_dem.CommonFlowRoutines()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So far, this is it. It calculates behind the scene a number of node ordering, flow direction, flow accumulation, drainage area. Node ordering is similar to <a href="https://doi.org/10.1016/j.geomorph.2012.10.008">Braun and Willett, 2013 (fastscape)</a>. Drainage area is based on a <em>D8</em> method from <a href="https://doi.org/10.1016/S0734-189X(84)80011-0">O&#8217;Callaghan and Mark, 1988</a>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+We are still building the <code>python</code> bindings, other methods will be implemented (<em>e.g.,</em> Dinf for drainage area calculations), let us know if you need it soon.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_channel_network_extraction">5.2. Channel Network Extraction</h3>
+<div class="paragraph">
+<p><code>LSDTopoTools</code> extracts rivers by detecting the channel head locations and then building the network following flow direction. Several algorithms are available depending on (i) how important sources location is each case; (ii) your dem resolution (<a href="https://doi.org/10.5194/esurf-4-627-2016">Grieve et al., 2016 for relevant discussion</a>); (iii) landscape characteristics. The generic python function is the following:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+my_dem.ExtractRiverNetwork(method = "name of the method", corresponding_argument_1 = ...)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where each methods has several arguments to customise the extraction.<br></p>
+</div>
+<div class="paragraph">
+<p><code>method = "area_threshold"</code> is the most basic one. It is suitable when your DEM resolution is coarser than about 10m (<em>e.g.,</em> SRTM or ASTER) or if source location is not important. Extremely straightforward and efficient, it initiates a channel when a certain number of other cells are draining into a single one. It only has one parameters:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>area_threshold_min: the number of cells required to initiate a channel.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+We are implementing the other methods now: DREICHT, Pelletier and a geometric method based on Weiner filtering.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watershed_labelling">5.3. Watershed labelling</h3>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+We are still refining these methods. In few cases they can be buggy and requires to play a bit with the parameters to obtain wanted results.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Some routines, for example river concavity analysis, knickpoint extraction or \(k_{sn}\) extraction requires watershed labelling to focus on certain drainage networks. It also ensures that the area you are studying is actually complete: you don&#8217;t want to extract \(\chi\) with biased drainage area for example.<br>
+The extraction is made through the following function, customisable with several methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">...
+my_dem.DefineCatchment(method="name_of_method", param_for_method = ...)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The available methods are the following:<br></p>
+</div>
+<div class="paragraph">
+<p><code>"min_area_pixels"</code> extracts all catchments containing more than a certain amount of pixels. Basic but efficient. It can be customise with the following arguments:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>test_edges</code>: If True, will test if te basin is complete or draining into no data. It will also ignore your basin if there is internal no data.</p>
+</li>
+<li>
+<p><code>min_area_pixels</code>: The number of pixel to select a watershed.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Very soon, I will implement other methods. The most efficient method will be selection by coordinates.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_visualisation_and_data_io">5.4. Visualisation and data I/O</h3>
+<div class="sect3">
+<h4 id="_plotting_routines">5.4.1. Plotting routines:</h4>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+TO DO. I will incorporate routines to plot basin outlines, channel network and source location
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getting_and_saving_data">5.4.2. Getting and Saving Data</h4>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Data will be very soon accessible via <code>pandas</code> dataframes within <code>python</code> (therefore directly savable into <code>csv</code> files). I/O operations for saving processing time will be done via <code>h5py</code>, a htf5 <code>python</code> interface. (htf5 is a very efficient file format for complex storing).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-22 10:18:44 UTC
+Last updated 2019-02-08 12:10:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
