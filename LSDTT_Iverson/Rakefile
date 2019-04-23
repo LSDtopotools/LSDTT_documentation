@@ -10,26 +10,26 @@ namespace :book do
   desc 'build basic book formats'
   task :build => :prebuild do
     puts "Converting to HTML..."
-    `bundle exec asciidoctor LSDTT_python_tools.asc -o LSDTT_python_tools.html`
-    puts " -- HTML output at LSDTT_python_tools.html"
+    `bundle exec asciidoctor LSDTT_Iverson.asc -o LSDTT_Iverson.html`
+    puts " -- HTML output at LSDTT_Iverson.html"
 
     puts "Converting to PDF... (this one takes a while)"
-      `bundle exec asciidoctor-pdf -r asciidoctor-mathematical LSDTT_python_tools.asc -o LSDTT_python_tools.pdf`
-    puts " -- PDF  output at LSDTT_python_tools.pdf"
+      `bundle exec asciidoctor-pdf -r asciidoctor-mathematical LSDTT_Iverson.asc -o LSDTT_Iverson.pdf`
+    puts " -- PDF  output at LSDTT_Iverson.pdf"
   end
 
   desc 'build html book formats'
   task :build_html => :prebuild do
     puts "Converting to HTML..."
-    `bundle exec asciidoctor LSDTT_python_tools.asc -o LSDTT_python_tools.html`
-    puts " -- HTML output at LSDTT_python_tools.html"
+    `bundle exec asciidoctor LSDTT_Iverson.asc -o LSDTT_Iverson.html`
+    puts " -- HTML output at LSDTT_Iverson.html"
   end
 
   desc 'build html with github stylesheet'
   task :build_html_gitcss => :prebuild do
       puts "Converting to HTML with github stylesheet..."
-      `bundle exec asciidoctor LSDTT_python_tools.asc -a stylesheet=github.css -a stylesdir=./stylesheets -o LSDTT_python_tools_github_style.html`
-      puts " -- HTML output at LSDTT_python_tools_github_style.html"
+      `bundle exec asciidoctor LSDTT_Iverson.asc -a stylesheet=github.css -a stylesdir=./stylesheets -o LSDTT_Iverson_github_style.html`
+      puts " -- HTML output at LSDTT_Iverson_github_style.html"
   end
 
 end
