@@ -735,6 +735,31 @@ If you leave <code>read path</code> and <code>write path</code> blank, <strong>L
 <li>
 <p>This will download the test data.</p>
 </li>
+<li>
+<p>If you have updated this data but want to restore to the defaults, go into the data directory (<code>LSDTT_workshop_data</code>) and run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git fetch --all</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git pull origin master</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Occasionally you will forget the <code>fetch</code> command and pull first. This leads to an error which you fix with:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git reset --hard origin/master
+$ git pull origin master</code></pre>
+</div>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -1864,7 +1889,7 @@ We even go through the installation instructions for you here.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2018-09-29 08:50:10 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

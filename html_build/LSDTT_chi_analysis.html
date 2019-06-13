@@ -2640,6 +2640,24 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 <td class="tableblock halign-left valign-top"><p class="tableblock">burned_data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The column header for your burned data. If you want our python plotting tools to be happy, <strong>do not give this a name with spaces</strong>.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secondary_burn_raster_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is for a second burn raster. If true, takes raster data and appends it to csv data of channel points.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secondary_burn_raster_prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is for a second burn raster. The prefix of the raster (without the <code>bil</code> extension) that contains the data to be burned. Does not include the directory path. The raster <strong>MUST</strong> be in the same directory as your input DEM.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secondary_burn_data_csv_column_header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">burned_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is for a second burn raster. The column header for your burned data. If you want our python plotting tools to be happy, <strong>do not give this a name with spaces</strong>.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2946,6 +2964,12 @@ If your lithologic raster is significantly larger than your topographic raster i
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The minimum length of a segment in sampled data nodes. The actual length is approximately this parameter times (1+skip). Note that the computational time required goes nonlinearly up the smaller this number. Note that this sets the shortest knickzone you can detect, although the algorithm can detect waterfalls where there is a jump between segments.  It should be between 6-20.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_segment_length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum length of a segment in sampled data nodes. The actual length is approximately this parameter times (1+skip). A cutoff value for very large DEMs.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">skip</p></td>
@@ -3609,7 +3633,7 @@ You can then obtain the documentation of this script by running the command <cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2018-08-28 15:43:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -647,6 +647,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </li>
+<li>
+<p>When you are finished with your docker session type <code>ctrl+d</code>.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -682,7 +685,7 @@ The docker setup is probably a bit simpler than the vagrant setup but (<em>and t
 </div>
 </li>
 <li>
-<p>We will henceforth assume that you actually have a functioning version of Docker on your host machine. If you want more details about how to use docker, or getting it set up (particularly in Windows, in Linux and MacOS this is more straightforward), see our section on <a href="#Docker notes">docker notes</a>.</p>
+<p>We will henceforth assume that you actually have a functioning version of Docker on your host machine. If you want more details about how to use docker, or getting it set up (particularly in Windows, in Linux and MacOS this is more straightforward), see our section on <a href="#_some_notes_on_docker">docker notes</a>.</p>
 </li>
 </ol>
 </div>
@@ -792,7 +795,19 @@ The docker setup is probably a bit simpler than the vagrant setup but (<em>and t
 </div>
 </div>
 <div class="paragraph">
-<p>This will pull the repo and run it at the same time. <strong>Warning!</strong> This container is 663 Mb so if you just want to do some initial testing use the lightweight alpine version!</p>
+<p>This will pull the repo and run it at the same time.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This container is 663 Mb so if you just want to do some initial testing use the lightweight alpine version!
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -804,11 +819,17 @@ The docker setup is probably a bit simpler than the vagrant setup but (<em>and t
 </div>
 </li>
 <li>
-<p>After that, run the install script:</p>
+<p>Either one of these commands will result in your command line terminating in the <code>#</code> symbol. This indicates that you are insida a docker container.</p>
+</li>
+<li>
+<p>Once you are in one of the two docker containers, run the install script:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>This script grabs the latest version of the code and builds the programs if you don&#8217;t have one that is up to date. It also ensure that the <strong>LSDTopoTools</strong> programs are in your path.</p>
 </div>
 </li>
 <li>
@@ -3045,7 +3066,7 @@ Calling this script only updates the path for the terminal session from which it
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2018-09-26 19:12:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
