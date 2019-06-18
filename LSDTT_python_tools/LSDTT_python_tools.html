@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.8">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Boris Gailleton, School of Geosciences, University of Edinburgh (b.gailleton@sms.ed.ac.uk)">
 <title>Python bindings for LSDTopoTools: Users and dev guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -80,7 +80,7 @@ h2{font-size:1.6875em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
 h4,h5{font-size:1.125em}
 h6{font-size:1em}
-hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
 em,i{font-style:italic;line-height:inherit}
 strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
@@ -142,9 +142,9 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content{margin-top:1.25em}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
-#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
-#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
 #header .details br{display:none}
@@ -153,8 +153,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #header .details br+span#revremark::before{content:"\00a0|\00a0"}
 #header #revnumber{text-transform:capitalize}
 #header #revnumber::after{content:"\00a0"}
-#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
-#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
 #toc>ul{margin-left:.125em}
 #toc ul.sectlevel0>li>a{font-style:italic}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
@@ -165,13 +165,13 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
 #toc.toc2 ul ul{margin-left:0;padding-left:1em}
 #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
 body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
 @media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
 #toc.toc2{width:20em}
 #toc.toc2 #toctitle{font-size:1.375em}
@@ -188,7 +188,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 @media screen and (min-width:768px){#content{margin-bottom:1.25em}
 .sect1{padding-bottom:1.25em}}
 .sect1:last-child{padding-bottom:0}
-.sect1+.sect1{border-top:1px solid #e7e7e9}
+.sect1+.sect1{border-top:1px solid #efefed}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
 #content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
 #content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
@@ -203,7 +203,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -215,10 +215,10 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
 .sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
-.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
 @media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
-.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
 .literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
 .listingblock pre.highlightjs{padding:0}
 .listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
@@ -231,16 +231,19 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
 table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
 table.pyhltable td.code{padding-left:.75em;padding-right:0}
-pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
 pre.pygments .lineno{display:inline-block;margin-right:.25em}
 table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 .quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
-.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
 .quoteblock blockquote{margin:0;padding:0;border:0}
 .quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
 .quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
-.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote::before{display:none}
 .verseblock{margin:0 1em 1.25em}
 .verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
 .verseblock pre strong{font-weight:400}
@@ -248,13 +251,10 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
 .quoteblock .attribution br,.verseblock .attribution br{display:none}
 .quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
-.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
-.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
 .quoteblock.abstract{margin:0 1em 1.25em;display:block}
 .quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
-.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
-.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
-.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{word-spacing:0;line-height:1.6}
+.quoteblock.abstract blockquote::before,.quoteblock.abstract p::before{display:none}
 table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
 td.tableblock>.content{margin-bottom:-1.25em}
@@ -313,8 +313,8 @@ td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .colist td:not([class]):first-child img{max-width:none}
 .colist td:not([class]):last-child{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
-.imageblock.left{margin:.25em .625em 1.25em 0}
-.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
 .imageblock>.title{margin-bottom:0}
 .imageblock.thumb,.imageblock.th{border-width:6px}
 .imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
@@ -408,7 +408,7 @@ svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
-#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
 body.book #header{text-align:center}
 body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
 body.book #header .details{border:0!important;display:block;padding:0!important}
@@ -444,15 +444,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_forewords">1. Forewords</a></li>
 <li><a href="#_introduction">2. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_why_a_python_version">2.1. Why a Python Version</a></li>
-<li><a href="#_how">2.2. How</a></li>
+<li><a href="#_what_is_lsdtopotools">2.1. What is LSDTopoTools</a></li>
+<li><a href="#_why_a_python_version">2.2. Why a Python Version</a></li>
+<li><a href="#_format">2.3. Format</a></li>
 </ul>
 </li>
 <li><a href="#_before_installing">3. Before Installing</a>
 <ul class="sectlevel2">
 <li><a href="#_command_line_interface_what_and_why">3.1. Command-line interface: what and why?</a></li>
 <li><a href="#_python_interpreter_vs_commands">3.2. Python interpreter vs commands</a></li>
-<li><a href="#_computing_environment_or_the_answer_to_the_relentless_why_is_python_so_hard_to_install_question">3.3. Computing environment, or the answer to the relentless "Why is python so hard to install" question</a></li>
+<li><a href="#_computing_environment_or_the_answer_to_the_relentless_question_why_is_python_so_hard_to_install">3.3. Computing environment, or the answer to the relentless question "Why is python so hard to install?"</a></li>
 </ul>
 </li>
 <li><a href="#_installation">4. Installation</a>
@@ -462,9 +463,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_what_is_a_python_environment_and_why">4.1.1. What is a python environment and why</a></li>
 <li><a href="#_installing_anaminiconda">4.1.2. Installing ana/miniconda</a></li>
 <li><a href="#_terminal_cmd_or_conda_prompt">4.1.3. Terminal, cmd or conda prompt</a></li>
-<li><a href="#_creating_environment">4.1.4. Creating environment</a></li>
-<li><a href="#_installing_the_packages_soon_to_be_automated">4.1.5. Installing the packages (Soon to be automated):</a></li>
-<li><a href="#_troubleshoot">4.1.6. Troubleshoot</a></li>
+</ul>
+</li>
+<li><a href="#_creating_environment">4.2. Creating environment</a>
+<ul class="sectlevel3">
+<li><a href="#_installing_the_packages_soon_to_be_automated">4.2.1. Installing the packages (Soon to be automated):</a></li>
+<li><a href="#_troubleshoot">4.2.2. Troubleshoot</a></li>
 </ul>
 </li>
 </ul>
@@ -493,14 +497,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_drainage_network_extraction">6. Drainage Network Extraction</a>
+<li><a href="#_basic_manipulations">6. Basic Manipulations</a>
 <ul class="sectlevel2">
 <li><a href="#_common_flow_routines">6.1. Common Flow Routines</a></li>
 <li><a href="#_channel_network_extraction">6.2. Channel Network Extraction</a></li>
-<li><a href="#_watershed_labelling">6.3. Watershed labelling</a></li>
-<li><a href="#_visualisation_and_data_io">6.4. Visualisation and data I/O</a>
+<li><a href="#_watershed_labeling">6.3. Watershed labeling</a></li>
+<li><a href="#_visualisation">6.4. Visualisation</a>
 <ul class="sectlevel3">
-<li><a href="#_plotting_routines">6.4.1. Plotting routines:</a></li>
+<li><a href="#_base_map_plotting">6.4.1. Base map plotting:</a></li>
 <li><a href="#_getting_and_saving_data">6.4.2. Getting and Saving Data</a></li>
 </ul>
 </li>
@@ -522,7 +526,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The reasons of developping such a tool</p>
 </li>
 <li>
-<p>How to quickly install and use it on <code>Windows</code>, <code>linux</code> (and probably <code>Mac</code>)</p>
+<p>How to quickly install and use it on <code>Windows</code>, <code>linux</code> (and probably <code>iOSs</code>)</p>
 </li>
 <li>
 <p>(Ongoing work) How the code works and how to run the different routines</p>
@@ -531,7 +535,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>(TO DO) Our set of automated plotting routines and how to build yours</p>
 </li>
 <li>
-<p>(TO DO) And finally a development guide for the lower-level interfaces</p>
+<p>(TO DO) And finally a development guide for the lower-level interfaces and contributing to the software.</p>
 </li>
 </ul>
 </div>
@@ -542,7 +546,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-These tools are still in early development and might be quite unstable.
+These tools are still in early development: they might be quite unstable and will probably evolve rapidly.
 </td>
 </tr>
 </table>
@@ -552,12 +556,15 @@ These tools are still in early development and might be quite unstable.
 <div class="sect1">
 <h2 id="_introduction">2. Introduction</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_lsdtopotools">2.1. What is LSDTopoTools</h3>
 <div class="paragraph">
-<p>LSDTopoTools is an open-source research software proving a large set of algorithms to quantitatively describe the morphology of landscapes. It covers a wide range of geomorphological applications with preprocessing routines (e.g., depression filling or carving, filtering), flow routines (Flow direction, accumulation, node ordering, &#8230;&#8203;), channel network extraction and advanced channel head location (TODO::references), blabla TODO::List application with references before uploading that online<br>
-The core of he code is written in <code>cpp</code>, a fast and compiled low level language. Its main advantages is its speed, its flexibility (fine grained management of <code>memory</code> and <code>cpu</code>) and its wide community. Our algorithms are widely tested and developped in <code>cpp</code> and direct access is available through source code and docker containers (TODO:: ink to other doc pages).<br></p>
+<p>LSDTopoTools is an open-source research software proving a large set of algorithms to quantitatively describe landscapes. It covers a wide range of geomorphological applications with preprocessing routines (e.g., depression filling or carving, filtering), flow routines (Flow direction, accumulation, fastscape node ordering, &#8230;&#8203;), channel network extraction and advanced channel head location (e.g., Pelletier 2013, Clubb et al., 2014), Chi analysis and extraction of channel parameters (Mudd et al., 2014,2018, Gailleton et al., 2019) (TODO add an exhaustive list there). More generally it offers a high-performance framework to process topographic data.<br>
+The core of he code is written in C++, a fast and compiled low level language. Its main advantages is its speed, its flexibility (fine grained management of <code>memory</code> and <code>cpu</code>) and its wide community. Our algorithms are widely tested and developped in C++ and direct access is available through source code and docker containers (TODO:: ink to other doc pages).<br></p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_why_a_python_version">2.1. Why a Python Version</h3>
+<h3 id="_why_a_python_version">2.2. Why a Python Version</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -582,43 +589,39 @@ This section is just about how and why we developped that version. If you just w
 <p>Popular, it has a <strong>HUGE</strong> (I cannot make that bolder) community ready to help if you have a question (e.g., stackoverflow, <code>issue</code> system on github).</p>
 </li>
 <li>
-<p><code>python</code> is easy-to-read and has several level of difficulties: it can only be used as a scripting language (= just telling few instruction to the computer, basically as easy as talking to a child) if needed but can be way further if needed.</p>
+<p><code>python</code> is easy-to-read and has several level of difficulties: it can be used as a simple scripting language (<em>i.e.</em> just telling few instruction to the computer, basically as easy as talking to a child) if needed but can be way further if needed.</p>
 </li>
 <li>
 <p>Packaged-based: you can install bit of codes other people made really easily and use it. No need to reinvent the wheel if it is already fast enough.</p>
 </li>
 <li>
-<p>Finally, it is simple to install and universal: you can use it on Windows, Linux, Mac, &#8230;&#8203; ++</p>
-</li>
-</ul>
-</div>
+<p>Finally, it is simple to install and universal: you can use it on Windows, Linux, Mac, &#8230;&#8203;<br></p>
 <div class="paragraph">
 <p>Of course python also has some drawbacks. It simplicity comes with a cost of performances:</p>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>Large numerical operations in pure <code>python</code> can quickly become slow and you need to find the package that has been optimising the specific routine you want and has binded it to <code>python</code>. This is the case for most of the "common" routines (e.g., see <code>scipy</code> and <code>numpy</code> for an impressive collection of fast and fully coded numerical routines), but everything is not coded yet.</p>
 </li>
 <li>
 <p><code>Python</code> can become a bit confusing as there are many different ways and packages to do a tasks.<br></p>
 <div class="paragraph">
-<p>These are the reasons we are still coding in <code>cpp</code> and providing access to these fast and optimised routines from <code>python</code>: It combines the simplicity, portability and software-catalog of <code>python</code> with the raw powerfullness of <code>cpp</code>. The only remaining drawback is that it requires some gymnastics behind the scene to transfer data between the two and to make easy installer, but you won&#8217;t care about that because we are doing it for you.</p>
+<p>These are the reasons we are still coding in C++ but providing access to these fast and optimised routines from <code>python</code>: It combines the simplicity, portability and software-catalog of <code>python</code> with the raw powerfullness of C++. The only remaining drawback is that it requires some gymnastics behind the scene to transfer data between the two and to make easy installer, but you won&#8217;t care about that because we are doing it for you.</p>
 </div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how">2.2. How</h3>
+<h3 id="_format">2.3. Format</h3>
 <div class="paragraph">
 <p>Some wonderful tools have make this binding possible and deserve credits:
-- <code>xtensors</code>, a <code>cpp</code> data structure with (<em>inter alia</em>) in-built linkage with the universally used <code>python numpy ndarrays</code>. This is developped by <a href="http://quantstack.net/">Quantstack</a>, I recommend having a look on the tools they develop for research, they are truly amazing</p>
+- <code>xtensors</code>, a C++ data structure with (<em>inter alia</em>) in-built linkage with the universally used <code>python numpy ndarrays</code>. This is developped by <a href="http://quantstack.net/">Quantstack</a>, I recommend having a look on the tools they develop for research, they are truly amazing</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>pybind11</code>, a complete toolbox to bind <code>cpp</code> data structure to <code>python</code> objects. This low-level interface, <code>lsdtt_xtensor_python</code>, is the backbone of the bindings: it communicates directly with <code>cpp</code> and deal with internal memory ownership and this kind of questions.<br></p>
+<p><code>pybind11</code>, a complete toolbox to bind C++ data structure to <code>python</code> objects. This low-level interface, <code>lsdtt_xtensor_python</code>, is the backbone of the bindings: it communicates directly with C++ and deal with internal memory ownership and this kind of questions.<br></p>
 </li>
 </ul>
 </div>
@@ -628,7 +631,7 @@ This section is just about how and why we developped that version. If you just w
 <div class="ulist">
 <ul>
 <li>
-<p><code>lsdtt_xtensor_python</code>, a low level interface. You may be interested by using directly this backend only if you want python access to the <code>cpp</code> code with minimum dependencies: if already built in <code>pip</code>, it only requires <code>pybinds</code> and <code>numpy</code> to run but requires minimum knowledge on <code>LSDTopoTools</code> code structure.</p>
+<p><code>lsdtt_xtensor_python</code>, a low level interface. You may be interested by using directly this backend only if you want python access to the C++ code with minimum dependencies: if already built in <code>pip</code>, it only requires <code>pybinds</code> and <code>numpy</code> to run but requires minimum knowledge on <code>LSDTopoTools</code> code structure.</p>
 </li>
 <li>
 <p><code>lsdtopytools</code>, built on the top of <code>lsdtt_xtensor_python</code>, it provides a user friendly interface to the code with straighforward functions and lot of automations. It also provides additional routine to loads most of the raster types (e.g., <code>tif</code>, <code>bil</code>, <code>ASCII grids</code>), easy I/O operations, visualisations, and can easily be linked with any other packages.</p>
@@ -651,13 +654,13 @@ This section is just about how and why we developped that version. If you just w
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This section has been written as a clarification following many emails expressing confusion between the command prompt, python and python/computing environments. These can be confusing for user not used to programming without graphic interaction (ie clicking on stuff) so here is a plain language explanation with potentially questionable analogies. If you already know basics about command prompts and <code>python</code>, jump to Installation.
+This section has been written as a clarification following many emails expressing confusion between the command prompt, python and python computing environments. These can be confusing for user not used to programming without graphic interaction (<em>ie</em> clicking on stuff) so here is a plain language explanation with potentially questionable analogies. If you already know basics about command prompts and <code>python</code>, jump to Installation.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Programming involve using tools that are similar enough to be confusing if you are not use to it. Therefore, before installing and using <code>lsdtopytools</code>, clarifications seem to be required about the differences between <code>python</code>, computing environment and command-line interfaces (terminal/prompt) and how it actually works. This explanation is in plain language and aim to gently introduce some concepts before actually learning the commands.</p>
+<p>Programming involve using tools that are similar enough to be confusing, if one is not use to it. Therefore, before installing and using <code>lsdtopytools</code>, clarifications seem to be required about the differences between <code>python</code>, computing environment and command-line interfaces (terminal/prompt) and how it actually works. This explanation is in plain language and aim to gently introduce some concepts before actually learning the commands.</p>
 </div>
 <div class="sect2">
 <h3 id="_command_line_interface_what_and_why">3.1. Command-line interface: what and why?</h3>
@@ -690,28 +693,41 @@ This section has been written as a clarification following many emails expressin
 <div class="sect2">
 <h3 id="_python_interpreter_vs_commands">3.2. Python interpreter vs commands</h3>
 <div class="paragraph">
-<p>You will quickly realise (and send us email to ask why) writing <code>python</code> code in the command prompt won&#8217;t work and writing command lines in the python scripts will trigger error messages. These two are different things that can be easily confusing. <code>python</code> is a software (exactly like ArcGIS or MATLAB). It&#8217;s aim is to interpret the <code>python</code> language into machine language to run numerical operations. It is therefore made to understand <code>python</code> codes, usually written in scripts (ie text files containing text following a <code>python</code> syntax). Command prompt don&#8217;t understand syntax written for <code>python</code>, <code>python</code> does. <code>python</code> does not understand if you talk to it like a computer, the command prompt does.</p>
+<p>You will quickly realise (and send us email to ask why) writing <code>python</code> code in the command prompt won&#8217;t work and writing command lines in the python scripts will trigger error messages. These two are different things that can be easily confusing. <code>python</code> is a software (exactly like ArcGIS or MATLAB). It&#8217;s aim is to interpret the <code>python</code> language into machine language to run numerical operations. It is therefore made to understand <code>python</code> codes, usually written in scripts (ie text files containing text following a <code>python</code> syntax). Command prompt does not understand syntax written for <code>python</code>, <code>python</code> does. <code>python</code> does not understand if you talk to it like a computer, the command prompt does.</p>
 </div>
 <div class="paragraph">
-<p>We use the command prompt to run our python scripts by writing <code>python name_of_script.py</code> which means "computer, please use python to understand the text I have written in the file name_of_script.py". We have written a <code>python</code> version of our tools, therefore your text (code) detailing which way you need to use <code>lsdtopytools</code> will go in that script.</p>
+<p>+</p>
 </div>
 <div class="paragraph">
-<p>We also have written some programs that directly run from the command prompt if you need out of the box and without the need of writing <code>python</code> syntax. These will be installed with the tools but have different names, for example the following command <code>lsdtt-basic-tools file=mydem.tif slope</code> means "computer, please use the program called <code>lsdtt-basic-tools</code> on the file <code>mydem.tif</code> (hopefully you are naming your file better than me) with the analysis <code>slope</code>.</p>
+<p>We use the command prompt to run our python scripts by writing <code>python name_of_script.py</code> which means "computer, please use <code>python</code> to understand the text I have written in the file <code>name_of_script.py`". We have written a `python</code> version of our tools, therefore your text (code) detailing which way you need to use <code>lsdtopytools</code> will go in that script.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>We also have written some programs that directly run from the command prompt if you need out of the box and without the need of writing <code>python</code> syntax. These will be installed with the tools but have different names, for example the following command <code>lsdtt-basic-tools file=mydem.tif slope</code> means "computer, please use the program called <code>lsdtt-basic-tools</code> on the file <code>mydem.tif</code> (hopefully you name your file better than I do) with the analysis <code>slope</code>.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
 </div>
 <div class="paragraph">
 <p>The <code>python</code> syntax allows you to customise your set of routines and even combine it with others written in <code>python</code> whereas our command line tools are prewritten, less customisable,  easier routines to use.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_computing_environment_or_the_answer_to_the_relentless_why_is_python_so_hard_to_install_question">3.3. Computing environment, or the answer to the relentless "Why is python so hard to install" question</h3>
+<h3 id="_computing_environment_or_the_answer_to_the_relentless_question_why_is_python_so_hard_to_install">3.3. Computing environment, or the answer to the relentless question "Why is python so hard to install?"</h3>
 <div class="paragraph">
-<p>Alright, if you open a command prompt now and write <code>lsdtt-basic-tools</code> or <code>python name_of_script.py</code>, your computer will tell you something like "I don&#8217;t recognise what your command" or "python did not manage to import lsdtopytools" which basically just means that you haven&#8217;t install the tools yet: the computer cannot guess what you want to run and we do not have a contract with computer manufacturer to pre-install our tools on all the computers in the world (yet). Although <code>python</code> might be recognised as extremely common software, it is just an interpreter, it still requires our tools to be included in it.</p>
+<p>Alright, if you open a command prompt now and write <code>lsdtt-basic-tools</code> or <code>python name_of_script.py</code>, your computer will tell you something like "I don&#8217;t recognise what your command" or "python did not manage to import lsdtopytools" which basically just means that you haven&#8217;t install the tools yet: the computer cannot guess what you want to run and we do not have a contract with computer manufacturer to pre-install our tools on all the computers in the world (yet). Although <code>python</code> might be recognised (as it is extremely common software), it is just an interpreter (e.g., read the codes it has and does what it can with it), it still requires our tools to be included in it.</p>
 </div>
 <div class="paragraph">
-<p>Actually, <code>python</code> works the following way: it creates a computing environment and stores a bunch of packages that contains other codes. It calls these different codes together for you so you do not have to recode all the algorithm of the world. It also simplify a lot of programming aspects if you do not wish to use it (data type, memory management, etc.). <code>python</code> therefore is just a "glue" that gather multiple codes together. Short story long you just have to add our bunch of code (<code>lsdtopytools</code>) to your computing environment and then you can use <code>python</code> syntax to call it. <code>python</code> in our case acts as a glue between pieces of other codes that read geolocalised rasters, pieces of our codes that run the analysis, pieces of codes that plot it, etc. .</p>
+<p>Actually, <code>python</code> works the following way: it creates a computing environment (a virtual box inside the computer) and stores a bunch of packages that contains other codes. It calls these different codes together for you so you do not have to recode all the algorithm of the world. It also simplify a lot of programming aspects if you do not wish to use it (data type, memory management, etc.). <code>python</code> therefore is just a "glue" that gather multiple codes together inside taht box. Long strory short, you just have to add our bunch of code (<code>lsdtopytools</code>) to your computing environment and then you can use <code>python</code> syntax to call it. <code>python</code> in our case acts as a glue between pieces of other codes that read geolocalised rasters, pieces of our codes that run the analysis, pieces of codes that plot it, etc. .</p>
 </div>
 <div class="paragraph">
-<p>Most of the difficulty in using <code>python</code> lies in the complex connectivity between the bunch of codes you need: some glues are incompatible with others. <code>python</code> is open-source and free so anyone can write code for it making it impressively suitable for science but also increases the risk of having buggy packages and incompatible glues. Which is the reason why we use an environment manager called <code>conda</code> (detailed later). It allows us to tell the computer "Alright, I know you sometimes struggle gluing complex python packages together, so here is a tool that will store separate boxes that only contain compatible glues. I will just create a <code>lsdtopytools</code> box, putting all my compatible DEM analysis glues in that box and let you know when I want to use <code>python</code> inside that box OK?" (the computer won&#8217;t actually answer you). This guide will just show you how to create and use that box. Therefore the common sentence "I tried python once and did not manage to install it so I gave up. Have you tried MATLAB ? It is so easier" does not make sense. You just tried to use a specific <code>python</code> glue and struggled because you did not use one of these isolated box, or the code is badly managed (anyone can create python packages, there is no quality check). MATLAB is proprietary, it provides a closed unaccessible black box that comes already built for anyone that pays for it. Our tools are written in <code>c++</code>, and we use <code>python</code> glue to make it easier to use and install (<code>python</code> backbone is written in <code>c</code> so we can easily link the two), and comparing it with MATLAB does not make sense as it would be very difficult to bind it inside the closed box. <a href="https://www.mathworks.com/pricing-licensing.html">Here</a> is the price to use MATLAB (not every institution, company or university has access to it) and here is the price of using <code>python</code>: 30 minutes of your time to learn how to install it and manage the boxes. If you wish to use MATLAB for topographic analysis, the excellent <a href="https://topotoolbox.wordpress.com/">TopoToolBox</a> is a tool that has been developed within MATLAB framework and is adapted for it. It provides a different set of analysis than our tools.</p>
+<p>Most of the difficulty in using <code>python</code> lies in the complex connectivity between the bunch of codes you need: some glues are incompatible with others and building that box can be tidious. <code>python</code> is open-source and free so anyone can write code for it making it impressively suitable for science but also increases the risk of having buggy packages and incompatible glues. Which is the reason why we use an environment manager called <code>conda</code> (detailed later). It allows us to tell the computer "Alright, I know you sometimes struggle gluing complex python packages together, so here is a tool that will store separate boxes that only contain compatible glues. I will just create a <code>lsdtopytools</code> box, putting all my compatible DEM analysis glues in that box and let you know when I want to use <code>python</code> inside that box OK?" (the computer won&#8217;t actually answer you). This guide will just show you how to create and use that box and avoid the "I tried python once and did not manage to install it so I gave up.".</p>
+</div>
+<div class="paragraph">
+<p>+
+Another well-known analogy is MATLAB. MATLAB is a proprietary software that provides one of these box ready-to-use. The difference is that it provides a closed unaccessible black box that comes already built with a specific set of their own software for anyone that pays (a <strong>LOT</strong>) for each separate extension. Our tools are written in <code>c++</code>, and we use <code>python</code> glue to make it easier to use and install (<code>python</code> backbone is written in <code>c</code> so we can easily link the two) thanks to <code>python</code> open-source nature. <a href="https://www.mathworks.com/pricing-licensing.html">Here</a> is the price to use MATLAB (not every institution, company or university have access to it) and here is the price of using <code>python</code>: 30 minutes of your time to learn how to download, install and manage these boxes. If you wish to use MATLAB for topographic analysis, the excellent <a href="https://topotoolbox.wordpress.com/">TopoToolBox</a> is a tool that has been developed within MATLAB framework and provides a different framework to tackle topographic related problems.</p>
 </div>
 </div>
 </div>
@@ -746,7 +762,7 @@ Relatively easy: Install the dependencies and then the package.<br>
 <div class="sect2">
 <h3 id="_a_python_environment">4.1. A python environment</h3>
 <div class="paragraph">
-<p>If you already are confortable with <code>python</code> and already have your own environment, you can skip that part.</p>
+<p>If you already are comfortable with <code>python</code> and already have your own conda environment, you can skip that part.</p>
 </div>
 <div class="sect3">
 <h4 id="_what_is_a_python_environment_and_why">4.1.1. What is a python environment and why</h4>
@@ -788,8 +804,9 @@ You do not need admin right to install <code>conda</code> on your machine in cas
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_creating_environment">4.1.4. Creating environment</h4>
+</div>
+<div class="sect2">
+<h3 id="_creating_environment">4.2. Creating environment</h3>
 <div class="paragraph">
 <p>You are now within a <code>conda</code> environment that includes <code>python</code>. Let&#8217;s have a clean install, cleaner computing is easier to debug. The following command creates a ("sub")environment in you conda installation, where we will install the packages we need. To run the command, just copy-paste it in the terminal and hit <code>enter</code>.<br></p>
 </div>
@@ -807,7 +824,7 @@ You do not need admin right to install <code>conda</code> on your machine in cas
 </div>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll know it is activated if <code>(lsdtopytools)</code> is displayed in your terminal. If you have an old version of conda, you may face a message error. You just have to use this command instead:</p>
+<p>You&#8217;ll know it is activated if <code>(lsdtopytools)</code> is displayed in your terminal. If you have an older version of conda, you may face a message error. You just have to use this command instead:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -817,12 +834,11 @@ You do not need admin right to install <code>conda</code> on your machine in cas
 <div class="paragraph">
 <p>We&#8217;re basically done with environment stuff. You can create as many (or as few) environments as you need for your different programs (<em>e.g., landlab, opencv</em>).</p>
 </div>
-</div>
 <div class="sect3">
-<h4 id="_installing_the_packages_soon_to_be_automated">4.1.5. Installing the packages (Soon to be automated):</h4>
+<h4 id="_installing_the_packages_soon_to_be_automated">4.2.1. Installing the packages (Soon to be automated):</h4>
 <div class="paragraph">
 <p>let&#8217;s now install the required tools to run <code>lsdtt_xtensor_python</code> (the <code>cpp-python</code> mediator): we take advantage of carefully selected bits of other codes to help us.<br>
-The following command installs package. <code>install</code> means (surprise) install, and <code>-c conda-forge</code> means from the channel (= repository) "conda-forge" which is in plain language a big pile of easy-to-install python packages. + The following keywords are the name of the packages: (i) <code>pip</code>, it makes easier <code>python</code> packages installation, (ii) <code>numpy</code>, an <strong>EXTREMELY</strong> used and powerful tools for arrays and matrix calculations. It is written in <code>fortran</code> and <code>c</code>, therefore its built-in functions (e.g., sum, median, reordering, and millions of common tools) are fast. (iii) <code>pybinds</code>, requires to link <code>cpp</code> to <code>python</code>.<br></p>
+The following command installs package. <code>install</code> means (surprise) install, and <code>-c conda-forge</code> means from the channel (= repository) "conda-forge" which is in plain language a big pile of easy-to-install python packages. + The following keywords are the name of the packages: (i) <code>pip</code>, it makes easier <code>python</code> packages installation, (ii) <code>numpy</code>, an <strong>EXTREMELY</strong> used and powerful tools for arrays and matrix calculations. It is written in <code>fortran</code> and <code>c</code>, therefore its built-in functions (e.g., sum, median, reordering, and millions of common tools) are fast. (iii) <code>pybinds</code>, requires to link C++ to <code>python</code>.<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -850,7 +866,7 @@ This was the trickest part, if the terminal throw a lot of error messages, it me
 </table>
 </div>
 <div class="paragraph">
-<p><code>lsdtt_xtensor_python</code> is required for any use of the python tools, but only provide minimal interface with the <code>cpp</code> code and require knowledge of its structure. You probably now need <code>lsdtopytools</code>, the full, user-friendly interface that also provide (will provide actually as it is work in progress) easy raster loading/saving, ergonomic data management and visualisation routines. This however requires a bunch of other packages to be install: the simplest a program is, the bigger the amount of code behind is.<br>
+<p><code>lsdtt_xtensor_python</code> is required for any use of the python tools, but only provide minimal interface with the C++ code and require knowledge of its structure. You probably now need <code>lsdtopytools</code>, the full, user-friendly interface that also provide (will provide actually as it is work in progress) easy raster loading/saving, ergonomic data management and visualisation routines. This however requires a bunch of other packages to be install: the simplest a program is, the bigger the amount of code behind is.<br>
 <code>lsdtopytools</code>, even if you won&#8217;t inteact with most of these, basically requires the following packages:</p>
 </div>
 <div class="ulist">
@@ -871,7 +887,7 @@ This was the trickest part, if the terminal throw a lot of error messages, it me
 <p><code>matplotlib</code>: paper-quality plots, unbeatable in this domains even if a bit frustrating sometimes. <a href="https://matplotlib.org/gallery/index.html">More Information</a>.</p>
 </li>
 <li>
-<p><code>numba</code>: I will get rid of that dependency at some point, it provides speed-up on some internal part of older code I used. Not really needed now I can send stuff to <code>cpp</code> directly with <code>numpy</code>, but I&#8217;ll need time to recode these few routines, sns. <a href="http://numba.pydata.org/">More information</a>.</p>
+<p><code>numba</code>: I will get rid of that dependency at some point, it provides speed-up on some internal part of older code I used. Not really needed now I can send stuff to C++ directly with <code>numpy</code>, but I&#8217;ll need time to recode these few routines, sns. <a href="http://numba.pydata.org/">More information</a>.</p>
 </li>
 <li>
 <p><code>h5py</code>: is (will be, may be, idk yet) used to save file to the disk: fast and well structured, it is theoretically a better alternative to <code>csv</code> files. Outputs with <code>csv</code> will still be available to link with Arc/QGIS if needed. <a href="https://www.h5py.org/">More Information</a>.</p>
@@ -902,7 +918,7 @@ This was the trickest part, if the terminal throw a lot of error messages, it me
 </div>
 </div>
 <div class="sect3">
-<h4 id="_troubleshoot">4.1.6. Troubleshoot</h4>
+<h4 id="_troubleshoot">4.2.2. Troubleshoot</h4>
 <div class="paragraph">
 <p>There will be some, no worries.</p>
 </div>
@@ -1128,7 +1144,7 @@ quickplot.plot_nice_topography(my_dem, figure_width = 4, figure_width_units = "i
 </li>
 </ul>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/example_topo.png" alt="example topo" width="1000" height="600">
 </div>
@@ -1183,13 +1199,13 @@ quickplot.plot_preprocessing_diff(my_dem)</code></pre>
 <div class="paragraph">
 <p>It will produce the following results: an example with only filling and another one with carving and filling. Note that filling affect the raw data a bit more. A lot of changes happen only on few pixels and are hard to distinct. The significantly filled area correspond to a dam.<br></p>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/example_PP_delta.png" alt="example PP delta" width="1000" height="600">
 </div>
 <div class="title">Figure 2. Result after filling.</div>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/example_PP_both.png" alt="example PP both" width="1000" height="600">
 </div>
@@ -1201,7 +1217,7 @@ quickplot.plot_preprocessing_diff(my_dem)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_drainage_network_extraction">6. Drainage Network Extraction</h2>
+<h2 id="_basic_manipulations">6. Basic Manipulations</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter describes how to calculate common flow routines that are required for most of the analysis. All of the routines calculating flows or river-related metrics require the calculation of flow accumulation, direction, drainage area or the actual position of rivers.<br></p>
@@ -1271,7 +1287,7 @@ We are implementing the other methods now: DREICHT, Pelletier and a geometric me
 </div>
 </div>
 <div class="sect2">
-<h3 id="_watershed_labelling">6.3. Watershed labelling</h3>
+<h3 id="_watershed_labeling">6.3. Watershed labeling</h3>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -1285,12 +1301,13 @@ We are still refining these methods. In few cases they can be buggy and requires
 </table>
 </div>
 <div class="paragraph">
-<p>Some routines, for example river concavity analysis, knickpoint extraction or \(k_{sn}\) extraction requires watershed labelling to focus on certain drainage networks. It also ensures that the area you are studying is actually complete: you don&#8217;t want to extract \(\chi\) with biased drainage area for example.<br>
-The extraction is made through the following function, customisable with several methods:</p>
+<p>Some routines, for example river concavity analysis, knickpoint extraction or \(k_{sn}\) extraction requires watershed labelling to focus on certain drainage networks. It also ensures that the area you are studying is actually complete: you don&#8217;t want to extract \(\chi\) with biased drainage area for example. Watershed labelling in <code>LSDTopoTools</code> requires the river network to be extracted first.<br>
+The following method run the watershed labeling, customisable with several methods:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-python" data-lang="python">...
+# add that line to previous code to define the catchments
 my_dem.DefineCatchment(method="name_of_method", param_for_method = ...)</code></pre>
 </div>
 </div>
@@ -1310,34 +1327,73 @@ my_dem.DefineCatchment(method="name_of_method", param_for_method = ...)</code></
 </li>
 </ul>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Very soon, I will implement other methods. The most efficient method will be selection by coordinates.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><code>"from_XY"</code> extracts catchments by X-Y coordinates of the outlets. From far the most reliable method to get specific basin, but requires manual inputs. It takes the following arguments:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>X_coords</code>: a list of outlet X coordinates. For example <code>[450524,521002,522035]</code>. It needs to be (i) in the raster units (probably UTM) and (ii) the same length of the corresponding Y coordinates.</p>
+</li>
+<li>
+<p><code>Y_coords</code>: a list of outlet Y coordinates. For example <code>[6226620,6275620,6226671]</code>. It needs to be (i) in the raster units (probably UTM) and (ii) the same length of the corresponding X coordinates.</p>
+</li>
+<li>
+<p><code>coord_search_radius_nodes</code>: an integer defining the number of node to investigate around the input coordinates and find a river to snap to.</p>
+</li>
+<li>
+<p><code>coord_threshold_stream_order</code>: an integer defining the order of stream to aim. 2 or 3 work for most of the cases.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualisation_and_data_io">6.4. Visualisation and data I/O</h3>
+<h3 id="_visualisation">6.4. Visualisation</h3>
+<div class="paragraph">
+<p><code>lsdtopytools</code> contains some quick routines to visualise data. They are less developed than <code>LSDMappingTools</code> but are directly integrated to <code>lsdtopytools</code>. They allow you to plot the results of the <code>python</code> analysis or to preplot base maps and customise it with <code>matplotlib</code> or to quickly visualise the outputs.</p>
+</div>
 <div class="sect3">
-<h4 id="_plotting_routines">6.4.1. Plotting routines:</h4>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-TO DO. I will incorporate routines to plot basin outlines, channel network and source location
-</td>
-</tr>
-</table>
+<h4 id="_base_map_plotting">6.4.1. Base map plotting:</h4>
+<div class="paragraph">
+<p>The first figure and probably the base of many other is to plot a base map, or simply a topographic map. this can be done with the following function contained into <code>quickplot</code> module. The full function and its use is described as follow:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">def plot_nice_topography(mydem ,figure_width = 4, figure_width_units = "inches", cmap = "gist_earth", hillshade = True,
+	alpha_hillshade = 0.45, color_min = None, color_max = None, dpi = 300, output = "save", format_figure = "png", fontsize_ticks =6, fontsize_label = 8,
+	hillshade_cmin = 0, hillshade_cmax = 250,colorbar = False,
+	fig = None, ax = None, colorbar_label = None, colorbar_ax = None):
+	"""
+		Plot a nice topographic map. You can adjust the following set of parameters to customise it:
+		Arguments:
+			mydem: the LSDDEM object. Required.
+			figure_width (float): figure width in inches (Default value because of matplotlib...) or centimeters.
+			figure_width_units (str): "inches" (Default) or "centimetres"
+			cmap (str): the name of the colormap to use, see https://matplotlib.org/examples/color/colormaps_reference.html for list.
+			hillshade (bool): Drape an hillshade on the top of the figure
+			alpha_hillshade (float): regulate the transparency of the hillshade. Between 0 (transparent) and 1 (opaque).
+			color_min (float): min elevation corresponding to the min color on the colormap. None = auto.
+			color_max (float): see color_min and replace min by max.
+			dpi (int): Figure quality, increase will increase the figure quality and its size ofc.
+			output (str): "save" to save figure, "return" to return fig/axis, "show" to show.
+			format_figure (str): the extension of the saved bitmap: "png", "jpg", "svg" reccomended. For the rest see: https://matplotlib.org/api/_as_gen/matplotlib.pyplot.savefig.html
+			fontsize_ticks (float): the fontsize of the ticks
+			fontsize_label (float): font size of the labels
+			fig (matplotlib figure): Default None, in certain cases you may want to add teh basemap plot on the top of an existing.
+			ax (Matplotlib axis): Default None. if custom Figure passed as argument, you also need to pass an axis
+			colorbar_label (str): label of the colorbar if activated.
+			colorbar_ax (mpl axis): the axis where to place the colorbar (Default will be auto no worries)
+		Returns:
+			Depends on parameters
+		Authors:
+			Boris Gailleton
+		Date:
+			19/12/2018 - last update 09/03/2019
+	"""</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It allows the user a certain amount of customisations. Note that just using <code>quickplot.plot_nice_topography(mydem)</code> where <code>mydem</code> is a <code>LSDDEM</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -1361,7 +1417,7 @@ Data will be very soon accessible via <code>pandas</code> dataframes within <cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 15:23:12 UTC
+Last updated 2019-02-08 12:10:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

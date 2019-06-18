@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<meta name="author" content="Stuart W.D. Grieve, Univeristy College London and Simon M. Mudd, University of Edinburgh">
+<meta name="author" content="Stuart W.D. Grieve, QUeen Mary Univetrsity London, Simon M. Mudd, University of Edinburgh, and Martin D. Hurst, University of Glasgow">
 <title>Hillslope metrics in LSDTopoTools</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -436,7 +436,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Hillslope metrics in LSDTopoTools</h1>
 <div class="details">
-<span id="author" class="author">Stuart W.D. Grieve, Univeristy College London and Simon M. Mudd, University of Edinburgh</span><br>
+<span id="author" class="author">Stuart W.D. Grieve, QUeen Mary Univetrsity London, Simon M. Mudd, University of Edinburgh, and Martin D. Hurst, University of Glasgow</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -448,21 +448,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_coupling_hillslope_and_channel_analysis">2. Coupling hillslope and channel analysis</a>
 <ul class="sectlevel2">
-<li><a href="#_obtaining_the_code_and_running_analysis_from_coupled_hillslope_and_channel_analysis">2.1. Obtaining the code and running analysis from coupled hillslope and channel analysis</a>
+<li><a href="#_getting_lsdtopotools2">2.1. Getting <strong>LSDTopoTools2</strong></a></li>
+<li><a href="#_running_the_analysis">2.2. Running the analysis</a>
 <ul class="sectlevel3">
-<li><a href="#_getting_channel_information">2.1.1. Getting channel information</a></li>
-<li><a href="#_making_spaghetti">2.1.2. Making spaghetti</a></li>
+<li><a href="#_getting_channel_information">2.2.1. Getting channel information</a></li>
+<li><a href="#_making_spaghetti_i_e_doing_the_full_analysis">2.2.2. Making spaghetti (i.e., doing the full analysis)</a></li>
 </ul>
 </li>
-<li><a href="#_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.2. Coupled hillslope and channel ananylsis: options and outfiles</a>
+<li><a href="#_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.3. Coupled hillslope and channel ananylsis: options and outfiles</a>
 <ul class="sectlevel3">
-<li><a href="#_input_options">2.2.1. Input options</a></li>
-<li><a href="#_burning_rasters_to_csv">2.2.2. Burning rasters to csv</a></li>
-<li><a href="#_output_files">2.2.3. Output files</a></li>
+<li><a href="#_input_options">2.3.1. Input options</a></li>
+<li><a href="#_burning_rasters_to_csv">2.3.2. Burning rasters to csv</a></li>
+<li><a href="#_output_files">2.3.3. Output files</a></li>
 </ul>
 </li>
-<li><a href="#_visualising_the_coupled_hillslope_channel_analysis">2.3. Visualising the coupled hillslope-channel analysis</a></li>
-<li><a href="#_summary">2.4. Summary</a></li>
+<li><a href="#_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</a></li>
+<li><a href="#_summary">2.5. Summary</a></li>
 </ul>
 </li>
 <li><a href="#_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size</a>
@@ -627,13 +628,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph">
 <p>We have developed a series of tools for quantifying the spatial correspondence between channel steepness and hillslope properties.
-Included in <strong>LSDTopoTools2</strong> is a program called <strong>lsdtt-hillslope-channel-coupling</strong>, which packages routines our group uses to detect coupled channel and hillslope evolution.
-The code is an extension of our packages for calculating E* vs R*, used in a variety of publications. For background, see the papers below.</p>
+Included in <strong>LSDTopoTools2</strong> is a program called <strong>lsdtt-hillslope-channel-coupling</strong>, which packages routines our group uses to detect coupled channel and hillslope evolution.</p>
 </div>
 <div class="paragraph">
-<p>Briefly,
-* E* is a dimensionless curvature at the ridgetop, called E* because it is closely related to the hillslope erosion rate.
-* R* is a dimensionless relief, which is scaled by hillslope length.</p>
+<p>The code does a number of things.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It does basic analyses that replicates some of the functionality of <code>lsdtt-basic-metrics</code> and <code>lsdtt-chi-mapping</code> programs. In short, it can calculate surface fitting rasters such as slope, curvature and aspect, and it can extract the chi coordinate (a flow length normalised for drainage area).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you want more information on <code>lsdtt-basic-metrics</code>, follow the <a href="LSDTT_basic_usage.html">instructions for basic LSDTT usage</a></p>
+</li>
+<li>
+<p>If you want more information on <code>lsdtt-chi-mapping</code>, follow the <a href="LSDTT_chi_analysis.html">instructions for LSDTT chi analyis</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>It extracts ridgelines from a DEM and has various algorithms for filtering thses ridgelines. It also has algoirthms for splitting ridgelines into segments to perform some spatial averaging if that is what the user want.</p>
+</li>
+<li>
+<p>It can perform hilltop flow routing, where flow routing is performed from the hilltops to either the channel, a floodplain, or a buffered channel network in order to link hilltop pixles to channel pixels.</p>
+</li>
+<li>
+<p>It extracts basic channel networks and then can segment the channel network so that ridgetop pixels can be tagged against channel segments.</p>
+</li>
+<li>
+<p>It then calculates a range of metrics associated with these hilltop traces. These include dimensionless relief (R*), dimensionless curvature (E*), and hillslope length.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These metrics can tell you quite a lot about the state of the landscape and we feel quite strongly that combining the hillslope and channel metrics can yeild a much richer picture of a landscape&#8217;s evolution than either channel or hillslope metrics alone. We very much hope that you will be able to apply these analysis tools to your own landscape. Below we provide some papers that can help you understand what the metrics mean.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Relevant publications for understanding what relief and curvature metrics mean</caption>
@@ -672,12 +702,50 @@ The code is an extension of our packages for calculating E* vs R*, used in a var
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="_obtaining_the_code_and_running_analysis_from_coupled_hillslope_and_channel_analysis">2.1. Obtaining the code and running analysis from coupled hillslope and channel analysis</h3>
+<h3 id="_getting_lsdtopotools2">2.1. Getting <strong>LSDTopoTools2</strong></h3>
 <div class="paragraph">
-<p>Coupled channel-hillslope analysis occers by first extracting the channel properties and then mapping hillslope properties onto this channel network.</p>
+<p>The <code>lsdtt-hillslope-channel-coupling</code> program sits within <strong>LSDTopoTools2</strong>.
+You can <a href="LSDTT_installation.html">follow our installation instructions</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you have installed <strong>LSDTopoTools2</strong> you will already have hillslope channel coupling routines, as well as the other programs necessary for carrying out the hillslope and channel analysis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_analysis">2.2. Running the analysis</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This analysis is perhaps the most complex thing you can do with <strong>LSDTopoTools</strong>. It requires a number of different components to be pulled together for the final product, and it works in a few steps because you need the output of one step to set the parameters for the next steps. So please be patient.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here are the steps you need to follow:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need to extract the channel network. It is actually important to get a proper channel network rather than just using some threshold drainge area, because the analysis is more robust if you are comparing basins of similar order and you can&#8217;t do that if you don&#8217;t know where the channels begin.</p>
+</li>
+<li>
+<p>If you want, you can use that network to decide on the basins you want to explore. But you can also do that algorithmically.</p>
+</li>
+<li>
+<p>You then need to determine the concavity of the channels because at some point you are going to calculate the steepness of the channels and for this you need a concavity. If you just need a first cut you can use 0.45, but we have tested for concavity in very many places and can assure you that it is highly variable.</p>
+</li>
+<li>
+<p>Once you do those things you can then run the hillslope code. Be warned: this last step can take A VERY LONG TIME.</p>
+</li>
+</ol>
 </div>
 <div class="sect3">
-<h4 id="_getting_channel_information">2.1.1. Getting channel information</h4>
+<h4 id="_getting_channel_information">2.2.1. Getting channel information</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -726,44 +794,53 @@ The code is an extension of our packages for calculating E* vs R*, used in a var
 </div>
 </li>
 <li>
-<p>These files are ingested by the code <code>make_spaghetti.cpp</code>, the instructions of which are below.</p>
+<p>These files are ingested by the code <code>lsdtt-hillslope-channel-coupling</code>, the instructions of which are below.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_making_spaghetti">2.1.2. Making spaghetti</h4>
+<h4 id="_making_spaghetti_i_e_doing_the_full_analysis">2.2.2. Making spaghetti (i.e., doing the full analysis)</h4>
 <div class="paragraph">
-<p>Wait, what is all this about spaghetti? One of the plots we make using the hillslope-channel analysis looks a bit like spaghetti, so we call these spaghetti plots, and the code used to get the data for these plots is called <code>make_spaghetti.cpp</code>. Hungry yet? It is better to run these analyses on a full stomach.</p>
+<p>Wait, what is all this about spaghetti? One of the plots we make using the hillslope-channel analysis looks a bit like spaghetti, so we call these spaghetti plots. Hungry yet? It is better to run these analyses on a full stomach.</p>
 </div>
 <div class="paragraph">
-<p>The code is located in the repository <strong>NEED REPO</strong>.</p>
+<p>Like all <strong>LSDTopoTools2</strong> code, you run the analysis with a parameter file. The format of these files is always the same.</p>
 </div>
 <div class="paragraph">
-<p>Simply run:</p>
+<p>We will walk you though an analysis on a test site so you can see how it works.</p>
 </div>
-<div class="listingblock">
+<div class="sidebarblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ make -f THEMAKEFILE</code></pre>
-</div>
-</div>
+<div class="title">Quick reminder of LSDTopoTools2 installation</div>
 <div class="paragraph">
-<p>and you will be rewarded with a program called <code>THEPROGRAM.exe</code>.</p>
+<p>If any of the below steps don&#8217;t make sense, read the <a href="LSDTT_installation.html">full installation instructions</a>.</p>
 </div>
-<div class="paragraph">
-<p>Like almost all analyses packages in <strong>LSDTopoTools</strong>, this runs with a parameterfile. The typical call to the program will be:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Pull and run the docker container <code>lsdtt_pcl_docker</code></p>
+</li>
+<li>
+<p>Go into the LSDT</p>
+</li>
+</ol>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chc.exe /path/to/paramfile name_of_paramfile.param</code></pre>
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, you need to have <a href="LSDTT_installation.html"><strong>LSDTopoTools2</strong> installed</a>.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.2. Coupled hillslope and channel ananylsis: options and outfiles</h3>
+<h3 id="_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.3. Coupled hillslope and channel ananylsis: options and outfiles</h3>
 <div class="sect3">
-<h4 id="_input_options">2.2.1. Input options</h4>
+<h4 id="_input_options">2.3.1. Input options</h4>
 <div class="paragraph">
 <p>Like all <strong>LSDTopoTools</strong> programs, you can set parameters in the <strong>lsdtt-hillslope-channel-coupling</strong> that drive the analysis. Many of these are shared with other programs in the <strong>LSDTopoTools</strong> analysis suite.</p>
 </div>
@@ -1284,7 +1361,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_burning_rasters_to_csv">2.2.2. Burning rasters to csv</h4>
+<h4 id="_burning_rasters_to_csv">2.3.2. Burning rasters to csv</h4>
 <div class="paragraph">
 <p>In some circumstances you might want to "burn" secondary data onto your data of the channel network. One example would be if you had a geologic map and wanted to add the rock type as a column to point data about your channels. These routines will take a raster and will add the data values from that raster to each point in the chi data.</p>
 </div>
@@ -1439,7 +1516,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </div>
 </div>
 <div class="sect3">
-<h4 id="_output_files">2.2.3. Output files</h4>
+<h4 id="_output_files">2.3.3. Output files</h4>
 <div class="paragraph">
 <p>The two main output files are once called <code>_MChiSegmented.csv</code> and one called <code>_HilltopData.csv</code>.</p>
 </div>
@@ -1456,11 +1533,11 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_the_coupled_hillslope_channel_analysis">2.3. Visualising the coupled hillslope-channel analysis</h3>
+<h3 id="_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_summary">2.4. Summary</h3>
+<h3 id="_summary">2.5. Summary</h3>
 <div class="paragraph">
 <p>By now you should be able to generate analysis that links hillslope and channel metrics.</p>
 </div>
@@ -3306,7 +3383,7 @@ SierraNevada = False</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 10:45:08 UTC
+Last updated 2019-06-17 15:13:57 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

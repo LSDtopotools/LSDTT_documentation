@@ -546,7 +546,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_the_basic_structure_of_an_analysis">1.1. The basic structure of an analysis</h3>
 <div class="paragraph">
-<p>Our analyses are packaged into separate programs. They are run from the Linux shell. All of our programs operate the same way:</p>
+<p>Our analyses are packaged into separate programs. They are run from the Linux shell. If you don&#8217;t have Linux, don&#8217;t worry, we use <a href="https://en.wikipedia.org/wiki/OS-level_virtualisation">containers</a> to create a Linux environment in your computer (see <a href="LSDTT_installation.html">installation instructions</a>).  All of our programs operate the same way:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -578,7 +578,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>You run the program from a terminal window</p>
 </li>
 <li>
-<p>You can supply the program with either a directory, a parameter file, both of these things or none of these things.</p>
+<p>You can supply the program with:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>a directory name</p>
+</li>
+<li>
+<p>a parameter file name</p>
+</li>
+<li>
+<p>both of these things</p>
+</li>
+<li>
+<p>none of these things</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>If you don&#8217;t supply a parameter filename, the program will assume the parameter file is called <code>LSDTT_parameters.driver</code></p>
@@ -623,7 +639,15 @@ write fname: Data_prefix</code></pre>
 <div class="sect3">
 <h4 id="_how_do_i_change_my_parameter_files">1.1.2. How do I change my parameter files?</h4>
 <div class="paragraph">
-<p>You can edit your parameter files in a text editor: this is just a program that edits plain text. <strong>DO NOT</strong> use a word processor. These modify file types. There are many options for text editors but we like <a href="http://brackets.io/">Brackets</a>, or <a href="https://atom.io/">Atom</a> is also a nice alternative.</p>
+<p>You can edit your parameter files in a text editor: this is just a program that edits plain text. <strong>DO NOT</strong> use a word processor. These modify file types.</p>
+</div>
+<div class="paragraph">
+<p>There are many options for text editors but we like:
+* <a href="http://brackets.io/">Brackets</a> works on any operating system.
+* <a href="https://atom.io/">Atom</a> also works on any operating system.</p>
+</div>
+<div class="paragraph">
+<p>If you are on Windows then <a href="http://www.pspad.com/">pspad</a> is also quite good.</p>
 </div>
 <div class="sect4">
 <h5 id="_a_note_on_read_and_write_paths">A note on read and write paths</h5>
@@ -634,7 +658,7 @@ write fname: Data_prefix</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-If you leave <code>read path</code> and <code>write path</code> blank, <strong>LSDTopoTools</strong> programs will assume the data is in the current directory and as long as your data is in the same directory as your parameter file you won&#8217;t need to bother with this section at all. 99% of <strong>LSDTopoTools</strong> users can skip this section.
+If you leave <code>read path</code> and <code>write path</code> blank, <strong>LSDTopoTools</strong> programs will assume the data is in the current directory. You can find out what the current directory is by typing <code>pwd</code> at the command prompt. As long as your data is in the same directory as your parameter file you won&#8217;t need to bother with this section at all. 99% of <strong>LSDTopoTools</strong> users can skip this section.
 </td>
 </tr>
 </table>
@@ -685,13 +709,13 @@ If you leave <code>read path</code> and <code>write path</code> blank, <strong>L
 <p>Our channel extractions for the d8 method are based on the <a href="http://www.sciencedirect.com/science/article/pii/S0169555X12004618">FASTSCAPE</a> algorithm and are <strong>MUCH</strong> faster than running channel extraction in typical GIS software.</p>
 </li>
 <li>
-<p>The program does some data preprocessing behind the scenes that you would need to do manually in a GIS.</p>
+<p>The program does some data preprocessing behind the scenes that you would need to do manually in a GIS. For example, if the nodata values are messed up, <strong>LSDTopoTools</strong> can fix these.</p>
 </li>
 <li>
 <p>We have automated some basin selection routines, which again you would need to do by hand in a GIS.</p>
 </li>
 <li>
-<p>Our channel extraction spits out networks with drainage areas, locations, chi coordinates and all sorts of other goodies that again, would take ages on a GIS.</p>
+<p>Our channel extraction spits out networks with drainage areas, locations, chi coordinates and all sorts of other goodies that would take ages on a GIS.</p>
 </li>
 </ul>
 </div>
@@ -1889,7 +1913,7 @@ We even go through the installation instructions for you here.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-29 08:50:10 UTC
+Last updated 2019-02-08 12:10:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
