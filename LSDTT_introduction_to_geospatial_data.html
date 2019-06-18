@@ -469,6 +469,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#clipping-rasters-with-gdal">5.2. Clipping rasters with gdal</a></li>
 <li><a href="#_merging_large_numbers_of_rasters">5.3. Merging large numbers of rasters</a></li>
+<li><a href="#_creating_shapefiles_or_vector_format_files_with_gdal">5.4. Creating shapefiles or vector format files with GDAL</a></li>
 </ul>
 </li>
 </ul>
@@ -1371,12 +1372,49 @@ $ gdal_merge.py -of ENVI -o merged_dem.bil --optfile DEMs.txt</code></pre>
 <p>If you use this you will need to modify the directory structure to reflect your own files.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_creating_shapefiles_or_vector_format_files_with_gdal">5.4. Creating shapefiles or vector format files with GDAL</h3>
+<div class="paragraph">
+<p>Sometimes it is useful to "polygonize" a raster.
+The most common case is when you want a shapefile from a basin raster.
+To do this, you can use the <code>gdal_polygonize.py</code> tool.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ gdal_polygonize.py My_AllBasins.bil -f "ESRI Shapefile" Outputfile.shp</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you do not give the file format (with the flag <code>-f</code>), the script will guess the output format on the basis of the extension. This doesn&#8217;t always work! We suggest using the <code>-f</code> flag. Common file formats (hopefully self-explanatory) are <code>"GeoJSON"</code>, <code>"KML"</code>, <code>"ESRI Shapefile"</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you do not correctly set the output format, it will default to <strong>GML</strong> format, which in my testing does not preserve the georeferencing.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-29 16:40:46 UTC
+Last updated 2019-02-08 12:10:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

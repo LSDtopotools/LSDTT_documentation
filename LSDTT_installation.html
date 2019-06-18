@@ -512,26 +512,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_installing_the_lsdtopotools_python_toolchain">7. Installing the LSDTopoTools python toolchain</a></li>
 <li><a href="#_get_a_text_editor">8. Get a text editor!</a></li>
-<li><a href="#_using_the_lsdtopotoolssetup_py_script">Appendix A: Using the LSDTopoToolsSetup.py script</a>
-<ul class="sectlevel2">
-<li><a href="#_getting_the_lsdtopotools_setup_script">A.1. Getting the LSDTopoTools setup script</a>
-<ul class="sectlevel3">
-<li><a href="#_alternatives_to_wget">A.1.1. Alternatives to wget</a></li>
-</ul>
-</li>
-<li><a href="#_running_the_lsdtopotools_setup_script">A.2. Running the LSDTopoTools setup script</a>
-<ul class="sectlevel3">
-<li><a href="#_looking_at_all_the_lsdtopotoolssetup_options">A.2.1. Looking at all the LSDTopoToolsSetup options</a></li>
-<li><a href="#_a_default_setup">A.2.2. A default setup</a></li>
-<li><a href="#_other_setup_options">A.2.3. Other setup options</a></li>
-<li><a href="#_if_you_are_running_on_native_linux">A.2.4. If you are running on native Linux</a></li>
-</ul>
-</li>
-<li><a href="#_table_of_lsdtopotoolssetup_py_options">A.3. Table of LSDTopoToolsSetup.py options</a></li>
-<li><a href="#_the_lsdttparamfileupdater_py_script_for_updating_directory_names">A.4. The LSDTTParamfileUpdater.py script for updating directory names</a></li>
-<li><a href="#_the_lsdtt_path_adjuster_sh_script_for_updating_paths">A.5. The LSDTT_path_adjuster.sh script for updating paths</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -575,7 +555,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific for Edinburgh students for use on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers.</p>
 </li>
 <li>
-<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is well tested but it requires two bits of software instead of one for [Docker], and instead of a lightweight container you need a full blown Ubuntu system as a virtual machine, meaning that this takes up more space on your hard disk. Also, on Windows machines, it is difficult to install a 64-bit guest operating system: you will probably be limited to a 32-bit system that limits your memory if you use this approach. So if you have MacOS, Linux, or Windows 10 Enterprise you should probably use the Docker installation.</p>
+<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is well tested but it requires two bits of software instead of one for <a href="https://www.docker.com/products/docker-desktop">Docker</a>, and instead of a lightweight container you need a full blown <a href="https://ubuntu.com/">Ubuntu</a> system as a virtual machine, meaning that this takes up more space on your hard disk. Also, on Windows machines, it is difficult to install a 64-bit guest operating system: you will probably be limited to a 32-bit system that limits your memory if you use this approach. So if you have MacOS, Linux, or Windows 10 Enterprise you should probably use the Docker installation.</p>
 </li>
 </ul>
 </div>
@@ -586,6 +566,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="paragraph">
 <p>As of October 2018, this is the preferred method to install <strong>LSDTopoTools</strong>. We have various containers on the <a href="https://hub.docker.com/u/lsdtopotools/">docker hub</a> which can be run with simple <code>pull</code> commands. The only software you need to run these is <a href="https://www.docker.com/">Docker</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Update June 2019</div>
+<div class="paragraph">
+<p>Docker is very easy to install on Linux and MacOS. On Windows it is a bit complicated (and possibly need the intervention of your IT team).
+This will <strong>MASSIVELY CHANGE</strong> quite soon: Windows is currently pre-releasing a fully functioning Linux subsystem that will allow Docker to be run with the same speed and efficiency as though you were on a native Linux operating system.
+You can <a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/">read all about it on this blog post</a>.
+Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
+</div>
+</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -647,6 +638,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </li>
+<li>
+<p>When you are finished with your docker session type <code>ctrl+d</code>.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -672,17 +666,41 @@ The docker setup is probably a bit simpler than the vagrant setup but (<em>and t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and install <a href="https://www.docker.com/docker-windows">Docker for Windows</a> (only works with Windows 10 enterprise), <a href="https://www.docker.com/docker-mac">Docker for Mac</a>, or Docker for <a href="https://www.docker.com/docker-ubuntu">Ubuntu</a> or <a href="https://www.docker.com/docker-debian">Debian</a>.</p>
+<p>Download and install <a href="https://docs.docker.com/install/">Docker Community Edition</a>. Instructions on different operating systems are in the <a href="https://docs.docker.com/install/">Docker documentation</a>.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
+<p>In Windows follow the instructions in the <a href="https://docs.docker.com/docker-for-windows/install/">Docker documentation</a>.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Firstly, this only works on Windows 10. And you need control of your computer, and you need to know what you are doing. If you have competent IT, ask them to do it. However, this will become <strong>MUCH EASIER</strong> in a few months when Windows releases its linux subsystem 2, which should allow native docker usage. See this <a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/">blog post from Microsoft</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
 <p>On MacOS we recommend installing docker using brew: <code>brew cask install docker</code></p>
+</li>
+<li>
+<p>In Ubunutu you can use <code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io</code></p>
+</li>
+<li>
+<p>In Debian use <code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io</code></p>
+</li>
+<li>
+<p>See the docker website for <a href="https://docs.docker.com/install/">instructions in your flavour of Linux</a></p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>We will henceforth assume that you actually have a functioning version of Docker on your host machine. If you want more details about how to use docker, or getting it set up (particularly in Windows, in Linux and MacOS this is more straightforward), see our section on <a href="#Docker notes">docker notes</a>.</p>
+<p>We will henceforth assume that you actually have a functioning version of Docker on your host machine. If you want more details about how to use docker, or getting it set up (particularly in Windows, in Linux and MacOS this is more straightforward), see our section on <a href="#_some_notes_on_docker">docker notes</a>.</p>
 </li>
 </ol>
 </div>
@@ -792,7 +810,19 @@ The docker setup is probably a bit simpler than the vagrant setup but (<em>and t
 </div>
 </div>
 <div class="paragraph">
-<p>This will pull the repo and run it at the same time. <strong>Warning!</strong> This container is 663 Mb so if you just want to do some initial testing use the lightweight alpine version!</p>
+<p>This will pull the repo and run it at the same time.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This container is 663 Mb so if you just want to do some initial testing use the lightweight alpine version!
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -804,11 +834,17 @@ The docker setup is probably a bit simpler than the vagrant setup but (<em>and t
 </div>
 </li>
 <li>
-<p>After that, run the install script:</p>
+<p>Either one of these commands will result in your command line terminating in the <code>#</code> symbol. This indicates that you are insida a docker container.</p>
+</li>
+<li>
+<p>Once you are in one of the two docker containers, run the install script:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>This script grabs the latest version of the code and builds the programs if you don&#8217;t have one that is up to date. It also ensure that the <strong>LSDTopoTools</strong> programs are in your path.</p>
 </div>
 </li>
 <li>
@@ -1740,7 +1776,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <p>Type <code>cd ..</code> (this puts you into the main <strong>LSDTopoTools2</strong> directory)</p>
 </li>
 <li>
-<p>Now type: <code>sh lastt2_terminal.sh</code></p>
+<p>Now type: <code>sh lsdtt2_terminal.sh</code></p>
 </li>
 <li>
 <p>You can test the softare by typing: <code>lsdtt-basic-metrics</code> and see if it actually runs the program (it won&#8217;t do any analysis yet but it will tell you to give it some files).</p>
@@ -2754,298 +2790,10 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_using_the_lsdtopotoolssetup_py_script">Appendix A: Using the LSDTopoToolsSetup.py script</h2>
-<div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-This script has been replaced in <strong>LSDTopoTools version 2</strong> with several scripts that are described in previous sections.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>To help you set up <strong>LSDTopoTools</strong>, we have written a series of modules in <a href="https://www.python.org/">python</a> that automate the creation of our standard directory structure, downloading of the source code and compiling the source code into programs. The script is called <a href="https://github.com/LSDtopotools/LSDAutomation/blob/master/LSDTopoToolsSetup.py">LSDTopoToolsSetup.py</a>.</p>
-</div>
-<div class="sect2">
-<h3 id="_getting_the_lsdtopotools_setup_script">A.1. Getting the LSDTopoTools setup script</h3>
-<div class="paragraph">
-<p>LSDTopoTools works in all popular operating systems (Windows, MacOS, Linux) by using <a href="https://www.vagrantup.com/">Vagrant</a> to create a Linux server within your host operating system: if you are not in a native Linux environment you should start a Vagrant server by <a href="http://lsdtopotools.github.io/LSDTT_book/#_installing_lsdtopotools_using_virtualbox_and_vagrant">following these directions</a>.</p>
-</div>
-<div class="paragraph">
-<p>Once you have done that, you should be able to <a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a> into a Linux session using <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty.exe</a> on Windows or the <code>vagrant ssh</code> command in MacOS and Linux.</p>
-</div>
-<div class="paragraph">
-<p>Once you are in a Linux operating system, the easiest way to get the script is to use the utility <code>wget</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_alternatives_to_wget">A.1.1. Alternatives to wget</h4>
-<div class="paragraph">
-<p>You can also get the script by cloning the LSDAutomation repository:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDAutomation.git</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or you can got to the <a href="https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py">raw text of the file</a>, then copy the text and paste into your favourite text editor (i.e. <a href="http://brackets.io/">Brackets</a>). You should save the file as <code>LSDTopoToolsSetup.py</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_running_the_lsdtopotools_setup_script">A.2. Running the LSDTopoTools setup script</h3>
-<div class="paragraph">
-<p>The setup script is a python script so you need python to run it. It should be run <strong>in Linux</strong>, so if you do not have a native Linux operating system the script should be run in your Vagrant server. Almost all flavours of Linux come with python installed as default (the Ubuntu system installed by our vagrantfiles is one example) so we will assume you have python.</p>
-</div>
-<div class="paragraph">
-<p>The script requires parameters; if you run the script with no parameters, it will give you a message telling you what to do:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py
-
-=======================================================================
-Hello there, I am the going to help you set up LSDTopoTools!
-You will need to tell me what to do.
-If you are in vagrant, LSDTopoTools will always be installed in the root directory (\).
-If you are not in vagrant,
-LSDTopoTools will be installed in your home directory if you run this with:
-   python LSDTopoToolsSetup.py -id 0
-
-Or your current directory.
-(i.e., the directory from which you called this program)
-
-if you run with this:
-   python LSDTopoToolsSetup.py -id 1
-
-For help type:
-   python LSDTopoToolsSetup.py -h
-
-=======================================================================</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_looking_at_all_the_lsdtopotoolssetup_options">A.2.1. Looking at all the LSDTopoToolsSetup options</h4>
-<div class="paragraph">
-<p>You can call help for the <code>LSDTopoToolsSetup.py</code> script with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -h</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_a_default_setup">A.2.2. A default setup</h4>
-<div class="paragraph">
-<p>In fact, there is no default setup, since you have to tell the tool where to install <strong>LSDTopoTools</strong>. You do this by using the <code>-id</code> flag.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If you select 0, LSDTopoTools will be installed in your home directory, which you can get to with the command <code>cd ~</code>.</p>
-</li>
-<li>
-<p>If you select 1, LSDTopoTools will be installed in the current directory (i.e. the directory where the script is located).</p>
-</li>
-<li>
-<p>If you are running a vagrant machine, these instructions will be ignored and LSDTopoTools will be installed in the root directory (you can get there with the command <code>cd \</code>).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This will install a directory <code>LSDTopoTools</code> with subdirectories <code>Git_projects</code> and <code>Topographic_projects</code>. Each of these folders will clone subfolders from our github pages, and will compile the <strong>Analysis_driver</strong> as well as the <strong>chi_tool</strong>.</p>
-</div>
-<div class="paragraph">
-<p>The directories will look like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">/LSDTopoTools
-  |--Git_projects
-  |----LSDTopoTools_AnalysisDriver
-  |----LSDTopoTools_ChiMudd2014
-  |--Topographic_projects
-  |----LSDTT_workshop_data
-  |----Test_data</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_other_setup_options">A.2.3. Other setup options</h4>
-<div class="paragraph">
-<p>There are a number of other options on <code>LSDTopoToolsSetup.py</code>, which we will list here, as well as in the <a href="#_table_of_lsdtopotoolssetup_py_options">table below</a>.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>-CE True</code> Clone and compile the channel extraction programs used in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013WR015167/abstract">Clubb et al, WRR, 2014</a>.</p>
-</li>
-<li>
-<p><code>-MChi True</code> Clone and compile the tools for performing the chi analysis of <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES, 2014</a>.</p>
-</li>
-<li>
-<p><code>-CRN True</code> Clone and compile the tools for calculating basinwide denudation rates from the cosmogenic nuclides <sup>10</sup>Be and <sup>26</sup>Al <a href="http://www.earth-surf-dynam.net/4/655/2016/">Mudd et al., ESURF, 2016</a>.</p>
-</li>
-<li>
-<p><code>-cp True</code> Check the path names in all the subfolders in <code>Topographic_projects</code> to reflect your own directory structure.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_if_you_are_running_on_native_linux">A.2.4. If you are running on native Linux</h4>
-<div class="paragraph">
-<p>If your native operating system is Linux, you should be able to get <strong>LSDTopoTools</strong> working very quickly using <code>LSDTopoToolsSetup.py</code> without having to use vagrant. However, you do need to ensure that you have the utilities <code>make</code>, the gnu Pass:[C++] compiler installed, and also you need <a href="http://www.fftw.org/">FFTW</a> installed. If you are in Ubuntu installing FFTW is as easy as: <code>sudo apt-get install -y libfftw3-dev</code>. If you are in another flavour of Linux you will need to follow the full setup, which is described on the <a href="http://www.fftw.org/">FFTW website</a>. Once you have that stuff working, you can use <code>LSDTopoToolsSetup.py</code> to get everything working in a jiffy.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_table_of_lsdtopotoolssetup_py_options">A.3. Table of LSDTopoToolsSetup.py options</h3>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Installation directory options</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Flag</th>
-<th class="tableblock halign-left valign-top">Input type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Integer, either 0 or 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 == home directory, 1 == current directory. If you are in vagrant it will ignore this option and install in the root directory.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-CRN</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (either True or False)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If this is True, installs the CAIRN CRN package for calculating basinwide denudation rates from the cosmogenic nuclides <sup>10</sup>Be and <sup>26</sup>Al <a href="http://www.earth-surf-dynam.net/4/655/2016/">Mudd et al., ESURF, 2016</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-CE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (either True or False)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If this is True, installs the channel extraction programs used in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013WR015167/abstract">Clubb et al, WRR, 2014</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-MChi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (either True or False)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If this is True, installs the tools for performing the chi analysis of <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES, 2014</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-cp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (either True or False)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If this is True,  checks the pathnames of the parameter files <code>.driver</code> and <code>.LSDTT_driver</code> in all the subfolders of <code>Topographic_projects</code> and corrects them so they reflect the user&#8217;s directory structure.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_the_lsdttparamfileupdater_py_script_for_updating_directory_names">A.4. The LSDTTParamfileUpdater.py script for updating directory names</h3>
-<div class="paragraph">
-<p>We also provide a script for updating directory write and read names, called <code>LSDTTParamfileUpdater.py</code>. <strong>LSDTopoTools</strong> analyses require you to provide a parameter file that contains the instructions for running analyses. In that parameter file there are always instrutions for where you want to read the data from, and to where you want to write new data. These lines in the parameter file look like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">read path: /my/directory/
-write path: /my/directory/</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>It is tedious to keep updating these every time you move data to a new folder, so you run the <code>LSDTTParamfileUpdater.py</code> to ensure that the path names are the same as the data directory. <strong>The script assumes you want to put your results in the same directory and your data.</strong></p>
-</div>
-<div class="paragraph">
-<p>You can download this script with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTTParamfileUpdater.py</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This script can take 0, 1 or 2 arguments.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>With 0 arguments, the script updates the read and write path of every file in the current directory with the extensions <code>.driver</code>, <code>.LSDTT_driver</code>, and <code>.param</code>.</p>
-</li>
-<li>
-<p>With 1 argument, the script assumes the argument is the directory of the data and updates the read and write path of every file in that directory with the extensions <code>.driver</code>, <code>.LSDTT_driver</code>, and <code>.param</code>.</p>
-</li>
-<li>
-<p>With 2 arguments, the script assumes the first argument is the directory of the data and updates the read and write path of the file named by the second argument.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_the_lsdtt_path_adjuster_sh_script_for_updating_paths">A.5. The LSDTT_path_adjuster.sh script for updating paths</h3>
-<div class="paragraph">
-<p>We have included a <a href="https://swcarpentry.github.io/shell-novice/06-script/">bash script</a> for modifying your terminal enviroment so that it "sees" the <strong>LSDTopoTools</strong> directories. This means that you can call <strong>LSDTopoTools</strong> programs from the data folders.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Calling this script only updates the path for the terminal session from which it is called. It doesn&#8217;t not permanently modify your terminal environment. You need to run the script every time you start a terminal session.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>You can download this script with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTT_path_adjuster.sh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You run the script with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ bash LSDTT_path_adjuster.sh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you get a permissions denied error, you can change these with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ chmod 0744 LSDTT_path_adjuster.sh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>and then run the <code>bash</code> command once again.</p>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-25 14:37:36 UTC
+Last updated 2019-06-18 09:30:30 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<meta name="author" content="Stuart W.D. Grieve, Univeristy College London and Simon M. Mudd, University of Edinburgh">
+<meta name="author" content="Stuart W.D. Grieve, QUeen Mary Univetrsity London, Simon M. Mudd, University of Edinburgh, and Martin D. Hurst, University of Glasgow">
 <title>Hillslope metrics in LSDTopoTools</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -436,7 +436,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Hillslope metrics in LSDTopoTools</h1>
 <div class="details">
-<span id="author" class="author">Stuart W.D. Grieve, Univeristy College London and Simon M. Mudd, University of Edinburgh</span><br>
+<span id="author" class="author">Stuart W.D. Grieve, QUeen Mary Univetrsity London, Simon M. Mudd, University of Edinburgh, and Martin D. Hurst, University of Glasgow</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -446,64 +446,84 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_background_reading">1.1. Background reading</a></li>
 </ul>
 </li>
-<li><a href="#_selecting_a_window_size">2. Selecting A Window Size</a>
+<li><a href="#_coupling_hillslope_and_channel_analysis">2. Coupling hillslope and channel analysis</a>
 <ul class="sectlevel2">
-<li><a href="#_overview">2.1. Overview</a></li>
-<li><a href="#_input_data">2.2. Input Data</a></li>
-<li><a href="#_compile_the_driver">2.3. Compile The Driver</a></li>
-<li><a href="#_run_the_code">2.4. Run The Code</a></li>
-<li><a href="#_the_output_data">2.5. The Output Data</a></li>
-<li><a href="#_using_python_to_select_a_window_size">2.6. Using Python To Select A Window Size</a></li>
+<li><a href="#_getting_lsdtopotools2">2.1. Getting <strong>LSDTopoTools2</strong></a></li>
+<li><a href="#_running_the_analysis">2.2. Running the analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_getting_channel_information">2.2.1. Getting channel information</a></li>
+<li><a href="#_making_spaghetti_i_e_doing_the_full_analysis">2.2.2. Making spaghetti (i.e., doing the full analysis)</a></li>
 </ul>
 </li>
-<li><a href="#_extracting_hillslope_lengths">3. Extracting Hillslope Lengths</a>
+<li><a href="#_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.3. Coupled hillslope and channel ananylsis: options and outfiles</a>
+<ul class="sectlevel3">
+<li><a href="#_input_options">2.3.1. Input options</a></li>
+<li><a href="#_burning_rasters_to_csv">2.3.2. Burning rasters to csv</a></li>
+<li><a href="#_output_files">2.3.3. Output files</a></li>
+</ul>
+</li>
+<li><a href="#_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</a></li>
+<li><a href="#_summary">2.5. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_2">3.1. Overview</a></li>
-<li><a href="#_input_data_2">3.2. Input Data</a></li>
-<li><a href="#_compile_the_driver_2">3.3. Compile The Driver</a></li>
-<li><a href="#_run_the_hillslope_length_driver">3.4. Run The Hillslope Length Driver</a></li>
-<li><a href="#_analysing_the_results">3.5. Analysing The Results</a>
-<ul class="sectlevel3">
-<li><a href="#_prefix_paper_data_txt">3.5.1. &lt;Prefix&gt;_Paper_Data.txt</a></li>
-<li><a href="#_prefix_hilltopdata_csv">3.5.2. &lt;Prefix&gt;_HilltopData.csv</a></li>
-<li><a href="#_trace_files">3.5.3. Trace Files</a></li>
+<li><a href="#_overview">3.1. Overview</a></li>
+<li><a href="#_input_data">3.2. Input Data</a></li>
+<li><a href="#_compile_the_driver">3.3. Compile The Driver</a></li>
+<li><a href="#_run_the_code">3.4. Run The Code</a></li>
+<li><a href="#_the_output_data">3.5. The Output Data</a></li>
+<li><a href="#_using_python_to_select_a_window_size">3.6. Using Python To Select A Window Size</a></li>
 </ul>
 </li>
-<li><a href="#_worked_example">3.6. Worked Example</a>
-<ul class="sectlevel3">
-<li><a href="#_getting_the_data">3.6.1. Getting the data</a></li>
-<li><a href="#_getting_the_code">3.6.2. Getting The Code</a></li>
-<li><a href="#_running_the_code">3.6.3. Running The Code</a></li>
-<li><a href="#_plotting_data">3.6.4. Plotting Data</a></li>
-</ul>
-</li>
-<li><a href="#_summary">3.7. Summary</a></li>
-</ul>
-</li>
-<li><a href="#_dimensionless_erosion_and_relief">4. Dimensionless Erosion and Relief</a>
+<li><a href="#_legacy_code_extracting_hillslope_lengths">4. Legacy code: Extracting Hillslope Lengths</a>
 <ul class="sectlevel2">
-<li><a href="#_get_the_code_for_dimensionless_erosion_and_relief_analysis">4.1. Get the code for dimensionless erosion and relief analysis</a>
+<li><a href="#_overview_2">4.1. Overview</a></li>
+<li><a href="#_input_data_2">4.2. Input Data</a></li>
+<li><a href="#_compile_the_driver_2">4.3. Compile The Driver</a></li>
+<li><a href="#_run_the_hillslope_length_driver">4.4. Run The Hillslope Length Driver</a></li>
+<li><a href="#_analysing_the_results">4.5. Analysing The Results</a>
 <ul class="sectlevel3">
-<li><a href="#_clone_the_github_repository">4.1.1. Clone the GitHub repository</a></li>
-<li><a href="#_alternatively_get_the_zipped_code">4.1.2. Alternatively, get the zipped code</a></li>
-<li><a href="#_get_the_python_code">4.1.3. Get the Python code</a></li>
-<li><a href="#_checking_your_python_package_versions">4.1.4. Checking your Python package versions</a></li>
-<li><a href="#_get_the_example_datasets">4.1.5. Get the example datasets</a></li>
+<li><a href="#_prefix_paper_data_txt">4.5.1. &lt;Prefix&gt;_Paper_Data.txt</a></li>
+<li><a href="#_prefix_hilltopdata_csv">4.5.2. &lt;Prefix&gt;_HilltopData.csv</a></li>
+<li><a href="#_trace_files">4.5.3. Trace Files</a></li>
 </ul>
 </li>
-<li><a href="#_processing_high_resolution_topography">4.2. Processing High Resolution Topography</a></li>
-<li><a href="#_input_data_3">4.3. Input Data</a></li>
-<li><a href="#_compile_the_driver_3">4.4. Compile The Driver</a></li>
-<li><a href="#_run_the_code_2">4.5. Run the code</a></li>
-<li><a href="#_analyzing_dimensionless_relationships">4.6. Analyzing Dimensionless Relationships</a>
+<li><a href="#_worked_example">4.6. Worked Example</a>
 <ul class="sectlevel3">
-<li><a href="#_density_plot">4.6.1. Density Plot</a></li>
-<li><a href="#_hilltop_patch_plot">4.6.2. Hilltop Patch Plot</a></li>
-<li><a href="#_binned_plot">4.6.3. Binned Plot</a></li>
-<li><a href="#_fitting_the_critical_gradient">4.6.4. Fitting The Critical Gradient</a></li>
+<li><a href="#_getting_the_data">4.6.1. Getting the data</a></li>
+<li><a href="#_getting_the_code">4.6.2. Getting The Code</a></li>
+<li><a href="#_running_the_code">4.6.3. Running The Code</a></li>
+<li><a href="#_plotting_data">4.6.4. Plotting Data</a></li>
 </ul>
 </li>
 <li><a href="#_summary_2">4.7. Summary</a></li>
+</ul>
+</li>
+<li><a href="#_legacy_code_dimensionless_erosion_and_relief">5. Legacy code: Dimensionless Erosion and Relief</a>
+<ul class="sectlevel2">
+<li><a href="#_get_the_code_for_dimensionless_erosion_and_relief_analysis">5.1. Get the code for dimensionless erosion and relief analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_clone_the_github_repository">5.1.1. Clone the GitHub repository</a></li>
+<li><a href="#_alternatively_get_the_zipped_code">5.1.2. Alternatively, get the zipped code</a></li>
+<li><a href="#_get_the_python_code">5.1.3. Get the Python code</a></li>
+<li><a href="#_checking_your_python_package_versions">5.1.4. Checking your Python package versions</a></li>
+<li><a href="#_get_the_example_datasets">5.1.5. Get the example datasets</a></li>
+</ul>
+</li>
+<li><a href="#_processing_high_resolution_topography">5.2. Processing High Resolution Topography</a></li>
+<li><a href="#_input_data_3">5.3. Input Data</a></li>
+<li><a href="#_compile_the_driver_3">5.4. Compile The Driver</a></li>
+<li><a href="#_run_the_code_2">5.5. Run the code</a></li>
+<li><a href="#_analyzing_dimensionless_relationships">5.6. Analyzing Dimensionless Relationships</a>
+<ul class="sectlevel3">
+<li><a href="#_density_plot">5.6.1. Density Plot</a></li>
+<li><a href="#_hilltop_patch_plot">5.6.2. Hilltop Patch Plot</a></li>
+<li><a href="#_binned_plot">5.6.3. Binned Plot</a></li>
+<li><a href="#_fitting_the_critical_gradient">5.6.4. Fitting The Critical Gradient</a></li>
+</ul>
+</li>
+<li><a href="#_summary_3">5.7. Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -553,18 +573,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-As of November 2017 these documents have not been updated to the latest installation instructions. The source code is <a href="https://github.com/LSDtopotools/LSDTT_Hillslope_Analysis">on the hillslope analysis page</a> but the instructions may be slightly out of date. Please contact <a href="http://swdg.io/">Stuart Grieve</a> if you have questions
-</td>
-</tr>
-</table>
-</div>
 <div class="sect2">
 <h3 id="_background_reading">1.1. Background reading</h3>
 <div class="paragraph">
@@ -613,8 +621,944 @@ As of November 2017 these documents have not been updated to the latest installa
 </div>
 </div>
 <div class="sect1">
-<h2 id="_selecting_a_window_size">2. Selecting A Window Size</h2>
+<h2 id="_coupling_hillslope_and_channel_analysis">2. Coupling hillslope and channel analysis</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Hillslope erosion and the evolution of hillslope morphology though time is often driven by incision or deposition in channels. Tectonic signals can migrate upstream in channels in the form of knickpoints and knickzones, and as these pass the baes of a hillslope, the hillslope will begin to adjust from the base upwards. This can create complex spatial patterns in topographic metrics that may be used to decipher transient changes in the erosion of upland landscapes.</p>
+</div>
+<div class="paragraph">
+<p>We have developed a series of tools for quantifying the spatial correspondence between channel steepness and hillslope properties.
+Included in <strong>LSDTopoTools2</strong> is a program called <strong>lsdtt-hillslope-channel-coupling</strong>, which packages routines our group uses to detect coupled channel and hillslope evolution.</p>
+</div>
+<div class="paragraph">
+<p>The code does a number of things.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It does basic analyses that replicates some of the functionality of <code>lsdtt-basic-metrics</code> and <code>lsdtt-chi-mapping</code> programs. In short, it can calculate surface fitting rasters such as slope, curvature and aspect, and it can extract the chi coordinate (a flow length normalised for drainage area).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you want more information on <code>lsdtt-basic-metrics</code>, follow the <a href="LSDTT_basic_usage.html">instructions for basic LSDTT usage</a></p>
+</li>
+<li>
+<p>If you want more information on <code>lsdtt-chi-mapping</code>, follow the <a href="LSDTT_chi_analysis.html">instructions for LSDTT chi analyis</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>It extracts ridgelines from a DEM and has various algorithms for filtering thses ridgelines. It also has algoirthms for splitting ridgelines into segments to perform some spatial averaging if that is what the user want.</p>
+</li>
+<li>
+<p>It can perform hilltop flow routing, where flow routing is performed from the hilltops to either the channel, a floodplain, or a buffered channel network in order to link hilltop pixles to channel pixels.</p>
+</li>
+<li>
+<p>It extracts basic channel networks and then can segment the channel network so that ridgetop pixels can be tagged against channel segments.</p>
+</li>
+<li>
+<p>It then calculates a range of metrics associated with these hilltop traces. These include dimensionless relief (R*), dimensionless curvature (E*), and hillslope length.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These metrics can tell you quite a lot about the state of the landscape and we feel quite strongly that combining the hillslope and channel metrics can yeild a much richer picture of a landscape&#8217;s evolution than either channel or hillslope metrics alone. We very much hope that you will be able to apply these analysis tools to your own landscape. Below we provide some papers that can help you understand what the metrics mean.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Relevant publications for understanding what relief and curvature metrics mean</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Reference</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.sciencedirect.com/science/article/pii/S0012821X07006061">Roering et al., 2007</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This was the initial publication that set out the theory of E* vs R* analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2011JF002057">Hurst et al., 2012</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This paper explored the relasionship between ridgetop curvature and first speculated as to the response of landscapes to transient incison in E* vs R* space.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://science.sciencemag.org/content/341/6148/868">Hurst et al., 2013</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This paper demonstrated that one could detect landscape transience using ass:[E*] vs R* data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.earth-surf-dynam.net/4/309/2016/">Grieve et al., 2016</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This paper automated extraction of E* R* metrics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[Hurst et al., 2019]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The first publication that combines E* R* analysis with channel metrics.</p>
+<p class="tableblock">These insructions will walk you through running the coulpled hillslope-channel analysis and explain the outputs of the code.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_getting_lsdtopotools2">2.1. Getting <strong>LSDTopoTools2</strong></h3>
+<div class="paragraph">
+<p>The <code>lsdtt-hillslope-channel-coupling</code> program sits within <strong>LSDTopoTools2</strong>.
+You can <a href="LSDTT_installation.html">follow our installation instructions</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you have installed <strong>LSDTopoTools2</strong> you will already have hillslope channel coupling routines, as well as the other programs necessary for carrying out the hillslope and channel analysis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_analysis">2.2. Running the analysis</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This analysis is perhaps the most complex thing you can do with <strong>LSDTopoTools</strong>. It requires a number of different components to be pulled together for the final product, and it works in a few steps because you need the output of one step to set the parameters for the next steps. So please be patient.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here are the steps you need to follow:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need to extract the channel network. It is actually important to get a proper channel network rather than just using some threshold drainge area, because the analysis is more robust if you are comparing basins of similar order and you can&#8217;t do that if you don&#8217;t know where the channels begin.</p>
+</li>
+<li>
+<p>If you want, you can use that network to decide on the basins you want to explore. But you can also do that algorithmically.</p>
+</li>
+<li>
+<p>You then need to determine the concavity of the channels because at some point you are going to calculate the steepness of the channels and for this you need a concavity. If you just need a first cut you can use 0.45, but we have tested for concavity in very many places and can assure you that it is highly variable.</p>
+</li>
+<li>
+<p>Once you do those things you can then run the hillslope code. Be warned: this last step can take A VERY LONG TIME.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_getting_channel_information">2.2.1. Getting channel information</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, you need to extract a channel network. If you have lidar data and you want to know exactly where the channels are, use one of our <a href="LSDTT_channel_extraction.html#_the_channel_extraction_tool">channel network algorithms</a>. The <a href="LSDTT_channel_extraction.html#_the_channel_extraction_tool">wiener method</a> is both <a href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1002/2013WR015167">accurate</a> and <a href="https://www.earth-surf-dynam.net/4/627/2016/">does not vary much as a function of grid resolution</a> so we recommend using this method. If you do extract a channel network you will need the <code>channel heads csv file</code> to load into the next step.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>As a brief note, to get a Wiener network, you set the parameter <code>print_wiener_channels: true</code>.</p>
+</li>
+<li>
+<p>The sources or channel heads file will have the extension <code>Wsources.csv</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Second, you should constrain the concavity index of the landscape. To do this use our <a href="LSDTT_chi_analysis.html#_calculating_concavity">concavity index tool</a>. Note that there are three main options for selecting basins:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can print a junction index raster and selects the junction numbers you want. This requires a junction file, which is a text file that simply lists the junction numbers you want, and you need to set the parameter <code>baselevel junctions fname: my_jncs.txt</code>. The text file can be a list of space or comma separated junctions.</p>
+</li>
+<li>
+<p>You can create a csv file that has latitude and longitude of the basin outlets. To get this to work set the paramters <code>get_basins_from_outlets: true</code> and <code>basin_outlet_csv: test_basins2.csv</code>. Natually you will need to adjust the name of the file. The file <strong>MUST</strong> have a column named <code>latitude</code> and a column named <code>longitude</code> and these must be in WGS84 coordinates.</p>
+</li>
+<li>
+<p>You can use the <a href="LSDTT_chi_analysis.html#_selecting_channels_and_basins">basin selection options</a>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Once you have a channel network and a concavity, <a href="LSDTT_chi_analysis.html#_getting_the_software">extract the segmented channel profile</a>. You need to make sure the switches <code>print_segments: true</code> and <code>print_segments_raster: true</code> are included in the parameter file</p>
+</li>
+<li>
+<p>Once you have done all that, you should have a number of new files along with your original rasters. The ones needed for the channel-hillslope coupling are</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The channel heads file if you are using an extracted channel network (a <code>HEADS.csv</code> file)</p>
+</li>
+<li>
+<p>A channel segments raster <code>_SEGMENTS.bil</code> that is derived from the run of <strong>chi mapping tool</strong> with the <code>print_segments: true</code> and <code>print_segments_raster: true</code> parameters in the parameter file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>These files are ingested by the code <code>lsdtt-hillslope-channel-coupling</code>, the instructions of which are below.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_making_spaghetti_i_e_doing_the_full_analysis">2.2.2. Making spaghetti (i.e., doing the full analysis)</h4>
+<div class="paragraph">
+<p>Wait, what is all this about spaghetti? One of the plots we make using the hillslope-channel analysis looks a bit like spaghetti, so we call these spaghetti plots. Hungry yet? It is better to run these analyses on a full stomach.</p>
+</div>
+<div class="paragraph">
+<p>Like all <strong>LSDTopoTools2</strong> code, you run the analysis with a parameter file. The format of these files is always the same.</p>
+</div>
+<div class="paragraph">
+<p>We will walk you though an analysis on a test site so you can see how it works.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick reminder of LSDTopoTools2 installation</div>
+<div class="paragraph">
+<p>If any of the below steps don&#8217;t make sense, read the <a href="LSDTT_installation.html">full installation instructions</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Pull and run the docker container <code>lsdtt_pcl_docker</code></p>
+</li>
+<li>
+<p>Go into the LSDT</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, you need to have <a href="LSDTT_installation.html"><strong>LSDTopoTools2</strong> installed</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.3. Coupled hillslope and channel ananylsis: options and outfiles</h3>
+<div class="sect3">
+<h4 id="_input_options">2.3.1. Input options</h4>
+<div class="paragraph">
+<p>Like all <strong>LSDTopoTools</strong> programs, you can set parameters in the <strong>lsdtt-hillslope-channel-coupling</strong> that drive the analysis. Many of these are shared with other programs in the <strong>LSDTopoTools</strong> analysis suite.</p>
+</div>
+<div class="sect4">
+<h5 id="_basic_file_input_and_output">Basic file input and output</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>THIS IS NOT A KEYWORD</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Null</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you don&#8217;t enter the write path, read path or write fname, the program will assume that the read and write paths are the current directory, and the write fname is the same as the read fname.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path to which data is written. <strong>The code will NOT create a path: you need to make the write path before you start running the program.</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path from which data is read.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write fname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix of rasters to be written <strong>without extension</strong>.
+For example if this is <code>Test</code> and you have selected <code>bil</code> format then a fill operation will result in a file called <code>Test_Fill.bil</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read fname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The filename of the raster to be read without extension. For example if the raster is <code>MyRaster.bil</code>, read fname will be <code>MyRaster</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_dem_preprocessing">DEM preprocessing</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have the <code>remove_seas</code> keyword set to true, the program will change any elevation node below this value to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_elevation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have the <code>remove_seas</code> keyword set to true, the program will change any elevation node above this value to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove_seas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this changes extreme value in the elevation to NoData.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min_slope_for_fill</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum slope between pixels for use in the fill function.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">raster_is_filled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, the code assumes the raster is already filled and doesn&#8217;t perform the filling routine. This should save some time in computation, but make sure the raster really is filled or else you will get segmentation faults!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only_check_parameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this checks parameter values but doesn&#8217;t run any analyses. Mainly used to see if raster files exist.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_hilltop_parameters">Hilltop parameters</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. These are used to select hilltops</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StreamNetworkPadding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels you want to pad the channel network. If a hillslope trace comes within this many pixels of the channel, the trace stops.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min_stream_order_to_extract_basins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum stream order for extracting basins (or the hilltops of those basins)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max_stream_order_to_extract_basins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum stream order for extracting basins (or the hilltops of those basins)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemovePositiveHilltops</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove hilltops with positive curvature (i.e., that are concave)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoveSteepHilltops</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove hilltops that are steep. This is because steep (plunging) ridgetop will move into the nonlinear sediment transport regime and there will no longer be a linear relasionship between curvature and erosion rate at steady state. Basically if hilltops are too steep the assumptions of the analysis break down.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Threshold_Hilltop_Gradient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>RemoveSteepHilltops</code> is <code>true</code>, then any hillslopes steeper than this will be removed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaskHilltopstoBasins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Need to ask Martin what this does.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_hilltop_analysis_and_printing_options">Hilltop analysis and printing options</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. These are the different analyses and write options for the hilltops</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">run_HRF_analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, run the entire hilltop flow routing analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hilltops</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, write a raster of all the hilltops.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hilltop_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, write a raster of hilltop curvature.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hillslope_gradient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, write a raster of all hillslope gradient</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hillslope_length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, write a raster of all hillslope length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hillslope_relief</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, write a raster of all hillslope relief</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_hillslope_traces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, this writes the hillslope traces. Be warned: this is <strong>VERY</strong> computationally intensive.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hillslope_trace_thinning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A thinning factor. If it is 1, it writes everyu trace. If 2, every 2nd trace, if 3, ever thrid trace. And so on.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hillslope_traces_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the hillslope traces file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hillslope_traces_basin_filter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;m not sure what this does. Ask Martin or Stuart.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_filenames_for_channel_heads_floodplains_and_other_pre_computed_data">Filenames for channel heads, floodplains, and other pre-computed data</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChannelSegments_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A file that has computed the channel segment numbers so that these segments can be linked to ridgetops. It is calculated <strong>UPDATE</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Floodplain_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A file that has 1 for floodplain and 0 elsewhere. Used to mask the floodplains so that hillslopes stop there. The format is <strong>UPDATE</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CHeads_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This reads a channel heads file. It will supercede the <code>threshold_contributing_pixels</code> flag. That is, if you give a valid CHeads filename the code will ignore the threshold pixels and use the sources in the file instead. You can calculate channel heads using our <a href="https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction">channel extraction tools</a>. The file needs to be a <strong>csv</strong> file and you pass the filename <strong>WITHOUT EXTENSION</strong>. The format of the filename is one with 5 columns: <code>node_index,row,col,x,y</code>. The <code>x,y</code> coordinates are in local UTM coordinates.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BaselevelJunctions_file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File containing a list of baselevel junctions to determine basins to analyse. The basin numbers should be on individual lines of the text file. You can see the junction numbers by printing the junction numbers to a csv with the command <code>print_junctions_to_csv</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_selecting_channels_and_basins">Selecting channels and basins</h5>
+<div class="paragraph">
+<p>There are a number of options for selecting channels and vasins. The basin selection is linked to extracting channel profile analysis and is not used for hillslop analysis.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">threshold_contributing_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels required to generate a channel (i.e., the source threshold).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum_basin_size_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum number of pixels in a basin for it to be retained. This operation works on the baselevel basins: subbasins within a large basin are retained.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_basin_size_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum number of pixels in a basin for it to be retained. This is only used by <code>find_complete_basins_in_window</code> but that algorithm for selecting basins is the default.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find_complete_basins_in_window</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>THIS IS THE DEFAULT METHOD! If you don&#8217;t want this method you need to set it to false.</strong> If this is true, it i) Gets all the basins in a DEM and takes those between the <code>minimum_basin_size_pixels</code> and <code>maximum_basin_size_pixels</code>. It then removes basins that are influenced by the edge of the DEM, and then removes nested basins. The reason for removing basins draining the edge is that all chi and S-A analysis requires that the basin is complete. If not, your area, and therefore chi coordinate, will be incorrect.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find_largest_complete_basins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A boolean that, if set to true, will got through each baselevel node on the edge of the DEM and work upstream to keep the largest basin that is not influenced on its edge by nodata. <strong>This only operates if <code>find_complete_basins_in_window</code> is set to false!</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test_drainage_boundaries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A boolean that, if set to true, will eliminate basins with pixels drainage from the edge. This is to get rid of basins that may be truncated by the edge of the DEM (and thus will have incorrect chi values). <strong>This only operates if BOTH <code>find_complete_basins_in_window</code> and <code>find_largest_complete_basins</code> are set to false!, OR if you are using a baselevel junctions file.</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only_take_largest_basin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool (true or 1 will work)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is true, a chi map is created based only upon the largest basin in the raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_basin_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints a raster with the basins. <strong>IMPORTANT!</strong> This should be set to true if you want to use any of our <a href="https://github.com/LSDtopotools/LSDMappingTools">python plotting functions</a> that use basin information. Note that if this is true it will also print csv files with basin numbers and source numbers to assist plotting.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_printing_of_various_rasters">Printing of various rasters</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. These are options for polynomial surface fitting.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">surface_fitting_radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The radius of the polynomial window over which the surface is fitted. If you have lidar data, we have found that a radius of 5-8 metres works best.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write_hillshade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the hillshade raster. The format of this is stupidly different from other printing calls for a stupid inheritance reason. Try to ignore. Most GIS routines have a hillshading options but for some reason they look crappier than our in-house hillshading. I&#8217;m not sure why but if you want a hillshade I recommend using this function.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_fill_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the filled topography.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_slope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the topographic gradient raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_aspect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the aspect raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the curvature raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_planform_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the planform curvature raster. That is the curvature of the countour lines.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_profile_curvature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the profile curvature raster. That is the curvature along the line of steepest descent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_stream_order_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the stream order raster (but printing this to csv is more efficient, use <code>print_channels_to_csv</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_channels_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints the channel network to a csv file. Includes stream order and other useful information. Much more memory efficient than printing the whole raster. It prints <strong>all</strong> channel nodes across the DEM rather than printing nodes upstream of selected basins. <strong>If you want to see the channels selected for chi analysis use <code>print_chi_data_maps</code>.</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_junction_index_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the junction index raster (but printing this to csv is more efficient, use <code>print_junctions_to_csv</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_junctions_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints the junction indices to a csv file. Much more memory efficient than printing the whole raster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">convert_csv_to_geojson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this converts any csv file (except for slope-area data) to geojson format. This format takes up much more space than csv (file sizes can be 10x larger) but is georeferenced and can be loaded directly into a GIS. Also useful for webmapping. It assumes your raster is in UTM coordinates, and prints points with latitude and longitude in WGS84.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_basic_parameters_for_the_chi_coordinate">Basic parameters for the chi coordinate</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Parameters for calculating the chi coordinate.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A_0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>A<sub>0</sub></em> parameter (which nondimensionalises area) for chi analysis. This is in m<sup>2</sup>. Note that when <em>A<sub>0</sub></em> = 1 then the slope in chi space is the same as the channel steepness index (often denoted by <em>k<sub>s</sub></em>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m_over_n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>m/n</em> parameter (sometimes known as the concavity index) for calculating chi. Note that if you do any <em>m/n</em> analysis (either <code>calculate_MLE_collinearity</code> or <code>print_profiles_fxn_movern_csv</code>) this <em>m/n</em> value will be replaced.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">threshold_pixels_for_chi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For most calculations in the <strong>chi_mapping_tool</strong> chi is calculated everywhere, but for some printing operations, such as printing of basic chi maps (<code>print_simple_chi_map_with_basins_to_csv</code>, <code>print_chi_coordinate_raster</code>, <code>print_simple_chi_map_to_csv</code>) you don&#8217;t want chi everywhere (this is especially true when writing a simple csv file) so we have this parameter that sets chi to NoData below these threshold contributing pixels. If this is greater than <code>threshold_contributing_pixels</code> it will default to <code>threshold_contributing_pixels</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_chi_data_maps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>This needs to be true for python visualisation.</strong> If true, prints a raster with latitude, longitude and the chi coordinate, elevation, flow distance, drainage area, source key and baselevel keys to a csv file with the extension <code>_chi_data_map.csv</code>. Many of our <a href="https://github.com/LSDtopotools/LSDMappingTools">visualisation scripts</a> rely on this file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_burning_rasters_to_csv">2.3.2. Burning rasters to csv</h4>
+<div class="paragraph">
+<p>In some circumstances you might want to "burn" secondary data onto your data of the channel network. One example would be if you had a geologic map and wanted to add the rock type as a column to point data about your channels. These routines will take a raster and will add the data values from that raster to each point in the chi data.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+At the moment the burning function only works for the <code>print_chi_data_maps</code> routine.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Parameters for burning a raster to csv files.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">burn_raster_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, takes raster data and appends it to csv data of channel points.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">burn_raster_prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix of the raster (without the <code>bil</code> extension) that contains the data to be burned. Does not include the directory path. The raster <strong>MUST</strong> be in the same directory as your input DEM.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">burn_data_csv_column_header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">burned_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The column header for your burned data. If you want our python plotting tools to be happy, <strong>do not give this a name with spaces</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secondary_burn_raster_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is for a second burn raster. If true, takes raster data and appends it to csv data of channel points.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secondary_burn_raster_prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is for a second burn raster. The prefix of the raster (without the <code>bil</code> extension) that contains the data to be burned. Does not include the directory path. The raster <strong>MUST</strong> be in the same directory as your input DEM.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secondary_burn_data_csv_column_header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">burned_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is for a second burn raster. The column header for your burned data. If you want our python plotting tools to be happy, <strong>do not give this a name with spaces</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_parameters_for_segmentation_of_channels">Parameters for segmentation of channels</h5>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n_iterations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of iterations of random sampling of the data to construct segments. The sampling probability of individual nodes is determined by the skip parameter. Note that if you want to get a deterministic sampling of the segments you need to set this to 1 and set <code>skip</code> to 0. If you are using Monte Carlo sampling you should set this to at least 20 (but probably not more than 100).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">target_nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of nodes in a segment finding routine. Channels are broken into subdomains of around this length and then segmenting occurs on these subdomains. This limit is required because of the computational expense of segmentation, which goes as the factorial (!!!) of the number of nodes. Select between 80-120. A higher number here will take <strong>much</strong> longer to compute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum_segment_length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum length of a segment in sampled data nodes. The actual length is approximately this parameter times (1+skip). Note that the computational time required goes nonlinearly up the smaller this number. Note that this sets the shortest knickzone you can detect, although the algorithm can detect waterfalls where there is a jump between segments.  It should be between 6-20.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum_segment_length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum length of a segment in sampled data nodes. The actual length is approximately this parameter times (1+skip). A cutoff value for very large DEMs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">skip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">During Monte Carlo sampling of the channel network, nodes are sampled by skipping nodes after a sampled node. The skip value is the mean number of skipped nodes after each sampled node. For example, if skip = 1, on average every other node will be sampled. Skip of 0 means every node is sampled (in which case the n_iterations should be set to 1, because there will be no variation in the fit between iterations). If you want Monte Carlo sampling, set between 1 and 4.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sigma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This represents the variability in elevation data (if the DEM has elevation in metres, then this parameter will be in metres). It should include both uncertainty in the elevation data as well as the geomorphic variability: the size of roughness elements, steps, boulders etc in the channel that may lead to a channel profile diverging from a smooth long profile. That is, it is not simply a function of the uncertainty of the DEM, but also a function of topographic roughness so will be greater than the DEM uncertainty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n_nodes_to_visit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The chi map starts with the longest channel in each basin and then works in tributaries in sequence. This parameter determines how many nodes onto a receiver channel you want to go when calculating the chi slope at the bottom of a tributary.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_segments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this gives each segment a unique ID that is written to the <code>segmented_M_chi_map</code> (use <code>print_segmented_M_chi_map_to_csv: true</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_segments_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this gives each segment a unique ID and prints to raster. <strong>For this to work <code>print_segments</code> must be true.</strong> We use this to map other landscape metrics, such as various hillslope metrics, to channel segments.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_segmented_M_chi_map_to_csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints a csv file with latitude, longitude and a host of chi information including the chi slope, chi intercept, drainage area, chi coordinate and other features of the drainage network. The \(M_{\chi}\) values are calculated with the segmentation algorithm of <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al. 2014</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_output_files">2.3.3. Output files</h4>
+<div class="paragraph">
+<p>The two main output files are once called <code>_MChiSegmented.csv</code> and one called <code>_HilltopData.csv</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>_MChiSegmented.csv</code>: This file is almost identical to the one produced using <a href="LSDTT_chi_analysis.html#_point_data_usually_output_as_csv">channel steepness tools</a>, execpt it has a final column with a <code>segment_number</code> that is used to link hilltops to channels.</p>
+</li>
+<li>
+<p><code>_HilltopData.csv</code>: This contains data from hillslope traces. These tend to be <strong>very large</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_summary">2.5. Summary</h3>
+<div class="paragraph">
+<p>By now you should be able to generate analysis that links hillslope and channel metrics.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This section is legacy code. You can now perform this operation in <strong>lsdtt-basic-metrics</strong>. See <a href="LSDTT_basic_usage.html">Basic topographic analyis in <strong>LSDTopoTools</strong></a>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Many of the operations on hillslopes involve selecting a characteristic window size for fitting the surface topograpy.</p>
 </div>
@@ -646,7 +1590,7 @@ filename and the file format as arguments.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_overview">2.1. Overview</h3>
+<h3 id="_overview">3.1. Overview</h3>
 <div class="paragraph">
 <p>This driver file will run the surface fitting routines at a range of window sizes up to 100 meters, to
 produce a series of curvature rasters for the supplied landscape. The mean, interquartile range,
@@ -668,7 +1612,7 @@ of curvature varies with the surface fitting window size.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_input_data">2.2. Input Data</h3>
+<h3 id="_input_data">3.2. Input Data</h3>
 <div class="paragraph">
 <p>This driver only requires an input DEM, this file can be at any resolution and must be
 in <code>*.bil</code>, <code>flt</code> or <code>asc</code>. format. Guidance on converting data into these formats
@@ -678,7 +1622,7 @@ hillslopes reduces, and so this technique becomes less important.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_compile_the_driver">2.3. Compile The Driver</h3>
+<h3 id="_compile_the_driver">3.3. Compile The Driver</h3>
 <div class="paragraph">
 <p>The code is compiled using the provided makefile, <code>PolyFitWindowSize.make</code> and the command:</p>
 </div>
@@ -692,7 +1636,7 @@ hillslopes reduces, and so this technique becomes less important.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_the_code">2.4. Run The Code</h3>
+<h3 id="_run_the_code">3.4. Run The Code</h3>
 <div class="paragraph">
 <p>The driver is run with three arguments:</p>
 </div>
@@ -732,7 +1676,7 @@ the filename would be <code>Oregon_DEM</code>. This will be used to give the out
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_output_data">2.5. The Output Data</h3>
+<h3 id="_the_output_data">3.5. The Output Data</h3>
 <div class="paragraph">
 <p>The final outputs are stored in a plain text file, <code>&lt;Filename&gt;_Window_Size_Data.txt</code>,
 which is written to the data folder supplied as an argument.</p>
@@ -764,7 +1708,7 @@ this row of data.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_python_to_select_a_window_size">2.6. Using Python To Select A Window Size</h3>
+<h3 id="_using_python_to_select_a_window_size">3.6. Using Python To Select A Window Size</h3>
 <div class="paragraph">
 <p>The latest version of the python scripts which accompany this analysis driver can be found
 <a href="https://github.com/sgrieve/GeneralAnalysis">here</a> and provide a complete framework to select
@@ -851,7 +1795,7 @@ the scaling breaks identified in the plots with the red arrows:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_extracting_hillslope_lengths">3. Extracting Hillslope Lengths</h2>
+<h2 id="_legacy_code_extracting_hillslope_lengths">4. Legacy code: Extracting Hillslope Lengths</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section gives an overview of how to use the hillslope length driver (<strong>LH_Driver.cpp</strong>)
@@ -895,7 +1839,7 @@ can be used.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_overview_2">3.1. Overview</h3>
+<h3 id="_overview_2">4.1. Overview</h3>
 <div class="paragraph">
 <p>This driver file will combine several LSDTopoTools Functions in order to generate
 as complete a range of basin average and hillslope length metrics as possible. The tool will
@@ -917,12 +1861,12 @@ These can be enabled by setting a flag inside the driver on line 141.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_input_data_2">3.2. Input Data</h3>
+<h3 id="_input_data_2">4.2. Input Data</h3>
 <div class="paragraph">
 <p>This driver takes the following input data:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Input data for the hillslope length code</caption>
+<caption class="title">Table 12. Input data for the hillslope length code</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -955,14 +1899,14 @@ hillslopes. This is an optional input.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Surface Fitting Window Size</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A float</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The surface fitting window size can be constrained using the steps outlined in <a href="#_selecting_a_window_size">Selecting A Window Size</a>. This should be performed to ensure the
+<td class="tableblock halign-left valign-top"><p class="tableblock">The surface fitting window size can be constrained using the steps outlined in <a href="#Selecting A Window Size">[Selecting A Window Size]</a>. This should be performed to ensure the
 correct parameter values are selected.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_compile_the_driver_2">3.3. Compile The Driver</h3>
+<h3 id="_compile_the_driver_2">4.3. Compile The Driver</h3>
 <div class="paragraph">
 <p>The code is compiled using the provided makefile, <code>LH_Driver.make</code> and the command:</p>
 </div>
@@ -976,7 +1920,7 @@ correct parameter values are selected.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_the_hillslope_length_driver">3.4. Run The Hillslope Length Driver</h3>
+<h3 id="_run_the_hillslope_length_driver">4.4. Run The Hillslope Length Driver</h3>
 <div class="paragraph">
 <p>The driver is run with six arguments:</p>
 </div>
@@ -1071,13 +2015,13 @@ avoid writing these files set the switch to <code>0</code>. The rasters which wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="_analysing_the_results">3.5. Analysing The Results</h3>
+<h3 id="_analysing_the_results">4.5. Analysing The Results</h3>
 <div class="paragraph">
 <p>The final outputs are stored in two plain text files, which are written to the data
 folder supplied as the argument <code>path</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_prefix_paper_data_txt">3.5.1. &lt;Prefix&gt;_Paper_Data.txt</h4>
+<h4 id="_prefix_paper_data_txt">4.5.1. &lt;Prefix&gt;_Paper_Data.txt</h4>
 <div class="paragraph">
 <p>This file contains all of the basin average values for each basin, these files contain
 a large number of columns, providing a wealth of basin average data. The columns in the
@@ -1261,7 +2205,7 @@ file, from left to right are as follows:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_prefix_hilltopdata_csv">3.5.2. &lt;Prefix&gt;_HilltopData.csv</h4>
+<h4 id="_prefix_hilltopdata_csv">4.5.2. &lt;Prefix&gt;_HilltopData.csv</h4>
 <div class="paragraph">
 <p>This file contains hillslope metrics calculated for every hilltop pixel in the
 dataset which was routed successfully to a stream pixel. The columns in the
@@ -1319,7 +2263,7 @@ file, from left to right are as follows:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_trace_files">3.5.3. Trace Files</h4>
+<h4 id="_trace_files">4.5.3. Trace Files</h4>
 <div class="paragraph">
 <p>An optional switch can be set within the code to print out the coordinates of the path
 of each trace, allowing hilltop flow paths to be visualized. This option is not exposed at the command line as it will considerably slow the execution of the algorithm.</p>
@@ -1352,7 +2296,7 @@ vector&lt;int&gt; Target_Basin_Vector;</code></pre>
 <p>These control the path file printing and give several options to limit the scope of the path printing to ensure a manageable number of files are generated. The possible values for each parameter are:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Path file printing parameters</caption>
+<caption class="title">Table 13. Path file printing parameters</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1441,12 +2385,12 @@ vector&lt;int&gt; Target_Basin_Vector;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_worked_example">3.6. Worked Example</h3>
+<h3 id="_worked_example">4.6. Worked Example</h3>
 <div class="paragraph">
 <p>In this final section a typical hillslope length analysis will be performed from start to finish to demonstrate how to use this algorithm on real data. For this example we will use a very small section of Gabilan Mesa, to facilitate rapid processing.</p>
 </div>
 <div class="sect3">
-<h4 id="_getting_the_data">3.6.1. Getting the data</h4>
+<h4 id="_getting_the_data">4.6.1. Getting the data</h4>
 <div class="paragraph">
 <p>The data is located in the ExampleTopoDatasets repository. Firstly, we must create a new directory to store our topogrpahic data:</p>
 </div>
@@ -1481,7 +2425,7 @@ gabilan.bil  gabilan_CH.bil  gabilan_CH.hdr  gabilan.hdr</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getting_the_code">3.6.2. Getting The Code</h4>
+<h4 id="_getting_the_code">4.6.2. Getting The Code</h4>
 <div class="paragraph">
 <p>Next we need to download the code from the CSDMS repository where the latest stable version of the hilltop flow routing algorithm is located. This can again be downloaded using wget and it will come as a zipfile, which should be extracted into a separate folder to the data:</p>
 </div>
@@ -1511,7 +2455,7 @@ data  Hilltop_flow_routing-master  LH_Paper_Plotting-master</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_running_the_code">3.6.3. Running The Code</h4>
+<h4 id="_running_the_code">4.6.3. Running The Code</h4>
 <div class="paragraph">
 <p>We need to check that the filenames for our input and output data make sense in the <code>LH_Driver.cpp</code> file. Open the file in a text editor and look at the line which loads the DEM:</p>
 </div>
@@ -1588,7 +2532,7 @@ gabilan_dem_CH.bil  gabilan_dem.hdr     gabilan_dreich_PaperData.txt</code></pre
 </div>
 </div>
 <div class="sect3">
-<h4 id="_plotting_data">3.6.4. Plotting Data</h4>
+<h4 id="_plotting_data">4.6.4. Plotting Data</h4>
 <div class="paragraph">
 <p>We can now load the data files into the python scripts to visualize the data. Firstly, we can make a histogram to view the distribution of hillslope length values for our landscape using the <code>RAW_LH_Hist.py</code> script. We need to update the plotting parameters to reflect our data, the following lines can be edited within the script using any text editor:</p>
 </div>
@@ -1636,7 +2580,7 @@ location = 'Gabilan Mesa'
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary">3.7. Summary</h3>
+<h3 id="_summary_2">4.7. Summary</h3>
 <div class="paragraph">
 <p>You should now be able to generate hillslope length data from high resolution topography.</p>
 </div>
@@ -1644,7 +2588,7 @@ location = 'Gabilan Mesa'
 </div>
 </div>
 <div class="sect1">
-<h2 id="_dimensionless_erosion_and_relief">4. Dimensionless Erosion and Relief</h2>
+<h2 id="_legacy_code_dimensionless_erosion_and_relief">5. Legacy code: Dimensionless Erosion and Relief</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The relationship between topographic relief and erosion rate can be used to interrogate dynamic forces which interact to shape the Earth&#8217;s surface. Roering et al. (2007) formulated a dimensionless relationship between relief (R*) and erosion rate (E*) which allows comparisons between landscapes of vastly differing forms. Hurst et al. (2013) used this technique to identify topographic uplift and decay along the Dragons Back Pressure Ridge, CA. However, in spite of its utility, it has always been a challenging method to implement. In this chapter we go through the steps required to generate E* R* data using <a href="https://lsdtopotools.github.io/">LSDTopoTools</a> from high resolution topography at a range of spatial scales, following Grieve et al. (2015).</p>
@@ -1661,7 +2605,7 @@ location = 'Gabilan Mesa'
 <p>Generate a channel head file for the landscape.</p>
 </li>
 <li>
-<p>Run the hillslope lenth driver, following the  <a href="#_extracting_hillslope_lengths">Extracting Hillslope Lengths</a> chapter.</p>
+<p>Run the hillslope lenth driver, following the  <a href="#Extracting Hillslope Lengths">[Extracting Hillslope Lengths]</a> chapter.</p>
 </li>
 <li>
 <p>Compile the code with: <code>make -f E_STAR_R_STAR.make</code></p>
@@ -1677,12 +2621,12 @@ location = 'Gabilan Mesa'
 </div>
 </div>
 <div class="sect2">
-<h3 id="_get_the_code_for_dimensionless_erosion_and_relief_analysis">4.1. Get the code for dimensionless erosion and relief analysis</h3>
+<h3 id="_get_the_code_for_dimensionless_erosion_and_relief_analysis">5.1. Get the code for dimensionless erosion and relief analysis</h3>
 <div class="paragraph">
 <p>Our code for E*R* analysis can be found in our GitHub repository.  This repository contains code for extracting channel networks, generating hillslope length data and processing this topographic data into a form which can be used to generate E* R* relationships.</p>
 </div>
 <div class="sect3">
-<h4 id="_clone_the_github_repository">4.1.1. Clone the GitHub repository</h4>
+<h4 id="_clone_the_github_repository">5.1.1. Clone the GitHub repository</h4>
 <div class="paragraph">
 <p>First navigate to the folder where you will keep the GitHub repository.  In this example it is called <code>/home/LSDTT_repositories</code>.  To navigate to this folder in a UNIX terminal use the <code>cd</code> command:</p>
 </div>
@@ -1711,7 +2655,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_Hillslope_Analysis.git</code><
 </div>
 </div>
 <div class="sect3">
-<h4 id="_alternatively_get_the_zipped_code">4.1.2. Alternatively, get the zipped code</h4>
+<h4 id="_alternatively_get_the_zipped_code">5.1.2. Alternatively, get the zipped code</h4>
 <div class="paragraph">
 <p>If you don&#8217;t want to use <em>git</em>, you can download a zipped version of the code:</p>
 </div>
@@ -1738,7 +2682,7 @@ so if you previously downloaded a zipper repository this will overwrite it.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_the_python_code">4.1.3. Get the Python code</h4>
+<h4 id="_get_the_python_code">5.1.3. Get the Python code</h4>
 <div class="paragraph">
 <p>In addition to the topographic analysis code, some python code is provided to handle the generation of the E* R* data and its visualization. This code is stored in a separate <a href="https://github.com">GitHub</a> repository which can be checked out in the same manner as before. It is a good idea to place the python code into a separate directory to avoid confusion later on.</p>
 </div>
@@ -1782,7 +2726,7 @@ The python code has a number of dependences which you should check prior to tryi
 </div>
 </div>
 <div class="sect3">
-<h4 id="_checking_your_python_package_versions">4.1.4. Checking your Python package versions</h4>
+<h4 id="_checking_your_python_package_versions">5.1.4. Checking your Python package versions</h4>
 <div class="paragraph">
 <p>For the code to run correctly the following packages must be installed with a version number greater than or equal to the version number listed below. The code has only been tested on Python 2.7 using the listed versions of these packages, so if you experience unexpected behavior on a higher version, try installing the specified version.</p>
 </div>
@@ -1839,7 +2783,7 @@ $ sudo pip install --upgrade &lt;package name&gt;</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_the_example_datasets">4.1.5. Get the example datasets</h4>
+<h4 id="_get_the_example_datasets">5.1.5. Get the example datasets</h4>
 <div class="paragraph">
 <p>We have provided some example datasets which you can use in order to test this algorithm. In this tutorial we will work using a LiDAR dataset and accompanying channel heads from Gabilan Mesa, California. You can get it from our ExampleTopoDatasets repository using <code>wget</code> and we will store the files in a folder called <code>data</code>:</p>
 </div>
@@ -1874,9 +2818,9 @@ gabilan_DEM.bil  gabilan_DEM_CH.bil  gabilan_DEM_CH.hdr  gabilan_DEM.hdr</code><
 </div>
 </div>
 <div class="sect2">
-<h3 id="_processing_high_resolution_topography">4.2. Processing High Resolution Topography</h3>
+<h3 id="_processing_high_resolution_topography">5.2. Processing High Resolution Topography</h3>
 <div class="paragraph">
-<p>The generation of E* R* data is built upon the ability to measure hillslope length and relief as spatially continuous variables across a landscape. This is performed by using the hillslope length driver outlined in the <a href="#_extracting_hillslope_lengths">Extracting Hillslope Lengths</a> chapter.</p>
+<p>The generation of E* R* data is built upon the ability to measure hillslope length and relief as spatially continuous variables across a landscape. This is performed by using the hillslope length driver outlined in the <a href="#Extracting Hillslope Lengths">[Extracting Hillslope Lengths]</a> chapter.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1895,12 +2839,12 @@ When running the hillslope length driver, ensure that the switch to write the ra
 </div>
 </div>
 <div class="sect2">
-<h3 id="_input_data_3">4.3. Input Data</h3>
+<h3 id="_input_data_3">5.3. Input Data</h3>
 <div class="paragraph">
 <p>This driver takes the following input data:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Input data for the <code>E_STAR_R_STAR.cpp</code> driver.</caption>
+<caption class="title">Table 14. Input data for the <code>E_STAR_R_STAR.cpp</code> driver.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1959,7 +2903,7 @@ a value of 2 or 3 is used, to ensure a good balance between sampling density and
 </table>
 </div>
 <div class="sect2">
-<h3 id="_compile_the_driver_3">4.4. Compile The Driver</h3>
+<h3 id="_compile_the_driver_3">5.4. Compile The Driver</h3>
 <div class="paragraph">
 <p>Once you have generated the hillslope length data you must compile the <code>E_STAR_R_STAR.cpp</code> driver. This is performed by using the provided makefile, <code>LH_Driver.make</code> and the command:</p>
 </div>
@@ -1973,7 +2917,7 @@ a value of 2 or 3 is used, to ensure a good balance between sampling density and
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_the_code_2">4.5. Run the code</h3>
+<h3 id="_run_the_code_2">5.5. Run the code</h3>
 <div class="paragraph">
 <p>Once the driver has been compiled it can be run using the following arguments:</p>
 </div>
@@ -2048,7 +2992,7 @@ $ ./E_STAR_R_STAR.out /home/data/ gabilan 50 50 2</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_analyzing_dimensionless_relationships">4.6. Analyzing Dimensionless Relationships</h3>
+<h3 id="_analyzing_dimensionless_relationships">5.6. Analyzing Dimensionless Relationships</h3>
 <div class="paragraph">
 <p>Once the code has been run and the data has been generated, it can be processed using the Python script <code>Plot_ER_Data.py</code> which was downloaded into the directory:</p>
 </div>
@@ -2067,7 +3011,7 @@ bin_data.py  Plot_ER_Data.py  Settings.py</code></pre>
 <p><code>Settings.py</code> is a large parameter file which must be modified to reflect our input data and the nature of the plots we want to generate. Each parameter is described within the file, but these descriptions are also produced here for clarity. It should be noted that a useful method for managing large sets of data and plotting permutations is to generate several <code>Settings.py</code> files and swapping between them as needed. The following tables outline all of the parameters which can be used to configure the E* R* plots.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Paramter information to load data.</caption>
+<caption class="title">Table 15. Paramter information to load data.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2099,7 +3043,7 @@ bin_data.py  Plot_ER_Data.py  Settings.py</code></pre>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Options to select data to be plotted</caption>
+<caption class="title">Table 16. Options to select data to be plotted</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2156,7 +3100,7 @@ bin_data.py  Plot_ER_Data.py  Settings.py</code></pre>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Options controlling the fitting of the critical gradient</caption>
+<caption class="title">Table 17. Options controlling the fitting of the critical gradient</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2183,7 +3127,7 @@ bin_data.py  Plot_ER_Data.py  Settings.py</code></pre>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Options controlling the plot style</caption>
+<caption class="title">Table 18. Options controlling the plot style</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2225,7 +3169,7 @@ bin_data.py  Plot_ER_Data.py  Settings.py</code></pre>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_density_plot">4.6.1. Density Plot</h4>
+<h4 id="_density_plot">5.6.1. Density Plot</h4>
 <div class="paragraph">
 <p>Firstly we will generate a density plot from the raw E* R* data. To do this we must update the path to our data files, the prefix and the basin order so that our files can be loaded. These modifications can be done in any text editor.</p>
 </div>
@@ -2290,7 +3234,7 @@ SierraNevada = False</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_hilltop_patch_plot">4.6.2. Hilltop Patch Plot</h4>
+<h4 id="_hilltop_patch_plot">5.6.2. Hilltop Patch Plot</h4>
 <div class="paragraph">
 <p>Having completed the first example plot it becomes very simple to re-run the code to generate different plots. In this example we will plot the hilltop patch data points with error bars. To do this we need to change our settings file as follows:</p>
 </div>
@@ -2338,7 +3282,7 @@ SierraNevada = False</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binned_plot">4.6.3. Binned Plot</h4>
+<h4 id="_binned_plot">5.6.3. Binned Plot</h4>
 <div class="paragraph">
 <p>To bin the raw data, we need to set the <code>BinFlag</code> parameter to 'raw' and select a number of bins to place our data into:</p>
 </div>
@@ -2383,7 +3327,7 @@ SierraNevada = False</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_fitting_the_critical_gradient">4.6.4. Fitting The Critical Gradient</h4>
+<h4 id="_fitting_the_critical_gradient">5.6.4. Fitting The Critical Gradient</h4>
 <div class="paragraph">
 <p>The final example for this section is how to use the code to estimate the critical gradient of a landscape. This is performed by configuring the bootstrapping parameters and in this case we will use the patch data and 1000 iterations to compute the best fit critical gradient.</p>
 </div>
@@ -2429,7 +3373,7 @@ SierraNevada = False</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary_2">4.7. Summary</h3>
+<h3 id="_summary_3">5.7. Summary</h3>
 <div class="paragraph">
 <p>By now you should be able to generate dimensionless erosion rate and relief data from high resolution topography.</p>
 </div>
@@ -2439,7 +3383,7 @@ SierraNevada = False</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-29 16:40:46 UTC
+Last updated 2019-06-17 15:13:57 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
