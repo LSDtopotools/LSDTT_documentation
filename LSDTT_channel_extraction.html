@@ -444,10 +444,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_introduction">1. Introduction</a></li>
 <li><a href="#_get_the_code_for_channel_extraction">2. Get the code for channel extraction</a>
 <ul class="sectlevel2">
-<li><a href="#_compile_channel_extraction_using_lsdtopotoolssetup_py">2.1. Compile channel extraction using LSDTopoToolsSetup.py</a></li>
-<li><a href="#_clone_the_github_repository_not_needed_if_you_used_lsdtopotoolssetup_py">2.2. Clone the GitHub repository (not needed if you used LSDTopoToolsSetup.py)</a></li>
-<li><a href="#_alternatively_get_the_zipped_code_not_needed_if_you_used_lsdtopotoolssetup_py">2.3. Alternatively, get the zipped code (not needed if you used LSDTopoToolsSetup.py)</a></li>
-<li><a href="#_example_datasets">2.4. Example datasets</a></li>
+<li><a href="#_getting_lsdtopotools_2">2.1. Getting LSDTopoTools 2</a></li>
+<li><a href="#_example_datasets">2.2. Example datasets</a></li>
 </ul>
 </li>
 <li><a href="#_the_channel_extraction_tool">3. The Channel Extraction tool</a>
@@ -597,92 +595,21 @@ Knowing in detail where the channel head is, however, is not at all trivial and 
 <div class="paragraph">
 <p>Our code for channel extraction can be found in our <a href="https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction">GitHub repository</a>.  This repository contains code for extracting channel networks using a variety of different methods ranging from simple contributing area thresholds to more complex geometric and theoretical approaches for extracting channels from high-resolution datasets.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">If you use our vagrantfiles</div>
-<div class="paragraph">
-<p>If you use our <a href="https://github.com/LSDtopotools/LSDTT_vagrantfiles">vagrantfiles</a> to set up your system, the channel extraction repository will already be downloaded onto your virtual machine.
-You can find the repository in the directory <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/</code> directory. You can use <code>cd</code> to go directly there.</p>
-</div>
+<div class="sect2">
+<h3 id="_getting_lsdtopotools_2">2.1. Getting LSDTopoTools 2</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>.</p>
+</li>
+<li>
+<p>The channel extraction code is called <code>lsdtt-channel-extraction</code>.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_compile_channel_extraction_using_lsdtopotoolssetup_py">2.1. Compile channel extraction using LSDTopoToolsSetup.py</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><a href="https://github.com/LSDtopotools/LSDAutomation/blob/master/LSDTopoToolsSetup.py">LSDTopoToolsSetup.py</a> is a script that we use to automate compilation of our tools. It is downloaded automatically by the vagrant machine into the <code>/LSDTopoTools/</code> folder.</p>
-</div>
-<div class="paragraph">
-<p>To compile the channel extraction tool run:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/
-$ python LSDTopoToolsSetup.py -id 1 -CE True</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_clone_the_github_repository_not_needed_if_you_used_lsdtopotoolssetup_py">2.2. Clone the GitHub repository (not needed if you used LSDTopoToolsSetup.py)</h3>
-<div class="paragraph">
-<p>If you haven&#8217;t run our vagrant setup, you need to clone the repository. First navigate to the folder where you will keep the GitHub repository.  In this example it is called <code>/LSDTopoTools/Git_projects/</code>.  To navigate to this folder in a UNIX terminal use the <code>cd</code> command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can use the command <code>pwd</code> to check you are in the right folder.  Once you are in this folder, you can clone the repository from the <a href="https://github.com">GitHub website</a>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-/LSDTopoTools/Git_projects/
-$ git clone https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction.git</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Navigate to this folder again using the <code>cd</code> command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools_ChannelExtraction/</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_alternatively_get_the_zipped_code_not_needed_if_you_used_lsdtopotoolssetup_py">2.3. Alternatively, get the zipped code (not needed if you used LSDTopoToolsSetup.py)</h3>
-<div class="paragraph">
-<p>If you don&#8217;t want to use <em>git</em>, you can download a zipped version of the code:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ pwd
-/LSDTopoTools/Git_projects/
-$ wget https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction/archive/master.zip
-$ gunzip master.zip</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<a href="https://github.com">GitHub</a> zips all repositories into a file called <code>master.zip</code>,
-so if you previously downloaded a zipper repository this will overwrite it.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_example_datasets">2.4. Example datasets</h3>
+<h3 id="_example_datasets">2.2. Example datasets</h3>
 <div class="paragraph">
 <p>We have provided some example datasets which you can use in order to test the channel extraction algorithms. In this tutorial we will work using a lidar dataset from Indian Creek, Ohio.</p>
 </div>
