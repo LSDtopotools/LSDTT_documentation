@@ -459,7 +459,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</a></li>
+<li><a href="#_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</a>
+<ul class="sectlevel2">
+<li><a href="#_get_the_associated_software_you_need">3.1. Get the associated software you need</a></li>
+<li><a href="#_get_the_lsdtopotools2_code_and_install">3.2. Get the LSDTopoTools2 code and install</a></li>
+<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">3.3. Starting an LSDTopoTools2 session after your first installation</a></li>
+</ul>
+</li>
 <li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</a>
 <ul class="sectlevel2">
 <li><a href="#_mapping_your_network_drive">4.1. Mapping your network drive</a></li>
@@ -1515,6 +1521,8 @@ WORKDIR /LSDTopoTools</code></pre>
 <div class="paragraph">
 <p>Our software is designed for linux operating systems but we do recommend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
 </div>
+<div class="sect2">
+<h3 id="_get_the_associated_software_you_need">3.1. Get the associated software you need</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1532,51 +1540,68 @@ $ sudo apt-get install -y cmake</code></pre>
 </div>
 </div>
 </li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_the_lsdtopotools2_code_and_install">3.2. Get the LSDTopoTools2 code and install</h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Go the the directory where you want to install <strong>LSDTopoTools</strong>.</p>
+<p>You probably should make a directory where you keep everything associated with <strong>LSDTopoTools</strong>. A suggested name for this directory is <strong>LSDTopoTools</strong>: it says what it does on the tin.</p>
 </li>
 <li>
-<p>Download our setup script.</p>
+<p>Next, clone the <a href="https://github.com/LSDtopotools/LSDTopoTools2"><strong>LSDTopoTools2</strong> repository</a> here:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ wget https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTopoTools2.git</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Run the setup tool:</p>
+<p>Go into that directory:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -id 1</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools2</code></pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>-id</code> flag tells LSDTopoToolsSetup.py where to put the files. In vagrant it always starts in the root directory (this is for file syncing purposes). However, if your native operating system is Linux, then you can either install in your home directory (<code>-id 0</code>) or in the directory where you called LSDTopoToolsSetup.py (<code>-id 1</code>).
-</td>
-</tr>
-</table>
 </div>
 </li>
 <li>
-<p>If <code>wget</code> doesn&#8217;t work, you can follow the link:
-<a href="https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py" class="bare">https://raw.githubusercontent.com/LSDtopotools/LSDAutomation/master/LSDTopoToolsSetup.py</a><br>
-Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetup.py</code>.</p>
-</li>
-<li>
-<p>The <code>LSDTopoToolsSetup.py</code> tool has a number of options: if you want a preview of what it does, you can call its help options:</p>
+<p>Run the setup tool</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python LSDTopoToolsSetup.py -h</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ sh lsdtt2_setup.sh</code></pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_starting_an_lsdtopotools2_session_after_your_first_installation">3.3. Starting an LSDTopoTools2 session after your first installation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Whenever you return to run an LSDTopoTools2 session, you will need to tell the computer where your program files are. You cave two options:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Run <code>sh lsdtt2_setup.sh</code> in the LSDTopoTools2 directory. This gets the latest version of the software, recompiles, and points your session to the program files.</p>
+</li>
+<li>
+<p>Run <code>sh lsdtt2_terminal.sh</code> in the LSDTopoTools2 directory. This just points your session to the program files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You must do one of those two things otherwise your computer will not know where the program files are.</p>
+</li>
+<li>
+<p>As an alternative, you can go into yor <code>.bashrc</code> file and add the <code>/path/to/LSDTopoTools2/bin</code> directory to your <code>$PATH</code>. You will need to change the full path to reflect your own directory system. If you don&#8217;t know what a <code>.bashrc</code> file is you are probably better off running the <code>lsdtt2_terminal.sh</code> script.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1757,10 +1782,7 @@ Copy the text, paste it into a text editor and save it as <code>LSDTopoToolsSetu
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Type: <code>cd LSDTopoTools2/src</code></p>
-</li>
-<li>
-<p>Type: <code>sh build.sh</code></p>
+<p>Type: <code>sh lsdtt2_setup.sh</code></p>
 </li>
 <li>
 <p>Wait a bit until it finishes. It should take a minute or two.</p>
