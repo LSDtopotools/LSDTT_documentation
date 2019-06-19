@@ -473,7 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_dont_be_messy">4.3. Don&#8217;t be messy</a></li>
 <li><a href="#_cloning_the_lsdtopotools2_repository">4.4. Cloning the LSDTopoTools2 repository</a></li>
 <li><a href="#_building_the_software">4.5. Building the software</a></li>
-<li><a href="#_making_sure_the_software_works">4.6. Making sure the software works</a></li>
+<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation_2">4.6. Starting an LSDTopoTools2 session after your first installation</a></li>
 </ul>
 </li>
 <li><a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">5. Installing LSDTopoTools using VirtualBox and Vagrant</a>
@@ -853,20 +853,32 @@ This container is 663 Mb so if you just want to do some initial testing use the 
 <div class="paragraph">
 <p>This script grabs the latest version of the code and builds the programs if you don&#8217;t have one that is up to date. It also ensure that the <strong>LSDTopoTools</strong> programs are in your path.</p>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You will need to run <code>Start_LSDTT.sh</code> every time you start a new Docker session.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
-<p>You are now ready to start using <strong>LSDTopoTools</strong>!</p>
+<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_second_option_build_the_docker_containers">2.6. Second option: build the docker containers</h3>
-<div class="admonitionblock important">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 Unless you are a docker purist, please ignore this section and use <a href="#_first_option_pull_the_docker_images">option 1</a> instead.
@@ -1549,7 +1561,7 @@ $ sudo apt-get install -y cmake</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You probably should make a directory where you keep everything associated with <strong>LSDTopoTools</strong>. A suggested name for this directory is <strong>LSDTopoTools</strong>: it says what it does on the tin.</p>
+<p>You probably should make a directory where you keep everything associated with <strong>LSDTopoTools</strong>. A suggested name for this directory is <strong>LSDTopoTools</strong>: it says what it does on the tin. Go into that directory once you have created it.</p>
 </li>
 <li>
 <p>Next, clone the <a href="https://github.com/LSDtopotools/LSDTopoTools2"><strong>LSDTopoTools2</strong> repository</a> here:</p>
@@ -1560,7 +1572,7 @@ $ sudo apt-get install -y cmake</code></pre>
 </div>
 </li>
 <li>
-<p>Go into that directory:</p>
+<p>Go into that new directory:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools2</code></pre>
@@ -1574,6 +1586,9 @@ $ sudo apt-get install -y cmake</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console">$ sh lsdtt2_setup.sh</code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
 </li>
 </ol>
 </div>
@@ -1804,23 +1819,36 @@ $ sudo apt-get install -y cmake</code></pre>
 <li>
 <p>Wait a bit until it finishes. It should take a minute or two.</p>
 </li>
+<li>
+<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
+</li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_making_sure_the_software_works">4.6. Making sure the software works</h3>
-<div class="olist arabic">
-<ol class="arabic">
+<h3 id="_starting_an_lsdtopotools2_session_after_your_first_installation_2">4.6. Starting an LSDTopoTools2 session after your first installation</h3>
+<div class="ulist">
+<ul>
 <li>
-<p>Type <code>cd ..</code> (this puts you into the main <strong>LSDTopoTools2</strong> directory)</p>
+<p>Whenever you return to run an <strong>LSDTopoTools2</strong> session, you will need to tell the computer where your program files are. You cave two options:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Run <code>sh lsdtt2_setup.sh</code> in the <strong>LSDTopoTools2</strong> directory. This gets the latest version of the software, recompiles, and points your session to the program files.</p>
 </li>
 <li>
-<p>Now type: <code>sh lsdtt2_terminal.sh</code></p>
+<p>Run <code>sh lsdtt2_terminal.sh</code> in the <strong>LSDTopoTools2</strong> directory. This just points your session to the program files.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>You can test the softare by typing: <code>lsdtt-basic-metrics</code> and see if it actually runs the program (it won&#8217;t do any analysis yet but it will tell you to give it some files).</p>
+<p>You must do one of those two things otherwise your computer will not know where the program files are.</p>
 </li>
-</ol>
+<li>
+<p>As an alternative, you can go into yor <code>.bashrc</code> file and add the <code>/path/to/LSDTopoTools2/bin</code> directory to your <code>$PATH</code>. You will need to change the full path to reflect your own directory system. If you don&#8217;t know what a <code>.bashrc</code> file is you are probably better off running the <code>lsdtt2_terminal.sh</code> script.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2806,7 +2834,7 @@ $ sudo apt-get install liblas-dev</code></pre>
 <p>A text editor isn&#8217;t part of <strong>LSDTopoTools</strong> but you need one to do anything. You will need to modify parameter files and you might even get to the stage of opening Pass:[c++] or Python scripts and editing them so you will need an editor.</p>
 </div>
 <div class="paragraph">
-<p>If you are Linux native you probably chortle superiorly if you lean someone doesn&#8217;t use <code>vi</code> to modify files, but most students have usually only interacted with text files via a word processor.</p>
+<p>If you are Linux native you probably chortle superiorly if you learn someone doesn&#8217;t use <code>vi</code> to modify files, but most students have usually only interacted with text files via a word processor.</p>
 </div>
 <div class="paragraph">
 <p>A word processor (e.g., <strong>Word</strong>, or whatever fasionable software is on your fruit-based computer) <strong>will not work</strong> to modify code: these convert your text into binary files and add a bunch of formatting.</p>
@@ -2817,13 +2845,13 @@ $ sudo apt-get install liblas-dev</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Brackets is a multi platform text editor (it works on all operating systems) and is free. It has nice file navigation. This documentation was written using Brackets.</p>
+<p><a href="http://brackets.io/">Brackets</a> is a multi platform text editor (it works on all operating systems) and is free. It has nice file navigation. This documentation was written using Brackets.</p>
 </li>
 <li>
-<p>Atom is another multi platform editor. Similar to Brackets. Also free.</p>
+<p><a href="https://atom.io/">Atom</a> is another multi platform editor. Similar to Brackets. Also free.</p>
 </li>
 <li>
-<p>PSPad is a freeware text editor (it will ask you occasionally for a donation). I quite like it for Pass:[c++] code and other code since it has a quite nice built-in function navigator.</p>
+<p><a href="http://www.pspad.com/">PSPad</a> is a freeware text editor (it will ask you occasionally for a donation). I quite like it for Pass:[c++] code and other code since it has a quite nice built-in function navigator. It only works on Windows.</p>
 </li>
 </ul>
 </div>
