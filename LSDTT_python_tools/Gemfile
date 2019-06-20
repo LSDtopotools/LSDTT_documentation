@@ -6,13 +6,11 @@ gem 'asciidoctor'
 gem 'json'
 gem 'awesome_print'
 
-gem 'asciidoctor-epub3'
 gem 'asciidoctor-pdf'
 
 gem 'coderay'
 gem 'pygments.rb'
 gem 'thread_safe'
-gem 'epubcheck'
 
 gem 'mathematical'
 gem 'asciidoctor-mathematical'
