@@ -804,12 +804,6 @@ This analysis is perhaps the most complex thing you can do with <strong>LSDTopoT
 <div class="paragraph">
 <p>Wait, what is all this about spaghetti? One of the plots we make using the hillslope-channel analysis looks a bit like spaghetti, so we call these spaghetti plots. Hungry yet? It is better to run these analyses on a full stomach.</p>
 </div>
-<div class="paragraph">
-<p>Like all <strong>LSDTopoTools2</strong> code, you run the analysis with a parameter file. The format of these files is always the same.</p>
-</div>
-<div class="paragraph">
-<p>We will walk you though an analysis on a test site so you can see how it works.</p>
-</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Quick reminder of LSDTopoTools2 installation</div>
@@ -822,18 +816,28 @@ This analysis is perhaps the most complex thing you can do with <strong>LSDTopoT
 <p>Pull and run the docker container <code>lsdtt_pcl_docker</code></p>
 </li>
 <li>
-<p>Go into the LSDT</p>
+<p>Run the shell script to start <strong>LSDTopoTools</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
+</div>
+</div>
 </li>
-</ol>
-</div>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
-<p>First, you need to have <a href="LSDTT_installation.html"><strong>LSDTopoTools2</strong> installed</a>.</p>
+<p>You are ready to start analysing!</p>
 </li>
 </ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Like all <strong>LSDTopoTools2</strong> code, you run the analysis with a parameter file. The format of these files is always the same.</p>
+</div>
+<div class="paragraph">
+<p>We will walk you though an analysis on a test site so you can see how it works.</p>
+</div>
+<div class="paragraph">
+<p>Please bear with us while we construct this documentation (SMM 20-June-2019).</p>
 </div>
 </div>
 </div>
@@ -1032,7 +1036,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">run_HRF_analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">run_HFR_analysis</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>true</strong>, run the entire hilltop flow routing analysis.</p></td>
@@ -1534,7 +1538,9 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </div>
 <div class="sect2">
 <h3 id="_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</h3>
-
+<div class="paragraph">
+<p>Under construction.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_summary">2.5. Summary</h3>
@@ -3383,7 +3389,7 @@ SierraNevada = False</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-17 15:13:57 UTC
+Last updated 2019-06-13 16:57:01 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
