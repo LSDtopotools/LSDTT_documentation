@@ -607,11 +607,66 @@ Knowing in detail where the channel head is, however, is not at all trivial and 
 </li>
 </ol>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quickstart installation</div>
+<div class="paragraph">
+<p>If you have installed <strong>LSDTopoTools</strong> before, or are familair with Docker, here are very quick instructions.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install Docker</p>
+</li>
+<li>
+<p>Make a directory to hold all your <strong>LSDTopoTools</strong> code and data.</p>
+</li>
+<li>
+<p>Pull and start the LSDTopoTools container (in the below command it assumes you have put your <strong>LSDTopoTools</strong> directory in <code>C:/LSDTopoTools</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v C:/LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In the docker container, run the script <code>Start_LSDTT.sh</code></p>
+</li>
+<li>
+<p>You are ready to go!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_example_datasets">2.2. Example datasets</h3>
 <div class="paragraph">
 <p>We have provided some example datasets which you can use in order to test the channel extraction algorithms. In this tutorial we will work using a lidar dataset from Indian Creek, Ohio.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need to get the data from github.</p>
+</li>
+<li>
+<p>The program <code>git</code> is installed in our docker conatiner so it is probably most useful to get the datasets via the docker container. If you are in native Linux you probably know what you are doing, so just adapt these instructions to your terminal environment.</p>
+</li>
+<li>
+<p>In the docker container (indicated by the <code>#</code> command prompt) make a directory for your data. Here is a suggestion:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># cd /LSDTopoTools
+# mkdir data
+# cd data</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now clone the test data</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="title">If you are using a Vagrant server</div>
@@ -2330,7 +2385,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2018-08-28 15:43:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
