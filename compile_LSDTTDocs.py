@@ -28,9 +28,17 @@ def compile_LSDTT_Docs():
     for dirname in glob(doc_directory+"LSDTT*"):
         print("This directory is: "+ dirname+os.sep)
         
+        
+        
         # Call bundle exec from the directory
         print("Compiling the html.")
         os.chdir(dirname)
+        
+        # Check to see if a gemfile.lock is in the directory
+        if (os.path.isfile('./Gemfile.lock')):
+            print("I found a gemfile.lock file.")
+            print("If compilation fails, you can try to delete this file.")
+        
         subprocess.call(['bundle','exec','rake','book:build_html'])
         
         # copy the html file into the html build directory
@@ -64,5 +72,8 @@ def compile_LSDTT_Docs():
 if __name__ == "__main__":
     print("Welcome to the script that compiles LSDTopoTools documentation!")
     print("For this to work you need our Ruby + Asciidoctor toolchain installed.")
-    print("Shortly there will be an html link with instructions here.")
+    print("You can do that using our docker container.")
+    print("===========================================")
+    print("Instructions:")
+    print("https://hub.docker.com/r/lsdtopotools/lsdtt_docs_docker")
     compile_LSDTT_Docs()   
