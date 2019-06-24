@@ -799,17 +799,26 @@ From a terminal in the folder containing the compiled executable, the following 
 <div class="sect2">
 <h3 id="_model_outputs">4.2. Model outputs</h3>
 <div class="paragraph">
-<p>The C++ model produces 6 <code>csv</code> files containing the evolution of various characteristics of the soil column. Four csv files contain the time series of the different components of the Factor of Safety (FS) functions of time and depth. The independent components of FS are described in equations 28 (a,b and c) of Iverson (2000) and their time series are in files <code>XXX_time_series_depth_Fcomp.csv</code> , where <code>XXX</code> is the <code>write fname</code> in the parameter file and <code>Fcomp</code> the corresponding component. It also outputs the final FS as well as the evolution of the transient pore pressure (Psi) in the file <code>time_series_depth_Psi.csv</code>. All of these files have the same structure:</p>
+<p>The C++ model produces 6 <code>csv</code> files containing the evolution of various characteristics of the soil column.
+Four csv files contain the time series of the different components of the Factor of Safety (FS) functions of time and depth.
+The independent components of FS are described in equations 28 (a,b and c) of Iverson (2000) and their time series are in files <code>XXX_time_series_depth_Fcomp.csv</code> , where <code>XXX</code> is the <code>write fname</code> in the parameter file and <code>Fcomp</code> the corresponding component.
+These files have the extensions <code>F_c.csv</code>, <code>F_f.csv</code>, <code>F_w.csv</code>, <code>FS.csv</code>. The Factor of Safety is in the last of these files.
+There is also a file with the extension <code>Psi.csv</code> which contains the pressure head (in metres).</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The first column is the depth below the surface (in metres)</p>
+<p>All of these files have the depths below the surface in the first column</p>
 </li>
 <li>
-<p>All the following columns are the corresponding values for each simulated time, where the first row is time.</p>
+<p>All subsequent columns the value of the parameter in question (e.g., FS, or Psi) at a single time.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The final file has the extension <code>_potfailfile.csv</code>.
+This has 4 columns. The first is the time of failure, the second is the minimum depth of failure (i.e., the minimum depth where FS &lt; 1) and the third is the maximum depth of failure (the maximum depth where FS &lt; 1). The last column is simply 1 if there is failure.
+Data of -9999 with no other rows only indicates that the slope never fails.</p>
 </div>
 </div>
 <div class="sect2">
