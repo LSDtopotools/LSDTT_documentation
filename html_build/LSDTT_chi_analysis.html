@@ -463,25 +463,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_preparing_your_data">3. Preparing your data</a>
 <ul class="sectlevel2">
-<li><a href="#_get_some_data">3.1. Get some data</a></li>
+<li><a href="#_getting_data_for_your_own_area">3.1. Getting data for your own area</a></li>
 <li><a href="#_use_gdal">3.2. Use GDAL</a></li>
 </ul>
 </li>
 <li><a href="#_examples_of_chi_analysis">4. Examples of chi analysis</a>
 <ul class="sectlevel2">
-<li><a href="#_get_the_example_data">4.1. Get the example data</a></li>
-<li><a href="#_first_example_basic_dem_steps_and_basin_selection">4.2. First example: Basic DEM steps and Basin selection</a>
+<li><a href="#_start_lsdtopotools">4.1. Start LSDTopoTools</a></li>
+<li><a href="#_get_the_test_data">4.2. Get the test data</a></li>
+<li><a href="#_first_example_basic_dem_steps_and_basin_selection">4.3. First example: Basic DEM steps and Basin selection</a>
 <ul class="sectlevel3">
-<li><a href="#_some_comments_on_basin_selection">4.2.1. Some comments on basin selection</a></li>
+<li><a href="#_some_comments_on_basin_selection">4.3.1. Some comments on basin selection</a></li>
 </ul>
 </li>
-<li><a href="#_using_our_example_scripts">4.3. Using our example scripts</a></li>
-<li><a href="#_visualising_example_one_data">4.4. Visualising example one data</a>
+<li><a href="#_using_our_example_scripts">4.4. Using our example scripts</a></li>
+<li><a href="#_visualising_example_one_data">4.5. Visualising example one data</a>
 <ul class="sectlevel3">
-<li><a href="#_example_one_part_one_the_hillshade">4.4.1. Example one, part one: the hillshade</a></li>
-<li><a href="#_example_one_part_two_coloured_basins">4.4.2. Example one, part two: coloured basins</a></li>
-<li><a href="#_example_one_part_three_numbered_basins">4.4.3. Example one, part three: numbered basins</a></li>
-<li><a href="#_example_one_part_four_renaming_basins">4.4.4. Example one, part four: renaming basins</a></li>
+<li><a href="#_example_one_part_one_the_hillshade">4.5.1. Example one, part one: the hillshade</a></li>
+<li><a href="#_example_one_part_two_coloured_basins">4.5.2. Example one, part two: coloured basins</a></li>
+<li><a href="#_example_one_part_three_numbered_basins">4.5.3. Example one, part three: numbered basins</a></li>
+<li><a href="#_example_one_part_four_renaming_basins">4.5.4. Example one, part four: renaming basins</a></li>
 </ul>
 </li>
 </ul>
@@ -525,32 +526,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_chi_analysis_options_and_outputs">Appendix A: Chi analysis options and outputs</a>
 <ul class="sectlevel2">
-<li><a href="#_text_editors_for_modifying_files">A.1. Text editors for modifying files</a></li>
-<li><a href="#_the_parameter_file">A.2. The parameter file</a></li>
-<li><a href="#_parameter_file_options">A.3. Parameter file options</a>
+<li><a href="#_a_typical_call_to_lsdtt_chi_mapping">A.1. A typical call to lsdtt-chi-mapping</a></li>
+<li><a href="#_text_editors_for_modifying_files">A.2. Text editors for modifying files</a></li>
+<li><a href="#_the_parameter_file">A.3. The parameter file</a></li>
+<li><a href="#_parameter_file_options">A.4. Parameter file options</a>
 <ul class="sectlevel3">
-<li><a href="#_basic_file_input_and_output">A.3.1. Basic file input and output</a></li>
-<li><a href="#_dem_preprocessing">A.3.2. DEM preprocessing</a></li>
-<li><a href="#_selecting_channels_and_basins">A.3.3. Selecting channels and basins</a></li>
-<li><a href="#_basic_data_output_before_calculating_chi">A.3.4. Basic data output (before calculating chi)</a></li>
-<li><a href="#_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</a></li>
-<li><a href="#_burning_rasters_to_csv">A.3.6. Burning rasters to csv</a></li>
-<li><a href="#_integrating_lithologic_information">A.3.7. Integrating lithologic information</a></li>
-<li><a href="#_parameters_for_exploring_the_concavity_with_chi_analysis">A.3.8. Parameters for exploring the concavity with chi analysis</a></li>
-<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.3.9. Parameters for exploring the concavity with slope-area analysis</a></li>
-<li><a href="#_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</a></li>
-<li><a href="#_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</a></li>
-<li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</a></li>
-<li><a href="#_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.3.13. Parameters for dealing with discharge rather than drainage area</a></li>
-<li><a href="#_parameters_for_knickpoint_analyses">A.3.14. Parameters for knickpoint analyses</a></li>
+<li><a href="#_basic_file_input_and_output">A.4.1. Basic file input and output</a></li>
+<li><a href="#_dem_preprocessing">A.4.2. DEM preprocessing</a></li>
+<li><a href="#_selecting_channels_and_basins">A.4.3. Selecting channels and basins</a></li>
+<li><a href="#_basic_data_output_before_calculating_chi">A.4.4. Basic data output (before calculating chi)</a></li>
+<li><a href="#_basic_parameters_for_the_chi_coordinate">A.4.5. Basic parameters for the chi coordinate</a></li>
+<li><a href="#_burning_rasters_to_csv">A.4.6. Burning rasters to csv</a></li>
+<li><a href="#_integrating_lithologic_information">A.4.7. Integrating lithologic information</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_chi_analysis">A.4.8. Parameters for exploring the concavity with chi analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.4.9. Parameters for exploring the concavity with slope-area analysis</a></li>
+<li><a href="#_parameters_for_segmentation_of_channels">A.4.10. Parameters for segmentation of channels</a></li>
+<li><a href="#_printing_of_simple_chi_maps">A.4.11. Printing of simple chi maps</a></li>
+<li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.4.12. Chi maps with segmentation and basin and channel selection</a></li>
+<li><a href="#_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.4.13. Parameters for dealing with discharge rather than drainage area</a></li>
+<li><a href="#_parameters_for_knickpoint_analyses">A.4.14. Parameters for knickpoint analyses</a></li>
 </ul>
 </li>
-<li><a href="#_example_parameter_files">A.4. Example parameter files</a></li>
-<li><a href="#_output_data_formats">A.5. Output data formats</a></li>
-<li><a href="#_the_different_outputs_and_how_to_get_them">A.6. The different outputs and how to get them</a>
+<li><a href="#_example_parameter_files">A.5. Example parameter files</a></li>
+<li><a href="#_output_data_formats">A.6. Output data formats</a></li>
+<li><a href="#_the_different_outputs_and_how_to_get_them">A.7. The different outputs and how to get them</a>
 <ul class="sectlevel3">
-<li><a href="#_raster_output">A.6.1. Raster output</a></li>
-<li><a href="#_point_data_usually_output_as_csv">A.6.2. Point data (usually output as csv)</a></li>
+<li><a href="#_raster_output">A.7.1. Raster output</a></li>
+<li><a href="#_point_data_usually_output_as_csv">A.7.2. Point data (usually output as csv)</a></li>
 </ul>
 </li>
 </ul>
@@ -884,7 +886,7 @@ in this part of the command, you need to put your own directory for LSDTopoTools
 </div>
 </div>
 <div class="sect2">
-<h3 id="_get_some_data">3.1. Get some data</h3>
+<h3 id="_getting_data_for_your_own_area">3.1. Getting data for your own area</h3>
 <div class="paragraph">
 <p>To run <strong>LSDTopoTools</strong> you need some topographic datasets!</p>
 </div>
@@ -919,45 +921,110 @@ in this part of the command, you need to put your own directory for LSDTopoTools
 <div class="paragraph">
 <p>We will now run some examples of chi analysis using the <strong>chi mapping tool</strong>.</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-We are going to assume you are using our vagrant setup. That means that code will live in the directory <code>/LSDTopoTools/Git_projects/LSDTopoTool_ChiMudd2014</code> and topographic data will live in the directory <code>/LSDTopoTools/Topographic_projects</code>.
-</td>
-</tr>
-</table>
-</div>
 <div class="sect2">
-<h3 id="_get_the_example_data">4.1. Get the example data</h3>
-<div class="paragraph">
-<p>We have placed several example datasets in the github repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples">LSDTT_chi_examples</a>. You can clone these in your vagrant box into the <code>Topographic_projects</code> folder:</p>
-</div>
+<h3 id="_start_lsdtopotools">4.1. Start LSDTopoTools</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We assume you have compiled the chi analysis tool (if not, follow the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>).</p>
+</li>
+<li>
+<p>You need to start an <strong>LSDTopoTools</strong> session.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are using Docker , start the container:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Topographic_projects
-$ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
 </div>
+</div>
+</li>
+<li>
+<p>Then run the start script.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_first_example_basic_dem_steps_and_basin_selection">4.2. First example: Basic DEM steps and Basin selection</h3>
+<h3 id="_get_the_test_data">4.2. Get the test data</h3>
 <div class="paragraph">
-<p>First we will do some very basic extraction of basins and visualisation of a region near Xi&#8217;an China, in the mountains containing <a href="https://en.wikipedia.org/wiki/Mount_Hua">Hua Shan</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you have followed the steps in the section: <a href="#_getting_the_software">Getting the software</a>, the <strong>chi mapping tool</strong> will already be installed, and the example driver file will be in the <code>LSDTT_chi_examples</code> folder.</p>
+<p>If you have followed the <a href="LSDTT_installation.html">installation instructions</a> and grabbed the example data, you already have what you need! If not, follow the steps below:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to the directory with the <strong>chi mapping tool</strong>:</p>
+<p>If you are using a docker container, just run the script:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTool_ChiMudd2014/driver_functions_MuddChi2014/</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are on a native linux or using the University of Edinburgh servers, do the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you have installed <strong>LSDTopoTools</strong>, you will have a directory somewhere called <code>LSDTopoTools</code>. Go into it.</p>
+</li>
+<li>
+<p>Run the following commands (you only need to do this once):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir data
+$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>WARNING: This downloads a bit over 150Mb of data so make sure you have room.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_first_example_basic_dem_steps_and_basin_selection">4.3. First example: Basic DEM steps and Basin selection</h3>
+<div class="paragraph">
+<p>First we will do some very basic extraction of basins and visualisation of a region near Xi&#8217;an China, in the mountains containing <a href="https://en.wikipedia.org/wiki/Mount_Hua">Hua Shan</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you have followed the steps in the section: <a href="#_getting_the_software">Getting the software</a>, the <strong>chi mapping tool</strong> will already be installed, and the example driver file will be in the <code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData</code> directory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The directory structure below will mirror the Docker container so if you are in native Linux you will need to alter the paths, for example where it says <code>/LSDTopoTools/data/</code> you will need to update to <code>/my/path/to//LSDTopoTools/data/</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the directory with the <strong>example data</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData</code></pre>
 </div>
 </div>
 </li>
@@ -965,11 +1032,8 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <p>Now run the example driver file.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/LSDTT_chi_examples Xian_example1.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example1.driver</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>In every <strong>LSDTopoTools</strong> analysis in these examples, there are three inputs: i) the name of the program (<code>./chi_mapping_tool.exe</code>) ii) the directory of the data (<code>/LSDTopoTools/Topographic_projects/LSDTT_chi_examples</code>) and iii) the name of the driver file (<code>Xian_example1.driver</code>). The extension of the driver file doesn&#8217;t matter, you could call it <code>Xian_example1.rhinocerous</code> if you wanted.</p>
 </div>
 </li>
 <li>
@@ -997,7 +1061,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_some_comments_on_basin_selection">4.2.1. Some comments on basin selection</h4>
+<h4 id="_some_comments_on_basin_selection">4.3.1. Some comments on basin selection</h4>
 <div class="paragraph">
 <p>In the <strong>chi mapping tool</strong>, we have several ways to select basins. We feel the default method is best (<code>find_complete_basins_in_window</code>). The options are:</p>
 </div>
@@ -1020,7 +1084,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_our_example_scripts">4.3. Using our example scripts</h3>
+<h3 id="_using_our_example_scripts">4.4. Using our example scripts</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Before you start with the python scripts</div>
@@ -1097,12 +1161,12 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_example_one_data">4.4. Visualising example one data</h3>
+<h3 id="_visualising_example_one_data">4.5. Visualising example one data</h3>
 <div class="paragraph">
 <p>We will now generate some figures to look at our data.</p>
 </div>
 <div class="sect3">
-<h4 id="_example_one_part_one_the_hillshade">4.4.1. Example one, part one: the hillshade</h4>
+<h4 id="_example_one_part_one_the_hillshade">4.5.1. Example one, part one: the hillshade</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1127,7 +1191,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_one_part_two_coloured_basins">4.4.2. Example one, part two: coloured basins</h4>
+<h4 id="_example_one_part_two_coloured_basins">4.5.2. Example one, part two: coloured basins</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1146,7 +1210,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_one_part_three_numbered_basins">4.4.3. Example one, part three: numbered basins</h4>
+<h4 id="_example_one_part_three_numbered_basins">4.5.3. Example one, part three: numbered basins</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1168,7 +1232,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_one_part_four_renaming_basins">4.4.4. Example one, part four: renaming basins</h4>
+<h4 id="_example_one_part_four_renaming_basins">4.5.4. Example one, part four: renaming basins</h4>
 
 </div>
 </div>
@@ -2128,44 +2192,69 @@ These are basic notes on running <strong>LSDTopoTools</strong> on a vagrant serv
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_a_typical_call_to_lsdtt_chi_mapping">A.1. A typical call to lsdtt-chi-mapping</h3>
 <div class="paragraph">
-<p>The chi analysis, and a host of other analyses, are run using the <strong>chi_mapping_tool.exe</strong> program. If you followed the instructions in the section <a href="#_getting_the_software">Getting the software</a> you will already have this program compiled.</p>
+<p>The chi analysis, and a host of other analyses, are run using the <strong>lsdtt-chi-mapping</strong> program. If you followed the instructions in the section <a href="#_getting_the_software">Getting the software</a> you will already have this program compiled.</p>
 </div>
 <div class="paragraph">
-<p>The program <strong>chi_mapping_tool.exe</strong> runs with two inputs when you call the program:</p>
+<p>The program <strong>lsdtt-chi-mapping</strong> runs with two inputs when you call the program:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="paragraph">
+<p>In the next section we will walk you though an analysis. However, reading this will help you understand where you are going, so we recommend you read the whole thing!</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>The path to the parameter file. This <strong>MUST</strong> include the trailing slash (i.e., <code>/LSDTopoTools/Topographic_projects/Test_data</code> is incorrect whereas <code>/LSDTopoTools/Topographic_projects/Test_data/</code> is correct).</p>
+<p>You run the program from a terminal window</p>
 </li>
 <li>
-<p>The name of the parameter file.</p>
+<p>You can supply the program with:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>a directory name</p>
 </li>
-</ol>
+<li>
+<p>a parameter file name</p>
+</li>
+<li>
+<p>both of these things</p>
+</li>
+<li>
+<p>none of these things</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>If you don&#8217;t supply a parameter filename, the program will assume the parameter file is called <code>LSDTT_parameters.driver</code></p>
+</li>
+<li>
+<p>If the parameter file doesn&#8217;t exist, you will get an error message.</p>
 <div class="paragraph">
-<p>So if the parameter file is located at <code>/LSDTopoTools/Topographic_projects/Test_data</code> and it is called <code>test_chi_map.param</code>, you run the program with:</p>
+<p>Any of the following calls to one of the programs will work, as long as your files are in the right place:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/Test_data test_chi_map.param</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping
+$ lsdtt-chi-mapping /LSDTopoTools/data/A_project
+$ lsdtt-chi-mapping AParameterFile.param
+$ lsdtt-chi-mapping /LSDTopoTools/data/A_project AParameterFile.param</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>As we will see momentarily, the data and the parameter file can be in different locations, although in general it might be sensible to place the parameter file in the sample directory as the data.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>The code is run using a parameter file, within which users can set the data they want to print to file. Regardless of which data they choose to print to file, a file will be printed with the extension <code>_Input.param</code> which prints out all the parameters used in the analysis (including the default parameters). This file can be used to verify if the correct parameters have been used in the analysis.</p>
 </div>
 <div class="sect2">
-<h3 id="_text_editors_for_modifying_files">A.1. Text editors for modifying files</h3>
+<h3 id="_text_editors_for_modifying_files">A.2. Text editors for modifying files</h3>
 <div class="paragraph">
 <p>You will need to modify the parameter file in a text editor. You might also modify python scripts in a text editor. So you need to get a text editor. We use <a href="http://brackets.io/">Brackets</a> and <a href="https://atom.io/">Atom</a> (these are platform independent). Sometimes we also use <a href="http://www.pspad.com/en/">PSPad</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_parameter_file">A.2. The parameter file</h3>
+<h3 id="_the_parameter_file">A.3. The parameter file</h3>
 <div class="paragraph">
 <p>The parameter file has keywords followed by a value. The format of this file is similar to the files used in the <code>LSDTT_analysis_from_paramfile</code> program, which you can read about in the section <a href="#Running your first analysis">[Running your first analysis]</a>.</p>
 </div>
@@ -2210,13 +2299,13 @@ The parameter file has a specific format, but the filename can be anything you w
 </div>
 </div>
 <div class="sect2">
-<h3 id="_parameter_file_options">A.3. Parameter file options</h3>
+<h3 id="_parameter_file_options">A.4. Parameter file options</h3>
 <div class="paragraph">
 <p>Below are options for the parameter files. Note that all DEMs must be in ENVI <code>bil</code> format (<strong>DO NOT</strong> use ArcMap&#8217;s bil format: these are two different things. See the section <a href="#_preparing_your_data">Preparing your data</a> if you want more details).
 The reason we use <code>bil</code> format is because it retains georeferencing which is essential to our file output since many of the files output to <code>csv</code> format with latitude and longitude as coordinates.</p>
 </div>
 <div class="sect3">
-<h4 id="_basic_file_input_and_output">A.3.1. Basic file input and output</h4>
+<h4 id="_basic_file_input_and_output">A.4.1. Basic file input and output</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 11. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
 <colgroup>
@@ -2262,7 +2351,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dem_preprocessing">A.3.2. DEM preprocessing</h4>
+<h4 id="_dem_preprocessing">A.4.2. DEM preprocessing</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 12. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
 <colgroup>
@@ -2320,7 +2409,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_selecting_channels_and_basins">A.3.3. Selecting channels and basins</h4>
+<h4 id="_selecting_channels_and_basins">A.4.3. Selecting channels and basins</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 13. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
 <colgroup>
@@ -2438,7 +2527,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_basic_data_output_before_calculating_chi">A.3.4. Basic data output (before calculating chi)</h4>
+<h4 id="_basic_data_output_before_calculating_chi">A.4.4. Basic data output (before calculating chi)</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 14. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
 <colgroup>
@@ -2514,7 +2603,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</h4>
+<h4 id="_basic_parameters_for_the_chi_coordinate">A.4.5. Basic parameters for the chi coordinate</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 15. Parameters for calculating the chi coordinate.</caption>
 <colgroup>
@@ -2560,7 +2649,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_burning_rasters_to_csv">A.3.6. Burning rasters to csv</h4>
+<h4 id="_burning_rasters_to_csv">A.4.6. Burning rasters to csv</h4>
 <div class="paragraph">
 <p>In some circumstances you might want to "burn" secondary data onto your data of the channel network. One example would be if you had a geologic map and wanted to add the rock type as a column to point data about your channels. These routines will take a raster and will add the data values from that raster to each point in the chi data.</p>
 </div>
@@ -2633,7 +2722,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </table>
 </div>
 <div class="sect3">
-<h4 id="_integrating_lithologic_information">A.3.7. Integrating lithologic information</h4>
+<h4 id="_integrating_lithologic_information">A.4.7. Integrating lithologic information</h4>
 <div class="paragraph">
 <p>In some circumstances you might want to integrate lithologic, structural or tectonic information. For example, you might want to append lithologic data to your channel data in order to explore how channel properties vary by lithology. We call the process of appending data from a raster to channel data (that is in csv of json format) "burning": we take raster data and "burn" it onto csv or json data. Our burning routines work for any raster but we have, in addition, a number of routines that are optimised specifically for geologic data. Outputs are formatted to be ready to use by the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> lithologic-related plotting routines. You can find an automated way to prepare your data from a shapefile in the annexes: <a href="#A: Getting your lithologic data ready">[A: Getting your lithologic data ready]</a>.</p>
 </div>
@@ -2694,7 +2783,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_concavity_with_chi_analysis">A.3.8. Parameters for exploring the concavity with chi analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_chi_analysis">A.4.8. Parameters for exploring the concavity with chi analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 18. Parameters for trying to constrain the concavity using chi analysis</caption>
 <colgroup>
@@ -2830,7 +2919,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.3.9. Parameters for exploring the concavity with slope-area analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.4.9. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 19. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
 <colgroup>
@@ -2900,7 +2989,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</h4>
+<h4 id="_parameters_for_segmentation_of_channels">A.4.10. Parameters for segmentation of channels</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 20. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
 <colgroup>
@@ -2964,7 +3053,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</h4>
+<h4 id="_printing_of_simple_chi_maps">A.4.11. Printing of simple chi maps</h4>
 <div class="paragraph">
 <p>For most of our visualisation routines, the key printing option to set to <strong>true</strong> is <code>print_chi_data_maps</code>.</p>
 </div>
@@ -3007,7 +3096,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</h4>
+<h4 id="_chi_maps_with_segmentation_and_basin_and_channel_selection">A.4.12. Chi maps with segmentation and basin and channel selection</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 22. Options for chi maps and secondary data files that split channels and basins</caption>
 <colgroup>
@@ -3077,7 +3166,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.3.13. Parameters for dealing with discharge rather than drainage area</h4>
+<h4 id="_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.4.13. Parameters for dealing with discharge rather than drainage area</h4>
 <div class="paragraph">
 <p>These allow the user to drive chi with discharge rather than drainage area. It is somewhat rudimentary at the moment in that it  assumes the rainfall rate in length per time is translated into some constant discharge. This is not a hydrological model! It simply accumulates precipitation through a channel network with no regard to hydrological processes, infiltration and evaporation, or the timing of storms.</p>
 </div>
@@ -3120,7 +3209,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_knickpoint_analyses">A.3.14. Parameters for knickpoint analyses</h4>
+<h4 id="_parameters_for_knickpoint_analyses">A.4.14. Parameters for knickpoint analyses</h4>
 <div class="paragraph">
 <p>These parameters drive the knickpoint extraction algorithms.</p>
 </div>
@@ -3212,13 +3301,13 @@ If your lithologic raster is significantly larger than your topographic raster i
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example_parameter_files">A.4. Example parameter files</h3>
+<h3 id="_example_parameter_files">A.5. Example parameter files</h3>
 <div class="paragraph">
 <p>We have a number of example parameter files in the repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples">LSDTT_chi_examples</a>. The chapter on examples will walk you through the various things these files do.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_data_formats">A.5. Output data formats</h3>
+<h3 id="_output_data_formats">A.6. Output data formats</h3>
 <div class="paragraph">
 <p>Data is written to rasters, csv files, or geojson file.</p>
 </div>
@@ -3272,12 +3361,12 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_different_outputs_and_how_to_get_them">A.6. The different outputs and how to get them</h3>
+<h3 id="_the_different_outputs_and_how_to_get_them">A.7. The different outputs and how to get them</h3>
 <div class="paragraph">
 <p>To get the various outputs, you need to tell the <strong>chi mapping tool</strong> using the parameter file. These tables tell you what flags to use and what data you will get.</p>
 </div>
 <div class="sect3">
-<h4 id="_raster_output">A.6.1. Raster output</h4>
+<h4 id="_raster_output">A.7.1. Raster output</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 25. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
@@ -3338,7 +3427,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_data_usually_output_as_csv">A.6.2. Point data (usually output as csv)</h4>
+<h4 id="_point_data_usually_output_as_csv">A.7.2. Point data (usually output as csv)</h4>
 <div class="paragraph">
 <p>The table below gives a brief description of the output files. After the table we show the format for each of these files.</p>
 </div>

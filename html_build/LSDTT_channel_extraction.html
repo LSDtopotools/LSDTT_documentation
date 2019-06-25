@@ -450,89 +450,59 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_introduction">1. Introduction</a></li>
 <li><a href="#_get_the_code_for_channel_extraction">2. Get the code for channel extraction</a>
 <ul class="sectlevel2">
-<li><a href="#_getting_lsdtopotools_2">2.1. Getting LSDTopoTools 2</a></li>
-<li><a href="#_example_datasets">2.2. Example datasets</a></li>
+<li><a href="#_installation_of_the_channel_extraction_algorithms">2.1. Installation of the channel extraction algorithms</a></li>
+<li><a href="#_example_datasets">2.2. Example datasets</a>
+<ul class="sectlevel3">
+<li><a href="#_get_the_test_data">2.2.1. Get the test data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_the_channel_extraction_tool">3. The Channel Extraction tool</a>
 <ul class="sectlevel2">
-<li><a href="#_running_channel_extraction_with_a_parameterfile">3.1. Running channel extraction with a parameterfile</a>
+<li><a href="#_starting_up_lsdtopotools">3.1. Starting up LSDTopoTools</a>
 <ul class="sectlevel3">
-<li><a href="#_channel_extraction_options">3.1.1. Channel extraction options</a></li>
-<li><a href="#_example_channel_extraction_parameter_file">3.1.2. Example channel extraction parameter file</a></li>
+<li><a href="#_running_a_typical_lsdtt_channel_extraction_analysis">3.1.1. Running a typical lsdtt-channel-extraction analysis</a></li>
+<li><a href="#_run_a_channel_extraction">3.1.2. Run a channel extraction</a></li>
+<li><a href="#_channel_extraction_options">3.1.3. Channel extraction options</a></li>
+<li><a href="#_example_channel_extraction_parameter_file">3.1.4. Example channel extraction parameter file</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_channel_extraction_using_thresholds">4. Channel extraction using thresholds</a>
+<li><a href="#_calculating_drainage_density">4. Calculating drainage density</a>
 <ul class="sectlevel2">
-<li><a href="#_extracting_the_network_with_an_area_threshold_using_the_channel_extraction_tool">4.1. Extracting the network with an area threshold using the <strong>Channel extraction tool</strong></a></li>
-<li><a href="#_basic_channel_extraction_using_thresholds_the_old_way">4.2. Basic channel extraction using thresholds (the old way)</a>
+<li><a href="#_get_the_code_for_drainage_density_analysis">4.1. Get the code for drainage density analysis</a>
 <ul class="sectlevel3">
-<li><a href="#_compile_the_code">4.2.1. Compile the code</a></li>
-<li><a href="#_run_the_analysis">4.2.2. Run the analysis</a></li>
+<li><a href="#_clone_the_github_repository">4.1.1. Clone the GitHub repository</a></li>
+<li><a href="#_alternatively_get_the_zipped_code">4.1.2. Alternatively, get the zipped code</a></li>
+<li><a href="#_get_the_example_datasets">4.1.3. Get the example datasets</a></li>
+<li><a href="#_get_the_example_parameter_files">4.1.4. Get the example parameter files</a></li>
+<li><a href="#_python_scripts">4.1.5. Python scripts</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_geometric_channel_extraction_method">5. Geometric channel extraction method</a>
-<ul class="sectlevel2">
-<li><a href="#_extracting_the_network_with_geometric_methods_using_the_channel_extraction_tool">5.1. Extracting the network with geometric methods using the <strong>Channel extraction tool</strong></a></li>
-<li><a href="#_geometric_channel_extraction_methods_the_old_way">5.2. Geometric channel extraction methods (the old way)</a>
+<li><a href="#_preliminary_steps">4.2. Preliminary steps</a>
 <ul class="sectlevel3">
-<li><a href="#_geonet_external_software">5.2.1. Geonet (external software)</a></li>
-<li><a href="#_pelletier">5.2.2. Pelletier</a></li>
-<li><a href="#_the_lsdtopotools_geometric_method">5.2.3. The LSDTopoTools geometric method</a></li>
-<li><a href="#_run_the_analysis_3">5.2.4. Run the analysis</a></li>
+<li><a href="#_getting_the_channel_head_file">4.2.1. Getting the channel head file</a></li>
+<li><a href="#_selecting_a_window_size">4.2.2. Selecting a window size</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_channel_extraction_using_the_driech_method">6. Channel extraction using the Driech method</a>
-<ul class="sectlevel2">
-<li><a href="#_extracting_the_network_with_the_driech_method_using_the_channel_extraction_tool">6.1. Extracting the network with the Driech method using the <strong>Channel extraction tool</strong></a></li>
-<li><a href="#_channel_extraction_using_the_dreich_method_the_old_way">6.2. Channel extraction using the Dreich method (the old way)</a>
+<li><a href="#_analysing_drainage_density_for_all_basins">4.3. Analysing drainage density for all basins</a>
 <ul class="sectlevel3">
-<li><a href="#_run_the_chi_analysis">6.2.1. Run the chi analysis</a></li>
-<li><a href="#_compile_the_code_4">6.2.2. Compile the code</a></li>
-<li><a href="#_run_the_analysis_4">6.2.3. Run the analysis</a></li>
+<li><a href="#_creating_the_paramter_file">4.3.1. Creating the paramter file</a></li>
+<li><a href="#_step_1_get_the_junctions_of_all_the_basins">4.3.2. Step 1: Get the junctions of all the basins</a></li>
+<li><a href="#_step_2_get_the_drainage_density_of_each_basin">4.3.3. Step 2: Get the drainage density of each basin</a></li>
+<li><a href="#_step_3_plotting_the_data">4.3.4. Step 3: Plotting the data</a></li>
+<li><a href="#_summary">4.3.5. Summary</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_calculating_drainage_density">7. Calculating drainage density</a>
-<ul class="sectlevel2">
-<li><a href="#_get_the_code_for_drainage_density_analysis">7.1. Get the code for drainage density analysis</a>
+<li><a href="#_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">4.4. Analysing drainage density for basins with CRN-derived erosion rates</a>
 <ul class="sectlevel3">
-<li><a href="#_clone_the_github_repository">7.1.1. Clone the GitHub repository</a></li>
-<li><a href="#_alternatively_get_the_zipped_code">7.1.2. Alternatively, get the zipped code</a></li>
-<li><a href="#_get_the_example_datasets">7.1.3. Get the example datasets</a></li>
-<li><a href="#_get_the_example_parameter_files">7.1.4. Get the example parameter files</a></li>
-<li><a href="#_python_scripts">7.1.5. Python scripts</a></li>
-</ul>
-</li>
-<li><a href="#_preliminary_steps">7.2. Preliminary steps</a>
-<ul class="sectlevel3">
-<li><a href="#_getting_the_channel_head_file">7.2.1. Getting the channel head file</a></li>
-<li><a href="#_selecting_a_window_size">7.2.2. Selecting a window size</a></li>
-</ul>
-</li>
-<li><a href="#_analysing_drainage_density_for_all_basins">7.3. Analysing drainage density for all basins</a>
-<ul class="sectlevel3">
-<li><a href="#_creating_the_paramter_file">7.3.1. Creating the paramter file</a></li>
-<li><a href="#_step_1_get_the_junctions_of_all_the_basins">7.3.2. Step 1: Get the junctions of all the basins</a></li>
-<li><a href="#_step_2_get_the_drainage_density_of_each_basin">7.3.3. Step 2: Get the drainage density of each basin</a></li>
-<li><a href="#_step_3_plotting_the_data">7.3.4. Step 3: Plotting the data</a></li>
-<li><a href="#_summary">7.3.5. Summary</a></li>
-</ul>
-</li>
-<li><a href="#_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">7.4. Analysing drainage density for basins with CRN-derived erosion rates</a>
-<ul class="sectlevel3">
-<li><a href="#_formatting_your_erosion_rate_data">7.4.1. Formatting your erosion rate data</a></li>
-<li><a href="#_creating_the_paramter_file_2">7.4.2. Creating the paramter file</a></li>
-<li><a href="#_step_1_run_the_code">7.4.3. Step 1: Run the code</a></li>
-<li><a href="#_step_2_plot_the_data">7.4.4. Step 2: Plot the data</a></li>
-<li><a href="#_summary_2">7.4.5. Summary</a></li>
+<li><a href="#_formatting_your_erosion_rate_data">4.4.1. Formatting your erosion rate data</a></li>
+<li><a href="#_creating_the_paramter_file_2">4.4.2. Creating the paramter file</a></li>
+<li><a href="#_step_1_run_the_code">4.4.3. Step 1: Run the code</a></li>
+<li><a href="#_step_2_plot_the_data">4.4.4. Step 2: Plot the data</a></li>
+<li><a href="#_summary_2">4.4.5. Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -599,19 +569,7 @@ Knowing in detail where the channel head is, however, is not at all trivial and 
 <h2 id="_get_the_code_for_channel_extraction">2. Get the code for channel extraction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our code for channel extraction can be found in our <a href="https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction">GitHub repository</a>.  This repository contains code for extracting channel networks using a variety of different methods ranging from simple contributing area thresholds to more complex geometric and theoretical approaches for extracting channels from high-resolution datasets.</p>
-</div>
-<div class="sect2">
-<h3 id="_getting_lsdtopotools_2">2.1. Getting LSDTopoTools 2</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Follow the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>.</p>
-</li>
-<li>
-<p>The channel extraction code is called <code>lsdtt-channel-extraction</code>.</p>
-</li>
-</ol>
+<p>Channel extraction is included within the <strong>LSDTopoTools</strong> package.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -645,46 +603,72 @@ Knowing in detail where the channel head is, however, is not at all trivial and 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_installation_of_the_channel_extraction_algorithms">2.1. Installation of the channel extraction algorithms</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Good news! If you have installed <strong>LSDTopoTools</strong>, you already have the channel extraction tools.</p>
+</li>
+<li>
+<p>In you haven&#8217;t installed it, follow the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>.</p>
+</li>
+<li>
+<p>The channel extraction code is called <code>lsdtt-channel-extraction</code>.</p>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_example_datasets">2.2. Example datasets</h3>
 <div class="paragraph">
 <p>We have provided some example datasets which you can use in order to test the channel extraction algorithms. In this tutorial we will work using a lidar dataset from Indian Creek, Ohio.</p>
 </div>
+<div class="sect3">
+<h4 id="_get_the_test_data">2.2.1. Get the test data</h4>
+<div class="paragraph">
+<p>If you have followed the <a href="LSDTT_installation.html">installation instructions</a> and grabbed the example data, you already have what you need! If not, follow the steps below:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You need to get the data from github.</p>
-</li>
-<li>
-<p>The program <code>git</code> is installed in our docker conatiner so it is probably most useful to get the datasets via the docker container. If you are in native Linux you probably know what you are doing, so just adapt these instructions to your terminal environment.</p>
-</li>
-<li>
-<p>In the docker container (indicated by the <code>#</code> command prompt) make a directory for your data. Here is a suggestion:</p>
+<p>If you are using a docker container, just run the script:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># cd /LSDTopoTools
-# mkdir data
-# cd data</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Now clone the test data</p>
+<p>If you are on a native linux or using the University of Edinburgh servers, do the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you have installed <strong>LSDTopoTools</strong>, you will have a directory somewhere called <code>LSDTopoTools</code>. Go into it.</p>
+</li>
+<li>
+<p>Run the following commands (you only need to do this once):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir data
+$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>WARNING: This downloads a bit over 150Mb of data so make sure you have room.</p>
 </li>
 </ol>
 </div>
-<div class="listingblock">
-<div class="title">If you are using a Vagrant server</div>
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Topographic_projects/Test_data</code></pre>
-</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The DEM is called <code>indian_creek.bil</code> and <code>indian_creek.hdr</code>, and the relevant parameter file is <code>Vagrant_ChannelExtraction.driver</code>.</p>
-</div>
-<div class="paragraph">
-<p>This dataset is already in the preferred format for use with LSDTopoTools (the ENVI <code>bil</code> format). The figure below shows a shaded relief map of part of the Indian Creek DEM which will be used in these examples.</p>
+<p>The datasets for our channel extraction tests are in the subdirectory <code>/LSDTopoTools/data/ExampleTopoDatasets/ChannelExtractionData</code> in the Docker container.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -699,10 +683,11 @@ Knowing in detail where the channel head is, however, is not at all trivial and 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can also work with the DEM <code>gabilan.bil</code> that is included by default in the <code>/LSDTopoTools/Topographic_projects/Test_data</code> folder but you will need tochange the parameter files to reflect the different DEM name.
+You can also work with the DEM <code>gabilan.bil</code> that is included by default in the <code>/LSDTopoTools/data/ExampleTopoDatasets/ChannelExtractionData</code> folder but you will need to change the parameter files to reflect the different DEM name.
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -730,18 +715,140 @@ You can also work with the DEM <code>gabilan.bil</code> that is included by defa
 </ul>
 </div>
 <div class="paragraph">
-<p>These methods are run based on a common interface via the program <code>channel_extraction_tool.exe</code>.</p>
+<p>These methods are run based on a common interface via the program <code>lsdtt-channel-extraction</code>.</p>
 </div>
 <div class="sect2">
-<h3 id="_running_channel_extraction_with_a_parameterfile">3.1. Running channel extraction with a parameterfile</h3>
-<div class="paragraph">
-<p>We assume you have compiled the channel extraction tool (if not, go back <a href="#_get_the_code_for_channel_extraction">here</a>).</p>
+<h3 id="_starting_up_lsdtopotools">3.1. Starting up LSDTopoTools</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We assume you have compiled the channel extraction tool (if not, follow the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>).</p>
+</li>
+<li>
+<p>You need to start an <strong>LSDTopoTools</strong> session.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are using Docker , start the container:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then run the start script.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If you haven&#8217;t got the example data yet, run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are using native linux, read the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>.</p>
+</li>
+<li>
+<p>We are going to extract a channel networks from Indian Creek, a small creek in Ohio. It was using in the study <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR015167">Clubb et al., 2014</a>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Like most of <strong>LSDTopoTools</strong>, you run this program by directing it to a parameter file. The parameter file has a series of keywords. Our convention is to place the parameter file in the same directory as your data.</p>
 </div>
 <div class="sect3">
-<h4 id="_channel_extraction_options">3.1.1. Channel extraction options</h4>
+<h4 id="_running_a_typical_lsdtt_channel_extraction_analysis">3.1.1. Running a typical lsdtt-channel-extraction analysis</h4>
+<div class="paragraph">
+<p>In the next section we will walk you though an analysis. However, reading this will help you understand where you are going, so we recommend you read the whole thing!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You run the program from a terminal window</p>
+</li>
+<li>
+<p>You can supply the program with:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>a directory name</p>
+</li>
+<li>
+<p>a parameter file name</p>
+</li>
+<li>
+<p>both of these things</p>
+</li>
+<li>
+<p>none of these things</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If you don&#8217;t supply a parameter filename, the program will assume the parameter file is called <code>LSDTT_parameters.driver</code></p>
+</li>
+<li>
+<p>If the parameter file doesn&#8217;t exist, you will get an error message.</p>
+<div class="paragraph">
+<p>Any of the following calls to one of the programs will work, as long as your files are in the right place:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-channel-extraction
+$ lsdtt-channel-extraction /LSDTopoTools/data/A_project
+$ lsdtt-channel-extraction AParameterFile.param
+$ lsdtt-channel-extraction /LSDTopoTools/data/A_project AParameterFile.param</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The program name (<code>lsdtt-basic-metrics</code>), the directory name (<code>/LSDTopoTools/data/A_project</code>) and the parameter file name (<code>AParameterFile.param</code>) will change but all <strong>LSDTopoTools</strong> calls follow this same basic structure.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_a_channel_extraction">3.1.2. Run a channel extraction</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Once you have run <code>Start_LSDTT.sh</code> you are ready to run an analysis.</p>
+</li>
+<li>
+<p>Go into the directory containing the Indian Creek DEM. In the Docker container it is here:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># cd /LSDTopoTools/data/ExampleTopoDatasets/ChannelExtractionData/IndianCreek_1m</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now run the channel extraction code:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># lsdtt-channel-extraction LSDTT_channel_extraction.param</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You will get several extracted channel networks from differnt methods.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_channel_extraction_options">3.1.3. Channel extraction options</h4>
 <div class="paragraph">
 <p>The parameter file has keywords followed by a value. The format of this file is similar to the files used in our <strong>LSDTT_BasicMetrics</strong> program, which you can read about in the our section introducing LSDTopoTools: <a href="LSDTT_basic_usage.html">Basic usage of <strong>LSDTopoTools</strong></a>.</p>
 </div>
@@ -1065,283 +1172,19 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_example_channel_extraction_parameter_file">3.1.2. Example channel extraction parameter file</h4>
+<h4 id="_example_channel_extraction_parameter_file">3.1.4. Example channel extraction parameter file</h4>
 <div class="paragraph">
 <p>Below is an example parameter file. This file is included in the repository along with the driver functions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for channel extraction
-# Comments are preceeded by the hash symbol
+# Comments are preceded by the hash symbol
 # Documentation can be found here:
-# TBA
+# https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html
 
 # These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.
-read path: /LSDTopoTools/Topographic_projects/test_data
-write path: /LSDTopoTools/Topographic_projects/test_data
-read fname: gabilan
-write fname: gabilan
-channel heads fname: NULL
-
-# Parameter for filling the DEM
-min_slope_for_fill: 0.0001
-
-# Parameters for selecting channels and basins
-
-# threshold_contributing_pixels: 2500
-print_area_threshold_channels: false
-print_wiener_channels: false
-print_pelletier_channels: false
-print_dreich_channels: true
-
-# write hillshade: true
-print_stream_order_raster: true</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_channel_extraction_using_thresholds">4. Channel extraction using thresholds</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>One of the simplest ways of extracting channel networks from DEMs uses a contributing area threshold.  This method is useful for coarse resolution (e.g. &gt;10m) DEMs, where topographic features of the channel heads themselves cannot be reliably identified from the DEM. The user has to specify the threshold area, which represents the upstream area that must drain to a pixel before it is considered as part of the channel.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The area threshold chosen will affect the density of the channel network.  This should be considered carefully, and compared against field-mapped channel head data if these are available.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_extracting_the_network_with_an_area_threshold_using_the_channel_extraction_tool">4.1. Extracting the network with an area threshold using the <strong>Channel extraction tool</strong></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To extract a network using a threshold area, you need to switch on the <code>print_area_threshold_channels</code> option.</p>
-</li>
-<li>
-<p>The parameter file will look something like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for channel extraction
-# Comments are preceeded by the hash symbol
-# Documentation can be found here:
-# TBA
-
-# These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
-read path: /LSDTopoTools/Topographic_projects/test_data
-write path: /LSDTopoTools/Topographic_projects/test_data
-read fname: gabilan
-write fname: gabilan
-channel heads fname: NULL
-
-# Parameter for filling the DEM
-min_slope_for_fill: 0.0001
-
-# Parameters for selecting channels and basins
-threshold_contributing_pixels: 2500
-print_area_threshold_channels: true
-
-# Printing of the data
-write hillshade: true
-print_stream_order_raster: true
-print_channels_to_csv: true</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Save this parameter file in the directory with the data (i.e., in <code>/LSDTopoTools/Topographic_projects/test_data</code>). Call it something sensible.</p>
-</li>
-<li>
-<p>Now got into the directory with the <strong>chi mapping tool</strong> (i.e., <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/driver_functions_ChannelExtraction</code>) and run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This should print out both a raster of stream orders and a hillshade raster, and in addition a <code>csv</code> file with channel nodes. If you import this <code>csv</code> into a GIS you should select the coordinate system <a href="http://spatialreference.org/ref/epsg/wgs-84/">WGS84</a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_basic_channel_extraction_using_thresholds_the_old_way">4.2. Basic channel extraction using thresholds (the old way)</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title"><strong>Important Warning</strong></div>
-<div class="paragraph">
-<p>This describes our original way of doing things, but now you should use the <strong>channel extraction tool</strong>
-Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extraction tool</a>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>One of the simplest ways of extracting channel networks from DEMs uses a contributing area threshold.  This method is useful for coarse resolution (e.g. &gt;10m) DEMs, where topographic features of the channel heads themselves cannot be reliably identified from the DEM. The user has to specify the threshold area, which represents the upstream area that must drain to a pixel before it is considered as part of the channel.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The area threshold chosen will affect the density of the channel network.  This should be considered carefully, and compared against field-mapped channel head data if these are available.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>We will work through an example using the Indian Creek example dataset that you downloaded.</p>
-</div>
-<div class="sect3">
-<h4 id="_compile_the_code">4.2.1. Compile the code</h4>
-<div class="paragraph">
-<p>We can extract threshold area channel networks using the driver function called <code>channel_extraction_area_threshold.cpp</code>.  To compile the code you first need to navigate to the driver functions folder in the repository.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd driver_functions_ChannelExtraction/</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When in this folder type the following to compile the driver:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ make -f channel_extraction_area_threshold.make</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will create a program called <code>channel_extraction_area_threshold.out</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_run_the_analysis">4.2.2. Run the analysis</h4>
-<div class="paragraph">
-<p>To run the analysis you first need to create a parameter file, with which we will set the key user-defined parameters.  To create your parameter file, open any text editor and create a file with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Name of the DEM without extension
-Minimum slope for filling the DEM (suggested to be 0.0001)
-Threshold area for channel extraction</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The threshold area must be given in m<sup>2</sup>.  You need to save this parameter file in the folder <code>LSDTopoTools_ChannelExtraction</code> (one folder above the driver functions folder).  For the Indian Creek site we can create a parameter file called <code>indian_creek_threshold.driver</code> with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">indian_creek
-0.0001
-1000</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After creating the parameter file we can then run the code using the following command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_area_threshold.out /path_to_repository_folder/ param_file_name</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For our Indian Creek example our command would be:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_area_threshold.out /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/ indian_creek_threshold.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Once this program has run, it will create several files with the extracted channel network.  These include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A CSV file with the channel heads e.g. <code>indian_creek_CH_nodeindices_for_arc.csv</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the channel heads e.g. <code>indian_creek_CH.bil</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the stream network with Strahler stream ordering e.g. <code>indian_creek_SO.bil</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The figure below shows the extracted channel network for the Indian Creek field site with a threshold of 1000 m<sup>2</sup>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ind_so_area.png" alt="Map of Indian Creek with channel network extracted from threshold area">
-</div>
-<div class="title">Figure 3. Map of Indian Creek with channel network extracted from threshold area</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_geometric_channel_extraction_method">5. Geometric channel extraction method</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For higher-resolution DEMs a number of different methods have been developed to extract channel networks more accurately.  This section details how to extract channels using methods relying on geometric signatures of channel incision, primarily how it affects planform curvature. Although many methods have been developed that use a variety of planform curvature to detect channel heads, we will discuss three methods: the Geonet method the Geonet method (developed by Passalacqua et al. 2010a, b, 2012), a method developed by Pelletier (2013) and implemented in <strong>LSDTopoTools</strong>, and a similar geometric method available within <strong>LSDTopoTools</strong>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To run the Dreich algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_extracting_the_network_with_geometric_methods_using_the_channel_extraction_tool">5.1. Extracting the network with geometric methods using the <strong>Channel extraction tool</strong></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The <strong>Channel extraction tool</strong> has two "geometric" channel extraction options.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>To extract a network using the Pelletier methods, you need to switch on the <code>print_pelletier_channels</code> option.</p>
-</li>
-<li>
-<p>To extract a network using the <strong>LSDTopoTools Wiener filter</strong> method, you need to switch on the <code>print_wiener_channels</code> option. This method was used by <a href="http://www.earth-surf-dynam.net/4/627/2016/">Grieve et al., ESURF, 2016</a> in an attempt to balance what we feel are the strongest components of the <a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013)</a> and <a href="https://sites.google.com/site/geonethome/home">Geonet</a> (by Passalacqua et al) methods.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>The parameter file will look something like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for channel extraction
-# Comments are preceeded by the hash symbol
-
-# These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
-read path: /LSDTopoTools/Topographic_projects/test_data
-write path: /LSDTopoTools/Topographic_projects/test_data
-read fname: gabilan
-write fname: gabilan
+read fname: indian_creek
 channel heads fname: NULL
 
 # Parameter for filling the DEM
@@ -1349,474 +1192,21 @@ min_slope_for_fill: 0.0001
 
 # Parameters for selecting channels and basins
 threshold_contributing_pixels: 1000
-print_pelletier_channels: true
-print_wiener_channels: true
-
-# Printing of the data
-write hillshade: true
-print_stream_order_raster: true
-print_channels_to_csv: true</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>In the above parameter file, I&#8217;ve used mostly defaults, with the exception of <code>print_dreich_channels: true</code>.</p>
-</li>
-<li>
-<p>Save this parameter file in the directory with the data (i.e., in <code>/LSDTopoTools/Topographic_projects/test_data</code>). Call it something sensible.</p>
-</li>
-<li>
-<p>Now got into the directory with the <strong>chi mapping tool</strong> (i.e., <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/driver_functions_ChannelExtraction</code>) and run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This should print out both a raster of stream orders and a hillshade raster, and in addition a <code>csv</code> file with channel nodes. If you import this <code>csv</code> into a GIS you should select the coordinate system <a href="http://spatialreference.org/ref/epsg/wgs-84/">WGS84</a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_geometric_channel_extraction_methods_the_old_way">5.2. Geometric channel extraction methods (the old way)</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title"><strong>Important Warning</strong></div>
-<div class="paragraph">
-<p>This describes our original way of doig things, but now you should use the <strong>channel extraction tool</strong>
-Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extraction tool</a>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>For higher-resolution DEMs a number of different methods have been developed to extract channel networks more accurately.  This section details how to extract channels using methods relying on geometric signatures of channel incision, primarily how it affects planform curvature. Although many methods have been developed that use a variety of planform curvature to detect channel heads, we will discuss three methods: the Geonet method the Geonet method (developed by Passalacqua et al. 2010a, b, 2012), a method developed by Pelletier (2013) and implemented in <strong>LSDTopoTools</strong>, and a similar geometric method available within <strong>LSDTopoTools</strong>.</p>
-</div>
-<div class="sect3">
-<h4 id="_geonet_external_software">5.2.1. Geonet (external software)</h4>
-<div class="paragraph">
-<p>The Geonet algorithm filters the DEM using a Perona-Malik filter, then uses a planform curvature threshold which is statistically derived from the landscape to detect channel heads. For full information on how Geonet works please see Passalcqua et al. (2010a, b, 2012). It then uses a contributing area threshold to thin the skeleton and create the final channel network.  The Geonet algorithm is available free to download from <a href="https://sites.google.com/site/geonethome/home">the Geonet website</a>. This site also contains the code documentation and user guides on how to get started with Geonet. It is a cross platform MATLAB package (you will need a MATLAB licence to run in its present form).</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_pelletier">5.2.2. Pelletier</h4>
-<div class="paragraph">
-<p><a href="http://onlinelibrary.wiley.com/doi/10.1029/2012WR012452/abstract">Pelletier (2013)</a> developed an algorithm that is similar to Geonet in that it identifies channel heads based on a planform curvature threshold.  The main differences between this algorithm and Geonet are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>It uses an optimal Wiener threshold to filter the data rather than a Perona-Malik filter</p>
-</li>
-<li>
-<p>It sets a user-defined curvature threshold (e.g. 0.1 m<sup>-1</sup>) rather than defining it statistically for the landscape in question</p>
-</li>
-<li>
-<p>It does not use a contributing area threshold to thin the skeleton - instead it uses a multi-directional flow routing algorithm</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The Pelletier algorithm has been implemented in LSDTopoTools.  In order to run it you should follow the steps below.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To run the Pelletier algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_compile_the_code_2">Compile the code</h5>
-<div class="paragraph">
-<p>To compile the code navigate to the folder driver_functions_ChannelExtraction.  In a terminal window type the following to compile the driver:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ make -f channel_extraction_pelletier.make</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will create a program called <code>channel_extraction_pelletier.out</code> which you can use to run the code.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_run_the_analysis_2">Run the analysis</h5>
-<div class="paragraph">
-<p>We first need to create a parameter file. To create your parameter file, open any text editor and create a file with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Name of the DEM without extension
-Minimum slope for filling the DEM (suggested to be 0.0001)
-Threshold area for initial channel network (should be small e.g. 250)
-Curvature threshold for channel extraction (suggested by Pelletier (2013) to be 0.1 to avoid extracting threshold hillslopes)
-Minimum catchment area (suggested to be 400)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You need to save this parameter file in the folder <code>LSDTopoTools_ChannelExtraction</code> (one folder above the driver functions folder).  For the Indian Creek site we can create a parameter file called <code>indian_creek_pelletier.driver</code> with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">indian_creek
-0.0001
-250
-0.1
-400</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After creating the parameter file we can then run the code using the following command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_pelletier.out /path_to_repository_folder/ param_file_name</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For our Indian Creek example our command would be:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_pelletier.out /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/ indian_creek_pelletier.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Once this program has run, it will create several files with the extracted channel network.  These include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A CSV file with the channel heads e.g. <code>indian_creek_CH_Pelletier_nodeindices_for_arc.csv</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the channel heads e.g. <code>indian_creek_CH_Pelletier.bil</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the stream network with Strahler stream ordering e.g. <code>indian_creek_SO_Pelletier.bil</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The figure below shows the extracted channel network using the Pelletier algorithm for the Indian Creek field site with a planform curvature threshold of 0.1 m<sup>-1</sup>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ind_so_pel.png" alt="Map of Indian Creek with channel network extracted from Pelletier algorithm">
-</div>
-<div class="title">Figure 4. Map of Indian Creek with channel network extracted from Pelletier algorithm</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_the_lsdtopotools_geometric_method">5.2.3. The LSDTopoTools geometric method</h4>
-<div class="paragraph">
-<p>Within LSDTopoTools we have also developed a method for extracting channel heads via planform curvature.  We first of all filter the DEM using an Optimal Wiener filter, then use a quantile-quantile threshold to statistically determine the planform curvature threshold from the landscape. It then uses a <a href="http://www.ncbi.nlm.nih.gov/pubmed/18390379">connected components threshold</a> to extract the channel network.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To run the LSDTopoTools algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_compile_the_code_3">Compile the code</h5>
-<div class="paragraph">
-<p>To compile the code navigate to the folder driver_functions_ChannelExtraction.  In a terminal window type the following to compile the driver:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ make -f channel_extraction_wiener.make</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will create a program called <code>channel_extraction_wiener.out</code> which you can use to run the code.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_run_the_analysis_3">5.2.4. Run the analysis</h4>
-<div class="paragraph">
-<p>We first need to create a parameter file. To create your parameter file, open any text editor and create a file with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Path and file name of the DEM without extension
-Path and output name prefix for your files
-Path and output name prefix for the quantile-quantile information
-Window radius for filtering the DEM
-Threshold area for thinning the channel skeleton
-Connected components threshold (should be 100)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The threshold area is given in m<sup>2</sup>. You need to save this parameter file in the folder <code>LSDTopoTools_ChannelExtraction</code> (one folder above the driver functions folder).  For the Indian Creek site we can create a parameter file called <code>indian_creek_wiener.driver</code> with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">RasterFile /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/indian_creek
-OutputRasterFile /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/indian_creek
-QQFile /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/indian_creek_qq
-window_radius_for_surface_fitting 6
-threshold_drainage_area 1000
-connected_components_threshold 100</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After creating the parameter file we can then run the code using the following command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_wiener.out /path_to_repository_folder/ param_file_name</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For our Indian Creek example our command would be:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_wiener.out /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/ indian_creek_wiener.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Once this program has run, it will create several files with the extracted channel network.  These include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A CSV file with the channel heads e.g. <code>indian_creek_CH_wiener_nodeindices_for_arc.csv</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the channel heads e.g. <code>indian_creek_CH_wiener.bil</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the stream network with Strahler stream ordering e.g. <code>indian_creek_SO_wiener.bil</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The figure below shows the extracted channel network using the LSDTopoTools geometric algorithm with an Optimal Wiener filter for the Indian Creek field site.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ind_so_wiener.png" alt="Map of Indian Creek with channel network extracted from LSDTopoTools geometric algorithm with an Optimal Wiener filter">
-</div>
-<div class="title">Figure 5. Map of Indian Creek with channel network extracted from LSDTopoTools geometric algorithm with an Optimal Wiener filter</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_channel_extraction_using_the_driech_method">6. Channel extraction using the Driech method</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013WR015167/abstract">Dreich method</a>
-of channel head extraction aims to find channel heads by looking at the break in the properties of topographic profiles
-that occur when fluvial incision gives way to hillslope sediment transport processes. It is different from the geometric methods described above in that it looks for a theoretical signal of fluvial incision rather than the planform curvature of the landscape.  The method you use should be chosen based on the particular aims of your study: if you are interested in extracting the valley network (all concave parts of the landscape) then you should use a geometric method, but if you are interested in extracting the fluvial channel network then you should use the Dreich method.</p>
-</div>
-<div class="paragraph">
-<p>The stable version of the Dreich algorithm that was released with our <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013WR015167/abstract">WRR paper</a> is hosted on <a href="http://csdms.colorado.edu/wiki/Model:DrEICH_algorithm">CSDMS</a>.  The version available from our GitHub repository is the newest version of the code containing some improvements over the stable version.  We have made some changes to the way that valleys are extracted from the DEM before the Dreich algorithm is run.  In our previous version we used a curvature threshold of 0.1 m<sup>-1</sup> to select valleys for analysis as a pre-processing stage.  We have now changed the code so that this curvature threshold is statistically derived from the landscape in question using the same method as that of the Geonet algorithm (Passalacqua et al., 2010a, b, 2012).  After the initial valley network is extracted, the user may then select the stream order of valleys in which to run the DrEICH algorithm.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To run the Dreich algorithm you need to have the Fast Fourier Transform Library downloaded into your folder <code>LSDTopoTools_ChannelExtraction</code>. You can download it at <a href="http://www.fftw.org/download.html" class="bare">http://www.fftw.org/download.html</a>. If you have followed our <a href="LSDTT_installation.html">installation instructions</a> this will already be installed on your system.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_extracting_the_network_with_the_driech_method_using_the_channel_extraction_tool">6.1. Extracting the network with the Driech method using the <strong>Channel extraction tool</strong></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To extract a network using the DrEICH method, you need to switch on the <code>print_dreich_channels</code> option.</p>
-</li>
-<li>
-<p>The parameter file will look something like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile"># Parameters for channel extraction
-# Comments are preceeded by the hash symbol
-
-# These are parameters for the file i/o
-# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
-read path: /LSDTopoTools/Topographic_projects/test_data
-write path: /LSDTopoTools/Topographic_projects/test_data
-read fname: gabilan
-write fname: gabilan
-channel heads fname: NULL
-
-# Parameter for filling the DEM
-min_slope_for_fill: 0.0001
-
-# Parameters for selecting channels and basins
-threshold_contributing_pixels: 1000
-print_dreich_channels: true
-surface_fitting_radius: 6
-number_of_junctions_dreich: 1
 connected_components_threshold: 100
-m_over_n: 0.5
+print_area_threshold_channels: true
+print_wiener_channels: true
+print_pelletier_channels: false
+print_dreich_channels: false
 
-
-# Printing of the data
-write hillshade: true
-print_stream_order_raster: true
-print_channels_to_csv: true</code></pre>
+write_hillshade: true</code></pre>
 </div>
-</div>
-</li>
-<li>
-<p>In the above parameter file, I&#8217;ve used mostly defaults, with the exception of <code>print_dreich_channels: true</code>.</p>
-</li>
-<li>
-<p>Save this parameter file in the directory with the data (i.e., in <code>/LSDTopoTools/Topographic_projects/test_data</code>). Call it something sensible.</p>
-</li>
-<li>
-<p>Now got into the directory with the <strong>chi mapping tool</strong> (i.e., <code>/LSDTopoTools/Git_projects/LSDTopoTools_ChannelExtraction/driver_functions_ChannelExtraction</code>) and run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_tool.exe /LSDTopoTools/Topographic_projects/test_data NAME_OF_PARAMFILE.driver</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>This should print out both a raster of stream orders and a hillshade raster, and in addition a <code>csv</code> file with channel nodes. If you import this <code>csv</code> into a GIS you should select the coordinate system <a href="http://spatialreference.org/ref/epsg/wgs-84/">WGS84</a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_channel_extraction_using_the_dreich_method_the_old_way">6.2. Channel extraction using the Dreich method (the old way)</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title"><strong>Important Warning</strong></div>
-<div class="paragraph">
-<p>This describes our original way of doig things, but now you should use the <strong>channel extraction tool</strong>
-Read about that here: <a href="#_the_channel_extraction_tool">The Channel Extraction tool</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_run_the_chi_analysis">6.2.1. Run the chi analysis</h4>
-<div class="paragraph">
-<p>Before the Dreich algorithm can be run the <em>m/n</em> value for the landscape must be determined.  This can be done using the <a href="LSDTT_chi_analysis.html">chi analysis tools</a> in <strong>LSDTopoTools</strong>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_compile_the_code_4">6.2.2. Compile the code</h4>
-<div class="paragraph">
-<p>We can extract threshold area channel networks using the driver function called <code>channel_extraction_dreich.cpp</code>.  To compile the code you first need to navigate to the driver functions folder in the repository.  When in this folder type the following to compile the driver:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ make -f channel_extraction_dreich.make</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will create a program called <code>channel_extraction_dreich.out</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_run_the_analysis_4">6.2.3. Run the analysis</h4>
-<div class="paragraph">
-<p>We first need to create a parameter file. To create your parameter file, open any text editor and create a file with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">Path and file name of the DEM without extension
-Path and output name prefix for your files
-Window radius for filtering the DEM
-Threshold area for initial channel network (should be 1000)
-Connected components threshold for initial valley network (should be 100)
-A_0 for chi analysis (should be 1000)
-m/n value for landscape (calculate using Chi analysis tools)
-Number of tributary junctions downstream of valley head to run DrEICH algorithm on (set to 1 for whole valley network)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You need to save this parameter file in the folder <code>LSDTopoTools_ChannelExtraction</code> (one folder above the driver functions folder).  For the Indian Creek site we can create a parameter file called <code>indian_creek_dreich.driver</code> with the following lines:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">RasterFile /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/indian_creek
-OutputRasterFile /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/indian_creek
-window_radius_for_surface_fitting 6
-threshold_drainage_area 1000
-connected_components_threshold 100
-A_0 1000
-m_over_n 0.437
-number_of_junctions_dreich 1</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After creating the parameter file we can then run the code using the following command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_dreich.out /path_to_repository_folder/ param_file_name</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For our Indian Creek example our command would be:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./channel_extraction_dreich.out /home/LSDTT_repositories/LSDTopoTools_ChannelExtraction/ indian_creek_dreich.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Once this program has run, it will create several files with the extracted channel network.  These include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A <code>bil</code> file with the valley network with Strahler stream ordering e.g. <code>indian_Creek_SO_valley.bil</code></p>
-</li>
-<li>
-<p>A CSV file with the channel heads e.g. <code>indian_creek_CH_DrEICH_nodeindices_for_arc.csv</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the channel heads e.g. <code>indian_creek_CH_DrEICH.bil</code></p>
-</li>
-<li>
-<p>A <code>bil</code> file with the stream network with Strahler stream ordering e.g. <code>indian_creek_SO_DrEICH.bil</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The figure below shows the extracted channel network using the DrEICH algorithm for the Indian Creek field site.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ind_so_dreich.png" alt="Map of Indian Creek with channel network extracted from DrEICH algorithm">
-</div>
-<div class="title">Figure 6. Map of Indian Creek with channel network extracted from DrEICH algorithm</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_calculating_drainage_density">7. Calculating drainage density</h2>
+<h2 id="_calculating_drainage_density">4. Calculating drainage density</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Drainage density is a fundamental landscape metric which describes the total length of channels in a basin normalised by the basin area, first described by Horton (1945).  In this chapter we describe how to calculate the drainage density and mean hilltop curvature of a specified order of drainage basins (for example, all second order basins). We also include code which will calculate the drainage density of each basin given a list of cosmogenic radionuclide (CRN)-derived erosion rate data. We used this code to examine the relationship between drainage density and erosion rate in our paper published in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2015JF003747/full">JGR Earth Surface</a> in 2016.</p>
@@ -1867,12 +1257,12 @@ number_of_junctions_dreich 1</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_get_the_code_for_drainage_density_analysis">7.1. Get the code for drainage density analysis</h3>
+<h3 id="_get_the_code_for_drainage_density_analysis">4.1. Get the code for drainage density analysis</h3>
 <div class="paragraph">
 <p>The code for the drainage density analysis can be found in our GitHub repository.  This repository contains code for extracting the drainage density for a series of basins defined by points from cosmogenic radionuclide samples, as well as the drainage density and mean hilltop curvature for basins of a specified order.</p>
 </div>
 <div class="sect3">
-<h4 id="_clone_the_github_repository">7.1.1. Clone the GitHub repository</h4>
+<h4 id="_clone_the_github_repository">4.1.1. Clone the GitHub repository</h4>
 <div class="paragraph">
 <p>First navigate to the folder where you will keep the GitHub repository.  If you have downloaded LSDTopoTools using vagrant, then this should be in the folder <code>Git_projects</code>.  Please refer to the <a href="LSDTT_installation.html">documentation on installing LSDTopoTools</a>.  To navigate to this folder in a UNIX terminal use the <code>cd</code> command:</p>
 </div>
@@ -1902,7 +1292,7 @@ vagrant@vagrant-ubuntu-precise-32:/LSDTopoTools/Git_projects$ git clone https://
 </div>
 </div>
 <div class="sect3">
-<h4 id="_alternatively_get_the_zipped_code">7.1.2. Alternatively, get the zipped code</h4>
+<h4 id="_alternatively_get_the_zipped_code">4.1.2. Alternatively, get the zipped code</h4>
 <div class="paragraph">
 <p>If you don&#8217;t want to use <em>git</em>, you can download a zipped version of the code:</p>
 </div>
@@ -1929,7 +1319,7 @@ so if you previously downloaded a zipper repository this will overwrite it.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_the_example_datasets">7.1.3. Get the example datasets</h4>
+<h4 id="_get_the_example_datasets">4.1.3. Get the example datasets</h4>
 <div class="paragraph">
 <p>We have provided some example datasets which you can use in order to test the drainage density analysis. In this tutorial we will work using a LiDAR dataset from the Guadalupe Mountains, New Mexico.  This is a clip of the original dataset, which we have resampled to 2 m resolution. The full dataset is available from <a href="http://www.opentopography.org/">OpenTopography.</a>. If you are using the vagrant distribution, create a new folder within the <code>Topographic_projects</code> folder, and then navigate to this folder:</p>
 </div>
@@ -1955,11 +1345,11 @@ $ wget https://github.com/LSDtopotools/ExampleTopoDatasets/raw/master/Guadalupe_
 <div class="content">
 <img src="images/Guadalupe_map.png" alt="Shaded relief map of Guadalupe Mountains" width="600" height="400">
 </div>
-<div class="title">Figure 7. Shaded relief image of the Guadalupe Mountains DEM, NM, USA, UTM Zone 17N</div>
+<div class="title">Figure 3. Shaded relief image of the Guadalupe Mountains DEM, NM, USA, UTM Zone 17N</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_the_example_parameter_files">7.1.4. Get the example parameter files</h4>
+<h4 id="_get_the_example_parameter_files">4.1.4. Get the example parameter files</h4>
 <div class="paragraph">
 <p>We have also provided some examples parameter files that are used to run the drainage density analysis.  These should be placed in the same folder as your DEM (e.g. in the folder <code>/LSDTopoTools/Topographic_projects/Guadalupe_NM/</code>. You can get the example parameter file using <code>wget</code>:</p>
 </div>
@@ -1970,7 +1360,7 @@ $ wget https://github.com/LSDtopotools/ExampleTopoDatasets/raw/master/Guadalupe_
 </div>
 </div>
 <div class="sect3">
-<h4 id="_python_scripts">7.1.5. Python scripts</h4>
+<h4 id="_python_scripts">4.1.5. Python scripts</h4>
 <div class="paragraph">
 <p>We have also provided some Python scripts for creating figures from the draiange density analysis.  These should produce similar figures to those in Clubb et al. (2016), JGR-ES.  These scripts are in the directory <code>Python_scripts</code> within <code>LSDTopoTools_DrainageDensity</code>:</p>
 </div>
@@ -1984,27 +1374,27 @@ drainage_density_plot.py	drainage_density_plot_cosmo.py</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_preliminary_steps">7.2. Preliminary steps</h3>
+<h3 id="_preliminary_steps">4.2. Preliminary steps</h3>
 <div class="sect3">
-<h4 id="_getting_the_channel_head_file">7.2.1. Getting the channel head file</h4>
+<h4 id="_getting_the_channel_head_file">4.2.1. Getting the channel head file</h4>
 <div class="paragraph">
 <p>Before the drainage density analysis can be run, you must create a channel network for your DEM.  This can be done using any of the channel extraction algorithms within LSDTopoTools. Once you have run the channel extraction algorithm, you must make sure that the <code>bil</code> and <code>hdr</code> files with the channel head locations are placed in the same folder as the DEM you intend to use for the drainage density analysis.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_selecting_a_window_size">7.2.2. Selecting a window size</h4>
+<h4 id="_selecting_a_window_size">4.2.2. Selecting a window size</h4>
 <div class="paragraph">
 <p>Before we can run the drainage density algorithm, we need to calculate the correct window size for calculating mean hilltop curvature across the DEM.  Please refer to the <a href="LSDTT_hillslope_metrics.html#_selecting_a_window_size">selecting a window size</a> section for information on how to calculate a window size for your DEM.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_analysing_drainage_density_for_all_basins">7.3. Analysing drainage density for all basins</h3>
+<h3 id="_analysing_drainage_density_for_all_basins">4.3. Analysing drainage density for all basins</h3>
 <div class="paragraph">
 <p>This section provides instructions for how to extract the drainage density and mean hilltop curvature for every basin in the landscape of a given order (e.g. all second order drainage basins).</p>
 </div>
 <div class="sect3">
-<h4 id="_creating_the_paramter_file">7.3.1. Creating the paramter file</h4>
+<h4 id="_creating_the_paramter_file">4.3.1. Creating the paramter file</h4>
 <div class="paragraph">
 <p>In order to run the drainage density analysis code you must first create a parameter file for your DEM.  This should be placed in the same folder as your DEM and the channel heads <code>bil</code> file.  If you followed the instructions in the <a href="#_get_the_code_for_drainage_density_analysis">Get the code for drainage density analysis</a> section then you will already have an example parameter file for the Guadalupe Mountains DEM called <code>drainage_density_guadalupe.driver</code>.  Parameter files should have the following structure:</p>
 </div>
@@ -2031,7 +1421,7 @@ Guadalupe_DEM_CH_DrEICH
 </div>
 </div>
 <div class="sect3">
-<h4 id="_step_1_get_the_junctions_of_all_the_basins">7.3.2. Step 1: Get the junctions of all the basins</h4>
+<h4 id="_step_1_get_the_junctions_of_all_the_basins">4.3.2. Step 1: Get the junctions of all the basins</h4>
 <div class="paragraph">
 <p>The first step of the analysis creates a text file with all the junction numbers of the basins of the specified stream order.  Before the code can be run, you must compile it using the makefile in the folder <code>LSDTopoTools_DrainageDensity/driver_functions_DrainageDensity</code>.  Navigate to the folder using the command:</p>
 </div>
@@ -2088,7 +1478,7 @@ Guadalupe_DEM_CH_DrEICH
 </div>
 </div>
 <div class="sect3">
-<h4 id="_step_2_get_the_drainage_density_of_each_basin">7.3.3. Step 2: Get the drainage density of each basin</h4>
+<h4 id="_step_2_get_the_drainage_density_of_each_basin">4.3.3. Step 2: Get the drainage density of each basin</h4>
 <div class="paragraph">
 <p>The second step of the analysis ingests the junctions text file created in step 1. For each junction it will extract the upstream drainage basin, and calculate the drainage density and mean hilltop curvature for the basin.  This will be written to a text file which can be plotted up using our Python script.</p>
 </div>
@@ -2162,7 +1552,7 @@ Guadalupe_DEM_CH_DrEICH
 </div>
 </div>
 <div class="sect3">
-<h4 id="_step_3_plotting_the_data">7.3.4. Step 3: Plotting the data</h4>
+<h4 id="_step_3_plotting_the_data">4.3.4. Step 3: Plotting the data</h4>
 <div class="paragraph">
 <p>Navigate to the folder <code>Python_scripts</code> within the <code>LSDTopoTools_DrainageDensity</code> repository.  You should find the following files:</p>
 </div>
@@ -2197,23 +1587,23 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 <div class="content">
 <img src="images/Guadalupe_DEM_drainage_density_all_basins.png" alt="Plot of drainage density against mean hilltop curvature" width="600" height="400">
 </div>
-<div class="title">Figure 8. Plot of drainage density against mean hilltop curvature for the Guadalupe Mountains example dataset</div>
+<div class="title">Figure 4. Plot of drainage density against mean hilltop curvature for the Guadalupe Mountains example dataset</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_summary">7.3.5. Summary</h4>
+<h4 id="_summary">4.3.5. Summary</h4>
 <div class="paragraph">
 <p>You should now be able to extract the drainage density and mean hilltop curvature for all basins of a given order for your DEM, and use Python to plot the results.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">7.4. Analysing drainage density for basins with CRN-derived erosion rates</h3>
+<h3 id="_analysing_drainage_density_for_basins_with_crn_derived_erosion_rates">4.4. Analysing drainage density for basins with CRN-derived erosion rates</h3>
 <div class="paragraph">
 <p>This section provides instructions for how to extract the drainage density for basins upstream of a series of point locations, such as cosmogenic radionuclide (CRN)-derived erosion rate samples.  As an example, we will use the erosion rate data collected by Hurst et al. (2012) and Riebe et al. (2000) for the Feather River, Northern California.  The lidar data for this area is available from <a href="http://www.opentopography.org/">OpenTopography</a>. We haven&#8217;t included it in our example datasets as it is too large, but information on how to convert it into the right format can be found in our section on <a href="LSDTT_introduction_to_geospatial_data.html#_gdal">GDAL</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_formatting_your_erosion_rate_data">7.4.1. Formatting your erosion rate data</h4>
+<h4 id="_formatting_your_erosion_rate_data">4.4.1. Formatting your erosion rate data</h4>
 <div class="paragraph">
 <p>The program needs to read in a text file with the erosion rate data.  This file needs to be called <code>DEM_name_cosmo.txt</code> where <code>DEM_name</code> is the name of the DEM <strong>without extension</strong>.  The file should have a row for each sample, with 4 columns, each separated by a space:</p>
 </div>
@@ -2251,7 +1641,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_creating_the_paramter_file_2">7.4.2. Creating the paramter file</h4>
+<h4 id="_creating_the_paramter_file_2">4.4.2. Creating the paramter file</h4>
 <div class="paragraph">
 <p>Along with the text file with the erosion rate data, you must also create a parameter file to run the code with.  This should have the same format as the parameter file for running the analysis on all the basins, minus the last two lines. The format is shown below:</p>
 </div>
@@ -2267,7 +1657,7 @@ Minimum slope for filling the DEM</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_step_1_run_the_code">7.4.3. Step 1: Run the code</h4>
+<h4 id="_step_1_run_the_code">4.4.3. Step 1: Run the code</h4>
 <div class="paragraph">
 <p>Before the code can be run, you must compile it using the makefile in the folder <code>LSDTopoTools_DrainageDensity/driver_functions_DrainageDensity</code>.  Navigate to the folder using the command:</p>
 </div>
@@ -2344,7 +1734,7 @@ Minimum slope for filling the DEM</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_step_2_plot_the_data">7.4.4. Step 2: Plot the data</h4>
+<h4 id="_step_2_plot_the_data">4.4.4. Step 2: Plot the data</h4>
 <div class="paragraph">
 <p>Navigate to the folder <code>Python_scripts</code> within the <code>LSDTopoTools_DrainageDensity</code> repository.  You should find the following files:</p>
 </div>
@@ -2376,11 +1766,11 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 <div class="content">
 <img src="images/fr1m_nogaps_drainage_density_cosmo.png" alt="Plot of drainage density against erosion rate" width="600" height="400">
 </div>
-<div class="title">Figure 9. Plot of drainage density against erosion rate for basins with CRN samples for Feather River, California</div>
+<div class="title">Figure 5. Plot of drainage density against erosion rate for basins with CRN samples for Feather River, California</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_summary_2">7.4.5. Summary</h4>
+<h4 id="_summary_2">4.4.5. Summary</h4>
 <div class="paragraph">
 <p>You should now be able to extract the drainage density for a series of different basins across the landscape.  These can either be all basins of a specific order (Step 1), or basins defined by point coordinates (e.g. for catchment-averaged erosion rates from CRN samples in Step 2).</p>
 </div>
@@ -2391,7 +1781,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2019-06-24 09:11:30 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -451,7 +451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_the_basic_structure_of_an_analysis">1.1. The basic structure of an analysis</a>
 <ul class="sectlevel3">
-<li><a href="#_running_a_typical_analysis">1.1.1. Running a typical analysis</a></li>
+<li><a href="#_running_a_typical_analysis_for_lsdtt_basic_metrics">1.1.1. Running a typical analysis for lsdtt-basic-metrics</a></li>
 <li><a href="#_how_do_i_change_my_parameter_files">1.1.2. How do I change my parameter files?</a></li>
 </ul>
 </li>
@@ -505,12 +505,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_example_parameter_files">A.8. Example parameter files</a></li>
-</ul>
-</li>
-<li><a href="#_extremely_rapid_startup_with_no_explanation_whatsoever">Appendix B: Extremely rapid startup with no explanation whatsoever</a>
-<ul class="sectlevel2">
-<li><a href="#_for_university_of_edinburgh_students">B.1. For University of Edinburgh Students</a></li>
-<li><a href="#_for_docker_users">B.2. For docker users</a></li>
 </ul>
 </li>
 </ul>
@@ -574,7 +568,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Figure 1. All <strong>LSDTopoTools</strong> analyses work like this.</div>
 </div>
 <div class="sect3">
-<h4 id="_running_a_typical_analysis">1.1.1. Running a typical analysis</h4>
+<h4 id="_running_a_typical_analysis_for_lsdtt_basic_metrics">1.1.1. Running a typical analysis for lsdtt-basic-metrics</h4>
 <div class="paragraph">
 <p>In the next section we will walk you though an analysis. However, reading this will help you understand where you are going, so we recommend you read the whole thing!</p>
 </div>
@@ -613,14 +607,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics
-$ lsdtt-basic-metrics /LSDTopoTools/Topographic_projects/A_project
+$ lsdtt-basic-metrics /LSDTopoTools/data/A_project
 $ lsdtt-basic-metrics AParameterFile.param
-$ lsdtt-basic-metrics /LSDTopoTools/Topographic_projects/A_project AParameterFile.param</code></pre>
+$ lsdtt-basic-metrics /LSDTopoTools/data/A_project AParameterFile.param</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>The program name (<code>lsdtt-basic-metrics</code>), the directory name (<code>/LSDTopoTools/Topographic_projects/A_project</code>) and the parameter file name (<code>AParameterFile.param</code>) will change but all <strong>LSDTopoTools</strong> calls follow this same basic structure.</p>
+<p>The program name (<code>lsdtt-basic-metrics</code>), the directory name (<code>/LSDTopoTools/data/A_project</code>) and the parameter file name (<code>AParameterFile.param</code>) will change but all <strong>LSDTopoTools</strong> calls follow this same basic structure.</p>
 </li>
 <li>
 <p>Now, all parameter files have these basic elements in them:</p>
@@ -749,45 +743,43 @@ If you leave <code>read path</code> and <code>write path</code> blank, <strong>L
 </div>
 <div class="sect3">
 <h4 id="_get_the_test_data">2.1.1. Get the test data</h4>
+<div class="paragraph">
+<p>If you have followed the <a href="LSDTT_installation.html">installation instructions</a> and grabbed the example data, you already have what you need! If not, follow the steps below:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If you have installed <strong>LSDTopoTools</strong>, you will have a directory somewhere called <code>LSDTopoTools</code>.</p>
-</li>
-<li>
-<p>Go into this directory enter the following:</p>
+<p>If you are using a docker container, just run the script:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_workshop_data.git</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>This will download the test data.</p>
+<p>If you are on a native linux or using the University of Edinburgh servers, do the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you have installed <strong>LSDTopoTools</strong>, you will have a directory somewhere called <code>LSDTopoTools</code>. Go into it.</p>
 </li>
 <li>
-<p>If you have updated this data but want to restore to the defaults, go into the data directory (<code>LSDTT_workshop_data</code>) and run:</p>
+<p>Run the following commands (you only need to do this once):</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git fetch --all</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir data
+$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Then run:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git pull origin master</code></pre>
-</div>
-</div>
+<p>WARNING: This downloads a bit over 150Mb of data so make sure you have room.</p>
 </li>
-<li>
-<p>Occasionally you will forget the <code>fetch</code> command and pull first. This leads to an error which you fix with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git reset --hard origin/master
-$ git pull origin master</code></pre>
-</div>
+</ol>
 </div>
 </li>
 </ol>
@@ -798,7 +790,7 @@ $ git pull origin master</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Go into the directory with this data: <code>cd LSDTT_workshop_data</code>.</p>
+<p>Go into the directory with this data: <code>cd ExampleTopoDatasets/BasicMetricsData</code>.</p>
 </li>
 <li>
 <p>If you have installed <code>LSDTopoTools</code> correctly, you should just be able to call <code>lsdtt-basic-metrics</code>:</p>
@@ -905,17 +897,6 @@ print_tangential_curvature: true</code></pre>
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics WA_BasicMetrics03.driver</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p><strong>OR</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-basic-metrics WA_BasicMetrics03.driver</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>I am going to let you figure out which one to use&#8230;&#8203;you will need to work this out on your own at some point.</p>
 </div>
 </li>
 <li>
@@ -1065,7 +1046,7 @@ print_basin_raster: true</code></pre>
 <p>We have added a junctions file in the directory with the data called <code>selected_WA.junctions</code>. It has a few junctions picked. The line to add to the parameter file are:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">BaselevelJunctions_file: /LSDTopoTools/Topographic_projects/LSDTT_workshop_data/selected_WA.junctions</code></pre>
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">BaselevelJunctions_file: /LSDTopoTools/dataExampleTopoDatasets/selected_WA.junctions</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -1702,224 +1683,10 @@ If you just want the largest complete basin, set <code>find_largest_complete_bas
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_extremely_rapid_startup_with_no_explanation_whatsoever">Appendix B: Extremely rapid startup with no explanation whatsoever</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This appendix is an explanation-free version of this chapter, for people who just want to see if the tools work before going into the details.
-We even go through the installation instructions for you here.</p>
-</div>
-<div class="sect2">
-<h3 id="_for_university_of_edinburgh_students">B.1. For University of Edinburgh Students</h3>
-<div class="paragraph">
-<p>We assume you are on a university computer. If not, go to the docker instructions.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In the windows search bar, look for <strong>MobaXterm personal edition</strong>.</p>
-</li>
-<li>
-<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
-</li>
-<li>
-<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
-</li>
-<li>
-<p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
-</li>
-<li>
-<p>Go into your T: drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
-</li>
-<li>
-<p>Now enter: <code>git clone <a href="https://github.com/LSDtopotools/LSDTopoTools2.git" class="bare">https://github.com/LSDtopotools/LSDTopoTools2.git</a></code></p>
-</li>
-<li>
-<p>Now enter: <code>cd LSDTopoTools2/src/</code></p>
-</li>
-<li>
-<p>Now enter: <code>sh build.sh</code></p>
-</li>
-<li>
-<p>You will need to wait a bit for this step.</p>
-</li>
-<li>
-<p>Now enter: <code>cd ..</code></p>
-</li>
-<li>
-<p>Finally enter: <code>sh lsdtt2_terminal.sh</code></p>
-</li>
-<li>
-<p>Now go into the parent directory:  <code>cd ..</code></p>
-</li>
-<li>
-<p>Grab the test data: <code>git clone <a href="https://github.com/LSDtopotools/LSDTT_workshop_data.git" class="bare">https://github.com/LSDtopotools/LSDTT_workshop_data.git</a></code></p>
-</li>
-<li>
-<p>Go into this directory: <code>cd LSDTT_workshop_data</code></p>
-</li>
-<li>
-<p>Run the following commands:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics01.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics02.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics03.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics04.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics05.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics06.driver</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>This will generate a bunch of rasters and some <code>csv</code> and <code>json</code> files.</p>
-</li>
-<li>
-<p>Nice work, you are finished!</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_for_docker_users">B.2. For docker users</h3>
-<div class="paragraph">
-<p>You need to have docker installed for this: we won&#8217;t walk you through docker installation here. Also you will need <code>git</code>. See installation notes.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make an <strong>LSDTopoTools</strong> directory on your computer.</p>
-</li>
-<li>
-<p>Go into that directory and <code>git clone</code> two things. In Windows you need to be in a <code>git bash</code> window:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>git clone <a href="https://github.com/LSDtopotools/LSDTopoTools2.git" class="bare">https://github.com/LSDtopotools/LSDTopoTools2.git</a></p>
-</li>
-<li>
-<p>git clone <a href="https://github.com/LSDtopotools/LSDTT_workshop_data.git" class="bare">https://github.com/LSDtopotools/LSDTT_workshop_data.git</a></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Make a directory for a dockerfile (we will download this). For example in <code>C:\docker</code>.</p>
-</li>
-<li>
-<p>Inside that make another directory to hold the <strong>LSDTopoTools</strong> dockerfile. For example called <code>lsdtt_alpine</code>.</p>
-</li>
-<li>
-<p>In the <code>lsdtopotools2</code> directory there will be a directory <code>/LSDTopoTools2/docker_files/lsdtt_alpine</code>. In there you will find a dockerfile. Copy it into the directory that you just made to store dockerfiles (e.g., <code>C:\docker\lsdtt_alpine</code>).</p>
-</li>
-<li>
-<p>Using a shell or terminal that has docker enabled, go into that directory and build the docker container:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>docker build -t lsdtt-alpine .</code></p>
-</li>
-<li>
-<p>Note: this container will be around 250 Mb.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>You then need to run the container with the directory into which you cloned all that stuff mapped to the container. Docker does this with the <code>-v</code> flag. The first directory after the <code>-v</code> flag is the directory on the host operating system, and then a <code>:</code> symbol, and then the directory on the container. You need to use linux directaory separators (<code>/</code>). So, for example:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>docker run -it -v C:/LSDTopoTools/:/LSDTopoTools lsdtt-alpine</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Once you do that, you will be in a linux environment. Change the directory, then build the source code:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>cd /LSDTopoTools/LSDTopoTools2/src</code></p>
-</li>
-<li>
-<p><code>sh build.sh</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Now add the path of the lsdtopotools files:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>PATH=$PATH:/LSDTopoTools/LSDTopoTools2/bin</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Now go into the directory with the test data:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>cd <code>/LSDTopoTools/LSDTT_workshop_data</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Run the following commands:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics01.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics02.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics03.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics04.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics05.driver</code></p>
-</li>
-<li>
-<p><code>lsdtt-basic-metrics WA_BasicMetrics06.driver</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>This will generate a bunch of rasters and some <code>csv</code> and <code>json</code> files.</p>
-</li>
-<li>
-<p>Nice work, you are finished!</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2019-06-24 16:09:27 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

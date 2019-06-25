@@ -470,6 +470,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_get_the_associated_software_you_need">3.1. Get the associated software you need</a></li>
 <li><a href="#_get_the_lsdtopotools2_code_and_install">3.2. Get the LSDTopoTools2 code and install</a></li>
 <li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">3.3. Starting an LSDTopoTools2 session after your first installation</a></li>
+<li><a href="#_getting_the_example_data">3.4. Getting the example data</a></li>
 </ul>
 </li>
 <li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</a>
@@ -480,6 +481,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_cloning_the_lsdtopotools2_repository">4.4. Cloning the LSDTopoTools2 repository</a></li>
 <li><a href="#_building_the_software">4.5. Building the software</a></li>
 <li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation_2">4.6. Starting an LSDTopoTools2 session after your first installation</a></li>
+<li><a href="#_getting_the_example_data_2">4.7. Getting the example data</a></li>
 </ul>
 </li>
 <li><a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">5. Installing LSDTopoTools using VirtualBox and Vagrant</a>
@@ -873,7 +875,34 @@ You will need to run <code>Start_LSDTT.sh</code> every time you start a new Dock
 </div>
 </li>
 <li>
+<p>If you want to follow our examples later in this documentation, you should also grab the example data:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You only need to perform this step the first time you start the <strong>LSDTopoTools</strong> container.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
 <p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you ran <code>Get_LSDTT_example_data.sh</code> you will now have a data directory <code>/LSDTopoTools/data</code>.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -963,9 +992,51 @@ $ git clone https://github.com/LSDtopotools/lsdtt_pcl_docker.git</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>This script grabs the latest version of the code and builds the programs if you don&#8217;t have one that is up to date. It also ensure that the <strong>LSDTopoTools</strong> programs are in your path.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You will need to run <code>Start_LSDTT.sh</code> every time you start a new Docker session.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
-<p>You are now ready to start using <strong>LSDTopoTools</strong>!</p>
+<p>If you want to follow our examples later in this documentation, you should also grab the example data:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You only need to perform this step the first time you start the <strong>LSDTopoTools</strong> container.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you ran <code>Get_LSDTT_example_data.sh</code> you will now have a data directory <code>/LSDTopoTools/data</code>.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -1625,6 +1696,38 @@ $ sudo apt-get install -y cmake</code></pre>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_getting_the_example_data">3.4. Getting the example data</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a data directory. The documentation assumes this directory structure: <br>
+| Your home directory (native linx) or the root directory (docker) <br>
+--|LSDTopoTools <br>
+----| LSDTopoTools2 <br>
+------| subdirectories with source code and programs<br>
+----| data <br>
+------| subdirectories with different projects<br>
+----| Other LSDTopoTools directories (e.g., LSDMappingTools, LSDTT_documentation)</p>
+</li>
+<li>
+<p>Go into the data directory and grab the example data from github, then unzip and clean the zip file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You should now have the example data for further examples.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1855,6 +1958,50 @@ $ sudo apt-get install -y cmake</code></pre>
 <p>As an alternative, you can go into yor <code>.bashrc</code> file and add the <code>/path/to/LSDTopoTools2/bin</code> directory to your <code>$PATH</code>. You will need to change the full path to reflect your own directory system. If you don&#8217;t know what a <code>.bashrc</code> file is you are probably better off running the <code>lsdtt2_terminal.sh</code> script.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_the_example_data_2">4.7. Getting the example data</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a data directory. The documentation assumes this directory structure: <br>
+| Your home directory (native linx) or the root directory (docker) <br>
+--|LSDTopoTools <br>
+----| LSDTopoTools2 <br>
+------| subdirectories with source code and programs<br>
+----| data <br>
+------| subdirectories with different projects<br>
+----| Other LSDTopoTools directories (e.g., LSDMappingTools, LSDTT_documentation)</p>
+</li>
+<li>
+<p>So, if you don&#8217;t have a data directory, make one. Again, we suggest putting this in an <strong>LSDTopoTools</strong> directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools
+$ mkdir data</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If the command <code>cd ~/LSDTopoTools</code> doesn&#8217;t work it means you haven&#8217;t made the <strong>LSDTopoTools</strong> directory</p>
+</li>
+<li>
+<p>Go into the data directory and grab the example data from github, then unzip and clean the zip file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You should now have the example data that is used in the rest of this documentation.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -2830,6 +2977,9 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 <div class="paragraph">
 <p>Please see the chapter on <a href="LSDTT_visualisation.html">LSDTopoTools visualisation</a> for instructions on how to <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">install the LSDTopoTools python toolchain</a>.</p>
+</div>
+<div class="paragraph">
+<p>The preferred way to install <strong>LSDTopoTools</strong> is via a Docker container (see <a href="#_installing_lsdtopotools_using_docker">previous sections</a>), but because our python tools use a large number of python packages we have a separate container for these tools. Again, see the</p>
 </div>
 </div>
 </div>
