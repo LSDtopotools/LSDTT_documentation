@@ -471,6 +471,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_get_the_lsdtopotools2_code_and_install">3.2. Get the LSDTopoTools2 code and install</a></li>
 <li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">3.3. Starting an LSDTopoTools2 session after your first installation</a></li>
 <li><a href="#_getting_the_example_data">3.4. Getting the example data</a></li>
+<li><a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">3.5. Installing LSDTopoTools using Windows Subsystem for Linux</a>
+<ul class="sectlevel3">
+<li><a href="#_accessing_data_from_windows">3.5.1. Accessing data from Windows</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</a>
@@ -567,12 +572,36 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Native installation on a Linux system. If your native operating system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need. The documents are made under the assumption that you use <a href="https://www.ubuntu.com/">Ubuntu</a>, but if you are a Linux user we are confident you&#8217;ll be able to port the instructions to your native system (usually this involves replacing <code>sudo apt-get</code> with <code>sudo yum</code>).</p>
 </li>
 <li>
-<p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific for Edinburgh students for use on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers.</p>
+<p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific to students and staff at the University of Edinburgh for use on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers.</p>
 </li>
 <li>
-<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is well tested but it requires two bits of software instead of one for <a href="https://www.docker.com/products/docker-desktop">Docker</a>, and instead of a lightweight container you need a full blown <a href="https://ubuntu.com/">Ubuntu</a> system as a virtual machine, meaning that this takes up more space on your hard disk. Also, on Windows machines, it is difficult to install a 64-bit guest operating system: you will probably be limited to a 32-bit system that limits your memory if you use this approach. So if you have MacOS, Linux, or Windows 10 Enterprise you should probably use the Docker installation.</p>
+<p>Installation using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> + <a href="https://www.vagrantup.com/">Vagrant</a>. This method is well tested but it requires two bits of software instead of one for <a href="https://www.docker.com/products/docker-desktop">Docker</a>, and instead of a lightweight container you need a full blown <a href="https://ubuntu.com/">Ubuntu</a> system as a virtual machine, meaning that this takes up more space on your hard disk. Also, on old Windows machines, it is difficult to install a 64-bit guest operating system: you will probably be limited to a 32-bit system that limits your memory if you use this approach. So if you have MacOS, Linux, or Windows 10 Enterprise you should probably use the Docker installation.</p>
 </li>
 </ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">What installation method should I use?</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are in MacOS, Linux, we <a href="#recommend Docker">Installing LSDTopoTools using Docker</a>.</p>
+</li>
+<li>
+<p>If you have Windows 10 enterprise and administrator privilidges, we also <a href="#recommend Docker">Installing LSDTopoTools using Docker</a>.</p>
+</li>
+<li>
+<p>If you want better performance you can try the <a href="#_installing_natively_on_a_linux_system">native Linux installation</a> (works on both Linux and MacOS since the latter is built on top of Linux).</p>
+</li>
+<li>
+<p>If you have Windows 10 but don&#8217;t have the Enterprise edition or access priviledges, you can do a <a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">"native" Linux installation using the Windows Linux Subsystem</a>.</p>
+</li>
+<li>
+<p>If you have an older Windows operating system you have no choice but to <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">use Vagrant</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -586,7 +615,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <div class="title">Update June 2019</div>
 <div class="paragraph">
-<p>Docker is very easy to install on Linux and MacOS. On Windows it is a bit complicated (and possibly need the intervention of your IT team).
+<p>Docker is very easy to install on Linux and MacOS. On Windows it is a bit complicated (and possibly needs the intervention of your IT team).
 This will <strong>MASSIVELY CHANGE</strong> quite soon: Windows is currently pre-releasing a fully functioning Linux subsystem that will allow Docker to be run with the same speed and efficiency as though you were on a native Linux operating system.
 You can <a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/">read all about it on this blog post</a>.
 Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
@@ -606,10 +635,10 @@ Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>We&#8217;ll assume this is in <code>C:\LSDTopoTools</code> on Windows</p>
+<p>We will assume this is in <code>C:\LSDTopoTools</code> on Windows</p>
 </li>
 <li>
-<p>OR <code>\LSDTopoTools</code> on MacOS and Linux.</p>
+<p>Or <code>\LSDTopoTools</code> on MacOS and Linux.</p>
 </li>
 </ol>
 </div>
@@ -728,7 +757,7 @@ Firstly, this only works on Windows 10. And you need control of your computer, a
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>lsdtt-alpine</code>: This is basic <strong>LSDTopoTools</strong> container. It uses a very lightwight linux distrubution called the <a href="https://alpinelinux.org/">alpine linux</a> distribution. For many users, this is the only container you will need. It is an 88 Mb download and when built, it is a but under 300 Mb.</p>
+<p><code>lsdtt-alpine</code>: This is the stripped-down, lightweight <strong>LSDTopoTools</strong> container. It uses a linux distrubution called the <a href="https://alpinelinux.org/">alpine linux</a> distribution. For many users, this is the only container you will need. It is an 88 Mb download and when built, it is a bit under 300 Mb.</p>
 </li>
 <li>
 <p><code>lsdtt-pcl</code>: A few of our routines (notably the terrace extraction routines and any routines using swath profiling) require something called the <a href="https://en.wikipedia.org/wiki/Point_Cloud_Library">point cloud library (PCL)</a>. This library is <strong>ENORMOUS</strong> and a massive pain to install. It does everything the <code>lsdtt-alpine</code> container does, and more. It is big: the download is 644 Mb and built it is over 2 Gb. However, if you need this one you can use it instead of the <code>lsdtt-alpine</code> container.</p>
@@ -737,7 +766,7 @@ Firstly, this only works on Windows 10. And you need control of your computer, a
 <p><code>lsdtt-viz</code>: This container installs all the python routines you need if you want to use our visualisation tools. Our tools require multiple python packages, meaning that this container is also quite large. If you use a GIS to look at our data, you won&#8217;t need this. However we do all our visualisation in python and have written lots of automation scripts, so if you think you will used <strong>LSDTopoTools</strong> routinely you might want to grab this dockerfile.</p>
 </li>
 <li>
-<p><code>lsdtt-docs</code>: Our documentation is all written in asciidoc format, and processed with the extremely awesome <a href="https://asciidoctor.org/">asciidoctor</a>. It runs in the Ruby programming language, and requires some stuff to be installed. We have a container for building the documentation so you don&#8217;t need to worry about installing the correct stuff. It is unlikely you will need this unless you are an <strong>LSDTopoTools</strong> developer.</p>
+<p><code>lsdtt-docs</code>: Our documentation is all written in asciidoc format, and processed with the extremely awesome <a href="https://asciidoctor.org/">asciidoctor</a>. It runs in the Ruby programming language, and requires some stuff to be installed. We have a container for building the documentation so you don&#8217;t need to worry about installing the correct stuff. It is very unlikely you will need this unless you are an <strong>LSDTopoTools</strong> developer.</p>
 </li>
 </ol>
 </div>
@@ -753,7 +782,7 @@ Firstly, this only works on Windows 10. And you need control of your computer, a
 <p><code>lsdtt-viz</code> is for our python plotting routines. If you just intend to use a GIS to look at <strong>LSDTopoTools</strong>, you don&#8217;t need this. But if you want to reproduce the figures we have in our papers you will need this container. <strong>LSDMappingTools</strong> needs a lot of python packages so the container is large, I&#8217;m afraid.</p>
 </li>
 <li>
-<p><code>lsdtt-docs</code>: he containes the software needed to compile our documentation. The documentation is available on a website (you are reading it) so you only need this container if you are actually going to be writing <strong>LSDTopoTools</strong> documentation.</p>
+<p><code>lsdtt-docs</code>: contains the software needed to compile our documentation. The documentation is available on a website (you are reading it) so you only need this container if you are actually going to be writing <strong>LSDTopoTools</strong> documentation.</p>
 </li>
 </ul>
 </div>
@@ -776,7 +805,7 @@ Firstly, this only works on Windows 10. And you need control of your computer, a
 </ul>
 </div>
 <div class="paragraph">
-<p>Option 1 is better. Option 2 is only for enthusiasts.</p>
+<p>Option 1 is better. Option 2 is really only for <strong>LSDTopoTools</strong> developers. We went to the trouble of building hte containers so you don&#8217;t have to.</p>
 </div>
 </div>
 </div>
@@ -789,7 +818,7 @@ Firstly, this only works on Windows 10. And you need control of your computer, a
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, make a directory in your host operating system where you will put all the files associated with <strong>LSDTopoTools</strong>. I put mine in <code>C:\DockerBoxes\LSDTopoTools\</code></p>
+<p>First, make a directory in your host operating system where you will put all the files associated with <strong>LSDTopoTools</strong>. I put mine in <code>C:\LSDTopoTools\</code></p>
 </li>
 <li>
 <p>To share a directory in docker you use the <code>-v</code> flag.</p>
@@ -924,7 +953,7 @@ Unless you are a docker purist, please ignore this section and use <a href="#_fi
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\Docker\LSDTopoTools\</code> (this is a windows path, since the majority of organisations use the Windows operating system).</p>
+<p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\LSDTopoTools\</code> (this is a windows path, since the majority of organisations use the Windows operating system).</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1609,7 +1638,7 @@ WORKDIR /LSDTopoTools</code></pre>
 <h2 id="_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our software is designed for linux operating systems but we do recommend you use either our <a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">VirtualBox+Vagrant setup</a> or our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a> because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
+<p>Our software is designed for linux operating systems but we do recommend you use our <a href="#_installing_lsdtopotools_using_docker">Docker setup</a>  because in those two cases you will be using the same environment as the developers so it will be easier to answer questions when you have problems. However, if you just want <strong>LSDTopoTools</strong> on your Linux machine, follow these steps:</p>
 </div>
 <div class="sect2">
 <h3 id="_get_the_associated_software_you_need">3.1. Get the associated software you need</h3>
@@ -1726,6 +1755,103 @@ $ rm master.zip</code></pre>
 <p>You should now have the example data for further examples.</p>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_lsdtopotools_using_windows_subsystem_for_linux">3.5. Installing LSDTopoTools using Windows Subsystem for Linux</h3>
+<div class="paragraph">
+<p>Some users have had difficulties getting Docker to install on Windows as it can require changing a setting in the BIOS. If this is the case, you can try to install the code natively using <a href="https://docs.microsoft.com/en-us/windows/wsl/faq">Windows Subsystem for Linux</a>.  This is a piece of software from Microsoft that allows you to run a small Linux environment (in our case Ubuntu) from your Windows operating system.  We will download this software from the Microsoft Store, which should be preinstalled on any Windows 10 system.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Firstly, download the Ubuntu app from Microsoft Store. If you can&#8217;t find it, then you can also get it from <a href="https://www.microsoft.com/en-gb/p/ubuntu/9nblggh4msv6?rtc=1&amp;activetab=pivot:overviewtab">this link</a>. You might need to restart your computer as prompted following this step.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The download here is around ~200 Mb, so make sure you have enough space on your system for this. You don&#8217;t need to register to the store in order to download the app.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Launch the Ubuntu app by clicking on it from the Start menu.  You will then be prompted to create a new user account and password - <strong>you can choose whatever you want for this, but make sure you remember it! The password is important for installing packages in the next steps.</strong></p>
+</li>
+<li>
+<p>The first time you launch, make sure you update and upgrade your standard packages by typing:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now install the dependencies for LSDTopoTools:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt install -y build-essential git gdal-bin python-gdal libfftw3-dev cmake</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then make a new directory for the LSDTopoTools code and download it from GitHub:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir LSDTopoTools &amp;&amp; cd LSDTopoTools
+$ git clone https://github.com/LSDtopotools/LSDTopoTools2.git</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This will create a directory called <code>~/LSDTopoTools/LSDTopoTools2</code> in your home. Navigate to this directory and run the start up script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools2
+$ bash lsdtt2_setup.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This script will set up the code: we then need one more command to add the binary to your local path.  First run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd bin
+$ pwd</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This will print out a directory path. Copy this directory path, let&#8217;s call it <code>/path/to/your/bin</code> for the sake of this example, and run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ export PATH=/path/to/your/bin:$PATH</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This will link the <code>bin</code> folder to the system path and make the code executable from anywhere in the Linux subsystem.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_accessing_data_from_windows">3.5.1. Accessing data from Windows</h4>
+<div class="paragraph">
+<p>Once installed in the linux subsystem, <code>Microsoft</code> strongly warns against accessing to Ubuntu file system from <code>windows</code> as it can damaged it quite easily. However the opposite is fairly easy: the easiest way to do that is to store data in your <code>C</code> drive, accessible from the linux subsystem with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /mnt/c/</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1891,7 +2017,7 @@ $ rm master.zip</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You can organise your directories however you want, but I find it is easier to keep everything contined in a single <strong>LSDTopoTools</strong> directory.</p>
+<p>You can organise your directories however you want, but I find it is easier to keep everything contained in a single <strong>LSDTopoTools</strong> directory.</p>
 </li>
 <li>
 <p>So, I suggest makeing a directory called <code>LSDTopoTools</code> (you can use <code>mkdir LSDTopoTools</code>) and then go into that directory <code>cd LSDTopoTools</code> for the next steps.</p>
@@ -2024,6 +2150,9 @@ If you use MacOS, Linux, or Windows 10 Enterprise, we suggest you use Docker. Ot
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>If you are on Windows 10 but cannot install docker, you can also try to install the <a href="#Installing LSDTopoTools on the Windows Linux Subsytem">Windows Linux subsystem</a>.</p>
 </div>
 </div>
 </div>
