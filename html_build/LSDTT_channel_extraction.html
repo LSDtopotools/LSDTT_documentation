@@ -510,6 +510,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_channel_extraction_options">A.1. Channel extraction options</a></li>
 </ul>
 </li>
+<li><a href="#_channel_extraction_file_formats">5. Channel extraction file formats</a>
+<ul class="sectlevel2">
+<li><a href="#_channel_sources_files">5.1. Channel sources files</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -873,10 +878,13 @@ write_hillshade: true</code></pre>
 <p>A file with the extension <code>sources.csv</code>: This has the location of the source pixels. We describe the file format below.</p>
 </li>
 <li>
-<p>A file with the extension <code>CN.scv</code>: This contains the channel network, alog with the strahler order of the channels.</p>
+<p>A file with the extension <code>CN.scv</code>: This contains the channel network, along with the Strahler order of the channels.</p>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>If you want to know the file formats, please see the <a href="#channel extraction appendix for file formats">[channel extraction appendix for file formats]</a></p>
 </li>
 <li>
 <p>In addition, we set <code>write_hillshade: true</code>, so we also get a hillshare raster, denoted by the <code>HS</code> in the filename.</p>
@@ -889,6 +897,15 @@ write_hillshade: true</code></pre>
 <p>If you want a file that can be directly read into a GIS, then use the parameter <code>convert_csv_to_geojson: true</code></p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>The figure below shows the extracted channel network for the Indian Creek field site with a threshold of 1000 pixels (which works out to 1000 m<sup>2</sup> because it is a 1 m resolution DEM).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ind_so_area.png" alt="Map of Indian Creek with channel network extracted from threshold area">
+</div>
+<div class="title">Figure 3. Map of Indian Creek with channel network extracted from threshold area</div>
 </div>
 </div>
 </div>
@@ -1033,7 +1050,7 @@ $ wget https://github.com/LSDtopotools/ExampleTopoDatasets/raw/master/Guadalupe_
 <div class="content">
 <img src="images/Guadalupe_map.png" alt="Shaded relief map of Guadalupe Mountains" width="600" height="400">
 </div>
-<div class="title">Figure 3. Shaded relief image of the Guadalupe Mountains DEM, NM, USA, UTM Zone 17N</div>
+<div class="title">Figure 4. Shaded relief image of the Guadalupe Mountains DEM, NM, USA, UTM Zone 17N</div>
 </div>
 </div>
 <div class="sect3">
@@ -1275,7 +1292,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 <div class="content">
 <img src="images/Guadalupe_DEM_drainage_density_all_basins.png" alt="Plot of drainage density against mean hilltop curvature" width="600" height="400">
 </div>
-<div class="title">Figure 4. Plot of drainage density against mean hilltop curvature for the Guadalupe Mountains example dataset</div>
+<div class="title">Figure 5. Plot of drainage density against mean hilltop curvature for the Guadalupe Mountains example dataset</div>
 </div>
 </div>
 <div class="sect3">
@@ -1454,7 +1471,7 @@ make_plots(DataDirectory, DEM_name)</code></pre>
 <div class="content">
 <img src="images/fr1m_nogaps_drainage_density_cosmo.png" alt="Plot of drainage density against erosion rate" width="600" height="400">
 </div>
-<div class="title">Figure 5. Plot of drainage density against erosion rate for basins with CRN samples for Feather River, California</div>
+<div class="title">Figure 6. Plot of drainage density against erosion rate for basins with CRN samples for Feather River, California</div>
 </div>
 </div>
 <div class="sect3">
@@ -1798,6 +1815,102 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_channel_extraction_file_formats">5. Channel extraction file formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The different channel extraction methods insert different characters into the filenames.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Characters in filenames denoting the extraction method</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">String</th>
+<th class="tableblock halign-left valign-top">Extraction method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">area threshold</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">area threshold</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">area threshold</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">area threshold</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In addition, there are characters at the end of filenames that deonte particular file types</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Characters in filenames denoting the extraction method</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Extension</th>
+<th class="tableblock halign-left valign-top">file type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HS.bil</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A hillshade raster</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sources.csv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A sources file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CN.csv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A channel network file</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_channel_sources_files">5.1. Channel sources files</h3>
+<div class="paragraph">
+<p>This file has five colums:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csv" data-lang="csv">node,x,y,latitude,longitude</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>node</code> is the node index, specific to that particular DEM. It cannot be transferred between two different DEMs</p>
+</li>
+<li>
+<p><code>x</code> and <code>y</code> are the x and y locations in the DEM&#8217;s coordinante system. It can be transferred between DEMs with the same coordinate system.</p>
+</li>
+<li>
+<p><code>latitude</code> and <code>longitude</code> are the latitude and longitude in WGS84. The conversion tools in <strong>LSDTopoTools</strong> means that these can be transferred between any raster.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For historic reasons, we use the <code>x</code> and <code>y</code> coordinate to read in channel head locations, but this will change (hopefully soon) to read latitude and longitide.</p>
+</div>
 </div>
 </div>
 </div>
