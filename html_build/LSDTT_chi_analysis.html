@@ -733,9 +733,6 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <div class="paragraph">
 <p>First, you should follow the instructions on <a href="LSDTT_installation.html">installing <strong>LSDTopoTools</strong></a>.</p>
 </div>
-<div class="paragraph">
-<p>Once you have a functioning Linux system (this can be within any operating environment, see <a href="LSDTT_installation.html">installation instructions</a>) you then need to get the chi analysis code.</p>
-</div>
 <div class="sect2">
 <h3 id="_what_versions_of_the_software_are_there">2.1. What versions of the software are there?</h3>
 <div class="paragraph">
@@ -763,7 +760,7 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <p>It can map across all channels in a landscape.</p>
 </li>
 <li>
-<p>It has much better routines for determining the landscape <em>m/n</em> ratio (and this is the subject of a new ESURF discussion paper).</p>
+<p>It has much better routines for determining the landscape concavity ratio (and this is the subject of a new ESURF discussion paper).</p>
 </li>
 <li>
 <p>It is all packaged into a single program rather than 4 separate programs.</p>
@@ -951,6 +948,19 @@ in this part of the command, you need to put your own directory for LSDTopoTools
 </ol>
 </div>
 </li>
+<li>
+<p>If you are in a native linux session, then you need to activate the LSDTT terminal.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Navigate to the LSDTopoTools2 directory.</p>
+</li>
+<li>
+<p>Run <code>sh LSDTT_terminal.sh</code>.</p>
+</li>
+</ol>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -1021,10 +1031,10 @@ The directory structure below will mirror the Docker container so if you are in 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to the directory with the <strong>example data</strong>:</p>
+<p>Navigate to the directory with the <strong>example data</strong>, and then go into the <code>ChiAnalysisData/Xian</code> directory:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian</code></pre>
 </div>
 </div>
 </li>
@@ -1032,7 +1042,7 @@ The directory structure below will mirror the Docker container so if you are in 
 <p>Now run the example driver file.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example1.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example01.driver</code></pre>
 </div>
 </div>
 </li>
@@ -1050,15 +1060,15 @@ The directory structure below will mirror the Docker container so if you are in 
 </div>
 </li>
 <li>
-<p>We are going to visualise the output using python.</p>
-</li>
-<li>
-<p>In your host operating system, find the directory that contains the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> directory.</p>
-</li>
-<li>
-<p>You might want to open spyder (see our section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDTT python installation</a>. on how to get this) to look at the python script. To open spyder simply type <code>spyder</code> into a powershell window (Windows)  or terminal (Linux/MaxOS).</p>
+<p>In this example all we have done is (algorithmically) selected basins and printed a hillshade. The result will look like this:</p>
 </li>
 </ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_QGIS.png" alt="Basins around Mount_Hua">
+</div>
+<div class="title">Figure 1. The extracted basins, coloured by basin number</div>
 </div>
 <div class="sect3">
 <h4 id="_some_comments_on_basin_selection">4.3.1. Some comments on basin selection</h4>
@@ -1184,7 +1194,7 @@ The directory structure below will mirror the Docker container so if you are in 
 <div class="content">
 <img src="images/Xian_example1.png" alt="Area around Mount_Hua">
 </div>
-<div class="title">Figure 1. A hillshade of the example landscape</div>
+<div class="title">Figure 2. A hillshade of the example landscape</div>
 </div>
 </li>
 </ol>
@@ -1200,7 +1210,7 @@ The directory structure below will mirror the Docker container so if you are in 
 <div class="content">
 <img src="images/Xian_coloured_basins.png" alt="Basins around Mount_Hua">
 </div>
-<div class="title">Figure 2. The extracted basins, coloured by basin number</div>
+<div class="title">Figure 3. The extracted basins, coloured by basin number</div>
 </div>
 </li>
 <li>
@@ -1219,7 +1229,7 @@ The directory structure below will mirror the Docker container so if you are in 
 <div class="content">
 <img src="images/Xian_basin_keys.png" alt="Numbered basins around Mount_Hua">
 </div>
-<div class="title">Figure 3. The extracted basins</div>
+<div class="title">Figure 4. The extracted basins</div>
 </div>
 </li>
 <li>
@@ -1556,7 +1566,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basin_keys.png" alt="Basins around Mount Hua for concavity analysis">
 </div>
-<div class="title">Figure 4. The extracted basins for the concavity analysis</div>
+<div class="title">Figure 5. The extracted basins for the concavity analysis</div>
 </div>
 <div class="paragraph">
 <p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, collinearity using chi points at random intervals iterated upon using bootstrapping, and collinearity using a <a href="https://www.earth-surf-dynam.net/4/1/2016/esurf-4-1-2016.html">disorder metric</a>. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from disorder and bootstrapping approaches. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the disorder and bootstrapping methods.</p>
@@ -1565,7 +1575,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basins_movern_chi_points.png" alt="Mount Hua bootstrapping chi results">
 </div>
-<div class="title">Figure 5. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
+<div class="title">Figure 6. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
 </div>
 </div>
 <div class="sect4">
@@ -1577,7 +1587,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_binned_basin6.png" alt="S-A data of all channels in the basin">
 </div>
-<div class="title">Figure 6. S-A data of all channels in the basin</div>
+<div class="title">Figure 7. S-A data of all channels in the basin</div>
 </div>
 <div class="paragraph">
 <p>The second set of S-A data contains only the trunk channel and also has segments extracted from the <a href="http://www.http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al. (2014)</a> segmentation algorithm.</p>
@@ -1586,7 +1596,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_segmented_basin6.png" alt="S-A of trunk with segments">
 </div>
-<div class="title">Figure 7. S-A data of the trunk stream with statistically extracted segments.</div>
+<div class="title">Figure 8. S-A data of the trunk stream with statistically extracted segments.</div>
 </div>
 </div>
 <div class="sect4">
@@ -1598,7 +1608,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/MLE_profiles6_0.4.png" alt="A typical chi plot">
 </div>
-<div class="title">Figure 8. chi plots</div>
+<div class="title">Figure 9. chi plots</div>
 </div>
 </div>
 <div class="sect4">
@@ -1614,7 +1624,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_summary.png" alt="Summary concavity plot">
 </div>
-<div class="title">Figure 9. Summary plot of most likely concavity ratio for various methods</div>
+<div class="title">Figure 10. Summary plot of most likely concavity ratio for various methods</div>
 </div>
 </li>
 <li>
@@ -1623,7 +1633,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_BD_movern_summary.png" alt="Summary concavity plot for bootstrap and disorder methods">
 </div>
-<div class="title">Figure 10. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
+<div class="title">Figure 11. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
 </div>
 </li>
 <li>
@@ -1632,7 +1642,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 11. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
+<div class="title">Figure 12. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
