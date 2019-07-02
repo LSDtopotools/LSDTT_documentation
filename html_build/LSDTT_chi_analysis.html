@@ -485,6 +485,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_third_example_selecting_basins_by_hand">4.6. Third example: selecting basins by hand</a></li>
+<li><a href="#_chi_mapping_of_multiple_basins_using_lsdmappingtools">4.7. Chi mapping of multiple basins using LSDMappingTools</a></li>
+<li><a href="#_images_produced_when_using_plotchianalysis_py_all_true">4.8. Images produced when using PlotChiAnalysis.py <code>-all True</code></a></li>
 </ul>
 </li>
 <li><a href="#_calculating_concavity">5. Calculating concavity</a>
@@ -705,7 +707,7 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <div class="ulist">
 <ul>
 <li>
-<p>A chapter on getting and installing the software: <a href="#_getting_the_software">Getting the software</a></p>
+<p>A section on getting and installing the software: <a href="#_getting_the_software">Getting the software</a></p>
 </li>
 <li>
 <p>A chapter on preparing your data, mostly with <a href="http://www.gdal.org/">GDAL</a>: <a href="#_preparing_your_data">Preparing your data</a></p>
@@ -752,7 +754,7 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 </ul>
 </div>
 <div class="paragraph">
-<p>Since 2014 we have been working to fix these problems. The new program, which we call the <strong>Chi Mapping Tool</strong> retains some of the original algorithms of the 2014 paper (please cite that paper if you use it for your research!) but has a number of new features.</p>
+<p>Since 2014 we have been working to fix these problems. The new program, which we call the <strong>Chi Mapping Tool</strong> retains some of the original algorithms of the 2014 paper (please <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">cite that paper</a> if you use it for your research!) but has a number of new features.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1100,28 +1102,21 @@ The directory structure below will mirror the Docker container so if you are in 
 To save computational costs, we will only look at the largest selected basin.
 And to ease GIS visualisation, we are going to output data as geojson.</p>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Stay in the same directory (<code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian</code>) and simply run:</p>
-</div>
-<div class="paragraph">
-<p>+</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example02.driver</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>+
-This will take a little while (a few minutes)</p>
+<p>This will take a little while (a few minutes)</p>
 </div>
-<div class="paragraph">
-<p>+
-The driver file looks like this:</p>
-</div>
-<div class="paragraph">
-<p>+</p>
-</div>
+</li>
+<li>
+<p>The driver file looks like this:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile"># These are parameters for the file i/o
@@ -1149,23 +1144,25 @@ print_segmented_M_chi_map_to_csv: true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>+
-We <code>only_take_the_largest_basin</code> to limit computation time.</p>
+<p>We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>This analysis computes the chi coordinate, and uses the segmentation algorithm from Mudd et al., 2014 to extract the best fitting piecwise linear segments in order to calculate channel steepness. We call this <code>M_chi</code> (the slope in chi space) but if you set the parameter <code>A_0: 1</code> (which is the default) then <code>M_chi</code> is equal to the channel steepness <code>k_s</code> which appears in millions of papers.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>The channel network looks like this:</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Xian_basins_ksn_QGIS.png" alt="Basins around Mount_Hua">
 </div>
 <div class="title">Figure 2. The largest basin&#8217;s channel network, coloured by channel steepness</div>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>To get this image in QGIS, you need to import the <code>MChiSegemented.csv</code> file (or geojson), then selected a graduate colour scheme, select the scheme, turn of the edge colour on the markers, and then you will get this image. All this clicking of mice is extremely annoying, expecially, if like us, you do this kind of analysis frequently. So we are going to take a diversion into the world of <strong>LSDMappingTools</strong>.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -1230,14 +1227,14 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 <div class="paragraph">
 <p>Note: if you don&#8217;t save the file as <code>conda_list_July2019.txt</code> then you will need to change the name of the file above.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Once you have done that, clone the <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong> repository</a>.</p>
 </li>
-</ol>
+</ul>
 </div>
 </li>
+<li>
+<p>Once you have done that, clone the <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong> repository</a>.</p>
+<div class="ulist">
+<ul>
 <li>
 <p>Warning: this method will take <strong>a very long time</strong>. The docker version is much, much faster and less likeley to fail.</p>
 </li>
@@ -1276,7 +1273,7 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 </div>
 </li>
 <li>
-<p>Now we will look at the basins. You need to tell the programe where the files are with the <code>-dir</code> flag and what the filenames are with the <code>-fname</code> flag. We will also use the <code>-PB</code> flag (short for <code>plot basins</code>) and set this to <code>True</code> so the script actually plots the basins:</p>
+<p>Now we will look at the basins. You need to tell the program where the files are with the <code>-dir</code> flag and what the filenames are with the <code>-fname</code> flag. We will also use the <code>-PB</code> flag (short for <code>plot basins</code>) and set this to <code>True</code> so the script actually plots the basins:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True</code></pre>
@@ -1290,9 +1287,9 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 <p>The plotting command will make a subdirectory on your data directry called <code>raster_plots</code> and you will get a png image that looks like this:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Xian_basins_selected_basins.png" alt="Basins around Mount_Hua">
+<img src="images/Xian_basins_selected_basins.png" alt="Basins around Mount Hua">
 </div>
-<div class="title">Figure 3. The basin keys, as a png</div>
+<div class="title">Figure 3. Basins around Mount Hua that are determined by LSDTopoTools basin selection algorithms</div>
 </div>
 </li>
 <li>
@@ -1309,7 +1306,7 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 <div class="content">
 <img src="images/Xian_basins_renamed.png" alt="Some renamed basins around Mount_Hua">
 </div>
-<div class="title">Figure 4. The basin keys, as a png</div>
+<div class="title">Figure 4. Some renamed basins around Mount Hua</div>
 </div>
 </li>
 <li>
@@ -1324,9 +1321,9 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Xian_basin_mask_renamed.png" alt="Some selected and renamed basins around Mount Hua">
+<img src="images/Xian_basins_mask_rename.png" alt="Some selected and renamed basins around Mount Hua">
 </div>
-<div class="title">Figure 5. The basin keys, as a png</div>
+<div class="title">Figure 5. Some renamed basins around Mount Hua, with only 3 basins selected</div>
 </div>
 </li>
 </ol>
@@ -1409,7 +1406,7 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 <div class="content">
 <img src="images/Xian_junctions.png" alt="Junctions extracted around Mount Hua">
 </div>
-<div class="title">Figure 7. The junction locations around Mount Hua</div>
+<div class="title">Figure 7. The junction locations around Mount Hua. You can use a GIS to find the junction number of each junction.</div>
 </div>
 </li>
 <li>
@@ -1418,7 +1415,19 @@ We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 <div class="content">
 <img src="images/Xian_junction_finding_QGIS.png" alt="Junctions extracted around Mount Hua">
 </div>
-<div class="title">Figure 8. Finding junctions for basins</div>
+<div class="title">Figure 8. Finding junctions for basins. In this example we have selected junction 598.</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you select a junction, it will create a basin that will continue down to the pixel immediately above the next junction downstream. I know this might seem weird, but it is because every junction has two or more "donor" channels, but only a single reciever junction, so picking a basin based on the upstream junction is more consistent.
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -1486,11 +1495,128 @@ If you select junctions, the <code>threshold_contributing_pixels</code> must be 
 <div class="content">
 <img src="images/Xian_selected_basins_by_hand.png" alt="Basins selected using a junction file around Mount Hua">
 </div>
-<div class="title">Figure 9. New hand selected basins</div>
+<div class="title">Figure 9. New basins, carefully selected by hand</div>
+</div>
+</li>
+<li>
+<p>Now, you could spend the next few hours clicking on your mouse in a GIS to get the images just right, but in fact we have automated the plotting using <strong>LSDMappingTools</strong> so we are going to go back to our pythng</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chi_mapping_of_multiple_basins_using_lsdmappingtools">4.7. Chi mapping of multiple basins using LSDMappingTools</h3>
+<div class="paragraph">
+<p>Now that you have done <a href="#_third_example_selecting_basins_by_hand">examples 3 and 4</a>, we can plot the data using <strong>LSDMappingTools</strong>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go back into the Docker visualisation container.</p>
+</li>
+<li>
+<p>Run the plotting script with some new flags:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>-all True</code> tells the plotting script you want to plot both raster and profile plots.</p>
+</li>
+<li>
+<p><code>-basin_lists 0,1,2</code> tells the plotting script you want to collect these three basins into a "stack". If you want to play with this, you can try <code>-basin_lists 0,1:2</code> which will create two stacks.</p>
+</li>
+<li>
+<p><code>-chi_offsets 10</code> indicates that in your stacked plots, the profiles are separated by 10 m in chi space (the dimensions of chi are in m). The default is 5 m so you can play with this. The defaut of flow distance happens to work in this example but if you want to change that the flag is <code>-fd_offsets</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>This creates figures in both the <code>raster_plots</code> and <code>chi_profile_plots</code> directories.</p>
+</li>
+<li>
+<p>Here are a selection of the plots:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_ksn.png" alt="A plot of the channel steepness in near Xi&#8217;an">
+</div>
+<div class="title">Figure 10. A plot of the channel steepness (k_sn_) in near Xi&#8217;an.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_stacked_chi.png" alt="A stacked plot of three basins" width="in chi space" height="near Xi'an">
+</div>
+<div class="title">Figure 11. A stacked channel profile plot of three basins, in chi space, near Xi&#8217;an</div>
 </div>
 </li>
 </ol>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_images_produced_when_using_plotchianalysis_py_all_true">4.8. Images produced when using PlotChiAnalysis.py <code>-all True</code></h3>
+<div class="paragraph">
+<p>The following are the images that are produced when you run <code>PlotChiAnalysis.py</code> with the flag <code>-all True</code></p>
+</div>
+<div class="paragraph">
+<p>Yes, we are aware the filenames are stupid, but we can&#8217;t be bothered to change that right now.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Images from the <code>PlotChiAnalysis.py</code> script in the <code>chi_profile_plots</code> subdirectory</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Filename contains</th>
+<th class="tableblock halign-left valign-top">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stacked_N_chi_stacked_chi.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The stacked plot of the profiles in chi space. The default is to colour by <em>k<sub>sn</sub></em>. The <code>N</code> is the number of the stack.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stacked_N_FD_stacked_chi.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The stacked plot of the profiles in flow distance space. The default is to colour by <em>k<sub>sn</sub></em>. The <code>N</code> is the number of the stack.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stacked_N_sources_stacked_chi.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The stacked plot of the profiles in flow distance space, couloured by the source number. The <code>N</code> is the number of the stack.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Images from the <code>PlotChiAnalysis.py</code> script in the <code>raster_plots</code> subdirectory</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Filename contains</th>
+<th class="tableblock halign-left valign-top">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_basins_selected_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows a raster of the basins that have been selected for the analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_ksn_chi_channels_and_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raster plot of the channel steepness (<em>k<sub>sn</sub></em>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_stack_basins_selected_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This shows the selected basins, but the different stacks are coloured differently so the user can see which basins are grouped in each stack of channel profiles.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sources_chi_channels_and_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raster plot showing the channels coloured by their sources. This and the <code>Stacked_N_sources_stacked_chi.png</code> help users to identify which tributaries are which in the plots.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1563,7 +1689,7 @@ The initial versions of this software linked concavity to the <em>m/n</em> ratio
 <div class="sect3">
 <h4 id="_some_key_options">5.2.1. Some key options</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Main options for performing a concavity analysis</caption>
+<caption class="title">Table 3. Main options for performing a concavity analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1812,7 +1938,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basin_keys.png" alt="Basins around Mount Hua for concavity analysis">
 </div>
-<div class="title">Figure 10. The extracted basins for the concavity analysis</div>
+<div class="title">Figure 12. The extracted basins for the concavity analysis</div>
 </div>
 <div class="paragraph">
 <p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, collinearity using chi points at random intervals iterated upon using bootstrapping, and collinearity using a <a href="https://www.earth-surf-dynam.net/4/1/2016/esurf-4-1-2016.html">disorder metric</a>. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from disorder and bootstrapping approaches. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the disorder and bootstrapping methods.</p>
@@ -1821,7 +1947,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basins_movern_chi_points.png" alt="Mount Hua bootstrapping chi results">
 </div>
-<div class="title">Figure 11. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
+<div class="title">Figure 13. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
 </div>
 </div>
 <div class="sect4">
@@ -1833,7 +1959,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_binned_basin6.png" alt="S-A data of all channels in the basin">
 </div>
-<div class="title">Figure 12. S-A data of all channels in the basin</div>
+<div class="title">Figure 14. S-A data of all channels in the basin</div>
 </div>
 <div class="paragraph">
 <p>The second set of S-A data contains only the trunk channel and also has segments extracted from the <a href="http://www.http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al. (2014)</a> segmentation algorithm.</p>
@@ -1842,7 +1968,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_segmented_basin6.png" alt="S-A of trunk with segments">
 </div>
-<div class="title">Figure 13. S-A data of the trunk stream with statistically extracted segments.</div>
+<div class="title">Figure 15. S-A data of the trunk stream with statistically extracted segments.</div>
 </div>
 </div>
 <div class="sect4">
@@ -1854,7 +1980,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/MLE_profiles6_0.4.png" alt="A typical chi plot">
 </div>
-<div class="title">Figure 14. chi plots</div>
+<div class="title">Figure 16. chi plots</div>
 </div>
 </div>
 <div class="sect4">
@@ -1870,7 +1996,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_summary.png" alt="Summary concavity plot">
 </div>
-<div class="title">Figure 15. Summary plot of most likely concavity ratio for various methods</div>
+<div class="title">Figure 17. Summary plot of most likely concavity ratio for various methods</div>
 </div>
 </li>
 <li>
@@ -1879,7 +2005,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_BD_movern_summary.png" alt="Summary concavity plot for bootstrap and disorder methods">
 </div>
-<div class="title">Figure 16. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
+<div class="title">Figure 18. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
 </div>
 </li>
 <li>
@@ -1888,7 +2014,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 17. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
+<div class="title">Figure 19. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
@@ -1971,7 +2097,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <p>These files will be created by the <strong>chi mapping tool</strong> and will be located in the directory designated by the <code>read path</code> parameter in the parameter file.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Raster files</caption>
+<caption class="title">Table 4. Raster files</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1998,7 +2124,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Files used for plotting channels, basins and profiles</caption>
+<caption class="title">Table 5. Files used for plotting channels, basins and profiles</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2030,7 +2156,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Files containing statistics from chi-based methods</caption>
+<caption class="title">Table 6. Files containing statistics from chi-based methods</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2082,7 +2208,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Files associated with slope-area analysis</caption>
+<caption class="title">Table 7. Files associated with slope-area analysis</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2120,7 +2246,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <p>These files will be created by <strong>PlotMOverNAnalysis.py * and will be in the *summary_plots</strong> directory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Summary files</caption>
+<caption class="title">Table 8. Summary files</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2156,7 +2282,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <div class="sect3">
 <h4 id="_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.7.1. Parameters for exploring channel concavity ratio with chi analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Parameters for trying to constrain concavity using chi analysis</caption>
+<caption class="title">Table 9. Parameters for trying to constrain concavity using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2205,7 +2331,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Different types of concavity tests</caption>
+<caption class="title">Table 10. Different types of concavity tests</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2284,7 +2410,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Parameters for exploring the concavity using Monte Carlo-Markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
+<caption class="title">Table 11. Parameters for exploring the concavity using Monte Carlo-Markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2330,7 +2456,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <div class="sect3">
 <h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.7.2. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Parameters for exploring the concavity ratio with slope-area analysis</caption>
+<caption class="title">Table 12. Parameters for exploring the concavity ratio with slope-area analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2534,7 +2660,7 @@ The reason we use <code>bil</code> format is because it retains georeferencing w
 <div class="sect3">
 <h4 id="_basic_file_input_and_output">A.4.1. Basic file input and output</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
+<caption class="title">Table 13. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2580,7 +2706,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_dem_preprocessing">A.4.2. DEM preprocessing</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
+<caption class="title">Table 14. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2638,7 +2764,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_selecting_channels_and_basins">A.4.3. Selecting channels and basins</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<caption class="title">Table 15. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -2756,7 +2882,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_basic_data_output_before_calculating_chi">A.4.4. Basic data output (before calculating chi)</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
+<caption class="title">Table 16. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2832,7 +2958,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <div class="sect3">
 <h4 id="_basic_parameters_for_the_chi_coordinate">A.4.5. Basic parameters for the chi coordinate</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Parameters for calculating the chi coordinate.</caption>
+<caption class="title">Table 17. Parameters for calculating the chi coordinate.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2893,7 +3019,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Parameters for burning a raster to csv files.</caption>
+<caption class="title">Table 18. Parameters for burning a raster to csv files.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2966,7 +3092,7 @@ These option are undergoing active development. New options will be regularly ad
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Parameters for burning a raster to csv files.</caption>
+<caption class="title">Table 19. Parameters for burning a raster to csv files.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3012,7 +3138,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <div class="sect3">
 <h4 id="_parameters_for_exploring_the_concavity_with_chi_analysis">A.4.8. Parameters for exploring the concavity with chi analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. Parameters for trying to constrain the concavity using chi analysis</caption>
+<caption class="title">Table 20. Parameters for trying to constrain the concavity using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3148,7 +3274,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <div class="sect3">
 <h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.4.9. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 19. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
+<caption class="title">Table 21. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3218,7 +3344,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <div class="sect3">
 <h4 id="_parameters_for_segmentation_of_channels">A.4.10. Parameters for segmentation of channels</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 20. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
+<caption class="title">Table 22. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3285,7 +3411,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <p>For most of our visualisation routines, the key printing option to set to <strong>true</strong> is <code>print_chi_data_maps</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 21. Options for printing simple chi maps</caption>
+<caption class="title">Table 23. Options for printing simple chi maps</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3325,7 +3451,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <div class="sect3">
 <h4 id="_chi_maps_with_segmentation_and_basin_and_channel_selection">A.4.12. Chi maps with segmentation and basin and channel selection</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 22. Options for chi maps and secondary data files that split channels and basins</caption>
+<caption class="title">Table 24. Options for chi maps and secondary data files that split channels and basins</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3398,7 +3524,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <p>These allow the user to drive chi with discharge rather than drainage area. It is somewhat rudimentary at the moment in that it  assumes the rainfall rate in length per time is translated into some constant discharge. This is not a hydrological model! It simply accumulates precipitation through a channel network with no regard to hydrological processes, infiltration and evaporation, or the timing of storms.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 23. Parameters for dealing with precipitation and discharge.</caption>
+<caption class="title">Table 25. Parameters for dealing with precipitation and discharge.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3441,7 +3567,7 @@ If your lithologic raster is significantly larger than your topographic raster i
 <p>These parameters drive the knickpoint extraction algorithms.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 24. Parameters for dealing with precipitation and discharge.</caption>
+<caption class="title">Table 26. Parameters for dealing with precipitation and discharge.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3595,7 +3721,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 <div class="sect3">
 <h4 id="_raster_output">A.7.1. Raster output</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 25. These are basic rasters that don&#8217;t require chi analysis.</caption>
+<caption class="title">Table 27. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3671,7 +3797,7 @@ If the <code>convert_csv_to_geojson</code> flag is set to <code>true</code> then
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 26. Point data available in csv or geojson format. Switch to true to turn on.</caption>
+<caption class="title">Table 28. Point data available in csv or geojson format. Switch to true to turn on.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
