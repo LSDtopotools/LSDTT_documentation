@@ -476,15 +476,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_some_comments_on_basin_selection">4.3.1. Some comments on basin selection</a></li>
 </ul>
 </li>
-<li><a href="#_using_our_example_scripts">4.4. Using our example scripts</a></li>
-<li><a href="#_visualising_example_one_data">4.5. Visualising example one data</a>
+<li><a href="#_second_example_a_channel_steepness_map">4.4. Second example: a channel steepness map</a></li>
+<li><a href="#_examples_using_lsdmappingtools">4.5. Examples using LSDMappingTools</a>
 <ul class="sectlevel3">
-<li><a href="#_example_one_part_one_the_hillshade">4.5.1. Example one, part one: the hillshade</a></li>
-<li><a href="#_example_one_part_two_coloured_basins">4.5.2. Example one, part two: coloured basins</a></li>
-<li><a href="#_example_one_part_three_numbered_basins">4.5.3. Example one, part three: numbered basins</a></li>
-<li><a href="#_example_one_part_four_renaming_basins">4.5.4. Example one, part four: renaming basins</a></li>
+<li><a href="#_installing_lsdmappingtools_for_chi_visualisation">4.5.1. Installing LSDMappingTools for chi visualisation</a></li>
+<li><a href="#_plotting_some_chi_results_example_1">4.5.2. Plotting some chi results: Example 1</a></li>
+<li><a href="#_plotting_some_chi_results_example_2">4.5.3. Plotting some chi results: Example 2</a></li>
 </ul>
 </li>
+<li><a href="#_third_example_selecting_basins_by_hand">4.6. Third example: selecting basins by hand</a></li>
 </ul>
 </li>
 <li><a href="#_calculating_concavity">5. Calculating concavity</a>
@@ -1094,156 +1094,402 @@ The directory structure below will mirror the Docker container so if you are in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_our_example_scripts">4.4. Using our example scripts</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Before you start with the python scripts</div>
+<h3 id="_second_example_a_channel_steepness_map">4.4. Second example: a channel steepness map</h3>
 <div class="paragraph">
-<p>Our python scripts require that you install the <strong>LSDTopoTools</strong> python toolchain.</p>
-</div>
-<div class="paragraph">
-<p><a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">Click here for instructions on how to install the <strong>LSDTT</strong> python tools</a>.</p>
-</div>
-</div>
+<p>In the second example, we are going to make a channel steepness map.
+To save computational costs, we will only look at the largest selected basin.
+And to ease GIS visualisation, we are going to output data as geojson.</p>
 </div>
 <div class="paragraph">
-<p>Okay, why don&#8217;t we look at some of the results. I would suggest opening <strong>Spyder</strong> in your host operating system for this.</p>
+<p>Stay in the same directory (<code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian</code>) and simply run:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In spyder, use <strong>file&#8594;open</strong> to open the plotting script for our examples called, innovatively, <code>ChiMappingExamples.py</code>.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>In your vagrant box this file is in <code>/LSDTopoTools/Git_projects/LSDMappingTools</code>.</p>
-</li>
-<li>
-<p>In windows, if you have put your vagrant stuff in <code>C:\VagrantBoxes</code> then this file is in <code>C:\VagrantBoxes\LSDTopoTools\Git_projects\LSDMappingTools</code>.</p>
-</li>
-<li>
-<p>In MacOS it will be wherever you put the VagrantBoxes folder and then in <code>/LSDTopoTools/Git_projects/LSDMappingTools</code>.</p>
-</li>
-<li>
-<p>You can run these scripts in your vagrant machine, but you will have to do the full python install there, and in addition you won&#8217;t be able to use any graphical interface (like <strong>spyder</strong>) so our recommendation is for you to run visualisation scripts in your host operating system.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>+</p>
 </div>
-</li>
-<li>
-<p>In python, any lines between two blocks of <code>"""</code> symbols is a comment. In our program we put notes between these symbols. Don&#8217;t change them. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">    """
-    These lines tell the example functions where your files are. If you are using
-    the recommended file setup you won't need to modify these lines.
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example02.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+This will take a little while (a few minutes)</p>
+</div>
+<div class="paragraph">
+<p>+
+The driver file looks like this:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile"># These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
+read fname: Xian
+write fname: Xian_example02
+channel heads fname: NULL
 
-    If you have set up your own directory structure you will need to modify
-    the directory names.
-    """</code></pre>
+# Parameter for filling the DEM
+min_slope_for_fill: 0.0001
+
+# Ourput geojson for easier viewing in GIS software
+convert_csv_to_geojson: true
+
+# Parameters for selecting channels and basins
+threshold_contributing_pixels: 5000
+minimum_basin_size_pixels: 100000
+maximum_basin_size_pixels: 400000
+find_complete_basins_in_window: true
+only_take_largest_basin: true
+
+# The chi analysis
+m_over_n: 0.4
+print_segmented_M_chi_map_to_csv: true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The above lines just give you instructions.</p>
+<p>+
+We <code>only_take_the_largest_basin</code> to limit computation time.</p>
 </div>
-</li>
-<li>
-<p>In python, you can also make a line a comment with the <code><mark></code> symbol. In these exercises you can uncomment lines by deleting the <code></mark></code> symbol, and adding it back in again. Initially all but the first part of the first example is turned off:</p>
-<div class="listingblock">
+<div class="paragraph">
+<p>This analysis computes the chi coordinate, and uses the segmentation algorithm from Mudd et al., 2014 to extract the best fitting piecwise linear segments in order to calculate channel steepness. We call this <code>M_chi</code> (the slope in chi space) but if you set the parameter <code>A_0: 1</code> (which is the default) then <code>M_chi</code> is equal to the channel steepness <code>k_s</code> which appears in millions of papers.</p>
+</div>
+<div class="paragraph">
+<p>The channel network looks like this:</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">    CME.ExampleOne_PartOne_SimpleHillshade(DataDirectory,Base_file)
-    #CME.ExampleOne_PartTwo_PrintBasins(DataDirectory,Base_file)
-    #CME.ExampleOne_PartThree_PrintBasinsWithLabels(DataDirectory,Base_file)</code></pre>
+<img src="images/Xian_basins_ksn_QGIS.png" alt="Basins around Mount_Hua">
 </div>
+<div class="title">Figure 2. The largest basin&#8217;s channel network, coloured by channel steepness</div>
 </div>
-</li>
-<li>
-<p>To turn off example part one and turn on part two do this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">    #CME.ExampleOne_PartOne_SimpleHillshade(DataDirectory,Base_file)
-    CME.ExampleOne_PartTwo_PrintBasins(DataDirectory,Base_file)
-    #CME.ExampleOne_PartThree_PrintBasinsWithLabels(DataDirectory,Base_file)</code></pre>
-</div>
-</div>
-</li>
-</ol>
+<div class="paragraph">
+<p>To get this image in QGIS, you need to import the <code>MChiSegemented.csv</code> file (or geojson), then selected a graduate colour scheme, select the scheme, turn of the edge colour on the markers, and then you will get this image. All this clicking of mice is extremely annoying, expecially, if like us, you do this kind of analysis frequently. So we are going to take a diversion into the world of <strong>LSDMappingTools</strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_example_one_data">4.5. Visualising example one data</h3>
+<h3 id="_examples_using_lsdmappingtools">4.5. Examples using LSDMappingTools</h3>
 <div class="paragraph">
-<p>We will now generate some figures to look at our data.</p>
+<p>We are now going to take a brief detour into our <a href="https://github.com/LSDtopotools/LSDMappingTools">mapping tools</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong></a> are written in python and have been built up over the years to avoid having to click mice and interact with GIS software.</p>
 </div>
 <div class="sect3">
-<h4 id="_example_one_part_one_the_hillshade">4.5.1. Example one, part one: the hillshade</h4>
+<h4 id="_installing_lsdmappingtools_for_chi_visualisation">4.5.1. Installing LSDMappingTools for chi visualisation</h4>
+<div class="paragraph">
+<p>The main barrier to using <strong>LSDMappingTools</strong> is installing the python packages. We have done all that work for you in a <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_viz_docker">Docker container</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also install the conda environment by using our <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/master/conda_environments/conda_list_July2019.txt">latest conda environment file</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick installation instructions</div>
+<div class="paragraph">
+<p>Full instructions are on the <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDTopoTools visualisation section</a>.</p>
+</div>
+<div class="paragraph">
+<p>The basic instructions are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In docker:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_viz_docker</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Then run <code>Start_LSDTT.sh</code> to download the tools.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For native installation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Download and install <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> (python 3 version).</p>
+</li>
+<li>
+<p>Grab the <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/master/conda_environments/conda_list_July2019.txt">environment file</a>.</p>
+</li>
+<li>
+<p>Run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name LSDMT --file conda_list_July2019.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note: if you don&#8217;t save the file as <code>conda_list_July2019.txt</code> then you will need to change the name of the file above.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Make sure you&#8217;ve run the <strong>chi mapping tool</strong> first: <a href="#_first_example_basic_dem_steps_and_basin_selection">First example: Basic DEM steps and Basin selection</a>.</p>
+<p>Once you have done that, clone the <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong> repository</a>.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>In <strong>spyder</strong> run the <code>ChiMappingExamples.py</code> with the first example turned on (i.e., no <code>#</code> in front of <code>CME.ExampleOne_PartOne_SimpleHillshade(DataDirectory,Base_file)</code>).</p>
+<p>Warning: this method will take <strong>a very long time</strong>. The docker version is much, much faster and less likeley to fail.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_some_chi_results_example_1">4.5.2. Plotting some chi results: Example 1</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need some data, so if you haven&#8217;t yet, go back and run <a href="#_first_example_basic_dem_steps_and_basin_selection">example 1</a> of this chapter.</p>
 </li>
 <li>
-<p>This will create a png of this example DEM in your data folder called <strong>Xian_example1.png</strong></p>
+<p>We are going to assume you are in the docker container, and you have run <code>Start_LSDTT.sh</code>. See the <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDMappingTools installation section</a> for details.</p>
 </li>
 <li>
-<p>If you look at the code for this example (in <code>ChiVisualisation_Example01.py</code>) you should see a few basic options. You can change the figure size, the location of the colourbar, various labels, as well as the resolution of the figure (using the <code>dpi</code> keyword). The default format is <strong>png</strong> buy you can change that in the <code>MF.save_fig</code> command with <code>figure_format = "pdf"</code> (for example). We encourage you to play with the options to see what they do.</p>
+<p>Navigate to the directory with the plotting tools:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/LSDMappingTools</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The chi mapping script is <code>PlotChiAnalysis.py</code>. You can see what options are available by running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -h</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now we will look at the basins. You need to tell the programe where the files are with the <code>-dir</code> flag and what the filenames are with the <code>-fname</code> flag. We will also use the <code>-PB</code> flag (short for <code>plot basins</code>) and set this to <code>True</code> so the script actually plots the basins:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Note that you need to be in the directory <code>/LSDTopoTools/LSDMappingTools</code> for this to work.</p>
+</li>
+<li>
+<p>The plotting command will make a subdirectory on your data directry called <code>raster_plots</code> and you will get a png image that looks like this:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Xian_example1.png" alt="Area around Mount_Hua">
+<img src="images/Xian_basins_selected_basins.png" alt="Basins around Mount_Hua">
 </div>
-<div class="title">Figure 2. A hillshade of the example landscape</div>
+<div class="title">Figure 3. The basin keys, as a png</div>
+</div>
+</li>
+<li>
+<p>The basins are numbered algorithmically. You can rename them if you want using the <code>-rename_dict</code> flag. This takes a list, separated by commas, where each element in the list has the original basin number, a colon (<code>:</code>) and then the new name:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True -rename_dict 0:yo,1:yo,2:ma</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_renamed.png" alt="Some renamed basins around Mount_Hua">
+</div>
+<div class="title">Figure 4. The basin keys, as a png</div>
+</div>
+</li>
+<li>
+<p>And if you only want certain basins, use the <code>-basin_keys</code> flag. This is just a comma separated list of the basin numbers you want to keep. <strong>When you use this flag it refers to the original basin numbers, so keep an image with the original basin numbering handy.</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True -rename_dict 0:yo,1:yo,2:ma -basin_keys 0,1,2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basin_mask_renamed.png" alt="Some selected and renamed basins around Mount Hua">
+</div>
+<div class="title">Figure 5. The basin keys, as a png</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_one_part_two_coloured_basins">4.5.2. Example one, part two: coloured basins</h4>
+<h4 id="_plotting_some_chi_results_example_2">4.5.3. Plotting some chi results: Example 2</h4>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note on raster mapping in LSDMappingTools</div>
+<div class="paragraph">
+<p>Most of the raster mapping routines in <strong>LSDMappingTools</strong> drape a hillshade over the topogrpahy raster. It makes the figures look pretty. It means the tool always looks for the base DEM, and the hillshade raster (which has the extension <code>_HS.bil</code>). However, if you have <code>write fname</code> that isn&#8217;t the same as the read fname, the base DEM might have a different name.</p>
+</div>
+<div class="paragraph">
+<p>In example 2, the outfiles are called <code>Xian_example02*</code> but the base filename is just <code>Xian*</code> (without the <code>_example02</code>). For the raster plotting to work you need to copy a hillshade raster and the DEM to have the same filename structure as the rest of the data.</p>
+</div>
+</div>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Next turn on the second part of the example (<code>CME.ExampleOne_PartTwo_PrintBasins(DataDirectory,Base_file)</code>). This will show you the basins that have been algorithmically extracted:</p>
-<div class="imageblock">
+<p>Now lets try the data from <a href="#_second_example_a_channel_steepness_map">example 2</a>.</p>
+</li>
+<li>
+<p>Recall in this example we only had a <code>csv</code> file of channel steepness produced. We actually need to have base filename that are in the same format, so lets copy this file (this might be easier to do in your windows file explorer or equivalent):</p>
+<div class="listingblock">
 <div class="content">
-<img src="images/Xian_coloured_basins.png" alt="Basins around Mount_Hua">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cp /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/Xian_example02_MChiSegmented.csv /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/Xian_MChiSegmented.csv</code></pre>
 </div>
-<div class="title">Figure 3. The extracted basins, coloured by basin number</div>
 </div>
 </li>
 <li>
-<p>We have added a few more lines in this example script to show more options. For example you can change the colourmap (<code>cmap = plt.cm.jet</code>, but you could change to <code>cmap = plt.cm.cubehelix</code> for example), and later there are some options for the basin outlines.</p>
+<p>Now we can make a chi steepness plot and a chi profile plot:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -all_stacks True -basin_keys 0 -basin_lists 0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The <code>-all_stacks</code> flag turns on the "stacked" profile plots. We only have one basin, so there is no stack, which is a collection of basin profiles. We also need the <code>-basin_lists</code> flag here since the code is set up to work with "stacks" of basins. In this case, the stack only has one basin in it. This is a bit boring so in the next example we will get more basins.</p>
+</li>
+<li>
+<p>The resulting images are in the directory <code>chi_profile_plots</code>. The chi priofiles have the filename <code>chi_stacked_chi</code>, the flow distance plots have <code>FD_stacked_chi</code>, and the plot where the channels are coloured by their source pixel are <code>sources_stacked_chi</code>. Here is the flow distance plot:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_FD_profile.png" alt="Stream profile plot">
+</div>
+<div class="title">Figure 6. A stream profile plot of the largest basin in the Xian DEM</div>
+</div>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_example_one_part_three_numbered_basins">4.5.3. Example one, part three: numbered basins</h4>
+</div>
+<div class="sect2">
+<h3 id="_third_example_selecting_basins_by_hand">4.6. Third example: selecting basins by hand</h3>
+<div class="paragraph">
+<p>Okay, the previous examples selected basins algorithmically, and then following example just got the largest basin. We now will select some basins by hand. At the moment this is a two stage process.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Figuring out the basin numbers using a colourbar is inconvenient. If you turn on the third part of the example you will see text labels for each basin:</p>
+<p>Go back to the docker container where you did the first two examples (i.e., not the visualisation container).</p>
+</li>
+<li>
+<p>Run the thrid example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example03.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In this example, we are just printing the locations of the junction to a csv file with the flag <code>print_junctions_to_csv: true</code> as well as the channels with the flag <code>print_channels_to_csv: true</code>.</p>
+</li>
+<li>
+<p>This will print out all the junctions to a <code>csv</code> and <code>geojson</code> file, and if you load the <code>geojson</code> file into your favourite GIS you will see something like this:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Xian_basin_keys.png" alt="Numbered basins around Mount_Hua">
+<img src="images/Xian_junctions.png" alt="Junctions extracted around Mount Hua">
 </div>
-<div class="title">Figure 4. The extracted basins</div>
+<div class="title">Figure 7. The junction locations around Mount Hua</div>
 </div>
 </li>
 <li>
-<p>So now we have basin numbers.</p>
+<p>We are going to find some basins to extract. In your favourite GIS, zoom in to basins that you think are interesting and then use the identify/query button to pick some interesting junction. It helps to have the channels displayed as well:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_junction_finding_QGIS.png" alt="Junctions extracted around Mount Hua">
+</div>
+<div class="title">Figure 8. Finding junctions for basins</div>
+</div>
 </li>
 <li>
-<p>You might notice that the basin numbers are somewhat randomly distributed. This is because we use a <a href="http://www.sciencedirect.com/science/article/pii/S0169555X12004618">very efficient algorithm</a> to compute the flow network and this algorithm does the numbering for us based on the connectivity of basins in the raster. To make this numbering more sensible to a human we need to manually rename them.</p>
+<p>We then create a junctions file, that is simply a text file that looks like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile">790
+598
+741</code></pre>
+</div>
+</div>
 </li>
-</ol>
+<li>
+<p>Okay, as it turns out, I have made this file for you already: it is in the examples folder called <code>junctions.txt</code>. We can use this to run the next example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example04.driver</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_example_one_part_four_renaming_basins">4.5.4. Example one, part four: renaming basins</h4>
+</li>
+<li>
+<p>This example runs the</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile"># These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
+read fname: Xian
+write fname: Xian
+channel heads fname: NULL
 
+# Parameter for filling the DEM
+min_slope_for_fill: 0.0001
+
+# Output geojson for easier viewing in GIS software
+convert_csv_to_geojson: true
+
+# Parameters for selecting channels and basins
+threshold_contributing_pixels: 5000
+BaselevelJunctions_file: junctions.txt
+
+print_basin_raster: true
+print_hillshade: true
+
+# The chi analysis
+m_over_n: 0.4
+print_segmented_M_chi_map_to_csv: true</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you select junctions, the <code>threshold_contributing_pixels</code> must be the same when you created the junctions as when you run the code with a junctions file. Different <code>threshold_contributing_pixels</code> result in different numbers of junctions so this changes the junction numbering.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Once you have run this, you will have a new set of basins:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_selected_basins_by_hand.png" alt="Basins selected using a junction file around Mount Hua">
+</div>
+<div class="title">Figure 9. New hand selected basins</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1566,7 +1812,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basin_keys.png" alt="Basins around Mount Hua for concavity analysis">
 </div>
-<div class="title">Figure 5. The extracted basins for the concavity analysis</div>
+<div class="title">Figure 10. The extracted basins for the concavity analysis</div>
 </div>
 <div class="paragraph">
 <p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, collinearity using chi points at random intervals iterated upon using bootstrapping, and collinearity using a <a href="https://www.earth-surf-dynam.net/4/1/2016/esurf-4-1-2016.html">disorder metric</a>. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from disorder and bootstrapping approaches. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the disorder and bootstrapping methods.</p>
@@ -1575,7 +1821,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basins_movern_chi_points.png" alt="Mount Hua bootstrapping chi results">
 </div>
-<div class="title">Figure 6. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
+<div class="title">Figure 11. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
 </div>
 </div>
 <div class="sect4">
@@ -1587,7 +1833,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_binned_basin6.png" alt="S-A data of all channels in the basin">
 </div>
-<div class="title">Figure 7. S-A data of all channels in the basin</div>
+<div class="title">Figure 12. S-A data of all channels in the basin</div>
 </div>
 <div class="paragraph">
 <p>The second set of S-A data contains only the trunk channel and also has segments extracted from the <a href="http://www.http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al. (2014)</a> segmentation algorithm.</p>
@@ -1596,7 +1842,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_segmented_basin6.png" alt="S-A of trunk with segments">
 </div>
-<div class="title">Figure 8. S-A data of the trunk stream with statistically extracted segments.</div>
+<div class="title">Figure 13. S-A data of the trunk stream with statistically extracted segments.</div>
 </div>
 </div>
 <div class="sect4">
@@ -1608,7 +1854,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/MLE_profiles6_0.4.png" alt="A typical chi plot">
 </div>
-<div class="title">Figure 9. chi plots</div>
+<div class="title">Figure 14. chi plots</div>
 </div>
 </div>
 <div class="sect4">
@@ -1624,7 +1870,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_summary.png" alt="Summary concavity plot">
 </div>
-<div class="title">Figure 10. Summary plot of most likely concavity ratio for various methods</div>
+<div class="title">Figure 15. Summary plot of most likely concavity ratio for various methods</div>
 </div>
 </li>
 <li>
@@ -1633,7 +1879,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_BD_movern_summary.png" alt="Summary concavity plot for bootstrap and disorder methods">
 </div>
-<div class="title">Figure 11. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
+<div class="title">Figure 16. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
 </div>
 </li>
 <li>
@@ -1642,7 +1888,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 12. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
+<div class="title">Figure 17. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
@@ -2172,35 +2418,6 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <p><a href="#_calculating_concavity">Calculating concavity</a></p>
 </li>
 </ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Important notes on how vagrant and LSDTopoTools work</div>
-<div class="paragraph">
-<p>Most users will be running <strong>LSDTopoTools</strong> using <a href="https://www.vagrantup.com/">vagrant</a>. See the section <a href="#_getting_the_software">Getting the software</a> for details.
-These are basic notes on running <strong>LSDTopoTools</strong> on a vagrant server.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The clever thing about vagrant is that you can run analyses on a Linux machine running inside you host computer (usually Windows or MacOS) but you host computer can see the files.</p>
-</li>
-<li>
-<p><strong>All of our programs are run within the linux server. All data files must be visible to the linux server!</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Even though your files are the same files on the host and guest operating system, they have a different address. That is, the same file will have a Linux address and an address in your host operating system (e.g., Windows). In Linux the files are in <code>/LSDTopoTools/</code>. In you host operating system they are in the <code>LSDTopoTools</code> directory within your <code>VagrantBoxes</code> directory. You will need to remember where you but the <code>VagrantBoxes</code> directory!</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>In these instructions whenever you see the <code>$</code> prompt it means you are using the guest linux machine, which you have logged into using <code>putty.exe</code> or <code>ssh</code>, and not your host machine.</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_a_typical_call_to_lsdtt_chi_mapping">A.1. A typical call to lsdtt-chi-mapping</h3>
