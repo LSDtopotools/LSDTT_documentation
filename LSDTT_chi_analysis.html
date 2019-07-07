@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="author" content="Simon M. Mudd, Fiona J. Clubb, and Boris Gailleton, School of GeoSciences, University of Edinburgh">
 <title>User guide to chi analysis</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
-/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
-/* Uncomment @import statement below to use as custom stylesheet */
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
-article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
-audio,canvas,video{display:inline-block}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
-script{display:none!important}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-a{background:transparent}
+a{background:none}
 a:focus{outline:thin dotted}
 a:active,a:hover{outline:0}
 h1{font-size:2em;margin:.67em 0}
@@ -70,7 +69,7 @@ select{width:100%}
 div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
 a{color:#2156a5;text-decoration:underline;line-height:inherit}
 a:hover,a:focus{color:#1d4b8f}
-a img{border:none}
+a img{border:0}
 p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
 p aside{font-size:.875em;line-height:1.35;font-style:italic}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
@@ -80,7 +79,7 @@ h2{font-size:1.6875em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
 h4,h5{font-size:1.125em}
 h6{font-size:1em}
-hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
 em,i{font-style:italic;line-height:inherit}
 strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
@@ -111,20 +110,23 @@ table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
 table thead,table tfoot{background:#f7f8f7}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
-table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table tr.even,table tr.alt{background:#f8f8f7}
 table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
 .clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
 .clearfix::after,.float-group::after{clear:both}
-*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
-*:not(pre)>code.nobreak{word-wrap:normal}
-*:not(pre)>code.nowrap{white-space:nowrap}
-pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
 em em{font-style:normal}
 strong strong{font-weight:400}
 .keyseq{color:rgba(51,51,51,.8)}
-kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
 .menuseq,.menuref{color:#000}
@@ -142,9 +144,9 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content{margin-top:1.25em}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
-#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
-#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
 #header .details br{display:none}
@@ -153,8 +155,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #header .details br+span#revremark::before{content:"\00a0|\00a0"}
 #header #revnumber{text-transform:capitalize}
 #header #revnumber::after{content:"\00a0"}
-#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
-#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
 #toc>ul{margin-left:.125em}
 #toc ul.sectlevel0>li>a{font-style:italic}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
@@ -165,13 +167,13 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
 #toc.toc2 ul ul{margin-left:0;padding-left:1em}
 #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
 body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
 @media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
 #toc.toc2{width:20em}
 #toc.toc2 #toctitle{font-size:1.375em}
@@ -181,20 +183,21 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
-#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 #content{margin-bottom:.625em}
 .sect1{padding-bottom:.625em}
 @media screen and (min-width:768px){#content{margin-bottom:1.25em}
 .sect1{padding-bottom:1.25em}}
 .sect1:last-child{padding-bottom:0}
-.sect1+.sect1{border-top:1px solid #efefed}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
 #content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
 #content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
 #content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
 #content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
-.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
 .admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
 table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
@@ -203,47 +206,47 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
 .exampleblock>.content>:last-child{margin-bottom:0}
-.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
 .sidebarblock>:first-child{margin-top:0}
 .sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
-.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
-.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
-.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
-.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
-@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
-@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
-.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
 .listingblock pre.highlightjs{padding:0}
 .listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
 .listingblock pre.prettyprint{border-width:0}
-.listingblock>.content{position:relative}
-.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
-.listingblock:hover code[data-lang]::before{display:block}
-.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
-.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
-table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
-table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
-table.pyhltable td.code{padding-left:.75em;padding-right:0}
-pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
-pre.pygments .lineno{display:inline-block;margin-right:.25em}
-table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
-.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
-.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
 .quoteblock blockquote{margin:0;padding:0;border:0}
 .quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
 .quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
-.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
-.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
-.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
-.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
 .verseblock{margin:0 1em 1.25em}
 .verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
 .verseblock pre strong{font-weight:400}
@@ -251,13 +254,18 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
 .quoteblock .attribution br,.verseblock .attribution br{display:none}
 .quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
 .quoteblock.abstract{margin:0 1em 1.25em;display:block}
 .quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
-.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{word-spacing:0;line-height:1.6}
-.quoteblock.abstract blockquote::before,.quoteblock.abstract p::before{display:none}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
 table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
-td.tableblock>.content{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
 table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
 table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
@@ -269,8 +277,7 @@ table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>t
 table.frame-all{border-width:1px}
 table.frame-sides{border-width:0 1px}
 table.frame-topbot,table.frame-ends{border-width:1px 0}
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
-table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
 th.halign-center,td.halign-center{text-align:center}
@@ -282,7 +289,6 @@ tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
 tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
 p.tableblock>code:only-child{background:none;padding:0}
 p.tableblock{font-size:1em}
-td>div.verse{white-space:pre}
 ol{margin-left:1.75em}
 ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
@@ -313,8 +319,8 @@ td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .colist td:not([class]):first-child img{max-width:none}
 .colist td:not([class]):last-child{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
-.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
-.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
 .imageblock>.title{margin-bottom:0}
 .imageblock.thumb,.imageblock.th{border-width:6px}
 .imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
@@ -341,37 +347,37 @@ div.unbreakable{page-break-inside:avoid}
 .overline{text-decoration:overline}
 .line-through{text-decoration:line-through}
 .aqua{color:#00bfbf}
-.aqua-background{background-color:#00fafa}
+.aqua-background{background:#00fafa}
 .black{color:#000}
-.black-background{background-color:#000}
+.black-background{background:#000}
 .blue{color:#0000bf}
-.blue-background{background-color:#0000fa}
+.blue-background{background:#0000fa}
 .fuchsia{color:#bf00bf}
-.fuchsia-background{background-color:#fa00fa}
+.fuchsia-background{background:#fa00fa}
 .gray{color:#606060}
-.gray-background{background-color:#7d7d7d}
+.gray-background{background:#7d7d7d}
 .green{color:#006000}
-.green-background{background-color:#007d00}
+.green-background{background:#007d00}
 .lime{color:#00bf00}
-.lime-background{background-color:#00fa00}
+.lime-background{background:#00fa00}
 .maroon{color:#600000}
-.maroon-background{background-color:#7d0000}
+.maroon-background{background:#7d0000}
 .navy{color:#000060}
-.navy-background{background-color:#00007d}
+.navy-background{background:#00007d}
 .olive{color:#606000}
-.olive-background{background-color:#7d7d00}
+.olive-background{background:#7d7d00}
 .purple{color:#600060}
-.purple-background{background-color:#7d007d}
+.purple-background{background:#7d007d}
 .red{color:#bf0000}
-.red-background{background-color:#fa0000}
+.red-background{background:#fa0000}
 .silver{color:#909090}
-.silver-background{background-color:#bcbcbc}
+.silver-background{background:#bcbcbc}
 .teal{color:#006060}
-.teal-background{background-color:#007d7d}
+.teal-background{background:#007d7d}
 .white{color:#bfbfbf}
-.white-background{background-color:#fafafa}
+.white-background{background:#fafafa}
 .yellow{color:#bfbf00}
-.yellow-background{background-color:#fafa00}
+.yellow-background{background:#fafa00}
 span.icon>.fa{cursor:default}
 a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
@@ -380,7 +386,7 @@ a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
-.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
 .conum[data-value] *{color:#fff!important}
 .conum[data-value]+b{display:none}
 .conum[data-value]::after{content:attr(data-value)}
@@ -393,7 +399,7 @@ p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
 p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
-.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
 .print-only{display:none!important}
 @page{margin:1.25cm .75cm}
 @media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
@@ -408,7 +414,7 @@ svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
-#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
 body.book #header{text-align:center}
 body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
 body.book #header .details{border:0!important;display:block;padding:0!important}
@@ -457,94 +463,102 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_preparing_your_data">3. Preparing your data</a>
 <ul class="sectlevel2">
-<li><a href="#_get_some_data">3.1. Get some data</a></li>
+<li><a href="#_getting_data_for_your_own_area">3.1. Getting data for your own area</a></li>
 <li><a href="#_use_gdal">3.2. Use GDAL</a></li>
 </ul>
 </li>
 <li><a href="#_examples_of_chi_analysis">4. Examples of chi analysis</a>
 <ul class="sectlevel2">
-<li><a href="#_get_the_example_data">4.1. Get the example data</a></li>
-<li><a href="#_first_example_basic_dem_steps_and_basin_selection">4.2. First example: Basic DEM steps and Basin selection</a>
+<li><a href="#_start_lsdtopotools">4.1. Start LSDTopoTools</a></li>
+<li><a href="#_get_the_test_data">4.2. Get the test data</a></li>
+<li><a href="#_first_example_basic_dem_steps_and_basin_selection">4.3. First example: Basic DEM steps and Basin selection</a>
 <ul class="sectlevel3">
-<li><a href="#_some_comments_on_basin_selection">4.2.1. Some comments on basin selection</a></li>
+<li><a href="#_some_comments_on_basin_selection">4.3.1. Some comments on basin selection</a></li>
 </ul>
 </li>
-<li><a href="#_using_our_example_scripts">4.3. Using our example scripts</a></li>
-<li><a href="#_visualising_example_one_data">4.4. Visualising example one data</a>
+<li><a href="#_second_example_a_channel_steepness_map">4.4. Second example: a channel steepness map</a></li>
+<li><a href="#_examples_using_lsdmappingtools">4.5. Examples using LSDMappingTools</a>
 <ul class="sectlevel3">
-<li><a href="#_example_one_part_one_the_hillshade">4.4.1. Example one, part one: the hillshade</a></li>
-<li><a href="#_example_one_part_two_coloured_basins">4.4.2. Example one, part two: coloured basins</a></li>
-<li><a href="#_example_one_part_three_numbered_basins">4.4.3. Example one, part three: numbered basins</a></li>
-<li><a href="#_example_one_part_four_renaming_basins">4.4.4. Example one, part four: renaming basins</a></li>
+<li><a href="#_installing_lsdmappingtools_for_chi_visualisation">4.5.1. Installing LSDMappingTools for chi visualisation</a></li>
+<li><a href="#_plotting_some_chi_results_example_1">4.5.2. Plotting some chi results: Example 1</a></li>
+<li><a href="#_plotting_some_chi_results_example_2">4.5.3. Plotting some chi results: Example 2</a></li>
 </ul>
 </li>
+<li><a href="#_third_example_selecting_basins_by_hand">4.6. Third example: selecting basins by hand</a></li>
+<li><a href="#_chi_mapping_of_multiple_basins_using_lsdmappingtools">4.7. Chi mapping of multiple basins using LSDMappingTools</a></li>
+<li><a href="#_images_produced_when_using_plotchianalysis_py_all_true">4.8. Images produced when using PlotChiAnalysis.py <code>-all True</code></a></li>
 </ul>
 </li>
 <li><a href="#_calculating_concavity">5. Calculating concavity</a>
 <ul class="sectlevel2">
 <li><a href="#_before_you_start">5.1. Before you start</a></li>
-<li><a href="#_options_you_need_for_calculating_the_most_likely_concavity">5.2. Options you need for calculating the most likely concavity</a>
+<li><a href="#_options_you_need_for_calculating_the_most_likely_concavity">5.2. Options you need for calculating the most likely concavity</a></li>
+<li><a href="#_an_example_of_calculating_concavity">5.3. An example of calculating concavity</a>
 <ul class="sectlevel3">
-<li><a href="#_some_key_options">5.2.1. Some key options</a></li>
-<li><a href="#_other_options_all_have_sensible_defaults">5.2.2. Other options: all have sensible defaults</a></li>
-<li><a href="#_what_the_estimate_best_fit_movern_routine_does">5.2.3. What the <code>estimate_best_fit_movern</code> routine does</a></li>
+<li><a href="#_running_the_concavity_code">5.3.1. Running the concavity code</a></li>
+<li><a href="#_visualising_the_example">5.3.2. Visualising the example</a></li>
+<li><a href="#_the_full_visualisation_routine">5.3.3. The full visualisation routine</a></li>
+<li><a href="#_more_options_for_lsdtt_chi_analysis">5.3.4. More options for lsdtt-chi-analysis</a></li>
+<li><a href="#_other_options_all_have_sensible_defaults">5.3.5. Other options: all have sensible defaults</a></li>
+<li><a href="#_what_the_estimate_best_fit_movern_routine_does">5.3.6. What the <code>estimate_best_fit_movern</code> routine does</a></li>
 </ul>
 </li>
-<li><a href="#_running_the_concavity_analysis">5.3. Running the concavity analysis</a></li>
-<li><a href="#_visualising_the_results_of_our_concavity_analyses">5.4. Visualising the results of our concavity analyses</a>
+<li><a href="#_running_the_concavity_analysis">5.4. Running the concavity analysis</a></li>
+<li><a href="#_visualising_the_results_of_our_concavity_analyses">5.5. Visualising the results of our concavity analyses</a>
 <ul class="sectlevel3">
-<li><a href="#_generating_all_the_plots">5.4.1. Generating all the plots</a></li>
-<li><a href="#_what_sort_of_plots_do_i_get">5.4.2. What sort of plots do I get?</a></li>
+<li><a href="#_generating_all_the_plots">5.5.1. Generating all the plots</a></li>
+<li><a href="#_what_sort_of_plots_do_i_get">5.5.2. What sort of plots do I get?</a></li>
 </ul>
 </li>
-<li><a href="#_interpreting_results_from_the_concavity_analyses_and_pitfalls">5.5. Interpreting results from the concavity analyses and pitfalls</a>
+<li><a href="#_interpreting_results_from_the_concavity_analyses_and_pitfalls">5.6. Interpreting results from the concavity analyses and pitfalls</a>
 <ul class="sectlevel3">
-<li><a href="#_uncertainty_and_confidence_in_the_results">5.5.1. Uncertainty and confidence in the results</a></li>
-<li><a href="#_parameter_values_that_appear_to_influence_results">5.5.2. Parameter values that appear to influence results</a></li>
+<li><a href="#_uncertainty_and_confidence_in_the_results">5.6.1. Uncertainty and confidence in the results</a></li>
+<li><a href="#_parameter_values_that_appear_to_influence_results">5.6.2. Parameter values that appear to influence results</a></li>
 </ul>
 </li>
-<li><a href="#_files_output_by_the_concavity_analysis">5.6. Files output by the concavity analysis</a>
+<li><a href="#_files_output_by_the_concavity_analysis">5.7. Files output by the concavity analysis</a>
 <ul class="sectlevel3">
-<li><a href="#_files_created_by_the_chi_mapping_tool">5.6.1. Files created by the <strong>chi mapping tool</strong></a></li>
-<li><a href="#_files_created_by_the_python_script_plotmovernanalysis_py">5.6.2. Files created by the python script PlotMoverNAnalysis.py</a></li>
+<li><a href="#_files_created_by_the_chi_mapping_tool">5.7.1. Files created by the <strong>chi mapping tool</strong></a></li>
+<li><a href="#_files_created_by_the_python_script_plotmovernanalysis_py">5.7.2. Files created by the python script PlotMoverNAnalysis.py</a></li>
 </ul>
 </li>
-<li><a href="#_all_options_used_in_the_concavity_analyses">5.7. All options used in the concavity analyses</a>
+<li><a href="#_all_options_used_in_the_concavity_analyses">5.8. All options used in the concavity analyses</a>
 <ul class="sectlevel3">
-<li><a href="#_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.7.1. Parameters for exploring channel concavity ratio with chi analysis</a></li>
-<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.7.2. Parameters for exploring the concavity with slope-area analysis</a></li>
+<li><a href="#_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.8.1. Parameters for exploring channel concavity ratio with chi analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.8.2. Parameters for exploring the concavity with slope-area analysis</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_chi_analysis_options_and_outputs">Appendix A: Chi analysis options and outputs</a>
 <ul class="sectlevel2">
-<li><a href="#_text_editors_for_modifying_files">A.1. Text editors for modifying files</a></li>
-<li><a href="#_the_parameter_file">A.2. The parameter file</a></li>
-<li><a href="#_parameter_file_options">A.3. Parameter file options</a>
+<li><a href="#_a_typical_call_to_lsdtt_chi_mapping">A.1. A typical call to lsdtt-chi-mapping</a></li>
+<li><a href="#_text_editors_for_modifying_files">A.2. Text editors for modifying files</a></li>
+<li><a href="#_the_parameter_file">A.3. The parameter file</a></li>
+<li><a href="#_parameter_file_options">A.4. Parameter file options</a>
 <ul class="sectlevel3">
-<li><a href="#_basic_file_input_and_output">A.3.1. Basic file input and output</a></li>
-<li><a href="#_dem_preprocessing">A.3.2. DEM preprocessing</a></li>
-<li><a href="#_selecting_channels_and_basins">A.3.3. Selecting channels and basins</a></li>
-<li><a href="#_basic_data_output_before_calculating_chi">A.3.4. Basic data output (before calculating chi)</a></li>
-<li><a href="#_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</a></li>
-<li><a href="#_burning_rasters_to_csv">A.3.6. Burning rasters to csv</a></li>
-<li><a href="#_integrating_lithologic_information">A.3.7. Integrating lithologic information</a></li>
-<li><a href="#_parameters_for_exploring_the_concavity_with_chi_analysis">A.3.8. Parameters for exploring the concavity with chi analysis</a></li>
-<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.3.9. Parameters for exploring the concavity with slope-area analysis</a></li>
-<li><a href="#_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</a></li>
-<li><a href="#_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</a></li>
-<li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</a></li>
-<li><a href="#_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.3.13. Parameters for dealing with discharge rather than drainage area</a></li>
-<li><a href="#_parameters_for_knickpoint_analyses">A.3.14. Parameters for knickpoint analyses</a></li>
+<li><a href="#_basic_file_input_and_output">A.4.1. Basic file input and output</a></li>
+<li><a href="#_dem_preprocessing">A.4.2. DEM preprocessing</a></li>
+<li><a href="#_selecting_channels_and_basins">A.4.3. Selecting channels and basins</a></li>
+<li><a href="#_basic_data_output_before_calculating_chi">A.4.4. Basic data output (before calculating chi)</a></li>
+<li><a href="#_basic_parameters_for_the_chi_coordinate">A.4.5. Basic parameters for the chi coordinate</a></li>
+<li><a href="#_burning_rasters_to_csv">A.4.6. Burning rasters to csv</a></li>
+<li><a href="#_integrating_lithologic_information">A.4.7. Integrating lithologic information</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_chi_analysis">A.4.8. Parameters for exploring the concavity with chi analysis</a></li>
+<li><a href="#_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.4.9. Parameters for exploring the concavity with slope-area analysis</a></li>
+<li><a href="#_parameters_for_segmentation_of_channels">A.4.10. Parameters for segmentation of channels</a></li>
+<li><a href="#_printing_of_simple_chi_maps">A.4.11. Printing of simple chi maps</a></li>
+<li><a href="#_chi_maps_with_segmentation_and_basin_and_channel_selection">A.4.12. Chi maps with segmentation and basin and channel selection</a></li>
+<li><a href="#_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.4.13. Parameters for dealing with discharge rather than drainage area</a></li>
+<li><a href="#_parameters_for_knickpoint_analyses">A.4.14. Parameters for knickpoint analyses</a></li>
 </ul>
 </li>
-<li><a href="#_example_parameter_files">A.4. Example parameter files</a></li>
-<li><a href="#_output_data_formats">A.5. Output data formats</a></li>
-<li><a href="#_the_different_outputs_and_how_to_get_them">A.6. The different outputs and how to get them</a>
+<li><a href="#_example_parameter_files">A.5. Example parameter files</a></li>
+<li><a href="#_output_data_formats">A.6. Output data formats</a></li>
+<li><a href="#_the_different_outputs_and_how_to_get_them">A.7. The different outputs and how to get them</a>
 <ul class="sectlevel3">
-<li><a href="#_raster_output">A.6.1. Raster output</a></li>
-<li><a href="#_point_data_usually_output_as_csv">A.6.2. Point data (usually output as csv)</a></li>
+<li><a href="#_raster_output">A.7.1. Raster output</a></li>
+<li><a href="#_point_data_usually_output_as_csv">A.7.2. Point data (usually output as csv)</a></li>
 </ul>
 </li>
 </ul>
@@ -697,7 +711,7 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <div class="ulist">
 <ul>
 <li>
-<p>A chapter on getting and installing the software: <a href="#_getting_the_software">Getting the software</a></p>
+<p>A section on getting and installing the software: <a href="#_getting_the_software">Getting the software</a></p>
 </li>
 <li>
 <p>A chapter on preparing your data, mostly with <a href="http://www.gdal.org/">GDAL</a>: <a href="#_preparing_your_data">Preparing your data</a></p>
@@ -725,9 +739,6 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <div class="paragraph">
 <p>First, you should follow the instructions on <a href="LSDTT_installation.html">installing <strong>LSDTopoTools</strong></a>.</p>
 </div>
-<div class="paragraph">
-<p>Once you have a functioning Linux system (this can be within any operating environment, see <a href="LSDTT_installation.html">installation instructions</a>) you then need to get the chi analysis code.</p>
-</div>
 <div class="sect2">
 <h3 id="_what_versions_of_the_software_are_there">2.1. What versions of the software are there?</h3>
 <div class="paragraph">
@@ -747,7 +758,7 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 </ul>
 </div>
 <div class="paragraph">
-<p>Since 2014 we have been working to fix these problems. The new program, which we call the <strong>Chi Mapping Tool</strong> retains some of the original algorithms of the 2014 paper (please cite that paper if you use it for your research!) but has a number of new features.</p>
+<p>Since 2014 we have been working to fix these problems. The new program, which we call the <strong>Chi Mapping Tool</strong> retains some of the original algorithms of the 2014 paper (please <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">cite that paper</a> if you use it for your research!) but has a number of new features.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -755,7 +766,7 @@ the user should read <a href="http://mit.edu/perron/www/files/PerronRoyden13.pdf
 <p>It can map across all channels in a landscape.</p>
 </li>
 <li>
-<p>It has much better routines for determining the landscape <em>m/n</em> ratio (and this is the subject of a new ESURF discussion paper).</p>
+<p>It has much better routines for determining the landscape concavity ratio (and this is the subject of a new ESURF discussion paper).</p>
 </li>
 <li>
 <p>It is all packaged into a single program rather than 4 separate programs.</p>
@@ -878,7 +889,7 @@ in this part of the command, you need to put your own directory for LSDTopoTools
 </div>
 </div>
 <div class="sect2">
-<h3 id="_get_some_data">3.1. Get some data</h3>
+<h3 id="_getting_data_for_your_own_area">3.1. Getting data for your own area</h3>
 <div class="paragraph">
 <p>To run <strong>LSDTopoTools</strong> you need some topographic datasets!</p>
 </div>
@@ -913,45 +924,123 @@ in this part of the command, you need to put your own directory for LSDTopoTools
 <div class="paragraph">
 <p>We will now run some examples of chi analysis using the <strong>chi mapping tool</strong>.</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-We are going to assume you are using our vagrant setup. That means that code will live in the directory <code>/LSDTopoTools/Git_projects/LSDTopoTool_ChiMudd2014</code> and topographic data will live in the directory <code>/LSDTopoTools/Topographic_projects</code>.
-</td>
-</tr>
-</table>
-</div>
 <div class="sect2">
-<h3 id="_get_the_example_data">4.1. Get the example data</h3>
-<div class="paragraph">
-<p>We have placed several example datasets in the github repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples">LSDTT_chi_examples</a>. You can clone these in your vagrant box into the <code>Topographic_projects</code> folder:</p>
-</div>
+<h3 id="_start_lsdtopotools">4.1. Start LSDTopoTools</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We assume you have compiled the chi analysis tool (if not, follow the <a href="LSDTT_installation">LSDTopoTools installation instructions</a>).</p>
+</li>
+<li>
+<p>You need to start an <strong>LSDTopoTools</strong> session.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are using Docker , start the container:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Topographic_projects
-$ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
 </div>
+</div>
+</li>
+<li>
+<p>Then run the start script.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If you are in a native linux session, then you need to activate the LSDTT terminal.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Navigate to the LSDTopoTools2 directory.</p>
+</li>
+<li>
+<p>Run <code>sh LSDTT_terminal.sh</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_first_example_basic_dem_steps_and_basin_selection">4.2. First example: Basic DEM steps and Basin selection</h3>
+<h3 id="_get_the_test_data">4.2. Get the test data</h3>
 <div class="paragraph">
-<p>First we will do some very basic extraction of basins and visualisation of a region near Xi&#8217;an China, in the mountains containing <a href="https://en.wikipedia.org/wiki/Mount_Hua">Hua Shan</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you have followed the steps in the section: <a href="#_getting_the_software">Getting the software</a>, the <strong>chi mapping tool</strong> will already be installed, and the example driver file will be in the <code>LSDTT_chi_examples</code> folder.</p>
+<p>If you have followed the <a href="LSDTT_installation.html">installation instructions</a> and grabbed the example data, you already have what you need! If not, follow the steps below:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to the directory with the <strong>chi mapping tool</strong>:</p>
+<p>If you are using a docker container, just run the script:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/LSDTopoTool_ChiMudd2014/driver_functions_MuddChi2014/</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are on a native linux or using the University of Edinburgh servers, do the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you have installed <strong>LSDTopoTools</strong>, you will have a directory somewhere called <code>LSDTopoTools</code>. Go into it.</p>
+</li>
+<li>
+<p>Run the following commands (you only need to do this once):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir data
+$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>WARNING: This downloads a bit over 150Mb of data so make sure you have room.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_first_example_basic_dem_steps_and_basin_selection">4.3. First example: Basic DEM steps and Basin selection</h3>
+<div class="paragraph">
+<p>First we will do some very basic extraction of basins and visualisation of a region near Xi&#8217;an China, in the mountains containing <a href="https://en.wikipedia.org/wiki/Mount_Hua">Hua Shan</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you have followed the steps in the section: <a href="#_getting_the_software">Getting the software</a>, the <strong>chi mapping tool</strong> will already be installed, and the example driver file will be in the <code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData</code> directory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The directory structure below will mirror the Docker container so if you are in native Linux you will need to alter the paths, for example where it says <code>/LSDTopoTools/data/</code> you will need to update to <code>/my/path/to//LSDTopoTools/data/</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the directory with the <strong>example data</strong>, and then go into the <code>ChiAnalysisData/Xian</code> directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian</code></pre>
 </div>
 </div>
 </li>
@@ -959,11 +1048,8 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <p>Now run the example driver file.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/LSDTT_chi_examples Xian_example1.driver</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example01.driver</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>In every <strong>LSDTopoTools</strong> analysis in these examples, there are three inputs: i) the name of the program (<code>./chi_mapping_tool.exe</code>) ii) the directory of the data (<code>/LSDTopoTools/Topographic_projects/LSDTT_chi_examples</code>) and iii) the name of the driver file (<code>Xian_example1.driver</code>). The extension of the driver file doesn&#8217;t matter, you could call it <code>Xian_example1.rhinocerous</code> if you wanted.</p>
 </div>
 </li>
 <li>
@@ -980,18 +1066,18 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </li>
 <li>
-<p>We are going to visualise the output using python.</p>
-</li>
-<li>
-<p>In your host operating system, find the directory that contains the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> directory.</p>
-</li>
-<li>
-<p>You might want to open spyder (see our section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDTT python installation</a>. on how to get this) to look at the python script. To open spyder simply type <code>spyder</code> into a powershell window (Windows)  or terminal (Linux/MaxOS).</p>
+<p>In this example all we have done is (algorithmically) selected basins and printed a hillshade. The result will look like this:</p>
 </li>
 </ol>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_QGIS.png" alt="Basins around Mount_Hua">
+</div>
+<div class="title">Figure 1. The extracted basins, coloured by basin number</div>
+</div>
 <div class="sect3">
-<h4 id="_some_comments_on_basin_selection">4.2.1. Some comments on basin selection</h4>
+<h4 id="_some_comments_on_basin_selection">4.3.1. Some comments on basin selection</h4>
 <div class="paragraph">
 <p>In the <strong>chi mapping tool</strong>, we have several ways to select basins. We feel the default method is best (<code>find_complete_basins_in_window</code>). The options are:</p>
 </div>
@@ -1014,163 +1100,543 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_our_example_scripts">4.3. Using our example scripts</h3>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Before you start with the python scripts</div>
+<h3 id="_second_example_a_channel_steepness_map">4.4. Second example: a channel steepness map</h3>
 <div class="paragraph">
-<p>Our python scripts require that you install the <strong>LSDTopoTools</strong> python toolchain.</p>
-</div>
-<div class="paragraph">
-<p><a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">Click here for instructions on how to install the <strong>LSDTT</strong> python tools</a>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Okay, why don&#8217;t we look at some of the results. I would suggest opening <strong>Spyder</strong> in your host operating system for this.</p>
+<p>In the second example, we are going to make a channel steepness map.
+To save computational costs, we will only look at the largest selected basin.
+And to ease GIS visualisation, we are going to output data as geojson.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In spyder, use <strong>file&#8594;open</strong> to open the plotting script for our examples called, innovatively, <code>ChiMappingExamples.py</code>.</p>
+<p>Stay in the same directory (<code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian</code>) and simply run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example02.driver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will take a little while (a few minutes)</p>
+</div>
+</li>
+<li>
+<p>The driver file looks like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile"># These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
+read fname: Xian
+write fname: Xian_example02
+channel heads fname: NULL
+
+# Parameter for filling the DEM
+min_slope_for_fill: 0.0001
+
+# Output geojson for easier viewing in GIS software
+convert_csv_to_geojson: true
+
+# Parameters for selecting channels and basins
+threshold_contributing_pixels: 5000
+minimum_basin_size_pixels: 100000
+maximum_basin_size_pixels: 400000
+find_complete_basins_in_window: true
+only_take_largest_basin: true
+
+# The chi analysis
+m_over_n: 0.4
+print_segmented_M_chi_map_to_csv: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We <code>only_take_the_largest_basin</code> to limit computation time.</p>
+</div>
+</li>
+<li>
+<p>This analysis computes the chi coordinate, and uses the segmentation algorithm from Mudd et al., 2014 to extract the best fitting piecewise linear segments in order to calculate channel steepness. We call this <code>M_chi</code> (the slope in chi space) but if you set the parameter <code>A_0: 1</code> (which is the default) then <code>M_chi</code> is equal to the channel steepness <code>k_s</code> which appears in millions of papers.</p>
+</li>
+<li>
+<p>The channel network looks like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_ksn_QGIS.png" alt="Basins around Mount_Hua">
+</div>
+<div class="title">Figure 2. The largest basin&#8217;s channel network, coloured by channel steepness</div>
+</div>
+</li>
+<li>
+<p>To get this image in QGIS, you need to import the <code>MChiSegemented.csv</code> file (or geojson), then selected a graduate colour scheme, select the scheme, turn of the edge colour on the markers, and then you will get this image. All this clicking of mice is extremely annoying, especially, if like us, you do this kind of analysis frequently. So we are going to take a diversion into the world of <strong>LSDMappingTools</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_using_lsdmappingtools">4.5. Examples using LSDMappingTools</h3>
+<div class="paragraph">
+<p>We are now going to take a brief detour into our <a href="https://github.com/LSDtopotools/LSDMappingTools">mapping tools</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong></a> are written in python and have been built up over the years to avoid having to click mice and interact with GIS software.</p>
+</div>
+<div class="sect3">
+<h4 id="_installing_lsdmappingtools_for_chi_visualisation">4.5.1. Installing LSDMappingTools for chi visualisation</h4>
+<div class="paragraph">
+<p>The main barrier to using <strong>LSDMappingTools</strong> is installing the python packages. We have done all that work for you in a <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_viz_docker">Docker container</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also install the conda environment by using our <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/master/conda_environments/conda_list_July2019.txt">latest conda environment file</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Quick installation instructions</div>
+<div class="paragraph">
+<p>Full instructions are on the <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDTopoTools visualisation section</a>.</p>
+</div>
+<div class="paragraph">
+<p>The basic instructions are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In docker:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_viz_docker</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Then run <code>Start_LSDTT.sh</code> to download the tools.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For native installation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Download and install <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> (python 3 version).</p>
+</li>
+<li>
+<p>Grab the <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/master/conda_environments/conda_list_July2019.txt">environment file</a>.</p>
+</li>
+<li>
+<p>Run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name LSDMT --file conda_list_July2019.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note: if you don&#8217;t save the file as <code>conda_list_July2019.txt</code> then you will need to change the name of the file above.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Once you have done that, clone the <a href="https://github.com/LSDtopotools/LSDMappingTools"><strong>LSDMappingTools</strong> repository</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Warning: this method will take <strong>a very long time</strong>. The docker version is much, much faster and less likely to fail.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_some_chi_results_example_1">4.5.2. Plotting some chi results: Example 1</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need some data, so if you haven&#8217;t yet, go back and run <a href="#_first_example_basic_dem_steps_and_basin_selection">example 1</a> of this chapter.</p>
+</li>
+<li>
+<p>We are going to assume you are in the docker container, and you have run <code>Start_LSDTT.sh</code>. See the <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">LSDMappingTools installation section</a> for details.</p>
+</li>
+<li>
+<p>Navigate to the directory with the plotting tools:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/LSDMappingTools</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The chi mapping script is <code>PlotChiAnalysis.py</code>. You can see what options are available by running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotChiAnalysis.py -h</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now we will look at the basins. You need to tell the program where the files are with the <code>-dir</code> flag and what the filenames are with the <code>-fname</code> flag. We will also use the <code>-PB</code> flag (short for <code>plot basins</code>) and set this to <code>True</code> so the script actually plots the basins:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Note that you need to be in the directory <code>/LSDTopoTools/LSDMappingTools</code> for this to work.</p>
+</li>
+<li>
+<p>The plotting command will make a subdirectory on your data directory called <code>raster_plots</code> and you will get a png image that looks like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_selected_basins.png" alt="Basins around Mount Hua">
+</div>
+<div class="title">Figure 3. Basins around Mount Hua that are determined by LSDTopoTools basin selection algorithms</div>
+</div>
+</li>
+<li>
+<p>The basins are numbered algorithmically. You can rename them if you want using the <code>-rename_dict</code> flag. This takes a list, separated by commas, where each element in the list has the original basin number, a colon (<code>:</code>) and then the new name:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True -rename_dict 0:yo,1:yo,2:ma</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_renamed.png" alt="Some renamed basins around Mount_Hua">
+</div>
+<div class="title">Figure 4. Some renamed basins around Mount Hua</div>
+</div>
+</li>
+<li>
+<p>And if you only want certain basins, use the <code>-basin_keys</code> flag. This is just a comma separated list of the basin numbers you want to keep. <strong>When you use this flag it refers to the original basin numbers, so keep an image with the original basin numbering handy.</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -PB True -rename_dict 0:yo,1:yo,2:ma -basin_keys 0,1,2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_basins_mask_rename.png" alt="Some selected and renamed basins around Mount Hua">
+</div>
+<div class="title">Figure 5. Some renamed basins around Mount Hua, with only 3 basins selected</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_some_chi_results_example_2">4.5.3. Plotting some chi results: Example 2</h4>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note on raster mapping in LSDMappingTools</div>
+<div class="paragraph">
+<p>Most of the raster mapping routines in <strong>LSDMappingTools</strong> drape a hillshade over the topography raster. It makes the figures look pretty. It means the tool always looks for the base DEM, and the hillshade raster (which has the extension <code>_HS.bil</code>). However, if you have <code>write fname</code> that isn&#8217;t the same as the read fname, the base DEM might have a different name.</p>
+</div>
+<div class="paragraph">
+<p>In example 2, the outfiles are called <code>Xian_example02*</code> but the base filename is just <code>Xian*</code> (without the <code>_example02</code>). For the raster plotting to work you need to copy a hillshade raster and the DEM to have the same filename structure as the rest of the data.</p>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Now we will use the data from <a href="#_second_example_a_channel_steepness_map">example 2</a>.</p>
+</li>
+<li>
+<p>Recall in this example we only had a <code>csv</code> file of channel steepness produced. We actually need to have base filename that are in the same format, so lets copy this file (this might be easier to do in your windows file explorer or equivalent):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cp /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/Xian_example02_MChiSegmented.csv /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/Xian_MChiSegmented.csv</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now we can make a chi steepness plot and a chi profile plot:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">python PlotChiAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -all_stacks True -basin_keys 0 -basin_lists 0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The <code>-all_stacks</code> flag turns on the "stacked" profile plots. We only have one basin, so there is no stack, which is a collection of basin profiles. We also need the <code>-basin_lists</code> flag here since the code is set up to work with "stacks" of basins. In this case, the stack only has one basin in it. This is a bit boring so in the next example we will get more basins.</p>
+</li>
+<li>
+<p>The resulting images are in the directory <code>chi_profile_plots</code>. The chi priofiles have the filename <code>chi_stacked_chi</code>, the flow distance plots have <code>FD_stacked_chi</code>, and the plot where the channels are coloured by their source pixel are <code>sources_stacked_chi</code>. Here is the flow distance plot:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_FD_profile.png" alt="Stream profile plot">
+</div>
+<div class="title">Figure 6. A stream profile plot of the largest basin in the Xian DEM</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_third_example_selecting_basins_by_hand">4.6. Third example: selecting basins by hand</h3>
+<div class="paragraph">
+<p>Okay, the previous examples selected basins algorithmically, and then following example just got the largest basin. We now will select some basins by hand. At the moment this is a two stage process.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go back to the docker container where you did the first two examples (i.e., not the visualisation container).</p>
+</li>
+<li>
+<p>Run the third example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example03.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In this example, we are just printing the locations of the junction to a csv file with the flag <code>print_junctions_to_csv: true</code> as well as the channels with the flag <code>print_channels_to_csv: true</code>.</p>
+</li>
+<li>
+<p>This will print out all the junctions to a <code>csv</code> and <code>geojson</code> file, and if you load the <code>geojson</code> file into your favourite GIS you will see something like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_junctions.png" alt="Junctions extracted around Mount Hua">
+</div>
+<div class="title">Figure 7. The junction locations around Mount Hua. You can use a GIS to find the junction number of each junction.</div>
+</div>
+</li>
+<li>
+<p>We are going to find some basins to extract. In your favourite GIS, zoom in to basins that you think are interesting and then use the identify/query button to pick some interesting junction. It helps to have the channels displayed as well:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_junction_finding_QGIS.png" alt="Junctions extracted around Mount Hua">
+</div>
+<div class="title">Figure 8. Finding junctions for basins. In this example we have selected junction 598.</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you select a junction, it will create a basin that will continue down to the pixel immediately above the next junction downstream. I know this might seem weird, but it is because every junction has two or more "donor" channels, but only a single receiver junction, so picking a basin based on the upstream junction is more consistent.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>We then create a junctions file, that is simply a text file that looks like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile">790
+598
+741</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Okay, as it turns out, I have made this file for you already: it is in the examples folder called <code>junctions.txt</code>. We can use this to run the next example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example04.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This example runs the following parameter file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-parameterfile" data-lang="parameterfile"># These are parameters for the file i/o
+# IMPORTANT: You MUST make the write directory: the code will not work if it doens't exist.
+read fname: Xian
+write fname: Xian
+channel heads fname: NULL
+
+# Parameter for filling the DEM
+min_slope_for_fill: 0.0001
+
+# Output geojson for easier viewing in GIS software
+convert_csv_to_geojson: true
+
+# Parameters for selecting channels and basins
+threshold_contributing_pixels: 5000
+BaselevelJunctions_file: junctions.txt
+
+print_basin_raster: true
+print_hillshade: true
+
+# The chi analysis
+m_over_n: 0.4
+print_segmented_M_chi_map_to_csv: true</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you select junctions, the <code>threshold_contributing_pixels</code> must be the same when you created the junctions as when you run the code with a junctions file. Different <code>threshold_contributing_pixels</code> result in different numbers of junctions so this changes the junction numbering.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Once you have run this, you will have a new set of basins:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_selected_basins_by_hand.png" alt="Basins selected using a junction file around Mount Hua">
+</div>
+<div class="title">Figure 9. New basins, carefully selected by hand</div>
+</div>
+</li>
+<li>
+<p>Now, you could spend the next few hours clicking on your mouse in a GIS to get the images just right, but in fact we have automated the plotting using <strong>LSDMappingTools</strong> so we are going to go back to our python tools.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chi_mapping_of_multiple_basins_using_lsdmappingtools">4.7. Chi mapping of multiple basins using LSDMappingTools</h3>
+<div class="paragraph">
+<p>Now that you have done <a href="#_third_example_selecting_basins_by_hand">examples 3 and 4</a>, we can plot the data using <strong>LSDMappingTools</strong>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go back into the Docker visualisation container.</p>
+</li>
+<li>
+<p>Run the plotting script with some new flags:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>In your vagrant box this file is in <code>/LSDTopoTools/Git_projects/LSDMappingTools</code>.</p>
+<p><code>-all True</code> tells the plotting script you want to plot both raster and profile plots.</p>
 </li>
 <li>
-<p>In windows, if you have put your vagrant stuff in <code>C:\VagrantBoxes</code> then this file is in <code>C:\VagrantBoxes\LSDTopoTools\Git_projects\LSDMappingTools</code>.</p>
+<p><code>-basin_lists 0,1,2</code> tells the plotting script you want to collect these three basins into a "stack". If you want to play with this, you can try <code>-basin_lists 0,1:2</code> which will create two stacks.</p>
 </li>
 <li>
-<p>In MacOS it will be wherever you put the VagrantBoxes folder and then in <code>/LSDTopoTools/Git_projects/LSDMappingTools</code>.</p>
-</li>
-<li>
-<p>You can run these scripts in your vagrant machine, but you will have to do the full python install there, and in addition you won&#8217;t be able to use any graphical interface (like <strong>spyder</strong>) so our recommendation is for you to run visualisation scripts in your host operating system.</p>
+<p><code>-chi_offsets 10</code> indicates that in your stacked plots, the profiles are separated by 10 m in chi space (the dimensions of chi are in m). The default is 5 m so you can play with this. The default of flow distance happens to work in this example but if you want to change that the flag is <code>-fd_offsets</code></p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>In python, any lines between two blocks of <code>"""</code> symbols is a comment. In our program we put notes between these symbols. Don&#8217;t change them. For example:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">    """
-    These lines tell the example functions where your files are. If you are using
-    the recommended file setup you won't need to modify these lines.
-
-    If you have set up your own directory structure you will need to modify
-    the directory names.
-    """</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The above lines just give you instructions.</p>
-</div>
+<p>This creates figures in both the <code>raster_plots</code> and <code>chi_profile_plots</code> directories.</p>
 </li>
 <li>
-<p>In python, you can also make a line a comment with the <code><mark></code> symbol. In these exercises you can uncomment lines by deleting the <code></mark></code> symbol, and adding it back in again. Initially all but the first part of the first example is turned off:</p>
-<div class="listingblock">
+<p>Here are a selection of the plots:</p>
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">    CME.ExampleOne_PartOne_SimpleHillshade(DataDirectory,Base_file)
-    #CME.ExampleOne_PartTwo_PrintBasins(DataDirectory,Base_file)
-    #CME.ExampleOne_PartThree_PrintBasinsWithLabels(DataDirectory,Base_file)</code></pre>
+<img src="images/Xian_ksn.png" alt="A plot of the channel steepness in near Xi&#8217;an">
 </div>
+<div class="title">Figure 10. A plot of the channel steepness (k_sn_) near Xi&#8217;an.</div>
 </div>
-</li>
-<li>
-<p>To turn off example part one and turn on part two do this:</p>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">    #CME.ExampleOne_PartOne_SimpleHillshade(DataDirectory,Base_file)
-    CME.ExampleOne_PartTwo_PrintBasins(DataDirectory,Base_file)
-    #CME.ExampleOne_PartThree_PrintBasinsWithLabels(DataDirectory,Base_file)</code></pre>
+<img src="images/Xian_stacked_chi.png" alt="A stacked plot of three basins" width="in chi space" height="near Xi'an">
 </div>
+<div class="title">Figure 11. A stacked channel profile plot of three basins, in chi space, near Xi&#8217;an</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_example_one_data">4.4. Visualising example one data</h3>
+<h3 id="_images_produced_when_using_plotchianalysis_py_all_true">4.8. Images produced when using PlotChiAnalysis.py <code>-all True</code></h3>
 <div class="paragraph">
-<p>We will now generate some figures to look at our data.</p>
+<p>The following are the images that are produced when you run <code>PlotChiAnalysis.py</code> with the flag <code>-all True</code></p>
 </div>
-<div class="sect3">
-<h4 id="_example_one_part_one_the_hillshade">4.4.1. Example one, part one: the hillshade</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure you&#8217;ve run the <strong>chi mapping tool</strong> first: <a href="#_first_example_basic_dem_steps_and_basin_selection">First example: Basic DEM steps and Basin selection</a>.</p>
-</li>
-<li>
-<p>In <strong>spyder</strong> run the <code>ChiMappingExamples.py</code> with the first example turned on (i.e., no <code>#</code> in front of <code>CME.ExampleOne_PartOne_SimpleHillshade(DataDirectory,Base_file)</code>).</p>
-</li>
-<li>
-<p>This will create a png of this example DEM in your data folder called <strong>Xian_example1.png</strong></p>
-</li>
-<li>
-<p>If you look at the code for this example (in <code>ChiVisualisation_Example01.py</code>) you should see a few basic options. You can change the figure size, the location of the colourbar, various labels, as well as the resolution of the figure (using the <code>dpi</code> keyword). The default format is <strong>png</strong> buy you can change that in the <code>MF.save_fig</code> command with <code>figure_format = "pdf"</code> (for example). We encourage you to play with the options to see what they do.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Xian_example1.png" alt="Area around Mount_Hua">
+<div class="paragraph">
+<p>Yes, we are aware the filenames are stupid, but we can&#8217;t be bothered to change that right now.</p>
 </div>
-<div class="title">Figure 1. A hillshade of the example landscape</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_one_part_two_coloured_basins">4.4.2. Example one, part two: coloured basins</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Next turn on the second part of the example (<code>CME.ExampleOne_PartTwo_PrintBasins(DataDirectory,Base_file)</code>). This will show you the basins that have been algorithmically extracted:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Xian_coloured_basins.png" alt="Basins around Mount_Hua">
-</div>
-<div class="title">Figure 2. The extracted basins, coloured by basin number</div>
-</div>
-</li>
-<li>
-<p>We have added a few more lines in this example script to show more options. For example you can change the colourmap (<code>cmap = plt.cm.jet</code>, but you could change to <code>cmap = plt.cm.cubehelix</code> for example), and later there are some options for the basin outlines.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_one_part_three_numbered_basins">4.4.3. Example one, part three: numbered basins</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Figuring out the basin numbers using a colourbar is inconvenient. If you turn on the third part of the example you will see text labels for each basin:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Xian_basin_keys.png" alt="Numbered basins around Mount_Hua">
-</div>
-<div class="title">Figure 3. The extracted basins</div>
-</div>
-</li>
-<li>
-<p>So now we have basin numbers.</p>
-</li>
-<li>
-<p>You might notice that the basin numbers are somewhat randomly distributed. This is because we use a <a href="http://www.sciencedirect.com/science/article/pii/S0169555X12004618">very efficient algorithm</a> to compute the flow network and this algorithm does the numbering for us based on the connectivity of basins in the raster. To make this numbering more sensible to a human we need to manually rename them.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_one_part_four_renaming_basins">4.4.4. Example one, part four: renaming basins</h4>
-
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Images from the <code>PlotChiAnalysis.py</code> script in the <code>chi_profile_plots</code> subdirectory</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Filename contains</th>
+<th class="tableblock halign-left valign-top">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stacked_N_chi_stacked_chi.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The stacked plot of the profiles in chi space. The default is to colour by <em>k<sub>sn</sub></em>. The <code>N</code> is the number of the stack.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stacked_N_FD_stacked_chi.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The stacked plot of the profiles in flow distance space. The default is to colour by <em>k<sub>sn</sub></em>. The <code>N</code> is the number of the stack.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stacked_N_sources_stacked_chi.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The stacked plot of the profiles in flow distance space, coloured by the source number. The <code>N</code> is the number of the stack.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Images from the <code>PlotChiAnalysis.py</code> script in the <code>raster_plots</code> subdirectory</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Filename contains</th>
+<th class="tableblock halign-left valign-top">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_basins_selected_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows a raster of the basins that have been selected for the analysis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_ksn_chi_channels_and_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raster plot of the channel steepness (<em>k<sub>sn</sub></em>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_stack_basins_selected_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This shows the selected basins, but the different stacks are coloured differently so the user can see which basins are grouped in each stack of channel profiles.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sources_chi_channels_and_basins.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raster plot showing the channels coloured by their sources. This and the <code>Stacked_N_sources_stacked_chi.png</code> help users to identify which tributaries are which in the plots.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_calculating_concavity">5. Calculating concavity</h2>
 <div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>For full a full description of the theory behind our concavity tools, please see:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.earth-surf-dynam.net/6/505/2018/">Mudd, S.M., Clubb, F.J., Gailleton, B., Hurst, M.D., 2018. How concave are river channels? <em>Earth Surface Dynamics</em> 6, 505–523. doi:10.5194/esurf-6-505-2018</a></p>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>In this section you will find instructions on using the <strong>chi mapping tool</strong> to calculate channel concavity. What is channel concavity? If you look at typical channels, you will find steep headwaters but as you move downstream the channels will become gentler. Authors in the middle of the twentieth century began to calculate channel slope as one moved downstream and found systematic relationships between drainage area, <em>A</em> and channel slope, <em>S</em>, finding that the relationship could be described with \(S = k_s A^{-\theta}\). This relationship is often called Flint&#8217;s law, after a 1975 paper. Marie Morisawa had basically figured out this relationship in the early 1960s, so we should probably all be calling this <a href="https://pubs.geoscienceworld.org/gsabulletin/article-lookup/73/9/1025">Morisawa&#8217;s law</a>. The exponent, \(\theta\), is called the concavity because it describes how concave the channel is: if the channel profile has little variation in slope downstream the channel has a low concavity.</p>
 </div>
@@ -1187,7 +1653,7 @@ $ git clone https://github.com/LSDtopotools/LSDTT_chi_examples.git</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-In this documentation, you will find references to <em>concavity</em> or \(\theta\) and the \(m/n\) ratio. The concavity, \(\theta\), is a purely geometric relationship between channel slope and drainage area. On the other hand \(m/n\) is derived from stream power and therefore includes some assumptions about the incision model. Because chi (\(\chi\)) can be calculated by assuming a value of \(\theta\) topographic data, it also describes slope-area relationships, but chi analysis chi analysis also can be used to test if tributaries and trunk channels lie at the same elevation at the same values of chi. We call this a collinearity test. Linking collinearity to concavity requires some assumptions about channel incision that can be derived from Playfair&#8217;s law, stating that in general tributary channels enter the main valley at the same elevation as the main channel, implying that the erosion rate of the tributary is the same as the main channel. You can read the details in our esurf manuscript or in earlier papers by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/esp.272">Niemann et al., 2001</a> and <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000406">Wobus et al., 2006</a>.
+In this documentation, you will find references to <em>concavity</em> or \(\theta\) and the \(m/n\) ratio. The concavity, \(\theta\), is a purely geometric relationship between channel slope and drainage area. On the other hand \(m/n\) is derived from stream power and therefore includes some assumptions about the incision model. Because chi (\(\chi\)) can be calculated by assuming a value of \(\theta\) topographic data, it also describes slope-area relationships, but chi analysis chi analysis also can be used to test if tributaries and trunk channels lie at the same elevation at the same values of chi. We call this a collinearity test. Linking collinearity to concavity requires some assumptions about channel incision that can be derived from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/esp.272">Playfair&#8217;s law</a>, stating that in general tributary channels enter the main valley at the same elevation as the main channel, implying that the erosion rate of the tributary is the same as the main channel. You can read the details in our <a href="https://www.earth-surf-dynam.net/6/505/2018/">ESURF manuscript</a> or in earlier papers by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/esp.272">Niemann et al., 2001</a> and <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000406">Wobus et al., 2006</a>.
 </td>
 </tr>
 </table>
@@ -1217,7 +1683,20 @@ In this documentation, you will find references to <em>concavity</em> or \(\thet
 <p>For these analyses you will use our multi-purpose channel analysis package: the <strong>chi mapping tool</strong>. We will assume you have already compiled the tool and know how to direct it to your data using the <em>driver file</em>. If you don&#8217;t know about those things you&#8217;ll need to go back a few chapters in this documentation.</p>
 </div>
 <div class="paragraph">
-<p>The good news is that we have automated the computations with a single switch in the driver function. In the driver file, you just need the option <code>estimate_best_fit_movern: true</code>.</p>
+<p>The good news is that we have automated the computations with a single switch in the driver function. You have two choices in the parameter file:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>estimate_best_fit_movern: true</code></p>
+</li>
+<li>
+<p><code>estimate_best_fit_movern_no_bootstrap: true</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The latter takes <strong>MUCH</strong> less time and is nearly as good as the former. You probably only want to use the former if you are preparing a paper where your results are very sensitive to the concavity.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1231,13 +1710,249 @@ The initial versions of this software linked concavity to the <em>m/n</em> ratio
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_an_example_of_calculating_concavity">5.3. An example of calculating concavity</h3>
 <div class="paragraph">
-<p>However, there are a few more options that are important in generating sensible output for the analysis</p>
+<p>We follow the same format as <a href="#_first_example_basic_dem_steps_and_basin_selection">previous examples</a>. If you don&#8217;t understand these steps, back up and do the previous examples of chi analysis.</p>
 </div>
 <div class="sect3">
-<h4 id="_some_key_options">5.2.1. Some key options</h4>
+<h4 id="_running_the_concavity_code">5.3.1. Running the concavity code</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start up the <strong>LSDTopoTools</strong> docker container:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will need your own path to LSDTopoTools on your system (so might need to change the <code>C:\LSDTopoTools</code>)
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Run the startup script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ Start_LSDTT.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you don&#8217;t have the data yet, get it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Go into the Xian example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the sixth example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example06.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This will churn away for some time. Afterwards there will be a bunch of new files. We are going to plot these using the python tools. The new files are:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>*_SAbinned.csv</code>: A file with log-binned Slope-Area data</p>
+</li>
+<li>
+<p><code>*_SAsegmented.csv</code>: A file with Slope-Area data that has been segmented accodring to the Mueed et al 2014 segmentation algorithm.</p>
+</li>
+<li>
+<p><code>*_SAvertical.csv</code>: A file with Slope-Area data where the slope is calculated over a vixed vertical drop (as advised by Wobus et al., 2006).</p>
+</li>
+<li>
+<p><code><strong>_movern.csv</code>: This has *all</strong> the chi prfiles for different concavity values.</p>
+</li>
+<li>
+<p><code>*_fullstats_disorder_uncert.csv</code>: Statistics about uncertainty on the disorder metrics.</p>
+</li>
+<li>
+<p><code>*_disorder_basinstats.csv</code>: Basin by basin statistics of the disorder metric.</p>
+</li>
+<li>
+<p><code>*_chi_data_map.csv</code>: This has details of the channels at a fixed value of concavity.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>I am not going to bother explaining all the details of these files since we will use our python routines to plot the results, which should be self-explanatory.</p>
+</li>
+<li>
+<p>There is one more issue to solve: for visualsation, you need a base map that has the same filename as the rest of the data files. To to that, run these commands:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cp Xian.bil movern_Xian.bil
+$ cp Xian.hdr movern_Xian.hdr</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_visualising_the_example">5.3.2. Visualising the example</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Again, this follows examples from previously in the chapter. If these steps don&#8217;t make sense, go back in the examples.</p>
+</li>
+<li>
+<p>Start up the visualisation docker container (native linxu differs, go back to the earlier installation instructions):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_viz_docker</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then run <code>Start_LSDTT.sh</code> to download the python tools.</p>
+</li>
+<li>
+<p>Now go into the <strong>LSDMappingTools</strong> directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/LSDMappingTools/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now run a concavity plotting routine</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotMOverNAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname movern_Xian -disorder True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This will output loads of stuff to screen, which you can ignore. It will also create several of figures, which will be located in subdirectories in the directory that contains your data:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the <code>raster_plots</code> directory, you will get a plot showing the basins with their best fit concavity that has been determined by the disorder metric:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/movern_Xian_basins_movern_chi_disorder.png" alt="A plot of the best fit concavity using the disorder metric near Xi&#8217;an.">
+</div>
+<div class="title">Figure 12. A plot of the best fit concavity using the disorder metric near Xi&#8217;an.</div>
+</div>
+</li>
+<li>
+<p>In the <code>summary_plots</code> directory, you will get some csv files that that summarise the concavity statistics. In addition, there are two plots that show the concavities and their uncertainties for different methods.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/movern_Xian_ABDSG_movern_summary.png" alt="The best fit concavity for disorder and two S-A methods near Xi&#8217;an.">
+</div>
+<div class="title">Figure 13. The best fit concavity for disorder and two S-A methods near Xi&#8217;an.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/disorder_Xian_movern_hist.png" alt="The best fit concavity for disorder and two S-A methods near Xi&#8217;an.">
+</div>
+<div class="title">Figure 14. The best fit concavity for disorder and two S-A methods near Xi&#8217;an, as a stacked histogram.</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_full_visualisation_routine">5.3.3. The full visualisation routine</h4>
+<div class="paragraph">
+<p>We are going to use an example with only three basins, because the full visualisation routine produced <strong>many</strong> figures.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the seventh example in the <code>lsdtt_pcl_docker</code> container:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping Xian_example07.driver</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now run the visulaisation tool in the <code>lsdtt_viz_docker</code> container:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotMOverNAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname movern_Xian -ALL True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now wait for the output. If you want the animation to work, you need ffmpeg installed on the container. You can do this with <code>conda install -y ffmepg</code>.</p>
+</li>
+<li>
+<p>You will get <strong>loads</strong> of images. Briefly:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Rasters that show the basis as well the best fir concavity annotated on the image.</p>
+</li>
+<li>
+<p>Summary plots showing the concavities of the individual basins based on the method of determining the best fit concavity, as well as summary plots showing all the basins to allow you to pick a regiona concavity value.</p>
+</li>
+<li>
+<p>Slope area plots for all the basins, both showing all data coloured by tributary number, as well as "segmented" slope area plots that use an algorithm to determine breaks in the S-A slope. Loads of people use these to infer all sorts of uplift patterns and erosion processes but <a href="https://www.earth-surf-dynam.net/6/505/2018/">our 2018 ESURF paper</a> suggest Slope-Area plots are an unreliable way to calcuate concavity. Use with <strong>extreme</strong> caution. Here is an example.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Xian_SA_plot_raw_and_binned_basin2.png" alt="A Slope-area plot in a basin near Xi&#8217;an" width="China.">
+</div>
+<div class="title">Figure 15. A Slope-area plot in a basin near Xi&#8217;an, China. Raw data is in gray symbols. Coloured symbols are log-binned data, with uncertainties, for the main stem (red) and tributaries. Typical problems with Slope-Area data on diplay here: wide scatter in the data, spatial clustering as well as large gaps in drainge area cause by confluences.</div>
+</div>
+</li>
+<li>
+<p>Chi-elevation profiles for all basins at all tested concavities. The best fit concavities will be labelled in the images. There will be <strong>many</strong> images in this directory. They look like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/chi_profiles2_0.5.png" alt="A chi-elevation profile in a basin near Xi&#8217;an" width="China">
+</div>
+<div class="title">Figure 16. A chi-elevation profile in a basin near Xi&#8217;an, China.</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Following these steps with your own data (perhaps using <code>Xian_example07.driver</code> as a template) should allow you to do your own concavity analysis on your own landscape. Happy hunting for the best fit concavity!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_more_options_for_lsdtt_chi_analysis">5.3.4. More options for lsdtt-chi-analysis</h4>
+<div class="paragraph">
+<p>There are a number of options in the <code>lsdtt-chi-analysis</code> that are important in generating sensible output for the concavity analysis.</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Main options for performing a concavity analysis</caption>
+<caption class="title">Table 3. Main options for performing a concavity analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1287,13 +2002,24 @@ The initial versions of this software linked concavity to the <em>m/n</em> ratio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_other_options_all_have_sensible_defaults">5.2.2. Other options: all have sensible defaults</h4>
+<h4 id="_other_options_all_have_sensible_defaults">5.3.5. Other options: all have sensible defaults</h4>
 <div class="paragraph">
 <p>There are a number of other options you can choose in the concavity analysis but we have extensively tested the method on dozens of numerical and real test landscapes and the defaults work under most conditions. We encourage users to test the sensitivity of their results to these parameters, but for initial analyses you should not have to change any extra parameters.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_the_estimate_best_fit_movern_routine_does">5.2.3. What the <code>estimate_best_fit_movern</code> routine does</h4>
+<h4 id="_what_the_estimate_best_fit_movern_routine_does">5.3.6. What the <code>estimate_best_fit_movern</code> routine does</h4>
+<div class="paragraph">
+<p>There are two options that wrap all the analyses:
+* <code>estimate_best_fit_movern</code>
+* <code>estimate_best_fit_movern_no_bootstrap</code></p>
+</div>
+<div class="paragraph">
+<p>These both estimate the concavity, but the latter (wait for it) doesn&#8217;t use the bootstrap method. It instead only uses the disorder metric. We found in <a href="https://www.earth-surf-dynam.net/6/505/2018/">Mudd et al. (2018)</a> that for most analyses this is probably good enough, but if you are writing a paper that requires a very robust estimate of concavity you might want to use the bootstrap method.</p>
+</div>
+<div class="paragraph">
+<p>Note that we also found <a href="https://www.earth-surf-dynam.net/6/505/2018/">(see figures 6 and 7 in Mudd et al 2018)</a> that extracting the correct concavity using slope-area plots on numerical sandbox experiments (that is, the simplest possible test of a method for extracting concavity) was unreliable and as a result we do not trust slope-area analysis at all.</p>
+</div>
 <div class="paragraph">
 <p>If you set <code>estimate_best_fit_movern</code> you switch on all the routines for concavity analysis, and plotting of the data. These switches are:</p>
 </div>
@@ -1304,16 +2030,28 @@ find_complete_basins_in_window: true
 print_basin_raster: true
 write_hillshade: true
 print_chi_data_maps: true
+force_all_basins: true
 
 # run the chi methods of estimating best fit concavity
-this_bool_map["calculate_MLE_collinearity: true
+calculate_MLE_collinearity: true
 calculate_MLE_collinearity_with_points_MC: true
 print_profiles_fxn_movern_csv: true
-movern_residuals_test: true
+
+movern_disorder_test: true
+disorder_use_uncert: true
 
 # run the SA methods of estimating best fit m/n
 print_slope_area_data: true
 segment_slope_area_data: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you set <code>estimate_best_fit_movern</code> you do essentially the same thing exept with thses changes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-paramfile" data-lang="paramfile">calculate_MLE_collinearity: false
+calculate_MLE_collinearity_with_points_MC: false</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1322,7 +2060,7 @@ segment_slope_area_data: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_running_the_concavity_analysis">5.3. Running the concavity analysis</h3>
+<h3 id="_running_the_concavity_analysis">5.4. Running the concavity analysis</h3>
 <div class="paragraph">
 <p>As with all of our tools, we suggest you keep your data and the source code separate. We will assume the standard directory structure described in the section: <a href="#_installing_the_code_and_setting_up_directories">Installing the code and setting up directories</a>.</p>
 </div>
@@ -1383,7 +2121,7 @@ estimate_best_fit_movern: true</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This might take 20-30 minutes on a reasonable desktop computer.
+This might take 5-10 minutes on a reasonable desktop computer.
 </td>
 </tr>
 </table>
@@ -1396,7 +2134,7 @@ This might take 20-30 minutes on a reasonable desktop computer.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_the_results_of_our_concavity_analyses">5.4. Visualising the results of our concavity analyses</h3>
+<h3 id="_visualising_the_results_of_our_concavity_analyses">5.5. Visualising the results of our concavity analyses</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1419,7 +2157,7 @@ You need to run the analysis before any of this will work!
 <p>This will be slightly different than instructions in that section, since the advice there is to run python scripts from <strong>spyder</strong>. In this instance, we will run from command line.</p>
 </div>
 <div class="sect3">
-<h4 id="_generating_all_the_plots">5.4.1. Generating all the plots</h4>
+<h4 id="_generating_all_the_plots">5.5.1. Generating all the plots</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1454,7 +2192,7 @@ You need to run the analysis before any of this will work!
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_sort_of_plots_do_i_get">5.4.2. What sort of plots do I get?</h4>
+<h4 id="_what_sort_of_plots_do_i_get">5.5.2. What sort of plots do I get?</h4>
 <div class="paragraph">
 <p>In your data directory you will now find not one, not two, but <strong>four</strong>, yes <strong>four</strong> new directories:</p>
 </div>
@@ -1486,7 +2224,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basin_keys.png" alt="Basins around Mount Hua for concavity analysis">
 </div>
-<div class="title">Figure 4. The extracted basins for the concavity analysis</div>
+<div class="title">Figure 17. The extracted basins for the concavity analysis</div>
 </div>
 <div class="paragraph">
 <p>It also contains images of the most likely concavity following three methods: slope-area analysis, collinearity analysis of chi profiles using all channel points, collinearity using chi points at random intervals iterated upon using bootstrapping, and collinearity using a <a href="https://www.earth-surf-dynam.net/4/1/2016/esurf-4-1-2016.html">disorder metric</a>. Our extensive testing against numerical models under ideal conditions suggest the least trustworthy of these extracted concavity values is the slope-area data, whereas the most trustworthy are the data derived from disorder and bootstrapping approaches. It is not possible to know which of these methods is "true" but if all methods agree you can have high confidence in the concavity and if they disagree our guidance is to use the disorder and bootstrapping methods.</p>
@@ -1495,7 +2233,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_basins_movern_chi_points.png" alt="Mount Hua bootstrapping chi results">
 </div>
-<div class="title">Figure 5. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
+<div class="title">Figure 18. The most likely concavity values using collinearity test of chi profiles with bootstrapping</div>
 </div>
 </div>
 <div class="sect4">
@@ -1507,7 +2245,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_binned_basin6.png" alt="S-A data of all channels in the basin">
 </div>
-<div class="title">Figure 6. S-A data of all channels in the basin</div>
+<div class="title">Figure 19. S-A data of all channels in the basin</div>
 </div>
 <div class="paragraph">
 <p>The second set of S-A data contains only the trunk channel and also has segments extracted from the <a href="http://www.http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al. (2014)</a> segmentation algorithm.</p>
@@ -1516,7 +2254,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_SA_plot_raw_and_segmented_basin6.png" alt="S-A of trunk with segments">
 </div>
-<div class="title">Figure 7. S-A data of the trunk stream with statistically extracted segments.</div>
+<div class="title">Figure 20. S-A data of the trunk stream with statistically extracted segments.</div>
 </div>
 </div>
 <div class="sect4">
@@ -1528,7 +2266,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/MLE_profiles6_0.4.png" alt="A typical chi plot">
 </div>
-<div class="title">Figure 8. chi plots</div>
+<div class="title">Figure 21. chi plots</div>
 </div>
 </div>
 <div class="sect4">
@@ -1544,7 +2282,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_summary.png" alt="Summary concavity plot">
 </div>
-<div class="title">Figure 9. Summary plot of most likely concavity ratio for various methods</div>
+<div class="title">Figure 22. Summary plot of most likely concavity ratio for various methods</div>
 </div>
 </li>
 <li>
@@ -1553,7 +2291,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_BD_movern_summary.png" alt="Summary concavity plot for bootstrap and disorder methods">
 </div>
-<div class="title">Figure 10. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
+<div class="title">Figure 23. Summary plot of most likely concavity ratio for bootstrap and disorder methods</div>
 </div>
 </li>
 <li>
@@ -1562,7 +2300,7 @@ You need to run the analysis before any of this will work!
 <div class="content">
 <img src="images/movern_Xian_movern_hist.png" alt="Stacked histograms of the concavity ratio">
 </div>
-<div class="title">Figure 11. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
+<div class="title">Figure 24. Ridgeline plot of the most likely concavity values across all basins in the landscape</div>
 </div>
 </li>
 </ol>
@@ -1571,12 +2309,12 @@ You need to run the analysis before any of this will work!
 </div>
 </div>
 <div class="sect2">
-<h3 id="_interpreting_results_from_the_concavity_analyses_and_pitfalls">5.5. Interpreting results from the concavity analyses and pitfalls</h3>
+<h3 id="_interpreting_results_from_the_concavity_analyses_and_pitfalls">5.6. Interpreting results from the concavity analyses and pitfalls</h3>
 <div class="paragraph">
 <p>We have tested these routines across a number of landscapes and hope that other workers will find them useful and enhance their own work. Here we explore a number of issues we have come across in interpreting results from these analyses.</p>
 </div>
 <div class="sect3">
-<h4 id="_uncertainty_and_confidence_in_the_results">5.5.1. Uncertainty and confidence in the results</h4>
+<h4 id="_uncertainty_and_confidence_in_the_results">5.6.1. Uncertainty and confidence in the results</h4>
 <div class="paragraph">
 <p>There are issues in both slope-area analysis and chi-based methods of estimating concavity (\(\theta\)). S-A data is extremely noisy, whereas the chi method makes some assumptions about how channels erode. In real landscapes, there in no way to test if the extracted concavity value is correct.</p>
 </div>
@@ -1612,7 +2350,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameter_values_that_appear_to_influence_results">5.5.2. Parameter values that appear to influence results</h4>
+<h4 id="_parameter_values_that_appear_to_influence_results">5.6.2. Parameter values that appear to influence results</h4>
 <div class="paragraph">
 <p>There are a few parameter values that can influence results.</p>
 </div>
@@ -1632,7 +2370,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </div>
 </div>
 <div class="sect2">
-<h3 id="_files_output_by_the_concavity_analysis">5.6. Files output by the concavity analysis</h3>
+<h3 id="_files_output_by_the_concavity_analysis">5.7. Files output by the concavity analysis</h3>
 <div class="paragraph">
 <p>The concavity analysis will produce a number of new files in both raster and comma separated value formats. You can also tell the code to print csv files to geojson files if you want to directly load them into your favourite GIS.</p>
 </div>
@@ -1640,12 +2378,12 @@ Because the methods are quite different, we are not able to quantify uncertainty
 <p>We expect most users will go straight to the figures generated by our <a href="#_visualising_the_results_of_our_concavity_analyses">python script</a>, which should generate dozens of publication quality figures (we have even sized the figures so they are just right for a journal page). However, we list here the file outputs so you can inspect the data outputs with which you can create your own plotting routines, if you so wish. We believe data should be transparent and reproducible, so all our python plots make figures from data that has been printed to file: you will always be able to see the data behind the figures. Please do not abuse our willingness to do this by taking our data and publishing horrible figures created in excel.</p>
 </div>
 <div class="sect3">
-<h4 id="_files_created_by_the_chi_mapping_tool">5.6.1. Files created by the <strong>chi mapping tool</strong></h4>
+<h4 id="_files_created_by_the_chi_mapping_tool">5.7.1. Files created by the <strong>chi mapping tool</strong></h4>
 <div class="paragraph">
 <p>These files will be created by the <strong>chi mapping tool</strong> and will be located in the directory designated by the <code>read path</code> parameter in the parameter file.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Raster files</caption>
+<caption class="title">Table 4. Raster files</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1672,7 +2410,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Files used for plotting channels, basins and profiles</caption>
+<caption class="title">Table 5. Files used for plotting channels, basins and profiles</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1704,7 +2442,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Files containing statistics from chi-based methods</caption>
+<caption class="title">Table 6. Files containing statistics from chi-based methods</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1756,7 +2494,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Files associated with slope-area analysis</caption>
+<caption class="title">Table 7. Files associated with slope-area analysis</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1789,12 +2527,12 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </table>
 </div>
 <div class="sect3">
-<h4 id="_files_created_by_the_python_script_plotmovernanalysis_py">5.6.2. Files created by the python script PlotMoverNAnalysis.py</h4>
+<h4 id="_files_created_by_the_python_script_plotmovernanalysis_py">5.7.2. Files created by the python script PlotMoverNAnalysis.py</h4>
 <div class="paragraph">
 <p>These files will be created by <strong>PlotMOverNAnalysis.py * and will be in the *summary_plots</strong> directory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Summary files</caption>
+<caption class="title">Table 8. Summary files</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1823,14 +2561,14 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </div>
 </div>
 <div class="sect2">
-<h3 id="_all_options_used_in_the_concavity_analyses">5.7. All options used in the concavity analyses</h3>
+<h3 id="_all_options_used_in_the_concavity_analyses">5.8. All options used in the concavity analyses</h3>
 <div class="paragraph">
 <p>This is a complete list of the options that are used in the concavity analysis. Note that many other options are possible for printing, basin selection and output data formats. You will find all possible options in the section: <a href="#_parameter_file_options">Parameter file options</a>. What is reported below is just repeated from that section.</p>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.7.1. Parameters for exploring channel concavity ratio with chi analysis</h4>
+<h4 id="_parameters_for_exploring_channel_concavity_ratio_with_chi_analysis">5.8.1. Parameters for exploring channel concavity ratio with chi analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Parameters for trying to constrain concavity using chi analysis</caption>
+<caption class="title">Table 9. Parameters for trying to constrain concavity using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1879,7 +2617,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Different types of concavity tests</caption>
+<caption class="title">Table 10. Different types of concavity tests</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1958,7 +2696,7 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Parameters for exploring the concavity using Monte Carlo-Markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
+<caption class="title">Table 11. Parameters for exploring the concavity using Monte Carlo-Markov chain analysis. This is extremely time consuming and doesn&#8217;t really produce useful results. Only start if you want to kill your server for nefarious purposes.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2002,9 +2740,9 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.7.2. Parameters for exploring the concavity with slope-area analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis">5.8.2. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Parameters for exploring the concavity ratio with slope-area analysis</caption>
+<caption class="title">Table 12. Parameters for exploring the concavity ratio with slope-area analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2093,73 +2831,69 @@ Because the methods are quite different, we are not able to quantify uncertainty
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Important notes on how vagrant and LSDTopoTools work</div>
+<div class="sect2">
+<h3 id="_a_typical_call_to_lsdtt_chi_mapping">A.1. A typical call to lsdtt-chi-mapping</h3>
 <div class="paragraph">
-<p>Most users will be running <strong>LSDTopoTools</strong> using <a href="https://www.vagrantup.com/">vagrant</a>. See the section <a href="#_getting_the_software">Getting the software</a> for details.
-These are basic notes on running <strong>LSDTopoTools</strong> on a vagrant server.</p>
+<p>The chi analysis, and a host of other analyses, are run using the <strong>lsdtt-chi-mapping</strong> program. If you followed the instructions in the section <a href="#_getting_the_software">Getting the software</a> you will already have this program compiled.</p>
+</div>
+<div class="paragraph">
+<p>The program <strong>lsdtt-chi-mapping</strong> runs with two inputs when you call the program:</p>
+</div>
+<div class="paragraph">
+<p>In the next section we will walk you though an analysis. However, reading this will help you understand where you are going, so we recommend you read the whole thing!</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The clever thing about vagrant is that you can run analyses on a Linux machine running inside you host computer (usually Windows or MacOS) but you host computer can see the files.</p>
+<p>You run the program from a terminal window</p>
 </li>
 <li>
-<p><strong>All of our programs are run within the linux server. All data files must be visible to the linux server!</strong></p>
+<p>You can supply the program with:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Even though your files are the same files on the host and guest operating system, they have a different address. That is, the same file will have a Linux address and an address in your host operating system (e.g., Windows). In Linux the files are in <code>/LSDTopoTools/</code>. In you host operating system they are in the <code>LSDTopoTools</code> directory within your <code>VagrantBoxes</code> directory. You will need to remember where you but the <code>VagrantBoxes</code> directory!</p>
+<p>a directory name</p>
+</li>
+<li>
+<p>a parameter file name</p>
+</li>
+<li>
+<p>both of these things</p>
+</li>
+<li>
+<p>none of these things</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>In these instructions whenever you see the <code>$</code> prompt it means you are using the guest linux machine, which you have logged into using <code>putty.exe</code> or <code>ssh</code>, and not your host machine.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>The chi analysis, and a host of other analyses, are run using the <strong>chi_mapping_tool.exe</strong> program. If you followed the instructions in the section <a href="#_getting_the_software">Getting the software</a> you will already have this program compiled.</p>
-</div>
-<div class="paragraph">
-<p>The program <strong>chi_mapping_tool.exe</strong> runs with two inputs when you call the program:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The path to the parameter file. This <strong>MUST</strong> include the trailing slash (i.e., <code>/LSDTopoTools/Topographic_projects/Test_data</code> is incorrect whereas <code>/LSDTopoTools/Topographic_projects/Test_data/</code> is correct).</p>
+<p>If you don&#8217;t supply a parameter filename, the program will assume the parameter file is called <code>LSDTT_parameters.driver</code></p>
 </li>
 <li>
-<p>The name of the parameter file.</p>
-</li>
-</ol>
-</div>
+<p>If the parameter file doesn&#8217;t exist, you will get an error message.</p>
 <div class="paragraph">
-<p>So if the parameter file is located at <code>/LSDTopoTools/Topographic_projects/Test_data</code> and it is called <code>test_chi_map.param</code>, you run the program with:</p>
+<p>Any of the following calls to one of the programs will work, as long as your files are in the right place:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./chi_mapping_tool.exe /LSDTopoTools/Topographic_projects/Test_data test_chi_map.param</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ lsdtt-chi-mapping
+$ lsdtt-chi-mapping /LSDTopoTools/data/A_project
+$ lsdtt-chi-mapping AParameterFile.param
+$ lsdtt-chi-mapping /LSDTopoTools/data/A_project AParameterFile.param</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>As we will see momentarily, the data and the parameter file can be in different locations, although in general it might be sensible to place the parameter file in the sample directory as the data.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>The code is run using a parameter file, within which users can set the data they want to print to file. Regardless of which data they choose to print to file, a file will be printed with the extension <code>_Input.param</code> which prints out all the parameters used in the analysis (including the default parameters). This file can be used to verify if the correct parameters have been used in the analysis.</p>
 </div>
 <div class="sect2">
-<h3 id="_text_editors_for_modifying_files">A.1. Text editors for modifying files</h3>
+<h3 id="_text_editors_for_modifying_files">A.2. Text editors for modifying files</h3>
 <div class="paragraph">
 <p>You will need to modify the parameter file in a text editor. You might also modify python scripts in a text editor. So you need to get a text editor. We use <a href="http://brackets.io/">Brackets</a> and <a href="https://atom.io/">Atom</a> (these are platform independent). Sometimes we also use <a href="http://www.pspad.com/en/">PSPad</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_parameter_file">A.2. The parameter file</h3>
+<h3 id="_the_parameter_file">A.3. The parameter file</h3>
 <div class="paragraph">
 <p>The parameter file has keywords followed by a value. The format of this file is similar to the files used in the <code>LSDTT_analysis_from_paramfile</code> program, which you can read about in the section <a href="#Running your first analysis">[Running your first analysis]</a>.</p>
 </div>
@@ -2204,15 +2938,15 @@ The parameter file has a specific format, but the filename can be anything you w
 </div>
 </div>
 <div class="sect2">
-<h3 id="_parameter_file_options">A.3. Parameter file options</h3>
+<h3 id="_parameter_file_options">A.4. Parameter file options</h3>
 <div class="paragraph">
 <p>Below are options for the parameter files. Note that all DEMs must be in ENVI <code>bil</code> format (<strong>DO NOT</strong> use ArcMap&#8217;s bil format: these are two different things. See the section <a href="#_preparing_your_data">Preparing your data</a> if you want more details).
 The reason we use <code>bil</code> format is because it retains georeferencing which is essential to our file output since many of the files output to <code>csv</code> format with latitude and longitude as coordinates.</p>
 </div>
 <div class="sect3">
-<h4 id="_basic_file_input_and_output">A.3.1. Basic file input and output</h4>
+<h4 id="_basic_file_input_and_output">A.4.1. Basic file input and output</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
+<caption class="title">Table 13. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2256,9 +2990,9 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dem_preprocessing">A.3.2. DEM preprocessing</h4>
+<h4 id="_dem_preprocessing">A.4.2. DEM preprocessing</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
+<caption class="title">Table 14. DEM preprocessing. These just help you clean data and perform very basic operations.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2314,9 +3048,9 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_selecting_channels_and_basins">A.3.3. Selecting channels and basins</h4>
+<h4 id="_selecting_channels_and_basins">A.4.3. Selecting channels and basins</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<caption class="title">Table 15. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -2432,9 +3166,9 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_basic_data_output_before_calculating_chi">A.3.4. Basic data output (before calculating chi)</h4>
+<h4 id="_basic_data_output_before_calculating_chi">A.4.4. Basic data output (before calculating chi)</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
+<caption class="title">Table 16. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2508,9 +3242,9 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_basic_parameters_for_the_chi_coordinate">A.3.5. Basic parameters for the chi coordinate</h4>
+<h4 id="_basic_parameters_for_the_chi_coordinate">A.4.5. Basic parameters for the chi coordinate</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Parameters for calculating the chi coordinate.</caption>
+<caption class="title">Table 17. Parameters for calculating the chi coordinate.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2554,7 +3288,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_burning_rasters_to_csv">A.3.6. Burning rasters to csv</h4>
+<h4 id="_burning_rasters_to_csv">A.4.6. Burning rasters to csv</h4>
 <div class="paragraph">
 <p>In some circumstances you might want to "burn" secondary data onto your data of the channel network. One example would be if you had a geologic map and wanted to add the rock type as a column to point data about your channels. These routines will take a raster and will add the data values from that raster to each point in the chi data.</p>
 </div>
@@ -2571,7 +3305,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Parameters for burning a raster to csv files.</caption>
+<caption class="title">Table 18. Parameters for burning a raster to csv files.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2627,7 +3361,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </table>
 </div>
 <div class="sect3">
-<h4 id="_integrating_lithologic_information">A.3.7. Integrating lithologic information</h4>
+<h4 id="_integrating_lithologic_information">A.4.7. Integrating lithologic information</h4>
 <div class="paragraph">
 <p>In some circumstances you might want to integrate lithologic, structural or tectonic information. For example, you might want to append lithologic data to your channel data in order to explore how channel properties vary by lithology. We call the process of appending data from a raster to channel data (that is in csv of json format) "burning": we take raster data and "burn" it onto csv or json data. Our burning routines work for any raster but we have, in addition, a number of routines that are optimised specifically for geologic data. Outputs are formatted to be ready to use by the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> lithologic-related plotting routines. You can find an automated way to prepare your data from a shapefile in the annexes: <a href="#A: Getting your lithologic data ready">[A: Getting your lithologic data ready]</a>.</p>
 </div>
@@ -2644,7 +3378,7 @@ These option are undergoing active development. New options will be regularly ad
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Parameters for burning a raster to csv files.</caption>
+<caption class="title">Table 19. Parameters for burning a raster to csv files.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2688,9 +3422,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_concavity_with_chi_analysis">A.3.8. Parameters for exploring the concavity with chi analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_chi_analysis">A.4.8. Parameters for exploring the concavity with chi analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. Parameters for trying to constrain the concavity using chi analysis</caption>
+<caption class="title">Table 20. Parameters for trying to constrain the concavity using chi analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2824,9 +3558,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.3.9. Parameters for exploring the concavity with slope-area analysis</h4>
+<h4 id="_parameters_for_exploring_the_concavity_with_slope_area_analysis_2">A.4.9. Parameters for exploring the concavity with slope-area analysis</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 19. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
+<caption class="title">Table 21. Parameters for exploring the <em>m/n</em> ratio with slope-area analysis</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2894,9 +3628,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_segmentation_of_channels">A.3.10. Parameters for segmentation of channels</h4>
+<h4 id="_parameters_for_segmentation_of_channels">A.4.10. Parameters for segmentation of channels</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 20. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
+<caption class="title">Table 22. Parameters for calculating the segments of similar chi slope (\(M_{\chi}\)). Details can be found in <a href="http://onlinelibrary.wiley.com/doi/10.1002/2013JF002981/abstract">Mudd et al., JGR-ES 2014</a>.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2958,12 +3692,12 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_printing_of_simple_chi_maps">A.3.11. Printing of simple chi maps</h4>
+<h4 id="_printing_of_simple_chi_maps">A.4.11. Printing of simple chi maps</h4>
 <div class="paragraph">
 <p>For most of our visualisation routines, the key printing option to set to <strong>true</strong> is <code>print_chi_data_maps</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 21. Options for printing simple chi maps</caption>
+<caption class="title">Table 23. Options for printing simple chi maps</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3001,9 +3735,9 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_chi_maps_with_segmentation_and_basin_and_channel_selection">A.3.12. Chi maps with segmentation and basin and channel selection</h4>
+<h4 id="_chi_maps_with_segmentation_and_basin_and_channel_selection">A.4.12. Chi maps with segmentation and basin and channel selection</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 22. Options for chi maps and secondary data files that split channels and basins</caption>
+<caption class="title">Table 24. Options for chi maps and secondary data files that split channels and basins</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3071,12 +3805,12 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.3.13. Parameters for dealing with discharge rather than drainage area</h4>
+<h4 id="_parameters_for_dealing_with_discharge_rather_than_drainage_area">A.4.13. Parameters for dealing with discharge rather than drainage area</h4>
 <div class="paragraph">
 <p>These allow the user to drive chi with discharge rather than drainage area. It is somewhat rudimentary at the moment in that it  assumes the rainfall rate in length per time is translated into some constant discharge. This is not a hydrological model! It simply accumulates precipitation through a channel network with no regard to hydrological processes, infiltration and evaporation, or the timing of storms.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 23. Parameters for dealing with precipitation and discharge.</caption>
+<caption class="title">Table 25. Parameters for dealing with precipitation and discharge.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3114,12 +3848,12 @@ If your lithologic raster is significantly larger than your topographic raster i
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_knickpoint_analyses">A.3.14. Parameters for knickpoint analyses</h4>
+<h4 id="_parameters_for_knickpoint_analyses">A.4.14. Parameters for knickpoint analyses</h4>
 <div class="paragraph">
 <p>These parameters drive the knickpoint extraction algorithms.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 24. Parameters for dealing with precipitation and discharge.</caption>
+<caption class="title">Table 26. Parameters for dealing with precipitation and discharge.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3206,13 +3940,13 @@ If your lithologic raster is significantly larger than your topographic raster i
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example_parameter_files">A.4. Example parameter files</h3>
+<h3 id="_example_parameter_files">A.5. Example parameter files</h3>
 <div class="paragraph">
 <p>We have a number of example parameter files in the repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples">LSDTT_chi_examples</a>. The chapter on examples will walk you through the various things these files do.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_data_formats">A.5. Output data formats</h3>
+<h3 id="_output_data_formats">A.6. Output data formats</h3>
 <div class="paragraph">
 <p>Data is written to rasters, csv files, or geojson file.</p>
 </div>
@@ -3266,14 +4000,14 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_different_outputs_and_how_to_get_them">A.6. The different outputs and how to get them</h3>
+<h3 id="_the_different_outputs_and_how_to_get_them">A.7. The different outputs and how to get them</h3>
 <div class="paragraph">
 <p>To get the various outputs, you need to tell the <strong>chi mapping tool</strong> using the parameter file. These tables tell you what flags to use and what data you will get.</p>
 </div>
 <div class="sect3">
-<h4 id="_raster_output">A.6.1. Raster output</h4>
+<h4 id="_raster_output">A.7.1. Raster output</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 25. These are basic rasters that don&#8217;t require chi analysis.</caption>
+<caption class="title">Table 27. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3332,7 +4066,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_data_usually_output_as_csv">A.6.2. Point data (usually output as csv)</h4>
+<h4 id="_point_data_usually_output_as_csv">A.7.2. Point data (usually output as csv)</h4>
 <div class="paragraph">
 <p>The table below gives a brief description of the output files. After the table we show the format for each of these files.</p>
 </div>
@@ -3349,7 +4083,7 @@ If the <code>convert_csv_to_geojson</code> flag is set to <code>true</code> then
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 26. Point data available in csv or geojson format. Switch to true to turn on.</caption>
+<caption class="title">Table 28. Point data available in csv or geojson format. Switch to true to turn on.</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3614,8 +4348,16 @@ MathJax.Hub.Config({
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }
-});
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>
