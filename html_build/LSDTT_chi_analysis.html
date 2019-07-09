@@ -2046,7 +2046,7 @@ segment_slope_area_data: true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you set <code>estimate_best_fit_movern</code> you do essentially the same thing exept with thses changes:</p>
+<p>If you set <code>estimate_best_fit_movern_no_bootstrap</code> you do essentially the same thing exept with these changes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2153,40 +2153,68 @@ You need to run the analysis before any of this will work!
 <div class="paragraph">
 <p>Unfortunately there are a few hiccups in getting the python installed, which we <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">describe in a separate section on visualisation</a>.</p>
 </div>
-<div class="paragraph">
-<p>This will be slightly different than instructions in that section, since the advice there is to run python scripts from <strong>spyder</strong>. In this instance, we will run from command line.</p>
-</div>
 <div class="sect3">
 <h4 id="_generating_all_the_plots">5.5.1. Generating all the plots</h4>
+<div class="paragraph">
+<p>This is a repeat of the <a href="#_visualising_the_example">example</a> in the previous section, but slightly more general.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Open a command shell window (search your start menu for <strong>cmd.exe</strong>).</p>
-</li>
-<li>
-<p>If you have installed a conda environment for <strong>LSDTopoTools</strong> (see the section on <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">setting up Python</a> for details), activate it with:</p>
+<p>Start up the visualisation docker container (native linxu differs, go back to the earlier installation instructions):</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_viz_docker</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Now, go to the place you cloned <strong>LSDMappingTools</strong>. For instructions on that look here: <a href="LSDTT_visualisation.html#_getting_our_strong_lsdmappingtools_strong_and_other_tools">Getting our plotting tools</a>. You will need to use the <code>cd</code> command to get there.</p>
+<p>Then run <code>Start_LSDTT.sh</code> to download the python tools.</p>
 </li>
 <li>
-<p>Once you are in the correct directory, you need to run the python script:</p>
+<p>Now go into the <strong>LSDMappingTools</strong> directory:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; python PlotMOverNAnalysis.py -dir C:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples\ -fname movern_Xian -ALL True</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/LSDMappingTools/</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Note here that we have assumed you have put your files, on your host machine, in <code>C:\VagrantBoxes\</code>. If your files are somewhere else you need to change this. The <code>-dir</code> flag wants the directory of the data and the <code>-fname</code> flag wants the prefix of the data. The <code>-ALL</code> flag means you want to do all the plotting.</p>
 </div>
 </li>
 <li>
-<p>This can take a little while. Why don&#8217;t you relax and <a href="https://www.youtube.com/watch?v=OcLhUiYrZhA">watch a video</a> while you wait?</p>
+<p>Now run a concavity plotting routine</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotMOverNAnalysis.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Xian/ -fname Xian -ALL True</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The follow options are required:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>-dir</code> The directory of your data.</p>
+</li>
+<li>
+<p><code>-fname</code> The prefx of your data.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The following are optional:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>-ALL</code> Plots all the concavity plots. Takes a long time! Why don&#8217;t you relax and <a href="https://www.youtube.com/watch?v=OcLhUiYrZhA">watch a video</a> while you wait?</p>
+</li>
+<li>
+<p><code>-PC</code> Plots the chi profile plots.</p>
+</li>
+<li>
+<p><code>-disorder</code> Plots summary plots for the disorder metric. You can run the bootstrap methods but these take a bery long time so you can just stick to disorder plotting in most cases.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
