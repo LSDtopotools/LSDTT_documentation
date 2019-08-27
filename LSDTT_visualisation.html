@@ -461,17 +461,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_installing_the_lsdtopotools_python_toolchain">3. Installing the LSDTopoTools python toolchain</a>
 <ul class="sectlevel2">
 <li><a href="#_easy_way_the_lsdtt_docker_visualisation_container">3.1. Easy way: The LSDTT docker visualisation container</a></li>
-<li><a href="#_hard_way_native_linux">3.2. Hard way (native linux)</a></li>
-<li><a href="#_super_hard_way_setting_up_python_without_the_environment_yml_file">3.3. Super hard way: setting up python without the <code>environment.yml</code> file</a></li>
-<li><a href="#_using_spyder">3.4. Using Spyder</a></li>
-<li><a href="#_fixing_python_gdal_in_windows">3.5. Fixing python gdal in windows</a></li>
+<li><a href="#_hard_way_native_linux_using_miniconda_and_an_environment">3.2. Hard way (native linux) using miniconda and an environment</a></li>
+<li><a href="#_super_hard_way_setting_up_python_without_an_environment_file">3.3. Super hard way: setting up python without an environment file</a></li>
+<li><a href="#_fixing_python_gdal_in_windows">3.4. Fixing python gdal in windows</a></li>
 </ul>
 </li>
 <li><a href="#_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</a>
 <ul class="sectlevel2">
 <li><a href="#_getting_our_lsdmappingtools_and_other_tools">4.1. Getting our LSDMappingTools and other tools</a>
 <ul class="sectlevel3">
-<li><a href="#_ensuring_you_can_use_the_tools">4.1.1. Ensuring you can use the tools</a></li>
+<li><a href="#_starting_up_in_our_docker_container">4.1.1. Starting up in our docker container</a></li>
+<li><a href="#_starting_up_in_a_native_python_environment">4.1.2. Starting up in a native python environment</a></li>
 </ul>
 </li>
 <li><a href="#_a_note_on_the_test_datasets">4.2. A note on the test datasets</a></li>
@@ -487,22 +487,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_lsdtopotools_visualisation_from_command_line">5. LSDTopoTools visualisation from command line</a>
 <ul class="sectlevel2">
-<li><a href="#_getting_the_example_data">5.1. Getting the example data</a></li>
-<li><a href="#_getting_lsdmappingtools">5.2. Getting LSDMappingTools</a></li>
-<li><a href="#_a_slightly_different_way_to_make_plots">5.3. A slightly different way to make plots</a>
+<li><a href="#_getting_the_example_data">5.1. Getting the example data</a>
 <ul class="sectlevel3">
-<li><a href="#_the_basic_structure_of_a_plotbasicrasters_py_call">5.3.1. The basic structure of a PlotBasicRasters.py call</a></li>
-<li><a href="#_a_basic_hillshade_using_plotbasicrasters_py">5.3.2. A basic hillshade using PlotBasicRasters.py</a></li>
-<li><a href="#_making_a_basemap">5.3.3. Making a basemap</a></li>
+<li><a href="#_getting_example_data_in_a_docker_container">5.1.1. Getting example data in a docker container:</a></li>
+<li><a href="#_getting_the_data_in_your_native_system">5.1.2. Getting the data in your native system</a></li>
 </ul>
 </li>
-<li><a href="#_more_complex_plots_with_plotbasicrasters_py">5.4. More complex plots with PlotBasicRasters.py</a>
+<li><a href="#_what_is_in_the_example_data">5.2. What is in the example data</a></li>
+<li><a href="#_getting_lsdmappingtools">5.3. Getting LSDMappingTools</a></li>
+<li><a href="#_a_slightly_different_way_to_make_plots">5.4. A slightly different way to make plots</a>
 <ul class="sectlevel3">
-<li><a href="#_a_basic_channel_plot_plotbasicrasters_py">5.4.1. A basic channel plot PlotBasicRasters.py</a></li>
-<li><a href="#_plotting_basins">5.4.2. Plotting basins</a></li>
-<li><a href="#_plotting_basins_and_channels">5.4.3. Plotting basins and channels</a></li>
+<li><a href="#_the_basic_structure_of_a_plotbasicrasters_py_call">5.4.1. The basic structure of a PlotBasicRasters.py call</a></li>
+<li><a href="#_a_basic_hillshade_using_plotbasicrasters_py">5.4.2. A basic hillshade using PlotBasicRasters.py</a></li>
+<li><a href="#_making_a_basemap">5.4.3. Making a basemap</a></li>
 </ul>
 </li>
+<li><a href="#_more_complex_plots_with_plotbasicrasters_py">5.5. More complex plots with PlotBasicRasters.py</a>
+<ul class="sectlevel3">
+<li><a href="#_a_basic_channel_plot_plotbasicrasters_py">5.5.1. A basic channel plot PlotBasicRasters.py</a></li>
+<li><a href="#_plotting_basins">5.5.2. Plotting basins</a></li>
+<li><a href="#_plotting_basins_and_channels">5.5.3. Plotting basins and channels</a></li>
+</ul>
+</li>
+<li><a href="#_other_plotting_options">5.6. Other plotting options</a></li>
 </ul>
 </li>
 </ul>
@@ -704,33 +711,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_hard_way_native_linux">3.2. Hard way (native linux)</h3>
+<h3 id="_hard_way_native_linux_using_miniconda_and_an_environment">3.2. Hard way (native linux) using miniconda and an environment</h3>
 <div class="paragraph">
 <p>This is a quick guide. There are many options for setting up python but this is our preferred setup.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and install <a href="http://conda.pydata.org/miniconda.html">miniconda</a> on your host machine.</p>
+<p>Download and install <a href="http://conda.pydata.org/miniconda.html">miniconda</a> on your host machine. You want the python 3 version for your operating system.</p>
 </li>
 <li>
-<p>Open a command prompt (use the start menu to search for <strong>cmd.exe</strong>)</p>
+<p>Open a command prompt (Windows) or terminal (Mac-OS or Linux)</p>
 </li>
 <li>
-<p>Get our  <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/conda_environments">environment file</a>. There are three of them:</p>
+<p>Get our  <a href="https://github.com/LSDtopotools/LSDMappingTools/tree/master/conda_environments">environment file</a>. There are two you might use:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>environment.yml</code> is for Windows.</p>
+<p><code>python3_environment.yml</code> is for Linux but is possibly more portable.</p>
 </li>
 <li>
-<p><code>environment_linux32.yml</code> is for a 32 bit Linux system.</p>
+<p><code>LSDMT_version_0.2.2.txt</code> is a functioning version that works in a 64 bit Linux environment</p>
 </li>
 <li>
-<p><code>environment_linux64.yml</code> is for a 64 bit Linux system.</p>
-</li>
-<li>
-<p>If you are on MacOS you should try the <code>environment_linx64.yml</code> file. If you use MacOS please let us know if it works.</p>
+<p>If you are in Windows, try the <code>python3_environment.yml</code>. Otherwise, try the other one.</p>
 </li>
 </ol>
 </div>
@@ -740,13 +744,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p>Create the environment from that file with:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are using <code>LSDMT_version_0.2.2.txt</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda env create -f environment.yml</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name LSDMT --file LSDMT_version_0.2.1.txt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are using <code>python3_environment.yml</code></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda env create -f python3_environment.yml</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>I&#8217;m afraid this will take a little while.</p>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
@@ -757,47 +776,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </li>
-</ol>
+<li>
+<p>You also need to clone the LSDMappingTools repository. Make a directory for it an use:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDMappingTools.git</code></pre>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This environment does not include <strong>spyder</strong>, you can install it with <code>conda install -n LSDTT spyder</code>
-</td>
-</tr>
-</table>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_super_hard_way_setting_up_python_without_the_environment_yml_file">3.3. Super hard way: setting up python without the <code>environment.yml</code> file</h3>
+<h3 id="_super_hard_way_setting_up_python_without_an_environment_file">3.3. Super hard way: setting up python without an environment file</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">If the environment file doesn&#8217;t work</div>
 <div class="paragraph">
-<p>If the <code>environment.yml</code> file doesn&#8217;t work, you can set up an environment this way.</p>
+<p>If the environment file doesn&#8217;t work, you can set up an environment this way.</p>
 </div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This is an alternative to the previous section!
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The best way to install python is <a href="http://conda.pydata.org/miniconda.html">miniconda</a>. Currently everything we use is tested on <strong>Python 2.7</strong>, but we have attempted to maintain compatibility to python 3.x. In fact, some essential packages within <strong>LSDMappingTools</strong> will soon lose Python 2.7 support so we now reccomend a python 3.x install. Unfortunately we have not tested all of the scripts for python 3.x compatibility yet!!!!</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -805,11 +802,29 @@ This is an alternative to the previous section!
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Our visualisation routines involve some computation, and dealing with geospatial data. This means that there are a number of packages to install. This might take some time. If you are already using python for something critical you may consider setting up a <a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/">virtual</a> <a href="http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/">environment</a> to ensure all of these new packages don&#8217;t break what you&#8217;ve already got.
+The python community is very active and packages get updated a lot. One of the packages we use is GDAL, which causes <strong>A LOT</strong> of conflicts. This means building an environment often fails if you just go with the default versions of packages. If you use the docker container or the environment files (instructions above), the python installation is guaranteed to work. We highly recommend installing the environment using those two methods unless you are a python expert.
 </td>
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is an alternative to the previous two sections! You don&#8217;t need to do this if you have either got the docker container or if you have used the environment file.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The best way to install python is <a href="http://conda.pydata.org/miniconda.html">miniconda</a>. Use the python 3 version.</p>
 </li>
 <li>
 <p>Once you have installed  <a href="http://conda.pydata.org/miniconda.html">miniconda</a>, you can go into a command prompt (windows) or terminal (MacOS and Linux) and get the other stuff you need. To get the command prompt in windows look for the <strong>cmd.exe</strong> program.</p>
@@ -832,10 +847,13 @@ Our visualisation routines involve some computation, and dealing with geospatial
 </div>
 </li>
 <li>
-<p>Now we start by adding a bunch of standard packages:</p>
+<p>Now we start by updating conda and adding a bunch of standard packages. There are specific versions in the following instructions because some of the packages are in conflict and we have got to a functioning version through a lot of painful experimentation so you don&#8217;t have to. Note that these instructions might go out of date but a functioning version can be scraped from <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_viz_docker/dockerfile">our dockerfile</a></p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda config --add channels conda-forge
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -y -c conda-forge conda=4.6.14
+&gt; conda config --add channels conda-forge
+&gt; conda config --set channel_priority strict
+&gt; conda install -y git python=3.6.7
 &gt; conda install numpy scipy matplotlib pandas</code></pre>
 </div>
 </div>
@@ -844,78 +862,28 @@ Our visualisation routines involve some computation, and dealing with geospatial
 <p>Now install the geographic tools</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install gdal shapely fiona rasterio pyproj basemap</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -y gdal geopandas shapely fiona rasterio pyproj cartopy descartes utm</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Finally add <code>descartes</code>. Note that on windows, MacOS and 64 bit Linux you can just add <code>descartes</code> to the line above. The reason we need this extra line for 32 bit linux is because there isn&#8217;t a specific 32bit version of descartes.</p>
+<p>In Linux/MacOS, you should also be able to install <code>ffmpeg</code>, which we use to animate things.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -c conda-forge descartes</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda install -y ffmpeg</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p>Every time you use our tools, you should activate the <strong>LSDTT</strong> python environment.</p>
 </li>
-<li>
-<p>To run spyder you just type <code>spyder</code> at the command line.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Spyder needs an older version of a package called <strong>PyQt</strong>. If spyder doesn&#8217;t start correctly, run <code>conda install pyqt=4.10 -f</code>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-It is entirely possible that we have forgotten some package, but if you run one of our scripts and it tells you the package is not found, just use <code>conda</code> to install.
-</td>
-</tr>
-</table>
-</div>
-</li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_spyder">3.4. Using Spyder</h3>
+<h3 id="_fixing_python_gdal_in_windows">3.4. Fixing python gdal in windows</h3>
 <div class="paragraph">
-<p>Once you have installed python, you can use it from the command line (i.e. from a powershell or terminal window). That is how we do it. However, you might prefer using a nice development environment that checks your code and has pretty colours and reassuring windows. When we are not using text editors (see our section <a href="#Text editors for modifying files">[Text editors for modifying files]</a>) we tend to use Spyder, which has an editor that can give you help with python packages and highlight your mistakes. You should have already installed it with <code>conda install spyder</code>, so to get it running go into a powershell or terminal window and just type:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; spyder</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You cannot run spyder on the vagrant machine since it has no windowing system. If you want to run <strong>Spyder</strong> you need to use your host operating system. This is the one of the reasons we encourage you to do your python installation on your host operating system and not the vagrant machine.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fixing_python_gdal_in_windows">3.5. Fixing python gdal in windows</h3>
-<div class="paragraph">
-<p>If you are using windows, there is a stupid bug in the <strong>conda</strong> gdal package where it cannot find the gdal data. To fix this:</p>
+<p>If you are using windows, there is a stupid bug in the <strong>conda</strong> gdal package where it cannot find the gdal data (this was updated in 2018 so it might be fixed by now). To fix this:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -939,86 +907,58 @@ You cannot run spyder on the vagrant machine since it has no windowing system. I
 <div class="sect2">
 <h3 id="_getting_our_lsdmappingtools_and_other_tools">4.1. Getting our LSDMappingTools and other tools</h3>
 <div class="paragraph">
-<p>Our vagrant setup has no graphical user interface (you only interact with it through a terminal) so we suggest using your host operating system for python.</p>
+<p>This repeats information from the <a href="#_installing_the_lsdtopotools_python_toolchain">python installation section</a>.</p>
 </div>
+<div class="paragraph">
+<p>You can either use our <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_viz_docker">Docker container</a> (easy) or install on your native system (more difficult and takes a long time).</p>
+</div>
+<div class="sect3">
+<h4 id="_starting_up_in_our_docker_container">4.1.1. Starting up in our docker container</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You need to clone our repository <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a>.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-At the moment <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> is a complete mess. It currently serves as a bit of a sandbox for visualisation development. One day we will clean it all up and make a nice, pretty release. But for now I&#8217;m afraid you&#8217;ll need to rely on this repository.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If you don&#8217;t want to install <a href="https://git-scm.com/">git</a> on your host operating system, you can clone the repository from your vagrant machine. Because of the clever way vagrant works you will be able to use these files in you host operating system.</p>
+<p>If you are using our docker implementation (this is recommended), start the container and go to the correct folder:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects
-$ git clone https://github.com/LSDtopotools/LSDMappingTools.git</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools\:/LSDTopoTools lsdtopotools/lsdtt_viz_docker
+# Start_LSDTT.sh
+# cd /LSDTopoTools/LSDMappingTools/Tests</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-In your host operating system these files will not be in <code>/LSDTopoTools/Git_projects</code>. They will be within the <code>VagrantBoxes\LSDTopoTools\Git_projects</code> directory (wherever you put it. On windows I put mine in the <code>C</code> directory).
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Once you have this repository you can move on to our examples in the next chapter.</p>
 </li>
 </ol>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_ensuring_you_can_use_the_tools">4.1.1. Ensuring you can use the tools</h4>
-<div class="paragraph">
-<p>I am very sorry to tell you that we do not have a nice pacakge installation for <strong>LSDMappingTools</strong>. If you want to make one please fork the repo and try it out. Although [Benoit Bovy] might have already done it by the time you read this.</p>
-</div>
-<div class="paragraph">
-<p>That means:</p>
-</div>
+<h4 id="_starting_up_in_a_native_python_environment">4.1.2. Starting up in a native python environment</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You need to ensure you are in the <strong>LSDTopoTools</strong> python environment, which is descripted in the <a href="#_installing_the_lsdtopotools_python_toolchain">previous section</a>.</p>
-</li>
-<li>
-<p>For typical usage you need to be sitting in the directory holding <strong>LSDMappingTools</strong> (i.e., the directory into which you cloned the repository).</p>
-</li>
-<li>
-<p>You can avoid being in the <strong>LSDMappingTools</strong> by altering your <a href="https://matplotlib.org/faq/environment_variables_faq.html">pythonpath</a>.</p>
+<p>If you installed the LSDMT environment on your host machine:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
+</div>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>You can do that within a current python session with (but you need to actually go into the python scripts and add this line):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">import sys
-
-sys.path.append("PATH/TO/LSDMappingTools/")</code></pre>
-</div>
-</div>
+<p>In windows you will need to be in a <code>cmd.exe</code> window.</p>
 </li>
 <li>
-<p>Because that is a little bit tedious we usually just call <strong>LSDMappingTools</strong> scripts from withing the <strong>LSDMappingTools</strong> directory. We recognise this is a little obtuse but these tools have evolved as the scripts we use to create figures for papers rather than as a coherent software package. If you are unhappy with the ad-hoc state of this package we would be <strong>delighted</strong> if you forked the repo and tried to wrap it as a package.</p>
+<p>In linux or MacOS you might need to type <code>source activate LSDTT</code> to get the environment to work.</p>
+</li>
+<li>
+<p>If the environment is loaded you should see it in parentheses before the command prompt, e.g., <code>(LSDTT) &gt;</code> or <code>(LSDTT) $</code>.</p>
+</li>
+<li>
+<p>Navigate to the folder in the <code>LSDMappingTools</code> repository called <code>Tests</code>.</p>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>Call the <code>LSDMappingTools_test.py</code> python script. This script is called with a single number: 1,2 or 3. These make different plots.</p>
 </li>
 </ol>
 </div>
@@ -1070,50 +1010,22 @@ sys.path.append("PATH/TO/LSDMappingTools/")</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The scipts here print figures to files; you will not see a window with a figure pop up. Instead, after you run the scripts, look in the <code>Tests</code> directory and open the <code>png</code> files.
+The scripts here print figures to files; you will not see a window with a figure pop up. Instead, after you run the scripts, look in the <code>Tests</code> directory and open the <code>png</code> files.
 </td>
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure your LSDTT python enviroment is activated:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
-</div>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>In windows you will need to be in a <code>cmd.exe</code> window.</p>
-</li>
-<li>
-<p>In linux or MacOS you might need to type <code>source activate LSDTT</code> to get the environment to work.</p>
-</li>
-<li>
-<p>If the environment is loaded you should see it in parentheses before the command prompt, e.g., <code>(LSDTT) &gt;</code> or <code>(LSDTT) $</code>.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Navigate to the folder in the <code>LSDMappingTools</code> repository called <code>Tests</code>.</p>
-</li>
-<li>
-<p>Call the <code>LSDMappingTools_test.py</code> python script. This script is called with a single number: 1,2 or 3. These make different plots.</p>
-</li>
-</ol>
-</div>
 <div class="sect3">
 <h4 id="_a_basic_draped_hillshade">4.3.1. A basic draped hillshade</h4>
 <div class="paragraph">
-<p>This creates a very basic draped hillshade. The "drape" is an elevation raster draped over a hillshade. For obvious reasons it needs a elevation raster and a hillshade raster:</p>
+<p>To begin, you must either be in our docker container or you must have activated our python environment on your host machine. If you don&#8217;t know how to do that, read the installation instructions.</p>
+</div>
+<div class="paragraph">
+<p>The first test creates a very basic draped hillshade. The "drape" is an elevation raster draped over a hillshade. For obvious reasons it needs a elevation raster and a hillshade raster:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># python LSDMappingTools_test.py 1</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1130,7 +1042,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># python LSDMappingTools_test.py 1</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1147,7 +1059,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">(LSDTT) &gt; python LSDMappingTools_test.py 1</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># python LSDMappingTools_test.py 1</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1160,10 +1072,13 @@ The scipts here print figures to files; you will not see a window with a figure 
 <div class="sect3">
 <h4 id="_what_these_basic_plots_do">4.3.4. What these basic plots do</h4>
 <div class="paragraph">
-<p>To understand what these basic plots, we will highlight some of the basic elements of the script. You should have a basic understanding of python. If you don&#8217;t, we can recommend the extremely useful courses from either <a href="https://swcarpentry.github.io/python-novice-inflammation/">software carpentry</a> or <a href="https://www.codecademy.com/learn/learn-python">code academy</a>.</p>
+<p>To understand what these basic plots are doing, we will highlight some of the basic elements of the script. You should have a basic understanding of python. If you don&#8217;t, we can recommend the extremely useful courses from either <a href="https://swcarpentry.github.io/python-novice-inflammation/">software carpentry</a> or <a href="https://www.codecademy.com/learn/learn-python">code academy</a>.</p>
 </div>
 <div class="paragraph">
 <p>Firstly, we are going to import a package called <strong>LSDMapWrappers</strong>. This is a small package that automates the most basic plots: simple draped hillshades, basin plots and channel plots.</p>
+</div>
+<div class="paragraph">
+<p>The lines of code below appear in the script <code>LSDMappingTools_test.py</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1221,12 +1136,64 @@ The scipts here print figures to files; you will not see a window with a figure 
 <h2 id="_lsdtopotools_visualisation_from_command_line">5. LSDTopoTools visualisation from command line</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section we are going to use some more flexible tools which you call from a command line.</p>
+<p>In this section we are going to use some more flexible tools which you call from a command line. If you work with <strong>LSDTopoTools</strong> and <strong>LSDMappingTools</strong> on a day to day basis, these are the scripts that you will call.</p>
 </div>
 <div class="sect2">
 <h3 id="_getting_the_example_data">5.1. Getting the example data</h3>
 <div class="paragraph">
-<p>The data we will use in this section is in the <code>LSDTT_chi_examples</code> repository: <a href="https://github.com/LSDtopotools/LSDTT_chi_examples" class="bare">https://github.com/LSDtopotools/LSDTT_chi_examples</a></p>
+<p>The data we will use in this section comes with the full <strong>LSDTopoTools</strong> example data.
+These datasets are available in a repository: <a href="https://github.com/LSDtopotools/ExampleTopoDatasets" class="bare">https://github.com/LSDtopotools/ExampleTopoDatasets</a></p>
+</div>
+<div class="sect3">
+<h4 id="_getting_example_data_in_a_docker_container">5.1.1. Getting example data in a docker container:</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start the docker container:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools\:/LSDTopoTools lsdtopotools/lsdtt_viz_docker</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run a script to grab and unpack the data:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ Get_LSDTT_example_data.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The data for these examples is in <code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getting_the_data_in_your_native_system">5.1.2. Getting the data in your native system</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Find a place to put the data.</p>
+</li>
+<li>
+<p>Download and unzip the data. In a terminal you would do this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_in_the_example_data">5.2. What is in the example data</h3>
+<div class="paragraph">
+<p>There are many datasets in the example data, but in the directory you will be using, we will focus on a specific location.</p>
 </div>
 <div class="paragraph">
 <p>The data is based on a series of catchements draining the southern side of the Shillong Plateau in India, one of the wettest places on Earth. The data we will use has been derived from using our <a href="LSDTT_chi_analysis.html">channel steepness tools</a>, but we won&#8217;t make you run the code, we simply provide the processed data.</p>
@@ -1253,33 +1220,21 @@ The scipts here print figures to files; you will not see a window with a figure 
 </li>
 <li>
 <p><code>Mega_divide_chi_data_map.csv</code>: A csv file containing information about the channel network. It contains information like the area location, stream order, basin number, source number and chi coordinate of the extracted channel network. This comes from using the <a href="LSDTT_chi_analysis.html">chi mapping tool</a> with the option <code>print_chi_data_maps: true</code>.</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To get the data, you need to clone the repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples" class="bare">https://github.com/LSDtopotools/LSDTT_chi_examples</a>. If you are using a <a href="LSDTT_installation.html#_installing_lsdtopotools_using_virtualbox_and_vagrant">vagrant box</a> or a <a href="LSDTT_installation.html#_installing_lsdtopotools_using_docker">docker container</a> you should probably put this into the <code>/LSDTopoTools/Topographic_projects</code> directory.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDTT_chi_examples</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You need to know where this repository is!! <strong>MAKE SURE YOU KNOW THE PATH TO THIS DIRECTORY SINCE YOU WILL USE IT TO CALL OUR PYTHON SCRIPTS.</strong></p>
-</li>
-</ol>
-</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_lsdmappingtools">5.2. Getting LSDMappingTools</h3>
+<h3 id="_getting_lsdmappingtools">5.3. Getting LSDMappingTools</h3>
 <div class="paragraph">
-<p>You also need to get <a href="https://github.com/LSDtopotools/LSDTTMappingTools">LSDMappingTools</a>. See the section <a href="#_getting_our_lsdmappingtools_and_other_tools">Getting our LSDMappingTools and other tools</a>. Please don&#8217;t just skim that section, it contains important information that is essential for getting the tool working properly.</p>
+<p>You also need to get <a href="https://github.com/LSDtopotools/LSDTTMappingTools">LSDMappingTools</a>. See the section <a href="#_installing_the_lsdtopotools_python_toolchain">Installing the LSDTopoTools python toolchain</a>. Please don&#8217;t just skim that section, it contains important information that is essential for getting the tool working properly.</p>
+</div>
+<div class="paragraph">
+<p>However, if you are in the Docker container, just update <strong>LSDMappingTools</strong> by running <code>Start_LSDTT.sh</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_a_slightly_different_way_to_make_plots">5.3. A slightly different way to make plots</h3>
+<h3 id="_a_slightly_different_way_to_make_plots">5.4. A slightly different way to make plots</h3>
 <div class="paragraph">
 <p>In the previous section, we made some plots by calling plotting routines in the package <code>LSDMapWrappers</code>. In this section we will use a command line tool to generate plots.</p>
 </div>
@@ -1293,7 +1248,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 <p>The name of this script, <code>PlotBasicRasters.py</code> is perhaps a bit misleading because in fact you can make a large number of plots including draped plots, plots that include basins, and channel profile plots.</p>
 </div>
 <div class="sect3">
-<h4 id="_the_basic_structure_of_a_plotbasicrasters_py_call">5.3.1. The basic structure of a PlotBasicRasters.py call</h4>
+<h4 id="_the_basic_structure_of_a_plotbasicrasters_py_call">5.4.1. The basic structure of a PlotBasicRasters.py call</h4>
 <div class="paragraph">
 <p><code>PlotBasicRasters.py</code> is called with a number of command line arguments. Once you are used to the syntax, you should also be able to use similar packages such as <code>PlotMOverNAnalysis.py</code> and <code>PlotLithoInfo.py</code>.</p>
 </div>
@@ -1328,44 +1283,35 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_a_basic_hillshade_using_plotbasicrasters_py">5.3.2. A basic hillshade using PlotBasicRasters.py</h4>
+<h4 id="_a_basic_hillshade_using_plotbasicrasters_py">5.4.2. A basic hillshade using PlotBasicRasters.py</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, make sure you have the LSDTT python environment activated.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<p>First, you need to either <a href="#_starting_up_in_our_docker_container">start the docker container</a> or <a href="#_starting_up_in_a_native_python_environment">activate the LSDMT environment</a>, depending on what system you are using.</p>
+</li>
 <li>
-<p>In linux:</p>
+<p>In the docker container, you can always get the latest version of <strong>LSDMappingTools</strong> using the startup script:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source activate LSDTT</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>In a windows <strong>cmd.exe</strong> prompt:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ source activate LSDTT</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Now, go to the directory where you cloned <a href="https://github.com/LSDtopotools/LSDTMappingTools">LSDMappingTools</a>. <strong>Unless you have altered your <a href="https://matplotlib.org/faq/environment_variables_faq.html">pythonpath</a> you will need to be in this directory for any calls to the python routines to work.</strong></p>
+<p>Now, go to the <strong>LSDMappingTools</strong> directory. In the docker container, this is always at <code>/LSDTopoTools/LSDMappingTools</code></p>
 </li>
 <li>
 <p>You also need to look up the location of your data.</p>
+</li>
+<li>
+<p>In this example  we are going to use more advanced example data. You will have needed to have followed <a href="#_getting_the_example_data">these instructions</a> first.</p>
+</li>
+<li>
+<p>We have a lot of different example datasets so I am afraid the path to this data is a bit long winded. Sorry. It is <code>/LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>If you are in Linux the location will be something like: <code>/LSDTopoTools/Topographic_projects/LSDTT_chi_examples</code> or <code>~/LSDTopoTools/Topographic_projects/LSDTT_chi_examples</code>.</p>
-</li>
-<li>
-<p>If you are in Windows the locations will be something like: <code>c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples</code></p>
+<p>If you are not in the docker container you will have a different path: hopefully you know where you put your data!</p>
 </li>
 </ol>
 </div>
@@ -1375,13 +1321,13 @@ The scipts here print figures to files; you will not see a window with a figure 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>I am going to assume you have used a vagrant box but you are calling <code>PlotBasicRasters.py</code> from windows. Your system might differ so you&#8217;ll need to update the path names.</p>
+<p>I am going to assume you have used the docker container. Your system might differ so you&#8217;ll need to update the path names.</p>
 </li>
 <li>
 <p>Here is the call:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -drape_fname Mega_divide -PD True -dpi 100</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -drape_fname Mega_divide -PD True -dpi 100</code></pre>
 </div>
 </div>
 </li>
@@ -1414,7 +1360,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 <p>Why don&#8217;t we alter this figure a bit. We can change the colourbar location, or the colourbar label, for example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -drape_fname Mega_divide -PD True -drape_cbar_label "Elevation (m)" -drape_cbar_loc bottom -dpi 100</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -drape_fname Mega_divide -PD True -drape_cbar_label "Elevation (m)" -drape_cbar_loc bottom -dpi 100</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1460,7 +1406,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_making_a_basemap">5.3.3. Making a basemap</h4>
+<h4 id="_making_a_basemap">5.4.3. Making a basemap</h4>
 <div class="paragraph">
 <p>We made a hillshade! Great. But we don&#8217;t actually know where we are in the world. However there is an option to create a basemap to see where your raster is.</p>
 </div>
@@ -1470,7 +1416,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 <p>To call the basemap image, you can use:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -BM True -bmrem 20</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -BM True -bmrem 20</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1504,7 +1450,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_more_complex_plots_with_plotbasicrasters_py">5.4. More complex plots with PlotBasicRasters.py</h3>
+<h3 id="_more_complex_plots_with_plotbasicrasters_py">5.5. More complex plots with PlotBasicRasters.py</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Reminder of basic call to PlotBasicRasters.py</div>
@@ -1541,7 +1487,7 @@ The scipts here print figures to files; you will not see a window with a figure 
 The structure of the python call remain the same, we just call different flags for <code>PlotBasicRasters.py</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_a_basic_channel_plot_plotbasicrasters_py">5.4.1. A basic channel plot PlotBasicRasters.py</h4>
+<h4 id="_a_basic_channel_plot_plotbasicrasters_py">5.5.1. A basic channel plot PlotBasicRasters.py</h4>
 <div class="paragraph">
 <p>In the first example we will create a very simple channel plot.</p>
 </div>
@@ -1550,7 +1496,7 @@ The structure of the python call remain the same, we just call different flags f
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PCh True</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -PCh True</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1567,7 +1513,7 @@ The structure of the python call remain the same, we just call different flags f
 </div>
 </div>
 <div class="sect3">
-<h4 id="_plotting_basins">5.4.2. Plotting basins</h4>
+<h4 id="_plotting_basins">5.5.2. Plotting basins</h4>
 <div class="paragraph">
 <p>Channels conduct water, sediment and nutrients downslope, but they can also communicate tectonic signals upslope. In many landscapes they set the pace of landscape evolution. Channels are orgaonised into connected networks, contained within drainage basins.</p>
 </div>
@@ -1580,7 +1526,7 @@ The structure of the python call remain the same, we just call different flags f
 <p>We can start with a very basic basin plot:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PB True</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -PB True</code></pre>
 </div>
 </div>
 </li>
@@ -1597,7 +1543,7 @@ The structure of the python call remain the same, we just call different flags f
 <p>The basin numbering is determined algorithmically, but you might want to rename your basins. To do this, you use the <code>-rename_dict</code> flag. This takes the form of a python dictionary. You have keys and values. Each key is the index of the basin (the number in the previous figure) and the value is the new name. These are separated by colons (<code>:</code>). To do multiple basins you separate these <code>key:value</code> pairs with commas. Here is an example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PB True -rename_dict 0:supa,1:dupa</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -PB True -rename_dict 0:supa,1:dupa</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1629,7 +1575,7 @@ when you include the <code>rename_dict</code> there should either be no spaces o
 <p>An example is:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -PB True -rename_dict 0:supa,1:dupa -basin_keys 0,1,5,6</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -PB True -rename_dict 0:supa,1:dupa -basin_keys 0,1,5,6</code></pre>
 </div>
 </div>
 </li>
@@ -1646,14 +1592,14 @@ when you include the <code>rename_dict</code> there should either be no spaces o
 </div>
 </div>
 <div class="sect3">
-<h4 id="_plotting_basins_and_channels">5.4.3. Plotting basins and channels</h4>
+<h4 id="_plotting_basins_and_channels">5.5.3. Plotting basins and channels</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>The basin selection algorithms work with channel plotting as well. You can do this with the <code>-PCh</code> flag, or alternatively you can use the <code>-PBC</code> flag to have some semitransparent basins under the channels.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -basin_keys 0,1,5,6 -PBC True</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -basin_keys 0,1,5,6 -PBC True</code></pre>
 </div>
 </div>
 </li>
@@ -1670,7 +1616,7 @@ when you include the <code>rename_dict</code> there should either be no spaces o
 <p>You can also change the colouring of the channels using a flag <code>-SimpleChFmt</code>. You can choose <code>elevation</code>, <code>drainage_area</code>, <code>source_key</code>, or <code>basin_key</code> to colour your channels. This works with both the <code>-PCh</code> and <code>-PBC</code> flags:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir c:\VagrantBoxes\LSDTopoTools\Topographic_projects\LSDTT_chi_examples -fname Mega_divide -dpi 100 -basin_keys 0,1,5,6 -PBC True -SimpleChFmt source_key</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ python PlotBasicRasters.py -dir /LSDTopoTools/data/ExampleTopoDatasets/ChiAnalysisData/Meghalaya -fname Mega_divide -dpi 100 -basin_keys 0,1,5,6 -PBC True -SimpleChFmt source_key</code></pre>
 </div>
 </div>
 </li>
@@ -1687,12 +1633,42 @@ when you include the <code>rename_dict</code> there should either be no spaces o
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_other_plotting_options">5.6. Other plotting options</h3>
+<div class="paragraph">
+<p>There are actually a large number of <strong>LSDMappingTools</strong> plotting options.
+We are well aware that this package is rather messy. The plotting scripts that will probably be most useful are:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Some of the key python plotting routines</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of routine</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PlotBasicRasters.py</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A number of basic plotting routines for rasters, basins, some chi profiles, basemap plots, and other functionality.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PlotChiAnalysis.py</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The plotting routines for plotting chi profiles. These routines are tunes to work with outputs from the <a href="LSDTT_chi_analysis.html">LSDTopoTools chi analysis routines</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-28 15:43:07 UTC
+Last updated 2018-08-29 16:40:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
