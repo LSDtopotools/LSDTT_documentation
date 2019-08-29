@@ -2024,7 +2024,7 @@ $ pwd</code></pre>
 <p>You make a link using the <code>ln</code> command:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ln /exports/csce/datastore/geos/users/UUN MyDataStore</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ln -s /exports/csce/datastore/geos/users/UUN MyDataStore</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -2082,7 +2082,7 @@ $ cd MyDataStore</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ ln /exports/csce/datastore/geos/users/UUN/LSDTopoTools LSDTT_Directory
+$ ln -s /exports/csce/datastore/geos/users/UUN/LSDTopoTools LSDTT_Directory
 $ cd LSDTT_Directory</code></pre>
 </div>
 </div>
@@ -2154,7 +2154,7 @@ $ cd LSDTT_Directory</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Whenever you return to run an <strong>LSDTopoTools2</strong> session, you will need to tell the computer where your program files are. You cave two options:</p>
+<p>Whenever you return to run an <strong>LSDTopoTools2</strong> session, you will need to tell the computer where your program files are. You have two options:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2167,7 +2167,7 @@ $ cd LSDTT_Directory</code></pre>
 </div>
 </li>
 <li>
-<p>You must do one of those two things otherwise your computer will not know where the program files are.</p>
+<p>You <strong>must</strong> do one of those two things otherwise your computer will not know where the program files are.</p>
 </li>
 <li>
 <p>As an alternative, you can go into yor <code>.bashrc</code> file and add the <code>/path/to/LSDTopoTools2/bin</code> directory to your <code>$PATH</code>. You will need to change the full path to reflect your own directory system. If you don&#8217;t know what a <code>.bashrc</code> file is you are probably better off running the <code>lsdtt2_terminal.sh</code> script.</p>
@@ -2190,25 +2190,21 @@ $ cd LSDTT_Directory</code></pre>
 ----| Other LSDTopoTools directories (e.g., LSDMappingTools, LSDTT_documentation)</p>
 </li>
 <li>
-<p>So, if you don&#8217;t have a data directory, make one. Again, we suggest putting this in an <strong>LSDTopoTools</strong> directory:</p>
+<p>So, if you don&#8217;t have a data directory, make one. Again, we suggest putting this in your <strong>LSDTopoTools</strong> directory. Go into your LSDTopoTools directory (see <a href="Don&.html#8217;t be messy">instructions above</a>):</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/LSDTopoTools
-$ mkdir data</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir data</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>If the command <code>cd ~/LSDTopoTools</code> doesn&#8217;t work it means you haven&#8217;t made the <strong>LSDTopoTools</strong> directory</p>
 </li>
 <li>
 <p>Go into the data directory and grab the example data from github, then unzip and clean the zip file:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ cd data
-$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ wget https://github.com/LSDtopotools/SmallExampleTopoDatasets/archive/master.zip
 $ unzip master.zip
-$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ mv ./SmallExampleTopoDatasets-master ./ExampleTopoDatasets
 $ rm master.zip</code></pre>
 </div>
 </div>
