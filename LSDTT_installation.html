@@ -482,11 +482,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_mapping_your_network_drive">4.1. Mapping your network drive</a></li>
 <li><a href="#_getting_on_to_our_servers_with_mobaxterm">4.2. Getting on to our servers with MobaXterm</a></li>
-<li><a href="#_dont_be_messy">4.3. Don&#8217;t be messy</a></li>
-<li><a href="#_cloning_the_lsdtopotools2_repository">4.4. Cloning the LSDTopoTools2 repository</a></li>
-<li><a href="#_building_the_software">4.5. Building the software</a></li>
-<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation_2">4.6. Starting an LSDTopoTools2 session after your first installation</a></li>
-<li><a href="#_getting_the_example_data_2">4.7. Getting the example data</a></li>
+<li><a href="#_downloading_and_running_the_setup_script">4.3. Downloading and running the setup script</a>
+<ul class="sectlevel3">
+<li><a href="#_excruciatingly_detailed_information_about_what_the_script_does">4.3.1. Excruciatingly detailed information about what the script does</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_installing_lsdtopotools_using_virtualbox_and_vagrant">5. Installing LSDTopoTools using VirtualBox and Vagrant</a>
@@ -1871,6 +1871,9 @@ $ pwd</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>First, <a href="#_mapping_your_network_drive">map your network drive</a>. Instructions are below.</p>
+</li>
+<li>
 <p>In the windows search bar, look for <strong>MobaXterm personal edition</strong>.</p>
 </li>
 <li>
@@ -1883,53 +1886,34 @@ $ pwd</code></pre>
 <p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
 </li>
 <li>
-<p>Go into your T: drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
+<p>Download the setup script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_Edinburgh_scripts/master/LSDTT_UEdin_setup.sh</code></pre>
+</div>
+</div>
 </li>
 <li>
-<p>Now enter: <code>git clone <a href="https://github.com/LSDtopotools/LSDTopoTools2.git" class="bare">https://github.com/LSDtopotools/LSDTopoTools2.git</a></code></p>
-</li>
-<li>
-<p>Now enter: <code>cd LSDTopoTools2/src/</code></p>
-</li>
-<li>
-<p>Now enter: <code>sh build.sh</code></p>
-</li>
-<li>
-<p>You will need to wait a bit for this step.</p>
-</li>
-<li>
-<p>Now enter: <code>cd ..</code></p>
-</li>
-<li>
-<p>Finally enter: <code>sh lsdtt2_terminal.sh</code></p>
-</li>
-</ol>
+<p>Now run the script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>If you have already followed the instructions above once</strong></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In the windows search bar, look for <strong>MobaXterm personal edition</strong>.</p>
 </li>
 <li>
-<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
+<p>Go into the School of GeoScience servers using instructions above.</p>
 </li>
 <li>
-<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
-</li>
-<li>
-<p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code></p>
-</li>
-<li>
-<p>Go into your T: drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
-</li>
-<li>
-<p>Now enter: <code>cd LSDTopoTools2</code></p>
-</li>
-<li>
-<p>Finally enter: <code>sh lsdtt2_terminal.sh</code></p>
+<p>Run the script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
@@ -2006,6 +1990,67 @@ $ pwd</code></pre>
 <li>
 <p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
 </li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_downloading_and_running_the_setup_script">4.3. Downloading and running the setup script</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to your home directory</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Get the setup script from the internet</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_Edinburgh_scripts/master/LSDTT_UEdin_setup.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now run the script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Every time you start a new session, you will need to run this setup script. The second time you run it, it will not set up <strong>LSDTopoTools</strong>, but it will check the software for updates and it will also tell your computer where the actual programs are.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_excruciatingly_detailed_information_about_what_the_script_does">4.3.1. Excruciatingly detailed information about what the script does</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is what the setup script does. <strong>You don&#8217;t need to do this if you have run the script!</strong> It remains here for reference.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Go into your <strong>T:</strong> drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
 </li>
@@ -2063,9 +2108,8 @@ $ cd MyDataStore</code></pre>
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_dont_be_messy">4.3. Don&#8217;t be messy</h3>
+<div class="sect4">
+<h5 id="_dont_be_messy">Don&#8217;t be messy</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2117,8 +2161,8 @@ $ cd LSDTT_Directory</code></pre>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_cloning_the_lsdtopotools2_repository">4.4. Cloning the LSDTopoTools2 repository</h3>
+<div class="sect4">
+<h5 id="_cloning_the_lsdtopotools2_repository">Cloning the LSDTopoTools2 repository</h5>
 <div class="paragraph">
 <p><strong>LSDTopoTools2</strong>, which has the main analysis programs, lives in a <a href="https://github.com/">github</a> repository and you use a program names <a href="https://git-scm.com/">git</a> to get it. Don&#8217;t worry, this is easy.</p>
 </div>
@@ -2133,8 +2177,8 @@ $ cd LSDTT_Directory</code></pre>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_building_the_software">4.5. Building the software</h3>
+<div class="sect4">
+<h5 id="_building_the_software">Building the software</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2149,8 +2193,8 @@ $ cd LSDTT_Directory</code></pre>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_starting_an_lsdtopotools2_session_after_your_first_installation_2">4.6. Starting an LSDTopoTools2 session after your first installation</h3>
+<div class="sect4">
+<h5 id="_starting_an_lsdtopotools2_session_after_your_first_installation_2">Starting an LSDTopoTools2 session after your first installation</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2175,8 +2219,8 @@ $ cd LSDTT_Directory</code></pre>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_getting_the_example_data_2">4.7. Getting the example data</h3>
+<div class="sect4">
+<h5 id="_getting_the_example_data_2">Getting the example data</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2213,6 +2257,8 @@ $ rm master.zip</code></pre>
 <p>You should now have the example data that is used in the rest of this documentation.</p>
 </li>
 </ol>
+</div>
+</div>
 </div>
 </div>
 </div>
