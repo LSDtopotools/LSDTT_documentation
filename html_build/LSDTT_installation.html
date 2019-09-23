@@ -481,10 +481,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</a>
 <ul class="sectlevel2">
 <li><a href="#_mapping_your_network_drive">4.1. Mapping your network drive</a></li>
-<li><a href="#_getting_on_to_our_servers_with_mobaxterm">4.2. Getting on to our servers with MobaXterm</a></li>
+<li><a href="#_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">4.2. Getting on to our servers with with ssh in a powershell window</a></li>
 <li><a href="#_downloading_and_running_the_setup_script">4.3. Downloading and running the setup script</a>
 <ul class="sectlevel3">
-<li><a href="#_excruciatingly_detailed_information_about_what_the_script_does">4.3.1. Excruciatingly detailed information about what the script does</a></li>
+<li><a href="#_excruciatingly_detailed_information_about_what_the_script_does_only_read_this_if_you_are_an_enthusiast_that_must_know_how_everything_works">4.3.1. Excruciatingly detailed information about what the script does (only read this if you are an enthusiast that must know how everything works)</a></li>
 </ul>
 </li>
 </ul>
@@ -1874,13 +1874,16 @@ $ pwd</code></pre>
 <p>First, <a href="#_mapping_your_network_drive">map your network drive</a>. Instructions are below.</p>
 </li>
 <li>
-<p>In the windows search bar, look for <strong>MobaXterm personal edition</strong>.</p>
+<p>In the windows search bar, type "powershell" and start a windows powershell.</p>
 </li>
 <li>
-<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
+<p>Type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code>.</p>
 </li>
 <li>
-<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
+<p>It will ask you a yes/no question about adding a key. Type <code>yes</code>.</p>
+</li>
+<li>
+<p>Enter your EASE password. and enter your password. UUN is your university user name.</p>
 </li>
 <li>
 <p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
@@ -1900,10 +1903,27 @@ $ pwd</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>The script will ask you for your Edinnurgh university username (UUN) and then if you want to install <strong>LSDTopoTools</strong> in your home directory.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong><em>If you are an undergratudate or taught master&#8217;s student</em></strong>, answer <code>yes</code> to put <strong>LSDTopoTools</strong> in your home directory.</p>
+</li>
+<li>
+<p>For staff and research students, <strong><em>we recommend saying <code>no</code> since this puts the code in your datashare directory</em></strong>, which has more space (I&#8217;m afraid taught students don&#8217;t have access to this resource).</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p><strong>If you have already followed the instructions above once</strong></p>
 </div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Go into the School of GeoScience servers using instructions above.</p>
 </li>
@@ -1914,6 +1934,9 @@ $ pwd</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>You will need to enter your UUN and answer the yes/no question as above, but everything will go very quickly since you&#8217;ve already downloaded everything.</p>
 </li>
 </ol>
 </div>
@@ -1975,20 +1998,44 @@ $ pwd</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_on_to_our_servers_with_mobaxterm">4.2. Getting on to our servers with MobaXterm</h3>
+<h3 id="_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">4.2. Getting on to our servers with with ssh in a powershell window</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use the windows search to find the program <strong>MobaXterm</strong>.</p>
+<p>In the windows search bar, type "powershell" and start a windows powershell.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/start_powershell.png" alt="Starting powershell">
+</div>
+<div class="title">Figure 6. Start powershell</div>
+</div>
 </li>
 <li>
-<p>When you open this, click on the button that says <strong>start local terminal</strong>.</p>
+<p>Type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ssh_into_server.png" alt="ssh onto server. Use your own UUN">
+</div>
+<div class="title">Figure 7. Go onto a server using the ssh command. You must use your own university username (UUN)!</div>
+</div>
 </li>
 <li>
-<p>In the terminal window, type <code>ssh <a href="mailto:UUN@ssh.geos.ed.ac.uk">UUN@ssh.geos.ed.ac.uk</a></code> and enter your password. UUN is your university user name.</p>
+<p>It will ask you a yes/no question about adding a key. Type <code>yes</code>.</p>
+</li>
+<li>
+<p>Enter your EASE password. and enter your password. UUN is your university user name.</p>
 </li>
 <li>
 <p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/go_onto_burn.png" alt="ssh onto a better server">
+</div>
+<div class="title">Figure 8. Go onto burn. You could also try <code>achray</code></div>
+</div>
+<div class="paragraph">
+<p>Alternatives to this method are programs called MobaXterm, putty, or secrue shell client. But basically in all these you need to connect to the server <code>UUN@ssh.geos.ed.ac.uk</code> and then enter your password.</p>
+</div>
 </li>
 </ol>
 </div>
@@ -2012,6 +2059,12 @@ $ pwd</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_Edinburgh_scripts/master/LSDTT_UEdin_setup.sh</code></pre>
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/get_the_startup_script.png" alt="Grab the startup script from the internet">
+</div>
+<div class="title">Figure 9. Grab the startup script from the internet using <code>wget</code>. Brief note: for downloading large files, <code>wget</code> is <strong>much</strong> faster than downloading files through a browser.</div>
+</div>
 </li>
 <li>
 <p>Now run the script:</p>
@@ -2020,6 +2073,15 @@ $ pwd</code></pre>
 <pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/run_the_script.png" alt="Run the startup script">
+</div>
+<div class="title">Figure 10. Run the script.</div>
+</div>
+</li>
+<li>
+<p>Follow the prompts.</p>
 </li>
 </ol>
 </div>
@@ -2036,7 +2098,7 @@ Every time you start a new session, you will need to run this setup script. The 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_excruciatingly_detailed_information_about_what_the_script_does">4.3.1. Excruciatingly detailed information about what the script does</h4>
+<h4 id="_excruciatingly_detailed_information_about_what_the_script_does_only_read_this_if_you_are_an_enthusiast_that_must_know_how_everything_works">4.3.1. Excruciatingly detailed information about what the script does (only read this if you are an enthusiast that must know how everything works)</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -2051,6 +2113,9 @@ This is what the setup script does. <strong>You don&#8217;t need to do this if y
 </div>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>For staff and research students, their largest data storage is in their datastore. Undergraduates and taught master&#8217;s stuents don&#8217;t have access to this, unfortunately. If you tell the script you want things in your home directory, the script will skip this.</p>
+</li>
 <li>
 <p>Go into your <strong>T:</strong> drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
 </li>
@@ -2243,6 +2308,10 @@ $ cd LSDTT_Directory</code></pre>
 </li>
 <li>
 <p>Go into the data directory and grab the example data from github, then unzip and clean the zip file:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are an undergraduate, the script will grab the small samples:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ cd data
@@ -2251,6 +2320,21 @@ $ unzip master.zip
 $ mv ./SmallExampleTopoDatasets-master ./ExampleTopoDatasets
 $ rm master.zip</code></pre>
 </div>
+</div>
+</li>
+<li>
+<p>If you have a datastore directory (e.g., are a PGR student or staff) it will get the large example data (since you have more space):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd data
+$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+$ unzip master.zip
+$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+$ rm master.zip</code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
@@ -3276,7 +3360,7 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-27 11:06:09 UTC
+Last updated 2019-06-18 09:30:30 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
