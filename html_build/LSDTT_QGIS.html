@@ -486,35 +486,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_summary_2">3.4. Summary</a></li>
 </ul>
 </li>
-<li><a href="#_an_example_using_data_from_lsdtopotools">4. An example using data from LSDTopoTools</a>
+<li><a href="#_more_qgis_analysis_using_saga_tools">4. More QGIS analysis using SAGA tools</a>
 <ul class="sectlevel2">
-<li><a href="#_generating_the_data">4.1. Generating the data</a>
-<ul class="sectlevel3">
-<li><a href="#_what_data_should_you_have_and_where_is_it">4.1.1. What data should you have and where is it?</a></li>
+<li><a href="#_first_step_get_topographic_data">4.1. First step: get topographic data</a></li>
+<li><a href="#_adding_a_bit_more_data">4.2. Adding a bit more data</a></li>
+<li><a href="#_using_the_saga_toolkit_to_process_raster_and_other_data">4.3. Using the SAGA toolkit to process raster and other data</a></li>
+<li><a href="#_sampling_rasters_with_the_saga_toolkit">4.4. Sampling rasters with the SAGA toolkit</a></li>
+<li><a href="#_summary_3">4.5. Summary</a></li>
 </ul>
 </li>
-<li><a href="#_a_first_basic_analysis">4.2. A first basic analysis</a></li>
-<li><a href="#_getting_surface_metrics">4.3. Getting surface metrics</a>
+<li><a href="#_an_example_using_data_from_lsdtopotools">5. An example using data from LSDTopoTools</a>
+<ul class="sectlevel2">
+<li><a href="#_generating_the_data">5.1. Generating the data</a>
 <ul class="sectlevel3">
-<li><a href="#_questions_and_tasks_for_surface_metrics">4.3.1. Questions and tasks for surface metrics</a></li>
+<li><a href="#_what_data_should_you_have_and_where_is_it">5.1.1. What data should you have and where is it?</a></li>
 </ul>
 </li>
-<li><a href="#_draniage_area_and_channel_extraction">4.4. Draniage area and channel extraction</a>
+<li><a href="#_a_first_basic_analysis">5.2. A first basic analysis</a></li>
+<li><a href="#_getting_surface_metrics">5.3. Getting surface metrics</a>
 <ul class="sectlevel3">
-<li><a href="#_questions_for_channel_extraction">4.4.1. Questions for channel extraction.</a></li>
+<li><a href="#_questions_and_tasks_for_surface_metrics">5.3.1. Questions and tasks for surface metrics</a></li>
 </ul>
 </li>
-<li><a href="#_sampling_a_raster_with_point_data">4.5. Sampling a raster with point data.</a>
+<li><a href="#_draniage_area_and_channel_extraction">5.4. Draniage area and channel extraction</a>
 <ul class="sectlevel3">
-<li><a href="#_questions">4.5.1. Questions:</a></li>
+<li><a href="#_questions_for_channel_extraction">5.4.1. Questions for channel extraction.</a></li>
 </ul>
 </li>
-<li><a href="#_channel_steepness_using_chi_analysis">4.6. Channel steepness using chi analysis</a>
+<li><a href="#_sampling_a_raster_with_point_data">5.5. Sampling a raster with point data.</a>
 <ul class="sectlevel3">
-<li><a href="#_run_the_chi_example">4.6.1. Run the chi example</a></li>
+<li><a href="#_questions">5.5.1. Questions:</a></li>
 </ul>
 </li>
-<li><a href="#_summary_3">4.7. Summary</a></li>
+<li><a href="#_channel_steepness_using_chi_analysis">5.6. Channel steepness using chi analysis</a>
+<ul class="sectlevel3">
+<li><a href="#_run_the_chi_example">5.6.1. Run the chi example</a></li>
+</ul>
+</li>
+<li><a href="#_summary_4">5.7. Summary</a></li>
 </ul>
 </li>
 <li><a href="#_projections_and_transformations">Appendix A: Projections and transformations</a>
@@ -1238,7 +1247,212 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 <div class="sect1">
-<h2 id="_an_example_using_data_from_lsdtopotools">4. An example using data from LSDTopoTools</h2>
+<h2 id="_more_qgis_analysis_using_saga_tools">4. More QGIS analysis using SAGA tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We will continue working with data using the <a href="http://www.saga-gis.org/">SAGA GIS</a> tools that are embedded within QGIS.</p>
+</div>
+<div class="paragraph">
+<p>We will add some data (more csv data, to give you more practise) and then look at subsampling this using a few new data layers.</p>
+</div>
+<div class="sect2">
+<h3 id="_first_step_get_topographic_data">4.1. First step: get topographic data</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before we begin, you will need some topographic data.</p>
+</li>
+<li>
+<p>If you have <a href="">installed LSDTopoTools</a>, you will already have the data: it is called <code>WA.bil</code>, and is a DEM, from the Ordnance Survey, in a small catchment in the Lammermuir hills of Scotland.</p>
+</li>
+<li>
+<p>If you haven&#8217;t got that data, go to this website: <a href="https://github.com/LSDtopotools/SmallExampleTopoDatasets" class="bare">https://github.com/LSDtopotools/SmallExampleTopoDatasets</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click on the <code>clone or download</code> link, and download and unzip.</p>
+</li>
+<li>
+<p>The relevant data is in the subdirectory <code>BasicMetricsData</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/download_zip_github.jpg" alt="Getting files from github as zip">
+</div>
+<div class="title">Figure 35. Getting the example data</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_a_bit_more_data">4.2. Adding a bit more data</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, find the example data (<code>WA.bil</code>) and add it to QGIS</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Add_WA.jpg" alt="Adding WA dataset">
+</div>
+<div class="title">Figure 36. Add WA.bil to QGIS</div>
+</div>
+</li>
+<li>
+<p>Now we will add some data that is recorded as a csv in the British National Grid.</p>
+</li>
+<li>
+<p>Here is the data (in comma separated value, csv, format):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">False_Easting,False_Northing,Easting,Northing,AW 1
+66222,61566,366222,661566,2.64
+66165,61527,366165,661527,1.7
+66195,61597,366195,661597,0.8
+66161,61618,366161,661618,0.9
+66154,61629,366154,661629,0.85
+66144,61656,366144,661656,1.55
+66129,61652,366129,661652,2.58
+66102,61673,366102,661673,1.05
+66095,61688,366095,661688,1
+66046,61739,366046,661739,0.6</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>You can copy this into excel, and then use the text import wizard. Select "delimited" in the second window and delimit the data with a comma. You can then save this file as a csv file.</p>
+</li>
+<li>
+<p>Now, import the data into QGIS using the <code>Layer &#8594; add layer &#8594; add delimited text</code> option. See the <a href="#_import_point_data_from_text_or_spreadsheet">instructions for importing a csv</a>. The data is in british national grid coordinates (<a href="https://spatialreference.org/ref/epsg/osgb-1936-british-national-grid/">EPSG:27700</a>). Make sure that the X any Y coordinates are the <code>Easting</code> and <code>Northing</code> columns. False easting and false northing are the data spit out by a GPS in Britain. An explanation of why that is can be found &lt;&lt; A special case: GPS coordinates and the British National Grid,earlier in this section&gt;&gt;.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Add_channel_width_points.jpg" alt="Adding the channel width data">
+</div>
+<div class="title">Figure 37. Adding data</div>
+</div>
+</li>
+<li>
+<p>The data should look like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Channel_width_points.jpg" alt="Channel width data">
+</div>
+<div class="title">Figure 38. Channel width data in the Whiteadder catchment</div>
+</div>
+</li>
+<li>
+<p>Okay, you are ready to move on to the next step.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_the_saga_toolkit_to_process_raster_and_other_data">4.3. Using the SAGA toolkit to process raster and other data</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Now that we have a DEM (<code>WA.bil</code>) and some point data (that you imported with the last step), we are going to import some data using something called the <a href="http://www.saga-gis.org/en/index.html">SAGA toolkit</a>. This contains a range of GIS functions embedded in QGIS.</p>
+</li>
+<li>
+<p>To get to the toolkit, use the <code>Processing&#8594;toolkits</code> menu button in QGIS:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Toolkits_button.jpg" alt="Toolkit button in QGIS">
+</div>
+<div class="title">Figure 39. The toolkits button in QGIS</div>
+</div>
+</li>
+<li>
+<p>Once you do this, you will get a huge number of options:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Processing_toolkits.jpg" alt="Toolkit options in QGIS">
+</div>
+<div class="title">Figure 40. The toolkits available in QGIS (newer versions will have even more options)</div>
+</div>
+</li>
+<li>
+<p>There are loads of SAGA options. Lets use the <code>valley depth</code> option:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/SAGA_valley_depth.jpg" alt="Valley_depth_SAGA">
+</div>
+<div class="title">Figure 41. SAGA valley depth option</div>
+</div>
+</li>
+<li>
+<p>Save the valley depth as a file in the same directory as your DEM</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Save_SAGA_valley_depth.jpg" alt="Save SAGA valley depth">
+</div>
+<div class="title">Figure 42. Save valley depth</div>
+</div>
+</li>
+<li>
+<p>Running this routine will take some time. You can only save this as a articular SAGA file.</p>
+</li>
+<li>
+<p>You will end up with some data that looks like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/SAGA_valley_depth_WA.jpg" alt="SAGA valley depth in Whiteadder">
+</div>
+<div class="title">Figure 43. Valley depth in the Whiteadder catchment</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sampling_rasters_with_the_saga_toolkit">4.4. Sampling rasters with the SAGA toolkit</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Okay, now we have some valeey depth data! Lets add that to our channel width data.</p>
+</li>
+<li>
+<p>Use the SAGA option for sampling rasters</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/SAGA_sample_points.jpg" alt="Sample points with SAGA">
+</div>
+<div class="title">Figure 44. Sample points using SAGA</div>
+</div>
+</li>
+<li>
+<p>When you do this make sure to add the grids that you want to sample (you can have as many as you like)</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/SAGA_points_options.jpg" alt="Sample points options">
+</div>
+<div class="title">Figure 45. Options for sampling points using SAGA</div>
+</div>
+</li>
+<li>
+<p>Also make sure to save the output. And make sure you sample using either <code>bilinear</code> or <code>cubic</code>:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/More_point_options.jpg" alt="More sample points options">
+</div>
+<div class="title">Figure 46. More options for sampling points using SAGA</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_3">4.5. Summary</h3>
+<div class="paragraph">
+<p>You now should have some familiarity with the SAGA GIS tools within QGIS and should feel confident to explore the options.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_an_example_using_data_from_lsdtopotools">5. An example using data from LSDTopoTools</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter gives and example of computing some basic raster and csv data from <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> and then importing it into QGIS. We use these examples in of one the practical exercises in the <a href="http://www.ed.ac.uk/geosciences">University of Edinburgh</a> course, <a href="http://www.drps.ed.ac.uk/17-18/dpt/cxgegr10094.htm">Eroding Landscapes</a>.</p>
@@ -1247,7 +1461,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 <p>One of the objectives of this exercise is to get you familiar with moving between a linux environment and QGIS.</p>
 </div>
 <div class="sect2">
-<h3 id="_generating_the_data">4.1. Generating the data</h3>
+<h3 id="_generating_the_data">5.1. Generating the data</h3>
 <div class="paragraph">
 <p>Okay, I am afraid this is something of a bait and switch: we are going to generate data using <strong>LSDTopoTools</strong> and to do that you need to follow the instructions for <a href="LSDTT_basic_usage.html">basic LSDTopoTools usage</a>.</p>
 </div>
@@ -1291,7 +1505,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_data_should_you_have_and_where_is_it">4.1.1. What data should you have and where is it?</h4>
+<h4 id="_what_data_should_you_have_and_where_is_it">5.1.1. What data should you have and where is it?</h4>
 <div class="paragraph">
 <p>After running the <a href="LSDTT_basic_usage.html">basic LSDTopoTools usage</a>, you will have a bunch of datasets within a directory called <code>LSDTT_workshop_data</code>. If you followed the instructions it will be inside a directory called <code>LSDTopoTools</code>.</p>
 </div>
@@ -1308,7 +1522,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 <div class="sect2">
-<h3 id="_a_first_basic_analysis">4.2. A first basic analysis</h3>
+<h3 id="_a_first_basic_analysis">5.2. A first basic analysis</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1320,7 +1534,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 <div class="content">
 <img src="images/WA_HS.jpg" alt="Whiteadder hillshade">
 </div>
-<div class="title">Figure 35. A hillshade of the Whiteadder catchement</div>
+<div class="title">Figure 47. A hillshade of the Whiteadder catchement</div>
 </div>
 </li>
 <li>
@@ -1330,7 +1544,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_surface_metrics">4.3. Getting surface metrics</h3>
+<h3 id="_getting_surface_metrics">5.3. Getting surface metrics</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1348,7 +1562,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_questions_and_tasks_for_surface_metrics">4.3.1. Questions and tasks for surface metrics</h4>
+<h4 id="_questions_and_tasks_for_surface_metrics">5.3.1. Questions and tasks for surface metrics</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1359,7 +1573,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 <div class="sect2">
-<h3 id="_draniage_area_and_channel_extraction">4.4. Draniage area and channel extraction</h3>
+<h3 id="_draniage_area_and_channel_extraction">5.4. Draniage area and channel extraction</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1374,13 +1588,13 @@ You can also save as a csv file to just get the selected values. If you only wan
 <div class="content">
 <img src="images/WA_CN.jpg" alt="Whiteadder channel network">
 </div>
-<div class="title">Figure 36. A simple channel network</div>
+<div class="title">Figure 48. A simple channel network</div>
 </div>
 </li>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_questions_for_channel_extraction">4.4.1. Questions for channel extraction.</h4>
+<h4 id="_questions_for_channel_extraction">5.4.1. Questions for channel extraction.</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1394,7 +1608,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sampling_a_raster_with_point_data">4.5. Sampling a raster with point data.</h3>
+<h3 id="_sampling_a_raster_with_point_data">5.5. Sampling a raster with point data.</h3>
 <div class="paragraph">
 <p>In many cases you might want to get some data from your raster to map nto some points you collected either in the field or extracted from a DEM (for example, like your channel network).</p>
 </div>
@@ -1468,7 +1682,7 @@ You csv needs to have lat-long coordinates in WGS84 (EPSG:4326)
 </table>
 </div>
 <div class="sect3">
-<h4 id="_questions">4.5.1. Questions:</h4>
+<h4 id="_questions">5.5.1. Questions:</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1498,7 +1712,7 @@ You csv needs to have lat-long coordinates in WGS84 (EPSG:4326)
 </div>
 </div>
 <div class="sect2">
-<h3 id="_channel_steepness_using_chi_analysis">4.6. Channel steepness using chi analysis</h3>
+<h3 id="_channel_steepness_using_chi_analysis">5.6. Channel steepness using chi analysis</h3>
 <div class="paragraph">
 <p>In a final example, we will extract some channel steepness metrics.
 We will be using chi analysis, the purpose of which is to normalise channel profiles for drainage area. See the following paper for details: <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/esp.3302" class="bare">https://onlinelibrary.wiley.com/doi/full/10.1002/esp.3302</a></p>
@@ -1507,7 +1721,7 @@ We will be using chi analysis, the purpose of which is to normalise channel prof
 <p>We will use a program within <strong>LSDTopoTools</strong> to do the chi transformation and look at the steepness of the channel. The method is descripbed in this paper: <a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2013JF002981" class="bare">https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2013JF002981</a></p>
 </div>
 <div class="sect3">
-<h4 id="_run_the_chi_example">4.6.1. Run the chi example</h4>
+<h4 id="_run_the_chi_example">5.6.1. Run the chi example</h4>
 <div class="paragraph">
 <p>If you have followed the instructions for <a href="">installing LSDTopoTools</a> you will already have the required program.</p>
 </div>
@@ -1567,7 +1781,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/chi_network.png" alt="Whiteadder chi network">
 </div>
-<div class="title">Figure 37. A channel network from chi analysis</div>
+<div class="title">Figure 49. A channel network from chi analysis</div>
 </div>
 </li>
 <li>
@@ -1579,7 +1793,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/select_properties.png" alt="Selecting point properties">
 </div>
-<div class="title">Figure 38. Selecting point properties</div>
+<div class="title">Figure 50. Selecting point properties</div>
 </div>
 </li>
 <li>
@@ -1588,7 +1802,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/symbology.png" alt="Selecting symbology">
 </div>
-<div class="title">Figure 39. Selecting symbology</div>
+<div class="title">Figure 51. Selecting symbology</div>
 </div>
 </li>
 <li>
@@ -1597,7 +1811,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/graduated.png" alt="Graduated colours">
 </div>
-<div class="title">Figure 40. Graduated colours</div>
+<div class="title">Figure 52. Graduated colours</div>
 </div>
 </li>
 <li>
@@ -1606,7 +1820,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/select_mchi.png" alt="Colour by M_chi_">
 </div>
-<div class="title">Figure 41. Colour by M_chi_</div>
+<div class="title">Figure 53. Colour by M_chi_</div>
 </div>
 </li>
 <li>
@@ -1615,7 +1829,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/mchi_map.png" alt="Channel steepness map">
 </div>
-<div class="title">Figure 42. Channel steepness map</div>
+<div class="title">Figure 54. Channel steepness map</div>
 </div>
 </li>
 </ol>
@@ -1623,7 +1837,7 @@ convert_csv_to_geojson: true</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary_3">4.7. Summary</h3>
+<h3 id="_summary_4">5.7. Summary</h3>
 <div class="paragraph">
 <p>You now have seen the basic interface of <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> programs, got a small taste of Linux, and know a few things about QGIS. From here you should be able to move on to more advanced topographic analysis.</p>
 </div>
@@ -1704,7 +1918,7 @@ convert_csv_to_geojson: true</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-28 15:43:07 UTC
+Last updated 2019-10-02 09:23:28 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
