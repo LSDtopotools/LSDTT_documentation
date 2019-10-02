@@ -1411,24 +1411,64 @@ You can also save as a csv file to just get the selected values. If you only wan
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Okay, now we have some valeey depth data! Lets add that to our channel width data.</p>
+<p>Okay, now we have some valley depth data! Lets add that to our channel width data.</p>
 </li>
 <li>
-<p>Use the SAGA option for sampling rasters</p>
+<p>Actually, we need to do something first. SAGA outputs data in its own idosyncratic data format that is badly georeferenced. So when you try to do subsequent analysis it might break things. For point extraction, it is <strong>essential</strong> that the data layers are in the same projection.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>First, export the valley depth raster:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Export_SAGA_layer.jpg" alt="Export the SAGA layer to a different file format">
+</div>
+<div class="title">Figure 44. Export the SAGA layer to a different file format</div>
+</div>
+</li>
+<li>
+<p>In this particular case, the main raster (<code>WA.bil</code>) is in UTM zone 30 (<code>EPSG:32630</code>) so put the new DEM in this coordinate system:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Export_EPSG.jpg" alt="Ensure you have the same eoreferencing as the base DEM">
+</div>
+<div class="title">Figure 45. Ensure you have the same eoreferencing as the base DEM</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Okay, you should also save the csv data as a shapefile, and it is probably clever to put it in this same coordinate system  (do the same thing: right click on the data layer and use export tool).</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This tool is very sensitive to coordinate systems. It will not like it if any of your data is in a different coordinate system. So make sure that all your layers are projected in the same way!
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now we can move on to the SAGA option for sampling rasters.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/SAGA_sample_points.jpg" alt="Sample points with SAGA">
 </div>
-<div class="title">Figure 44. Sample points using SAGA</div>
+<div class="title">Figure 46. Sample points using SAGA</div>
 </div>
 </li>
 <li>
-<p>When you do this make sure to add the grids that you want to sample (you can have as many as you like)</p>
+<p>When you do this make sure to add the grids that you want to sample. It looks like you can add loads of rasters! Unfortunately, testing suggest it will only actually add one raster at a time. Note that each layer has its projection listed. <strong>You should only choose layers with the same EPSG code.</strong></p>
 <div class="imageblock">
 <div class="content">
 <img src="images/SAGA_points_options.jpg" alt="Sample points options">
 </div>
-<div class="title">Figure 45. Options for sampling points using SAGA</div>
+<div class="title">Figure 47. Options for sampling points using SAGA</div>
 </div>
 </li>
 <li>
@@ -1437,8 +1477,29 @@ You can also save as a csv file to just get the selected values. If you only wan
 <div class="content">
 <img src="images/More_point_options.jpg" alt="More sample points options">
 </div>
-<div class="title">Figure 46. More options for sampling points using SAGA</div>
+<div class="title">Figure 48. More options for sampling points using SAGA</div>
 </div>
+</li>
+<li>
+<p>You will get a points layer in the same location, but if you look at the data by right clicking on the layer and opening the attribute table:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Points_open_attribute_table.jpg" alt="Open an attribute table">
+</div>
+<div class="title">Figure 49. Open an attribute table</div>
+</div>
+<div class="paragraph">
+<p>You will then see the raster data in a table:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Points_open_attributes.jpg" alt="The attributes">
+</div>
+<div class="title">Figure 50. The attributes</div>
+</div>
+</li>
+<li>
+<p>You can export this to an excel spreadsheet or csv if you wish.</p>
 </li>
 </ol>
 </div>
@@ -1534,7 +1595,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 <div class="content">
 <img src="images/WA_HS.jpg" alt="Whiteadder hillshade">
 </div>
-<div class="title">Figure 47. A hillshade of the Whiteadder catchement</div>
+<div class="title">Figure 51. A hillshade of the Whiteadder catchement</div>
 </div>
 </li>
 <li>
@@ -1588,7 +1649,7 @@ You can also save as a csv file to just get the selected values. If you only wan
 <div class="content">
 <img src="images/WA_CN.jpg" alt="Whiteadder channel network">
 </div>
-<div class="title">Figure 48. A simple channel network</div>
+<div class="title">Figure 52. A simple channel network</div>
 </div>
 </li>
 </ol>
@@ -1781,7 +1842,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/chi_network.png" alt="Whiteadder chi network">
 </div>
-<div class="title">Figure 49. A channel network from chi analysis</div>
+<div class="title">Figure 53. A channel network from chi analysis</div>
 </div>
 </li>
 <li>
@@ -1793,7 +1854,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/select_properties.png" alt="Selecting point properties">
 </div>
-<div class="title">Figure 50. Selecting point properties</div>
+<div class="title">Figure 54. Selecting point properties</div>
 </div>
 </li>
 <li>
@@ -1802,7 +1863,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/symbology.png" alt="Selecting symbology">
 </div>
-<div class="title">Figure 51. Selecting symbology</div>
+<div class="title">Figure 55. Selecting symbology</div>
 </div>
 </li>
 <li>
@@ -1811,7 +1872,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/graduated.png" alt="Graduated colours">
 </div>
-<div class="title">Figure 52. Graduated colours</div>
+<div class="title">Figure 56. Graduated colours</div>
 </div>
 </li>
 <li>
@@ -1820,7 +1881,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/select_mchi.png" alt="Colour by M_chi_">
 </div>
-<div class="title">Figure 53. Colour by M_chi_</div>
+<div class="title">Figure 57. Colour by M_chi_</div>
 </div>
 </li>
 <li>
@@ -1829,7 +1890,7 @@ convert_csv_to_geojson: true</code></pre>
 <div class="content">
 <img src="images/mchi_map.png" alt="Channel steepness map">
 </div>
-<div class="title">Figure 54. Channel steepness map</div>
+<div class="title">Figure 58. Channel steepness map</div>
 </div>
 </li>
 </ol>
