@@ -495,16 +495,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_basic_file_input_and_output">A.1. Basic file input and output</a></li>
 <li><a href="#_dem_preprocessing">A.2. DEM preprocessing</a></li>
-<li><a href="#_basic_data_output">A.3. Basic data output</a></li>
-<li><a href="#_surface_fitting">A.4. Surface fitting</a></li>
-<li><a href="#_drainage_area_extraction">A.5. Drainage area extraction</a></li>
-<li><a href="#_basic_channel_extraction_and_printing">A.6. Basic channel extraction and printing</a></li>
-<li><a href="#_more_advanced_channel_and_basin_selection">A.7. More advanced channel and basin selection</a>
+<li><a href="#_raster_trimming_options_more_preprocessing">A.3. Raster trimming options (more preprocessing)</a></li>
+<li><a href="#_basic_data_output">A.4. Basic data output</a></li>
+<li><a href="#_surface_fitting">A.5. Surface fitting</a></li>
+<li><a href="#_roughness_calculation">A.6. Roughness calculation</a></li>
+<li><a href="#_drainage_area_extraction">A.7. Drainage area extraction</a></li>
+<li><a href="#_basic_channel_extraction_and_printing">A.8. Basic channel extraction and printing</a></li>
+<li><a href="#_more_advanced_channel_and_basin_selection">A.9. More advanced channel and basin selection</a>
 <ul class="sectlevel3">
-<li><a href="#_basic_parameters_for_the_chi_coordinate">A.7.1. Basic parameters for the chi coordinate</a></li>
+<li><a href="#_basic_parameters_for_the_chi_coordinate">A.9.1. Basic parameters for the chi coordinate</a></li>
 </ul>
 </li>
-<li><a href="#_example_parameter_files">A.8. Example parameter files</a></li>
+<li><a href="#_example_parameter_files">A.10. Example parameter files</a></li>
 </ul>
 </li>
 </ul>
@@ -1289,6 +1291,12 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <td class="tableblock halign-left valign-top"><p class="tableblock">If true, the code assumes the raster is already filled and doesn&#8217;t perform the filling routine. This should save some time in computation, but make sure the raster really is filled or else you will get segmentation faults!</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">carve_before_fill</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this runs a carving algoriothm before the fill function (Algorithm from Lindsay 2016). This breaches dams so that you don&#8217;t get giant flat areas.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">only_check_parameters</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
@@ -1298,9 +1306,61 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_basic_data_output">A.3. Basic data output</h3>
+<h3 id="_raster_trimming_options_more_preprocessing">A.3. Raster trimming options (more preprocessing)</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
+<caption class="title">Table 3. These are more preprocessing routines specifically for trimming rasters</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove_nodes_influenced_by_edge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this removes all pixels that are influenced by the edge or nodata. Influence is determined by D8 flow: The code starts at any node adjacent to the edge or nodata and then "erases" (converts to no data) all pixels downstream of this subset of pixels.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isolate_pixels_draining_to_fixed_channel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this only retains pixels from the DEM that drain to a set of points (usually a channel), which is stored in the fixed channel csv (see below).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fixed_channel_csv_name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">single_channel_nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the name of a csv file that contains a list of nodes. It looks for node indices (it can find "ni", "nodeindex", or "index" in the csv) so is actually rather crap since you will need to update this file any time you change the raster. SMM needs to change this to read lat-long so it is not DEM-specific</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_trimmed_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a slightly different trimmer: it finds the largest rectangular raster without nodata around the edges and prints to file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">trimming_buffer_pixels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">THis is a parameter for the <code>print_trimmed_raster</code> option: it creates a buffer between the last nodata node and the edge of the DEM.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_basic_data_output">A.4. Basic data output</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Basic printing operations. For simple rasters and network data that doesn&#8217;t require chi analysis.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1356,9 +1416,9 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_surface_fitting">A.4. Surface fitting</h3>
+<h3 id="_surface_fitting">A.5. Surface fitting</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. These are options for polynomial surface fitting.</caption>
+<caption class="title">Table 5. These are options for polynomial surface fitting.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1428,13 +1488,83 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints a point classification raster. This takes the value 1 if there is a peak, 2 if there is a depression and 3 if there is a saddle.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_directional_gradients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints two rasters, for sloipes in each of the cardinal directions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">calculate_basin_statistics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, it goes thrugh the basin selection, and then prints statistics about slope and/or curvature for that basin. You must have print_slope and/or print_curvature set to true for this to work. The output goes into a csv file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">calculate_window_size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It this is set to true, runs a calculation to estimate the best window size for surface fitting. Warning: this is computationally expensive and might take a while.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_drainage_area_extraction">A.5. Drainage area extraction</h3>
+<h3 id="_roughness_calculation">A.6. Roughness calculation</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. These are options for drainage area extraction.</caption>
+<caption class="title">Table 6. These are options for calculationg landscape roughness</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REI_critical_slope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Critical slope for the rock exposure index calculation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REI_window_radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius for the window for the rock exposure index calculation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_REI_raster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the REI to a raster</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print_roughness_rasters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, prints the S1,S2, and S3 rasters. See <a href="https://www.earth-surf-dynam.net/3/483/2015/">Milodwski et al, ESURF</a> for details.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">roughness_radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius for the window for the roughness calculation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_drainage_area_extraction">A.7. Drainage area extraction</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. These are options for drainage area extraction.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1490,12 +1620,12 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_basic_channel_extraction_and_printing">A.6. Basic channel extraction and printing</h3>
+<h3 id="_basic_channel_extraction_and_printing">A.8. Basic channel extraction and printing</h3>
 <div class="paragraph">
 <p>This simply gets a channel network and prints its location. It is a rather rudimentary way of seeing where channels are. More advanced options are in the next table.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. These are options for drainage area extraction.</caption>
+<caption class="title">Table 8. These are options for drainage area extraction.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1539,13 +1669,31 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <td class="tableblock halign-left valign-top"><p class="tableblock">print_junctions_angles_to_csv</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prints the junction angles of each junction to a csv file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints the junction angles of each junction to a csv file. This has rather a lot of data outputs. It rejects junctions with more than two donors. It records the order of the junction and each of the two donors. It also records the drainage area of the junction and the two donors. It records the bearing of each of the three channels (all pointing away from the junction, so the two donors point upstream and the channel below the junction points downstream). It also records the angle between the two donors as well as the angle between the D1 and the downstream channel, and D2 and the downstream channel.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">extract_single_channel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, this takes a single source (entered as a lat-long in a csv file, see below) and follows it doenstream. A very easy way to get statistics from a single channel. The channel records flow distance and drainage area.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use_dinf_for_single_channel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, records the dinf drainage area rather than D8 drainage area in the single channel csv</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">channel_source_fname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">singe_channel_source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of a csv file that has latitude and longitude as column headers. Only takes the first item in the file as the channel source. Used by <code>extract_single_channel</code>.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_more_advanced_channel_and_basin_selection">A.7. More advanced channel and basin selection</h3>
+<h3 id="_more_advanced_channel_and_basin_selection">A.9. More advanced channel and basin selection</h3>
 <div class="paragraph">
 <p>These options give you a bit of control over selecting basins.</p>
 </div>
@@ -1562,7 +1710,7 @@ If you just want the largest complete basin, set <code>find_largest_complete_bas
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
+<caption class="title">Table 9. Options for determining which channels and basins to analyse, including settings for the fill function.</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1641,9 +1789,9 @@ If you just want the largest complete basin, set <code>find_largest_complete_bas
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_basic_parameters_for_the_chi_coordinate">A.7.1. Basic parameters for the chi coordinate</h4>
+<h4 id="_basic_parameters_for_the_chi_coordinate">A.9.1. Basic parameters for the chi coordinate</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Parameters for calculating the chi coordinate.</caption>
+<caption class="title">Table 10. Parameters for calculating the chi coordinate.</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1676,7 +1824,7 @@ If you just want the largest complete basin, set <code>find_largest_complete_bas
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example_parameter_files">A.8. Example parameter files</h3>
+<h3 id="_example_parameter_files">A.10. Example parameter files</h3>
 <div class="paragraph">
 <p>We have a number of example parameter files in the repository <a href="https://github.com/LSDtopotools/LSDTT_chi_examples">LSDTT_chi_examples</a>. The chapter on examples will walk you through the various things these files do.</p>
 </div>
