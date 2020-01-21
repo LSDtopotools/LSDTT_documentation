@@ -464,6 +464,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_hard_way_native_linux_using_miniconda_and_an_environment">3.2. Hard way (native linux) using miniconda and an environment</a></li>
 <li><a href="#_super_hard_way_setting_up_python_without_an_environment_file">3.3. Super hard way: setting up python without an environment file</a></li>
 <li><a href="#_fixing_python_gdal_in_windows">3.4. Fixing python gdal in windows</a></li>
+<li><a href="#_instructions_specific_to_university_of_edinburgh_servers">3.5. Instructions specific to University of Edinburgh servers</a>
+<ul class="sectlevel3">
+<li><a href="#_before_you_do_anything">3.5.1. Before you do anything</a></li>
+<li><a href="#_if_you_have_access_to_lsdtopodata">3.5.2. If you have access to LSDTopoData</a></li>
+<li><a href="#_getting_miniconda_and_an_environment_working_on_a_machine_without_access_to_lsdtopodata_i_e_msc_and_bsc_students">3.5.3. Getting miniconda and an environment working on a machine without access to LSDTopoData (i.e. MSc and BSc students)</a></li>
+<li><a href="#_notes_for_simon">3.5.4. Notes for Simon</a></li>
+<li><a href="#_exporting_from_docker">3.5.5. Exporting from Docker</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_basic_lsdtopotools_visualisation">4. Basic LSDTopoTools visualisation</a>
@@ -673,6 +682,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 * <strong>Easy way</strong> Get our <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_viz_docker">docker visualisation container</a>
 * <strong>Hard way</strong> install the conda environment using <a href="http://conda.pydata.org/miniconda.html">miniconda</a></p>
 </div>
+<div class="paragraph">
+<p>If you are at the University of Edinburgh you can follow <a href="#_instructions_specific_to_university_of_edinburgh_servers">Instructions specific to University of Edinburgh servers</a>.</p>
+</div>
 <div class="sect2">
 <h3 id="_easy_way_the_lsdtt_docker_visualisation_container">3.1. Easy way: The LSDTT docker visualisation container</h3>
 <div class="olist arabic">
@@ -731,7 +743,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><code>python3_environment.yml</code> is for Linux but is possibly more portable.</p>
 </li>
 <li>
-<p><code>LSDMT_version_0.2.2.txt</code> is a functioning version that works in a 64 bit Linux environment</p>
+<p><code>LSDMT_version_0.2.3.txt</code> is a functioning version that works in a 64 bit Linux environment</p>
 </li>
 <li>
 <p>If you are in Windows, try the <code>python3_environment.yml</code>. Otherwise, try the other one.</p>
@@ -894,6 +906,243 @@ This is an alternative to the previous two sections! You don&#8217;t need to do 
 <p>Go into the control panel, go to system (or system and security, then system), click on <strong>advanced system settings</strong> and in system variables enter a new variable: <strong>GDAL_DATA</strong>. For the value of this enter the directory where the gdal data is that you found above.</p>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instructions_specific_to_university_of_edinburgh_servers">3.5. Instructions specific to University of Edinburgh servers</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This only works on the University of Edinburgh School of GeoSciences servers. If you are not part of the School of GeoSciences you&#8217;ll need instructions above.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_before_you_do_anything">3.5.1. Before you do anything</h4>
+<div class="paragraph">
+<p>Below you will be asked to edit your <code>.bashrc</code> file.
+Your <code>.bashrc</code> file is in your home directory. You can always get to your home directory with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you are there, make a copy of this file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cp .bashrc old.bashrc</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can edit the <code>.bashrc</code> file using <code>vim</code> or <code>emacs</code>. I like <code>vim</code> but you should read a tutorial before you start it because it is not intuative!
+To open the file with <code>vim</code> use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ vim .bashrc</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also edit this file with a text editor. It is <strong>essential</strong> that the file is in Unix format. See this <a href="https://kb.iu.edu/d/acux">tutorial for more information</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_if_you_have_access_to_lsdtopodata">3.5.2. If you have access to LSDTopoData</h4>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">How do I get access?</div>
+<div class="paragraph">
+<p>For various IT reasons, undergraduates and taught master&#8217;s students (that is, any master&#8217;s degree except master&#8217;s by research) do not have access to the group datastores. I am sure there is a good IT reason why this is the case, and getting the policy changed would either be extremely time consuming or impossible. If you are in this category skip to the section about not having access.</p>
+</div>
+<div class="paragraph">
+<p>If you are a PhD student, staff or visiting researcher, then email Simon to get access.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Okay, if you have access to <strong>LSDTopoData</strong>, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You need to update your path in your .bashrc file. To do that, include this line:
+<code>export PATH="/exports/csce/datastore/geos/groups/LSDTopoData/miniconda/miniconda3/bin:$PATH"</code></p>
+</li>
+<li>
+<p>Go onto one of our servers.</p>
+</li>
+<li>
+<p>Type <code>source activate LSDMT3</code></p>
+</li>
+<li>
+<p>You are finished, but to use <strong>LSDMappingTools</strong>, you need to get them. Use git to clone the repository</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDMappingTools.git</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To run the mapping scripts you need to go into the <code>LSDMappingTools</code> directory and run them while in the <strong>LSDMT3</strong> environment.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getting_miniconda_and_an_environment_working_on_a_machine_without_access_to_lsdtopodata_i_e_msc_and_bsc_students">3.5.3. Getting miniconda and an environment working on a machine without access to LSDTopoData (i.e. MSc and BSc students)</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go into your directory that has the most space. Usually this is your datastore directory.</p>
+</li>
+<li>
+<p>Make a directory for miniconda, then download miniconda into it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir miniconda
+$ cd miniconda</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Figure out where you are:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ pwd</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the resulting path. You will use this in a second.</p>
+</li>
+<li>
+<p>Now get miniconda:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ sh Miniconda3-latest-Linux-x86_64.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now in the command prompt, it will ask for a location of miniconda 3. Use the location that <code>pwd</code> just gave you (a few steps earlier)</p>
+</li>
+<li>
+<p>You need to update your path in your .bashrc file.
+Include this line <code>export PATH="/your/path/to/miniconda/miniconda3/bin:$PATH"</code></p>
+</li>
+<li>
+<p>IMPORTANT: you need to change the path so it reflects your directories!!! But you do need to include the <code>/bin</code> part of the above path.</p>
+</li>
+<li>
+<p>Then you can create the environment from an environment file. The one you want is the <code>conda_list_July2019.txt</code> in this directory.
+<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file" class="bare">https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file</a></p>
+</li>
+<li>
+<p>You can do this with:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/master/conda_environments/LSDMT_version_0.2.2.txt
+$ conda create --name LSDMT3 --file LSDMT_version_0.2.2.txt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This will take ages. When it is finished you can activate it with</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">conda activate LSDMT3</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Type <code>source activate LSDMT3</code></p>
+</li>
+<li>
+<p>You are finished, but to use <strong>LSDMappingTools</strong>, you need to get them. Use git to clone the repository</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/LSDMappingTools.git</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To run the mapping scripts you need to go into the <code>LSDMappingTools</code> directory and run them while in the <strong>LSDMT3</strong> environment.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_notes_for_simon">3.5.4. Notes for Simon</h4>
+<div class="paragraph">
+<p>These are notes for Simon that he uses to remember what he did. If you are not Simon you can ignore.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First I needed to get Miniconda in LSDTopoData:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd miniconda
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ sh Miniconda3-latest-Linux-x86_64.sh</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In the command prompt, it asked for a location of miniconda 3. Use the location in LSDTopoData:
+<code>/exports/csce/datastore/geos/groups/LSDTopoData/miniconda/miniconda3</code></p>
+</li>
+<li>
+<p>I created a new environment.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">conda create -n LSDMT3 python=3.6.7</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>I then spent ages trying to get it to work because python GDAL is evil.</p>
+</li>
+<li>
+<p>Finally, when it worked, I exported the conda environment: <code>conda env export &gt; environment.yml</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exporting_from_docker">3.5.5. Exporting from Docker</h4>
+<div class="paragraph">
+<p>If you have a functioning docker environment, you can export the environment with:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda list --explicit &gt; Conda_explicit_list.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+This file can be used to create an environment with:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name &lt;env&gt; --file &lt;this file&gt;</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
