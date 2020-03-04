@@ -456,13 +456,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_installing_muddpile">2. Installing MuddPILE</a>
 <ul class="sectlevel2">
-<li><a href="#_prerequisites">2.1. Prerequisites</a></li>
-<li><a href="#_getting_the_code_and_installing">2.2. Getting the code and installing</a></li>
-<li><a href="#_visualisation">2.3. Visualisation</a>
-<ul class="sectlevel3">
-<li><a href="#_using_our_python_plotting_tools">2.3.1. Using our python plotting tools</a></li>
-</ul>
-</li>
+<li><a href="#_use_docker_option_1">2.1. Use docker (Option 1)</a></li>
+<li><a href="#_compile_from_source_code_option_2_only_use_if_you_dont_have_docker">2.2. Compile from source code (Option 2; only use if you don&#8217;t have Docker)</a></li>
+<li><a href="#_visualisation">2.3. Visualisation</a></li>
 </ul>
 </li>
 <li><a href="#_some_example_runs">3. Some example runs</a>
@@ -479,28 +475,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_next_steps">3.6. Next steps</a></li>
 </ul>
 </li>
-<li><a href="#_muddpile_details">4. MuddPILE details</a>
+<li><a href="#_steady_state_tools">4. Steady state tools</a>
 <ul class="sectlevel2">
-<li><a href="#_the_parameter_file">4.1. The parameter file</a></li>
-<li><a href="#_parameter_file_options">4.2. Parameter file options</a>
-<ul class="sectlevel3">
-<li><a href="#_basic_file_input_and_output">4.2.1. Basic file input and output</a></li>
+<li><a href="#_basic_snapping">4.1. Basic snapping</a></li>
+<li><a href="#_adding_lithology">4.2. Adding lithology</a></li>
+<li><a href="#_three_dimensional_lithology">4.3. Three dimensional lithology</a></li>
 </ul>
 </li>
-<li><a href="#_important_default_settings_that_you_cannot_change">4.3. Important default settings that you cannot change</a>
+<li><a href="#_muddpile_details">5. MuddPILE details</a>
+<ul class="sectlevel2">
+<li><a href="#_the_parameter_file">5.1. The parameter file</a></li>
+<li><a href="#_parameter_file_options">5.2. Parameter file options</a>
 <ul class="sectlevel3">
-<li><a href="#_parameters_for_initiating_the_model_domain">4.3.1. Parameters for initiating the model domain</a></li>
-<li><a href="#_parameters_for_flux_laws_and_uplift_and_timestepping">4.3.2. Parameters for flux laws, and uplift, and timestepping</a></li>
-<li><a href="#_parameters_for_controlling_simple_model_output">4.3.3. Parameters for controlling simple model output</a></li>
-<li><a href="#_parameters_for_creating_an_initial_surface">4.3.4. Parameters for creating an initial surface</a></li>
-<li><a href="#_parameters_for_spinning_up_the_surface">4.3.5. Parameters for spinning up the surface</a></li>
-<li><a href="#_parameters_for_running_the_model_using_various_climate_and_tectonic_scenarios">4.3.6. Parameters for running the model using various climate and tectonic scenarios</a></li>
+<li><a href="#_basic_file_input_and_output">5.2.1. Basic file input and output</a></li>
 </ul>
 </li>
-<li><a href="#_output_data_formats">4.4. Output data formats</a>
+<li><a href="#_important_default_settings_that_you_cannot_change">5.3. Important default settings that you cannot change</a>
 <ul class="sectlevel3">
-<li><a href="#_default_file_output">4.4.1. Default file output</a></li>
-<li><a href="#_optional_raster_output">4.4.2. Optional raster output</a></li>
+<li><a href="#_parameters_for_initiating_the_model_domain">5.3.1. Parameters for initiating the model domain</a></li>
+<li><a href="#_parameters_for_flux_laws_and_uplift_and_timestepping">5.3.2. Parameters for flux laws, and uplift, and timestepping</a></li>
+<li><a href="#_parameters_for_controlling_simple_model_output">5.3.3. Parameters for controlling simple model output</a></li>
+<li><a href="#_parameters_for_creating_an_initial_surface">5.3.4. Parameters for creating an initial surface</a></li>
+<li><a href="#_parameters_for_spinning_up_the_surface">5.3.5. Parameters for spinning up the surface</a></li>
+<li><a href="#_parameters_for_running_the_model_using_various_climate_and_tectonic_scenarios">5.3.6. Parameters for running the model using various climate and tectonic scenarios</a></li>
+</ul>
+</li>
+<li><a href="#_output_data_formats">5.4. Output data formats</a>
+<ul class="sectlevel3">
+<li><a href="#_default_file_output">5.4.1. Default file output</a></li>
+<li><a href="#_optional_raster_output">5.4.2. Optional raster output</a></li>
 </ul>
 </li>
 </ul>
@@ -520,7 +523,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_a_parsimonious_integrated_landscape_evolution_model">1. A parsimonious integrated landscape evolution model</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the documentation of MuddPILE, a simple landscape evolution model. The model is named MuddPILE because mudpile. Get it? But although Simon Mudd started the code it has a number of authors: Simon Mudd, James Jenkinson, Fiona Clubb and Declan Valters have all made contributions.</p>
+<p>Welcome to the documentation of MuddPILE, a simple landscape evolution model. The model is named MuddPILE because mud pile. Get it? But although Simon Mudd started the code it has a number of authors: Simon Mudd, James Jenkinson, Fiona Clubb and Declan Valters have all made contributions.</p>
 </div>
 <div class="paragraph">
 <p>The code is meant to be simple and fast. It simulates fluvial incision using the stream power law, and hillslope processes are simulated with either linear or nonlinear sediment flux laws. Both of these erosion modules use implicit schemes, and the model uses sparse matrix solvers for maximum computational efficiency.</p>
@@ -528,25 +531,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_what_is_muddpile">1.1. What is MuddPILE?</h3>
 <div class="paragraph">
-<p>MuddPILE is a very simple landscape evolution model that has fluvial erosion modelled with the stream power law (E = K A<sup>m</sup> S<sup>n</sup>) and hillslope evolution modelled with a nonlinear sediment flux law, e.g., <a href="http://seismo.berkeley.edu/~kirchner/reprints/1999_29_Roering_nonlinear.pdf">Roering et al., 1999, JGR</a>. It uses the <a href="https://www.researchgate.net/profile/Sean_Willett/publication/236741975_A_very_efficient_On_implicit_and_parallel_method_to_solve_the_stream_power_equation_governing_fluvial_incision_and_landscape_evolution/links/0046351932d6e86514000000.pdf">FASTSCAPE</a> algorithm to compute fluvial erosion, and I cooked up a relatively fast implicit method to solve the hillslope equations since they are nasty and nonlinear.  You can force the model with spatially heterogeneous uplift and erodibility. It runs fairly quickly. So if your goal is just to generate some fairly simple landscapes with some fairly simple rules fairly quickly this is the model for you.</p>
+<p>MuddPILE is a very simple landscape evolution model that has fluvial erosion modelled with the stream power law (E = K A<sup>m</sup> S<sup>n</sup>) and hillslope evolution modelled with a nonlinear sediment flux law, e.g., <a href="http://seismo.berkeley.edu/~kirchner/reprints/1999_29_Roering_nonlinear.pdf">Roering et al., 1999, JGR</a>. It also contains an even more basic hillslope component that simply forces all</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-MuddPILE is meant to explore the topographic outcomes of simple, virtual landscapes where there is competition between advective and diffusion-like processes, and <strong>should not be used for predictive purposes</strong>. Rather, the aim of this model is to see where landscape evolution models are inadequate for matching the topographic properties of real landscapes, which is why it is built within the <a href="http://lsdtopotools.github.io/">LSDTopoTools</a> framework.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>These are the things <strong>MuddPILE</strong> does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Solves basic stream power and hillslope diffusion in transient cases.</p>
+</li>
+<li>
+<p>Allows the user to input spatially varying uplift and litholoigic information.</p>
+</li>
+<li>
+<p>Includes some tools for setting up uplift and lithology fields</p>
+</li>
+<li>
+<p>It also includes a number of <strong>steady state</strong> solvers, that allow us to "snap" the landscape to a steady state solution quickly, even over spatially varying uplift and lithology.</p>
+</li>
+<li>
+<p>We have also included routines for ingesting three-dimensional lithologic data</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MuddPILE</strong> uses the <a href="https://www.researchgate.net/profile/Sean_Willett/publication/236741975_A_very_efficient_On_implicit_and_parallel_method_to_solve_the_stream_power_equation_governing_fluvial_incision_and_landscape_evolution/links/0046351932d6e86514000000.pdf">FASTSCAPE</a> algorithm to compute fluvial erosion, and Simon cooked up a relatively fast implicit method to solve the hillslope equations since they are nasty and nonlinear.  You can force the model with spatially heterogeneous uplift and erodibility. It runs fairly quickly. So if your goal is just to generate some fairly simple landscapes with some fairly simple rules fairly quickly this is the model for you.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_your_features_are_incomplete_why_cant_muddpile_do_thing">1.2. Your features are incomplete, why can&#8217;t MuddPILE do [thing]?</h3>
 <div class="paragraph">
-<p><strong>MuddPILE</strong> was not designed as a general, flexible landscape evolution model. Many of those already exist. You can, for instance, try <a href="http://landlab.github.io/#/">landlab</a>, <a href="http://csdms.colorado.edu/wiki/Model:CHILD">CHILD</a>, <a href="https://osur.univ-rennes1.fr/eros/">€ros</a>, or <a href="https://sourceforge.net/projects/caesar-lisflood/">CAESAR</a>. <strong>MuddPILE</strong> was developed to run on our servers to meet the modelling needs of specific scientific papers. If you know c++ you can go into the <code>LSDRasterModel</code> object and make general models, but I&#8217;m afraid at the moment if you just want to run some simple models, the model driver (<strong>MuddPILEdriver</strong>) isn&#8217;t particularly flexible. The main purpose for publishing this code is to make our simulations transparent and reproducible so that any simulation results reported in our papers can be easily recreated by other workers.</p>
+<p><strong>MuddPILE</strong> was not designed as a general, flexible landscape evolution model. Many of those already exist. You can, for instance, try <a href="http://landlab.github.io/#/">landlab</a>, <a href="http://csdms.colorado.edu/wiki/Model:CHILD">CHILD</a>, <a href="https://osur.univ-rennes1.fr/eros/">€ros</a>, <a href="https://github.com/badlands-model/badlands">pybadlands</a>, or <a href="https://sourceforge.net/projects/caesar-lisflood/">CAESAR</a>. <strong>MuddPILE</strong> was developed to run on our servers to meet the modelling needs of specific scientific papers. If you know c++ you can go into the <code>LSDRasterModel</code> object and make general models, but I&#8217;m afraid at the moment if you just want to run some simple models, the model driver (<strong>MuddPILEdriver</strong>) isn&#8217;t particularly flexible. The main purpose for publishing this code is to make our simulations transparent and reproducible so that any simulation results reported in our papers can be easily recreated by other workers.</p>
 </div>
 </div>
 </div>
@@ -555,48 +571,84 @@ MuddPILE is meant to explore the topographic outcomes of simple, virtual landsca
 <h2 id="_installing_muddpile">2. Installing MuddPILE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>MuddPILE is written in c++ and distributed as source code so you need to compile it. Instructions are below.</p>
+<p>We distribute MuddPILE as both c++ source code and as a program that you can run in one of our <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_alpine_docker">docker containers</a>. The latter approach is easier to get started as long as you have docker on your computer.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t have <a href="https://www.docker.com/">Docker</a>, then you will need to compile from source code.</p>
 </div>
 <div class="sect2">
-<h3 id="_prerequisites">2.1. Prerequisites</h3>
-<div class="paragraph">
-<p>Firstly, this code was developed in Linux and it is a lot easer to install in Linux systems than other systems. Do you not run Linux? <strong>Nae problem.</strong> Our <a href="LSDTT_installation.html"><strong>LSDTopoTools</strong> installation documents</a> will get a Linux machine living inside you host operating system in no time.</p>
-</div>
-<div class="paragraph">
-<p><a href="LSDTT_installation.html">Click here for <strong>LSDTopoTools</strong> installation instructions.</a></p>
-</div>
+<h3 id="_use_docker_option_1">2.1. Use docker (Option 1)</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First you need all the GNU c++ tools and make. But basically every Linux operating system has this so don&#8217;t worry about it.</p>
+<p>First, you need to <a href="https://www.docker.com/products/docker-desktop">install docker</a></p>
 </li>
 <li>
-<p>Second, you need something called FFTW. If you already installed <a href="https://lsdtopotools.github.io/">LSDTopoTools</a> it is already on your computer. If not, install it like this (this is for Ubuntu, if you&#8217;ve not got <code>apt-get</code> then try <code>yum</code> or <code>dnf</code> on the RHEL or Fedora flavours of Linux):</p>
+<p>Once you have docker installed, you can use our container:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install -y libfftw3-dev</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_alpine_docker</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Note that prior to the colon in this statement <code>C:\LSDTopoTools:/LSDTopoTools</code> you will need to put the path you an LSDTopoTools directory that you have made on your computer. This command: <code>-it -v C:\LSDTopoTools:/LSDTopoTools</code> tells the docker container to link directories on your computer to an <code>/LSDTopoTools</code> directory within the container.</p>
+</div>
+</li>
+<li>
+<p>Our <a href="https://hub.docker.com/repository/docker/lsdtopotools/lsdtt_alpine_docker"><strong>alpine container</strong></a> actually has the <strong>MuddPILE</strong> program <code>MuddPILEDriver.out</code> already installed. So all you need to do is get some data, a <strong>driver file</strong> (see examples below) and start simulating landscapes.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_the_code_and_installing">2.2. Getting the code and installing</h3>
+<h3 id="_compile_from_source_code_option_2_only_use_if_you_dont_have_docker">2.2. Compile from source code (Option 2; only use if you don&#8217;t have Docker)</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This method is not so easy if you don&#8217;t know your way around a linux system. We suggest you use the docker instructions above instead.
+</td>
+</tr>
+</table>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We are going to assume that you are using the <strong>LSDTopoTools</strong> vagrant or docker setup. You can read about that <a href="LSDTT_installation.html">in the LSDTopoTools installation instructions</a>. You can do this on your own linux operating system but you will have to adjust the directory names accordingly.</p>
+<p>First things first: you need to set up a Linux-like environment on your computer.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you have Linux, great! You just can jump right in!</p>
 </li>
 <li>
-<p>Navigate to the <code>Git_projects</code> directory in your linux machine (on Windows that means using <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">putty.exe</a> to <a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a> into the machine. If you don&#8217;t know what any of that means <a href="LSDTT_installation.html">read the installation instructions</a>).</p>
+<p>If you have MacOS, great! MacOS is built on top of Linux!</p>
 </li>
 <li>
-<p>Now clone the <strong>MuddPILE</strong> repository:</p>
+<p>If you have Windows, not as great! But Microsoft realized that lots of developers use Linux but wanted them to keep buying their operating system, so they have created something called the Windows Linux Subsystem. To get that started, <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">follow Microsoft&#8217;s instructions</a>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Okay, from now on I am assuming you are in a Linux-like environment. If you have never done this before, you might look at our <a href="LSDTT_installation.html">instructions about Linux in this documentation</a>.</p>
+</li>
+<li>
+<p>You will need a few tools first, so in you Linux system grab <code>git</code> and a few other things:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects
-$ git clone https://github.com/LSDtopotools/MuddPILE.git</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ apt-get update
+$ apt-get install -y git tzdata build-essential cmake libfftw3-dev</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Okay, that will take a little while, but after that, I suggest making a directory to hold LSDTopoTools somewhere, and then going into that directory. You will then need to grab the source code from the internet using <code>git</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/MuddPILE.git</code></pre>
 </div>
 </div>
 </li>
@@ -609,20 +661,31 @@ $ tar -xvzf boost_mtl_minimal.tar.gz</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Unzipping this might take a wee while. Note if you don&#8217;t want <code>tar</code> to print all the information about the files being zipped use <code>tar -xzf</code> (the <code>v</code> flag is for <code>verbose</code>).</p>
+<p>Unzipping this might take a while. Actually it takes quite a while. Note if you don&#8217;t want <code>tar</code> to print all the information about the files being zipped use <code>tar -xzf</code> (the <code>v</code> flag is for <code>verbose</code>).</p>
 </div>
 </li>
 <li>
 <p>Now, go into the /<code>src/driver_functions/</code> directory and make the program:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/MuddPILE/src/driver_functions
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ../src/driver_functions
 $ make -f MuddPILEdriver.make</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p>The result will be a program called <code>MuddPILEdriver.out</code>: this is the model! You can now run landscape evolution runs. Check back here for documentation on actually running the model (we hope to have documentation ready by end September 2017).</p>
+</li>
+<li>
+<p>You want this program to be in your path. You can do that with</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ export PATH=$PATH:/path/to/MuddPILE/bin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You need to update <code>/path/to/MuddPILE</code> with your own path on your own computer.</p>
+</div>
 </li>
 </ol>
 </div>
@@ -633,73 +696,7 @@ $ make -f MuddPILEdriver.make</code></pre>
 <p>The output of MuddPILE is primarily raster files, in <a href="https://www.harrisgeospatial.com/docs/ENVIImageFiles.html">ENVI bil</a> format (<strong>NOT ESRI BIL</strong>), which can be read by GIS software such as <a href="http://www.qgis.org/en/site/">QGIS</a>.</p>
 </div>
 <div class="paragraph">
-<p>We have also developed a number of python tools for plotting <strong>LSDTopoTools</strong> and <strong>MuddPILE</strong> output. These are located in the repository <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a>.</p>
-</div>
-<div class="sect3">
-<h4 id="_using_our_python_plotting_tools">2.3.1. Using our python plotting tools</h4>
-<div class="paragraph">
-<p>Our typical setup involves creating an Ubuntu operating system using vagrant within your host machine. If that sentence read like a foreign language, <a href="LSDTT_installation.html">read the installation instructions</a>.</p>
-</div>
-<div class="paragraph">
-<p>However, for our python tools, we recommend using your host operating system, because:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The Ubuntu system that you create using vagrant has no windowing system, so you cannot use an interactive python development environment like <a href="https://pythonhosted.org/spyder/">spyder</a></p>
-</li>
-<li>
-<p>Our testing has found that sometimes our python setup interferes with the gdal command line tools within our vagrant box.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To get the correct enviroment for our plotting tools, you should follow these steps:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download and install <a href="http://conda.pydata.org/miniconda.html">miniconda</a> on your <strong>HOST</strong> machine. Our tools should theoreticaly work on python 3 or 2.7, but the code has only been rigourously tested on python 2.7.</p>
-</li>
-<li>
-<p>In windows, open a command prompt (use the start menu to search for <strong>cmd.exe</strong>). In linux or MacOS use a terminal window.</p>
-</li>
-<li>
-<p>Get our  <a href="https://raw.githubusercontent.com/LSDtopotools/LSDMappingTools/a1e4bd94911afc25a10ed2482553736bc2ce8894/environment.yml">environment file</a>.</p>
-</li>
-<li>
-<p>Create the environment from that file with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; conda env create -f environment.yml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>I&#8217;m afraid this will take a little while. Actually it will take a very long time. Sorry.</p>
-</div>
-</li>
-<li>
-<p>Activate the environment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">&gt; activate LSDTT</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This environment does not include <strong>spyder</strong>, you can install it with <code>conda install -n LSDTT spyder</code>
-</td>
-</tr>
-</table>
-</div>
+<p>We have also developed a number of python tools for plotting <strong>LSDTopoTools</strong> and <strong>MuddPILE</strong> output. These are located in the repository <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a>. If you just want to run the model and look at the results, use QGIS or similar. You should really only use <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a> if you are using <strong>LSDTopoTools</strong> regularly. Click on the <a href="lsdtt_visualisation.html">LSDTopoTools visualisation</a> links for instructions.</p>
 </div>
 </div>
 </div>
@@ -718,21 +715,26 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We will assume that you are working on our <a href="http://lsdtopotools.github.io/LSDTT_book/#_installing_lsdtopotools_using_virtualbox_and_vagrant">vagrant setup</a>, and that you have cloned the <a href="https://github.com/LSDtopotools/MuddPILE">MuddPILE repository</a> into <code>/LSDTopoTools/Git_projects</code>.</p>
+<p>We will assume that you are working on our <a href="https://hub.docker.com/repository/docker/lsdtopotools/lsdtt_alpine_docker">Alpine docker container</a> (see installation instructions).</p>
 </li>
 <li>
 <p>In any call to <strong>MuddPILEdriver</strong>, you should have one terminal window open in the directory with the program, and one in the directory with the data. If you are using vagrant, you should use either <code>vagrant ssh</code> (in MacOS or Linux) or <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">putty.exe</a> to create two terminal windows.</p>
 </li>
 <li>
-<p>In the first terminal window, go to the directory with the code</p>
+<p>The examples are in the <strong>MuddPILE</strong> repository. The easiest way to get them is to run:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd /LSDTopoTools/Git_projects/MuddPILE/src/driver_functions</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># git clone https://github.com/LSDtopotools/MuddPILE.git</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>You then call the program with two arguments: the data directory and the name of the driver function. The specific names of these for the examples will be shown in the example sections.</p>
+<p>Then navigate into the examples directory</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># cd MuddPILE/examples</code></pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
@@ -743,11 +745,14 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 <p>In this example we will make a very simple landscape using steady forcing and constant uplift.</p>
 </div>
 <div class="paragraph">
+<p>Go into the directory called <code>basic_fluvial_landscape</code></p>
+</div>
+<div class="paragraph">
 <p>We call the program with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./MuddPILEdriver.out /LSDTopoTools/Git_projects/MuddPILE/examples/basic_fluvial_landscape basic_fluvial.param</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./MuddPILEdriver.out basic_fluvial.param</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -774,7 +779,7 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use conda to install the correct python enviroment: <a href="#_using_our_python_plotting_tools">setting up python</a></p>
+<p>Use conda to install the correct python enviroment: <a href="#Using our python plotting tools">setting up python</a></p>
 </li>
 <li>
 <p>Clone the <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools repository</a>.</p>
@@ -809,7 +814,7 @@ This environment does not include <strong>spyder</strong>, you can install it wi
 <div class="sect2">
 <h3 id="_second_example_a_landscape_with_both_fluvial_and_hillslope_processes">3.3. Second example: a landscape with both fluvial and hillslope processes.</h3>
 <div class="paragraph">
-<p>This example is similar to the previous example but in this case we turn hillslope processes on. You should see that the hillslopes begin to diffuse resulting in a lower drainage density.</p>
+<p>This example is similar to the previous example but in this case we turn hillslope processes on. You should see that the hillslopes begin to diffuse resulting in a lower drainage density. Go into the example directory <code>basic_hillslope_and_fluvial</code></p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -829,7 +834,7 @@ Hillslope diffusion is much more complicated to solve and results in a far slowe
 <p>We call the program with</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./MuddPILEdriver.out /LSDTopoTools/Git_projects/MuddPILE/examples/basic_hillslope_and_fluvial basic_hillslope_and_fluvial.param</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./MuddPILEdriver.out basic_hillslope_and_fluvial.param</code></pre>
 </div>
 </div>
 </li>
@@ -869,11 +874,11 @@ Hillslope diffusion is much more complicated to solve and results in a far slowe
 <div class="sect2">
 <h3 id="_third_example_random_uplift">3.4. Third example: random uplift.</h3>
 <div class="paragraph">
-<p>In this example we simulate a fluvial-only landscape that is subject to random uplift rates.</p>
+<p>In this example we simulate a fluvial-only landscape that is subject to random uplift rates. Go into the example directory <code>random_uplift</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ./MuddPILEdriver.out /LSDTopoTools/Git_projects/MuddPILE/examples/random_uplift random_uplift.param</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ ./MuddPILEdriver.out random_uplift.param</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -897,10 +902,13 @@ Hillslope diffusion is much more complicated to solve and results in a far slowe
 <div class="sect2">
 <h3 id="_fourth_example_spatially_varying_erodibility">3.5. Fourth example: spatially varying erodibility.</h3>
 <div class="paragraph">
-<p>Again we use a fluvial-only landscape. This time we switch on spatially varying <em>K</em></p>
+<p>Again we use a fluvial-only landscape. This time we switch on spatially varying <em>K</em>.</p>
 </div>
 <div class="paragraph">
-<p>We call the program with</p>
+<p>Go into the example directory <code>spatially_varying_K</code>.</p>
+</div>
+<div class="paragraph">
+<p>We call the program with.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -934,13 +942,222 @@ Hillslope diffusion is much more complicated to solve and results in a far slowe
 </div>
 </div>
 <div class="sect1">
-<h2 id="_muddpile_details">4. MuddPILE details</h2>
+<h2 id="_steady_state_tools">4. Steady state tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>MuddPILE</strong> includes a number of tools for taking a drainage network afrom existing topograhy and instantly madifying the elevations to obey a steady state (where uplift equals erosion) solution of the stream power law.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">The stream power law</div>
+<div class="paragraph">
+<p>The stream power law, first proposed by <a href="https://pubs.geoscienceworld.org/gsa/gsabulletin/article-abstract/94/6/739/202874/Channel-changes-in-badlands?redirectedFrom=fulltext">Howard and Kerby (1983)</a>, is a very basic model of river incision. It simply states that erosion rate should be proportional to some function of both channel gradient and discharge. But we can&#8217;t driectly measure discharge from digital topography so instead we use drainage area as a proxy for discharge. The form of the equation is <em>E = K A<sup>m</sup> S<sup>n</sup></em>. There is a lot of debate in the geomorphology community wheter or not this actually works (see <a href="https://onlinelibrary.wiley.com/doi/10.1002/esp.3462">Lague, 2014</a>). It is clearly not correct in the details. But broadly it has been shown to be consistent with channel profiles and has been used in many context to intrpret river incision (see <a href="https://doi.org/10.1016/j.jsg.2012.07.009">Kirby and Whipple, 2012</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_snapping">4.1. Basic snapping</h3>
+<div class="paragraph">
+<p>A basic snapping call contains a few basic elements in the driver file</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>read_initial_raster: true</code></p>
+</li>
+<li>
+<p><code>carve_before_fill: true</code></p>
+</li>
+<li>
+<p><code>snap_to_steady: true</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So a basic driver file might look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># These are parameters for the file i/o
+read fname: test_data
+write fname: test_data
+
+read_initial_raster: true
+carve_before_fill: true
+
+snap_to_steady: true
+
+# The data that you want printed to file
+write_hillshade: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will use default values for parameters in the stream power law. You can change defaults with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># These are parameters for the file i/o
+read fname: test_data
+write fname: test_data
+
+read_initial_raster: true
+carve_before_fill: true
+
+snap_to_steady: true
+
+m: 0.5
+n: 1
+snapped_to_steady_relief: 400
+snapped_to_steady_uplift: 0.0001
+
+# The data that you want printed to file
+write_hillshade: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this version of the model the <em>K</em> parameter will adjust so the landscape has the relief assigned by the parameter <code>snapped_to_steady_relief</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can also have an additional step of snapping hillslopes above a critical drainage area to a constant slope:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># These are parameters for the file i/o
+read fname: test_data
+write fname: test_data
+
+read_initial_raster: true
+carve_before_fill: true
+
+snap_to_steady: true
+
+m: 0.5
+n: 1
+snapped_to_steady_relief: 400
+snapped_to_steady_uplift: 0.0001
+
+snap_to_critical_slopes: true
+rudimentary_critical_slope: 0.4
+threshold_contributing_pixels: 200
+
+# The data that you want printed to file
+write_hillshade: true</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_lithology">4.2. Adding lithology</h3>
+<div class="paragraph">
+<p>If we want to add lithology (or, alternativly, spatially varying erodibility), we use some different parameterrs in the driver file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># These are parameters for the file i/o
+read fname: test_data
+write fname: test_data
+
+read_initial_raster: true
+carve_before_fill: true
+
+snap_to_steady_variable_variable_K_variable_U: true
+
+variable_U_name: U_raster_prefix
+variable_K_name: K_raster_prefix
+
+# The data that you want printed to file
+write_hillshade: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>U_raster_prefix</code> is the prefix of a raster (in ENVI bil format) without the extension. This needs to be the same size as the elevation raster.</p>
+</div>
+<div class="paragraph">
+<p>In some cases, the snapped topography has large ridges between basins, so we use iterative snapping to migrate the divides.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># These are parameters for the file i/o
+read fname: test_data
+write fname: test_data
+
+read_initial_raster: true
+carve_before_fill: true
+
+snap_to_steady_variable_variable_K_variable_U: true
+
+variable_U_name: U_raster_prefix
+variable_K_name: K_raster_prefix
+
+cycle_fluvial_snapping: true
+print_snapped_to_steady_frame: true
+snapping_cycles: 30
+snap_print_rate: 10
+
+# The data that you want printed to file
+write_hillshade: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>snapping_cycles</code> indicates how many times you want to iterate on the fluvial network. The <code>snapping_print_rate</code> indicates how frequently you want the snapped model to print to a raster.</p>
+</div>
+<div class="paragraph">
+<p>Like in the basic raster snapping, you can add a <code>snap_to_critical_slopes</code> paramater.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_three_dimensional_lithology">4.3. Three dimensional lithology</h3>
+<div class="paragraph">
+<p>If you want to use a full three dimensional lithologic dataset, we have a final option <code>snap_to_steady_variable_variable_K_variable_U_use_LithoCube</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># These are parameters for the file i/o
+read fname: Switz_IsolateFixedChannel
+write fname: Switz_LithoSnap_750BL_SMM
+
+# General DEM stuff (and the fixed channel)
+channel heads fname: NULL
+read_initial_raster: true
+carve_before_fill: true
+fixed_channel_csv_name: single_channel_nodes_dropped_750m.csv
+
+# Forcings
+rudimentary_steady_forcing_uplift: 0.0001
+
+# Lithocube parameters
+load_lithology: true
+only_test_lithology: false
+vo_filename: vo_100m_20191031_UTM.vo
+vo_asc_filename: vo_100m_20191031vo_export4_20191031
+print_K_raster: true
+print_lithocode_raster: true
+print_Sc_raster: true
+
+# Critical slope parameters
+cycle_fluvial_snapping: true
+print_snapped_to_steady_frame: true
+snapping_cycles: 500
+snap_print_rate: 50
+snap_to_steady_critical_slopes_use_LithoCube: true
+threshold_contributing_pixels: 200
+
+elevation_change: -750</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>lithocube</code> parameters relate to data generated by GOCAD. You can see options to print the <em>K</em> and critical slope data produced by these.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_muddpile_details">5. MuddPILE details</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>MuddPILE</strong>, while not as flexible as, say, <a href="http://landlab.github.io/#/">Landlab</a>, has some options. There are also a few different file output options. We list all the options in this chapter. Note that these are quite messy at the moment, since this is a beta version that has simply been used to run simulations for a forthcoming publication.</p>
 </div>
 <div class="sect2">
-<h3 id="_the_parameter_file">4.1. The parameter file</h3>
+<h3 id="_the_parameter_file">5.1. The parameter file</h3>
 <div class="paragraph">
 <p>The parameter file has keywords followed by a value. Like this:</p>
 </div>
@@ -998,12 +1215,12 @@ The parameter file has a specific format, but the filename can be anything you w
 </div>
 </div>
 <div class="sect2">
-<h3 id="_parameter_file_options">4.2. Parameter file options</h3>
+<h3 id="_parameter_file_options">5.2. Parameter file options</h3>
 <div class="paragraph">
 <p>Below are options for the parameter files.</p>
 </div>
 <div class="sect3">
-<h4 id="_basic_file_input_and_output">4.2.1. Basic file input and output</h4>
+<h4 id="_basic_file_input_and_output">5.2.1. Basic file input and output</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. File input and output options. <strong>These do not have defaults and MUST be declared</strong>.</caption>
 <colgroup>
@@ -1045,7 +1262,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_important_default_settings_that_you_cannot_change">4.3. Important default settings that you cannot change</h3>
+<h3 id="_important_default_settings_that_you_cannot_change">5.3. Important default settings that you cannot change</h3>
 <div class="paragraph">
 <p>Our boundary conditions are theoretically flexible if you dig into the c++ code but in the <strong>MuddPILEdriver</strong> you can only have fixed elevation North and South boundaries and a periodic E-W boundary. A periodic boundary is one where the boundary wraps to the opposite side (i.e., in our models the computer thinks the East side of the domain is right next to the West side).</p>
 </div>
@@ -1053,7 +1270,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 <p>If you don&#8217;t read a raster, the model prints rasters in <em>MuddPILE Atlantis</em>, a mythical kingdom that is located in the Pacific Ocean. Basically we set the UTM zone to 1 and have the corner at 0 easting and 0 northing, i.e. on the equator.</p>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_initiating_the_model_domain">4.3.1. Parameters for initiating the model domain</h4>
+<h4 id="_parameters_for_initiating_the_model_domain">5.3.1. Parameters for initiating the model domain</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Parameters for initiating the model domain. These are used if <code>read_initial_raster: false</code>, which is the default.</caption>
 <colgroup>
@@ -1154,7 +1371,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_flux_laws_and_uplift_and_timestepping">4.3.2. Parameters for flux laws, and uplift, and timestepping</h4>
+<h4 id="_parameters_for_flux_laws_and_uplift_and_timestepping">5.3.2. Parameters for flux laws, and uplift, and timestepping</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. Parameters for flux laws and uplift</caption>
 <colgroup>
@@ -1230,7 +1447,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_controlling_simple_model_output">4.3.3. Parameters for controlling simple model output</h4>
+<h4 id="_parameters_for_controlling_simple_model_output">5.3.3. Parameters for controlling simple model output</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 5. Simple model output</caption>
 <colgroup>
@@ -1264,7 +1481,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_creating_an_initial_surface">4.3.4. Parameters for creating an initial surface</h4>
+<h4 id="_parameters_for_creating_an_initial_surface">5.3.4. Parameters for creating an initial surface</h4>
 <div class="paragraph">
 <p>We have a number of routines to modify the initial surface. They are applied in order and superimposed on each other. Diamond square surfaces are first, then parabolic surfaces, then roughening, then surface diffusion.</p>
 </div>
@@ -1424,7 +1641,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_spinning_up_the_surface">4.3.5. Parameters for spinning up the surface</h4>
+<h4 id="_parameters_for_spinning_up_the_surface">5.3.5. Parameters for spinning up the surface</h4>
 <div class="paragraph">
 <p>The initial surface has no incision or fluvial network. You need to spin up the model. If you ran to steady state just by setting an initial surface and running at the desired uplift rates it would take a rather long time for the model to reach steady state. So we have designed a number of ways to speed up this process. There are many flags for controlling different kinds of spinup routines, but after much experimentation we have inserted a switch called <strong>diamond_square_spinup</strong> that sets all the parameters for you necessary to generate an initial surface we think is (qualitatively) good.</p>
 </div>
@@ -1639,7 +1856,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_parameters_for_running_the_model_using_various_climate_and_tectonic_scenarios">4.3.6. Parameters for running the model using various climate and tectonic scenarios</h4>
+<h4 id="_parameters_for_running_the_model_using_various_climate_and_tectonic_scenarios">5.3.6. Parameters for running the model using various climate and tectonic scenarios</h4>
 <div class="paragraph">
 <p>Once the model has been "spun up" (where we try to fully dissect the landscape and sometimes bring it to a steady condition based on parameters above) we then run it for some time using various tectonic (by varying uplift in time and space) and "climate" (by varying <em>K</em> and <em>D</em> in time and space) scenarios. These parameters conrtol these forcings</p>
 </div>
@@ -2038,7 +2255,7 @@ The <em>U</em> parameter of the cyclic forcing; it is then multiplied by  <code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_data_formats">4.4. Output data formats</h3>
+<h3 id="_output_data_formats">5.4. Output data formats</h3>
 <div class="paragraph">
 <p>Data is written to rasters, csv files, or geojson file.</p>
 </div>
@@ -2068,7 +2285,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 <p>To get the various outputs, you need to tell the <strong>MuddPILEdriver</strong> what you want using the parameter file. These tables tell you what flags to use and what data you will get. For <strong>MuddPILE</strong>, these options are rather limited: you just get a few elevation or hillshade rasters at the moment.</p>
 </div>
 <div class="sect3">
-<h4 id="_default_file_output">4.4.1. Default file output</h4>
+<h4 id="_default_file_output">5.4.1. Default file output</h4>
 <div class="paragraph">
 <p>Any run you do will produce some standard files. The primary ones are the elevation rasters, but if you use the "normal" forcings, which here means anything after the spinup stage (see parameter file options for details), you will also get a <code>csv</code> file that contains information about the time steps.</p>
 </div>
@@ -2097,7 +2314,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </table>
 </div>
 <div class="sect3">
-<h4 id="_optional_raster_output">4.4.2. Optional raster output</h4>
+<h4 id="_optional_raster_output">5.4.2. Optional raster output</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 22. These are basic rasters that don&#8217;t require chi analysis.</caption>
 <colgroup>
@@ -2142,7 +2359,7 @@ ENVI bil should not be mistaken for ESRI bil. Make sure you are using ENVI bil f
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 12:10:36 UTC
+Last updated 2020-02-28 09:28:48 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
