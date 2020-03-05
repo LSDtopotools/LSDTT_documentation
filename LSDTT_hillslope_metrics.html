@@ -455,24 +455,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_coupling_hillslope_and_channel_analysis">2. Coupling hillslope and channel analysis</a>
 <ul class="sectlevel2">
 <li><a href="#_getting_lsdtopotools2">2.1. Getting <strong>LSDTopoTools2</strong></a></li>
-<li><a href="#_running_the_analysis">2.2. Running the analysis</a>
+<li><a href="#_running_the_analysis">2.2. Running the analysis</a></li>
+<li><a href="#_get_the_example_data">2.3. Get the example data</a></li>
+<li><a href="#_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.4. Coupled hillslope and channel ananylsis: options and outfiles</a>
 <ul class="sectlevel3">
-<li><a href="#_getting_channel_information">2.2.1. Getting channel information</a></li>
-<li><a href="#_making_spaghetti_i_e_doing_the_full_analysis">2.2.2. Making spaghetti (i.e., doing the full analysis)</a></li>
+<li><a href="#_input_options">2.4.1. Input options</a></li>
+<li><a href="#_burning_rasters_to_csv">2.4.2. Burning rasters to csv</a></li>
+<li><a href="#_output_files">2.4.3. Output files</a></li>
 </ul>
 </li>
-<li><a href="#_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.3. Coupled hillslope and channel ananylsis: options and outfiles</a>
-<ul class="sectlevel3">
-<li><a href="#_input_options">2.3.1. Input options</a></li>
-<li><a href="#_burning_rasters_to_csv">2.3.2. Burning rasters to csv</a></li>
-<li><a href="#_output_files">2.3.3. Output files</a></li>
+<li><a href="#_visualising_the_coupled_hillslope_channel_analysis">2.5. Visualising the coupled hillslope-channel analysis</a></li>
+<li><a href="#_summary">2.6. Summary</a></li>
 </ul>
 </li>
-<li><a href="#_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</a></li>
-<li><a href="#_summary">2.5. Summary</a></li>
-</ul>
-</li>
-<li><a href="#_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size</a>
+<li><a href="#_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size.</a>
 <ul class="sectlevel2">
 <li><a href="#_overview">3.1. Overview</a></li>
 <li><a href="#_input_data">3.2. Input Data</a></li>
@@ -655,7 +651,7 @@ Included in <strong>LSDTopoTools2</strong> is a program called <strong>lsdtt-hil
 </div>
 </li>
 <li>
-<p>It extracts ridgelines from a DEM and has various algorithms for filtering thses ridgelines. It also has algoirthms for splitting ridgelines into segments to perform some spatial averaging if that is what the user want.</p>
+<p>It extracts ridgelines from a DEM and has various algorithms for filtering thses ridgelines. It also has algoirthms for splitting ridgelines into segments to perform some spatial averaging if that is what you want to do.</p>
 </li>
 <li>
 <p>It can perform hilltop flow routing, where flow routing is performed from the hilltops to either the channel, a floodplain, or a buffered channel network in order to link hilltop pixles to channel pixels.</p>
@@ -701,9 +697,9 @@ Included in <strong>LSDTopoTools2</strong> is a program called <strong>lsdtt-hil
 <td class="tableblock halign-left valign-top"><p class="tableblock">This paper automated extraction of E* R* metrics</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[Hurst et al., 2019]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://doi.org/10.1016/j.epsl.2019.06.018">Hurst et al., 2019</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The first publication that combines E* R* analysis with channel metrics.</p>
-<p class="tableblock">These insructions will walk you through running the coulpled hillslope-channel analysis and explain the outputs of the code.</p></td>
+<p class="tableblock">These instructions will walk you through running the coulpled hillslope-channel analysis and explain the outputs of the code.</p></td>
 </tr>
 </tbody>
 </table>
@@ -750,107 +746,24 @@ This analysis is perhaps the most complex thing you can do with <strong>LSDTopoT
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="_getting_channel_information">2.2.1. Getting channel information</h4>
+</div>
+<div class="sect2">
+<h3 id="_get_the_example_data">2.3. Get the example data</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, you need to extract a channel network. If you have lidar data and you want to know exactly where the channels are, use one of our <a href="LSDTT_channel_extraction.html#_the_channel_extraction_tool">channel network algorithms</a>. The <a href="LSDTT_channel_extraction.html#_the_channel_extraction_tool">wiener method</a> is both <a href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1002/2013WR015167">accurate</a> and <a href="https://www.earth-surf-dynam.net/4/627/2016/">does not vary much as a function of grid resolution</a> so we recommend using this method. If you do extract a channel network you will need the <code>channel heads csv file</code> to load into the next step.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>As a brief note, to get a Wiener network, you set the parameter <code>print_wiener_channels: true</code>.</p>
+<p>If you followed the installation instructions you will already have the example data.</p>
 </li>
 <li>
-<p>The sources or channel heads file will have the extension <code>Wsources.csv</code>.</p>
+<p>It is in (int the docker container) <code>/LSDTopoTools/data/ExampleTopoDatasets/ChannelExtractionData/Guadalupe_1m</code></p>
 </li>
 </ol>
-</div>
-</li>
-<li>
-<p>Second, you should constrain the concavity index of the landscape. To do this use our <a href="LSDTT_chi_analysis.html#_calculating_concavity">concavity index tool</a>. Note that there are three main options for selecting basins:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>You can print a junction index raster and selects the junction numbers you want. This requires a junction file, which is a text file that simply lists the junction numbers you want, and you need to set the parameter <code>baselevel junctions fname: my_jncs.txt</code>. The text file can be a list of space or comma separated junctions.</p>
-</li>
-<li>
-<p>You can create a csv file that has latitude and longitude of the basin outlets. To get this to work set the paramters <code>get_basins_from_outlets: true</code> and <code>basin_outlet_csv: test_basins2.csv</code>. Natually you will need to adjust the name of the file. The file <strong>MUST</strong> have a column named <code>latitude</code> and a column named <code>longitude</code> and these must be in WGS84 coordinates.</p>
-</li>
-<li>
-<p>You can use the <a href="LSDTT_chi_analysis.html#_selecting_channels_and_basins">basin selection options</a>.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Once you have a channel network and a concavity, <a href="LSDTT_chi_analysis.html#_getting_the_software">extract the segmented channel profile</a>. You need to make sure the switches <code>print_segments: true</code> and <code>print_segments_raster: true</code> are included in the parameter file</p>
-</li>
-<li>
-<p>Once you have done all that, you should have a number of new files along with your original rasters. The ones needed for the channel-hillslope coupling are</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The channel heads file if you are using an extracted channel network (a <code>HEADS.csv</code> file)</p>
-</li>
-<li>
-<p>A channel segments raster <code>_SEGMENTS.bil</code> that is derived from the run of <strong>chi mapping tool</strong> with the <code>print_segments: true</code> and <code>print_segments_raster: true</code> parameters in the parameter file.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>These files are ingested by the code <code>lsdtt-hillslope-channel-coupling</code>, the instructions of which are below.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_making_spaghetti_i_e_doing_the_full_analysis">2.2.2. Making spaghetti (i.e., doing the full analysis)</h4>
-<div class="paragraph">
-<p>Wait, what is all this about spaghetti? One of the plots we make using the hillslope-channel analysis looks a bit like spaghetti, so we call these spaghetti plots. Hungry yet? It is better to run these analyses on a full stomach.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Quick reminder of LSDTopoTools2 installation</div>
-<div class="paragraph">
-<p>If any of the below steps don&#8217;t make sense, read the <a href="LSDTT_installation.html">full installation instructions</a>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pull and run the docker container <code>lsdtt_pcl_docker</code></p>
-</li>
-<li>
-<p>Run the shell script to start <strong>LSDTopoTools</strong>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You are ready to start analysing!</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Like all <strong>LSDTopoTools2</strong> code, you run the analysis with a parameter file. The format of these files is always the same.</p>
-</div>
-<div class="paragraph">
-<p>We will walk you though an analysis on a test site so you can see how it works.</p>
-</div>
-<div class="paragraph">
-<p>Please bear with us while we construct this documentation (SMM 20-June-2019).</p>
-</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.3. Coupled hillslope and channel ananylsis: options and outfiles</h3>
+<h3 id="_coupled_hillslope_and_channel_ananylsis_options_and_outfiles">2.4. Coupled hillslope and channel ananylsis: options and outfiles</h3>
 <div class="sect3">
-<h4 id="_input_options">2.3.1. Input options</h4>
+<h4 id="_input_options">2.4.1. Input options</h4>
 <div class="paragraph">
 <p>Like all <strong>LSDTopoTools</strong> programs, you can set parameters in the <strong>lsdtt-hillslope-channel-coupling</strong> that drive the analysis. Many of these are shared with other programs in the <strong>LSDTopoTools</strong> analysis suite.</p>
 </div>
@@ -1371,7 +1284,7 @@ For example if this is <code>Test</code> and you have selected <code>bil</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_burning_rasters_to_csv">2.3.2. Burning rasters to csv</h4>
+<h4 id="_burning_rasters_to_csv">2.4.2. Burning rasters to csv</h4>
 <div class="paragraph">
 <p>In some circumstances you might want to "burn" secondary data onto your data of the channel network. One example would be if you had a geologic map and wanted to add the rock type as a column to point data about your channels. These routines will take a raster and will add the data values from that raster to each point in the chi data.</p>
 </div>
@@ -1526,7 +1439,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </div>
 </div>
 <div class="sect3">
-<h4 id="_output_files">2.3.3. Output files</h4>
+<h4 id="_output_files">2.4.3. Output files</h4>
 <div class="paragraph">
 <p>The two main output files are once called <code>_MChiSegmented.csv</code> and one called <code>_HilltopData.csv</code>.</p>
 </div>
@@ -1543,13 +1456,13 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualising_the_coupled_hillslope_channel_analysis">2.4. Visualising the coupled hillslope-channel analysis</h3>
+<h3 id="_visualising_the_coupled_hillslope_channel_analysis">2.5. Visualising the coupled hillslope-channel analysis</h3>
 <div class="paragraph">
 <p>Under construction.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary">2.5. Summary</h3>
+<h3 id="_summary">2.6. Summary</h3>
 <div class="paragraph">
 <p>By now you should be able to generate analysis that links hillslope and channel metrics.</p>
 </div>
@@ -1557,7 +1470,7 @@ At the moment the burning function only works for the <code>print_chi_data_maps<
 </div>
 </div>
 <div class="sect1">
-<h2 id="_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size</h2>
+<h2 id="_legacy_code_selecting_a_window_size">3. Legacy code: Selecting A Window Size.</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -3395,7 +3308,7 @@ SierraNevada = False</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-17 15:13:57 UTC
+Last updated 2019-06-13 16:57:01 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
