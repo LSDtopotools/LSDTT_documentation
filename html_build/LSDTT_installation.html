@@ -449,32 +449,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_components_of_lsdtopotools">1.1. Components of LSDTopoTools</a></li>
-<li><a href="#_basic_installation">1.2. Basic installation</a></li>
-<li><a href="#_lsdtopotools_python_tools">1.3. lsdtopotools Python tools</a></li>
-<li><a href="#_menu_of_more_detailed_instructions">1.4. Menu of more detailed instructions</a></li>
+<li><a href="#_the_three_main_ways_to_use_lsdtopotools">1.1. The three main ways to use LSDTopoTools</a></li>
+<li><a href="#_components_of_lsdtopotools">1.2. Components of LSDTopoTools</a></li>
+<li><a href="#_basic_local_installation">1.3. Basic local installation</a></li>
+<li><a href="#_lsdtopotools_python_tools">1.4. lsdtopotools Python tools</a></li>
+<li><a href="#_menu_of_more_detailed_instructions">1.5. Menu of more detailed instructions</a></li>
 </ul>
 </li>
 <li><a href="#_installing_lsdtopotools_using_docker">2. Installing LSDTopoTools using Docker</a>
 <ul class="sectlevel2">
-<li><a href="#_should_i_use_docker_or_vagrant">2.1. Should I use Docker or Vagrant?</a></li>
-<li><a href="#_installing_docker">2.2. Installing Docker</a></li>
-<li><a href="#_the_four_lsdtopotools_images">2.3. The four LSDTopoTools images</a></li>
-<li><a href="#_before_you_do_anything_else_set_up_a_directory_to_share_with_docker_containers">2.4. Before you do anything else: Set up a directory to share with docker containers.</a></li>
-<li><a href="#_first_option_pull_the_docker_images">2.5. First option: pull the docker images</a></li>
-<li><a href="#_second_option_build_the_docker_containers">2.6. Second option: build the docker containers</a></li>
-<li><a href="#_some_notes_on_docker">2.7. Some notes on Docker</a>
-<ul class="sectlevel3">
-<li><a href="#_docker_on_linux">2.7.1. Docker on Linux</a></li>
-<li><a href="#_docker_for_windows">2.7.2. Docker for Windows</a></li>
-<li><a href="#_building_a_base_image">2.7.3. Building a base image</a></li>
-</ul>
-</li>
+<li><a href="#_install_docker">2.1. Install docker</a></li>
+<li><a href="#_once_you_have_docker">2.2. Once you have docker</a></li>
+<li><a href="#_if_you_are_a_developer">2.3. If you are a developer</a></li>
 </ul>
 </li>
 <li><a href="#_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</a>
 <ul class="sectlevel2">
-<li><a href="#_get_the_associated_software_you_need">3.1. Get the associated software you need</a></li>
+<li><a href="#_building_the_code_from_source">3.1. Building the code from source</a>
+<ul class="sectlevel3">
+<li><a href="#_get_the_associated_software_you_need">3.1.1. Get the associated software you need</a></li>
+</ul>
+</li>
 <li><a href="#_option_1_use_the_script">3.2. Option 1: Use the script</a></li>
 <li><a href="#_option_2_do_it_by_hand">3.3. Option 2: Do it by hand</a>
 <ul class="sectlevel3">
@@ -494,26 +489,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_mapping_your_network_drive">4.1. Mapping your network drive</a></li>
 <li><a href="#_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">4.2. Getting on to our servers with with ssh in a powershell window</a></li>
-<li><a href="#_downloading_and_running_the_setup_script">4.3. Downloading and running the setup script</a>
-<ul class="sectlevel3">
-<li><a href="#_excruciatingly_detailed_information_about_what_the_script_does_only_read_this_if_you_are_an_enthusiast_that_must_know_how_everything_works">4.3.1. Excruciatingly detailed information about what the script does (only read this if you are an enthusiast that must know how everything works)</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_extra_dependencies_for_swaths_and_point_clouds">5. Extra dependencies for swaths and point clouds</a>
-<ul class="sectlevel2">
-<li><a href="#_install_the_point_cloud_library">5.1. Install the Point Cloud Library</a>
-<ul class="sectlevel3">
-<li><a href="#_ubuntu_14_and_12">5.1.1. Ubuntu 14 and 12</a></li>
-<li><a href="#_ubuntu_16_04_lts">5.1.2. Ubuntu 16.04 LTS</a></li>
-</ul>
-</li>
-<li><a href="#_extra_libraries_for_the_floodplain_and_terrace_extraction">5.2. Extra libraries for the floodplain and terrace extraction</a></li>
-</ul>
-</li>
-<li><a href="#_installing_the_lsdtopotools_python_toolchain">6. Installing the LSDTopoTools python toolchain</a></li>
-<li><a href="#_get_a_text_editor">7. Get a text editor!</a></li>
+<li><a href="#_get_a_text_editor">5. Get a text editor!</a></li>
 </ul>
 </div>
 </div>
@@ -537,7 +515,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Welcome to the installation instructions for <a href="http://lsdtopotools.github.io/"><strong>LSDTopoTools</strong></a>, which is a collection of programs for analysing topography and modelling hydrology, landscape evolution and soil development.</p>
 </div>
 <div class="sect2">
-<h3 id="_components_of_lsdtopotools">1.1. Components of LSDTopoTools</h3>
+<h3 id="_the_three_main_ways_to_use_lsdtopotools">1.1. The three main ways to use LSDTopoTools</h3>
+<div class="paragraph">
+<p>There are three main ways you can use <strong>LSDTopoTools</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Installation method</th>
+<th class="tableblock halign-left valign-top">Advantages</th>
+<th class="tableblock halign-left valign-top">Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install locally on your computer using the package management software <a href="https://docs.conda.io/projects/conda/en/latest/">conda</a>. This works in a Linux environment so if you are in Windows or MacOS you will need to access the Linux subsystems (which is not that difficult these days).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get full performance of your memory and CPU.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You need to be familiar with conda. You need to maintain the various packages yourself.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run within the <a href="https://hub.docker.com/repository/docker/lsdtopotools/lsdtt_pytools_docker">lsdtt docker container</a>. To do this you need to install <a href="https://www.docker.com/products/docker-desktop">docker</a> first, but as of 2021 this is quite easy, even on Windows.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">After you install docker, this just starts right out of the box. Easier than installing locally. Python stack certain to work.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You won&#8217;t get full power of your CPU or memory (because Docker runs in parallel with your host computer).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you don&#8217;t want to install any software (or don&#8217;t have privileges to do so) you can run <strong>LSDTopoTools</strong> in a web browser using <a href="https://colab.research.google.com/notebooks/intro.ipynb">google colab</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You don&#8217;t need to install anything on your computer. All you need is a web browser.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Takes ~4.5 minutes to spin up each time you start, every time you start. Unless you pay google, your storage will be limited (but the memory on google colab is quite good: 12Gb for the free version)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_components_of_lsdtopotools">1.2. Components of LSDTopoTools</h3>
 <div class="paragraph">
 <p><strong>LSDTopoTools</strong> has several components. These can be used in isolation or together.</p>
 </div>
@@ -556,7 +571,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_basic_installation">1.2. Basic installation</h3>
+<h3 id="_basic_local_installation">1.3. Basic local installation</h3>
 <div class="paragraph">
 <p>If you are already familiar with Linux and/or Conda this should relatively painless.</p>
 </div>
@@ -593,7 +608,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_lsdtopotools_python_tools">1.3. lsdtopotools Python tools</h3>
+<h3 id="_lsdtopotools_python_tools">1.4. lsdtopotools Python tools</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -619,7 +634,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_menu_of_more_detailed_instructions">1.4. Menu of more detailed instructions</h3>
+<h3 id="_menu_of_more_detailed_instructions">1.5. Menu of more detailed instructions</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -661,29 +676,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_installing_lsdtopotools_using_docker">2. Installing LSDTopoTools using Docker</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As of October 2018, this is the preferred method to install <strong>LSDTopoTools</strong>. We have various containers on the <a href="https://hub.docker.com/u/lsdtopotools/">docker hub</a> which can be run with simple <code>pull</code> commands. The only software you need to run these is <a href="https://www.docker.com/">Docker</a>.</p>
+<p>You can read about Docker here: <a href="https://en.wikipedia.org/wiki/Docker_(software" class="bare">https://en.wikipedia.org/wiki/Docker_(software</a>)
+Basically it is a system for running containers, which are little pre-built computing environments.
+There are alternatives (podman, singularity) but Docker is the most popular and widely available.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Update June 2019</div>
 <div class="paragraph">
-<p>Docker is very easy to install on Linux and MacOS. On Windows it is a bit complicated (and possibly needs the intervention of your IT team).
-This will <strong>MASSIVELY CHANGE</strong> quite soon: Windows is currently pre-releasing a fully functioning Linux subsystem that will allow Docker to be run with the same speed and efficiency as though you were on a native Linux operating system.
-You can <a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/">read all about it on this blog post</a>.
-Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
+<p>In practice, the <strong>LSDTopoTools</strong> developers have installed everything on a container so you don&#8217;t have to do any of that work. You just start the container and then start analysing topography.</p>
+</div>
+<div class="sect2">
+<h3 id="_install_docker">2.1. Install docker</h3>
+<div class="paragraph">
+<p>To install docker, follow these instructions: <a href="https://docs.docker.com/engine/install/" class="bare">https://docs.docker.com/engine/install/</a></p>
+</div>
+<div class="paragraph">
+<p>For Windows, you first need to activate Windows Linux Subsystem 2. This is easy but you will need administrative permissions. The instructions are here: <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="bare">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a>. But basically all you need is a powershell with admin permissions and you run <code>wsl --install</code>. Easy peasy.</p>
 </div>
 </div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Docker and <strong>LSDTopoTools</strong> quickstart</div>
+<div class="sect2">
+<h3 id="_once_you_have_docker">2.2. Once you have docker</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and install <a href="https://www.docker.com/">Docker</a>. We will assume this actually is working.</p>
-</li>
-<li>
-<p>Create an <code>LSDTopoTools</code> directory on your host operating system that you will share with the <strong>LSDTopoTools</strong> docker containers.</p>
+<p>Before you do anything you need to create an <code>LSDTopoTools</code> directory on your host operating system that you will share with the <strong>LSDTopoTools</strong> docker containers.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -703,7 +717,7 @@ Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
 <p>For windows:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v C:/LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v C:/LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pytools_docker</code></pre>
 </div>
 </div>
 </li>
@@ -711,7 +725,7 @@ Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
 <p>For MacOS or Linux:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v /LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v /LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pytools_docker</code></pre>
 </div>
 </div>
 </li>
@@ -719,7 +733,7 @@ Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
 <p>Or if you have a different directory to LSDTopoTools data on your host machine:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v /PATH/TO/YOUR/DATA:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v /PATH/TO/YOUR/DATA:/LSDTopoTools lsdtopotools/lsdtt_pytools_docker</code></pre>
 </div>
 </div>
 </li>
@@ -727,11 +741,20 @@ Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
 </div>
 </li>
 <li>
-<p>Once you run this, you will need to run the script:</p>
+<p>The first time you do this it will need to download and unpack the container. It is ~4Gb so that will take a while. Have a good book ready.</p>
+</li>
+<li>
+<p>When the container starts up you are ready to run <strong>LSDTopoTools</strong></p>
+</li>
+<li>
+<p>If you want our example data you can run:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>You only need to do this once.</p>
 </div>
 </li>
 <li>
@@ -740,948 +763,34 @@ Hopefully this will be fully deployed to all Windows 10 users before 2020.</p>
 </ol>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_should_i_use_docker_or_vagrant">2.1. Should I use Docker or Vagrant?</h3>
+<h3 id="_if_you_are_a_developer">2.3. If you are a developer</h3>
 <div class="paragraph">
-<p><strong>Short answer</strong>: If you have MacOS, Linux or Windows 10 Enterprise, use Docker. Otherwise use Vagrant.</p>
-</div>
-<div class="paragraph">
-<p><strong>Long answer</strong>: There are <a href="https://deliciousbrains.com/vagrant-docker-wordpress-development/">many</a>, <a href="https://www.vagrantup.com/intro/vs/docker.html">many</a>, <a href="https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment">many</a> <a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/">articles</a> comparing vagrant to docker.
-The docker setup is probably a bit simpler than the vagrant setup but (<em>and this is a big but</em>) it won&#8217;t work on a Windows machine unless you have Windows 10 Enterprise. It does work on any recent version of Linux and MacOS. If you have MacOS, native Linux or Windows 10 Enterprise you should consider using Docker since it involves fewer steps than our VirtualBox+Vagrant setup.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_installing_docker">2.2. Installing Docker</h3>
-<div class="paragraph">
-<p><a href="https://www.docker.com/">Docker</a> is software for creating and managing <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>. These containers are not complete operating systems, like ones created using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a>, so the boot time is quicker (usually almost straight away). Docker is perhaps simpler to use but does not work on every operating system.</p>
-</div>
-<div class="paragraph">
-<p>To set up <strong>LSDTopoTools</strong> using Docker:</p>
+<p>If you are not planning on writing <strong>LSDTopoTools</strong> code, ignore this bit.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and install <a href="https://docs.docker.com/install/">Docker Community Edition</a>. Instructions on different operating systems are in the <a href="https://docs.docker.com/install/">Docker documentation</a>.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>In Windows follow the instructions in the <a href="https://docs.docker.com/docker-for-windows/install/">Docker documentation</a>.</p>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Firstly, this only works on Windows 10. And you need control of your computer, and you need to know what you are doing. If you have competent IT, ask them to do it. However, this will become <strong>MUCH EASIER</strong> in a few months when Windows releases its linux subsystem 2, which should allow native docker usage. See this <a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/">blog post from Microsoft</a>.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>On MacOS we recommend installing docker using brew: <code>brew cask install docker</code></p>
-</li>
-<li>
-<p>In Ubunutu you can use <code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io</code></p>
-</li>
-<li>
-<p>In Debian use <code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io</code></p>
-</li>
-<li>
-<p>See the docker website for <a href="https://docs.docker.com/install/">instructions in your flavour of Linux</a></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>We will henceforth assume that you actually have a functioning version of Docker on your host machine. If you want more details about how to use docker, or getting it set up (particularly in Windows, in Linux and MacOS this is more straightforward), see our section on <a href="#_some_notes_on_docker">docker notes</a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_the_four_lsdtopotools_images">2.3. The four LSDTopoTools images</h3>
-<div class="paragraph">
-<p><strong>LSDTopoTools</strong> has <a href="https://hub.docker.com/u/lsdtopotools/">four different containers</a>. If you are an <strong>LSDTopoToools</strong> developer you will probably use all four. Most users will only use two of them. The four containers are:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>lsdtt-alpine</code>: This is the stripped-down, lightweight <strong>LSDTopoTools</strong> container. It uses a linux distrubution called the <a href="https://alpinelinux.org/">alpine linux</a> distribution. For many users, this is the only container you will need. It is an 88 Mb download and when built, it is a bit under 300 Mb.</p>
-</li>
-<li>
-<p><code>lsdtt-pcl</code>: A few of our routines (notably the terrace extraction routines and any routines using swath profiling) require something called the <a href="https://en.wikipedia.org/wiki/Point_Cloud_Library">point cloud library (PCL)</a>. This library is <strong>ENORMOUS</strong> and a massive pain to install. It does everything the <code>lsdtt-alpine</code> container does, and more. It is big: the download is 644 Mb and built it is over 2 Gb. However, if you need this one you can use it instead of the <code>lsdtt-alpine</code> container.</p>
-</li>
-<li>
-<p><code>lsdtt-viz</code>: This container installs all the python routines you need if you want to use our visualisation tools. Our tools require multiple python packages, meaning that this container is also quite large. If you use a GIS to look at our data, you won&#8217;t need this. However we do all our visualisation in python and have written lots of automation scripts, so if you think you will used <strong>LSDTopoTools</strong> routinely you might want to grab this dockerfile.</p>
-</li>
-<li>
-<p><code>lsdtt-docs</code>: Our documentation is all written in asciidoc format, and processed with the extremely awesome <a href="https://asciidoctor.org/">asciidoctor</a>. It runs in the Ruby programming language, and requires some stuff to be installed. We have a container for building the documentation so you don&#8217;t need to worry about installing the correct stuff. It is very unlikely you will need this unless you are an <strong>LSDTopoTools</strong> developer.</p>
-</li>
-</ol>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Which container do I use?</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Pick <strong>either</strong> <code>lsdtt-alpine</code> or <code>lsdtt-pcl</code> for the main programs. The former is a small container but can&#8217;t do the terrace algorithms. If you anticipate extracting terraces or floodpains use the latter. It is much bigger: <code>lsdtt-alpine</code> is an 88 Mb download and ~240Mb unpacked. <code>lsdtt-pcl</code> is a 664 Mb download and ~2 Gb unpacked.</p>
-</li>
-<li>
-<p><code>lsdtt-viz</code> is for our python plotting routines. If you just intend to use a GIS to look at <strong>LSDTopoTools</strong>, you don&#8217;t need this. But if you want to reproduce the figures we have in our papers you will need this container. <strong>LSDMappingTools</strong> needs a lot of python packages so the container is large, I&#8217;m afraid.</p>
-</li>
-<li>
-<p><code>lsdtt-docs</code>: contains the software needed to compile our documentation. The documentation is available on a website (you are reading it) so you only need this container if you are actually going to be writing <strong>LSDTopoTools</strong> documentation.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">How do I get the containers</div>
-<div class="paragraph">
-<p><strong>There are two options for getting the containers!</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Option 1: Download the images from <a href="https://hub.docker.com/">Docker hub</a>: .</p>
-</li>
-<li>
-<p>Option 2: Build the containers from the raw dockerfiles.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Option 1 is better. Option 2 is really only for <strong>LSDTopoTools</strong> developers. We went to the trouble of building hte containers so you don&#8217;t have to.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_before_you_do_anything_else_set_up_a_directory_to_share_with_docker_containers">2.4. Before you do anything else: Set up a directory to share with docker containers.</h3>
-<div class="paragraph">
-<p>When you run <strong>LSDTopoTools</strong>, or our visualisation routines, you will want to see the resulting files. Docker containers have self contained filesystems that cannot be read on your host operating system unless you tell docker to "share" the directories. These are called "volumes" in docker speak.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, make a directory in your host operating system where you will put all the files associated with <strong>LSDTopoTools</strong>. I put mine in <code>C:\LSDTopoTools\</code></p>
-</li>
-<li>
-<p>To share a directory in docker you use the <code>-v</code> flag.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Following the <code>-v</code> flag you need to tell it which directories to share.</p>
-</li>
-<li>
-<p>The format is: <code>/Host/directory:/Container/directory</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>When you run docker (see below) you will need to ensure that the host directory name is the same as the directory you just created for <strong>LSDTopoTools</strong>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_first_option_pull_the_docker_images">2.5. First option: pull the docker images</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Okay, this should be fairly easy.</p>
-</li>
-<li>
-<p>If you want to run the full docker installation from the get go, simply run:</p>
+<p>Run the following command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v C:/LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pcl_docker</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>This will pull the repo and run it at the same time.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-This container is 663 Mb so if you just want to do some initial testing use the lightweight alpine version!
-</td>
-</tr>
-</table>
-</div>
 </li>
 <li>
-<p>If you want the lightweight version (but it can&#8217;t do floodplains and terraces) use:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run --rm -it -v C:/LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_alpine_docker</code></pre>
-</div>
-</div>
+<p>This will grab a container that is used to compile <strong>LSDTopoTools</strong></p>
 </li>
 <li>
-<p>Either one of these commands will result in your command line terminating in the <code>#</code> symbol. This indicates that you are insida a docker container.</p>
+<p>You then need to clone the LSDTopoTools2 directory and compile it by going into the <code>/src</code> directory and running <code>sh build.sh</code>.</p>
 </li>
 <li>
-<p>Once you are in one of the two docker containers, run the install script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This script grabs the latest version of the code and builds the programs if you don&#8217;t have one that is up to date. It also ensure that the <strong>LSDTopoTools</strong> programs are in your path.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You will need to run <code>Start_LSDTT.sh</code> every time you start a new Docker session.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If you want to follow our examples later in this documentation, you should also grab the example data:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You only need to perform this step the first time you start the <strong>LSDTopoTools</strong> container.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>If you ran <code>Get_LSDTT_example_data.sh</code> you will now have a data directory <code>/LSDTopoTools/data</code>.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_second_option_build_the_docker_containers">2.6. Second option: build the docker containers</h3>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Unless you are a docker purist, please ignore this section and use <a href="#_first_option_pull_the_docker_images">option 1</a> instead.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create a folder where you are going to put files associated with docker. In the examples I will assume these are in <code>C:\LSDTopoTools\</code> (this is a windows path, since the majority of organisations use the Windows operating system).</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>If you have <code>git</code> on your computer, you can clone our dockerfiles into this directory.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/LSDtopotools/lsdtt_alpine_docker.git
-$ git clone https://github.com/LSDtopotools/lsdtt_pcl_docker.git</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>If you don&#8217;t have <code>git</code>, download and unzip the contents of the repository.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If you are only running <strong>LSDTopoTools</strong> for routine analysis and looking at the results in GIS software, you will only need one docker container.</p>
-</li>
-<li>
-<p>We are only going to work with the <code>lsdtt-alpine</code> container. But the steps are basically the same for all the other containers.</p>
-</li>
-<li>
-<p>Start a terminal (MacOS or Linux) or powershell (Windows) with docker enabled.</p>
-</li>
-<li>
-<p>Go into the directory inside you docker directory (in my case <code>C:\Docker\LSDTopoTools\</code>) and go into the <code>lsdtt_alpine</code> directory. In windows, if your directory is called the same thing as my directory, you can get there with:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">PS&gt; cd C:\Docker\LSDTopoTools\lsdtt_alpine_docker</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Build the docker container:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">PS&gt; docker build -t lsdtt-alpine .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>The <code>-t</code> flag in docker stands for "tag". It is the name of the container. You could call it anything you want but all documentation henceforth assumes you have called it <code>lsdtt-alpine</code>.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>If you are building a different container, use a different tag, e.g., <code>lsdtt-pcl</code> for the <code>lsdtt-pcl</code> container.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Now you need to run this container:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:/LSDTopoTools:/LSDTopoTools lsdtt_alpine_docker</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>After that, run the install script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># Start_LSDTT.sh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This script grabs the latest version of the code and builds the programs if you don&#8217;t have one that is up to date. It also ensure that the <strong>LSDTopoTools</strong> programs are in your path.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You will need to run <code>Start_LSDTT.sh</code> every time you start a new Docker session.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If you want to follow our examples later in this documentation, you should also grab the example data:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># Get_LSDTT_example_data.sh</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You only need to perform this step the first time you start the <strong>LSDTopoTools</strong> container.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>If you ran <code>Get_LSDTT_example_data.sh</code> you will now have a data directory <code>/LSDTopoTools/data</code>.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_some_notes_on_docker">2.7. Some notes on Docker</h3>
-<div class="paragraph">
-<p>You might want to read the <a href="https://docs.docker.com/">docker documentation</a>, but docker documentation is similar to documentation for the <a href="https://www.youtube.com/watch?v=rLDgQg6bq7o">turbo encabulator</a>. Below are some very simple notes to get you started.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Docker quick reference</div>
-<div class="paragraph">
-<p>Here are some shortcuts if you just need a reminder of how docker works.</p>
-</div>
-<div class="paragraph">
-<p>List all containers</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker ps -a</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>List containsers with size</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker ps -as</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Remove all unused conainers</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker system prune</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Complete cleanup: stop everything, remove containers, then remove images.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker stop $(docker ps -aq)
-$ docker rm $(docker ps -aq)
-$ docker rmi $(docker images -q)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_docker_on_linux">2.7.1. Docker on Linux</h4>
-<div class="paragraph">
-<p>After you install docker on Linux, you will need to add users to the docker permissions:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo usermod -a -G docker $USER</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Once you have done this you will need to log out and log back in again.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_docker_for_windows">2.7.2. Docker for Windows</h4>
-<div class="paragraph">
-<p>I have not made any scientific study of this but most <strong>LSDTopoTools</strong> users are on Windows operating systems.</p>
-</div>
-<div class="paragraph">
-<p>Firstly, you need to have <strong>Windows 10 Enterprise</strong>. It will not work otherwise. If you don&#8217;t have Windows 10 Enterprise but are on Windows you probably should use the Vagrant instructions. If you do have Windows 10 enterprise then you can download and install Docker for Windows CE. After you install this you will need to restart your computer not once but twice: once after intall and a second time to activate the hyper-V feature, which allows you to have 64 bit guest operating systems.</p>
-</div>
-<div class="paragraph">
-<p>Second, if you have that and have it installed, you also need to add yourself to the <code>docker-users</code> group. To do that, do this (instructions from here: <a href="https://github.com/docker/for-win/issues/868" class="bare">https://github.com/docker/for-win/issues/868</a>):</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Logon to Windows as Administrator</p>
-</li>
-<li>
-<p>Go to Windows Administrator Tools</p>
-</li>
-<li>
-<p>Look for Windows Computer Management and click on it.</p>
-</li>
-<li>
-<p>Or you can skip steps 1, right mouse clicking Computer Management, go to more, and select run as administrator and provide Administrator password.</p>
-</li>
-<li>
-<p>Double click docker-users group and add your account as member.</p>
-</li>
-<li>
-<p>Also add your account to Hyper-V Administrator. This was added when you installed docker for Windows.</p>
-</li>
-<li>
-<p>Log off from Windows and log back on.</p>
-</li>
-<li>
-<p>Click on Windows icon on bottom left and start Docker for Windows. This will start docker windows service.</p>
-</li>
-<li>
-<p>Start Windows Powershell and type docker --version. It will show Docker version 17.09.1-ce, build 19e2cf6. This is the latest version.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_building_a_base_image">2.7.3. Building a base image</h4>
-<div class="paragraph">
-<p>By the time these notes go online, there should be a functioning docker image that you can download from the docker hub.
-The instructions will be clear and users can just start running <strong>LSDTopoTools</strong> from within docker.
-These notes exists as something of a history or cheat sheet of how we made the base image.</p>
-</div>
-<div class="paragraph">
-<p>Before we do anything, you should look at some notes about running a functioning image of ubuntu:
-<a href="http://phusion.github.io/baseimage-docker/" class="bare">http://phusion.github.io/baseimage-docker/</a></p>
-</div>
-<div class="paragraph">
-<p>I have no idea if that stuff is important!
-But we will try to test images that both include and don&#8217;t incude a fully formed startup environment.</p>
-</div>
-<div class="paragraph">
-<p>The other big issue with docker is the volume syncing. This is more difficult to understand syncing in vagrant.</p>
-</div>
-<div class="sect4">
-<h5 id="_a_simple_docker_image">A simple docker image</h5>
-<div class="paragraph">
-<p>So basically for <strong>LSDTopoTools</strong> functionality we might want a few different base images:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>An image just for the c++ code.</p>
-</li>
-<li>
-<p>An image just for the python scripts.</p>
-</li>
-<li>
-<p>An image just for building documentation.</p>
-</li>
-<li>
-<p>An image with everything installed.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The reason why we might separate the first three images is because the python image will be <strong>HUGE</strong> whereas the <strong>LSDTopoTools</strong> source code is small.
-So people might want to be offered a slimm version.</p>
-</div>
-<div class="paragraph">
-<p>Lets start with a very simple python image.
-The docker documentation for getting you started up is not so useful because they are written to get you running an app in the docker box. For our purposes we want:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To log into to the docker container via ssh or access it as though you have a little linux box running</p>
-</li>
-<li>
-<p>To be able to access you file system (we don&#8217;t want to be having to ftp files in an out of the container each time or worse yet losing all our work when the docker session ends).</p>
+<p>The programs then end up in the <code>/LSDTopoTools/bin</code> directory so you will need to add that to your path.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>For python, we could go with a full python build but that results in very large containers (over a GB).
-We will <a href="https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3">follow advice for a minimal python installation</a>. For this we will use the <a href="https://hub.docker.com/_/alpine/">Alpine base box</a>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, create a directory that will contain the files you need. I&#8217;ll call it <code>python_test</code>.</p>
-</li>
-<li>
-<p>Go into this directory. You will keep something called a <code>dockerfile</code> in this directory.
-It has instructions for what stuff is included in the container.
-We will start with an incredibly simple one. Create the follwoing textfile, called <code>dockerfile</code>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile">FROM python:3.6-alpine
-
-COPY . /app
-WORKDIR /app</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Before we do anything we need to <code>build</code> the container. You build it with some name, like:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker build -t chumbucket .</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In this command, the <code>-t</code> tells docker to tag the container, the <code>chumbucket</code> gives the container its tag, and the <code>.</code> means that you want to call the <code>Dockerfile</code> from this directory.</p>
-</div>
-</li>
-<li>
-<p>This downloads some stuff and then hopefully tells you the container is sucessfully built. You can look at it with <code>docker image ls</code>.</p>
-</li>
-<li>
-<p>You need to actually run the image if you want to do anything with it:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it chumbucket sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>The <code>-it</code> means <code>interactive</code> and <code>tag</code> and you give it the tag. You then tell it to run the shell (<code>sh</code>). To get out of the shell simply type <code>ctrl-d</code>.</p>
-</li>
-<li>
-<p>This gets you into a python container, and in addition it has a (very old version of) pip installed. It breaks if you try to install even simple things like pandas. This makes it totally unusable so we are going to have to add some stuff to the docker file. Unfortunately the alpine distro has all sorts of fundamental problems, for example you can&#8217;t install scipy.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_a_slightly_more_complicated_python_image">A slightly more complicated python image</h5>
-<div class="paragraph">
-<p>Okay, that container only has a very simple version of python on it. You can then install <a href="https://pypi.org/project/pip/">pip</a> and try to get some packages working, but this is not always straightforward.
-Your friendly LSDTopoTools developers prefer the <a href="https://conda.io/miniconda.html">miniconda</a> environment, so we are going to build a container on top of the <a href="https://hub.docker.com/r/conda/miniconda3/">miniconda3 image</a>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The dockerfile to start looks like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile">FROM conda/miniconda3
-
-COPY . /app
-WORKDIR /app</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Again, we need to build this container in order to use it:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker build -t chumbucket2 .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>We can see what images are available with the call</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker images -a</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You will notice the conda image is 228 MB vs the 78.7 MB: the conda version has more bells and whistles involved in getting miniconda to work.
-But the end result is that you can install things using conda. Let&#8217;s update the image with a conda install. Here is the dockerfile:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile"># Use the miniconda distribution.
-FROM conda/miniconda3
-
-# Add the app directory and set app to the working directory
-COPY . /app
-WORKDIR /app
-
-# Now add some conda packages
-RUN conda install -y numpy</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>And we can build this once more (with the same build call so we don&#8217;t create a totally new container):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker build -t chumbucket2 .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now we can open this container in the interactive mode:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it chumbucket2 sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>If you run python inside this container and then <code>import numpy as np</code> you can see that it has been installed.</p>
-</li>
-<li>
-<p>From here you should be able to see that we can install all sorts of stuff from the dockerfile using the <code>RUN conda install</code> command.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Some Gotchas in simple containers</div>
-<div class="paragraph">
-<p>So far it seems like smooth sailing?
-Well there are a few gotchas.</p>
-</div>
-<div class="paragraph">
-<p>Firstly, in the command <code>docker run -it chumbucket2 sh</code> you can see we are using <code>sh</code>: this is in most of the "getting started" docker documentation.
-However, using <code>sh</code> really sucks since it does not feature any of the Linux command line shortcuts you are used to. Instead, you should us <code>bash</code>.</p>
-</div>
-<div class="paragraph">
-<p>Secondly even through you have copied the ./app directory into the container, it does not communicate with your storage.
-So if you update anything in that directory on your home computer, you need to completely rebuild the container!</p>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_mounting_volumes_in_docker">Mounting volumes in Docker</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>What we really want is exchange of files between your host operating system and your docker container.</p>
-</li>
-<li>
-<p>You might start by reading about <a href="https://docs.docker.com/storage/volumes/">docker volumes</a>. But like most Docker documenattion that is a bit impenetrable so you might move on to some plain english summaries: <a href="https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72">summary 1</a> and <a href="https://rominirani.com/docker-on-windows-mounting-host-directories-d96f3f056a2c">summary 2</a>.</p>
-</li>
-<li>
-<p>The upshot of this is that you don&#8217;t really want a docker volume container, but rather you want to link your docker container to your host file system.</p>
-</li>
-<li>
-<p>On MacOS and Linux this works automatically, but on Windows 10 you need to activate it. Right click on the docker icon in the system tray, go to <strong>Settings</strong> and then to <strong>Shared Drives</strong> and activate drive sharing.</p>
-</li>
-<li>
-<p>Once you have done this you can activate the drive sharing with the <code>-v</code> flag in a docker run command (see below).</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_an_lsdmappingtools_container">An LSDMappingTools container</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Okay, lets make a container for <a href="https://github.com/LSDtopotools/LSDMappingTools">LSDMappingTools</a>.</p>
-</li>
-<li>
-<p>The dockerfile looks like this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile"># This is the LSDMappingTools dockerfile. It is currently set up to install the
-# latest versions of the various required python packages
-
-# To run this you will need to connect it to your host directories if you want to be able to retrieve
-# your figures and get data in and out of the container.
-# On windows you need to allow docker access to the host drive
-# Right click on the docker icon in your system tray
-# Then select "settings"
-# Then "Shared Drives" and activate the drive you want
-# In MacOS and Linux this is automatically set up.
-# After you build the container
-# e.g.
-# docker build -t lsdmt .
-#
-# Then you need to run it with the volume attached
-# e.g.
-# docker run C:/Docker_containers/python_containers/LSDMappingTools:/LSDTopoTools/LSDMappingTools lsdmt bash
-
-# Use the miniconda distribution.
-FROM conda/miniconda3
-
-LABEL MAINTAINERS = "Simon Marius Mudd &lt;simon.m.mudd@ed.ac.uk&gt;, Fiona J Clubb &lt;clubb@uni-potsdam.de&gt;"
-
-# Set LSDTopoTools to be the working directory
-# This will create a directory in the root of the container.
-# When you start the container you will be placed in this directory.
-WORKDIR /LSDTopoTools
-
-# Now add some conda packages
-RUN conda config --add channels conda-forge
-RUN conda install -y numpy matplotlib pandas scipy
-RUN conda install -y gdal shapely fiona rasterio pyproj
-RUN conda install -c conda-forge descartes</code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-This takes a very long time to set up!
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>This doesn&#8217;t include the actual python scripts!
-You need to copy them into a directory where docker can access them (on my machine this means withing the C: drive) and then add them using a volume command:</p>
-</li>
-<li>
-<p>First build the container:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker build -t lsdmt .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then run the container in interactive mode with the volume attached:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:/Docker_containers/python_containers/python_test1/LSDMappingTools:/LSDTopoTools/LSDMappingTools lsdmt bash</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Note that this container has <strong>many</strong> python packages so it is rather larege: nearly 4GB (to see, type <code>docker ps -as</code>).</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_an_lsd_documentation_container">An LSD Documentation container</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We use <a href="https://asciidoctor.org/">asciidoctor</a> for our documentation.
-I am pleased to say that there is a dockerfile for asciidoctor.</p>
-</li>
-<li>
-<p>Simply copy the <a href="https://github.com/asciidoctor/docker-asciidoctor">asciidoctor dockerfile</a> and add two lines:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile">    awesome_print \
-    bundler \</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>these come after the line <code>tile \</code> on line 55.</p>
-</div>
-</li>
-<li>
-<p>Now build the container</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker built -t asc .</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Then open that container up linking to the proper directory. I use:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ docker run -it -v C:/Docker_containers/ruby_containers/LSDTT_documentation/master:/documents/LSDTT_documents asc bash</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You can find this dockerfile within the <a href="https://github.com/LSDtopotools/LSDTT_documentation/blob/master/dockerfile">LSDTT Documentation repository</a>.</p>
-</li>
-<li>
-<p>When that is running, go into the documentation directory and run our python script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console"># cd LSDTT_documentation
-# python compile_LSDTTDocs.py</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>The resulting website will be in the directory <code>html_build</code>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_the_lsdtt_core_code_container">The LSDTT core code container</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We actually have two containers for this since a subset of our code uses PCL which is massive.</p>
-</li>
-<li>
-<p>The simpler version, used in most of our code, is the following:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile"># Pull base image.
-FROM ubuntu:18.10
-
-RUN apt-get update
-RUN apt-get install -y build-essential git gdal-bin python-gdal libfftw3-dev cmake
-
-WORKDIR /LSDTopoTools</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>We can also use an Alpine linux version, which is <strong>much</strong> smaller:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile">FROM alpine
-MAINTAINER Simon Mudd (simon.m.mudd@ed.ac.uk) and Fiona Clubb (clubb@uni-potsdam.de)
-
-# install essential packages
-RUN apk upgrade -U &amp;&amp; \
-    apk update &amp;&amp; \
-    apk add --virtual build-dependencies build-base gcc wget git &amp;&amp; \
-    apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/main libressl2.7-libcrypto &amp;&amp; \
-    apk add gdal --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing &amp;&amp; \
-    apk add fftw-dev cmake &amp;&amp; \
-    rm -rf /var/cache/apk/* &amp;&amp; \
-    rm -rf /tmp/*
-
-# update to avoid weird apk error
-RUN apk update
-
-# clone LSDTT repo
-WORKDIR /LSDTopoTools/</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>After we build this container we can run it with:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ docker run -it -v C:/Docker/cpp_containers/LSDTopoTools:/LSDTopoTools/ lsdtt-alpine</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_the_lsdtt_pcl_container">The LSDTT PCL container</h5>
-<div class="paragraph">
-<p>Some of our routines need the [Point Cloud Library]. This is a <strong>HUGE</strong> library that needs millions of additional bits of software.
-The resulting container is enormous, and takes an age to build so you should only use this if you need the PCL versions of <strong>LSDTopoTools</strong>.</p>
-</div>
-<div class="paragraph">
-<p>One quite annoying thing is that for anything later than Ubuntu 14 you need to build PCL from source. This takes a <strong>long</strong> time.
-The whole installation process takes an age. Sorry.</p>
-</div>
-<div class="paragraph">
-<p>This is the dockerfile:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-docker" data-lang="docker"># Pull base image.
-FROM ubuntu:16.04
-
-# These are the basic build tools
-RUN apt-get update
-RUN apt-get install -y build-essential git gdal-bin python-gdal libfftw3-dev cmake
-
-# And this is the point cloud library
-
-# install pcl
-RUN apt-get install -y libpcl-dev
-
-# We need this as well
-RUN apt-get install -y libproj-dev
-
-WORKDIR /LSDTopoTools</code></pre>
-</div>
-</div>
-</div>
+<p>/// include::sections/docker_notes.asc[]</p>
 </div>
 </div>
 </div>
@@ -1689,22 +798,71 @@ WORKDIR /LSDTopoTools</code></pre>
 <div class="sect1">
 <h2 id="_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</h2>
 <div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You first need <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>. Get the python 3.8 version.</p>
+</li>
+<li>
+<p>Create and environment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name lsdtt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now install the required packages.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you only want the lsdtopotools command line tools use:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda install -y -c conda-forge conda
+$ conda install -y lsdtopotools</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you want the full <strong>LSDTopoTools</strong> computational stack install:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ apt-get update &amp;&amp; apt-get install -y \
+    build-essential \
+    libfftw3-dev \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+$ conda install -y -c conda-forge conda
+$ conda config --add channels conda-forge
+$ conda config --set channel_priority strict
+$ conda install -y wget unzip
+$ conda install -y ffmpeg
+$ conda install -y lsdtopotools
+$ conda install -y git python=3.8
+$ conda install -y ipython ipykernel jupyter
+$ conda install -y conda-build
+$ conda install -y mamba
+$ mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor
+$ pip install lsdviztools lsdttparamselector
+$ mamba install -y lsdtopytools</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_building_the_code_from_source">3.1. Building the code from source</h3>
 <div class="paragraph">
 <p><strong>ONLY DO THIS IF YOU ARE A DEVELOPER!! If you just want to use the code follow the basic instructions.</strong></p>
 </div>
 <div class="paragraph">
-<p>The compute power of <strong>LSDTopoTools</strong> is all found within the LSDTopoTools command line tools, which you can install using <a href="https://docs.conda.io/en/latest/miniconda.html#">miniconda</a>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ conda -c conda-forge lsdtopotools</code></pre>
-</div>
-</div>
-<div class="paragraph">
 <p>The below instructions are for developers who work with the source code. Unless your name is Simon, Fiona, Stuart, Boris, David, Marina, or Martin and are now or formerly associated with the University of Edinburgh&#8217;s Land Surface Dynamics group it is highly unlikely you will need any of this.</p>
 </div>
-<div class="sect2">
-<h3 id="_get_the_associated_software_you_need">3.1. Get the associated software you need</h3>
+<div class="sect3">
+<h4 id="_get_the_associated_software_you_need">3.1.1. Get the associated software you need</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1723,6 +881,7 @@ $ sudo apt-get install -y cmake</code></pre>
 </div>
 </li>
 </ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1982,12 +1141,12 @@ $ pwd</code></pre>
 <div class="paragraph">
 <p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
 </div>
+<div class="paragraph">
+<p>Our servers have the <strong>LSDTopoTools</strong> command line tools installed. So all you need to do is get on one of our servers.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Quick Setup for Edinburgh Geoscience users</div>
-<div class="paragraph">
-<p><strong>If it is the first time you are using LSDTopoTools</strong></p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2009,54 +1168,7 @@ $ pwd</code></pre>
 <p>This puts you into the university ssh server, which is slow. Move into a better one by typing <code>ssh burn</code>.</p>
 </li>
 <li>
-<p>Download the setup script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_Edinburgh_scripts/master/LSDTT_UEdin_setup.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now run the script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>The script will ask you for your Edinburgh university username (UUN) and then if you want to install <strong>LSDTopoTools</strong> in your home directory.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><strong><em>If you are an undergratudate or taught master&#8217;s student</em></strong>, answer <code>yes</code> to put <strong>LSDTopoTools</strong> in your home directory.</p>
-</li>
-<li>
-<p>For staff and research students, <strong><em>we recommend saying <code>no</code> since this puts the code in your datashare directory</em></strong>, which has more space (I&#8217;m afraid taught students don&#8217;t have access to this resource).</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>If you have already followed the instructions above once</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go into the School of GeoScience servers using instructions above.</p>
-</li>
-<li>
-<p>Run the script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You will need to enter your UUN and answer the yes/no question as above, but everything will go very quickly since you&#8217;ve already downloaded everything.</p>
+<p>You are now on a server that has the <strong>LSDTopoTools</strong></p>
 </li>
 </ol>
 </div>
@@ -2172,561 +1284,10 @@ You <strong>MUST</strong> move servers since the GeoSciences ssh server is very 
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_downloading_and_running_the_setup_script">4.3. Downloading and running the setup script</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to your home directory</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Get the setup script from the internet</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_Edinburgh_scripts/master/LSDTT_UEdin_setup.sh</code></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/get_the_startup_script.png" alt="Grab the startup script from the internet">
-</div>
-<div class="title">Figure 9. Grab the startup script from the internet using <code>wget</code>. Brief note: for downloading large files, <code>wget</code> is <strong>much</strong> faster than downloading files through a browser.</div>
-</div>
-</li>
-<li>
-<p>Now run the script:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_UEdin_setup.sh</code></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/run_the_script.png" alt="Run the startup script">
-</div>
-<div class="title">Figure 10. Run the script.</div>
-</div>
-</li>
-<li>
-<p>Follow the prompts.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Every time you start a new session, you will need to run this setup script. The second time you run it, it will not set up <strong>LSDTopoTools</strong>, but it will check the software for updates and it will also tell your computer where the actual programs are.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_excruciatingly_detailed_information_about_what_the_script_does_only_read_this_if_you_are_an_enthusiast_that_must_know_how_everything_works">4.3.1. Excruciatingly detailed information about what the script does (only read this if you are an enthusiast that must know how everything works)</h4>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-This is what the setup script does. <strong>You don&#8217;t need to do this if you have run the script!</strong> It remains here for reference.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>For staff and research students, their largest data storage is in their datastore. Undergraduates and taught master&#8217;s stuents don&#8217;t have access to this, unfortunately. If you tell the script you want things in your home directory, the script will skip this.</p>
-</li>
-<li>
-<p>Go into your <strong>T:</strong> drive by entering: <code>cd /exports/csce/datastore/geos/users/UUN</code></p>
-</li>
-<li>
-<p>Imagine having to type this every time you go into the servers. It is very annoying. You can cut that step out by making a symbolic link.</p>
-</li>
-<li>
-<p>In linux you can always navigate to your home directory using:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You make a link using the <code>ln</code> command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ ln -s /exports/csce/datastore/geos/users/UUN MyDataStore</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You need to replace <code>UUN</code> above with your university user name.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You don&#8217;t have to call the link <code>MyDataStore</code>, you can call it whatever you like. But try to remember what you called it.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Once you do that, you can navigate into your network drive in Linux with the commands:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ cd MyDataStore</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect4">
-<h5 id="_dont_be_messy">Don&#8217;t be messy</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>You can organise your directories however you want, but I find it is easier to keep everything contained in a single <strong>LSDTopoTools</strong> directory.</p>
-</li>
-<li>
-<p>Go into your network drive (see above).</p>
-</li>
-<li>
-<p>I suggest making a directory called <code>LSDTopoTools</code> (you can use <code>mkdir LSDTopoTools</code>).</p>
-</li>
-<li>
-<p>If you want to be clever, you can make an additional link to this new directory:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ ln -s /exports/csce/datastore/geos/users/UUN/LSDTopoTools LSDTT_Directory
-$ cd LSDTT_Directory</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You need to replace <code>UUN</code> above with your university user name.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>If you do that, whenever you want to go into your *LSDTopoTools directory, you just enter this:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ cd LSDTT_Directory</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Do that in order to follow the next steps.</p>
-</li>
-<li>
-<p>Inside this directory you can put the source code, any data or projects, and the python visualisation code. But in the next step we will just get the source code in set up the main <strong>LSDTopoTools</strong> programs.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_cloning_the_lsdtopotools2_repository">Cloning the LSDTopoTools2 repository</h5>
-<div class="paragraph">
-<p><strong>LSDTopoTools2</strong>, which has the main analysis programs, lives in a <a href="https://github.com/">github</a> repository and you use a program names <a href="https://git-scm.com/">git</a> to get it. Don&#8217;t worry, this is easy.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Type (or copy and paste): <code>git clone <a href="https://github.com/LSDtopotools/LSDTopoTools2.git" class="bare">https://github.com/LSDtopotools/LSDTopoTools2.git</a></code></p>
-</li>
-<li>
-<p>It will download some stuff. Now you need to build the software.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_building_the_software">Building the software</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Type: <code>sh lsdtt2_setup.sh</code></p>
-</li>
-<li>
-<p>Wait a bit until it finishes. It should take a minute or two.</p>
-</li>
-<li>
-<p>You can now navigate to your data and start using <strong>LSDTopoTools</strong>. See <a href="LSDTT_basic_usage.html">our section on first analyses in <strong>LSDTopoTools</strong></a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_starting_an_lsdtopotools2_session_after_your_first_installation_2">Starting an LSDTopoTools2 session after your first installation</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Whenever you return to run an <strong>LSDTopoTools2</strong> session, you will need to tell the computer where your program files are. You have two options:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Run <code>sh lsdtt2_setup.sh</code> in the <strong>LSDTopoTools2</strong> directory. This gets the latest version of the software, recompiles, and points your session to the program files.</p>
-</li>
-<li>
-<p>Run <code>sh lsdtt2_terminal.sh</code> in the <strong>LSDTopoTools2</strong> directory. This just points your session to the program files.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>You <strong>must</strong> do one of those two things otherwise your computer will not know where the program files are.</p>
-</li>
-<li>
-<p>As an alternative, you can go into yor <code>.bashrc</code> file and add the <code>/path/to/LSDTopoTools2/bin</code> directory to your <code>$PATH</code>. You will need to change the full path to reflect your own directory system. If you don&#8217;t know what a <code>.bashrc</code> file is you are probably better off running the <code>lsdtt2_terminal.sh</code> script.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_getting_the_example_data_2">Getting the example data</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create a data directory. The documentation assumes this directory structure: <br>
-| Your home directory (native linx) or the root directory (docker) <br>
---|LSDTopoTools <br>
-----| LSDTopoTools2 <br>
-------| subdirectories with source code and programs<br>
-----| data <br>
-------| subdirectories with different projects<br>
-----| Other LSDTopoTools directories (e.g., LSDMappingTools, LSDTT_documentation)</p>
-</li>
-<li>
-<p>So, if you don&#8217;t have a data directory, make one. Again, we suggest putting this in your <strong>LSDTopoTools</strong> directory. Go into your LSDTopoTools directory (see <a href="Don&.html#8217;t be messy">instructions above</a>):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir data</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Go into the data directory and grab the example data from github, then unzip and clean the zip file:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>If you are an undergraduate, the script will grab the small samples:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd data
-$ wget https://github.com/LSDtopotools/SmallExampleTopoDatasets/archive/master.zip
-$ unzip master.zip
-$ mv ./SmallExampleTopoDatasets-master ./ExampleTopoDatasets
-$ rm master.zip</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>If you have a datastore directory (e.g., are a PGR student or staff) it will get the large example data (since you have more space):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd data
-$ wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
-$ unzip master.zip
-$ mv ./ExampleTopoDatasets-master ./ExampleTopoDatasets
-$ rm master.zip</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>You should now have the example data that is used in the rest of this documentation.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_extra_dependencies_for_swaths_and_point_clouds">5. Extra dependencies for swaths and point clouds</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Do I need to read this section?</div>
-<div class="paragraph">
-<p>If you have followed our <a href="#_first_option_pull_the_docker_images">docker installation</a> you don&#8217;t need to read any of this: all the tools mentioned below are included in the <a href="https://hub.docker.com/r/lsdtopotools/lsdtt_pcl_docker/"><strong>LSDTopoTools</strong> PCL container</a>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Some of our tools require the point cloud library. To get this working you need a few different utilities and libraries (take a deep breath):</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The <code>cmake</code> utility. This is like <code>make</code> but is required for our tools that examine point clouds,
-since it is required by something called the <a href="http://pointclouds.org/">point cloud library</a>.</p>
-</li>
-<li>
-<p><a href="http://pointclouds.org/">pcl</a>: The Point Cloud Library.</p>
-</li>
-<li>
-<p><a href="http://www.liblas.org/">libLAS</a>: a library for working with LAS format data.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Our Vagrant installation installs these automatically. The docker installation (since it is 3rd party) does not. However you can install on an Ubuntu system (and the Docker installation is Ubuntu) using the following instructions.</p>
-</div>
-<div class="sect2">
-<h3 id="_install_the_point_cloud_library">5.1. Install the Point Cloud Library</h3>
-<div class="paragraph">
-<p>If you are using an older version of ubuntu there is a package. Newer versions of Ubuntu don&#8217;t have it, so you will unfortunately need to install by hand.</p>
-</div>
-<div class="sect3">
-<h4 id="_ubuntu_14_and_12">5.1.1. Ubuntu 14 and 12</h4>
-<div class="paragraph">
-<p>This is relatively painless (we hope):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
-$ sudo apt-get update
-$ sudo apt-get install libpcl-all</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_ubuntu_16_04_lts">5.1.2. Ubuntu 16.04 LTS</h4>
-<div class="paragraph">
-<p>First, try this. It is possible it will only work on 64 bit systems:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get update
-$ sudo apt-get install libpcl-dev</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If that doesn&#8217;t work you need to install from source. I am very sorry about this.</p>
-</div>
-<div class="paragraph">
-<p>To install the <code>pcl</code> library from source you use the following steps:</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-This will take at least an hour!! It will also download an insane amount of stuff onto your machine. You must ensure that you follow the steps in the correct order.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Install oracle-java8-jdk:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo add-apt-repository -y ppa:webupd8team/java &amp;&amp; sudo apt update &amp;&amp; sudo apt -y install oracle-java8-installer</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Install various dependencies and pre-requisites:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt -y install g++ cmake cmake-gui doxygen mpi-default-dev openmpi-bin openmpi-common libusb-1.0-0-dev libqhull* libusb-dev libgtest-dev
-$ sudo apt -y install git-core freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libphonon-dev libphonon-dev phonon-backend-gstreamer
-$ sudo apt -y install phonon-backend-vlc graphviz mono-complete qt-sdk libflann-dev libflann1.8 libboost1.58-all-dev</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Install the eigen linear algebra package:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
-$ wget http://launchpadlibrarian.net/209530212/libeigen3-dev_3.2.5-4_all.deb
-$ sudo dpkg -i libeigen3-dev_3.2.5-4_all.deb
-$ sudo apt-mark hold libeigen3-dev</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Install VTK (this has some plotting functionality, <strong>this takes AGES.</strong>):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget http://www.vtk.org/files/release/7.1/VTK-7.1.0.tar.gz
-$ tar -xf VTK-7.1.0.tar.gz
-$ cd VTK-7.1.0 &amp;&amp; mkdir build &amp;&amp; cd build
-$ cmake ..
-$ make
-$ sudo make install</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now install the Point Cloud Library v1.8:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
-$ wget https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.0.tar.gz
-$ tar -xf pcl-1.8.0.tar.gz
-$ cd pcl-pcl-1.8.0 &amp;&amp; mkdir build &amp;&amp; cd build
-$ cmake ..
-$ make
-$ sudo make install</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Do some clean up:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
-$ rm libeigen3-dev_3.2.5-4_all.deb VTK-7.1.0.tar.gz pcl-1.8.0.tar.gz
-$ sudo rm -r VTK-7.1.0 pcl-pcl-1.8.0</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should now have pcl installed on your system! You can do a small test of the installation if you want to:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~
-$ mkdir pcl-test &amp;&amp; cd pcl-test</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create a CMakeLists.txt file and save this in the directory <code>pcl-test</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-project(pcl-test)
-find_package(PCL 1.2 REQUIRED)
-
-include_directories(${PCL_INCLUDE_DIRS})
-link_directories(${PCL_LIBRARY_DIRS})
-add_definitions(${PCL_DEFINITIONS})
-
-add_executable(pcl-test main.cpp)
-target_link_libraries(pcl-test ${PCL_LIBRARIES})
-
-SET(COMPILE_FLAGS "-std=c++11")
-add_definitions(${COMPILE_FLAGS})</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create a file and call it <code>main.cpp</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>#include &lt;iostream&gt;
-
-int main() {
-    std::cout &lt;&lt; "hello, world!" &lt;&lt; std::endl;
-    return (0);
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Compile the cpp file and then test it :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ mkdir build &amp;&amp; cd build
-$ cmake ..
-$ make
-$ ./pcl-test</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Output should be <code>hello, world!</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_extra_libraries_for_the_floodplain_and_terrace_extraction">5.2. Extra libraries for the floodplain and terrace extraction</h3>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-As of January 2018 liblas does not compile on our vagrant server since liblas3 is not available for Ubuntu 12. We have updated the vagrantfiles to Ubuntu 14 so you should use the new vagrantfiles (this will require downloading a new vagrant box if you were using the old vagrantfile). We don&#8217;t use Ubuntu 16 since it is such an incredible pain to install the point cloud library on it.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>You might find you need to install a couple of other libraries for the floodplain and terrace drivers to compile properly. If you are using Ubuntu, you can do this using the following commands:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get update
-$ sudo apt-get install libgoetiff-dev
-$ sudo apt-get install liblas-dev</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_the_lsdtopotools_python_toolchain">6. Installing the LSDTopoTools python toolchain</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>LSDTopoTools</strong> is written in C++ but also includes a number of automation and visualisation rountines written in python.</p>
-</div>
-<div class="paragraph">
-<p>Because <strong>LSDTopoTools</strong> handles primarily spatial data, a number of python packages for handling spatial data are needed in the <strong>LSDTopoTools</strong> python toolchain. We have attempted to make setting up this toolchain as painless as possible using <a href="https://conda.io/miniconda.html">miniconda</a> and <a href="https://conda.io/docs/using/envs.html">conda environments</a>.</p>
-</div>
-<div class="paragraph">
-<p>Please see the chapter on <a href="LSDTT_visualisation.html">LSDTopoTools visualisation</a> for instructions on how to <a href="LSDTT_visualisation.html#_installing_the_lsdtopotools_python_toolchain">install the LSDTopoTools python toolchain</a>.</p>
-</div>
-<div class="paragraph">
-<p>The preferred way to install <strong>LSDTopoTools</strong> is via a Docker container (see <a href="#_installing_lsdtopotools_using_docker">previous sections</a>), but because our python tools use a large number of python packages we have a separate container for these tools.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_get_a_text_editor">7. Get a text editor!</h2>
+<h2 id="_get_a_text_editor">5. Get a text editor!</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A text editor isn&#8217;t part of <strong>LSDTopoTools</strong> but you need one to do anything. You will need to modify parameter files and you might even get to the stage of opening Pass:[c++] or Python scripts and editing them so you will need an editor.</p>
@@ -2758,7 +1319,7 @@ $ sudo apt-get install liblas-dev</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-03 15:41:57 UTC
+Last updated 2021-09-17 14:38:29 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
