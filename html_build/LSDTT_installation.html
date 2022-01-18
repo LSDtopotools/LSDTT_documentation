@@ -456,42 +456,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_menu_of_more_detailed_instructions">1.5. Menu of more detailed instructions</a></li>
 </ul>
 </li>
-<li><a href="#_installing_lsdtopotools_using_docker">2. Installing LSDTopoTools using Docker</a>
+<li><a href="#_installing_lsdtopotools_using_conda">2. Installing LSDTopoTools using conda</a></li>
+<li><a href="#_installing_lsdtopotools_using_docker">3. Installing LSDTopoTools using Docker</a>
 <ul class="sectlevel2">
-<li><a href="#_install_docker">2.1. Install docker</a></li>
-<li><a href="#_once_you_have_docker">2.2. Once you have docker</a></li>
-<li><a href="#_if_you_are_a_developer">2.3. If you are a developer</a></li>
+<li><a href="#_install_docker">3.1. Install docker</a></li>
+<li><a href="#_once_you_have_docker">3.2. Once you have docker</a></li>
+<li><a href="#_if_you_are_a_developer">3.3. If you are a developer</a></li>
 </ul>
 </li>
-<li><a href="#_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</a>
+<li><a href="#_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</a>
+<ul class="sectlevel3">
+<li><a href="#_get_the_lsdtopotools2_code_and_install">4.1. Get the LSDTopoTools2 code and install</a></li>
+<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">4.2. Starting an LSDTopoTools2 session after your first installation</a></li>
+<li><a href="#_getting_the_example_data">4.3. Getting the example data</a></li>
+<li><a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">4.4. Installing LSDTopoTools using Windows Subsystem for Linux</a>
+<ul class="sectlevel3">
+<li><a href="#_accessing_data_from_windows">4.4.1. Accessing data from Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">5. Installing LSDTopoTools at the University of Edinburgh.</a>
 <ul class="sectlevel2">
-<li><a href="#_building_the_code_from_source">3.1. Building the code from source</a>
-<ul class="sectlevel3">
-<li><a href="#_get_the_associated_software_you_need">3.1.1. Get the associated software you need</a></li>
+<li><a href="#_mapping_your_network_drive">5.1. Mapping your network drive</a></li>
+<li><a href="#_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">5.2. Getting on to our servers with with ssh in a powershell window</a></li>
 </ul>
 </li>
-<li><a href="#_option_1_use_the_script">3.2. Option 1: Use the script</a></li>
-<li><a href="#_option_2_do_it_by_hand">3.3. Option 2: Do it by hand</a>
-<ul class="sectlevel3">
-<li><a href="#_get_the_lsdtopotools2_code_and_install">3.3.1. Get the LSDTopoTools2 code and install</a></li>
-<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">3.3.2. Starting an LSDTopoTools2 session after your first installation</a></li>
-<li><a href="#_getting_the_example_data">3.3.3. Getting the example data</a></li>
-</ul>
-</li>
-<li><a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">3.4. Installing LSDTopoTools using Windows Subsystem for Linux</a>
-<ul class="sectlevel3">
-<li><a href="#_accessing_data_from_windows">3.4.1. Accessing data from Windows</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</a>
-<ul class="sectlevel2">
-<li><a href="#_mapping_your_network_drive">4.1. Mapping your network drive</a></li>
-<li><a href="#_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">4.2. Getting on to our servers with with ssh in a powershell window</a></li>
-</ul>
-</li>
-<li><a href="#_get_a_text_editor">5. Get a text editor!</a></li>
+<li><a href="#_get_a_text_editor">6. Get a text editor!</a></li>
 </ul>
 </div>
 </div>
@@ -554,7 +545,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_components_of_lsdtopotools">1.2. Components of LSDTopoTools</h3>
 <div class="paragraph">
-<p><strong>LSDTopoTools</strong> has several components. These can be used in isolation or together.</p>
+<p><strong>LSDTopoTools</strong> has several components. These can be used in isolation or together. Both <strong>LSDTopoTools</strong> and <strong>lsdtopytools</strong> can be installed using <a href="https://docs.conda.io/en/latest/miniconda.html">conda</a>. <strong>lsdviztools</strong> can be installed using <a href="https://pypi.org/project/lsdviztools/">pip</a>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -578,7 +569,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If you are in a Linux or MacOS all you really need is Miniconda. You should use the python 3.8 version.</p>
+<p>If you are in a Linux or MacOS all you really need is <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>. You should use the python 3.8 version.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -628,7 +619,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p>These both have a bunch of dependencies so it is easier to use our docker container that has everything pre-installed. You can read about that below.</p>
+<p>Both <strong>lsdtopytools</strong> and <strong>lsdviztools</strong> have a bunch of dependencies so it is easier to use our docker container that has everything pre-installed. You can read about that below. <strong>lsdtopotools</strong> command line tools have minimal dependencies by design (but do not work in Windows, so you need to have a linux environment, such as <a href="https://docs.microsoft.com/en-us/windows/wsl/install">windows subsytem for linux</a>).</p>
 </li>
 </ol>
 </div>
@@ -644,7 +635,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Native installation on a Linux system. If your native operating system is Linux you can just install <strong>LSDTopoTools</strong> after getting all the libraries you need. The documents are made under the assumption that you use <a href="https://www.ubuntu.com/">Ubuntu</a>, but if you are a Linux user we are confident you&#8217;ll be able to port the instructions to your native system (usually this involves replacing <code>sudo apt-get</code> with <code>sudo yum</code>).</p>
 </li>
 <li>
-<p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. We include instructions specific to students and staff at the University of Edinburgh for use on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers.</p>
+<p><a href="https://www.ed.ac.uk/">University of Edinburgh</a> installation. This software is developed at the University of Edinburgh and is used in teaching. As it turns out you don&#8217;t really need to install the software if you are at Edinburgh since it is already installed on the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> servers and on the <a href="https://www.ed.ac.uk/information-services/learning-technology/noteable/accessing-noteable">Notable</a> service.</p>
 </li>
 </ul>
 </div>
@@ -654,16 +645,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>If you are in MacOS, Linux, we <a href="#recommend Docker">Installing LSDTopoTools using Docker</a>.</p>
+<p>If you are in MacOS or Linux you can use the conda installation. You can also use the <a href="#Docker installation">Installing LSDTopoTools using Docker</a>.</p>
 </li>
 <li>
-<p>If you have Windows 10 enterprise and administrator privilidges, we also <a href="#recommend Docker">Installing LSDTopoTools using Docker</a>.</p>
+<p>If you have Windows 10+ and administrator privileges, we <a href="#recommend Docker">Installing LSDTopoTools using Docker</a>.</p>
 </li>
 <li>
 <p>If you want better performance you can try the <a href="#_installing_natively_on_a_linux_system">native Linux installation</a> (works on both Linux and MacOS since the latter is built on top of Linux).</p>
 </li>
 <li>
-<p>If you have Windows 10 but don&#8217;t have the Enterprise edition or access priviledges, you can do a <a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">"native" Linux installation using the Windows Linux Subsystem</a>.</p>
+<p>If you can&#8217;t do any of the above just use <strong>LSDTopoTools</strong> on <a href="https://github.com/LSDtopotools/lsdtt_notebooks/blob/master/lsdtopotools/lsdtopotools_on_colab.ipynb">google colab</a>.</p>
 </li>
 </ul>
 </div>
@@ -673,7 +664,76 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_installing_lsdtopotools_using_docker">2. Installing LSDTopoTools using Docker</h2>
+<h2 id="_installing_lsdtopotools_using_conda">2. Installing LSDTopoTools using conda</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Important note</div>
+<div class="paragraph">
+<p>Currently this only works in a Linux environment. So you need a Linux emulator like <a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows subsystem for Linux</a>.
+If you don&#8217;t have that you can either move on to the section on <a href="#Docker installation">Installing LSDTopoTools using Docker</a> or the section on <a href="#running LSDTopoTools in colab">Installing LSDTopoTools using google colab</a>.</p>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You first need <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>. Get the python 3.8 version.</p>
+</li>
+<li>
+<p>Create and environment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name lsdtt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now install the required packages.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you only want the lsdtopotools command line tools use:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ conda install -y -c conda-forge conda
+$ conda install -y lsdtopotools</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you want the full <strong>LSDTopoTools</strong> computational stack install:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ apt-get update &amp;&amp; apt-get install -y \
+    build-essential \
+    libfftw3-dev \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+$ conda install -y -c conda-forge conda
+$ conda config --add channels conda-forge
+$ conda config --set channel_priority strict
+$ conda install -y wget unzip
+$ conda install -y ffmpeg
+$ conda install -y lsdtopotools
+$ conda install -y git python=3.8
+$ conda install -y ipython ipykernel jupyter
+$ conda install -y conda-build
+$ conda install -y mamba
+$ mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor
+$ pip install lsdviztools lsdttparamselector
+$ mamba install -y lsdtopytools</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_lsdtopotools_using_docker">3. Installing LSDTopoTools using Docker</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can read about Docker here: <a href="https://en.wikipedia.org/wiki/Docker_(software" class="bare">https://en.wikipedia.org/wiki/Docker_(software</a>)
@@ -684,7 +744,7 @@ There are alternatives (podman, singularity) but Docker is the most popular and 
 <p>In practice, the <strong>LSDTopoTools</strong> developers have installed everything on a container so you don&#8217;t have to do any of that work. You just start the container and then start analysing topography.</p>
 </div>
 <div class="sect2">
-<h3 id="_install_docker">2.1. Install docker</h3>
+<h3 id="_install_docker">3.1. Install docker</h3>
 <div class="paragraph">
 <p>To install docker, follow these instructions: <a href="https://docs.docker.com/engine/install/" class="bare">https://docs.docker.com/engine/install/</a></p>
 </div>
@@ -693,7 +753,7 @@ There are alternatives (podman, singularity) but Docker is the most popular and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_once_you_have_docker">2.2. Once you have docker</h3>
+<h3 id="_once_you_have_docker">3.2. Once you have docker</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -764,7 +824,7 @@ There are alternatives (podman, singularity) but Docker is the most popular and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_if_you_are_a_developer">2.3. If you are a developer</h3>
+<h3 id="_if_you_are_a_developer">3.3. If you are a developer</h3>
 <div class="paragraph">
 <p>If you are not planning on writing <strong>LSDTopoTools</strong> code, ignore this bit.</p>
 </div>
@@ -796,154 +856,23 @@ There are alternatives (podman, singularity) but Docker is the most popular and 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_installing_natively_on_a_linux_system">3. Installing natively on a Linux system</h2>
+<h2 id="_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>You first need <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>. Get the python 3.8 version.</p>
-</li>
-<li>
-<p>Create and environment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name lsdtt</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Now install the required packages.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>If you only want the lsdtopotools command line tools use:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ conda install -y -c conda-forge conda
-$ conda install -y lsdtopotools</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>If you want the full <strong>LSDTopoTools</strong> computational stack install:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ apt-get update &amp;&amp; apt-get install -y \
-    build-essential \
-    libfftw3-dev \
-    &amp;&amp; rm -rf /var/lib/apt/lists/*
-$ conda install -y -c conda-forge conda
-$ conda config --add channels conda-forge
-$ conda config --set channel_priority strict
-$ conda install -y wget unzip
-$ conda install -y ffmpeg
-$ conda install -y lsdtopotools
-$ conda install -y git python=3.8
-$ conda install -y ipython ipykernel jupyter
-$ conda install -y conda-build
-$ conda install -y mamba
-$ mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor
-$ pip install lsdviztools lsdttparamselector
-$ mamba install -y lsdtopytools</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect2">
-<h3 id="_building_the_code_from_source">3.1. Building the code from source</h3>
 <div class="paragraph">
-<p><strong>ONLY DO THIS IF YOU ARE A DEVELOPER!! If you just want to use the code follow the basic instructions.</strong></p>
-</div>
-<div class="paragraph">
-<p>The below instructions are for developers who work with the source code. Unless your name is Simon, Fiona, Stuart, Boris, David, Marina, or Martin and are now or formerly associated with the University of Edinburgh&#8217;s Land Surface Dynamics group it is highly unlikely you will need any of this.</p>
+<p>You could do things very easily if you simply <a href="#used the conda installation">Installing LSDTopoTools using conda</a>. But if you really want to do things the long way and compile the code from source read on.</p>
 </div>
 <div class="sect3">
-<h4 id="_get_the_associated_software_you_need">3.1.1. Get the associated software you need</h4>
+<h4 id="_get_the_lsdtopotools2_code_and_install">4.1. Get the LSDTopoTools2 code and install</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Start a terminal session.</p>
-</li>
-<li>
-<p>Install some essential softare (we will use Ubuntu installation, you need to modify these if you are on another version of Linux). This assumes you have the GNU c++ tools:</p>
+<p>You will need some stuff in your Linux system to compile. Here it is:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install -y git
-$ sudo apt-get install -y gdal-bin
-$ sudo apt-get install -y python-gdal
-$ sudo apt-get install -y libfftw3-dev
-$ sudo apt-get install -y cmake</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt install -y build-essential git gdal-bin python-gdal libfftw3-dev cmake</code></pre>
 </div>
 </div>
 </li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_option_1_use_the_script">3.2. Option 1: Use the script</h3>
-<div class="paragraph">
-<p>We made a script for Linux users. It does the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Makes an LSDTopoTools directory</p>
-</li>
-<li>
-<p>Clones and compiles the code</p>
-</li>
-<li>
-<p>Downloads the example data</p>
-</li>
-<li>
-<p>Spawns a bash shell that knows where the command line tools are.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To use it:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Grab the script</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ wget https://raw.githubusercontent.com/LSDtopotools/LSDTT_Edinburgh_scripts/master/LSDTT_native_linux_setup.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Run the script</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sh LSDTT_native_linux_setup.sh</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>You will need to tell this script where you want to install LSDTopoTools.</p>
-</li>
-<li>
-<p>The first time you run this it will take a while to compile and get all the files. But you can run it thereafter for any terminal session and it will add the actually LSDTopoTools programs to your <code>$PATH</code> for that session.</p>
-</li>
-<li>
-<p>If you don&#8217;t want to bother with the script each time, we suggest adding the location of the <strong>LSDTopoTools</strong> prgrams to your <code>$PATH</code> in your <code>.bashrc</code> file. If you don&#8217;t know what that previous sentence means, just use the script.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_option_2_do_it_by_hand">3.3. Option 2: Do it by hand</h3>
-<div class="sect3">
-<h4 id="_get_the_lsdtopotools2_code_and_install">3.3.1. Get the LSDTopoTools2 code and install</h4>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
 <p>You probably should make a directory where you keep everything associated with <strong>LSDTopoTools</strong>. A suggested name for this directory is <strong>LSDTopoTools</strong>: it says what it does on the tin. Go into that directory once you have created it.</p>
 </li>
@@ -956,19 +885,39 @@ $ sudo apt-get install -y cmake</code></pre>
 </div>
 </li>
 <li>
-<p>Go into that new directory:</p>
+<p>Go into the source directory:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools2</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd LSDTopoTools2/src</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Run the setup tool</p>
+<p>Build the code</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ sh lsdtt2_setup.sh</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ sh build.sh</code></pre>
 </div>
+</div>
+</li>
+<li>
+<p>The program files once you do that are in <code>/path/to/LSDTopoTools/bin</code> (you need to replace <code>/path/to</code> with your own path. If you don&#8217;t know what that is then you are not ready for Linux and should use the conda installation). You need to put that path in your path for the session:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ export PATH=/path/to/LSDTopoTools/bin:$PATH</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+you&#8217;ll need to either do this every time you start a session or you will need to edit your <code>.bashrc</code> file.
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -978,24 +927,16 @@ $ sudo apt-get install -y cmake</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_starting_an_lsdtopotools2_session_after_your_first_installation">3.3.2. Starting an LSDTopoTools2 session after your first installation</h4>
+<h4 id="_starting_an_lsdtopotools2_session_after_your_first_installation">4.2. Starting an LSDTopoTools2 session after your first installation</h4>
 <div class="ulist">
 <ul>
 <li>
 <p>Whenever you return to run an LSDTopoTools2 session, you will need to tell the computer where your program files are. You cave two options:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Run <code>sh lsdtt2_setup.sh</code> in the LSDTopoTools2 directory. This gets the latest version of the software, recompiles, and points your session to the program files.</p>
-</li>
-<li>
-<p>Run <code>sh lsdtt2_terminal.sh</code> in the LSDTopoTools2 directory. This just points your session to the program files.</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ export PATH=/path/to/LSDTopoTools/bin:$PATH</code></pre>
 </div>
-</li>
-<li>
-<p>You must do one of those two things otherwise your computer will not know where the program files are.</p>
+</div>
 </li>
 <li>
 <p>As an alternative, you can go into yor <code>.bashrc</code> file and add the <code>/path/to/LSDTopoTools2/bin</code> directory to your <code>$PATH</code>. You will need to change the full path to reflect your own directory system. If you don&#8217;t know what a <code>.bashrc</code> file is you are probably better off running the <code>lsdtt2_terminal.sh</code> script.</p>
@@ -1004,7 +945,7 @@ $ sudo apt-get install -y cmake</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getting_the_example_data">3.3.3. Getting the example data</h4>
+<h4 id="_getting_the_example_data">4.3. Getting the example data</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1035,9 +976,8 @@ $ rm master.zip</code></pre>
 </ol>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_installing_lsdtopotools_using_windows_subsystem_for_linux">3.4. Installing LSDTopoTools using Windows Subsystem for Linux</h3>
+<h3 id="_installing_lsdtopotools_using_windows_subsystem_for_linux">4.4. Installing LSDTopoTools using Windows Subsystem for Linux</h3>
 <div class="paragraph">
 <p>Some users have had difficulties getting Docker to install on Windows as it can require changing a setting in the BIOS. If this is the case, you can try to install the code natively using <a href="https://docs.microsoft.com/en-us/windows/wsl/faq">Windows Subsystem for Linux</a>.  This is a piece of software from Microsoft that allows you to run a small Linux environment (in our case Ubuntu) from your Windows operating system.  We will download this software from the Microsoft Store, which should be preinstalled on any Windows 10 system.</p>
 </div>
@@ -1122,7 +1062,7 @@ $ pwd</code></pre>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_accessing_data_from_windows">3.4.1. Accessing data from Windows</h4>
+<h4 id="_accessing_data_from_windows">4.4.1. Accessing data from Windows</h4>
 <div class="paragraph">
 <p>Once installed in the linux subsystem, <code>Microsoft</code> strongly warns against accessing to Ubuntu file system from <code>windows</code> as it can damaged it quite easily. However the opposite is fairly easy: the easiest way to do that is to store data in your <code>C</code> drive, accessible from the linux subsystem with:</p>
 </div>
@@ -1136,7 +1076,7 @@ $ pwd</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_installing_lsdtopotools_at_the_university_of_edinburgh">4. Installing LSDTopoTools at the University of Edinburgh.</h2>
+<h2 id="_installing_lsdtopotools_at_the_university_of_edinburgh">5. Installing LSDTopoTools at the University of Edinburgh.</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>These instructions are for students and staff within the <a href="https://www.ed.ac.uk/geosciences">School of GeoSciences</a> at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a>.</p>
@@ -1146,7 +1086,7 @@ $ pwd</code></pre>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Quick Setup for Edinburgh Geoscience users</div>
+<div class="title">Quick Setup for Edinburgh GeoScience users</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1170,12 +1110,15 @@ $ pwd</code></pre>
 <li>
 <p>You are now on a server that has the <strong>LSDTopoTools</strong></p>
 </li>
+<li>
+<p>Alternatively, <strong>LSDTopoTools</strong> is already installed on the <a href="https://www.ed.ac.uk/information-services/learning-technology/noteable/accessing-noteable">Noteable</a>. There are lots of <a href="https://github.com/simon-m-mudd/smm_teaching_notebooks">example notebooks</a>. If you use this method make sure you use a "GeoScience" Noteable server.</p>
+</li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_mapping_your_network_drive">4.1. Mapping your network drive</h3>
+<h3 id="_mapping_your_network_drive">5.1. Mapping your network drive</h3>
 <div class="paragraph">
 <p>You will need access to your data on the network drive to use <strong>LSDTopoTools</strong>. You only need to do this one in any computer lab (and possibly only once ever):</p>
 </div>
@@ -1230,7 +1173,7 @@ $ pwd</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">4.2. Getting on to our servers with with ssh in a powershell window</h3>
+<h3 id="_getting_on_to_our_servers_with_with_ssh_in_a_powershell_window">5.2. Getting on to our servers with with ssh in a powershell window</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1287,7 +1230,7 @@ You <strong>MUST</strong> move servers since the GeoSciences ssh server is very 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_get_a_text_editor">5. Get a text editor!</h2>
+<h2 id="_get_a_text_editor">6. Get a text editor!</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A text editor isn&#8217;t part of <strong>LSDTopoTools</strong> but you need one to do anything. You will need to modify parameter files and you might even get to the stage of opening Pass:[c++] or Python scripts and editing them so you will need an editor.</p>
@@ -1319,7 +1262,7 @@ You <strong>MUST</strong> move servers since the GeoSciences ssh server is very 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-17 14:38:29 UTC
+Last updated 2022-01-18 17:32:06 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
