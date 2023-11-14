@@ -465,7 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#finding-out-what-sort-of-data-youve-got">5.1. Finding out what sort of data you&#8217;ve got</a>
 <ul class="sectlevel3">
-<li><a href="#translating-your-raster-into-something-that-can-be-used-by-lsdtopotoolbox">5.1.1. Translating your raster into something that can be used by LSDTopoToolbox</a></li>
+<li><a href="#translating-your-raster-into-something-that-can-be-used-by-lsdtopotools">5.1.1. Translating your raster into something that can be used by LSDTopoTools</a></li>
 <li><a href="#changing-raster-projections-with-gdalwarp">5.1.2. Changing raster projections with gdalwarp</a></li>
 <li><a href="#_changing_nodata_with_gdalwarp">5.1.3. Changing Nodata with gdalwarp</a></li>
 <li><a href="#changing-raster-format-with-gdal_translate">5.1.4. Changing raster format with gdal_translate</a></li>
@@ -786,20 +786,19 @@ that produced a 90 meter resolution DEM in 2003.</p>
 <li>
 <p>2015 has seen the release of the <a href="http://www.geo-airbusds.com/worlddem/">WorldDEM</a>, a 12 meter resolution topographic dataset.</p>
 </li>
+<li>
+<p>There are now a bunch of 30m datasets. <a href="https://www.sciencedirect.com/science/article/pii/B9780444641779000047">Here is a paper about that (sorry, paywall)</a>. If you don&#8217;t have access to that paper then please email Simon Mudd and request a copy.</p>
+</li>
 </ul>
-</div>
-<div class="paragraph">
-<p>GTOPO30, SRTM and ASTER data are all freely available for download. The WorldDEM is a commercial product.
-If you are looking for a global dataset at reasonable resolution that is not commercial, you will most likely choose between ASTER and SRTM.
-You can download ASTER and SRTM data at the same site and make your own comparisons,
-but ASTER has widely publicised <a href="http://www.digital-geography.com/dem-comparison-srtm-3-vs-aster-gdem-v2/#.ViS2wX6rRaQ">data quality issues</a>
-so we recommend the SRTM 30 meter data.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Where to get global data</div>
 <div class="paragraph">
-<p>As of late 2016, <a href="http://www.opentopography.org/">opentropography.org</a> has been hosting global datasets. If you click on <strong>raster data</strong> and then <strong>global data sets</strong> you will find various global datasets. *The download interface is MUCH BETTER that other interfaces. You do not need to sign in, it gives seamless data, you can keep track of where you have downloaded data. It is just very good. If you are looking for 90m or 30m data this website is your one stop shop.</p>
+<p>Our python toolkit, <strong>lsdviztools</strong>, has some functions for getting these global datasets. See our <a href="https://github.com/LSDtopotools/lsdtt_notebooks">jupyter notebooks</a> for instructions.</p>
+</div>
+<div class="paragraph">
+<p>That toolkit uses the API from <a href="http://www.opentopography.org/">opentopography.org</a>. You can also download data directly from them. I cannot say enough good things about <strong>opentopography</strong>.</p>
 </div>
 </div>
 </div>
@@ -861,7 +860,7 @@ since it is a widely used projection system with units of meters.</p>
 <div class="content">
 <div class="title">How do I get GDAL on my computer</div>
 <div class="paragraph">
-<p><a href="http://www.gdal.org/">GDAL (the Geospatial Data Abstraction Library)</a> is very easy to install if you have a Linux operating system. Many people don&#8217;t have a Linux operating system, however. We reccomend using either Docker or Vagrant to manage a Linux system that lives within your home operating system. The instructions are included link::LSDTT_installation.html[in our instructions on how to install LSDTopoTools]. We bundle GDAL with LSDTopoTools installations.</p>
+<p><a href="http://www.gdal.org/">GDAL (the Geospatial Data Abstraction Library)</a> is very easy to install if you have a Linux operating system. Many people don&#8217;t have a Linux operating system, however. We recommend using Docker to manage a Linux system that lives within your home operating system. The instructions are included link::LSDTT_installation.html[in our instructions on how to install LSDTopoTools]. We bundle GDAL with LSDTopoTools installations.</p>
 </div>
 <div class="paragraph">
 <p>You use GDAL via a command line interface. If you don&#8217;t know anything about that, please read our documentation on <a href="LSDTT_using_linux.html">an introduction to Linux</a>.</p>
@@ -926,9 +925,9 @@ There are sometimes more than one <code>.adf</code> files so you&#8217;ll just n
 use <code>ls -l</code> to find the biggest one.</p>
 </div>
 <div class="sect3">
-<h4 id="translating-your-raster-into-something-that-can-be-used-by-lsdtopotoolbox">5.1.1. Translating your raster into something that can be used by LSDTopoToolbox</h4>
+<h4 id="translating-your-raster-into-something-that-can-be-used-by-lsdtopotools">5.1.1. Translating your raster into something that can be used by LSDTopoTools</h4>
 <div class="paragraph">
-<p>Say you have a raster but it is in the wrong format (LSDTopoToolbox at
+<p>Say you have a raster but it is in the wrong format (LSDTopoTools at
 the moment only takes <code>.bil</code>, <code>.flt</code> and <code>.asc</code> files) and in the wrong
 projection.</p>
 </div>
@@ -939,7 +938,7 @@ projection.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<strong>LDSTopoToolbox performs many of its analyses on the
+<strong>LDSTopoTools performs many of its analyses on the
 basis of projected coordinates.</strong>
 </td>
 </tr>
@@ -1420,7 +1419,7 @@ If you do not correctly set the output format, it will default to <strong>GML</s
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-29 16:40:46 UTC
+Last updated 2018-08-28 15:43:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

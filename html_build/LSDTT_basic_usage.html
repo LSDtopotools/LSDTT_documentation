@@ -540,15 +540,45 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p><a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a></p>
 </div>
-<div class="paragraph">
-<p>In addition, you will need to use some basic linux shell commands. If you have never done this before I suggest reading this brief introduction: <a href="LSDTT_using_linux.html">Basic use of the linux shell</a>.</p>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Ways to run LSDTopoTools</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can run <strong>LSDTopoTools</strong> from the command line if you are in a Linux environment or one of our docker containers (see <a href="LSDTT_installation.html">Instructions on how to install LSDTopoTools</a>).</p>
+</li>
+<li>
+<p>You can run <strong>LSDTopoTools</strong> in a <a href="https://jupyter.org/">jupyter notebook</a>. This involves use of <strong>lsdviztools</strong> to call the command line tools. Here is <a href="https://colab.research.google.com/github/LSDtopotools/lsdtt_notebooks/blob/master/lsdtopotools/lsdtopotools_on_colab.ipynb">an example on google colab</a>.</p>
+</li>
+<li>
+<p>You can use the python interface <strong>lsdtopytools</strong> to run natively in python. This is currently only sparsely documented.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_the_basic_structure_of_an_analysis">1.1. The basic structure of an analysis</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All the below instructions refer to the <strong>LSDTopoTools</strong> command line tools, and not <strong>lsdtopytools</strong>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Our analyses are packaged into separate programs. They are run from the Linux shell. If you don&#8217;t have Linux, don&#8217;t worry, we use <a href="https://en.wikipedia.org/wiki/OS-level_virtualisation">containers</a> to create a Linux environment in your computer (see <a href="LSDTT_installation.html">installation instructions</a>).  All of our programs operate the same way:</p>
+<p><strong>LSDTopoTools</strong> analyses are packaged into separate programs. They are run from the Linux shell, but we have python wrappers to call these programs if you are more comfortable in a python environment.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t have Linux, don&#8217;t worry, we use <a href="https://en.wikipedia.org/wiki/OS-level_virtualisation">containers</a> to create a Linux environment in your computer (see <a href="LSDTT_installation.html">installation instructions</a>).  All of our programs operate the same way:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -557,6 +587,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p>These programs work on topographic data, and they use a parameter file that tells the programs what to do with the data.</p>
+</li>
+<li>
+<p>If you use the wrapper in <strong>lsdviztools</strong> then that wrapper will write the parameter file.</p>
 </li>
 </ul>
 </div>
@@ -1834,7 +1867,7 @@ If you just want the largest complete basin, set <code>find_largest_complete_bas
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-27 11:06:09 UTC
+Last updated 2019-06-24 18:55:39 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

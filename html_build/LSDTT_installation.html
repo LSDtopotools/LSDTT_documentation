@@ -465,13 +465,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_installing_natively_on_a_linux_system">4. Installing natively on a Linux system</a>
+<ul class="sectlevel2">
+<li><a href="#_get_the_lsdtopotools2_code_and_install">4.1. Get the LSDTopoTools2 code and install</a>
 <ul class="sectlevel3">
-<li><a href="#_get_the_lsdtopotools2_code_and_install">4.1. Get the LSDTopoTools2 code and install</a></li>
-<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">4.2. Starting an LSDTopoTools2 session after your first installation</a></li>
-<li><a href="#_getting_the_example_data">4.3. Getting the example data</a></li>
-<li><a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">4.4. Installing LSDTopoTools using Windows Subsystem for Linux</a>
+<li><a href="#_starting_an_lsdtopotools2_session_after_your_first_installation">4.1.1. Starting an LSDTopoTools2 session after your first installation</a></li>
+<li><a href="#_getting_the_example_data">4.1.2. Getting the example data</a></li>
+</ul>
+</li>
+<li><a href="#_installing_lsdtopotools_using_windows_subsystem_for_linux">4.2. Installing LSDTopoTools using Windows Subsystem for Linux</a>
 <ul class="sectlevel3">
-<li><a href="#_accessing_data_from_windows">4.4.1. Accessing data from Windows</a></li>
+<li><a href="#_accessing_data_from_windows">4.2.1. Accessing data from Windows</a></li>
 </ul>
 </li>
 </ul>
@@ -508,7 +511,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_the_three_main_ways_to_use_lsdtopotools">1.1. The three main ways to use LSDTopoTools</h3>
 <div class="paragraph">
-<p>There are three main ways you can use <strong>LSDTopoTools</strong></p>
+<p>There are four main ways you can use <strong>LSDTopoTools</strong></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -538,6 +541,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">If you don&#8217;t want to install any software (or don&#8217;t have privileges to do so) you can run <strong>LSDTopoTools</strong> in a web browser using <a href="https://colab.research.google.com/notebooks/intro.ipynb">google colab</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You don&#8217;t need to install anything on your computer. All you need is a web browser.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Takes ~4.5 minutes to spin up each time you start, every time you start. Unless you pay google, your storage will be limited (but the memory on google colab is quite good: 12Gb for the free version)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You could also compile <strong>LSDTopoTools</strong> from its source code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not really faster than the conda installation but if you have some weird version of Linux this will work if conda fails. But you need to know what you are doing in Linux.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Takes a long time and you need to edit you $PATH. This option is really only for developers.)</p></td>
 </tr>
 </tbody>
 </table>
@@ -645,10 +653,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>If you are in MacOS or Linux you can use the conda installation. You can also use the <a href="#Docker installation">Installing LSDTopoTools using Docker</a>.</p>
+<p>If you are in MacOS or Linux you can use the conda installation. You can also use the <a href="#_installing_lsdtopotools_using_docker">Docker installation</a>.</p>
 </li>
 <li>
-<p>If you have Windows 10+ and administrator privileges, we <a href="#recommend Docker">Installing LSDTopoTools using Docker</a>.</p>
+<p>If you have Windows 10+ and administrator privileges, we <a href="#_installing_lsdtopotools_using_docker">recommend Docker</a>.</p>
 </li>
 <li>
 <p>If you want better performance you can try the <a href="#_installing_natively_on_a_linux_system">native Linux installation</a> (works on both Linux and MacOS since the latter is built on top of Linux).</p>
@@ -681,7 +689,7 @@ If you don&#8217;t have that you can either move on to the section on <a href="#
 <p>You first need <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>. Get the python 3.8 version.</p>
 </li>
 <li>
-<p>Create and environment:</p>
+<p>Create an environment:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ conda create --name lsdtt</code></pre>
@@ -849,9 +857,6 @@ There are alternatives (podman, singularity) but Docker is the most popular and 
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>/// include::sections/docker_notes.asc[]</p>
-</div>
 </div>
 </div>
 </div>
@@ -861,8 +866,8 @@ There are alternatives (podman, singularity) but Docker is the most popular and 
 <div class="paragraph">
 <p>You could do things very easily if you simply <a href="#used the conda installation">Installing LSDTopoTools using conda</a>. But if you really want to do things the long way and compile the code from source read on.</p>
 </div>
-<div class="sect3">
-<h4 id="_get_the_lsdtopotools2_code_and_install">4.1. Get the LSDTopoTools2 code and install</h4>
+<div class="sect2">
+<h3 id="_get_the_lsdtopotools2_code_and_install">4.1. Get the LSDTopoTools2 code and install</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -925,9 +930,8 @@ you&#8217;ll need to either do this every time you start a session or you will n
 </li>
 </ol>
 </div>
-</div>
 <div class="sect3">
-<h4 id="_starting_an_lsdtopotools2_session_after_your_first_installation">4.2. Starting an LSDTopoTools2 session after your first installation</h4>
+<h4 id="_starting_an_lsdtopotools2_session_after_your_first_installation">4.1.1. Starting an LSDTopoTools2 session after your first installation</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -945,7 +949,7 @@ you&#8217;ll need to either do this every time you start a session or you will n
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getting_the_example_data">4.3. Getting the example data</h4>
+<h4 id="_getting_the_example_data">4.1.2. Getting the example data</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -976,8 +980,9 @@ $ rm master.zip</code></pre>
 </ol>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_installing_lsdtopotools_using_windows_subsystem_for_linux">4.4. Installing LSDTopoTools using Windows Subsystem for Linux</h3>
+<h3 id="_installing_lsdtopotools_using_windows_subsystem_for_linux">4.2. Installing LSDTopoTools using Windows Subsystem for Linux</h3>
 <div class="paragraph">
 <p>Some users have had difficulties getting Docker to install on Windows as it can require changing a setting in the BIOS. If this is the case, you can try to install the code natively using <a href="https://docs.microsoft.com/en-us/windows/wsl/faq">Windows Subsystem for Linux</a>.  This is a piece of software from Microsoft that allows you to run a small Linux environment (in our case Ubuntu) from your Windows operating system.  We will download this software from the Microsoft Store, which should be preinstalled on any Windows 10 system.</p>
 </div>
@@ -1062,7 +1067,7 @@ $ pwd</code></pre>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_accessing_data_from_windows">4.4.1. Accessing data from Windows</h4>
+<h4 id="_accessing_data_from_windows">4.2.1. Accessing data from Windows</h4>
 <div class="paragraph">
 <p>Once installed in the linux subsystem, <code>Microsoft</code> strongly warns against accessing to Ubuntu file system from <code>windows</code> as it can damaged it quite easily. However the opposite is fairly easy: the easiest way to do that is to store data in your <code>C</code> drive, accessible from the linux subsystem with:</p>
 </div>
@@ -1262,7 +1267,7 @@ You <strong>MUST</strong> move servers since the GeoSciences ssh server is very 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-18 17:32:06 UTC
+Last updated 2022-01-19 10:29:18 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
